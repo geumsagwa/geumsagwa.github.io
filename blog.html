@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - 생각을 잇다</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- 상단 메뉴바 영역 -->
+<nav class="menu-bar">
+    <div class="menu-logo">
+        <span class="menu-logo-text">생각을 잇다</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li class="active"><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="board.html">Board</a></li>
+    </ul>
+    <div class="auth-area" id="auth-area"></div>
+</nav>
+
+<!-- Blog 콘텐츠 영역 -->
+<div class="blog-container">
+
+    <!-- 테마 문구 -->
+    <div class="blog-theme">
+        <p class="blog-theme-text">'어떤' 생각은 사람 사이를 이어준다.</p>
+    </div>
+
+    <!-- 카테고리 탭 (카페 메뉴 스타일) -->
+    <div class="blog-tabs">
+        <button class="blog-tab active" data-category="book-review">
+            <span class="cafe-tab-icon">☕</span>
+            <span class="cafe-tab-name">Book Review</span>
+        </button>
+        <button class="blog-tab" data-category="essay">
+            <span class="cafe-tab-icon">✍</span>
+            <span class="cafe-tab-name">Essay</span>
+        </button>
+    </div>
+
+    <!-- 카테고리별 글 목록 (사진카드 그리드) -->
+    <div class="blog-content">
+        <div class="blog-panel active" data-category="book-review">
+            <div class="photo-grid">
+                <a href="#" class="photo-card">
+                    <div class="photo-card-img" style="background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=530&fit=crop&crop=center');"></div>
+                    <div class="photo-card-overlay">
+                        <span class="photo-card-date">2025. 12. 14</span>
+                        <h3 class="photo-card-title">사피엔스 — 우리는 어떻게 여기까지 왔는가</h3>
+                        <p class="photo-card-excerpt">유발 하라리는 인류의 역사를 '허구를 믿는 능력'으로 설명한다.</p>
+                    </div>
+                </a>
+                <a href="#" class="photo-card">
+                    <div class="photo-card-img" style="background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=530&fit=crop&crop=center');"></div>
+                    <div class="photo-card-overlay">
+                        <span class="photo-card-date">2025. 11. 28</span>
+                        <h3 class="photo-card-title">총, 균, 쇠 — 운명은 지리에서 시작되었다</h3>
+                        <p class="photo-card-excerpt">왜 어떤 문명은 정복자가 되었고, 어떤 문명은 사라졌는가.</p>
+                    </div>
+                </a>
+                <a href="#" class="photo-card">
+                    <div class="photo-card-img" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=530&fit=crop&crop=center');"></div>
+                    <div class="photo-card-overlay">
+                        <span class="photo-card-date">2025. 10. 05</span>
+                        <h3 class="photo-card-title">역사의 쓸모 — 과거를 읽는 자가 미래를 쓴다</h3>
+                        <p class="photo-card-excerpt">역사는 반복되지 않지만 운율은 맞는다고 했던가.</p>
+                    </div>
+                </a>
+                <a href="#" class="photo-card">
+                    <div class="photo-card-img" style="background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=530&fit=crop&crop=center');"></div>
+                    <div class="photo-card-overlay">
+                        <span class="photo-card-date">2025. 09. 17</span>
+                        <h3 class="photo-card-title">생각의 탄생 — 창조는 어디에서 오는가</h3>
+                        <p class="photo-card-excerpt">그들의 사고방식에는 공통점이 있었다.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="blog-panel" data-category="essay">
+            <div class="photo-grid">
+                <a href="#" class="photo-card">
+                    <div class="photo-card-img" style="background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=530&fit=crop&crop=center');"></div>
+                    <div class="photo-card-overlay">
+                        <span class="photo-card-date">2026. 01. 22</span>
+                        <h3 class="photo-card-title">쓰는 행위에 대하여</h3>
+                        <p class="photo-card-excerpt">글을 쓴다는 것은 생각을 밖으로 꺼내는 일이다.</p>
+                    </div>
+                </a>
+                <a href="#" class="photo-card">
+                    <div class="photo-card-img" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=530&fit=crop&crop=center');"></div>
+                    <div class="photo-card-overlay">
+                        <span class="photo-card-date">2025. 12. 30</span>
+                        <h3 class="photo-card-title">밤에 떠오르는 것들</h3>
+                        <p class="photo-card-excerpt">어둠 속에서 떠오르는 것들은 대개 중요한 것이거나, 아주 하찮은 것이다.</p>
+                    </div>
+                </a>
+                <a href="#" class="photo-card">
+                    <div class="photo-card-img" style="background-image: url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=530&fit=crop&crop=center');"></div>
+                    <div class="photo-card-overlay">
+                        <span class="photo-card-date">2025. 11. 15</span>
+                        <h3 class="photo-card-title">연결되지 않는 시대의 연결</h3>
+                        <p class="photo-card-excerpt">진짜 연결은 같은 공간에서 같은 침묵을 나누는 데 있다.</p>
+                    </div>
+                </a>
+                <a href="#" class="photo-card">
+                    <div class="photo-card-img" style="background-image: url('https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=530&fit=crop&crop=center');"></div>
+                    <div class="photo-card-overlay">
+                        <span class="photo-card-date">2025. 10. 02</span>
+                        <h3 class="photo-card-title">느리게 읽는 연습</h3>
+                        <p class="photo-card-excerpt">한 문장에 오래 머무르는 법을 다시 배우고 있다.</p>
+                    </div>
+                </a>
+                <a href="#" class="photo-card">
+                    <div class="photo-card-img" style="background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400&h=530&fit=crop&crop=center');"></div>
+                    <div class="photo-card-overlay">
+                        <span class="photo-card-date">2025. 08. 19</span>
+                        <h3 class="photo-card-title">생각이 잇는 것들</h3>
+                        <p class="photo-card-excerpt">중요한 것은 잇는 행위 그 자체다.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="blog.js"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+
+</body>
+</html>

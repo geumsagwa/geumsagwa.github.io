@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - 생각을 잇다</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- 상단 메뉴바 영역 -->
+<nav class="menu-bar">
+    <div class="menu-logo">
+        <span class="menu-logo-text">생각을 잇다</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li class="active"><a href="gallery.html">Gallery</a></li>
+        <li><a href="board.html">Board</a></li>
+    </ul>
+    <div class="auth-area" id="auth-area"></div>
+</nav>
+
+<!-- Gallery 콘텐츠 영역 -->
+<div class="gallery-container">
+
+    <!-- 테마 문구 -->
+    <div class="gallery-theme">
+        <p class="gallery-theme-text">'어떤' 생각은 멈춘 시간 속에 이어진다.</p>
+    </div>
+
+    <!-- 카테고리 탭 (전시장 안내판 스타일) -->
+    <div class="gallery-tabs">
+        <button class="gallery-tab active" data-category="moments">
+            <span class="gallery-tab-label">Moments</span>
+        </button>
+        <button class="gallery-tab" data-category="places">
+            <span class="gallery-tab-label">Places</span>
+        </button>
+        <button class="gallery-tab" data-category="objects">
+            <span class="gallery-tab-label">Objects</span>
+        </button>
+    </div>
+
+    <!-- 카테고리별 전시 -->
+    <div class="gallery-content">
+
+        <!-- Moments -->
+        <div class="gallery-panel active" data-category="moments">
+            <div class="exhibit-wall">
+                <div class="exhibit-frame exhibit-large">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&h=400&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">고요한 아침</span>
+                </div>
+                <div class="exhibit-frame">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=300&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">숲 속의 빛</span>
+                </div>
+                <div class="exhibit-frame">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&h=300&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">길 위에서</span>
+                </div>
+                <div class="exhibit-frame exhibit-tall">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?w=400&h=560&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">저녁 무렵</span>
+                </div>
+                <div class="exhibit-frame">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=400&h=300&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">흐르는 것들</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Places -->
+        <div class="gallery-panel" data-category="places">
+            <div class="exhibit-wall">
+                <div class="exhibit-frame exhibit-large">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&h=400&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">오래된 거리</span>
+                </div>
+                <div class="exhibit-frame">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=400&h=300&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">도시의 틈</span>
+                </div>
+                <div class="exhibit-frame exhibit-tall">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=400&h=560&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">밤의 윤곽</span>
+                </div>
+                <div class="exhibit-frame">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=300&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">먼 곳의 기억</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Objects -->
+        <div class="gallery-panel" data-category="objects">
+            <div class="exhibit-wall">
+                <div class="exhibit-frame">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?w=400&h=300&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">빛의 형태</span>
+                </div>
+                <div class="exhibit-frame exhibit-large">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&h=400&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">정물</span>
+                </div>
+                <div class="exhibit-frame">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=400&h=300&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">남겨진 것</span>
+                </div>
+                <div class="exhibit-frame exhibit-tall">
+                    <div class="frame-mat">
+                        <div class="frame-photo" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&h=560&fit=crop');"></div>
+                    </div>
+                    <span class="frame-caption">색의 흔적</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- 라이트박스 오버레이 -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-backdrop"></div>
+    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev">‹</button>
+    <div class="lightbox-content">
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <span class="lightbox-caption" id="lightbox-caption"></span>
+    </div>
+    <button class="lightbox-arrow lightbox-next" id="lightbox-next">›</button>
+</div>
+
+<script src="gallery.js"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+
+</body>
+</html>

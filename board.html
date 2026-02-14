@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board - 생각을 잇다</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- 상단 메뉴바 영역 -->
+<nav class="menu-bar">
+    <div class="menu-logo">
+        <span class="menu-logo-text">생각을 잇다</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li class="active"><a href="board.html">Board</a></li>
+    </ul>
+    <div class="auth-area" id="auth-area"></div>
+</nav>
+
+<!-- Board 콘텐츠 영역 -->
+<div class="board-container">
+
+    <!-- 테마 문구 -->
+    <div class="board-theme">
+        <p class="board-theme-text">'어떤' 생각은 결국, 나를 만든다.</p>
+    </div>
+
+    <!-- 글쓰기 영역 -->
+    <div class="memo-write">
+        <input type="text" class="memo-name-input" id="memo-name" placeholder="이름 (익명)" maxlength="20">
+        <textarea class="memo-text-input" id="memo-text" placeholder="생각을 남겨주세요..." maxlength="300"></textarea>
+        <div class="memo-write-footer">
+            <span class="memo-char-count" id="memo-char-count">0 / 300</span>
+            <button class="memo-submit" id="memo-submit">남기기</button>
+        </div>
+    </div>
+
+    <!-- 메모 목록 -->
+    <div class="memo-list" id="memo-list">
+        <!-- JS로 렌더링 -->
+    </div>
+
+</div>
+
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="board.js"></script>
+
+</body>
+</html>

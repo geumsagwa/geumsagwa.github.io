@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글 작성 - 생각을 잇다</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- 상단 메뉴바 영역 -->
+<nav class="menu-bar">
+    <div class="menu-logo">
+        <span class="menu-logo-text">생각을 잇다</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li class="active"><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="board.html">Board</a></li>
+    </ul>
+    <div class="auth-area" id="auth-area"></div>
+</nav>
+
+<!-- 글 작성 영역 -->
+<div class="editor-container">
+
+    <div class="editor-header">
+        <h2 class="editor-title">새 글 작성</h2>
+        <a href="blog.html" class="editor-back">← Blog로 돌아가기</a>
+    </div>
+
+    <form class="editor-form" id="post-form">
+
+        <!-- 카테고리 선택 -->
+        <div class="editor-field">
+            <label class="editor-label">카테고리</label>
+            <div class="editor-select-group">
+                <button type="button" class="editor-select active" data-value="book-review">Book Review</button>
+                <button type="button" class="editor-select" data-value="essay">Essay</button>
+            </div>
+        </div>
+
+        <!-- 제목 -->
+        <div class="editor-field">
+            <label class="editor-label">제목</label>
+            <input type="text" class="editor-input" id="post-title" placeholder="글의 제목을 입력하세요">
+        </div>
+
+        <!-- 부제 (선택) -->
+        <div class="editor-field">
+            <label class="editor-label">부제 <span class="editor-optional">선택</span></label>
+            <input type="text" class="editor-input" id="post-subtitle" placeholder="부제 또는 한 줄 요약">
+        </div>
+
+        <!-- 날짜 -->
+        <div class="editor-field">
+            <label class="editor-label">날짜</label>
+            <input type="date" class="editor-input" id="post-date">
+        </div>
+
+        <!-- 본문 -->
+        <div class="editor-field">
+            <label class="editor-label">본문</label>
+            <div class="editor-toolbar">
+                <button type="button" class="toolbar-btn" data-action="bold" title="굵게">B</button>
+                <button type="button" class="toolbar-btn toolbar-italic" data-action="italic" title="기울임">I</button>
+                <button type="button" class="toolbar-btn" data-action="heading" title="소제목">H</button>
+                <button type="button" class="toolbar-btn" data-action="quote" title="인용">""</button>
+                <button type="button" class="toolbar-btn" data-action="separator" title="구분선">—</button>
+            </div>
+            <textarea class="editor-textarea" id="post-content" placeholder="여기에 글을 작성하세요...&#10;&#10;Markdown 문법을 지원합니다:&#10;**굵게**  *기울임*  ## 소제목  > 인용  --- 구분선"></textarea>
+        </div>
+
+        <!-- 버튼 -->
+        <div class="editor-actions">
+            <button type="button" class="editor-btn editor-btn-preview" id="btn-preview">미리보기</button>
+            <button type="button" class="editor-btn editor-btn-save" id="btn-save">HTML 생성</button>
+        </div>
+
+    </form>
+
+    <!-- 미리보기 영역 -->
+    <div class="editor-preview" id="preview-area" style="display:none;">
+        <div class="editor-preview-header">
+            <h3 class="editor-preview-title">미리보기</h3>
+            <button type="button" class="editor-btn editor-btn-close" id="btn-close-preview">닫기</button>
+        </div>
+        <div class="editor-preview-content" id="preview-content"></div>
+    </div>
+
+    <!-- HTML 출력 영역 -->
+    <div class="editor-output" id="output-area" style="display:none;">
+        <div class="editor-output-header">
+            <h3 class="editor-output-title">생성된 HTML</h3>
+            <button type="button" class="editor-btn editor-btn-copy" id="btn-copy">복사</button>
+        </div>
+        <textarea class="editor-output-code" id="output-code" readonly></textarea>
+        <p class="editor-output-guide">이 HTML을 blog.html의 해당 카테고리 post-list 안에 붙여넣으세요.</p>
+    </div>
+
+</div>
+
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="post-editor.js"></script>
+
+</body>
+</html>

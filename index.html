@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생각을 잇다</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- 상단 메뉴바 영역 -->
+<nav class="menu-bar">
+    <div class="menu-logo">
+        <span class="menu-logo-text">생각을 잇다</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="board.html">Board</a></li>
+    </ul>
+    <div class="auth-area" id="auth-area"></div>
+</nav>
+
+<div class="slide-container">
+    <div class="slide active" style="background-image: url('Images/main.png');">
+        <h1 class="text-overlay">생각을 잇다</h1>
+    </div>
+
+    <div class="slide" style="background-image: url('Images/me.jpg');">
+        <p class="text-overlay">생각은 하찮은 것이기도<br class="mobile-br"> 고귀한 것이기도 하다.</p>
+    </div>
+
+    <div class="slide" style="background-image: url('Images/me_c.jpg');">
+        <p class="text-overlay">'어떤' 생각을 하느냐에 따라...</p>
+    </div>
+</div>
+
+<script src="main.js"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+
+</body>
+</html>

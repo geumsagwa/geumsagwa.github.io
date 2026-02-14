@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader - 생각을 잇다</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="epub.min.js"></script>
+    <style>
+        /* 리더 전용 스타일 */
+        body, html {
+            overflow: hidden;
+        }
+
+        .reader-container {
+            width: 100%;
+            height: 84vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 리더 상단 바 */
+        .reader-header {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .reader-book-title {
+            font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #bbb;
+        }
+
+        .reader-back {
+            font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .reader-back:hover {
+            color: #fff;
+        }
+
+        /* epub 뷰어 영역 */
+        .reader-viewer {
+            flex: 1;
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            min-height: 0;
+        }
+
+        #epub-viewer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 페이지 이동 버튼 */
+        .reader-nav {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .reader-nav:hover {
+            opacity: 1;
+        }
+
+        .reader-nav-prev {
+            left: 0;
+        }
+
+        .reader-nav-next {
+            right: 0;
+        }
+
+        .reader-nav-arrow {
+            font-size: 2rem;
+            color: #555;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+
+        .reader-nav:hover .reader-nav-arrow {
+            color: #fff;
+        }
+
+        /* 하단 진행 바 */
+        .reader-footer {
+            width: 100%;
+            max-width: 900px;
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .reader-progress-bar {
+            flex: 1;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            overflow: hidden;
+        }
+
+        .reader-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #888;
+            transition: width 0.3s ease;
+        }
+
+        .reader-progress-text {
+            font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+            font-size: 0.75rem;
+            color: #555;
+            min-width: 3rem;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 상단 메뉴바 영역 -->
+<nav class="menu-bar">
+    <div class="menu-logo">
+        <span class="menu-logo-text">생각을 잇다</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li class="active"><a href="library.html">Library</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="board.html">Board</a></li>
+    </ul>
+    <div class="auth-area" id="auth-area"></div>
+</nav>
+
+<!-- 리더 영역 -->
+<div class="reader-container">
+    <div class="reader-header">
+        <span class="reader-book-title" id="book-title">불러오는 중...</span>
+        <a href="library.html" class="reader-back">← Library로 돌아가기</a>
+    </div>
+
+    <div class="reader-viewer">
+        <div id="epub-viewer"></div>
+        <div class="reader-nav reader-nav-prev" id="prev">
+            <span class="reader-nav-arrow">‹</span>
+        </div>
+        <div class="reader-nav reader-nav-next" id="next">
+            <span class="reader-nav-arrow">›</span>
+        </div>
+    </div>
+
+    <div class="reader-footer">
+        <div class="reader-progress-bar">
+            <div class="reader-progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="reader-progress-text" id="progress-text">0%</span>
+    </div>
+</div>
+
+<script>
+    // URL에서 epub 파일 경로 가져오기
+    const params = new URLSearchParams(window.location.search);
+    const bookFile = params.get('book') || 'epub/book1.epub';
+    const bookName = params.get('title') || '';
+
+    // epub 렌더링
+    const book = ePub(bookFile);
+    const rendition = book.renderTo('epub-viewer', {
+        width: '100%',
+        height: '100%',
+        spread: 'none',
+        flow: 'paginated'
+    });
+
+    // 텍스트 스타일 (어두운 배경에 맞게) - display 전에 설정
+    rendition.themes.default({
+        'body': {
+            'color': '#ccc !important',
+            'background': '#111 !important',
+            'line-height': '1.8 !important',
+            'padding': '20px !important'
+        },
+        'p, div, span, li': {
+            'color': '#ccc !important'
+        },
+        'h1, h2, h3, h4, h5, h6': {
+            'color': '#eee !important'
+        },
+        'a': {
+            'color': '#999 !important'
+        },
+        'img': {
+            'max-width': '100% !important',
+            'height': 'auto !important'
+        }
+    });
+
+    // 첫 페이지 표시
+    rendition.display().then(() => {
+        console.log('epub 렌더링 완료');
+    }).catch(err => {
+        console.error('epub 렌더링 오류:', err);
+        document.getElementById('book-title').textContent = '로딩 실패 - 파일을 확인해주세요';
+    });
+
+    // 책 제목 표시 (렌더링과 별개로)
+    book.ready.then(() => {
+        const title = bookName || book.package.metadata.title || '제목 없음';
+        document.getElementById('book-title').textContent = title;
+        console.log('책 정보 로드 완료:', title);
+    }).catch(err => {
+        console.error('책 정보 로드 실패:', err);
+        document.getElementById('book-title').textContent = '로딩 실패';
+    });
+
+    // 페이지 이동
+    document.getElementById('prev').addEventListener('click', () => {
+        rendition.prev();
+    });
+
+    document.getElementById('next').addEventListener('click', () => {
+        rendition.next();
+    });
+
+    // 키보드 이동
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') rendition.prev();
+        if (e.key === 'ArrowRight') rendition.next();
+    });
+
+    // iframe 내부 키보드 이벤트
+    rendition.on('keydown', (e) => {
+        if (e.key === 'ArrowLeft') rendition.prev();
+        if (e.key === 'ArrowRight') rendition.next();
+    });
+
+    // 진행률 표시 (locations 생성은 백그라운드에서 천천히)
+    rendition.on('relocated', (location) => {
+        // locations가 준비되면 정확한 진행률, 아니면 대략적 표시
+        if (book.locations.length()) {
+            const progress = book.locations.percentageFromCfi(location.start.cfi);
+            const percent = Math.round(progress * 100);
+            document.getElementById('progress-fill').style.width = percent + '%';
+            document.getElementById('progress-text').textContent = percent + '%';
+        }
+    });
+
+    // locations는 비동기로 천천히 생성 (로딩을 차단하지 않음)
+    book.ready.then(() => {
+        book.locations.generate(2000).then(() => {
+            console.log('위치 데이터 생성 완료');
+        });
+    });
+</script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+
+</body>
+</html>

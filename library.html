@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - 생각을 잇다</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- 상단 메뉴바 영역 -->
+<nav class="menu-bar">
+    <div class="menu-logo">
+        <span class="menu-logo-text">생각을 잇다</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li class="active"><a href="library.html">Library</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="board.html">Board</a></li>
+    </ul>
+    <div class="auth-area" id="auth-area"></div>
+</nav>
+
+<!-- Library 콘텐츠 영역 -->
+<div class="library-container">
+
+    <!-- 테마 문구 -->
+    <div class="library-theme">
+        <p class="library-theme-text">'어떤' 생각은 시대를 넘어 이어진다.</p>
+    </div>
+
+    <!-- 카테고리 탭 (도서관 분류표 스타일) -->
+    <div class="library-tabs">
+        <button class="library-tab active" data-category="history">
+            <span class="tab-label-code">Ⅰ</span>
+            <span class="tab-label-name">History</span>
+        </button>
+        <button class="library-tab" data-category="philosophy">
+            <span class="tab-label-code">Ⅱ</span>
+            <span class="tab-label-name">Philosophy</span>
+        </button>
+        <button class="library-tab" data-category="psychology">
+            <span class="tab-label-code">Ⅲ</span>
+            <span class="tab-label-name">Psychology</span>
+        </button>
+    </div>
+
+    <!-- 카테고리별 책 목록 (책장 스타일) -->
+    <div class="library-content">
+        <div class="library-panel active" data-category="history">
+            <div class="bookshelf">
+                <div class="shelf-row">
+                    <a href="reader.html?book=epub/book1.epub&title=이야기 세계사 1" class="book-spine" style="--spine-color: #8B4513; --spine-height: 240px; --spine-width: 56px;">
+                        <span class="spine-title">이야기 세계사 1</span>
+                        <span class="spine-author">S. Durant</span>
+                    </a>
+                    <a href="#" class="book-spine" style="--spine-color: #5B3A29; --spine-height: 228px; --spine-width: 52px;">
+                        <span class="spine-title">이야기 세계사 2</span>
+                        <span class="spine-author">S. Durant</span>
+                    </a>
+                    <a href="#" class="book-spine" style="--spine-color: #6B3F2A; --spine-height: 250px; --spine-width: 58px;">
+                        <span class="spine-title">이야기 세계사 3</span>
+                        <span class="spine-author">S. Durant</span>
+                    </a>
+                    <div class="shelf-surface"></div>
+                </div>
+            </div>
+        </div>
+        <div class="library-panel" data-category="philosophy">
+            <div class="bookshelf">
+                <div class="shelf-row">
+                    <a href="#" class="book-spine" style="--spine-color: #2F4F4F; --spine-height: 232px; --spine-width: 50px;">
+                        <span class="spine-title">준비 중</span>
+                        <span class="spine-author">—</span>
+                    </a>
+                    <div class="shelf-surface"></div>
+                </div>
+            </div>
+        </div>
+        <div class="library-panel" data-category="psychology">
+            <div class="bookshelf">
+                <div class="shelf-row">
+                    <a href="#" class="book-spine" style="--spine-color: #4A3728; --spine-height: 230px; --spine-width: 54px;">
+                        <span class="spine-title">준비 중</span>
+                        <span class="spine-author">—</span>
+                    </a>
+                    <a href="#" class="book-spine" style="--spine-color: #3B5249; --spine-height: 245px; --spine-width: 48px;">
+                        <span class="spine-title">준비 중</span>
+                        <span class="spine-author">—</span>
+                    </a>
+                    <div class="shelf-surface"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="library.js"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+
+</body>
+</html>
