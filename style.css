@@ -166,7 +166,7 @@ body, html {
 .slide h1.text-overlay {
     font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 600;
-    font-size: 2.7rem;
+    font-size: 2.16rem;
     color: white;
     text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
     margin: 0;
@@ -176,7 +176,7 @@ body, html {
 .slide p.text-overlay {
     font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 350;
-    font-size: 1.7rem;
+    font-size: 1.36rem;
     line-height: 1.6;
     color: #fff;
     margin: 0;
