@@ -2100,15 +2100,15 @@ body, html {
 }
 
 .auth-login-btn {
-    color: #000;
-    background: #8f7d60;
-    border: none;
+    color: #fff;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .auth-login-btn:hover {
-    color: #000;
-    background: #dabb7e;
-    border: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
 }
 
 .auth-logout-btn {
