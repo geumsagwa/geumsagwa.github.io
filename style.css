@@ -188,9 +188,10 @@ body, html {
         0 2px 6px rgba(0,0,0,0.6),
         1px 1px 4px rgba(0,0,0,0.7);
 }
-/* 2번: 한 줄 밑에 배치 → 차례대로 읽어나가는 느낌 */
+/* 2번: 두 줄 표시, 한 줄 밑에 배치 → 차례대로 읽어나가는 느낌 */
 .slide-container .slide:nth-child(2) .text-overlay {
     margin-top: 2.2em;
+    white-space: pre-line;
 }
 /* 3번: 한 줄 더 밑에 배치 */
 .slide-container .slide:nth-child(3) .text-overlay {
