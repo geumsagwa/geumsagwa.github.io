@@ -1947,12 +1947,14 @@ body, html {
 .auth-card {
     width: 100%;
     max-width: 400px;
+    height: 78vh;
     padding: 2.5rem 2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.03);
-    overflow-y: auto;
-    max-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 /* 탭 전환 */
@@ -1996,6 +1998,8 @@ body, html {
 
 .auth-form.active {
     display: flex;
+    flex: 1;
+    justify-content: space-between;
 }
 
 .auth-field {
