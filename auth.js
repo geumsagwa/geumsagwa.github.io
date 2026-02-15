@@ -61,15 +61,22 @@ async function updateAuthUI() {
     const authArea = document.getElementById('auth-area');
     if (!authArea) return;
 
-    const user = await getCurrentUser();
+    try {
+        const user = await getCurrentUser();
 
-    if (user) {
-        const nickname = getUserNickname(user);
-        authArea.innerHTML = `
-            <span class="auth-nickname">${nickname}</span>
-            <button class="auth-btn auth-logout-btn" onclick="signOut()">로그아웃</button>
-        `;
-    } else {
+        if (user) {
+            const nickname = getUserNickname(user);
+            authArea.innerHTML = `
+                <span class="auth-nickname">${nickname}</span>
+                <button class="auth-btn auth-logout-btn" onclick="signOut()">로그아웃</button>
+            `;
+        } else {
+            authArea.innerHTML = `
+                <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
+            `;
+        }
+    } catch (e) {
+        // Supabase 연결 실패 시에도 로그인 버튼 표시
         authArea.innerHTML = `
             <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
         `;
