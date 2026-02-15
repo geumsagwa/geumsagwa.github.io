@@ -1951,6 +1951,8 @@ body, html {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.03);
+    overflow-y: auto;
+    max-height: 78vh;
 }
 
 /* 탭 전환 */
@@ -2141,7 +2143,7 @@ body, html {
     font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.72rem;
-    color: #666;
+    color: #999;
     letter-spacing: 0.08em;
     white-space: nowrap;
 }
