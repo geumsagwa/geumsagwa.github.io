@@ -262,8 +262,12 @@ function openBookAnimation(book) {
         requestAnimationFrame(() => {
             overlay.classList.add('active');
 
-            // 책이 펼쳐진 후 바로 리더로 이동 (오버레이 유지하여 뒷 화면 안 보이게)
+            // 책이 펼쳐진 후 바로 리더로 이동
             setTimeout(() => {
+                // 페이지 전체를 검정으로 덮어 전환 시 뒷 화면 방지
+                document.documentElement.style.background = '#000';
+                document.body.style.background = '#000';
+                document.body.innerHTML = '';
                 window.location.href = `reader.html?path=${encodeURIComponent(book.epub_path)}&title=${encodeURIComponent(book.title)}`;
             }, 1800);
         });
