@@ -1477,10 +1477,10 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 1);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
 }
 
 .book-open-overlay.active {
@@ -1489,14 +1489,20 @@ body, html {
 }
 
 .book-open-scene {
-    perspective: 1500px;
+    perspective: 2000px;
     perspective-origin: 50% 50%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .book-open-book {
     position: relative;
-    width: 560px;
-    height: 400px;
+    width: 90vw;
+    max-width: 1200px;
+    height: 80vh;
     transform-style: preserve-3d;
 }
 
@@ -1547,13 +1553,13 @@ body, html {
 /* 페이지 줄무늬 */
 .book-open-page-inner {
     position: absolute;
-    inset: 35px 30px;
+    inset: 50px 40px;
     background: repeating-linear-gradient(
         to bottom,
         transparent,
-        transparent 16px,
-        rgba(0, 0, 0, 0.06) 16px,
-        rgba(0, 0, 0, 0.06) 17px
+        transparent 24px,
+        rgba(0, 0, 0, 0.05) 24px,
+        rgba(0, 0, 0, 0.05) 25px
     );
 }
 
@@ -1608,18 +1614,18 @@ body, html {
 .book-open-cover-title {
     font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 2.2rem;
     color: rgba(255, 220, 160, 0.9);
     text-align: center;
     letter-spacing: 0.12em;
     line-height: 1.6;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .book-open-cover-author {
     font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     color: rgba(255, 200, 140, 0.45);
     letter-spacing: 0.1em;
 }
