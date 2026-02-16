@@ -576,9 +576,7 @@
             authorNote.textContent = '작가의 말';
             authorNote.href = '#';
 
-            // spine 항목 확인 (디버그용 콘솔 출력)
             const spineItems = book.spine.spineItems;
-            console.log('spine 목록:', spineItems.map((s, i) => `[${i}] ${s.href}`));
 
             const targetHref = spineItems.length > 1 ? spineItems[1].href : null;
             authorNote._href = targetHref;
