@@ -1230,6 +1230,423 @@ body, html {
     margin-top: 0.8rem;
 }
 
+/* ── Library 업로드 버튼 (우하단 FAB) ── */
+.library-upload-btn {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(200, 169, 110, 0.3);
+    background: rgba(30, 25, 15, 0.9);
+    color: #dabb7e;
+    font-size: 1.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+}
+
+.library-upload-btn:hover {
+    background: rgba(60, 45, 25, 0.95);
+    border-color: #dabb7e;
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(218, 187, 126, 0.15);
+}
+
+/* ── 업로드 모달 ── */
+.upload-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.upload-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.upload-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(6px);
+}
+
+.upload-card {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.upload-title {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #dabb7e;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.upload-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.upload-label {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #888;
+    letter-spacing: 0.05em;
+}
+
+.upload-input {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #ccc;
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.upload-input:focus {
+    outline: none;
+    border-color: #666;
+}
+
+.upload-input::placeholder {
+    color: #555;
+}
+
+/* 카테고리 선택 */
+.upload-category-group {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.upload-category-btn {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #666;
+    background: none;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-category-btn.active {
+    color: #dabb7e;
+    border-color: #dabb7e;
+    background: rgba(218, 187, 126, 0.08);
+}
+
+.upload-category-btn:hover {
+    border-color: #888;
+    color: #aaa;
+}
+
+/* 색상 선택 */
+.upload-color {
+    width: 48px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+}
+
+/* 드롭존 */
+.upload-dropzone {
+    border: 1px dashed #444;
+    border-radius: 6px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragover {
+    border-color: #dabb7e;
+    background: rgba(218, 187, 126, 0.04);
+}
+
+.upload-dropzone-text {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* 액션 버튼 */
+.upload-actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+.upload-btn {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.3rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-btn-cancel {
+    color: #888;
+    background: none;
+    border: 1px solid #333;
+}
+
+.upload-btn-cancel:hover {
+    color: #fff;
+    border-color: #666;
+}
+
+.upload-btn-submit {
+    color: #000;
+    background: #8f7d60;
+    border: none;
+}
+
+.upload-btn-submit:hover {
+    background: #dabb7e;
+}
+
+.upload-btn-submit:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+/* 메시지 */
+.upload-message {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-size: 0.78rem;
+    text-align: center;
+    min-height: 1rem;
+}
+
+.upload-message.error {
+    color: #c0392b;
+}
+
+.upload-message.success {
+    color: #8f7d60;
+}
+
+/* ── 책 펼침 애니메이션 ── */
+.book-open-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.95);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.book-open-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.book-open-scene {
+    perspective: 1500px;
+    perspective-origin: 50% 50%;
+}
+
+.book-open-book {
+    position: relative;
+    width: 560px;
+    height: 400px;
+    transform-style: preserve-3d;
+}
+
+/* 왼쪽 페이지 (표지 뒤에 숨어있다가 나타남) */
+.book-open-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, #ddd5c0, #ece4d2 40%, #e0d8c6);
+    border-radius: 4px 0 0 4px;
+    box-shadow:
+        inset -6px 0 18px rgba(0, 0, 0, 0.12),
+        -2px 0 6px rgba(0, 0, 0, 0.2);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.5s ease 0.6s;
+}
+
+.book-open-overlay.active .book-open-left {
+    transform: scaleX(1);
+}
+
+.book-open-left .book-open-page-inner {
+    opacity: 0;
+    transition: opacity 0.3s ease 1s;
+}
+
+.book-open-overlay.active .book-open-left .book-open-page-inner {
+    opacity: 1;
+}
+
+/* 오른쪽 페이지 */
+.book-open-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, #ddd5c0, #ece4d2 40%, #e0d8c6);
+    border-radius: 0 4px 4px 0;
+    box-shadow:
+        inset 6px 0 18px rgba(0, 0, 0, 0.12),
+        2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 페이지 줄무늬 */
+.book-open-page-inner {
+    position: absolute;
+    inset: 35px 30px;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 16px,
+        rgba(0, 0, 0, 0.06) 16px,
+        rgba(0, 0, 0, 0.06) 17px
+    );
+}
+
+/* 표지 (앞면 → 왼쪽으로 펼쳐짐) */
+.book-open-cover {
+    position: absolute;
+    left: 0;
+    top: -4px;
+    width: calc(50% + 4px);
+    height: calc(100% + 8px);
+    transform-origin: right center;
+    transform: rotateY(0deg);
+    transition: transform 1s cubic-bezier(0.4, 0.0, 0.15, 1) 0.3s;
+    transform-style: preserve-3d;
+    z-index: 10;
+}
+
+.book-open-overlay.active .book-open-cover {
+    transform: rotateY(-155deg);
+}
+
+.book-open-cover-front {
+    position: absolute;
+    inset: 0;
+    border-radius: 4px 0 0 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2.5rem;
+    backface-visibility: hidden;
+    box-shadow:
+        3px 0 12px rgba(0, 0, 0, 0.4),
+        inset 0 0 60px rgba(0, 0, 0, 0.15),
+        inset -2px 0 0 rgba(255, 200, 100, 0.06);
+}
+
+/* 표지 상하단 장식선 */
+.book-open-cover-front::before,
+.book-open-cover-front::after {
+    content: '';
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: rgba(255, 200, 100, 0.15);
+}
+.book-open-cover-front::before { top: 20%; }
+.book-open-cover-front::after { bottom: 20%; }
+
+.book-open-cover-title {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: rgba(255, 220, 160, 0.9);
+    text-align: center;
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.book-open-cover-author {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: rgba(255, 200, 140, 0.45);
+    letter-spacing: 0.1em;
+}
+
+/* 제본선 */
+.book-open-book::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to right,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.25) 50%,
+        rgba(0,0,0,0.15)
+    );
+    z-index: 5;
+}
+
+/* 페이드아웃 → 리더 전환 */
+.book-open-overlay.fade-out {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
 /* 모바일 전용 줄바꿈: 기본은 숨김 */
 .mobile-br {
     display: none;
@@ -1904,6 +2321,20 @@ body, html {
     /* bookshelf 추가 반응형: 선반 두께 조정 */
     .shelf-surface {
         height: 6px;
+    }
+    /* Upload 반응형 */
+    .library-upload-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+    }
+    .upload-card {
+        padding: 1.5rem;
+    }
+    .upload-title {
+        font-size: 1rem;
     }
     /* Auth 반응형 */
     .auth-container {

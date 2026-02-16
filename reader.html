@@ -6,6 +6,7 @@
     <title>Reader - 생각을 잇다</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="epub.min.js"></script>
     <style>
         /* 리더 전용 스타일 */
@@ -13,36 +14,117 @@
             overflow: hidden;
         }
 
+        /* ── 전체 레이아웃: 좌측 목차 + 우측 본문 ── */
         .reader-container {
             width: 100%;
             height: 84vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: row;
         }
 
-        /* 리더 상단 바 */
-        .reader-header {
-            width: 100%;
-            max-width: 900px;
+        /* ── 좌측 목차 사이드바 ── */
+        .reader-toc {
+            width: 260px;
+            min-width: 260px;
+            height: 100%;
+            background: #0a0a08;
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .toc-header {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+        }
+
+        .toc-title {
+            font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #dabb7e;
+            letter-spacing: 0.08em;
+        }
+
+        .toc-back {
+            font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+            font-weight: 400;
+            font-size: 0.72rem;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .toc-back:hover {
+            color: #dabb7e;
+        }
+
+        .toc-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.8rem 0;
+        }
+
+        .toc-item {
+            display: block;
+            font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+            font-weight: 400;
+            font-size: 0.78rem;
+            color: #888;
+            text-decoration: none;
+            padding: 0.55rem 1.5rem;
+            line-height: 1.4;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 2px solid transparent;
+        }
+
+        .toc-item:hover {
+            color: #ccc;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .toc-item.active {
+            color: #dabb7e;
+            border-left-color: #dabb7e;
+            background: rgba(218, 187, 126, 0.05);
+        }
+
+        /* ── 우측 본문 영역 ── */
+        .reader-main {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        /* 상단 바 */
+        .reader-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 2.5rem;
+            background: #050503;
         }
 
         .reader-book-title {
             font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
             font-weight: 700;
-            font-size: 1.1rem;
-            color: #bbb;
+            font-size: 0.9rem;
+            color: #888;
         }
 
         .reader-back {
             font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
             font-weight: 400;
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 0.8rem;
+            color: #555;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -51,13 +133,36 @@
             color: #fff;
         }
 
-        /* epub 뷰어 영역 */
+        /* epub 뷰어 - 종이 느낌 */
         .reader-viewer {
             flex: 1;
-            width: 100%;
-            max-width: 900px;
             position: relative;
             min-height: 0;
+            margin: 0 2rem;
+            /* 종이 질감 배경 */
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(160, 140, 100, 0.03) 2px,
+                    rgba(160, 140, 100, 0.03) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(160, 140, 100, 0.02) 3px,
+                    rgba(160, 140, 100, 0.02) 6px
+                ),
+                linear-gradient(135deg, #ece4d4 0%, #f2ead8 50%, #ece4d4 100%);
+            border-radius: 3px;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 2px 8px rgba(0, 0, 0, 0.2),
+                0 2px 0 #d5ccba,
+                0 3px 0 #c8bfad;
+            overflow: hidden;
         }
 
         #epub-viewer {
@@ -66,6 +171,49 @@
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: 1;
+        }
+
+        #epub-viewer iframe,
+        #epub-viewer > div,
+        #epub-viewer {
+            background: transparent !important;
+        }
+
+        /* 중앙 제본선 */
+        .book-spine-overlay {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(0, 0, 0, 0.05) 15%,
+                rgba(0, 0, 0, 0.15) 40%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.15) 60%,
+                rgba(0, 0, 0, 0.05) 85%,
+                transparent 100%
+            );
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        /* 가장자리 그림자 */
+        .book-edge-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 19;
+            box-shadow:
+                inset 8px 0 16px -6px rgba(0, 0, 0, 0.12),
+                inset -8px 0 16px -6px rgba(0, 0, 0, 0.12),
+                inset 0 4px 10px -4px rgba(0, 0, 0, 0.08),
+                inset 0 -4px 10px -4px rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
         }
 
         /* 페이지 이동 버튼 */
@@ -73,14 +221,14 @@
             position: absolute;
             top: 0;
             height: 100%;
-            width: 80px;
+            width: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            opacity: 0;
+            opacity: 0.5;
             transition: opacity 0.3s ease;
-            z-index: 10;
+            z-index: 25;
         }
 
         .reader-nav:hover {
@@ -96,30 +244,30 @@
         }
 
         .reader-nav-arrow {
-            font-size: 2rem;
-            color: #555;
+            font-size: 4rem;
+            color: #999;
             transition: color 0.3s ease;
             user-select: none;
         }
 
         .reader-nav:hover .reader-nav-arrow {
-            color: #fff;
+            color: #555;
         }
 
         /* 하단 진행 바 */
         .reader-footer {
             width: 100%;
-            max-width: 900px;
-            padding: 0.8rem 2rem;
+            padding: 0.5rem 2.5rem;
             display: flex;
             align-items: center;
             gap: 1rem;
+            background: #050503;
         }
 
         .reader-progress-bar {
             flex: 1;
             height: 2px;
-            background: #333;
+            background: #222;
             border-radius: 1px;
             overflow: hidden;
         }
@@ -127,13 +275,13 @@
         .reader-progress-fill {
             height: 100%;
             width: 0%;
-            background: #888;
+            background: #8f7d60;
             transition: width 0.3s ease;
         }
 
         .reader-progress-text {
             font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #555;
             min-width: 3rem;
             text-align: right;
@@ -159,60 +307,138 @@
 
 <!-- 리더 영역 -->
 <div class="reader-container">
-    <div class="reader-header">
-        <span class="reader-book-title" id="book-title">불러오는 중...</span>
-        <a href="library.html" class="reader-back">← Library로 돌아가기</a>
+
+    <!-- 좌측 목차 -->
+    <div class="reader-toc">
+        <div class="toc-header">
+            <span class="toc-title">목차</span>
+            <a href="library.html" class="toc-back">← Library</a>
+        </div>
+        <div class="toc-list" id="toc-list"></div>
     </div>
 
-    <div class="reader-viewer">
-        <div id="epub-viewer"></div>
-        <div class="reader-nav reader-nav-prev" id="prev">
-            <span class="reader-nav-arrow">‹</span>
+    <!-- 우측 본문 -->
+    <div class="reader-main">
+        <div class="reader-header">
+            <span class="reader-book-title" id="book-title">불러오는 중...</span>
         </div>
-        <div class="reader-nav reader-nav-next" id="next">
-            <span class="reader-nav-arrow">›</span>
+
+        <div class="reader-viewer">
+            <div id="epub-viewer"></div>
+            <div class="book-spine-overlay"></div>
+            <div class="book-edge-overlay"></div>
+            <div class="reader-nav reader-nav-prev" id="prev">
+                <span class="reader-nav-arrow">‹</span>
+            </div>
+            <div class="reader-nav reader-nav-next" id="next">
+                <span class="reader-nav-arrow">›</span>
+            </div>
+        </div>
+
+        <div class="reader-footer">
+            <div class="reader-progress-bar">
+                <div class="reader-progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="reader-progress-text" id="progress-text">0%</span>
         </div>
     </div>
 
-    <div class="reader-footer">
-        <div class="reader-progress-bar">
-            <div class="reader-progress-fill" id="progress-fill"></div>
-        </div>
-        <span class="reader-progress-text" id="progress-text">0%</span>
-    </div>
 </div>
 
 <script>
-    // URL에서 epub 파일 경로 가져오기
+    // URL에서 epub Storage 경로 가져오기
     const params = new URLSearchParams(window.location.search);
-    const bookFile = params.get('book') || 'epub/book1.epub';
-    const bookName = params.get('title') || '';
+    const epubPath = params.get('path') || '';
+    const bookName = decodeURIComponent(params.get('title') || '');
 
-    // epub 렌더링
-    const book = ePub(bookFile);
+    if (!epubPath) {
+        document.getElementById('book-title').textContent = '책을 선택해주세요';
+        throw new Error('No book path specified');
+    }
+
+    // Supabase Storage에서 epub 파일 직접 다운로드 후 로드
+    async function initReader() {
+        try {
+            // 세션 복원 대기
+            const { data: { session } } = await _supabase.auth.getSession();
+
+            if (!session) {
+                document.getElementById('book-title').textContent = '로그인이 필요합니다';
+                return;
+            }
+
+            document.getElementById('book-title').textContent = '다운로드 중...';
+
+            console.log('다운로드 시도:', epubPath);
+
+            const { data, error } = await _supabase.storage
+                .from('epubs')
+                .download(epubPath);
+
+            if (error || !data) {
+                document.getElementById('book-title').textContent = '다운로드 실패: ' + (error?.message || '알 수 없는 오류');
+                console.error('다운로드 실패:', error);
+                return;
+            }
+
+            console.log('다운로드 성공, 크기:', data.size);
+            document.getElementById('book-title').textContent = '로딩 중...';
+
+            // ArrayBuffer로 변환하여 epub.js에 직접 전달
+            const arrayBuffer = await data.arrayBuffer();
+            loadEpub(arrayBuffer);
+        } catch (err) {
+            console.error('리더 초기화 실패:', err);
+            document.getElementById('book-title').textContent = '오류: ' + err.message;
+        }
+    }
+
+    async function loadEpub(bookData) {
+
+    // epub 렌더링 (ArrayBuffer를 직접 열기)
+    const book = ePub();
+
+    // 텍스트 스타일 (어두운 배경에 맞게) - open 전에 설정
     const rendition = book.renderTo('epub-viewer', {
         width: '100%',
         height: '100%',
-        spread: 'none',
+        spread: 'always',
         flow: 'paginated'
     });
 
-    // 텍스트 스타일 (어두운 배경에 맞게) - display 전에 설정
     rendition.themes.default({
         'body': {
-            'color': '#ccc !important',
-            'background': '#111 !important',
-            'line-height': '1.8 !important',
-            'padding': '20px !important'
+            'color': '#333 !important',
+            'background': 'transparent !important',
+            'line-height': '1.85 !important',
+            'padding': '26px 36px 20px 36px !important',
+            'font-family': "'GyeonggiBatang', 'Malgun Gothic', serif !important",
+            'font-size': '15px !important',
+            'letter-spacing': '0.01em !important',
+            'word-spacing': '0.02em !important'
         },
         'p, div, span, li': {
-            'color': '#ccc !important'
+            'color': '#333 !important'
+        },
+        'p': {
+            'text-indent': '1em !important',
+            'margin-bottom': '0.3em !important'
         },
         'h1, h2, h3, h4, h5, h6': {
-            'color': '#eee !important'
+            'color': '#1a1a1a !important',
+            'font-weight': '400 !important'
+        },
+        'h1': {
+            'font-size': '1.23em !important'
+        },
+        'h2': {
+            'font-size': '1.1em !important'
+        },
+        'h3': {
+            'font-size': '1.05em !important'
         },
         'a': {
-            'color': '#999 !important'
+            'color': '#5a6f8a !important'
         },
         'img': {
             'max-width': '100% !important',
@@ -220,19 +446,144 @@
         }
     });
 
-    // 첫 페이지 표시
-    rendition.display().then(() => {
-        console.log('epub 렌더링 완료');
-    }).catch(err => {
-        console.error('epub 렌더링 오류:', err);
-        document.getElementById('book-title').textContent = '로딩 실패 - 파일을 확인해주세요';
+    // EPUB 렌더링 시 빈 줄(br, 빈 요소) 제거
+    rendition.hooks.content.register(function(contents) {
+        const doc = contents.document;
+        const body = doc.body;
+
+        // ── 모든 챕터 빈 줄 완전 제거 후 CSS로 위치 강제 지정 ──
+
+        // 1) 빈 요소 판별
+        function isEmpty(node) {
+            if (node.nodeName === 'BR') return true;
+            if (node.nodeType === 3) return node.textContent.trim() === '';
+            if (node.nodeType === 1) {
+                const text = node.textContent.replace(/\u00a0/g, '').trim();
+                const cleaned = node.innerHTML.replace(/<br\s*\/?>/gi, '').replace(/&nbsp;/gi, '').trim();
+                return text === '' && cleaned === '';
+            }
+            return false;
+        }
+
+        // 2) 컨테이너 내 모든 빈 줄 완전 제거
+        function removeAllEmpties(container) {
+            Array.from(container.childNodes).forEach(node => {
+                if (isEmpty(node)) node.remove();
+            });
+        }
+
+        // 3) body 직속 + 모든 하위 컨테이너 + p 내부 br 모두 제거
+        removeAllEmpties(body);
+        body.querySelectorAll('div, section, article, aside, header, main').forEach(el => {
+            removeAllEmpties(el);
+        });
+        // p 태그 내부 br 모두 제거 (빈 줄용 br만)
+        body.querySelectorAll('p').forEach(p => {
+            const text = p.textContent.replace(/\u00a0/g, '').trim();
+            if (text === '') {
+                p.remove();
+            } else {
+                // p 시작/끝의 br 제거
+                while (p.firstChild && p.firstChild.nodeName === 'BR') p.firstChild.remove();
+                while (p.lastChild && p.lastChild.nodeName === 'BR') p.lastChild.remove();
+            }
+        });
+
+        // 4) CSS로 정확한 위치 지정
+        //    1행 ≈ 28px (15px * 1.85)
+        //    제목: 위에서 3행째 → padding-top 2행분 = 56px
+        //    본문: 5행째 → 제목 아래 1행 간격 = 28px
+        // 제목(h1~h3)만 위치 조정, 일반 본문 페이지는 건드리지 않음
+        const style = doc.createElement('style');
+        style.textContent = `
+            h1, h2, h3 {
+                margin-top: 56px !important;
+                margin-bottom: 28px !important;
+                padding: 0 !important;
+            }
+            h1 + *, h2 + *, h3 + * {
+                margin-top: 0 !important;
+            }
+        `;
+        doc.head.appendChild(style);
+
+        // 제목(h1~h3) 앞에 있는 연속 br/빈 요소 제거
+        doc.querySelectorAll('h1, h2, h3').forEach(heading => {
+            let el = heading.previousSibling;
+            while (el) {
+                const prev = el.previousSibling;
+                if (el.nodeName === 'BR') {
+                    el.remove();
+                } else if (el.nodeType === 1 && el.innerHTML.trim() === '') {
+                    el.remove();
+                } else if (el.nodeType === 3 && el.textContent.trim() === '') {
+                    el.remove();
+                } else {
+                    break;
+                }
+                el = prev;
+            }
+        });
+
+        // 제목 바로 뒤 빈 줄 최대 6개 제거
+        doc.querySelectorAll('h1, h2, h3').forEach(heading => {
+            let el = heading.nextSibling;
+            let removed = 0;
+            while (el && removed < 6) {
+                const next = el.nextSibling;
+                if (el.nodeName === 'BR') {
+                    el.remove();
+                    removed++;
+                } else if (el.nodeType === 1 && el.innerHTML.trim() === '') {
+                    el.remove();
+                    removed++;
+                } else if (el.nodeType === 3 && el.textContent.trim() === '') {
+                    el.remove();
+                } else {
+                    break;
+                }
+                el = next;
+            }
+        });
     });
 
-    // 책 제목 표시 (렌더링과 별개로)
+    try {
+        // ArrayBuffer에서 epub 열기 (완료 대기)
+        await book.open(bookData);
+        await rendition.display();
+        console.log('epub 렌더링 완료');
+    } catch (err) {
+        console.error('epub 렌더링 오류:', err);
+        document.getElementById('book-title').textContent = '로딩 실패 - 파일을 확인해주세요';
+        return;
+    }
+
+    // 책 제목 + 목차 로드
     book.ready.then(() => {
         const title = bookName || book.package.metadata.title || '제목 없음';
         document.getElementById('book-title').textContent = title;
-        console.log('책 정보 로드 완료:', title);
+
+        // 목차(TOC) 로드
+        return book.loaded.navigation;
+    }).then(nav => {
+        const tocList = document.getElementById('toc-list');
+        if (nav && nav.toc) {
+            nav.toc.forEach(chapter => {
+                const item = document.createElement('a');
+                item.className = 'toc-item';
+                item.textContent = chapter.label.trim();
+                item.href = '#';
+                item._href = chapter.href;
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    rendition.display(chapter.href);
+                    // 활성 목차 표시
+                    document.querySelectorAll('.toc-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                });
+                tocList.appendChild(item);
+            });
+        }
     }).catch(err => {
         console.error('책 정보 로드 실패:', err);
         document.getElementById('book-title').textContent = '로딩 실패';
@@ -259,7 +610,22 @@
         if (e.key === 'ArrowRight') rendition.next();
     });
 
-    // 진행률 표시 (locations 생성은 백그라운드에서 천천히)
+    // 페이지 이동 시 목차 활성 항목 업데이트
+    rendition.on('relocated', (location) => {
+        const currentHref = location.start.href;
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        // 현재 챕터에 해당하는 목차 항목 활성화
+        const tocItems = document.querySelectorAll('.toc-item');
+        tocItems.forEach(item => {
+            if (item._href && currentHref.includes(item._href)) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // 진행률 표시
     rendition.on('relocated', (location) => {
         // locations가 준비되면 정확한 진행률, 아니면 대략적 표시
         if (book.locations.length()) {
@@ -276,9 +642,15 @@
             console.log('위치 데이터 생성 완료');
         });
     });
+
+    } // loadEpub 함수 끝
 </script>
 <script src="supabase-config.js"></script>
 <script src="auth.js"></script>
+<script>
+    // Supabase 로드 후 리더 초기화
+    initReader();
+</script>
 
 </body>
 </html>

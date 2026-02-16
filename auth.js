@@ -1,12 +1,40 @@
+// 공개 페이지 목록 (인증 불필요)
+const PUBLIC_PAGES = ['index.html', 'login.html', ''];
+
 // 인증 상태 관리
 document.addEventListener('DOMContentLoaded', async () => {
+    // 페이지 접근 권한 체크
+    await requireAuth();
+
     await updateAuthUI();
 
     // 인증 상태 변경 감지
     _supabase.auth.onAuthStateChange((event, session) => {
         updateAuthUI();
+        // 로그아웃 시 보호 페이지에서 홈으로 이동
+        if (event === 'SIGNED_OUT') {
+            const page = window.location.pathname.split('/').pop() || '';
+            if (!PUBLIC_PAGES.includes(page)) {
+                window.location.href = 'index.html';
+            }
+        }
     });
 });
+
+// 보호 페이지 접근 시 인증 체크 → 미인증이면 로그인으로 리다이렉트
+async function requireAuth() {
+    const page = window.location.pathname.split('/').pop() || '';
+    if (PUBLIC_PAGES.includes(page)) return; // 공개 페이지는 통과
+
+    try {
+        const user = await getCurrentUser();
+        if (!user) {
+            window.location.href = 'login.html';
+        }
+    } catch (e) {
+        window.location.href = 'login.html';
+    }
+}
 
 // 회원가입
 async function signUp(email, password, nickname) {

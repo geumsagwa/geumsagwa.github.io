@@ -48,60 +48,104 @@
         </button>
     </div>
 
-    <!-- 카테고리별 책 목록 (책장 스타일) -->
+    <!-- 카테고리별 책 목록 (DB에서 동적 로드) -->
     <div class="library-content">
         <div class="library-panel active" data-category="history">
             <div class="bookshelf">
-                <div class="shelf-row">
-                    <a href="reader.html?book=epub/book1.epub&title=이야기 세계사 1" class="book-spine" style="--spine-color: #8B4513; --spine-height: 240px; --spine-width: 56px;">
-                        <span class="spine-title">이야기 세계사 1</span>
-                        <span class="spine-author">S. Durant</span>
-                    </a>
-                    <a href="#" class="book-spine" style="--spine-color: #5B3A29; --spine-height: 228px; --spine-width: 52px;">
-                        <span class="spine-title">이야기 세계사 2</span>
-                        <span class="spine-author">S. Durant</span>
-                    </a>
-                    <a href="#" class="book-spine" style="--spine-color: #6B3F2A; --spine-height: 250px; --spine-width: 58px;">
-                        <span class="spine-title">이야기 세계사 3</span>
-                        <span class="spine-author">S. Durant</span>
-                    </a>
+                <div class="shelf-row" id="shelf-history">
                     <div class="shelf-surface"></div>
                 </div>
             </div>
         </div>
         <div class="library-panel" data-category="philosophy">
             <div class="bookshelf">
-                <div class="shelf-row">
-                    <a href="#" class="book-spine" style="--spine-color: #2F4F4F; --spine-height: 232px; --spine-width: 50px;">
-                        <span class="spine-title">준비 중</span>
-                        <span class="spine-author">—</span>
-                    </a>
+                <div class="shelf-row" id="shelf-philosophy">
                     <div class="shelf-surface"></div>
                 </div>
             </div>
         </div>
         <div class="library-panel" data-category="psychology">
             <div class="bookshelf">
-                <div class="shelf-row">
-                    <a href="#" class="book-spine" style="--spine-color: #4A3728; --spine-height: 230px; --spine-width: 54px;">
-                        <span class="spine-title">준비 중</span>
-                        <span class="spine-author">—</span>
-                    </a>
-                    <a href="#" class="book-spine" style="--spine-color: #3B5249; --spine-height: 245px; --spine-width: 48px;">
-                        <span class="spine-title">준비 중</span>
-                        <span class="spine-author">—</span>
-                    </a>
+                <div class="shelf-row" id="shelf-psychology">
                     <div class="shelf-surface"></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- EPUB 업로드 모달 (로그인 사용자만 표시) -->
+    <div class="upload-modal" id="upload-modal">
+        <div class="upload-backdrop" onclick="closeUploadModal()"></div>
+        <div class="upload-card">
+            <h3 class="upload-title">책 등록</h3>
+            <form id="upload-form" class="upload-form">
+                <div class="upload-field">
+                    <label class="upload-label">제목</label>
+                    <input type="text" id="upload-book-title" class="upload-input" placeholder="책 제목" required>
+                </div>
+                <div class="upload-field">
+                    <label class="upload-label">저자</label>
+                    <input type="text" id="upload-book-author" class="upload-input" placeholder="저자명" required>
+                </div>
+                <div class="upload-field">
+                    <label class="upload-label">카테고리</label>
+                    <div class="upload-category-group">
+                        <button type="button" class="upload-category-btn active" data-cat="history">History</button>
+                        <button type="button" class="upload-category-btn" data-cat="philosophy">Philosophy</button>
+                        <button type="button" class="upload-category-btn" data-cat="psychology">Psychology</button>
+                    </div>
+                </div>
+                <div class="upload-field">
+                    <label class="upload-label">책등 색상</label>
+                    <input type="color" id="upload-spine-color" class="upload-color" value="#8B4513">
+                </div>
+                <div class="upload-field">
+                    <label class="upload-label">EPUB 파일</label>
+                    <div class="upload-dropzone" id="upload-dropzone">
+                        <span class="upload-dropzone-text" id="upload-dropzone-text">파일을 드래그하거나 클릭하여 선택</span>
+                        <input type="file" id="upload-file" accept=".epub" hidden>
+                    </div>
+                </div>
+                <div class="upload-actions">
+                    <button type="button" class="upload-btn upload-btn-cancel" onclick="closeUploadModal()">취소</button>
+                    <button type="submit" class="upload-btn upload-btn-submit" id="upload-submit-btn">등록</button>
+                </div>
+                <p class="upload-message" id="upload-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- 업로드 버튼 (로그인 사용자만 표시) -->
+    <button class="library-upload-btn" id="library-upload-btn" style="display:none;" onclick="openUploadModal()">+</button>
+
 </div>
 
-<script src="library.js"></script>
+<!-- 책 펼침 애니메이션 오버레이 -->
+<div class="book-open-overlay" id="book-open-overlay">
+    <div class="book-open-scene">
+        <div class="book-open-book" id="book-open-book">
+            <!-- 왼쪽 페이지 (표지 뒷면) -->
+            <div class="book-open-left">
+                <div class="book-open-page-inner"></div>
+            </div>
+            <!-- 오른쪽 페이지 -->
+            <div class="book-open-right">
+                <div class="book-open-page-inner"></div>
+            </div>
+            <!-- 표지 (펼쳐지는 부분) -->
+            <div class="book-open-cover" id="book-open-cover">
+                <div class="book-open-cover-front" id="book-open-cover-front">
+                    <span class="book-open-cover-title" id="book-open-title"></span>
+                    <span class="book-open-cover-author" id="book-open-author"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="supabase-config.js"></script>
 <script src="auth.js"></script>
+<script src="library.js"></script>
 
 </body>
 </html>
