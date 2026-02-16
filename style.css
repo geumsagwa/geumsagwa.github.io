@@ -498,7 +498,7 @@ body, html {
 /* 책등 제목 (세로 쓰기, grid 정중앙) */
 .spine-title {
     writing-mode: vertical-rl;
-    text-orientation: mixed;
+    text-orientation: upright;
     font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.75rem;
@@ -517,7 +517,7 @@ body, html {
 /* 책등 저자 (세로 쓰기, 하단 중앙) */
 .spine-author {
     writing-mode: vertical-rl;
-    text-orientation: mixed;
+    text-orientation: upright;
     font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.5rem;
