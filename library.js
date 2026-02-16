@@ -262,12 +262,9 @@ function openBookAnimation(book) {
         requestAnimationFrame(() => {
             overlay.classList.add('active');
 
-            // 책이 펼쳐진 후 페이드아웃 → 리더로 이동
+            // 책이 펼쳐진 후 바로 리더로 이동 (오버레이 유지하여 뒷 화면 안 보이게)
             setTimeout(() => {
-                overlay.classList.add('fade-out');
-                setTimeout(() => {
-                    window.location.href = `reader.html?path=${encodeURIComponent(book.epub_path)}&title=${encodeURIComponent(book.title)}`;
-                }, 600);
+                window.location.href = `reader.html?path=${encodeURIComponent(book.epub_path)}&title=${encodeURIComponent(book.title)}`;
             }, 1800);
         });
     });
