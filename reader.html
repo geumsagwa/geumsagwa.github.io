@@ -570,19 +570,27 @@
         const tocList = document.getElementById('toc-list');
 
         // "작가의 말" 항목을 목차 맨 위에 추가 (3번째 페이지로 링크)
-        const authorNote = document.createElement('a');
-        authorNote.className = 'toc-item';
-        authorNote.textContent = '작가의 말';
-        authorNote.href = '#';
-        authorNote._spineIndex = 2;
-        authorNote.addEventListener('click', (e) => {
-            e.preventDefault();
-            const spineItem = book.spine.get(2);
-            if (spineItem) rendition.display(spineItem.href);
-            document.querySelectorAll('.toc-item').forEach(i => i.classList.remove('active'));
-            authorNote.classList.add('active');
+        book.loaded.spine.then(() => {
+            const authorNote = document.createElement('a');
+            authorNote.className = 'toc-item';
+            authorNote.textContent = '작가의 말';
+            authorNote.href = '#';
+
+            // spine의 3번째 항목 href 저장
+            const spineItems = book.spine.spineItems;
+            const targetHref = spineItems.length > 2 ? spineItems[2].href : null;
+            authorNote._href = targetHref;
+
+            authorNote.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (targetHref) {
+                    rendition.display(targetHref);
+                }
+                document.querySelectorAll('.toc-item').forEach(i => i.classList.remove('active'));
+                authorNote.classList.add('active');
+            });
+            tocList.insertBefore(authorNote, tocList.firstChild);
         });
-        tocList.appendChild(authorNote);
 
         if (nav && nav.toc) {
             nav.toc.forEach(chapter => {
