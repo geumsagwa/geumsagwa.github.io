@@ -377,9 +377,8 @@
                 .download(epubPath);
 
             if (error || !data) {
-                const errMsg = error ? JSON.stringify(error) : 'data is null';
-                document.getElementById('book-title').textContent = '다운로드 실패: ' + (error?.message || errMsg);
-                console.error('다운로드 실패:', error, 'path:', epubPath);
+                document.getElementById('book-title').textContent = '다운로드 실패';
+                console.error('다운로드 실패:', error);
                 return;
             }
 
