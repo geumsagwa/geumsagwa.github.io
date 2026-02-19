@@ -2566,6 +2566,257 @@ body, html {
     border-color: rgba(170, 170, 170, 0.4);
 }
 
+/* ── 서평(Book Review) 템플릿 ── */
+.review-container {
+    width: 100%;
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3vh 3rem 2rem;
+    overflow-y: auto;
+}
+
+.review-header {
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3vh;
+}
+
+.review-back {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.review-back:hover {
+    color: #fff;
+}
+
+.review-category {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #444;
+    letter-spacing: 0.1em;
+}
+
+.review-article {
+    width: 100%;
+    max-width: 720px;
+    padding-bottom: 6vh;
+}
+
+/* 책 표지 + 정보 영역 */
+.review-hero {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 4vh;
+}
+
+.review-cover {
+    flex-shrink: 0;
+    width: 180px;
+}
+
+.review-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow:
+        4px 4px 20px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.review-cover img:hover {
+    transform: scale(1.03);
+    box-shadow:
+        6px 6px 28px rgba(0, 0, 0, 0.6),
+        0 0 50px rgba(0, 0, 0, 0.35);
+}
+
+/* 책 정보 헤더 (제목·저자·출판년·출판사) */
+.review-book-info {
+    border-left: 3px solid #8f7d60;
+    padding: 1.2rem 0 1.2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.review-book-title {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #ddd;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+}
+
+.review-book-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.review-book-meta span {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #8f7d60;
+    letter-spacing: 0.05em;
+}
+
+.review-book-meta .meta-sep {
+    color: #3a3020;
+    margin: 0 0.2rem;
+}
+
+.review-date {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #444;
+    display: block;
+    margin-top: 1rem;
+}
+
+/* 서평 본문 */
+.review-body {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: #aaa;
+    line-height: 2;
+}
+
+.review-body p {
+    margin-bottom: 1.5rem;
+}
+
+.review-body h2 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #ccc;
+    margin: 4rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(143, 125, 96, 0.2);
+}
+
+.review-body h2:first-child {
+    margin-top: 0;
+}
+
+.review-body blockquote {
+    border-left: 2px solid #5a4a30;
+    padding: 0.8rem 1.5rem;
+    margin: 2rem 0;
+    color: #999;
+    font-style: italic;
+    background: rgba(143, 125, 96, 0.04);
+    border-radius: 0 4px 4px 0;
+}
+
+.review-body hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #333, transparent);
+    margin: 3.5rem 0;
+}
+
+.review-body strong {
+    color: #ddd;
+    font-weight: 700;
+}
+
+.review-body em {
+    color: #b39768;
+}
+
+/* 인용구 (책 본문에서 가져온 문장) */
+.review-body .book-quote {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    color: #888;
+    font-style: normal;
+    border-left: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
+}
+
+/* 페이지 번호 표기 */
+.review-body .page-ref {
+    font-size: 0.85rem;
+    color: #a08a60;
+}
+
+/* 저자 소개 섹션 */
+.review-author-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(143, 125, 96, 0.1);
+    border-radius: 6px;
+}
+
+.review-author-section p {
+    margin-bottom: 1rem;
+}
+
+.review-author-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* 서평 반응형 */
+@media (max-width: 768px) {
+    .review-container {
+        padding: 2vh 1.5rem 2rem;
+    }
+    .review-hero {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .review-cover {
+        width: 140px;
+    }
+    .review-book-info {
+        text-align: center;
+        border-left: none;
+        border-top: 2px solid #8f7d60;
+        padding: 1rem 0 0 0;
+    }
+    .review-book-meta {
+        justify-content: center;
+    }
+    .review-book-title {
+        font-size: 1.3rem;
+    }
+    .review-book-meta span {
+        font-size: 0.75rem;
+    }
+    .review-body {
+        font-size: 0.78rem;
+    }
+    .review-body h2 {
+        font-size: 1rem;
+    }
+    .review-author-section {
+        padding: 1rem;
+    }
+}
+
 /* ── 소셜 로그인 ── */
 .auth-divider {
     display: flex;

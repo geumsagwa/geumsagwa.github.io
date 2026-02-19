@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서평 - 생각을 잇다</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- 상단 메뉴바 영역 -->
+<nav class="menu-bar">
+    <div class="menu-logo">
+        <span class="menu-logo-text">생각을 잇다</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li class="active"><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="board.html">Board</a></li>
+    </ul>
+    <div class="auth-area" id="auth-area"></div>
+</nav>
+
+<!-- 서평 콘텐츠 영역 -->
+<div class="review-container">
+
+    <div class="review-header">
+        <a href="blog.html" class="review-back">← Blog</a>
+        <span class="review-category">Book Review</span>
+    </div>
+
+    <article class="review-article">
+
+        <!-- ▼ 책 표지 + 정보 헤더 ▼ -->
+        <div class="review-hero">
+            <div class="review-cover">
+                <img src="Images/book-review-cover.jpg" alt="잊기 좋은 이름 표지">
+            </div>
+            <div class="review-book-info">
+                <h1 class="review-book-title">잊기 좋은 이름</h1>
+                <div class="review-book-meta">
+                    <span>김애란</span>
+                    <span class="meta-sep">/</span>
+                    <span>2019</span>
+                    <span class="meta-sep">/</span>
+                    <span>열림원</span>
+                </div>
+                <time class="review-date">2026. 02. 19</time>
+            </div>
+        </div>
+        <!-- ▲ 책 표지 + 정보 헤더 ▲ -->
+
+        <!-- ▼ 서평 본문 ▼ -->
+        <div class="review-body">
+
+            <h2>김애란은</h2>
+
+            <div class="review-author-section">
+                <p>1980년 인천광역시 생(生). 자란 곳은 서산시 대산읍 대산면 칼국숫집 「맛나당」.</p>
+
+                <p>사범대학을 가라는 어머니를 거스르고 한국예술종합학교 연극원 극작과에 입학했다. 4학년인 21세 때는 대산문화재단에서 공모한 대산대학문학상 소설부문에 당선되었다. 응모작인 &lt;노크하지 않는 집&gt;에 대한 심사평은 <em>"매우 참신한 작품이다. 단편소설로서 단점도 거의 없다."</em>이다. 2년 후인 2005년 단행본 &lt;달려라 아비&gt;로 한국일보 문학상 최연소로 수상하였으며 심지어 책이 나오기도 전이었다.</p>
+
+                <p>이후 18년간 글을 써오며 우리나라의 내놓으라 하는 문학상들을 수상했지만 특히 독자들이 가장 사랑하는 「이상문학상」, 「젊은 작가상」, 「소설가 50인이 뽑은 올해의 소설상」을 모두 받은 유일한 작가이다.</p>
+
+                <p>대표작으로는 &lt;두근두근 내 인생 (2011)&gt;, &lt;비행운 (2012)&gt;, &lt;바깥은 여름 (2017)&gt; 등이 있다.</p>
+            </div>
+
+            <h2>책의 내용</h2>
+
+            <p>이 책은 저자의 첫 번째 산문집이다.<br>
+            그러니까 줄곧 하던 소설이란 구조를 통해 생각을 전달하는 대신 옆에 앉아 주변의 일들을 조곤조곤 얘기하는 방식으로 다가온다. 그만큼 느낌은 비켜 가지 않고 여과 없이 스며든다.</p>
+
+            <p><strong>1부 '나를 부른 이름'</strong>은 등단 이전의 저자, 그러니까 딸이며 (대)학생이었던 저자의 일부를 구성했던 또는 성장시켰던 사람, 환경, 상황의 이야기다.</p>
+
+            <p>점심때면 수많은 손님과 더불어 그들이 몰고 온 이야기가 밀물처럼 들어왔다 썰물처럼 빠져나가는 '맛나당'<span class="page-ref">(p.10)</span>과 마음은 싱숭생숭한데 몸은 막 자라서, 정신이 없는<span class="page-ref">(p.16)</span> 시절, 어설픈 연애의 추억을 뒤로하고 상경한다. 이상하리만치 천장이 높고, 깊은 서늘한 방에서</p>
+
+            <blockquote>'자주 밥을 거르고 밤을 새우고, 술을 마셨지만 스무 살의 몸은 지나치게 건강해 아무 때고 벌떡 일어나 놀러 나갈 수 있었다'<span class="page-ref">(p.27)</span></blockquote>
+
+            <p>고 얘기한다.</p>
+
+            <p>처음으로 등단 소식을 듣던 날, 축하 자리에서의 이야기며 시상식의 풍경들과 현수막 소동은 저자의 재기 넘치는 묘사로 잔잔히 혹은 경쾌하게 그려지며</p>
+
+            <blockquote>'그렇게 조금씩 어딘가 모자라고 우스꽝스럽고 따사로운 무엇이 나를 키우고 가르친건 아니었을까 하고'<span class="page-ref">(p.49)</span></blockquote>
+
+            <p>고백한다. 부모님에 대한 얘기는 가감없지만 정겹고 따스한 눈길이 느껴진다. 그래서</p>
+
+            <blockquote>'다른 어른이 "잉, 증래 딸이여, 쟤가 작가랴"라고 답하는 소리를 들으면 나도 모르게 가만 끄덕이고 말게 된다'<span class="page-ref">(p.98)</span></blockquote>
+
+            <p>라고 적고 있다.</p>
+
+            <p><strong>2부 '너와 부른 이름'</strong>은 등단 이후 동료·선후배 문인들과의 교류, 저자의 문학적 탐구 등을 얘기한다. 창문을 통해 들어온 집 앞 학교의 종소리와 작가 김연수의 『청춘의 문장들』을 연관 지어서, 편혜영의 단편집에서 읽은 소설가의 동료의식(그녀와는 이상문학상과 이효석 문학상을 연이어 받은 인연이 있다.)에 대하여, 박완서의 『닮은 방들』에 대한 경의 어린 감상, 윤성희에 대해서는 선배에 대한 믿음 등을 이야기 한다.</p>
+
+            <p><strong>3부 '우릴 부른 이름들'</strong>은 영국 에든버러대학교(IASH) 레지던시 프로그램 참가, 만해문학관이나 연희문학촌 체류 경험 등 집필활동과 여행(귄터그라스 『양철북』 배경인 그단스크 여행)에 대한 감상, 세월호에 대한 감상 등을 적고 있다.</p>
+
+            <hr>
+
+            <h2>Talented? 혹은 Gifted?</h2>
+
+            <p>나는 <em>"소설가에게 있어 가장 중요한 자질은 말할 나위도 없이 재능이다."</em>라는 무라카미 하루키의 말에 동의하는 편이다. 그런 점에서 본다면 저자의 재능은 talented보다는 gifted에 가까운 듯하다. 이런 추측의 근거는 ① 다른 것들은 어려워하면서도 <em>'어려서부터 종알종알 패를 맞추듯 말을 맞추며 뭐라 떠들어 대는 것을 좋아했다.'</em><span class="page-ref">(p.108)</span>거나 ② 성장기는 '소설'이나 '문학'과는 거리가 멀었고 <em>"국립대학이었기 때문에 (중략) 연극을 한 편도 못 보고 연극원에 들어갔어요."</em>라는 인터뷰 내용 등의 빈약한 것임에도 불구하고</p>
+
+            <p><strong>대책 없이 믿게 되는 것은 이 책에 근거한다.</strong></p>
+
+            <p>우리가 겪었던 그 아련한 감정들, 뭐라 표현하기 어려웠던 막연한 느낌들마저 저자는 '이거였지?'라고 묻는 듯 솜씨 있게 꺼내 보인다. 그리고 그 표현은 '아~ 맞아 내가 느낀 감정이 저런 것이었구나' 하고 꼼짝없이 설득당하게 만든다. 그렇게 저자는 언어의 바다에서 싱싱하게 살아 숨 쉬는 표현을, 문장을, 단어를 능숙한 낚시꾼처럼 낚아 올린다. 그래서 문학평론가 신형철은 <em>"출판계와 저널리즘에 이르는 오늘날 문단의 불문율 중 하나는 '김애란을 사랑하라'는 명령이다."</em> 라고 말한다.</p>
+
+            <p>모차르트를 바라보는 살리에리의 마음이 이랬을까? 분명 질투 나는 재능이다.</p>
+
+            <hr>
+
+            <h2>명랑발랄 그러나 따스한 감수성</h2>
+
+            <p>&lt;현수막 휘날리며&gt;는 신문에 날 만한 사건이나 사고도 거의 일어나지 않는 조용한 동네에 저자의 등단 현수막과 쓰레기소각장 후보지 선정 현수막이 함께 걸리면서 '대산 쓰레기 문학 애란 결사반대'로 오독(誤讀)하는 걸 막을 수 없었다는 웃픈(?) 헤프닝에 대해서 내 고향의 유난스러움을 조금 못 견뎌했다고</p>
+
+            <blockquote>'하지만 지금은 그것이 한 시절의 따뜻한 소동으로 느껴진다. 우리 동네 아이가 잘 됐고, 나도 그 동네의 일원이라는 자부심을 가진 촌 어른들'</blockquote>
+
+            <p>이라며 감싸 안는다.</p>
+
+            <p>부모는 어떤가?</p>
+
+            <blockquote>'달동네 맨 꼭대기에서 오줌 마려운 듯 벌게진 얼굴로, 허겁지겁 달려가다 연탄재에 발이 걸려 넘어지고, 장발 휘날리며 콘돔을 사러'</blockquote>
+
+            <p>가는 남자가 '아비'의 초상이다.</p>
+
+            <blockquote>'경찰들이 문 두드리는 바람에 고꾼들이 허둥지둥 흩어지고 황급하게 돈을 들고 논둑길을 달려가다가 넘어진 여자가 바로 내 엄마다.'<span class="page-ref">(p.108)</span></blockquote>
+
+            <p>라고 얘기하면서도 <em>'나도 뒤에서 조용히 따라가 보겠노라고 약속드리고 싶다.'</em><span class="page-ref">(p.114)</span>라며 뒤를 지킨다.</p>
+
+            <p>또한 &lt;부사副詞와 인사&gt;에서의 재기 넘치는 문장은 저자의 진가를 나타내기 부족함이 없다고 생각한다.</p>
+
+            <blockquote>'그것은 실천력은 하나도 없으면서 만날 큰소리만 치고 툭하면 집을 나가는 막내 삼촌과 닮았다.'<span class="page-ref">(p.88)</span></blockquote>
+
+            <p>라니.... 물론 이청준은 반대하겠지만 말이다.</p>
+
+            <hr>
+
+            <p>저자의 특징적인 작법 중 하나는 수미상응의 구조다.</p>
+
+            <p>제목을 '잊기 좋은 이름'으로 걸어놓고</p>
+
+            <blockquote>'세상에 잊기 좋은 이름은 없다.'<span class="page-ref">(p.300)</span></blockquote>
+
+            <p>라며 끝맺고 있다. 보기 좋게 뒤통수를 맞은 느낌이다.</p>
+
+        </div>
+        <!-- ▲ 서평 본문 ▲ -->
+
+    </article>
+
+</div>
+
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+
+</body>
+</html>
