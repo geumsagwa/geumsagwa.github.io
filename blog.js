@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     loadBookReviews();
-    showWriteButton();
+    loadEssays();
+    showWriteButtons();
 });
 
 async function loadBookReviews() {
@@ -55,11 +56,49 @@ async function loadBookReviews() {
     }).join('');
 }
 
-async function showWriteButton() {
-    const btn = document.getElementById('btn-new-review');
-    if (!btn) return;
+async function loadEssays() {
+    const grid = document.getElementById('essay-grid');
+    if (!grid) return;
+
+    grid.innerHTML = '<p class="grid-message">불러오는 중...</p>';
+
+    const { data, error } = await _supabase
+        .from('essays')
+        .select('id, title, excerpt, card_image_url, created_at')
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        grid.innerHTML = '<p class="grid-message">에세이를 불러올 수 없습니다.</p>';
+        return;
+    }
+
+    if (!data || data.length === 0) {
+        grid.innerHTML = '<p class="grid-message">등록된 에세이가 없습니다.</p>';
+        return;
+    }
+
+    grid.innerHTML = data.map(e => {
+        const date = new Date(e.created_at)
+            .toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' })
+            .replace(/\s/g, ' ');
+        const bgImage = e.card_image_url
+            || 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=530&fit=crop&crop=center';
+        return `<a href="essay.html?id=${e.id}" class="photo-card">
+            <div class="photo-card-img" style="background-image: url('${bgImage}');"></div>
+            <div class="photo-card-overlay">
+                <span class="photo-card-date">${date}</span>
+                <h3 class="photo-card-title">${e.title}</h3>
+                <p class="photo-card-excerpt">${e.excerpt || ''}</p>
+            </div>
+        </a>`;
+    }).join('');
+}
+
+async function showWriteButtons() {
     try {
         const user = await getCurrentUser();
-        if (user) btn.style.display = 'inline-block';
+        if (!user) return;
+        const btns = document.querySelectorAll('.blog-write-btn');
+        btns.forEach(btn => btn.style.display = 'inline-block');
     } catch (e) { /* not logged in */ }
 }

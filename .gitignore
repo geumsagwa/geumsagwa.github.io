@@ -2,3 +2,4 @@
 Thumbs.db
 *.log
 migrate-reviews.js
+migrate-essays.js
