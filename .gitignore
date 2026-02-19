@@ -3,3 +3,5 @@ Thumbs.db
 *.log
 migrate-reviews.js
 migrate-essays.js
+business-card.html
+Images/caricature-*.png
