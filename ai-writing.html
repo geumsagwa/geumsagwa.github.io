@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Writing - 생각을 잇다</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+<nav class="menu-bar">
+    <a href="index.html" class="menu-logo">
+        <span class="menu-logo-text">생각을 잇다</span>
+    </a>
+    <ul class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li class="active"><a href="blog.html">Blog</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="board.html">Board</a></li>
+    </ul>
+    <div class="auth-area" id="auth-area"></div>
+</nav>
+
+<div class="review-container">
+
+    <div class="review-header">
+        <a href="blog.html" class="review-back">← Blog</a>
+        <span class="review-category">AI Writing</span>
+    </div>
+
+    <article class="review-article" id="ai-article" style="display:none;">
+
+        <div class="review-book-info" style="border-left: 3px solid #8f7d60; padding-left: 1.5rem; margin-bottom: 2rem;">
+            <h1 class="review-book-title" id="ai-title"></h1>
+            <time class="review-date" id="ai-date"></time>
+        </div>
+
+        <div class="review-body" id="ai-body"></div>
+
+        <div style="margin-top:3rem; text-align:right;">
+            <a id="edit-link" href="#" class="blog-write-btn" style="display:none;">수정</a>
+        </div>
+
+    </article>
+
+    <div id="ai-loading" style="text-align:center; padding:10vh 0;">
+        <p style="color:#555; font-family:'GyeonggiBatang',sans-serif; font-size:0.9rem;">불러오는 중...</p>
+    </div>
+
+    <div id="ai-error" style="display:none; text-align:center; padding:10vh 0;">
+        <p style="color:#555; font-family:'GyeonggiBatang',sans-serif; font-size:1rem;">글을 찾을 수 없습니다.</p>
+        <a href="blog.html" style="color:#8f7d60; font-family:'GyeonggiBatang',sans-serif; font-size:0.85rem; text-decoration:none;">← 목록으로 돌아가기</a>
+    </div>
+
+</div>
+
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (!id) {
+        showError();
+        return;
+    }
+
+    const { data, error } = await _supabase
+        .from('ai_writings').select('*').eq('id', id).single();
+
+    if (error || !data) {
+        showError();
+        return;
+    }
+
+    document.title = `${data.title} - 생각을 잇다`;
+    document.getElementById('ai-title').textContent = data.title;
+
+    const dateStr = new Date(data.created_at).toLocaleDateString('ko-KR', {
+        year: 'numeric', month: '2-digit', day: '2-digit'
+    }).replace(/\s/g, ' ');
+    document.getElementById('ai-date').textContent = dateStr;
+
+    marked.setOptions({ breaks: true, gfm: true });
+    document.getElementById('ai-body').innerHTML = marked.parse(data.body_markdown || '');
+
+    document.getElementById('ai-loading').style.display = 'none';
+    document.getElementById('ai-article').style.display = '';
+
+    const user = await getCurrentUser();
+    if (user) {
+        const editLink = document.getElementById('edit-link');
+        editLink.href = `ai-writing-editor.html?id=${id}`;
+        editLink.style.display = 'inline-block';
+    }
+});
+
+function showError() {
+    document.getElementById('ai-loading').style.display = 'none';
+    document.getElementById('ai-error').style.display = '';
+}
+</script>
+
+</body>
+</html>

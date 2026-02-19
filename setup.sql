@@ -133,3 +133,40 @@ USING (auth.role() = 'authenticated');
 CREATE POLICY "essays_auth_delete"
 ON essays FOR DELETE
 USING (auth.role() = 'authenticated');
+
+-- ============================================
+-- AI Writings 테이블
+-- ============================================
+
+-- 22. ai_writings 테이블 생성
+CREATE TABLE IF NOT EXISTS ai_writings (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    excerpt TEXT,
+    body_markdown TEXT NOT NULL,
+    card_image_url TEXT,
+    created_at TIMESTAMPTZ DEFAULT now(),
+    updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- 23. ai_writings RLS 활성화
+ALTER TABLE ai_writings ENABLE ROW LEVEL SECURITY;
+
+-- 24. ai_writings RLS 정책: 누구나 읽기 가능
+CREATE POLICY "ai_writings_public_read"
+ON ai_writings FOR SELECT USING (true);
+
+-- 25. ai_writings RLS 정책: 인증된 사용자만 추가 가능
+CREATE POLICY "ai_writings_auth_insert"
+ON ai_writings FOR INSERT
+WITH CHECK (auth.role() = 'authenticated');
+
+-- 26. ai_writings RLS 정책: 인증된 사용자만 수정 가능
+CREATE POLICY "ai_writings_auth_update"
+ON ai_writings FOR UPDATE
+USING (auth.role() = 'authenticated');
+
+-- 27. ai_writings RLS 정책: 인증된 사용자만 삭제 가능
+CREATE POLICY "ai_writings_auth_delete"
+ON ai_writings FOR DELETE
+USING (auth.role() = 'authenticated');

@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadBookReviews();
     loadEssays();
+    loadAiWritings();
     showWriteButtons();
 });
 
@@ -89,6 +90,44 @@ async function loadEssays() {
                 <span class="photo-card-date">${date}</span>
                 <h3 class="photo-card-title">${e.title}</h3>
                 <p class="photo-card-excerpt">${e.excerpt || ''}</p>
+            </div>
+        </a>`;
+    }).join('');
+}
+
+async function loadAiWritings() {
+    const grid = document.getElementById('ai-writing-grid');
+    if (!grid) return;
+
+    grid.innerHTML = '<p class="grid-message">불러오는 중...</p>';
+
+    const { data, error } = await _supabase
+        .from('ai_writings')
+        .select('id, title, excerpt, card_image_url, created_at')
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        grid.innerHTML = '<p class="grid-message">AI Writing을 불러올 수 없습니다.</p>';
+        return;
+    }
+
+    if (!data || data.length === 0) {
+        grid.innerHTML = '<p class="grid-message">등록된 AI Writing이 없습니다.</p>';
+        return;
+    }
+
+    grid.innerHTML = data.map(a => {
+        const date = new Date(a.created_at)
+            .toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' })
+            .replace(/\s/g, ' ');
+        const bgImage = a.card_image_url
+            || 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=530&fit=crop&crop=center';
+        return `<a href="ai-writing.html?id=${a.id}" class="photo-card">
+            <div class="photo-card-img" style="background-image: url('${bgImage}');"></div>
+            <div class="photo-card-overlay">
+                <span class="photo-card-date">${date}</span>
+                <h3 class="photo-card-title">${a.title}</h3>
+                <p class="photo-card-excerpt">${a.excerpt || ''}</p>
             </div>
         </a>`;
     }).join('');
