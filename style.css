@@ -691,6 +691,33 @@ body, html {
     display: block;
 }
 
+/* ── 블로그 새 글 작성 버튼 ── */
+.blog-write-area {
+    text-align: right;
+    margin-bottom: 0.8rem;
+}
+.blog-write-btn {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-size: 0.78rem;
+    color: #000;
+    background: #8f7d60;
+    padding: 0.4rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s ease;
+}
+.blog-write-btn:hover { background: #dabb7e; }
+
+.grid-message {
+    color: #555;
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 3rem 0;
+    grid-column: 1 / -1;
+}
+
 /* ── 사진 카드 그리드 ── */
 .photo-grid {
     display: grid;
