@@ -121,6 +121,19 @@
             <textarea id="f-body"></textarea>
         </div>
 
+        <div class="re-row">
+            <div class="re-field">
+                <label class="re-label">사용한 프롬프트 <span class="optional">(선택)</span></label>
+                <input class="re-input" id="f-prompt" placeholder="예: 사무엘 베케트와 카뮈의 실존주의에 대한 에세이를 써줘">
+            </div>
+        </div>
+        <div class="re-row">
+            <div class="re-field">
+                <label class="re-label">AI 모델 <span class="optional">(선택)</span></label>
+                <input class="re-input" id="f-ai-model" placeholder="예: Claude 3.5 Sonnet, GPT-4o, Gemini 1.5 Pro">
+            </div>
+        </div>
+
         <div class="re-message" id="re-message"></div>
 
         <div class="re-actions">
@@ -176,6 +189,8 @@ async function loadPost(id) {
     document.getElementById('f-title').value = data.title || '';
     document.getElementById('f-excerpt').value = data.excerpt || '';
     document.getElementById('f-card-image').value = data.card_image_url || '';
+    document.getElementById('f-prompt').value = data.prompt || '';
+    document.getElementById('f-ai-model').value = data.ai_model || '';
     easyMDE.value(data.body_markdown || '');
 }
 
@@ -197,6 +212,8 @@ async function savePost() {
         excerpt: document.getElementById('f-excerpt').value.trim() || null,
         body_markdown: body,
         card_image_url: document.getElementById('f-card-image').value.trim() || null,
+        prompt: document.getElementById('f-prompt').value.trim() || null,
+        ai_model: document.getElementById('f-ai-model').value.trim() || null,
         updated_at: new Date().toISOString(),
     };
 

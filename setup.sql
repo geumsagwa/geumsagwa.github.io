@@ -145,6 +145,8 @@ CREATE TABLE IF NOT EXISTS ai_writings (
     excerpt TEXT,
     body_markdown TEXT NOT NULL,
     card_image_url TEXT,
+    prompt TEXT,
+    ai_model TEXT,
     created_at TIMESTAMPTZ DEFAULT now(),
     updated_at TIMESTAMPTZ DEFAULT now()
 );

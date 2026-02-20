@@ -40,7 +40,19 @@
 
         <div class="review-body" id="ai-body"></div>
 
-        <div style="margin-top:3rem; text-align:right;">
+        <div id="ai-meta-box" style="display:none; margin-top:3rem; padding:1.5rem; border:1px solid #2a2a2a; border-radius:6px; background:#0d0d0d;">
+            <p style="font-family:'GyeonggiBatang',sans-serif; font-size:0.7rem; color:#555; letter-spacing:0.1em; margin-bottom:1rem; text-transform:uppercase;">AI Generation Info</p>
+            <div id="ai-meta-prompt" style="display:none; margin-bottom:1rem;">
+                <span style="font-family:'GyeonggiBatang',sans-serif; font-size:0.75rem; color:#8f7d60; font-weight:700;">Prompt</span>
+                <p id="ai-prompt-text" style="font-family:'GyeonggiBatang',sans-serif; font-size:0.85rem; color:#888; margin-top:0.4rem; line-height:1.7; font-style:italic;"></p>
+            </div>
+            <div id="ai-meta-model" style="display:none;">
+                <span style="font-family:'GyeonggiBatang',sans-serif; font-size:0.75rem; color:#8f7d60; font-weight:700;">Model</span>
+                <p id="ai-model-text" style="font-family:'GyeonggiBatang',sans-serif; font-size:0.85rem; color:#888; margin-top:0.4rem;"></p>
+            </div>
+        </div>
+
+        <div style="margin-top:2rem; text-align:right;">
             <a id="edit-link" href="#" class="blog-write-btn" style="display:none;">수정</a>
         </div>
 
@@ -87,6 +99,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     marked.setOptions({ breaks: true, gfm: true });
     document.getElementById('ai-body').innerHTML = marked.parse(data.body_markdown || '');
+
+    if (data.prompt || data.ai_model) {
+        document.getElementById('ai-meta-box').style.display = '';
+        if (data.prompt) {
+            document.getElementById('ai-meta-prompt').style.display = '';
+            document.getElementById('ai-prompt-text').textContent = data.prompt;
+        }
+        if (data.ai_model) {
+            document.getElementById('ai-meta-model').style.display = '';
+            document.getElementById('ai-model-text').textContent = data.ai_model;
+        }
+    }
 
     document.getElementById('ai-loading').style.display = 'none';
     document.getElementById('ai-article').style.display = '';
