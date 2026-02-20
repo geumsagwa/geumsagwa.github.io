@@ -2772,6 +2772,17 @@ body, html {
     color: #b39768;
 }
 
+.review-body a {
+    color: #c4a96a;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(196,169,106,0.3);
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.review-body a:hover {
+    color: #dabb7e;
+    border-bottom-color: #dabb7e;
+}
+
 /* 인용구 (책 본문에서 가져온 문장) */
 .review-body .book-quote {
     font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
