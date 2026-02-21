@@ -459,6 +459,8 @@
             if (node.nodeName === 'BR') return true;
             if (node.nodeType === 3) return node.textContent.trim() === '';
             if (node.nodeType === 1) {
+                if (node.nodeName === 'IMG') return false;
+                if (node.querySelector && node.querySelector('img')) return false;
                 const text = node.textContent.replace(/\u00a0/g, '').trim();
                 const cleaned = node.innerHTML.replace(/<br\s*\/?>/gi, '').replace(/&nbsp;/gi, '').trim();
                 return text === '' && cleaned === '';
@@ -546,6 +548,12 @@
                 el = next;
             }
         });
+
+        // SVG 이미지에 zoom-in 커서 표시
+        doc.querySelectorAll('svg image').forEach(function(img) {
+            var svg = img.closest('svg');
+            if (svg) svg.style.cursor = 'zoom-in';
+        });
     });
 
     try {
@@ -630,6 +638,69 @@
     rendition.on('keydown', (e) => {
         if (e.key === 'ArrowLeft') rendition.prev();
         if (e.key === 'ArrowRight') rendition.next();
+        if (e.key === 'Escape') closeImageZoom();
+    });
+
+    // 이미지 확대 오버레이 (부모 페이지)
+    let zoomOverlay = document.getElementById('epub-zoom-overlay');
+    if (!zoomOverlay) {
+        zoomOverlay = document.createElement('div');
+        zoomOverlay.id = 'epub-zoom-overlay';
+        zoomOverlay.style.cssText = 'display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.9);z-index:99999;cursor:zoom-out;justify-content:center;align-items:center;';
+        const zoomImg = document.createElement('img');
+        zoomImg.id = 'epub-zoom-img';
+        zoomImg.style.cssText = 'max-width:92vw;max-height:92vh;object-fit:contain;border-radius:4px;';
+        zoomOverlay.appendChild(zoomImg);
+        document.body.appendChild(zoomOverlay);
+        zoomOverlay.addEventListener('click', closeImageZoom);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeImageZoom();
+        });
+    }
+
+    function closeImageZoom() {
+        const ov = document.getElementById('epub-zoom-overlay');
+        if (ov) ov.style.display = 'none';
+    }
+
+    // rendition.on('click')으로 이미지 클릭 감지
+    rendition.on('click', (e) => {
+        let target = e.target;
+        let svg = null;
+        let el = target;
+        while (el) {
+            if (el.tagName && el.tagName.toLowerCase() === 'svg') { svg = el; break; }
+            el = el.parentElement;
+        }
+        if (!svg) return;
+        const imgEl = svg.querySelector('image');
+        if (!imgEl) return;
+        const href = imgEl.getAttributeNS('http://www.w3.org/1999/xlink', 'href')
+                  || imgEl.getAttribute('xlink:href')
+                  || imgEl.getAttribute('href');
+        if (!href) return;
+
+        // blob URL → 부모 페이지의 img로 전달 시 접근 불가할 수 있으므로 data URL로 변환
+        const iframeWin = svg.ownerDocument.defaultView;
+        iframeWin.fetch(href)
+            .then(r => r.blob())
+            .then(blob => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const zImg = document.getElementById('epub-zoom-img');
+                    zImg.src = reader.result;
+                    const ov = document.getElementById('epub-zoom-overlay');
+                    ov.style.display = 'flex';
+                };
+                reader.readAsDataURL(blob);
+            })
+            .catch(() => {
+                // fallback: 직접 URL 사용
+                const zImg = document.getElementById('epub-zoom-img');
+                zImg.src = href;
+                const ov = document.getElementById('epub-zoom-overlay');
+                ov.style.display = 'flex';
+            });
     });
 
     // 페이지 이동 시 목차 활성 항목 업데이트
