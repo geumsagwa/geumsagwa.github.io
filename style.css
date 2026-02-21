@@ -2818,6 +2818,38 @@ body, html {
     margin-bottom: 0;
 }
 
+/* 서평 제목 (review_title) 라벨 */
+.review-title-label {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #8f7d60;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+}
+
+/* 드롭캡: 본문 첫 문단 첫 글자 */
+.review-body .review-first-para::first-letter {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', serif;
+    font-weight: 700;
+    font-size: 3.4em;
+    float: left;
+    line-height: 0.85;
+    margin: 0.05em 0.12em 0 0;
+    color: #c8a96e;
+}
+
+/* 마무리 장식 */
+.review-end-mark {
+    text-align: center;
+    font-size: 1.1rem;
+    color: rgba(143, 125, 96, 0.35);
+    letter-spacing: 0.6em;
+    margin: 4rem 0 1rem;
+    user-select: none;
+}
+
 /* 서평 반응형 */
 @media (max-width: 768px) {
     .review-container {
@@ -2846,11 +2878,17 @@ body, html {
     .review-book-meta span {
         font-size: 0.75rem;
     }
+    .review-title-label {
+        font-size: 0.8rem;
+    }
     .review-body {
         font-size: 0.78rem;
     }
     .review-body h2 {
         font-size: 1rem;
+    }
+    .review-body .review-first-para::first-letter {
+        font-size: 2.6em;
     }
     .review-author-section {
         padding: 1rem;

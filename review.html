@@ -38,6 +38,7 @@
                 <img id="cover-img" src="" alt="">
             </div>
             <div class="review-book-info">
+                <p class="review-title-label" id="review-title-label" style="display:none;"></p>
                 <h1 class="review-book-title" id="book-title"></h1>
                 <div class="review-book-meta" id="book-meta"></div>
                 <time class="review-date" id="review-date"></time>
@@ -46,7 +47,9 @@
 
         <div class="review-body" id="review-body"></div>
 
-        <div style="margin-top:3rem; text-align:right;">
+        <div class="review-end-mark">✦</div>
+
+        <div style="margin-top:2rem; text-align:right;">
             <a id="edit-link" href="#" class="blog-write-btn" style="display:none;">수정</a>
         </div>
 
@@ -86,6 +89,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.title = `${data.review_title || data.title} - 생각을 잇다`;
 
     document.getElementById('book-title').textContent = data.title;
+
+    if (data.review_title && data.review_title !== data.title) {
+        const rtLabel = document.getElementById('review-title-label');
+        rtLabel.textContent = data.review_title;
+        rtLabel.style.display = '';
+    }
 
     const metaEl = document.getElementById('book-meta');
     const metaParts = [data.author];
@@ -140,7 +149,22 @@ function renderMarkdown(md) {
         gfm: true,
     });
 
-    return marked.parse(processed);
+    let html = marked.parse(processed);
+
+    const authorEnd = html.indexOf('</div><!-- review-author-section -->') !== -1
+        ? html.indexOf('</div><!-- review-author-section -->') + 35
+        : html.indexOf('</div>\n');
+
+    let foundFirst = false;
+    html = html.replace(/<p>(?!<)/g, (match, offset) => {
+        if (!foundFirst && offset > authorEnd) {
+            foundFirst = true;
+            return '<p class="review-first-para">';
+        }
+        return match;
+    });
+
+    return html;
 }
 
 function showError() {
