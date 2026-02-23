@@ -105,17 +105,20 @@ async function updateAuthUI() {
             authArea.innerHTML = `
                 <span class="auth-nickname">${nickname}</span>
                 <button class="auth-btn auth-logout-btn" onclick="signOut()">로그아웃</button>
+                ${getThemeToggleHTML()}
             `;
             updateDiaryMenu(user);
         } else {
             authArea.innerHTML = `
                 <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
+                ${getThemeToggleHTML()}
             `;
             updateDiaryMenu(null);
         }
     } catch (e) {
         authArea.innerHTML = `
             <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
+            ${getThemeToggleHTML()}
         `;
         updateDiaryMenu(null);
     }
@@ -128,4 +131,20 @@ function updateDiaryMenu(user) {
     diaryMenus.forEach(el => {
         el.style.display = isAdmin ? '' : 'none';
     });
+}
+
+// 다크/라이트 테마 토글
+function getThemeLabel() {
+    return document.documentElement.classList.contains('light-mode') ? '다크모드' : '라이트모드';
+}
+
+function toggleTheme() {
+    const isLight = document.documentElement.classList.toggle('light-mode');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    const btn = document.querySelector('.theme-toggle-btn');
+    if (btn) btn.textContent = getThemeLabel();
+}
+
+function getThemeToggleHTML() {
+    return `<button class="theme-toggle-btn" onclick="toggleTheme()">${getThemeLabel()}</button>`;
 }

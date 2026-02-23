@@ -3229,3 +3229,682 @@ body, html {
     border-color: #888;
     background: rgba(255, 255, 255, 0.05);
 }
+
+/* ══════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ══════════════════════════════════════════ */
+
+/* -- 테마 토글 버튼 -- */
+.theme-toggle-btn {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+    padding: 0.35rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #222;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.theme-toggle-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.light-mode .theme-toggle-btn {
+    background: #2a2520;
+    color: #e0d8c8;
+    border: none;
+}
+.light-mode .theme-toggle-btn:hover {
+    background: #1a1510;
+    color: #fff;
+}
+
+/* -- 전환 애니메이션 -- */
+body, html,
+.menu-bar,
+.menu-logo-text,
+.menu-list li a,
+.blog-card,
+.frame-mat,
+.frame-photo,
+.auth-card,
+.diary-text-input,
+.diary-date-input,
+.memo-text-input,
+.memo-name-input {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* -- 페이지 배경 & 메뉴바 -- */
+.light-mode body,
+.light-mode html {
+    background-color: #f5f0e8;
+}
+
+.light-mode .menu-bar {
+    background-color: #f5f0e8;
+}
+
+.light-mode .menu-logo-text {
+    color: #2a2520;
+}
+
+.light-mode .menu-list li a {
+    color: #7a7060;
+}
+
+.light-mode .menu-list li:hover a {
+    color: #2a2520;
+}
+
+.light-mode .menu-list li.active a {
+    color: #2a2520;
+}
+
+/* -- 슬라이드 (Home) -- */
+.light-mode .slide::before {
+    background: radial-gradient(
+        ellipse 60% 60% at 75% 50%,
+        transparent 42%,
+        rgba(245,240,232,0.4) 50%,
+        rgba(245,240,232,0.8) 58%,
+        rgba(245,240,232,1) 68%
+    );
+}
+
+.light-mode .slide::after {
+    background: linear-gradient(to right, rgba(245,240,232,0.5), transparent);
+}
+
+.light-mode .slide h1.text-overlay {
+    color: #2a2520;
+    text-shadow: 1px 1px 10px rgba(245,240,232,0.8);
+}
+
+.light-mode .slide p.text-overlay {
+    color: #3a3530;
+    text-shadow: 1px 1px 8px rgba(245,240,232,0.7);
+}
+
+.light-mode .slide-dots .dot {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.light-mode .slide-dots .dot.active {
+    background: #8f7d60;
+}
+
+/* -- Library 테마/탭 -- */
+.light-mode .library-theme-text,
+.light-mode .blog-theme-text,
+.light-mode .gallery-theme-text,
+.light-mode .board-theme-text,
+.light-mode .diary-theme-text {
+    color: #555;
+    text-shadow: none;
+}
+
+.light-mode .library-tab-label,
+.light-mode .blog-tab-label,
+.light-mode .gallery-tab-label {
+    color: #8f7d60;
+}
+
+.light-mode .library-tab.active .library-tab-label,
+.light-mode .blog-tab.active .blog-tab-label,
+.light-mode .gallery-tab.active .gallery-tab-label {
+    color: #6b5a3e;
+}
+
+.light-mode .library-tabs,
+.light-mode .blog-tabs,
+.light-mode .gallery-tabs {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .library-tab.active,
+.light-mode .blog-tab.active {
+    background: rgba(143, 125, 96, 0.08);
+}
+
+/* -- 북선반 (Library) -- */
+.light-mode .shelf-surface {
+    background: linear-gradient(180deg,
+        #c4a87a 0%,
+        #b89968 20%,
+        #a88a5a 100%
+    );
+}
+
+.light-mode .shelf-surface::before {
+    background: linear-gradient(90deg,
+        rgba(255,220,160,0.3),
+        transparent 30%,
+        transparent 70%,
+        rgba(255,220,160,0.3)
+    );
+}
+
+/* -- Blog 카드 -- */
+.light-mode .blog-card {
+    background: #faf7f0;
+    border: 1px solid rgba(143, 125, 96, 0.1);
+}
+
+.light-mode .blog-card:hover {
+    border-color: rgba(143, 125, 96, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .blog-card-date {
+    color: rgba(143, 125, 96, 0.7);
+}
+
+.light-mode .blog-card-title {
+    color: #1e1a15;
+}
+
+.light-mode .blog-card:hover .blog-card-title {
+    color: #1e1a15;
+}
+
+.light-mode .photo-card-title {
+    color: #1e1a15;
+}
+
+.light-mode .blog-card-excerpt {
+    color: #777;
+}
+
+.light-mode .blog-card:hover .blog-card-excerpt {
+    color: #555;
+}
+
+.light-mode .blog-card-stamp-circle {
+    border-color: rgba(143, 125, 96, 0.2);
+}
+
+/* -- Post (글 상세) -- */
+.light-mode .post-back {
+    color: #888;
+}
+
+.light-mode .post-back:hover {
+    color: #333;
+}
+
+.light-mode .post-title {
+    color: #1e1a15;
+}
+
+.light-mode .post-body strong {
+    color: #1e1a15;
+}
+
+.light-mode .post-meta {
+    color: #888;
+}
+
+.light-mode .post-body {
+    color: #4a4540;
+}
+
+.light-mode .post-body h2 {
+    color: #3a3530;
+}
+
+.light-mode .post-body blockquote {
+    border-left-color: #d0c8b8;
+    color: #666;
+    background: rgba(143, 125, 96, 0.04);
+}
+
+.light-mode .post-body hr {
+    border-color: #e0d8c8;
+}
+
+.light-mode .post-body a {
+    color: #8f7d60;
+}
+
+/* -- Review -- */
+.light-mode .review-book-title {
+    color: #1e1a15;
+}
+
+.light-mode .review-meta-value {
+    color: #555;
+}
+
+.light-mode .review-body {
+    color: #4a4540;
+}
+
+.light-mode .review-body h2 {
+    color: #3a3530;
+}
+
+.light-mode .review-body strong {
+    color: #1e1a15;
+}
+
+.light-mode .review-author-block {
+    background: rgba(143, 125, 96, 0.05);
+    border-color: rgba(143, 125, 96, 0.15);
+}
+
+.light-mode .review-body blockquote {
+    background: rgba(143, 125, 96, 0.04);
+    border-left-color: #c4a070;
+    color: #666;
+}
+
+/* -- Editor -- */
+.light-mode .editor-input,
+.light-mode .editor-select,
+.light-mode .editor-textarea {
+    background: #faf7f0;
+    border-color: #d8d0c0;
+    color: #3a3530;
+}
+
+.light-mode .editor-input:focus,
+.light-mode .editor-select:focus,
+.light-mode .editor-textarea:focus {
+    border-color: #8f7d60;
+}
+
+.light-mode .editor-label {
+    color: #888;
+}
+
+.light-mode .editor-btn-save {
+    color: #fff;
+    background: #8f7d60;
+}
+
+.light-mode .editor-btn-save:hover {
+    background: #6b5a3e;
+}
+
+.light-mode .editor-btn-preview {
+    color: #8f7d60;
+    border-color: #8f7d60;
+}
+
+.light-mode .editor-btn-preview:hover {
+    color: #fff;
+    background: #8f7d60;
+    border-color: #8f7d60;
+}
+
+.light-mode .editor-btn-close,
+.light-mode .editor-btn-copy {
+    color: #8f7d60;
+    border-color: #8f7d60;
+}
+
+.light-mode .editor-btn-close:hover,
+.light-mode .editor-btn-copy:hover {
+    color: #fff;
+    background: #8f7d60;
+    border-color: #8f7d60;
+}
+
+.light-mode .editor-output-title {
+    color: #555;
+}
+
+.light-mode .editor-output-code {
+    background: #faf8f4;
+    color: #444;
+    border-color: #e0d8c8;
+}
+
+.light-mode .editor-preview-content strong {
+    color: #1e1a15;
+}
+
+/* -- Gallery 프레임 -- */
+.light-mode .frame-mat {
+    background: #f0ebe3;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .frame-photo {
+    background: #e8e2d8;
+}
+
+.light-mode .frame-caption {
+    color: #888;
+}
+
+.light-mode .frame-mat:hover .frame-caption {
+    color: #555;
+}
+
+/* -- Lightbox -- */
+.light-mode .lightbox-backdrop {
+    background: rgba(245, 240, 232, 0.92);
+}
+
+.light-mode .lightbox-arrow {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.light-mode .lightbox-arrow:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.light-mode .lightbox-caption {
+    color: #666;
+}
+
+/* -- Board (메모 게시판) -- */
+.light-mode .memo-name-input {
+    border-bottom-color: #d8d0c0;
+    color: #3a3530;
+}
+
+.light-mode .memo-name-input:focus {
+    border-bottom-color: #8f7d60;
+}
+
+.light-mode .memo-text-input {
+    background: #faf7f0;
+    border-color: #d8d0c0;
+    color: #3a3530;
+}
+
+.light-mode .memo-text-input:focus {
+    border-color: #8f7d60;
+}
+
+.light-mode .memo-text-input::placeholder,
+.light-mode .memo-name-input::placeholder {
+    color: #bbb;
+}
+
+.light-mode .memo-char-count {
+    color: #bbb;
+}
+
+.light-mode .memo-submit {
+    color: #fff;
+    background: #8f7d60;
+}
+
+.light-mode .memo-submit:hover {
+    background: #6b5a3e;
+}
+
+.light-mode .memo-card {
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .memo-author {
+    color: #3a3530;
+}
+
+.light-mode .memo-date {
+    color: #bbb;
+}
+
+.light-mode .memo-content {
+    color: #555;
+}
+
+.light-mode .memo-reply {
+    border-left-color: rgba(143, 125, 96, 0.3);
+}
+
+.light-mode .memo-reply-text {
+    color: #666;
+}
+
+.light-mode .memo-reply-date {
+    color: #bbb;
+}
+
+/* -- Diary -- */
+.light-mode .diary-date-input {
+    background: #faf7f0;
+    border-color: #d8d0c0;
+    color: #3a3530;
+}
+
+.light-mode .diary-date-input:focus {
+    border-color: #8f7d60;
+}
+
+.light-mode .diary-text-input {
+    background: #faf7f0;
+    border-color: #d8d0c0;
+    color: #3a3530;
+}
+
+.light-mode .diary-text-input:focus {
+    border-color: #8f7d60;
+}
+
+.light-mode .diary-text-input::placeholder {
+    color: #bbb;
+}
+
+.light-mode .diary-save-btn {
+    color: #fff;
+    background: #8f7d60;
+}
+
+.light-mode .diary-save-btn:hover {
+    background: #6b5a3e;
+}
+
+.light-mode .diary-cancel-btn {
+    color: #888;
+    border-color: #d0c8b8;
+}
+
+.light-mode .diary-cancel-btn:hover {
+    color: #333;
+    border-color: #999;
+}
+
+.light-mode .diary-entry {
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .diary-entry-date {
+    color: #8f7d60;
+}
+
+.light-mode .diary-entry-body {
+    color: #555;
+}
+
+.light-mode .diary-edit-btn {
+    color: #fff;
+    background: #8f7d60;
+}
+
+.light-mode .diary-edit-btn:hover {
+    background: #6b5a3e;
+}
+
+.light-mode .diary-delete-btn {
+    color: #999;
+    background: #e8e2d8;
+}
+
+.light-mode .diary-delete-btn:hover {
+    color: #fff;
+    background: #c0392b;
+}
+
+.light-mode .diary-entry.editing {
+    background: rgba(143, 125, 96, 0.06);
+    border-color: rgba(143, 125, 96, 0.2);
+}
+
+.light-mode .diary-empty {
+    color: #bbb;
+}
+
+/* -- Auth (로그인/회원가입) -- */
+.light-mode .auth-card {
+    background: #faf7f0;
+    border: 1px solid rgba(143, 125, 96, 0.12);
+    box-shadow: 0 4px 20px rgba(143, 125, 96, 0.08);
+}
+
+.light-mode .auth-tab {
+    color: #999;
+}
+
+.light-mode .auth-tab.active {
+    color: #6b5a3e;
+}
+
+.light-mode .auth-input {
+    background: #f5f0e8;
+    border-color: #d8d0c0;
+    color: #3a3530;
+}
+
+.light-mode .auth-input:focus {
+    border-color: #8f7d60;
+}
+
+.light-mode .auth-label {
+    color: #888;
+}
+
+.light-mode .auth-submit {
+    background: #8f7d60;
+    color: #fff;
+}
+
+.light-mode .auth-submit:hover {
+    background: #6b5a3e;
+}
+
+.light-mode .auth-social-divider span {
+    color: #999;
+    background: #faf7f0;
+}
+
+.light-mode .auth-social-google,
+.light-mode .auth-social-github {
+    color: #555;
+    border-color: #d0c8b8;
+    background: #faf8f4;
+}
+
+.light-mode .auth-social-google:hover,
+.light-mode .auth-social-github:hover {
+    color: #333;
+    border-color: #999;
+    background: #f0ebe3;
+}
+
+/* -- Auth area (nav 우측) -- */
+.light-mode .auth-nickname {
+    color: #8f7d60;
+}
+
+.light-mode .auth-login-btn {
+    color: #fff;
+    background: #8f7d60;
+    border-color: #8f7d60;
+}
+
+.light-mode .auth-login-btn:hover {
+    color: #fff;
+    background: #6b5a3e;
+    border-color: #6b5a3e;
+}
+
+.light-mode .auth-logout-btn {
+    color: #8f7d60;
+    border-color: #8f7d60;
+}
+
+.light-mode .auth-logout-btn:hover {
+    color: #fff;
+    background: #8f7d60;
+    border-color: #8f7d60;
+}
+
+/* -- Upload 모달 -- */
+.light-mode .upload-backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.light-mode .upload-card {
+    background: #faf7f0;
+    border-color: rgba(143, 125, 96, 0.12);
+}
+
+.light-mode .upload-title {
+    color: #6b5a3e;
+}
+
+.light-mode .upload-label {
+    color: #888;
+}
+
+.light-mode .upload-input {
+    background: #f5f0e8;
+    border-color: #d8d0c0;
+    color: #3a3530;
+}
+
+.light-mode .upload-input:focus {
+    border-color: #8f7d60;
+}
+
+.light-mode .upload-category-btn {
+    border-color: #d0c8b8;
+    color: #888;
+}
+
+.light-mode .upload-category-btn.active {
+    border-color: #8f7d60;
+    color: #6b5a3e;
+    background: rgba(143, 125, 96, 0.08);
+}
+
+.light-mode .upload-dropzone {
+    border-color: #d0c8b8;
+    color: #999;
+}
+
+.light-mode .upload-dropzone.dragover {
+    border-color: #8f7d60;
+    background: rgba(143, 125, 96, 0.05);
+}
+
+/* -- 스크롤바 (라이트 모드에서 표시) -- */
+.light-mode *::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+}
+
+.light-mode *::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.light-mode *::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+}
+
+/* -- Book open (EPUB 뷰어 내 책 펼침) -- */
+.light-mode .book-open-overlay {
+    background: rgba(245, 240, 232, 0.85);
+}
