@@ -302,6 +302,7 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="board.html">Board</a></li>
+        <li class="diary-menu" style="display:none"><a href="diary.html">Diary</a></li>
     </ul>
     <div class="auth-area" id="auth-area"></div>
 </nav>
@@ -374,7 +375,7 @@
 
             const { data, error } = await _supabase.storage
                 .from('epubs')
-                .download(epubPath);
+                .download(epubPath, { cacheControl: 'no-cache' });
 
             if (error || !data) {
                 document.getElementById('book-title').textContent = '다운로드 실패';

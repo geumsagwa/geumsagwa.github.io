@@ -1,6 +1,9 @@
 // 공개 페이지 목록 (인증 불필요)
 const PUBLIC_PAGES = ['index.html', 'login.html', ''];
 
+// 관리자 이메일 (Diary 메뉴 접근 권한)
+const ADMIN_EMAIL = 'blue6074@gmail.com';
+
 // 인증 상태 관리
 document.addEventListener('DOMContentLoaded', async () => {
     // 페이지 접근 권한 체크
@@ -24,12 +27,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 // 보호 페이지 접근 시 인증 체크 → 미인증이면 로그인으로 리다이렉트
 async function requireAuth() {
     const page = window.location.pathname.split('/').pop() || '';
-    if (PUBLIC_PAGES.includes(page)) return; // 공개 페이지는 통과
+    if (PUBLIC_PAGES.includes(page)) return;
 
     try {
         const user = await getCurrentUser();
         if (!user) {
             window.location.href = 'login.html';
+            return;
+        }
+        // Diary 페이지는 관리자만 접근 가능
+        if (page === 'diary.html' && user.email !== ADMIN_EMAIL) {
+            window.location.href = 'index.html';
         }
     } catch (e) {
         window.location.href = 'login.html';
@@ -98,15 +106,26 @@ async function updateAuthUI() {
                 <span class="auth-nickname">${nickname}</span>
                 <button class="auth-btn auth-logout-btn" onclick="signOut()">로그아웃</button>
             `;
+            updateDiaryMenu(user);
         } else {
             authArea.innerHTML = `
                 <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
             `;
+            updateDiaryMenu(null);
         }
     } catch (e) {
-        // Supabase 연결 실패 시에도 로그인 버튼 표시
         authArea.innerHTML = `
             <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
         `;
+        updateDiaryMenu(null);
     }
+}
+
+// 관리자인 경우에만 Diary 메뉴 표시
+function updateDiaryMenu(user) {
+    const diaryMenus = document.querySelectorAll('.diary-menu');
+    const isAdmin = user && user.email === ADMIN_EMAIL;
+    diaryMenus.forEach(el => {
+        el.style.display = isAdmin ? '' : 'none';
+    });
 }

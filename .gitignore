@@ -1,6 +1,7 @@
 .DS_Store
 Thumbs.db
 *.log
+node_modules/
 migrate-reviews.js
 migrate-essays.js
 business-card.html

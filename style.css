@@ -2174,6 +2174,232 @@ body, html {
     text-align: right;
 }
 
+/* ── Diary 페이지 (개인 일기) ── */
+.diary-container {
+    width: 100%;
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 3rem 2rem;
+}
+
+.diary-theme {
+    margin-bottom: 3vh;
+}
+
+.diary-theme-text {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #bbb;
+    letter-spacing: 0.12em;
+    text-shadow: 0 0 20px rgba(255,255,255,0.15);
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid transparent;
+    width: 0;
+    max-width: fit-content;
+    animation:
+        typing 2s steps(7, end) 0.5s forwards,
+        blink-caret 0.75s step-end 0.5s infinite;
+}
+
+/* 글쓰기 영역 */
+.diary-write {
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 4vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.diary-write-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.diary-date-input {
+    padding: 0.45rem 0.8rem;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #ccc;
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-size: 0.85rem;
+    transition: border-color 0.3s ease;
+}
+
+.diary-date-input:focus {
+    outline: none;
+    border-color: #666;
+}
+
+.diary-write-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.diary-save-btn {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #000;
+    background: #8f7d60;
+    border: none;
+    border-radius: 3px;
+    padding: 0.45rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.diary-save-btn:hover {
+    background: #dabb7e;
+}
+
+.diary-save-btn:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+.diary-cancel-btn {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #888;
+    background: none;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 0.45rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.diary-cancel-btn:hover {
+    color: #fff;
+    border-color: #666;
+}
+
+.diary-text-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #ccc;
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.diary-text-input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.diary-text-input::placeholder {
+    color: #444;
+}
+
+/* 일기 목록 */
+.diary-list {
+    width: 100%;
+    max-width: 640px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.diary-empty {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+/* 일기 항목 */
+.diary-entry {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.3s ease, padding 0.3s ease;
+}
+
+.diary-entry.editing {
+    background: rgba(143, 125, 96, 0.06);
+    padding: 1.5rem 1rem;
+    border-radius: 4px;
+    border-bottom-color: rgba(143, 125, 96, 0.15);
+}
+
+.diary-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.diary-entry-date {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #8f7d60;
+    letter-spacing: 0.08em;
+}
+
+.diary-entry-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.diary-edit-btn,
+.diary-delete-btn {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 0.3rem 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.diary-edit-btn {
+    color: #000;
+    background: #8f7d60;
+}
+
+.diary-edit-btn:hover {
+    background: #dabb7e;
+}
+
+.diary-delete-btn {
+    color: #bbb;
+    background: #333;
+}
+
+.diary-delete-btn:hover {
+    color: #fff;
+    background: #c0392b;
+}
+
+.diary-entry-body {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #aaa;
+    line-height: 1.9;
+}
+
 /* 반응형 처리 */
 @media (max-width: 768px) {
     .menu-bar {
@@ -2298,6 +2524,25 @@ body, html {
     }
     .memo-reply-text {
         font-size: 0.75rem;
+    }
+    /* Diary 반응형 */
+    .diary-container {
+        padding: 4vh 1.5rem 2rem;
+    }
+    .diary-theme-text {
+        font-size: 0.84rem;
+    }
+    .diary-write {
+        max-width: 100%;
+    }
+    .diary-list {
+        max-width: 100%;
+    }
+    .diary-entry-body {
+        font-size: 0.85rem;
+    }
+    .diary-entry-actions {
+        opacity: 1;
     }
     /* Gallery 반응형 */
     .gallery-container {
