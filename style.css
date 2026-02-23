@@ -14,6 +14,7 @@
 
 /* 기본 스타일 리셋 */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+button, input, textarea, select { font-family: inherit; }
 
 /* 스크롤바 숨기기 (스크롤 기능은 유지) */
 *::-webkit-scrollbar { display: none; }
@@ -49,7 +50,6 @@ body, html {
 }
 
 .menu-logo-text {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 1.6rem;
     color: #fff;
@@ -71,7 +71,6 @@ body, html {
 }
 
 .menu-list li a {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 1.1rem;
     color: #ccc;
@@ -95,7 +94,6 @@ body, html {
 .menu-list li:hover a {
     color: #fff;
 }
-
 
 /* ── 슬라이드 컨테이너: 메뉴바 아래 나머지 공간 ── */
 .slide-container {
@@ -166,7 +164,6 @@ body, html {
 
 /* 1번: 메인 테마 (h1) - 경기천년바탕_Bold, font-size·font-weight로 구별 */
 .slide h1.text-overlay {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 600;
     font-size: 2.16rem;
     color: white;
@@ -176,7 +173,6 @@ body, html {
 
 /* 2,3번: 내용 (p) - h4 크기, 가독성 효과 */
 .slide p.text-overlay {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 350;
     font-size: 1.36rem;
     line-height: 1.6;
@@ -237,8 +233,12 @@ body, html {
     50% { border-color: white; }
 }
 
-/* ── Library 페이지 ── */
-.library-container {
+/* ── 공통 페이지 컨테이너 ── */
+.library-container,
+.blog-container,
+.gallery-container,
+.board-container,
+.diary-container {
     width: 100%;
     height: 84vh;
     display: flex;
@@ -247,28 +247,41 @@ body, html {
     padding: 6vh 3rem 2rem;
 }
 
-/* 테마 문구 */
-.library-theme {
+.board-container { padding-top: 5vh; }
+.diary-container { padding-top: 5vh; }
+
+/* ── 공통 테마 문구 ── */
+.library-theme,
+.blog-theme,
+.gallery-theme,
+.board-theme,
+.diary-theme {
     margin-bottom: 5vh;
 }
 
-.library-theme-text {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+.board-theme { margin-bottom: 2.0vh; }
+.diary-theme { margin-bottom: 3vh; }
+
+.library-theme-text,
+.blog-theme-text,
+.gallery-theme-text,
+.board-theme-text,
+.diary-theme-text {
     font-weight: 700;
     font-size: 1.8rem;
     color: #bbb;
     letter-spacing: 0.12em;
     text-shadow: 0 0 20px rgba(255,255,255,0.15);
-    /* 타이핑 효과 */
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     border-right: 2px solid transparent;
     width: 0;
     max-width: fit-content;
-    animation:
-        typing 2.5s steps(18, end) 0.5s forwards,
-        blink-caret 0.75s step-end 0.5s infinite;
+}
+
+.library-theme-text {
+    animation: typing 2.5s steps(18, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s infinite;
 }
 
 /* ── 카테고리 탭 (도서관 분류표 스타일) ── */
@@ -279,7 +292,6 @@ body, html {
 }
 
 .library-tab {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -361,27 +373,6 @@ body, html {
 
 .library-tabs:hover .library-tab:hover .tab-label-name {
     color: #c4a070;
-}
-
-.library-tabs:hover .library-tab.active {
-    filter: blur(1.5px);
-    transform: scale(0.92);
-    opacity: 0.5;
-}
-
-.library-tabs:hover .library-tab.active:hover {
-    filter: blur(0);
-    transform: scale(1.05);
-    opacity: 1;
-}
-
-/* 탭 아래 선반 구분선 */
-.library-tabs::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
 }
 
 /* ── 카테고리 콘텐츠 패널 ── */
@@ -501,7 +492,7 @@ body, html {
 .spine-title {
     writing-mode: vertical-rl;
     text-orientation: upright;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-weight: 700;
     font-size: 0.75rem;
     color: rgba(255, 220, 160, 0.85);
@@ -520,7 +511,7 @@ body, html {
 .spine-author {
     writing-mode: vertical-rl;
     text-orientation: upright;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-weight: 400;
     font-size: 0.5rem;
     color: rgba(255, 200, 140, 0.4);
@@ -564,36 +555,8 @@ body, html {
 }
 
 /* ── Blog 페이지 ── */
-.blog-container {
-    width: 100%;
-    height: 84vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 6vh 3rem 2rem;
-}
-
-.blog-theme {
-    margin-bottom: 5vh;
-}
-
 .blog-theme-text {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #bbb;
-    letter-spacing: 0.12em;
-    text-shadow: 0 0 20px rgba(255,255,255,0.15);
-    /* 타이핑 효과 */
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid transparent;
-    width: 0;
-    max-width: fit-content;
-    animation:
-        typing 2.5s steps(18, end) 0.5s forwards,
-        blink-caret 0.75s step-end 0.5s infinite;
+    animation: typing 2.5s steps(18, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s infinite;
 }
 
 /* ── Blog 탭 (카페 메뉴 스타일) ── */
@@ -604,7 +567,6 @@ body, html {
 }
 
 .blog-tab {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -667,16 +629,6 @@ body, html {
     color: #dabb7e;
 }
 
-.blog-tabs:hover .blog-tab.active {
-    opacity: 0.4;
-    transform: scale(0.95);
-}
-
-.blog-tabs:hover .blog-tab.active:hover {
-    opacity: 1;
-    transform: scale(1.05);
-}
-
 /* ── Blog 콘텐츠 ── */
 .blog-content {
     width: 100%;
@@ -699,7 +651,6 @@ body, html {
     margin-bottom: 0.8rem;
 }
 .blog-write-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-size: 0.78rem;
     color: #000;
     background: #8f7d60;
@@ -713,7 +664,7 @@ body, html {
 
 .grid-message {
     color: #555;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-size: 0.85rem;
     text-align: center;
     padding: 3rem 0;
@@ -790,7 +741,6 @@ body, html {
 }
 
 .photo-card-date {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.65rem;
     color: rgba(200, 169, 110, 0.6);
@@ -798,7 +748,6 @@ body, html {
 }
 
 .photo-card-title {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
     color: #ddd;
@@ -808,7 +757,6 @@ body, html {
 }
 
 .photo-card-excerpt {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.72rem;
     color: #777;
@@ -862,7 +810,6 @@ body, html {
 }
 
 .post-empty {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 1rem;
     color: #555;
@@ -871,7 +818,10 @@ body, html {
 }
 
 /* ── 글 보기 페이지 ── */
-.post-container {
+/* ── 공통 상세/편집 컨테이너 ── */
+.post-container,
+.editor-container,
+.review-container {
     width: 100%;
     height: 84vh;
     display: flex;
@@ -881,17 +831,23 @@ body, html {
     overflow-y: auto;
 }
 
-.post-header {
+/* ── 공통 상세 헤더 ── */
+.post-header,
+.editor-header,
+.review-header {
     width: 100%;
     max-width: 720px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4vh;
+    margin-bottom: 3vh;
 }
 
-.post-back {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+.post-header { margin-bottom: 4vh; }
+
+.post-back,
+.editor-back,
+.review-back {
     font-weight: 400;
     font-size: 0.9rem;
     color: #555;
@@ -899,12 +855,14 @@ body, html {
     transition: color 0.3s ease;
 }
 
-.post-back:hover {
+.post-back:hover,
+.editor-back:hover,
+.review-back:hover {
     color: #fff;
 }
 
-.post-category {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+.post-category,
+.review-category {
     font-weight: 400;
     font-size: 0.8rem;
     color: #444;
@@ -917,7 +875,6 @@ body, html {
 }
 
 .post-title {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 2rem;
     color: #ddd;
@@ -925,7 +882,6 @@ body, html {
 }
 
 .post-subtitle {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 1.1rem;
     color: #666;
@@ -933,7 +889,6 @@ body, html {
 }
 
 .post-date {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.8rem;
     color: #444;
@@ -942,7 +897,6 @@ body, html {
 }
 
 .post-body {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 1.05rem;
     color: #aaa;
@@ -985,43 +939,11 @@ body, html {
 }
 
 /* ── 글 작성 에디터 ── */
-.editor-container {
-    width: 100%;
-    height: 84vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3vh 3rem 2rem;
-    overflow-y: auto;
-}
-
-.editor-header {
-    width: 100%;
-    max-width: 720px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3vh;
-}
 
 .editor-title {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 1.4rem;
     color: #bbb;
-}
-
-.editor-back {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
-    font-weight: 400;
-    font-size: 0.9rem;
-    color: #555;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.editor-back:hover {
-    color: #fff;
 }
 
 .editor-form {
@@ -1034,7 +956,6 @@ body, html {
 }
 
 .editor-label {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
     color: #888;
@@ -1056,7 +977,7 @@ body, html {
     border: 1px solid #2a2a2a;
     border-radius: 4px;
     color: #ccc;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
@@ -1077,7 +998,6 @@ body, html {
 }
 
 .editor-select {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
     color: #555;
@@ -1103,7 +1023,6 @@ body, html {
 }
 
 .toolbar-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
     color: #555;
@@ -1132,7 +1051,7 @@ body, html {
     border: 1px solid #2a2a2a;
     border-radius: 4px;
     color: #ccc;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-size: 1rem;
     line-height: 1.8;
     resize: vertical;
@@ -1153,7 +1072,6 @@ body, html {
 }
 
 .editor-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
     padding: 0.6rem 1.5rem;
@@ -1218,14 +1136,12 @@ body, html {
 
 .editor-preview-title,
 .editor-output-title {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 1rem;
     color: #888;
 }
 
 .editor-preview-content {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-size: 1.05rem;
     color: #aaa;
     line-height: 2;
@@ -1253,7 +1169,6 @@ body, html {
 }
 
 .editor-output-guide {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-size: 0.8rem;
     color: #444;
     margin-top: 0.8rem;
@@ -1326,7 +1241,6 @@ body, html {
 }
 
 .upload-title {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 1.2rem;
     color: #dabb7e;
@@ -1347,7 +1261,6 @@ body, html {
 }
 
 .upload-label {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.8rem;
     color: #888;
@@ -1361,7 +1274,7 @@ body, html {
     border: 1px solid #333;
     border-radius: 4px;
     color: #ccc;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-size: 0.9rem;
     transition: border-color 0.3s ease;
 }
@@ -1382,7 +1295,6 @@ body, html {
 }
 
 .upload-category-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.8rem;
     color: #666;
@@ -1433,7 +1345,6 @@ body, html {
 }
 
 .upload-dropzone-text {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-size: 0.8rem;
     color: #666;
 }
@@ -1447,7 +1358,6 @@ body, html {
 }
 
 .upload-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.85rem;
     padding: 0.5rem 1.3rem;
@@ -1484,7 +1394,6 @@ body, html {
 
 /* 메시지 */
 .upload-message {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-size: 0.78rem;
     text-align: center;
     min-height: 1rem;
@@ -1641,7 +1550,6 @@ body, html {
 .book-open-cover-front::after { bottom: 20%; }
 
 .book-open-cover-title {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 2.2rem;
     color: rgba(255, 220, 160, 0.9);
@@ -1652,7 +1560,6 @@ body, html {
 }
 
 .book-open-cover-author {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 1.1rem;
     color: rgba(255, 200, 140, 0.45);
@@ -1688,36 +1595,8 @@ body, html {
 }
 
 /* ── Gallery 페이지 (전시장) ── */
-.gallery-container {
-    width: 100%;
-    height: 84vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 6vh 3rem 2rem;
-}
-
-.gallery-theme {
-    margin-bottom: 5vh;
-}
-
 .gallery-theme-text {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #bbb;
-    letter-spacing: 0.12em;
-    text-shadow: 0 0 20px rgba(255,255,255,0.15);
-    /* 타이핑 효과 */
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid transparent;
-    width: 0;
-    max-width: fit-content;
-    animation:
-        typing 2.8s steps(19, end) 0.5s forwards,
-        blink-caret 0.75s step-end 0.5s infinite;
+    animation: typing 2.8s steps(19, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s infinite;
 }
 
 /* Gallery 탭 (전시장 안내판 스타일) */
@@ -1729,7 +1608,6 @@ body, html {
 }
 
 .gallery-tab {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     background: none;
     border: none;
     padding: 0.7rem 2.5rem;
@@ -1783,16 +1661,6 @@ body, html {
 
 .gallery-tabs:hover .gallery-tab:hover .gallery-tab-label {
     color: #dabb7e;
-}
-
-.gallery-tabs:hover .gallery-tab.active {
-    opacity: 0.4;
-    transform: scale(0.95);
-}
-
-.gallery-tabs:hover .gallery-tab.active:hover {
-    opacity: 1;
-    transform: scale(1.05);
 }
 
 /* Gallery 콘텐츠 */
@@ -1860,7 +1728,7 @@ body, html {
 /* 캡션 (작품 제목표) */
 .frame-caption {
     display: block;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-weight: 400;
     font-size: 0.7rem;
     color: #555;
@@ -1948,7 +1816,6 @@ body, html {
 }
 
 .lightbox-caption {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.85rem;
     color: #888;
@@ -1979,36 +1846,8 @@ body, html {
 }
 
 /* ── Board 페이지 (메모 게시판) ── */
-.board-container {
-    width: 100%;
-    height: 84vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5vh 3rem 2rem;
-}
-
-.board-theme {
-    margin-bottom: 2.0vh;
-}
-
 .board-theme-text {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #bbb;
-    letter-spacing: 0.12em;
-    text-shadow: 0 0 20px rgba(255,255,255,0.15);
-    /* 타이핑 효과 */
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid transparent;
-    width: 0;
-    max-width: fit-content;
-    animation:
-        typing 2.5s steps(17, end) 0.5s forwards,
-        blink-caret 0.75s step-end 0.5s infinite;
+    animation: typing 2.5s steps(17, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s infinite;
 }
 
 /* ── 글쓰기 영역 ── */
@@ -2028,7 +1867,7 @@ body, html {
     border: none;
     border-bottom: 1px solid #444;
     color: #ccc;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-size: 0.8rem;
     transition: border-color 0.3s ease;
 }
@@ -2046,7 +1885,7 @@ body, html {
     border: 1px solid #333;
     border-radius: 4px;
     color: #ccc;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-size: 0.9rem;
     line-height: 1.6;
     resize: none;
@@ -2070,13 +1909,11 @@ body, html {
 }
 
 .memo-char-count {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-size: 0.65rem;
     color: #555;
 }
 
 .memo-submit {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.8rem;
     color: #000;
@@ -2118,21 +1955,18 @@ body, html {
 }
 
 .memo-author {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.8rem;
     color: #bbb;
 }
 
 .memo-date {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.65rem;
     color: #555;
 }
 
 .memo-content {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
     color: #aaa;
@@ -2148,7 +1982,6 @@ body, html {
 }
 
 .memo-reply-name {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.72rem;
     color: #b39768;
@@ -2157,7 +1990,6 @@ body, html {
 }
 
 .memo-reply-text {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.82rem;
     color: #999;
@@ -2165,7 +1997,6 @@ body, html {
 }
 
 .memo-reply-date {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.6rem;
     color: #555;
@@ -2371,35 +2202,8 @@ body, html {
 }
 
 /* ── Diary 페이지 (개인 일기) ── */
-.diary-container {
-    width: 100%;
-    height: 84vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5vh 3rem 2rem;
-}
-
-.diary-theme {
-    margin-bottom: 3vh;
-}
-
 .diary-theme-text {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #bbb;
-    letter-spacing: 0.12em;
-    text-shadow: 0 0 20px rgba(255,255,255,0.15);
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid transparent;
-    width: 0;
-    max-width: fit-content;
-    animation:
-        typing 2s steps(7, end) 0.5s forwards,
-        blink-caret 0.75s step-end 0.5s infinite;
+    animation: typing 2s steps(7, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s infinite;
 }
 
 /* 글쓰기 영역 */
@@ -2424,7 +2228,7 @@ body, html {
     border: 1px solid #333;
     border-radius: 4px;
     color: #ccc;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-size: 0.85rem;
     transition: border-color 0.3s ease;
 }
@@ -2440,7 +2244,6 @@ body, html {
 }
 
 .diary-save-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.8rem;
     color: #000;
@@ -2462,7 +2265,6 @@ body, html {
 }
 
 .diary-cancel-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.8rem;
     color: #888;
@@ -2487,7 +2289,7 @@ body, html {
     border: 1px solid #333;
     border-radius: 4px;
     color: #ccc;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-size: 0.95rem;
     line-height: 1.8;
     resize: vertical;
@@ -2515,7 +2317,6 @@ body, html {
 }
 
 .diary-empty {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
     color: #555;
@@ -2545,7 +2346,6 @@ body, html {
 }
 
 .diary-entry-date {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
     color: #8f7d60;
@@ -2559,7 +2359,6 @@ body, html {
 
 .diary-edit-btn,
 .diary-delete-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.7rem;
     border: none;
@@ -2589,7 +2388,6 @@ body, html {
 }
 
 .diary-entry-body {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.95rem;
     color: #aaa;
@@ -2634,11 +2432,19 @@ body, html {
     .text-overlay {
         border-right-width: 2px;
     }
-    /* Library 반응형 */
-    .library-container {
+    /* 공통 반응형: 컨테이너 & 테마 텍스트 */
+    .library-container,
+    .blog-container,
+    .board-container,
+    .diary-container,
+    .gallery-container {
         padding: 4vh 1.5rem 2rem;
     }
-    .library-theme-text {
+    .library-theme-text,
+    .blog-theme-text,
+    .board-theme-text,
+    .diary-theme-text,
+    .gallery-theme-text {
         font-size: 0.84rem;
     }
     .library-tab {
@@ -2666,12 +2472,6 @@ body, html {
         font-size: 0.42rem;
     }
     /* Blog 반응형 */
-    .blog-container {
-        padding: 4vh 1.5rem 2rem;
-    }
-    .blog-theme-text {
-        font-size: 0.84rem;
-    }
     .blog-tab {
         padding: 0.4rem 1.2rem;
         gap: 0.3rem;
@@ -2703,16 +2503,10 @@ body, html {
         right: 8px;
     }
     /* Board 반응형 */
-    .board-container {
-        padding: 4vh 1.5rem 2rem;
-    }
-    .board-theme-text {
-        font-size: 0.84rem;
-    }
-    .memo-write {
-        max-width: 100%;
-    }
-    .memo-list {
+    .memo-write,
+    .memo-list,
+    .diary-write,
+    .diary-list {
         max-width: 100%;
     }
     .memo-content {
@@ -2722,18 +2516,7 @@ body, html {
         font-size: 0.75rem;
     }
     /* Diary 반응형 */
-    .diary-container {
-        padding: 4vh 1.5rem 2rem;
-    }
-    .diary-theme-text {
-        font-size: 0.84rem;
-    }
-    .diary-write {
-        max-width: 100%;
-    }
-    .diary-list {
-        max-width: 100%;
-    }
+    
     .diary-entry-body {
         font-size: 0.85rem;
     }
@@ -2741,12 +2524,6 @@ body, html {
         opacity: 1;
     }
     /* Gallery 반응형 */
-    .gallery-container {
-        padding: 4vh 1.5rem 2rem;
-    }
-    .gallery-theme-text {
-        font-size: 0.84rem;
-    }
     .gallery-tab {
         padding: 0.5rem 1.2rem;
     }
@@ -2768,8 +2545,10 @@ body, html {
         font-size: 0.55rem;
         margin-top: 0.5rem;
     }
-    /* 글 보기 반응형 */
-    .post-container {
+    /* 글 보기/에디터/서평 반응형 */
+    .post-container,
+    .editor-container,
+    .review-container {
         padding: 2vh 1.5rem 2rem;
     }
     .post-title {
@@ -2783,10 +2562,6 @@ body, html {
     }
     .post-body h2 {
         font-size: 1rem;
-    }
-    /* 에디터 반응형 */
-    .editor-container {
-        padding: 2vh 1.5rem 2rem;
     }
     .editor-title {
         font-size: 1rem;
@@ -2873,7 +2648,6 @@ body, html {
 }
 
 .auth-tab {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 1rem;
     color: #999;
@@ -2916,7 +2690,6 @@ body, html {
 }
 
 .auth-label {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.8rem;
     color: #bbb;
@@ -2930,7 +2703,7 @@ body, html {
     border: 1px solid #444;
     border-radius: 4px;
     color: #eee;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-size: 0.85rem;
     transition: border-color 0.3s ease;
 }
@@ -2946,7 +2719,6 @@ body, html {
 
 /* 메시지 */
 .auth-message {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-size: 0.78rem;
     min-height: 0;
     text-align: center;
@@ -2962,7 +2734,6 @@ body, html {
 
 /* 제출 버튼 */
 .auth-submit {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.9rem;
     color: #000;
@@ -2994,7 +2765,6 @@ body, html {
 }
 
 .auth-nickname {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.8rem;
     color: #8f7d60;
@@ -3002,7 +2772,6 @@ body, html {
 }
 
 .auth-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.75rem;
     padding: 0.35rem 1rem;
@@ -3037,46 +2806,6 @@ body, html {
 }
 
 /* ── 서평(Book Review) 템플릿 ── */
-.review-container {
-    width: 100%;
-    height: 84vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3vh 3rem 2rem;
-    overflow-y: auto;
-}
-
-.review-header {
-    width: 100%;
-    max-width: 720px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3vh;
-}
-
-.review-back {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
-    font-weight: 400;
-    font-size: 0.9rem;
-    color: #555;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.review-back:hover {
-    color: #fff;
-}
-
-.review-category {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
-    font-weight: 400;
-    font-size: 0.8rem;
-    color: #444;
-    letter-spacing: 0.1em;
-}
-
 .review-article {
     width: 100%;
     max-width: 720px;
@@ -3123,7 +2852,6 @@ body, html {
 }
 
 .review-book-title {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 2rem;
     color: #ddd;
@@ -3140,7 +2868,6 @@ body, html {
 }
 
 .review-book-meta span {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
     color: #8f7d60;
@@ -3153,7 +2880,6 @@ body, html {
 }
 
 .review-date {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.75rem;
     color: #444;
@@ -3163,7 +2889,6 @@ body, html {
 
 /* 서평 본문 */
 .review-body {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 1.05rem;
     color: #aaa;
@@ -3226,7 +2951,6 @@ body, html {
 
 /* 인용구 (책 본문에서 가져온 문장) */
 .review-body .book-quote {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     color: #888;
     font-style: normal;
     border-left: none;
@@ -3261,7 +2985,6 @@ body, html {
 
 /* 서평 제목 (review_title) 라벨 */
 .review-title-label {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 1rem;
     color: #8f7d60;
@@ -3293,9 +3016,6 @@ body, html {
 
 /* 서평 반응형 */
 @media (max-width: 768px) {
-    .review-container {
-        padding: 2vh 1.5rem 2rem;
-    }
     .review-hero {
         flex-direction: column;
         align-items: center;
@@ -3351,7 +3071,6 @@ body, html {
 }
 
 .auth-divider-text {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 400;
     font-size: 0.72rem;
     color: #999;
@@ -3378,7 +3097,7 @@ body, html {
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+
     font-weight: 400;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
@@ -3432,7 +3151,6 @@ body, html {
 
 /* -- 테마 토글 버튼 -- */
 .theme-toggle-btn {
-    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
     font-weight: 700;
     font-size: 0.7rem;
     background: #ddd;
@@ -3494,10 +3212,7 @@ body, html,
     color: #7a7060;
 }
 
-.light-mode .menu-list li:hover a {
-    color: #2a2520;
-}
-
+.light-mode .menu-list li:hover a,
 .light-mode .menu-list li.active a {
     color: #2a2520;
 }
@@ -3586,35 +3301,42 @@ body, html,
     );
 }
 
-/* -- Blog 새 글 작성 버튼 -- */
-.light-mode .blog-write-btn {
-    color: #fff;
-    background: #8f7d60;
-}
-
-.light-mode .blog-write-btn:hover {
-    color: #fff;
-    background: #6b5a3e;
-}
-
-/* -- Blog 에디터 버튼 (re-btn) -- */
-.light-mode .re-btn-save {
-    color: #fff;
-    background: #8f7d60;
-}
-
-.light-mode .re-btn-save:hover {
-    color: #fff;
-    background: #6b5a3e;
-}
-
-.light-mode .re-btn-cancel {
+/* -- 라이트 모드 공통 primary 버튼 -- */
+.light-mode .blog-write-btn,
+.light-mode .re-btn-save,
+.light-mode .re-btn-cancel,
+.light-mode .memo-submit,
+.light-mode .diary-save-btn,
+.light-mode .diary-cancel-btn,
+.light-mode .diary-edit-btn,
+.light-mode .auth-submit,
+.light-mode .auth-login-btn,
+.light-mode .auth-logout-btn,
+.light-mode .editor-btn-save,
+.light-mode .editor-btn-preview,
+.light-mode .editor-btn-close,
+.light-mode .editor-btn-copy,
+.light-mode .upload-category-btn {
     color: #fff;
     background: #8f7d60;
     border-color: #8f7d60;
 }
 
-.light-mode .re-btn-cancel:hover {
+.light-mode .blog-write-btn:hover,
+.light-mode .re-btn-save:hover,
+.light-mode .re-btn-cancel:hover,
+.light-mode .memo-submit:hover,
+.light-mode .diary-save-btn:hover,
+.light-mode .diary-cancel-btn:hover,
+.light-mode .diary-edit-btn:hover,
+.light-mode .auth-submit:hover,
+.light-mode .auth-login-btn:hover,
+.light-mode .auth-logout-btn:hover,
+.light-mode .editor-btn-save:hover,
+.light-mode .editor-btn-preview:hover,
+.light-mode .editor-btn-close:hover,
+.light-mode .editor-btn-copy:hover,
+.light-mode .upload-category-btn.active {
     color: #fff;
     background: #6b5a3e;
     border-color: #6b5a3e;
@@ -3746,10 +3468,15 @@ body, html,
     color: #666;
 }
 
-/* -- Editor -- */
+/* -- 라이트 모드 공통 입력 필드 -- */
 .light-mode .editor-input,
 .light-mode .editor-select,
-.light-mode .editor-textarea {
+.light-mode .editor-textarea,
+.light-mode .diary-date-input,
+.light-mode .diary-text-input,
+.light-mode .memo-text-input,
+.light-mode .auth-input,
+.light-mode .upload-input {
     background: #faf7f0;
     border-color: #d8d0c0;
     color: #3a3530;
@@ -3757,47 +3484,26 @@ body, html,
 
 .light-mode .editor-input:focus,
 .light-mode .editor-select:focus,
-.light-mode .editor-textarea:focus {
+.light-mode .editor-textarea:focus,
+.light-mode .diary-date-input:focus,
+.light-mode .diary-text-input:focus,
+.light-mode .memo-text-input:focus,
+.light-mode .auth-input:focus,
+.light-mode .upload-input:focus {
     border-color: #8f7d60;
+}
+
+.light-mode .memo-name-input {
+    border-bottom-color: #d8d0c0;
+    color: #3a3530;
+}
+
+.light-mode .memo-name-input:focus {
+    border-bottom-color: #8f7d60;
 }
 
 .light-mode .editor-label {
     color: #888;
-}
-
-.light-mode .editor-btn-save {
-    color: #fff;
-    background: #8f7d60;
-}
-
-.light-mode .editor-btn-save:hover {
-    background: #6b5a3e;
-}
-
-.light-mode .editor-btn-preview {
-    color: #fff;
-    background: #8f7d60;
-    border-color: #8f7d60;
-}
-
-.light-mode .editor-btn-preview:hover {
-    color: #fff;
-    background: #6b5a3e;
-    border-color: #6b5a3e;
-}
-
-.light-mode .editor-btn-close,
-.light-mode .editor-btn-copy {
-    color: #fff;
-    background: #8f7d60;
-    border-color: #8f7d60;
-}
-
-.light-mode .editor-btn-close:hover,
-.light-mode .editor-btn-copy:hover {
-    color: #fff;
-    background: #6b5a3e;
-    border-color: #6b5a3e;
 }
 
 .light-mode .editor-output-title {
@@ -3850,25 +3556,6 @@ body, html,
 }
 
 /* -- Board (메모 게시판) -- */
-.light-mode .memo-name-input {
-    border-bottom-color: #d8d0c0;
-    color: #3a3530;
-}
-
-.light-mode .memo-name-input:focus {
-    border-bottom-color: #8f7d60;
-}
-
-.light-mode .memo-text-input {
-    background: #faf7f0;
-    border-color: #d8d0c0;
-    color: #3a3530;
-}
-
-.light-mode .memo-text-input:focus {
-    border-color: #8f7d60;
-}
-
 .light-mode .memo-text-input::placeholder,
 .light-mode .memo-name-input::placeholder {
     color: #bbb;
@@ -3876,15 +3563,6 @@ body, html,
 
 .light-mode .memo-char-count {
     color: #bbb;
-}
-
-.light-mode .memo-submit {
-    color: #fff;
-    background: #8f7d60;
-}
-
-.light-mode .memo-submit:hover {
-    background: #6b5a3e;
 }
 
 .light-mode .memo-card {
@@ -3916,49 +3594,8 @@ body, html,
 }
 
 /* -- Diary -- */
-.light-mode .diary-date-input {
-    background: #faf7f0;
-    border-color: #d8d0c0;
-    color: #3a3530;
-}
-
-.light-mode .diary-date-input:focus {
-    border-color: #8f7d60;
-}
-
-.light-mode .diary-text-input {
-    background: #faf7f0;
-    border-color: #d8d0c0;
-    color: #3a3530;
-}
-
-.light-mode .diary-text-input:focus {
-    border-color: #8f7d60;
-}
-
 .light-mode .diary-text-input::placeholder {
     color: #bbb;
-}
-
-.light-mode .diary-save-btn {
-    color: #fff;
-    background: #8f7d60;
-}
-
-.light-mode .diary-save-btn:hover {
-    background: #6b5a3e;
-}
-
-.light-mode .diary-cancel-btn {
-    color: #fff;
-    background: #8f7d60;
-    border-color: #8f7d60;
-}
-
-.light-mode .diary-cancel-btn:hover {
-    color: #fff;
-    background: #6b5a3e;
-    border-color: #6b5a3e;
 }
 
 .light-mode .diary-entry {
@@ -3971,15 +3608,6 @@ body, html,
 
 .light-mode .diary-entry-body {
     color: #555;
-}
-
-.light-mode .diary-edit-btn {
-    color: #fff;
-    background: #8f7d60;
-}
-
-.light-mode .diary-edit-btn:hover {
-    background: #6b5a3e;
 }
 
 .light-mode .diary-delete-btn {
@@ -4096,27 +3724,8 @@ body, html,
     color: #6b5a3e;
 }
 
-.light-mode .auth-input {
-    background: #f5f0e8;
-    border-color: #d8d0c0;
-    color: #3a3530;
-}
-
-.light-mode .auth-input:focus {
-    border-color: #8f7d60;
-}
-
 .light-mode .auth-label {
     color: #888;
-}
-
-.light-mode .auth-submit {
-    background: #8f7d60;
-    color: #fff;
-}
-
-.light-mode .auth-submit:hover {
-    background: #6b5a3e;
 }
 
 .light-mode .auth-social-divider span {
@@ -4143,30 +3752,6 @@ body, html,
     color: #8f7d60;
 }
 
-.light-mode .auth-login-btn {
-    color: #fff;
-    background: #8f7d60;
-    border-color: #8f7d60;
-}
-
-.light-mode .auth-login-btn:hover {
-    color: #fff;
-    background: #6b5a3e;
-    border-color: #6b5a3e;
-}
-
-.light-mode .auth-logout-btn {
-    color: #fff;
-    background: #8f7d60;
-    border-color: #8f7d60;
-}
-
-.light-mode .auth-logout-btn:hover {
-    color: #fff;
-    background: #6b5a3e;
-    border-color: #6b5a3e;
-}
-
 /* -- Upload 모달 -- */
 .light-mode .upload-backdrop {
     background: rgba(0, 0, 0, 0.4);
@@ -4183,28 +3768,6 @@ body, html,
 
 .light-mode .upload-label {
     color: #888;
-}
-
-.light-mode .upload-input {
-    background: #f5f0e8;
-    border-color: #d8d0c0;
-    color: #3a3530;
-}
-
-.light-mode .upload-input:focus {
-    border-color: #8f7d60;
-}
-
-.light-mode .upload-category-btn {
-    border-color: #8f7d60;
-    color: #fff;
-    background: #8f7d60;
-}
-
-.light-mode .upload-category-btn.active {
-    border-color: #6b5a3e;
-    color: #fff;
-    background: #6b5a3e;
 }
 
 .light-mode .upload-dropzone {
