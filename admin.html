@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diary - 생각을 잇다</title>
+    <title>회원관리 - 생각을 잇다</title>
     <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -21,34 +21,31 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="board.html">Board</a></li>
-        <li class="diary-menu active" style="display:none"><a href="diary.html">Diary</a></li>
-        <li class="admin-menu" style="display:none"><a href="admin.html">관리</a></li>
+        <li class="diary-menu" style="display:none"><a href="diary.html">Diary</a></li>
+        <li class="admin-menu active" style="display:none"><a href="admin.html">관리</a></li>
     </ul>
     <div class="auth-area" id="auth-area"></div>
 </nav>
 
-<!-- Diary 콘텐츠 영역 -->
-<div class="diary-container">
+<!-- 회원관리 콘텐츠 영역 -->
+<div class="admin-container">
 
     <!-- 테마 문구 -->
-    <div class="diary-theme">
-        <p class="diary-theme-text">하루를 기록하다</p>
+    <div class="admin-header">
+        <h1 class="admin-title">회원 관리</h1>
+        <p class="admin-subtitle">가입 승인 및 회원 현황</p>
     </div>
 
-    <!-- 글쓰기 영역 -->
-    <div class="diary-write" id="diary-write">
-        <div class="diary-write-top">
-            <input type="date" class="diary-date-input" id="diary-date">
-            <div class="diary-write-actions">
-                <button class="diary-cancel-btn" id="diary-cancel" style="display:none">취소</button>
-                <button class="diary-save-btn" id="diary-save">기록하기</button>
-            </div>
-        </div>
-        <textarea class="diary-text-input" id="diary-text" placeholder="오늘 하루, 어떤 생각을 했나요..."></textarea>
+    <!-- 필터 탭 -->
+    <div class="admin-tabs">
+        <button class="admin-tab active" data-filter="all">전체</button>
+        <button class="admin-tab" data-filter="pending">대기 <span class="admin-tab-count" id="count-pending">0</span></button>
+        <button class="admin-tab" data-filter="approved">승인</button>
+        <button class="admin-tab" data-filter="rejected">거절</button>
     </div>
 
-    <!-- 일기 목록 -->
-    <div class="diary-list" id="diary-list">
+    <!-- 회원 목록 -->
+    <div class="admin-list" id="admin-list">
         <!-- JS로 렌더링 -->
     </div>
 
@@ -56,7 +53,7 @@
 
 <script src="supabase-config.js"></script>
 <script src="auth.js"></script>
-<script src="diary.js"></script>
+<script src="admin.js"></script>
 
 </body>
 </html>

@@ -1,8 +1,9 @@
 // 공개 페이지 목록 (인증 불필요)
 const PUBLIC_PAGES = ['index.html', 'login.html', ''];
 
-// 관리자 이메일 (Diary 메뉴 접근 권한)
+// 관리자 이메일 (Diary, 회원관리 접근 권한)
 const ADMIN_EMAIL = 'blue6074@gmail.com';
+const ADMIN_PAGES = ['diary.html', 'admin.html'];
 
 // 인증 상태 관리
 document.addEventListener('DOMContentLoaded', async () => {
@@ -35,8 +36,7 @@ async function requireAuth() {
             window.location.href = 'login.html';
             return;
         }
-        // Diary 페이지는 관리자만 접근 가능
-        if (page === 'diary.html' && user.email !== ADMIN_EMAIL) {
+        if (ADMIN_PAGES.includes(page) && user.email !== ADMIN_EMAIL) {
             window.location.href = 'index.html';
         }
     } catch (e) {
@@ -107,30 +107,54 @@ async function updateAuthUI() {
                 <button class="auth-btn auth-logout-btn" onclick="signOut()">로그아웃</button>
                 ${getThemeToggleHTML()}
             `;
-            updateDiaryMenu(user);
+            updateAdminMenus(user);
+            ensureMemberRow(user);
         } else {
             authArea.innerHTML = `
                 <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
                 ${getThemeToggleHTML()}
             `;
-            updateDiaryMenu(null);
+            updateAdminMenus(null);
         }
     } catch (e) {
         authArea.innerHTML = `
             <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
             ${getThemeToggleHTML()}
         `;
-        updateDiaryMenu(null);
+        updateAdminMenus(null);
     }
 }
 
-// 관리자인 경우에만 Diary 메뉴 표시
-function updateDiaryMenu(user) {
-    const diaryMenus = document.querySelectorAll('.diary-menu');
+// 관리자 전용 메뉴 표시 (Diary, 관리)
+function updateAdminMenus(user) {
     const isAdmin = user && user.email === ADMIN_EMAIL;
-    diaryMenus.forEach(el => {
+    document.querySelectorAll('.diary-menu, .admin-menu').forEach(el => {
         el.style.display = isAdmin ? '' : 'none';
     });
+}
+
+// 로그인 시 members 테이블에 자동 등록 (없으면 생성)
+async function ensureMemberRow(user) {
+    if (!user) return;
+    try {
+        const { data } = await _supabase
+            .from('members')
+            .select('id')
+            .eq('user_id', user.id)
+            .maybeSingle();
+
+        if (!data) {
+            const isAdmin = user.email === ADMIN_EMAIL;
+            await _supabase.from('members').insert({
+                user_id: user.id,
+                email: user.email,
+                nickname: user.user_metadata?.nickname || user.email?.split('@')[0] || '익명',
+                status: isAdmin ? 'approved' : 'pending'
+            });
+        }
+    } catch (e) {
+        console.error('회원 등록 확인 실패:', e);
+    }
 }
 
 // 다크/라이트 테마 토글

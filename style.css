@@ -2174,6 +2174,202 @@ body, html {
     text-align: right;
 }
 
+/* ── 관리 페이지 (회원관리) ── */
+.admin-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 6vh 2rem 4rem;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.admin-title {
+    font-family: 'GyeonggiBatang', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #c4a87a;
+    margin: 0 0 0.4rem;
+}
+
+.admin-subtitle {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    margin: 0;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 1.5rem;
+}
+
+.admin-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 0.7rem 0;
+    font-family: 'GyeonggiBatang', serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    position: relative;
+}
+
+.admin-tab:hover {
+    color: rgba(255,255,255,0.6);
+}
+
+.admin-tab.active {
+    color: #c4a87a;
+    border-bottom-color: #c4a87a;
+}
+
+.admin-tab-count {
+    display: inline-block;
+    background: #c0392b;
+    color: #fff;
+    font-size: 0.65rem;
+    min-width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0 4px;
+    margin-left: 4px;
+    font-family: sans-serif;
+}
+
+.admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.admin-member-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+}
+
+.admin-member-card:hover {
+    background: rgba(255,255,255,0.02);
+}
+
+.admin-member-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-member-top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.25rem;
+}
+
+.admin-member-nickname {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+}
+
+.admin-member-status {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.admin-status-pending {
+    background: rgba(241, 196, 15, 0.15);
+    color: #f1c40f;
+}
+
+.admin-status-approved {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+}
+
+.admin-status-rejected {
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+}
+
+.admin-member-email {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.15rem;
+}
+
+.admin-member-date {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+}
+
+.admin-member-actions {
+    display: flex;
+    gap: 0.4rem;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.admin-btn {
+    font-family: 'GyeonggiBatang', serif;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.9rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+}
+
+.admin-btn-approve {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+}
+
+.admin-btn-approve:hover {
+    background: #2ecc71;
+    color: #fff;
+}
+
+.admin-btn-reject {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+.admin-btn-reject:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.admin-btn-delete {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.3);
+}
+
+.admin-btn-delete:hover {
+    background: rgba(231, 76, 60, 0.8);
+    color: #fff;
+}
+
+.admin-empty {
+    text-align: center;
+    padding: 3rem 0;
+    color: rgba(255,255,255,0.25);
+    font-size: 0.9rem;
+}
+
 /* ── Diary 페이지 (개인 일기) ── */
 .diary-container {
     width: 100%;
@@ -3390,6 +3586,52 @@ body, html,
     );
 }
 
+/* -- Blog 새 글 작성 버튼 -- */
+.light-mode .blog-write-btn {
+    color: #fff;
+    background: #8f7d60;
+}
+
+.light-mode .blog-write-btn:hover {
+    color: #fff;
+    background: #6b5a3e;
+}
+
+/* -- Blog 에디터 버튼 (re-btn) -- */
+.light-mode .re-btn-save {
+    color: #fff;
+    background: #8f7d60;
+}
+
+.light-mode .re-btn-save:hover {
+    color: #fff;
+    background: #6b5a3e;
+}
+
+.light-mode .re-btn-cancel {
+    color: #fff;
+    background: #8f7d60;
+    border-color: #8f7d60;
+}
+
+.light-mode .re-btn-cancel:hover {
+    color: #fff;
+    background: #6b5a3e;
+    border-color: #6b5a3e;
+}
+
+.light-mode .re-btn-delete {
+    color: #fff;
+    background: #c0392b;
+    border-color: #c0392b;
+}
+
+.light-mode .re-btn-delete:hover {
+    color: #fff;
+    background: #a93226;
+    border-color: #a93226;
+}
+
 /* -- Blog 카드 -- */
 .light-mode .blog-card {
     background: #faf7f0;
@@ -3533,27 +3775,29 @@ body, html,
 }
 
 .light-mode .editor-btn-preview {
-    color: #8f7d60;
-    border-color: #8f7d60;
-}
-
-.light-mode .editor-btn-preview:hover {
     color: #fff;
     background: #8f7d60;
     border-color: #8f7d60;
 }
 
+.light-mode .editor-btn-preview:hover {
+    color: #fff;
+    background: #6b5a3e;
+    border-color: #6b5a3e;
+}
+
 .light-mode .editor-btn-close,
 .light-mode .editor-btn-copy {
-    color: #8f7d60;
+    color: #fff;
+    background: #8f7d60;
     border-color: #8f7d60;
 }
 
 .light-mode .editor-btn-close:hover,
 .light-mode .editor-btn-copy:hover {
     color: #fff;
-    background: #8f7d60;
-    border-color: #8f7d60;
+    background: #6b5a3e;
+    border-color: #6b5a3e;
 }
 
 .light-mode .editor-output-title {
@@ -3706,13 +3950,15 @@ body, html,
 }
 
 .light-mode .diary-cancel-btn {
-    color: #888;
-    border-color: #d0c8b8;
+    color: #fff;
+    background: #8f7d60;
+    border-color: #8f7d60;
 }
 
 .light-mode .diary-cancel-btn:hover {
-    color: #333;
-    border-color: #999;
+    color: #fff;
+    background: #6b5a3e;
+    border-color: #6b5a3e;
 }
 
 .light-mode .diary-entry {
@@ -3752,6 +3998,86 @@ body, html,
 }
 
 .light-mode .diary-empty {
+    color: #bbb;
+}
+
+/* -- 관리 페이지 (회원관리) -- */
+.light-mode .admin-title {
+    color: #6b5a3e;
+}
+
+.light-mode .admin-subtitle {
+    color: #999;
+}
+
+.light-mode .admin-tabs {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .admin-tab {
+    color: #aaa;
+}
+
+.light-mode .admin-tab:hover {
+    color: #666;
+}
+
+.light-mode .admin-tab.active {
+    color: #6b5a3e;
+    border-bottom-color: #8f7d60;
+}
+
+.light-mode .admin-member-card {
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.light-mode .admin-member-card:hover {
+    background: rgba(143, 125, 96, 0.04);
+}
+
+.light-mode .admin-member-nickname {
+    color: #3a3530;
+}
+
+.light-mode .admin-member-email {
+    color: #888;
+}
+
+.light-mode .admin-member-date {
+    color: #bbb;
+}
+
+.light-mode .admin-btn-approve {
+    background: rgba(46, 204, 113, 0.1);
+    color: #27ae60;
+}
+
+.light-mode .admin-btn-approve:hover {
+    background: #27ae60;
+    color: #fff;
+}
+
+.light-mode .admin-btn-reject {
+    background: rgba(231, 76, 60, 0.08);
+    color: #c0392b;
+}
+
+.light-mode .admin-btn-reject:hover {
+    background: #c0392b;
+    color: #fff;
+}
+
+.light-mode .admin-btn-delete {
+    background: rgba(0, 0, 0, 0.04);
+    color: #bbb;
+}
+
+.light-mode .admin-btn-delete:hover {
+    background: #c0392b;
+    color: #fff;
+}
+
+.light-mode .admin-empty {
     color: #bbb;
 }
 
@@ -3830,14 +4156,15 @@ body, html,
 }
 
 .light-mode .auth-logout-btn {
-    color: #8f7d60;
+    color: #fff;
+    background: #8f7d60;
     border-color: #8f7d60;
 }
 
 .light-mode .auth-logout-btn:hover {
     color: #fff;
-    background: #8f7d60;
-    border-color: #8f7d60;
+    background: #6b5a3e;
+    border-color: #6b5a3e;
 }
 
 /* -- Upload 모달 -- */
@@ -3869,14 +4196,15 @@ body, html,
 }
 
 .light-mode .upload-category-btn {
-    border-color: #d0c8b8;
-    color: #888;
+    border-color: #8f7d60;
+    color: #fff;
+    background: #8f7d60;
 }
 
 .light-mode .upload-category-btn.active {
-    border-color: #8f7d60;
-    color: #6b5a3e;
-    background: rgba(143, 125, 96, 0.08);
+    border-color: #6b5a3e;
+    color: #fff;
+    background: #6b5a3e;
 }
 
 .light-mode .upload-dropzone {
