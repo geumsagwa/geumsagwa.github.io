@@ -54,7 +54,7 @@ body, html,
 /* -- 슬라이드 (Home) -- */
 .light-mode .slide::before {
     background: radial-gradient(
-        ellipse 60% 60% at 75% 50%,
+        ellipse 48% 85.536% at 75% 40%,
         transparent 42%,
         rgba(245,240,232,0.4) 50%,
         rgba(245,240,232,0.8) 58%,
