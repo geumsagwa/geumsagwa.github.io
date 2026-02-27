@@ -34,7 +34,7 @@
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: radial-gradient(
-        ellipse 48% 85.536% at 75% 50%,   /* 세로 축 -10% */
+        ellipse 60% 60% at 75% 50%,   /* 그라디언트도 오른쪽에 맞춤 */
         transparent 42%,           /* 중심부 유지 */
         rgba(0,0,0,0.4) 50%,       /* 중간: 더 일찍 어두워짐 (54→50%) */
         rgba(0,0,0,0.8) 58%,       /* 가장자리: 더 빠르게 진해짐 (66→58%) */
