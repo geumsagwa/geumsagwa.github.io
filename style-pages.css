@@ -1,0 +1,2868 @@
+/* ══════════════════════════════════════════
+   PAGE-SPECIFIC STYLES
+   ══════════════════════════════════════════ */
+
+/* ── 슬라이드 컨테이너: 메뉴바 아래 나머지 공간 ── */
+.slide-container {
+    position: relative;
+    width: 100%;
+    height: 84vh;              /* 100vh - 16vh(메뉴바) */
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 66%;      /* 배경 이미지를 2/3 크기로 축소 표시 */
+    background-position: right center;  /* 이미지를 오른쪽에 완전히 붙임 */
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* 텍스트 위치 조정 */
+    padding: 28vh 2rem 2rem 12rem;
+    z-index: 1;
+}
+
+/* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(
+        ellipse 60% 60% at 75% 50%,   /* 그라디언트도 오른쪽에 맞춤 */
+        transparent 42%,           /* 중심부 유지 */
+        rgba(0,0,0,0.4) 50%,       /* 중간: 더 일찍 어두워짐 (54→50%) */
+        rgba(0,0,0,0.8) 58%,       /* 가장자리: 더 빠르게 진해짐 (66→58%) */
+        rgba(0,0,0,1) 68%          /* 바깥: 완전 검정 (80→68%) */
+    );
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 텍스트 가독성용 왼쪽 그라디언트 */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* 1,2,3번 공통: 텍스트 그라디언트 위에 표시, 왼쪽 정렬 */
+.slide .text-overlay {
+    position: relative;
+    z-index: 5;                /* ::before(2), ::after(3)보다 위에 표시 */
+    text-align: left;
+}
+
+/* 1번: 메인 테마 (h1) - 경기천년바탕_Bold, font-size·font-weight로 구별 */
+.slide h1.text-overlay {
+    font-weight: 600;
+    font-size: 2.16rem;
+    color: white;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+    margin: 0;
+}
+
+/* 2,3번: 내용 (p) - h4 크기, 가독성 효과 */
+.slide p.text-overlay {
+    font-weight: 350;
+    font-size: 1.36rem;
+    line-height: 1.6;
+    color: #fff;
+    margin: 0;
+    letter-spacing: 0.02em;
+    text-shadow:
+        0 0 2px rgba(0,0,0,1),
+        0 0 8px rgba(0,0,0,0.9),
+        0 1px 3px rgba(0,0,0,0.8),
+        0 2px 6px rgba(0,0,0,0.6),
+        1px 1px 4px rgba(0,0,0,0.7);
+}
+/* 2번: 두 줄 표시, 한 줄 밑에 배치 → 차례대로 읽어나가는 느낌 */
+.slide-container .slide:nth-child(2) .text-overlay {
+    margin-top: 2.2em;
+    white-space: pre-line;
+}
+/* 3번: 한 줄 더 밑에 배치 */
+.slide-container .slide:nth-child(3) .text-overlay {
+    margin-top: 4.4em;
+}
+
+/* 이 프로젝트 공통: 제목=바탕 Bold+큰 크기, 내용=바탕 Regular+작은 크기 (font-size·font-weight로 구별) */
+.font-title { font-family: 'GyeonggiBatang', sans-serif; font-weight: 700; font-size: 3rem; }
+.font-body { font-family: 'GyeonggiBatang', sans-serif; font-weight: 400; font-size: 1.5rem; }
+
+/* 1번 슬라이드만: 사진 먼저 보인 뒤 타이핑 시작 */
+.slide-container .slide:first-child.active .text-overlay {
+    animation-delay: 1s;
+}
+
+/* 타이핑 효과 공통 (h1, p 공통) */
+.text-overlay {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid transparent;
+    width: 0;
+    max-width: fit-content;
+}
+
+/* 활성화된 슬라이드의 타이핑 애니메이션 (1번은 delay 1s 적용) */
+.active .text-overlay {
+    animation:
+        typing 3s steps(30, end) forwards,
+        blink-caret .75s step-end infinite;
+    animation-delay: 0.5s; /* 페이드 인 후 시작되도록 지연 */
+}
+
+/* 타이핑 애니메이션 */
+
+/* ── 카테고리 탭 (도서관 분류표 스타일) ── */
+.library-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 5vh;
+}
+
+.library-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: 1px solid rgba(100, 80, 50, 0.2);
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    padding: 0.7rem 2rem 0.6rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.tab-label-code {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #8f7d60;
+    letter-spacing: 0.05em;
+    transition: color 0.4s ease;
+}
+
+.tab-label-name {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #8f7d60;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.4s ease;
+}
+
+/* 탭 하단 선반 가장자리 */
+.library-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: transparent;
+    transition: background 0.4s ease;
+}
+
+/* 활성 탭 */
+.library-tab.active {
+    border-color: #3a3020;
+    background: rgba(60, 45, 25, 0.15);
+    border-radius: 4px 4px 0 0;
+}
+
+.library-tab.active .tab-label-code {
+    color: #dabb7e;
+}
+
+.library-tab.active .tab-label-name {
+    color: #c4a070;
+}
+
+.library-tab.active::after {
+    background: #c8a96e;
+}
+
+/* 탭 hover 효과 */
+.library-tabs:hover .library-tab {
+    filter: blur(1.5px);
+    transform: scale(0.92);
+    opacity: 0.5;
+}
+
+.library-tabs:hover .library-tab:hover {
+    filter: blur(0);
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.library-tabs:hover .library-tab:hover .tab-label-code {
+    color: #dabb7e;
+}
+
+.library-tabs:hover .library-tab:hover .tab-label-name {
+    color: #c4a070;
+}
+
+/* ── 카테고리 콘텐츠 패널 ── */
+.library-content {
+    width: 100%;
+    max-width: 900px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.library-panel {
+    display: none;
+}
+
+.library-panel.active {
+    display: block;
+}
+
+/* ── 책장 (Bookshelf) ── */
+.bookshelf {
+    width: 100%;
+}
+
+.shelf-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    padding: 0 2rem;
+    position: relative;
+    min-height: 270px;
+}
+
+/* 선반 표면 */
+.shelf-surface {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(to bottom,
+        #5a4530 0%,
+        #3e2e1e 40%,
+        #2a1f14 100%
+    );
+    border-radius: 0 0 2px 2px;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.6),
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 200, 100, 0.08);
+}
+
+/* 선반 아래 그림자 */
+.shelf-surface::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 5%;
+    right: 5%;
+    height: 12px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, transparent 70%);
+}
+
+/* ── 책등 (Book Spine) ── */
+.book-spine {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
+    align-items: center;
+    width: var(--spine-width, 54px);
+    height: var(--spine-height, 220px);
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.35) 0%,
+        var(--spine-color, #5B3A29) 10%,
+        color-mix(in srgb, var(--spine-color, #5B3A29), #fff 8%) 48%,
+        color-mix(in srgb, var(--spine-color, #5B3A29), #fff 14%) 50%,
+        color-mix(in srgb, var(--spine-color, #5B3A29), #fff 8%) 52%,
+        var(--spine-color, #5B3A29) 90%,
+        rgba(0,0,0,0.25) 100%
+    );
+    border-radius: 2px 3px 3px 2px;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 8px; /* 선반 위에 얹힘 */
+    padding: 20px 0 16px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, margin 0.3s ease;
+    box-shadow:
+        2px 2px 6px rgba(0,0,0,0.5),
+        -1px 0 3px rgba(0,0,0,0.3),
+        inset 1px 0 0 rgba(255,255,255,0.05);
+}
+
+/* 책등 상단 장식선 */
+.book-spine::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 18%;
+    right: 18%;
+    height: 1px;
+    background: rgba(255, 200, 100, 0.2);
+}
+
+/* 책등 하단 장식선 */
+.book-spine::after {
+    content: '';
+    position: absolute;
+    bottom: 14px;
+    left: 18%;
+    right: 18%;
+    height: 1px;
+    background: rgba(255, 200, 100, 0.2);
+}
+
+/* 책등 제목 (세로 쓰기, grid 정중앙) */
+.spine-title {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: rgba(255, 220, 160, 0.85);
+    letter-spacing: 0.18em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color 0.4s ease;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+}
+
+/* 책등 저자 (세로 쓰기, 하단 중앙) */
+.spine-author {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+
+    font-weight: 400;
+    font-size: 0.5rem;
+    color: rgba(255, 200, 140, 0.4);
+    letter-spacing: 0.1em;
+    transition: color 0.4s ease;
+    text-align: center;
+    justify-self: center;
+    align-self: end;
+}
+
+/* 책등 hover: 살짝 위로 빠져나오는 효과 */
+.book-spine:hover {
+    transform: translateY(-12px);
+    box-shadow:
+        2px 6px 16px rgba(0,0,0,0.6),
+        -1px 0 3px rgba(0,0,0,0.3),
+        inset 1px 0 0 rgba(255,255,255,0.08);
+}
+
+.book-spine:hover .spine-title {
+    color: rgba(255, 230, 180, 1);
+}
+
+.book-spine:hover .spine-author {
+    color: rgba(255, 210, 150, 0.65);
+}
+
+/* 책장 전체 hover: 다른 책은 어둡게, 호버된 책만 밝게 */
+.shelf-row:hover .book-spine {
+    filter: brightness(0.5);
+}
+
+.shelf-row:hover .book-spine:hover {
+    filter: brightness(1.15);
+}
+
+/* 현재 페이지 메뉴 강조 */
+.menu-list li.active a {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* ── Blog 페이지 ── */
+.blog-theme-text {
+    animation: typing 2.5s steps(18, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s infinite;
+}
+
+/* ── Blog 탭 (카페 메뉴 스타일) ── */
+.blog-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4vh;
+}
+
+.blog-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 1px solid rgba(100, 80, 50, 0.2);
+    border-radius: 24px;
+    padding: 0.5rem 1.8rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.cafe-tab-icon {
+    font-size: 1rem;
+    opacity: 0.4;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.blog-tab.active .cafe-tab-icon {
+    opacity: 0.7;
+    transform: scale(1.1);
+}
+
+.blog-tabs:hover .blog-tab:hover .cafe-tab-icon {
+    opacity: 0.7;
+}
+
+.cafe-tab-name {
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #8f7d60;
+    letter-spacing: 0.08em;
+    transition: color 0.4s ease;
+}
+
+/* 활성 탭 */
+.blog-tab.active {
+    border-color: rgba(180, 130, 70, 0.4);
+    background: rgba(180, 130, 70, 0.08);
+}
+
+.blog-tab.active .cafe-tab-name {
+    color: #dabb7e;
+    font-weight: 700;
+}
+
+/* 탭 hover */
+.blog-tabs:hover .blog-tab {
+    opacity: 0.4;
+    transform: scale(0.95);
+}
+
+.blog-tabs:hover .blog-tab:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    border-color: rgba(180, 130, 70, 0.3);
+}
+
+.blog-tabs:hover .blog-tab:hover .cafe-tab-name {
+    color: #dabb7e;
+}
+
+/* ── Blog 콘텐츠 ── */
+.blog-content {
+    width: 100%;
+    max-width: 960px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.blog-panel {
+    display: none;
+}
+
+.blog-panel.active {
+    display: block;
+}
+
+/* ── 블로그 새 글 작성 버튼 ── */
+.blog-write-area {
+    text-align: right;
+    margin-bottom: 0.8rem;
+}
+.blog-write-btn {
+    font-size: 0.78rem;
+    color: #000;
+    background: #8f7d60;
+    padding: 0.4rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s ease;
+}
+.blog-write-btn:hover { background: #dabb7e; }
+
+.grid-message {
+    color: #555;
+
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 3rem 0;
+    grid-column: 1 / -1;
+}
+
+/* ── 사진 카드 그리드 ── */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+    padding: 0.5rem 0;
+}
+
+/* 사진 카드 */
+.photo-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    aspect-ratio: 3 / 4;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* 카드 배경 이미지 */
+.photo-card-img {
+    position: absolute;
+    inset: 0;
+    background-color: #1a1410;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+/* 카페 따뜻한 톤 오버레이 */
+.photo-card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(30, 20, 10, 0.15) 0%,
+        rgba(30, 20, 10, 0.05) 50%,
+        rgba(30, 20, 10, 0.3) 100%
+    );
+    mix-blend-mode: multiply;
+}
+
+/* 카드 hover 시 이미지 살짝 확대 */
+.photo-card:hover .photo-card-img {
+    transform: scale(1.05);
+}
+
+/* 카드 하단 텍스트 오버레이 */
+.photo-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.5rem 1.2rem 1.2rem;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.4) 60%,
+        transparent 100%
+    );
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.photo-card-date {
+    font-weight: 400;
+    font-size: 0.65rem;
+    color: rgba(200, 169, 110, 0.6);
+    letter-spacing: 0.1em;
+}
+
+.photo-card-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #ddd;
+    margin: 0;
+    line-height: 1.4;
+    transition: color 0.4s ease;
+}
+
+.photo-card-excerpt {
+    font-weight: 400;
+    font-size: 0.72rem;
+    color: #777;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.4s ease;
+}
+
+/* 카드 hover */
+.photo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.photo-card:hover .photo-card-title {
+    color: #fff;
+}
+
+.photo-card:hover .photo-card-excerpt {
+    color: #aaa;
+}
+
+/* 카드 그리드 hover: 나머지 어둡게 */
+.photo-grid:hover .photo-card {
+    filter: brightness(0.5);
+}
+
+.photo-grid:hover .photo-card:hover {
+    filter: brightness(1.1);
+}
+
+/* 카드 상단 구석 장식 (카페 스탬프 느낌) */
+.photo-card::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(200, 169, 110, 0.15);
+    border-radius: 50%;
+    z-index: 3;
+    transition: border-color 0.4s ease;
+}
+
+.photo-card:hover::before {
+    border-color: rgba(200, 169, 110, 0.4);
+}
+
+.post-empty {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+/* ── 글 보기 페이지 ── */
+/* ── 공통 상세/편집 컨테이너 ── */
+.post-container,
+.editor-container,
+.review-container {
+    width: 100%;
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3vh 3rem 2rem;
+    overflow-y: auto;
+}
+
+/* ── 공통 상세 헤더 ── */
+.post-header,
+.editor-header,
+.review-header {
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3vh;
+}
+
+.post-header { margin-bottom: 4vh; }
+
+.post-back,
+.editor-back,
+.review-back {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.post-back:hover,
+.editor-back:hover,
+.review-back:hover {
+    color: #fff;
+}
+
+.post-category,
+.review-category {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #444;
+    letter-spacing: 0.1em;
+}
+
+.post-article {
+    width: 100%;
+    max-width: 720px;
+}
+
+.post-title {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #ddd;
+    margin-bottom: 0.5rem;
+}
+
+.post-subtitle {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.post-date {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #444;
+    display: block;
+    margin-bottom: 4vh;
+}
+
+.post-body {
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: #aaa;
+    line-height: 2;
+}
+
+.post-body p {
+    margin-bottom: 1.5rem;
+}
+
+.post-body h2 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #ccc;
+    margin: 3rem 0 1.2rem;
+}
+
+.post-body blockquote {
+    border-left: 2px solid #444;
+    padding: 0.8rem 1.5rem;
+    margin: 2rem 0;
+    color: #888;
+    font-style: italic;
+}
+
+.post-body hr {
+    border: none;
+    height: 1px;
+    background: #333;
+    margin: 3rem 0;
+}
+
+.post-body strong {
+    color: #ddd;
+    font-weight: 700;
+}
+
+.post-body em {
+    color: #999;
+}
+
+/* ── 글 작성 에디터 ── */
+
+.editor-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #bbb;
+}
+
+.editor-form {
+    width: 100%;
+    max-width: 720px;
+}
+
+.editor-field {
+    margin-bottom: 2rem;
+}
+
+.editor-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #888;
+    display: block;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.05em;
+}
+
+.editor-optional {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #444;
+}
+
+.editor-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    color: #ccc;
+
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.editor-input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.editor-input[type="date"] {
+    max-width: 200px;
+}
+
+/* 카테고리 선택 버튼 */
+.editor-select-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.editor-select {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #555;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.editor-select.active {
+    color: #fff;
+    border-color: #666;
+    background: #1a1a1a;
+}
+
+/* 본문 에디터 */
+.editor-toolbar {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.toolbar-btn {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #555;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 3px;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toolbar-btn:hover {
+    color: #fff;
+    border-color: #555;
+}
+
+.toolbar-btn.toolbar-italic {
+    font-style: italic;
+}
+
+.editor-textarea {
+    width: 100%;
+    min-height: 40vh;
+    padding: 1.2rem 1rem;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    color: #ccc;
+
+    font-size: 1rem;
+    line-height: 1.8;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.editor-textarea:focus {
+    outline: none;
+    border-color: #555;
+}
+
+/* 버튼 */
+.editor-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.editor-btn {
+    font-weight: 400;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.editor-btn-preview {
+    color: #888;
+    background: none;
+    border: 1px solid #333;
+}
+
+.editor-btn-preview:hover {
+    color: #fff;
+    border-color: #666;
+}
+
+.editor-btn-save {
+    color: #000;
+    background: #bbb;
+    border: none;
+}
+
+.editor-btn-save:hover {
+    background: #fff;
+}
+
+.editor-btn-close,
+.editor-btn-copy {
+    color: #888;
+    background: none;
+    border: 1px solid #333;
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+}
+
+.editor-btn-close:hover,
+.editor-btn-copy:hover {
+    color: #fff;
+    border-color: #666;
+}
+
+/* 미리보기 */
+.editor-preview,
+.editor-output {
+    width: 100%;
+    max-width: 720px;
+    margin-bottom: 3rem;
+}
+
+.editor-preview-header,
+.editor-output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #222;
+}
+
+.editor-preview-title,
+.editor-output-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #888;
+}
+
+.editor-preview-content {
+    font-size: 1.05rem;
+    color: #aaa;
+    line-height: 2;
+}
+
+.editor-preview-content p { margin-bottom: 1.5rem; }
+.editor-preview-content h2 { font-weight: 700; font-size: 1.4rem; color: #ccc; margin: 2rem 0 1rem; }
+.editor-preview-content blockquote { border-left: 2px solid #444; padding: 0.8rem 1.5rem; margin: 1.5rem 0; color: #888; font-style: italic; }
+.editor-preview-content hr { border: none; height: 1px; background: #333; margin: 2rem 0; }
+.editor-preview-content strong { color: #ddd; }
+.editor-preview-content em { color: #999; }
+
+.editor-output-code {
+    width: 100%;
+    min-height: 20vh;
+    padding: 1rem;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 4px;
+    color: #777;
+    font-family: 'Consolas', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.editor-output-guide {
+    font-size: 0.8rem;
+    color: #444;
+    margin-top: 0.8rem;
+}
+
+/* ── Library 업로드 버튼 (우하단 FAB) ── */
+.library-upload-btn {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(200, 169, 110, 0.3);
+    background: rgba(30, 25, 15, 0.9);
+    color: #dabb7e;
+    font-size: 1.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+}
+
+.library-upload-btn:hover {
+    background: rgba(60, 45, 25, 0.95);
+    border-color: #dabb7e;
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(218, 187, 126, 0.15);
+}
+
+/* ── 업로드 모달 ── */
+.upload-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.upload-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.upload-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(6px);
+}
+
+.upload-card {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.upload-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #dabb7e;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.upload-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.upload-label {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #888;
+    letter-spacing: 0.05em;
+}
+
+.upload-input {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #ccc;
+
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.upload-input:focus {
+    outline: none;
+    border-color: #666;
+}
+
+.upload-input::placeholder {
+    color: #555;
+}
+
+/* 카테고리 선택 */
+.upload-category-group {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.upload-category-btn {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #666;
+    background: none;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-category-btn.active {
+    color: #dabb7e;
+    border-color: #dabb7e;
+    background: rgba(218, 187, 126, 0.08);
+}
+
+.upload-category-btn:hover {
+    border-color: #888;
+    color: #aaa;
+}
+
+/* 색상 선택 */
+.upload-color {
+    width: 48px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+}
+
+/* 드롭존 */
+.upload-dropzone {
+    border: 1px dashed #444;
+    border-radius: 6px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragover {
+    border-color: #dabb7e;
+    background: rgba(218, 187, 126, 0.04);
+}
+
+.upload-dropzone-text {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* 액션 버튼 */
+.upload-actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+.upload-btn {
+    font-weight: 400;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.3rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-btn-cancel {
+    color: #888;
+    background: none;
+    border: 1px solid #333;
+}
+
+.upload-btn-cancel:hover {
+    color: #fff;
+    border-color: #666;
+}
+
+.upload-btn-submit {
+    color: #000;
+    background: #8f7d60;
+    border: none;
+}
+
+.upload-btn-submit:hover {
+    background: #dabb7e;
+}
+
+.upload-btn-submit:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+/* 메시지 */
+.upload-message {
+    font-size: 0.78rem;
+    text-align: center;
+    min-height: 1rem;
+}
+
+.upload-message.error {
+    color: #c0392b;
+}
+
+.upload-message.success {
+    color: #8f7d60;
+}
+
+/* ── 책 펼침 애니메이션 ── */
+.book-open-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 1);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.book-open-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.book-open-scene {
+    perspective: 2000px;
+    perspective-origin: 50% 50%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-open-book {
+    position: relative;
+    width: 90vw;
+    max-width: 1200px;
+    height: 80vh;
+    transform-style: preserve-3d;
+}
+
+/* 왼쪽 페이지 (표지 뒤에 숨어있다가 나타남) */
+.book-open-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, #ddd5c0, #ece4d2 40%, #e0d8c6);
+    border-radius: 4px 0 0 4px;
+    box-shadow:
+        inset -6px 0 18px rgba(0, 0, 0, 0.12),
+        -2px 0 6px rgba(0, 0, 0, 0.2);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.5s ease 0.6s;
+}
+
+.book-open-overlay.active .book-open-left {
+    transform: scaleX(1);
+}
+
+.book-open-left .book-open-page-inner {
+    opacity: 0;
+    transition: opacity 0.3s ease 1s;
+}
+
+.book-open-overlay.active .book-open-left .book-open-page-inner {
+    opacity: 1;
+}
+
+/* 오른쪽 페이지 */
+.book-open-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, #ddd5c0, #ece4d2 40%, #e0d8c6);
+    border-radius: 0 4px 4px 0;
+    box-shadow:
+        inset 6px 0 18px rgba(0, 0, 0, 0.12),
+        2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 페이지 줄무늬 */
+.book-open-page-inner {
+    position: absolute;
+    inset: 50px 40px;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 24px,
+        rgba(0, 0, 0, 0.05) 24px,
+        rgba(0, 0, 0, 0.05) 25px
+    );
+}
+
+/* 표지 (앞면 → 왼쪽으로 펼쳐짐) */
+.book-open-cover {
+    position: absolute;
+    left: 0;
+    top: -4px;
+    width: calc(50% + 4px);
+    height: calc(100% + 8px);
+    transform-origin: right center;
+    transform: rotateY(0deg);
+    transition: transform 1s cubic-bezier(0.4, 0.0, 0.15, 1) 0.3s;
+    transform-style: preserve-3d;
+    z-index: 10;
+}
+
+.book-open-overlay.active .book-open-cover {
+    transform: rotateY(-155deg);
+}
+
+.book-open-cover-front {
+    position: absolute;
+    inset: 0;
+    border-radius: 4px 0 0 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2.5rem;
+    backface-visibility: hidden;
+    box-shadow:
+        3px 0 12px rgba(0, 0, 0, 0.4),
+        inset 0 0 60px rgba(0, 0, 0, 0.15),
+        inset -2px 0 0 rgba(255, 200, 100, 0.06);
+}
+
+/* 표지 상하단 장식선 */
+.book-open-cover-front::before,
+.book-open-cover-front::after {
+    content: '';
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: rgba(255, 200, 100, 0.15);
+}
+.book-open-cover-front::before { top: 20%; }
+.book-open-cover-front::after { bottom: 20%; }
+
+.book-open-cover-title {
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: rgba(255, 220, 160, 0.9);
+    text-align: center;
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.book-open-cover-author {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: rgba(255, 200, 140, 0.45);
+    letter-spacing: 0.1em;
+}
+
+/* 제본선 */
+.book-open-book::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to right,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.25) 50%,
+        rgba(0,0,0,0.15)
+    );
+    z-index: 5;
+}
+
+/* 페이드아웃 → 리더 전환 */
+.book-open-overlay.fade-out {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+/* 모바일 전용 줄바꿈: 기본은 숨김 */
+.mobile-br {
+    display: none;
+}
+
+/* ── Gallery 페이지 (전시장) ── */
+.gallery-theme-text {
+    animation: typing 2.8s steps(19, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s infinite;
+}
+
+/* Gallery 탭 (전시장 안내판 스타일) */
+.gallery-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 4vh;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gallery-tab {
+    background: none;
+    border: none;
+    padding: 0.7rem 2.5rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.gallery-tab-label {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #8f7d60;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.4s ease;
+}
+
+/* 탭 하단 인디케이터 */
+.gallery-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: #dabb7e;
+    transition: width 0.4s ease;
+}
+
+/* 활성 탭 */
+.gallery-tab.active .gallery-tab-label {
+    color: #dabb7e;
+    font-weight: 700;
+}
+
+.gallery-tab.active::after {
+    width: 60%;
+}
+
+/* 탭 hover */
+.gallery-tabs:hover .gallery-tab {
+    opacity: 0.4;
+    transform: scale(0.95);
+}
+
+.gallery-tabs:hover .gallery-tab:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.gallery-tabs:hover .gallery-tab:hover .gallery-tab-label {
+    color: #dabb7e;
+}
+
+/* Gallery 콘텐츠 */
+.gallery-content {
+    width: 100%;
+    max-width: 1000px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.gallery-panel {
+    display: none;
+}
+
+.gallery-panel.active {
+    display: block;
+}
+
+/* ── 전시 벽면 (Masonry 그리드) ── */
+.exhibit-wall {
+    columns: 3;
+    column-gap: 1.8rem;
+    padding: 0.5rem 0;
+}
+
+/* ── 액자 (Exhibit Frame) ── */
+.exhibit-frame {
+    break-inside: avoid;
+    margin-bottom: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+/* 매트 (액자 안쪽 여백) */
+.frame-mat {
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 10px;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* 사진 */
+.frame-photo {
+    width: 100%;
+    padding-bottom: 70%; /* 기본 가로형 비율 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #0a0a0a;
+}
+
+/* 큰 액자 */
+.exhibit-large .frame-photo {
+    padding-bottom: 65%;
+}
+
+/* 세로 액자 */
+.exhibit-tall .frame-photo {
+    padding-bottom: 130%;
+}
+
+/* 캡션 (작품 제목표) */
+.frame-caption {
+    display: block;
+
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #555;
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin-top: 0.8rem;
+    transition: color 0.4s ease;
+}
+
+/* 액자 hover: 전시장 스포트라이트 효과 */
+.exhibit-frame:hover {
+    transform: scale(1.02);
+}
+
+.exhibit-frame:hover .frame-mat {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(255, 255, 255, 0.03),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.exhibit-frame:hover .frame-caption {
+    color: #aaa;
+}
+
+/* 전시 벽 hover: 나머지 어둡게 (스포트라이트 집중) */
+.exhibit-wall:hover .exhibit-frame {
+    filter: brightness(0.45);
+}
+
+.exhibit-wall:hover .exhibit-frame:hover {
+    filter: brightness(1.1);
+}
+
+/* ── 라이트박스 (Gallery 사진 확대) ── */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+.lightbox-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 75vw;
+    max-height: 85vh;
+}
+
+.lightbox-img {
+    max-width: 85vw;
+    max-height: 75vh;
+    object-fit: contain;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 60px rgba(0, 0, 0, 0.8);
+    transform: scale(0.92);
+    transition: transform 0.4s ease;
+}
+
+.lightbox.active .lightbox-img {
+    transform: scale(1);
+}
+
+.lightbox-caption {
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: #888;
+    letter-spacing: 0.15em;
+    margin-top: 1.5rem;
+    transition: color 0.4s ease;
+}
+
+/* 좌우 탐색 화살표 (사진 바로 옆에 배치) */
+.lightbox-arrow {
+    z-index: 10;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 3.75rem;
+    font-weight: 300;
+    cursor: pointer;
+    padding: 2rem 5.25rem;
+    line-height: 1;
+    transition: color 0.3s ease;
+    user-select: none;
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.lightbox-arrow:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Board 페이지 (메모 게시판) ── */
+.board-theme-text {
+    animation: typing 2.5s steps(17, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s infinite;
+}
+
+/* ── 글쓰기 영역 ── */
+.memo-write {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 4vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.memo-name-input {
+    width: 140px;
+    padding: 0.5rem 0.8rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #444;
+    color: #ccc;
+
+    font-size: 0.8rem;
+    transition: border-color 0.3s ease;
+}
+
+.memo-name-input:focus {
+    outline: none;
+    border-bottom-color: #888;
+}
+
+.memo-text-input {
+    width: 100%;
+    min-height: 60px;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #ccc;
+
+    font-size: 0.9rem;
+    line-height: 1.6;
+    resize: none;
+    transition: border-color 0.3s ease;
+}
+
+.memo-text-input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.memo-text-input::placeholder,
+.memo-name-input::placeholder {
+    color: #555;
+}
+
+.memo-write-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.memo-char-count {
+    font-size: 0.65rem;
+    color: #555;
+}
+
+.memo-submit {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #000;
+    background: #8f7d60;
+    border: none;
+    border-radius: 3px;
+    padding: 0.45rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.memo-submit:hover {
+    background: #dabb7e;
+}
+
+/* ── 메모 목록 ── */
+.memo-list {
+    width: 100%;
+    max-width: 600px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ── 메모 카드 ── */
+.memo-card {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.3s ease;
+}
+
+.memo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.memo-author {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #bbb;
+}
+
+.memo-date {
+    font-weight: 400;
+    font-size: 0.65rem;
+    color: #555;
+}
+
+.memo-content {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.7;
+}
+
+/* ── 답글 ── */
+.memo-reply {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border-left: 2px solid rgba(180, 130, 70, 0.25);
+    margin-left: 0.5rem;
+}
+
+.memo-reply-name {
+    font-weight: 700;
+    font-size: 0.72rem;
+    color: #b39768;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.memo-reply-text {
+    font-weight: 400;
+    font-size: 0.82rem;
+    color: #999;
+    line-height: 1.6;
+}
+
+.memo-reply-date {
+    font-weight: 400;
+    font-size: 0.6rem;
+    color: #555;
+    display: block;
+    margin-top: 0.4rem;
+    text-align: right;
+}
+
+/* ── 관리 페이지 (회원관리) ── */
+.admin-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 6vh 2rem 4rem;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.admin-title {
+    font-family: 'GyeonggiBatang', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #c4a87a;
+    margin: 0 0 0.4rem;
+}
+
+.admin-subtitle {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    margin: 0;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 1.5rem;
+}
+
+.admin-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 0.7rem 0;
+    font-family: 'GyeonggiBatang', serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    position: relative;
+}
+
+.admin-tab:hover {
+    color: rgba(255,255,255,0.6);
+}
+
+.admin-tab.active {
+    color: #c4a87a;
+    border-bottom-color: #c4a87a;
+}
+
+.admin-tab-count {
+    display: inline-block;
+    background: #c0392b;
+    color: #fff;
+    font-size: 0.65rem;
+    min-width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0 4px;
+    margin-left: 4px;
+    font-family: sans-serif;
+}
+
+.admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.admin-member-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+}
+
+.admin-member-card:hover {
+    background: rgba(255,255,255,0.02);
+}
+
+.admin-member-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-member-top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.25rem;
+}
+
+.admin-member-nickname {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+}
+
+.admin-member-status {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.admin-status-pending {
+    background: rgba(241, 196, 15, 0.15);
+    color: #f1c40f;
+}
+
+.admin-status-approved {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+}
+
+.admin-status-rejected {
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+}
+
+.admin-member-email {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.15rem;
+}
+
+.admin-member-date {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+}
+
+.admin-member-actions {
+    display: flex;
+    gap: 0.4rem;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.admin-btn {
+    font-family: 'GyeonggiBatang', serif;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.9rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+}
+
+.admin-btn-approve {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+}
+
+.admin-btn-approve:hover {
+    background: #2ecc71;
+    color: #fff;
+}
+
+.admin-btn-reject {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+.admin-btn-reject:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.admin-btn-delete {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.3);
+}
+
+.admin-btn-delete:hover {
+    background: rgba(231, 76, 60, 0.8);
+    color: #fff;
+}
+
+.admin-empty {
+    text-align: center;
+    padding: 3rem 0;
+    color: rgba(255,255,255,0.25);
+    font-size: 0.9rem;
+}
+
+/* ── Diary 페이지 (개인 일기) ── */
+.diary-theme-text {
+    animation: typing 2s steps(7, end) 0.5s forwards, blink-caret 0.75s step-end 0.5s infinite;
+}
+
+/* 글쓰기 영역 */
+.diary-write {
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 4vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.diary-write-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.diary-date-input {
+    padding: 0.45rem 0.8rem;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #ccc;
+
+    font-size: 0.85rem;
+    transition: border-color 0.3s ease;
+}
+
+.diary-date-input:focus {
+    outline: none;
+    border-color: #666;
+}
+
+.diary-write-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.diary-save-btn {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #000;
+    background: #8f7d60;
+    border: none;
+    border-radius: 3px;
+    padding: 0.45rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.diary-save-btn:hover {
+    background: #dabb7e;
+}
+
+.diary-save-btn:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+.diary-cancel-btn {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #888;
+    background: none;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 0.45rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.diary-cancel-btn:hover {
+    color: #fff;
+    border-color: #666;
+}
+
+.diary-text-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #ccc;
+
+    font-size: 0.95rem;
+    line-height: 1.8;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.diary-text-input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.diary-text-input::placeholder {
+    color: #444;
+}
+
+/* 일기 목록 */
+.diary-list {
+    width: 100%;
+    max-width: 640px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.diary-empty {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+/* 일기 항목 */
+.diary-entry {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.3s ease, padding 0.3s ease;
+}
+
+.diary-entry.editing {
+    background: rgba(143, 125, 96, 0.06);
+    padding: 1.5rem 1rem;
+    border-radius: 4px;
+    border-bottom-color: rgba(143, 125, 96, 0.15);
+}
+
+.diary-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.diary-entry-date {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #8f7d60;
+    letter-spacing: 0.08em;
+}
+
+.diary-entry-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.diary-edit-btn,
+.diary-delete-btn {
+    font-weight: 700;
+    font-size: 0.7rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 0.3rem 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.diary-edit-btn {
+    color: #000;
+    background: #8f7d60;
+}
+
+.diary-edit-btn:hover {
+    background: #dabb7e;
+}
+
+.diary-delete-btn {
+    color: #bbb;
+    background: #333;
+}
+
+.diary-delete-btn:hover {
+    color: #fff;
+    background: #c0392b;
+}
+
+.diary-entry-body {
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #aaa;
+    line-height: 1.9;
+}
+
+/* 반응형 처리 */
+
+@media (max-width: 768px) {
+    .library-tab {
+        padding: 0.5rem 1.2rem 0.4rem;
+    }
+    .tab-label-code {
+        font-size: 1rem;
+    }
+    .tab-label-name {
+        font-size: 0.6rem;
+    }
+    .shelf-row {
+        padding: 0 1rem;
+        min-height: 200px;
+    }
+    .book-spine {
+        --spine-width: 40px !important;
+        --spine-height: 180px !important;
+        padding: 16px 0 12px !important;
+    }
+    .spine-title {
+        font-size: 0.6rem;
+    }
+    .spine-author {
+        font-size: 0.42rem;
+    }
+    /* Blog 반응형 */
+    .blog-tab {
+        padding: 0.4rem 1.2rem;
+        gap: 0.3rem;
+    }
+    .cafe-tab-icon {
+        font-size: 0.8rem;
+    }
+    .cafe-tab-name {
+        font-size: 0.75rem;
+    }
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    .photo-card-title {
+        font-size: 0.75rem;
+    }
+    .photo-card-excerpt {
+        font-size: 0.6rem;
+        -webkit-line-clamp: 1;
+    }
+    .photo-card-date {
+        font-size: 0.55rem;
+    }
+    .photo-card::before {
+        width: 20px;
+        height: 20px;
+        top: 8px;
+        right: 8px;
+    }
+    /* Board 반응형 */
+    .memo-write,
+    .memo-list,
+    .diary-write,
+    .diary-list {
+        max-width: 100%;
+    }
+    .memo-content {
+        font-size: 0.8rem;
+    }
+    .memo-reply-text {
+        font-size: 0.75rem;
+    }
+    /* Diary 반응형 */
+    
+    .diary-entry-body {
+        font-size: 0.85rem;
+    }
+    .diary-entry-actions {
+        opacity: 1;
+    }
+    /* Gallery 반응형 */
+    .gallery-tab {
+        padding: 0.5rem 1.2rem;
+    }
+    .gallery-tab-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+    }
+    .exhibit-wall {
+        columns: 2;
+        column-gap: 1rem;
+    }
+    .exhibit-frame {
+        margin-bottom: 1rem;
+    }
+    .frame-mat {
+        padding: 6px;
+    }
+    .frame-caption {
+        font-size: 0.7rem;
+        margin-top: 0.5rem;
+    }
+    /* 글 보기/에디터/서평 반응형 */
+    .post-container,
+    .editor-container,
+    .review-container {
+        padding: 2vh 1.5rem 2rem;
+    }
+    .post-title {
+        font-size: 1.3rem;
+    }
+    .post-subtitle {
+        font-size: 0.8rem;
+    }
+    .post-body {
+        font-size: 0.75rem;
+    }
+    .post-body h2 {
+        font-size: 1rem;
+    }
+    .editor-title {
+        font-size: 1rem;
+    }
+    .editor-textarea {
+        min-height: 30vh;
+    }
+    /* bookshelf 추가 반응형: 선반 두께 조정 */
+    .shelf-surface {
+        height: 6px;
+    }
+    /* Upload 반응형 */
+    .library-upload-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+    }
+    .upload-card {
+        padding: 1.5rem;
+    }
+    .upload-title {
+        font-size: 1rem;
+    }
+}
+
+/* ── 로그인/회원가입 페이지 ── */
+.auth-container {
+    width: 100%;
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6vh 3rem 2rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    height: 78vh;
+    padding: 1.8rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 탭 전환 */
+.auth-tabs {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+    justify-content: center;
+}
+
+.auth-tab {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #999;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.08em;
+}
+
+.auth-tab:hover {
+    color: #ccc;
+}
+
+.auth-tab.active {
+    color: #dabb7e;
+    border-bottom-color: #dabb7e;
+    font-weight: 700;
+}
+
+/* 폼 */
+.auth-form {
+    display: none;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.auth-form.active {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.auth-label {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #bbb;
+    letter-spacing: 0.05em;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 0.5rem 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #eee;
+
+    font-size: 0.85rem;
+    transition: border-color 0.3s ease;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: #888;
+}
+
+.auth-input::placeholder {
+    color: #666;
+}
+
+/* 메시지 */
+.auth-message {
+    font-size: 0.78rem;
+    min-height: 0;
+    text-align: center;
+}
+
+.auth-error {
+    color: #c0392b;
+}
+
+.auth-success {
+    color: #8f7d60;
+}
+
+/* 제출 버튼 */
+.auth-submit {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #000;
+    background: #8f7d60;
+    border: none;
+    border-radius: 4px;
+    padding: 0.55rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.08em;
+    margin-top: 0;
+}
+
+.auth-submit:hover {
+    background: #dabb7e;
+}
+
+.auth-submit:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+/* ── 서평(Book Review) 템플릿 ── */
+.review-article {
+    width: 100%;
+    max-width: 720px;
+    padding-bottom: 6vh;
+}
+
+/* 책 표지 + 정보 영역 */
+.review-hero {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 4vh;
+}
+
+.review-cover {
+    flex-shrink: 0;
+    width: 180px;
+}
+
+.review-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow:
+        4px 4px 20px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.review-cover img:hover {
+    transform: scale(1.03);
+    box-shadow:
+        6px 6px 28px rgba(0, 0, 0, 0.6),
+        0 0 50px rgba(0, 0, 0, 0.35);
+}
+
+/* 책 정보 헤더 (제목·저자·출판년·출판사) */
+.review-book-info {
+    border-left: 3px solid #8f7d60;
+    padding: 1.2rem 0 1.2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.review-book-title {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #ddd;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+}
+
+.review-book-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.review-book-meta span {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #8f7d60;
+    letter-spacing: 0.05em;
+}
+
+.review-book-meta .meta-sep {
+    color: #3a3020;
+    margin: 0 0.2rem;
+}
+
+.review-date {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #444;
+    display: block;
+    margin-top: 1rem;
+}
+
+/* 서평 본문 */
+.review-body {
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: #aaa;
+    line-height: 2;
+}
+
+.review-body p {
+    margin-bottom: 1.5rem;
+}
+
+.review-body h2 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #ccc;
+    margin: 4rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(143, 125, 96, 0.2);
+}
+
+.review-body h2:first-child {
+    margin-top: 0;
+}
+
+.review-body blockquote {
+    border-left: 2px solid #5a4a30;
+    padding: 0.8rem 1.5rem;
+    margin: 2rem 0;
+    color: #999;
+    font-style: italic;
+    background: rgba(143, 125, 96, 0.04);
+    border-radius: 0 4px 4px 0;
+}
+
+.review-body hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #333, transparent);
+    margin: 3.5rem 0;
+}
+
+.review-body strong {
+    color: #ddd;
+    font-weight: 700;
+}
+
+.review-body em {
+    color: #b39768;
+}
+
+.review-body a {
+    color: #c4a96a;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(196,169,106,0.3);
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.review-body a:hover {
+    color: #dabb7e;
+    border-bottom-color: #dabb7e;
+}
+
+/* 인용구 (책 본문에서 가져온 문장) */
+.review-body .book-quote {
+    color: #888;
+    font-style: normal;
+    border-left: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
+}
+
+/* 페이지 번호 표기 */
+.review-body .page-ref {
+    font-size: 0.85rem;
+    color: #a08a60;
+}
+
+/* 저자 소개 섹션 */
+.review-author-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(143, 125, 96, 0.1);
+    border-radius: 6px;
+}
+
+.review-author-section p {
+    margin-bottom: 1rem;
+}
+
+.review-author-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* 서평 제목 (review_title) 라벨 */
+.review-title-label {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #8f7d60;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+}
+
+/* 드롭캡: 본문 첫 문단 첫 글자 */
+.review-body .review-first-para::first-letter {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', serif;
+    font-weight: 700;
+    font-size: 3.4em;
+    float: left;
+    line-height: 0.85;
+    margin: 0.05em 0.12em 0 0;
+    color: #c8a96e;
+}
+
+/* 마무리 장식 */
+.review-end-mark {
+    text-align: center;
+    font-size: 1.1rem;
+    color: rgba(143, 125, 96, 0.35);
+    letter-spacing: 0.6em;
+    margin: 4rem 0 1rem;
+    user-select: none;
+}
+
+/* 서평 반응형 */
+@media (max-width: 768px) {
+    .review-hero {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .review-cover {
+        width: 140px;
+    }
+    .review-book-info {
+        text-align: center;
+        border-left: none;
+        border-top: 2px solid #8f7d60;
+        padding: 1rem 0 0 0;
+    }
+    .review-book-meta {
+        justify-content: center;
+    }
+    .review-book-title {
+        font-size: 1.3rem;
+    }
+    .review-book-meta span {
+        font-size: 0.75rem;
+    }
+    .review-title-label {
+        font-size: 0.8rem;
+    }
+    .review-body {
+        font-size: 0.78rem;
+    }
+    .review-body h2 {
+        font-size: 1rem;
+    }
+    .review-body .review-first-para::first-letter {
+        font-size: 2.6em;
+    }
+    .review-author-section {
+        padding: 1rem;
+    }
+}
+
+/* ── 소셜 로그인 ── */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.auth-divider-line {
+    flex: 1;
+    height: 1px;
+    background: #333;
+}
+
+.auth-divider-text {
+    font-weight: 400;
+    font-size: 0.72rem;
+    color: #999;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+.auth-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.auth-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+.auth-social-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* Google */
+.auth-social-google {
+    color: #ccc;
+    border-color: #444;
+}
+
+.auth-social-google:hover {
+    color: #fff;
+    border-color: #888;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Kakao */
+.auth-social-kakao {
+    color: #3C1E1E;
+    background: #FEE500;
+    border-color: #FEE500;
+}
+
+.auth-social-kakao:hover {
+    background: #FFD900;
+    border-color: #FFD900;
+}
+
+/* GitHub */
+.auth-social-github {
+    color: #ccc;
+    border-color: #444;
+}
+
+.auth-social-github:hover {
+    color: #fff;
+    border-color: #888;
+    background: rgba(255, 255, 255, 0.05);
+}
