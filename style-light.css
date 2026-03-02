@@ -54,16 +54,44 @@ body, html,
 /* -- 슬라이드 (Home) -- */
 .light-mode .slide::before {
     background: radial-gradient(
-        ellipse 48% 85.536% at 75% 50%,
-        transparent 42%,
-        rgba(245,240,232,0.4) 50%,
-        rgba(245,240,232,0.8) 58%,
-        rgba(245,240,232,1) 68%
+        ellipse 50% 85.536% at 75% 50%,
+        transparent 48%,
+        rgba(245,240,232,0.22) 62%,
+        rgba(245,240,232,0.42) 76%,
+        rgba(245,240,232,0.68) 90%,
+        rgba(245,240,232,0.82) 100%
     );
 }
 
 .light-mode .slide::after {
-    background: linear-gradient(to right, rgba(245,240,232,0.5), transparent);
+    background: linear-gradient(to right, rgba(245,240,232,0.32), transparent);
+}
+
+@media (max-width: 768px) {
+    .light-mode .slide::before {
+        background: none !important;
+    }
+    .light-mode .slide::after {
+        background: linear-gradient(to right, rgba(245,240,232,0.16), transparent) !important;
+    }
+}
+
+@media (max-width: 430px) {
+    .light-mode .slide::before {
+        background: none !important;
+    }
+    .light-mode .slide::after {
+        background: linear-gradient(to right, rgba(245,240,232,0.14), transparent) !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .light-mode .slide::before {
+        background: none !important;
+    }
+    .light-mode .slide::after {
+        background: linear-gradient(to right, rgba(245,240,232,0.12), transparent) !important;
+    }
 }
 
 .light-mode .slide h1.text-overlay {

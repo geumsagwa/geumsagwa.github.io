@@ -15,7 +15,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: 66%;      /* 배경 이미지를 2/3 크기로 축소 표시 */
+    /* 해상도에 맞춰 잘리지 않게 축소 표시 */
+    background-size: contain;
     background-position: right center;  /* 이미지를 오른쪽에 완전히 붙임 */
     background-repeat: no-repeat;
     opacity: 0;
@@ -34,11 +35,12 @@
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: radial-gradient(
-        ellipse 48% 85.536% at 75% 50%,   /* 세로 중심 원복 */
-        transparent 42%,           /* 중심부 유지 */
-        rgba(0,0,0,0.4) 50%,       /* 중간: 더 일찍 어두워짐 (54→50%) */
-        rgba(0,0,0,0.8) 58%,       /* 가장자리: 더 빠르게 진해짐 (66→58%) */
-        rgba(0,0,0,1) 68%          /* 바깥: 완전 검정 (80→68%) */
+        ellipse 50% 85.536% at 75% 50%,
+        transparent 46%,
+        rgba(0,0,0,0.22) 60%,
+        rgba(0,0,0,0.42) 74%,
+        rgba(0,0,0,0.66) 88%,
+        rgba(0,0,0,0.86) 100%
     );
     z-index: 2;
     pointer-events: none;
@@ -50,9 +52,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 45%;
+    width: 36%;
     height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.32), transparent);
     z-index: 3;
     pointer-events: none;
 }
@@ -71,6 +73,7 @@
 
 /* 1번: 메인 테마 (h1) - 경기천년바탕_Bold, font-size·font-weight로 구별 */
 .slide h1.text-overlay {
+    font-family: 'GyeonggiBatang', serif;
     font-weight: 600;
     font-size: 2.16rem;
     color: white;
@@ -80,6 +83,7 @@
 
 /* 2,3번: 내용 (p) - h4 크기, 가독성 효과 */
 .slide p.text-overlay {
+    font-family: 'GyeonggiBatang', serif;
     font-weight: 350;
     font-size: 1.36rem;
     line-height: 1.6;
@@ -2866,3 +2870,190 @@
     border-color: #888;
     background: rgba(255, 255, 255, 0.05);
 }
+
+/* =========================================================
+   Unified Breakpoints (1280 / 768 / 430 / 360)
+   ========================================================= */
+
+/* ---------- Desktop (<=1280) ---------- */
+@media (max-width: 1280px) {
+    .photo-grid {
+        gap: 1rem;
+    }
+    .memo-write,
+    .memo-list,
+    .diary-write,
+    .diary-list {
+        max-width: 92%;
+    }
+}
+
+/* ---------- Tablet (<=768) ---------- */
+@media (max-width: 768px) {
+    .slide {
+        /* 배경+페이드 세트(768): 반영 누락 방지 */
+        background-size: 98% auto !important;
+        background-position: center center !important;
+    }
+    .slide h1.text-overlay,
+    .slide p.text-overlay,
+    .light-mode .slide h1.text-overlay,
+    .light-mode .slide p.text-overlay {
+        font-family: 'GyeonggiBatang', serif !important;
+    }
+    .slide h1.text-overlay,
+    .light-mode .slide h1.text-overlay {
+        font-size: 1.6rem !important;
+    }
+    .slide p.text-overlay,
+    .light-mode .slide p.text-overlay {
+        font-size: 1.25rem !important;
+    }
+    .slide::before {
+        background: none !important;
+    }
+    .slide::after {
+        width: 24%;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.16), transparent) !important;
+    }
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    .exhibit-wall {
+        columns: 2;
+        column-gap: 1rem;
+    }
+    .memo-write,
+    .memo-list,
+    .diary-write,
+    .diary-list {
+        max-width: 100%;
+    }
+}
+
+/* ---------- Mobile Large (<=430) ---------- */
+@media (max-width: 430px) {
+    .slide {
+        /* 배경+페이드 세트(430): 피사체 보이게 유지 */
+        background-size: 93% auto !important;
+        background-position: center center !important;
+    }
+    .slide h1.text-overlay,
+    .slide p.text-overlay,
+    .light-mode .slide h1.text-overlay,
+    .light-mode .slide p.text-overlay {
+        font-family: 'GyeonggiBatang', serif !important;
+    }
+    .slide h1.text-overlay,
+    .light-mode .slide h1.text-overlay {
+        font-size: 1.25rem !important;
+    }
+    .slide p.text-overlay,
+    .light-mode .slide p.text-overlay {
+        font-size: 1.05rem !important;
+    }
+    .slide::before {
+        background: none !important;
+    }
+    .slide::after {
+        width: 22%;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.14), transparent) !important;
+    }
+    .library-tab,
+    .blog-tab,
+    .gallery-tab {
+        padding: 0.42rem 0.85rem;
+    }
+    .tab-label-code {
+        font-size: 0.86rem;
+    }
+    .cafe-tab-name,
+    .gallery-tab-label {
+        font-size: 0.63rem;
+    }
+    .shelf-row {
+        padding: 0 0.6rem;
+        min-height: 170px;
+    }
+    .book-spine {
+        --spine-width: 34px !important;
+        --spine-height: 150px !important;
+    }
+    .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+    .exhibit-wall {
+        columns: 1;
+    }
+    .memo-content,
+    .diary-entry-body,
+    .review-body {
+        font-size: 0.75rem;
+        line-height: 1.75;
+    }
+}
+
+/* ---------- Mobile Small (<=360) ---------- */
+@media (max-width: 360px) {
+    .slide {
+        /* 배경+페이드 세트(360): 피사체 보이게 유지 */
+        padding: 18vh 0.8rem 1rem 2rem !important;
+        background-size: 87% auto !important;
+        background-position: center center !important;
+    }
+    .slide h1.text-overlay,
+    .slide p.text-overlay {
+        font-family: 'GyeonggiBatang', serif !important;
+    }
+    .slide h1.text-overlay,
+    .light-mode .slide h1.text-overlay {
+        font-size: 1.1rem !important;
+    }
+    .slide p.text-overlay,
+    .light-mode .slide p.text-overlay {
+        font-size: 0.95rem !important;
+    }
+    .slide-container .slide:nth-child(2) .text-overlay,
+    .slide-container .slide:nth-child(3) .text-overlay {
+        margin-top: 0 !important;
+    }
+    .slide::before {
+        background: none !important;
+    }
+    .slide::after {
+        width: 20%;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.12), transparent) !important;
+    }
+    .library-tab,
+    .blog-tab,
+    .gallery-tab {
+        padding: 0.34rem 0.64rem;
+    }
+    .tab-label-code {
+        font-size: 0.76rem;
+    }
+    .cafe-tab-name,
+    .gallery-tab-label,
+    .tab-label-name {
+        font-size: 0.56rem;
+    }
+    .book-spine {
+        --spine-width: 30px !important;
+        --spine-height: 136px !important;
+        padding: 12px 0 10px !important;
+    }
+    .spine-title {
+        font-size: 0.54rem;
+    }
+    .spine-author {
+        font-size: 0.4rem;
+    }
+    .memo-content,
+    .diary-entry-body,
+    .review-body {
+        font-size: 0.7rem;
+    }
+}
+

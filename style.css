@@ -95,6 +95,10 @@ body, html {
     color: #fff;
 }
 
+.text-overlay {
+    font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+}
+
 @keyframes typing {
     from { width: 0 }
     to { width: 100% }
@@ -224,6 +228,23 @@ body, html {
     color: #000;
 }
 
+/* ---------- Responsive: Desktop (<=1280) ---------- */
+@media (max-width: 1280px) {
+    .menu-bar {
+        padding: 0 2.2rem;
+    }
+    .menu-list li {
+        padding: 0.45rem 0.95rem;
+    }
+    .menu-list li a {
+        font-size: 1rem;
+    }
+    .menu-logo-text {
+        font-size: 1.35rem;
+    }
+}
+
+/* ---------- Responsive: Tablet (<=768) ---------- */
 @media (max-width: 768px) {
     .menu-bar {
         padding: 0 1.5rem;
@@ -233,7 +254,7 @@ body, html {
         height: 10vh;
     }
     .menu-logo-text {
-        font-size: 0.8rem;
+        font-size: 0.95rem;
     }
     .slide-container {
         height: 86vh;
@@ -244,24 +265,12 @@ body, html {
     .menu-list li a {
         font-size: 0.95rem;
     }
-    .slide {
-        background-size: 80%;  /* 모바일에선 조금 더 크게 */
-        padding: 20vh 1rem 1rem 4rem;
-    }
-    .slide h1.text-overlay {
-        font-size: 0.9rem;
-    }
-    .slide p.text-overlay {
-        font-size: 0.7rem;
-        white-space: pre-line;
-    }
     .mobile-br {
         display: inline;
     }
     .text-overlay {
         border-right-width: 2px;
     }
-    /* 공통 반응형: 컨테이너 & 테마 텍스트 */
     .library-container,
     .blog-container,
     .board-container,
@@ -276,7 +285,6 @@ body, html {
     .gallery-theme-text {
         font-size: 0.84rem;
     }
-    /* Auth 반응형 */
     .auth-container {
         padding: 4vh 1.5rem 2rem;
     }
@@ -291,7 +299,6 @@ body, html {
         font-size: 0.85rem;
         padding: 0.5rem 1.5rem;
     }
-    /* Nav auth 반응형 */
     .auth-area {
         gap: 0.5rem;
     }
@@ -301,5 +308,83 @@ body, html {
     .auth-btn {
         font-size: 0.65rem;
         padding: 0.3rem 0.8rem;
+    }
+}
+
+/* ---------- Responsive: Mobile Large (<=430) ---------- */
+@media (max-width: 430px) {
+    .menu-bar {
+        height: auto;
+        min-height: 12vh;
+        padding: 0.7rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+    .menu-logo {
+        gap: 0.6rem;
+    }
+    .menu-logo-text {
+        font-size: 0.9rem;
+    }
+    .menu-list {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.4rem;
+    }
+    .menu-list li {
+        padding: 0.25rem 0.45rem;
+    }
+    .menu-list li a {
+        font-size: 0.84rem;
+    }
+    .auth-area {
+        width: 100%;
+        margin-left: 0;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .auth-login-btn,
+    .auth-logout-btn {
+        font-size: 0.9rem;
+        padding: 0.38rem 0.9rem;
+    }
+    .theme-toggle-btn {
+        font-size: 0.9rem;
+        padding: 0.38rem 0.85rem;
+    }
+}
+
+/* ---------- Responsive: Mobile Small (<=360) ---------- */
+@media (max-width: 360px) {
+    .menu-bar {
+        padding: 0.55rem 0.8rem;
+    }
+    .menu-logo-text {
+        font-size: 0.82rem;
+        letter-spacing: 0.02em;
+    }
+    .menu-list li a {
+        font-size: 0.8rem;
+    }
+    .library-container,
+    .blog-container,
+    .board-container,
+    .diary-container,
+    .gallery-container {
+        padding: 3.5vh 0.9rem 1.2rem;
+    }
+    .library-theme-text,
+    .blog-theme-text,
+    .board-theme-text,
+    .diary-theme-text,
+    .gallery-theme-text {
+        font-size: 0.74rem;
+    }
+    .auth-login-btn,
+    .auth-logout-btn,
+    .theme-toggle-btn {
+        font-size: 0.88rem;
     }
 }
