@@ -76,62 +76,32 @@
 
 <script src="supabase-config.js"></script>
 <script src="auth.js"></script>
+<script src="blog-detail-common.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
-
-    if (!id) {
-        showError();
-        return;
-    }
-
-    const { data, error } = await _supabase
-        .from('ai_writings').select('*').eq('id', id).single();
-
-    if (error || !data) {
-        showError();
-        return;
-    }
-
-    document.title = `${data.title} - 생각을 잇다`;
-    document.getElementById('ai-title').textContent = data.title;
-
-    const dateStr = new Date(data.created_at).toLocaleDateString('ko-KR', {
-        year: 'numeric', month: '2-digit', day: '2-digit'
-    }).replace(/\s/g, ' ');
-    document.getElementById('ai-date').textContent = dateStr;
-
-    marked.setOptions({ breaks: true, gfm: true });
-    document.getElementById('ai-body').innerHTML = marked.parse(data.body_markdown || '');
-
-    if (data.prompt || data.ai_model) {
-        document.getElementById('ai-meta-box').style.display = '';
-        if (data.prompt) {
-            document.getElementById('ai-meta-prompt').style.display = '';
-            document.getElementById('ai-prompt-text').textContent = data.prompt;
+    await loadMarkdownPostDetail({
+        table: 'ai_writings',
+        titleId: 'ai-title',
+        dateId: 'ai-date',
+        bodyId: 'ai-body',
+        loadingId: 'ai-loading',
+        articleId: 'ai-article',
+        errorId: 'ai-error',
+        editorPage: 'ai-writing-editor.html',
+        afterRender: (data) => {
+            if (!(data.prompt || data.ai_model)) return;
+            document.getElementById('ai-meta-box').style.display = '';
+            if (data.prompt) {
+                document.getElementById('ai-meta-prompt').style.display = '';
+                document.getElementById('ai-prompt-text').textContent = data.prompt;
+            }
+            if (data.ai_model) {
+                document.getElementById('ai-meta-model').style.display = '';
+                document.getElementById('ai-model-text').textContent = data.ai_model;
+            }
         }
-        if (data.ai_model) {
-            document.getElementById('ai-meta-model').style.display = '';
-            document.getElementById('ai-model-text').textContent = data.ai_model;
-        }
-    }
-
-    document.getElementById('ai-loading').style.display = 'none';
-    document.getElementById('ai-article').style.display = '';
-
-    const user = await getCurrentUser();
-    if (user) {
-        const editLink = document.getElementById('edit-link');
-        editLink.href = `ai-writing-editor.html?id=${id}`;
-        editLink.style.display = 'inline-block';
-    }
+    });
 });
-
-function showError() {
-    document.getElementById('ai-loading').style.display = 'none';
-    document.getElementById('ai-error').style.display = '';
-}
 </script>
 
 </body>
