@@ -29,9 +29,18 @@ body, html,
 }
 
 /* -- 페이지 배경 & 메뉴바 -- */
-.light-mode body,
-.light-mode html {
-    background-color: #f5f0e8;
+html.light-mode,
+html.light-mode body,
+body.light-mode,
+.light-mode html,
+.light-mode body {
+    background-color: #f5f0e8 !important;
+}
+
+/* Home main viewport background in light mode */
+.light-mode .slide-container,
+.light-mode .slide {
+    background-color: #f5f0e8 !important;
 }
 
 .light-mode .menu-bar {
@@ -54,43 +63,55 @@ body, html,
 /* -- 슬라이드 (Home) -- */
 .light-mode .slide::before {
     background: radial-gradient(
-        ellipse 50% 85.536% at 75% 50%,
-        transparent 48%,
-        rgba(245,240,232,0.22) 62%,
-        rgba(245,240,232,0.42) 76%,
-        rgba(245,240,232,0.68) 90%,
-        rgba(245,240,232,0.82) 100%
+        ellipse 50% 85.536% at 75% 40%,
+        rgba(217, 217, 217, 0) 10.137%,
+        #f5f0e8 72.919%
     );
 }
 
 .light-mode .slide::after {
-    background: linear-gradient(to right, rgba(245,240,232,0.32), transparent);
+    content: none;
 }
 
 @media (max-width: 768px) {
     .light-mode .slide::before {
-        background: none !important;
+        background: radial-gradient(
+            ellipse 50% 85.536% at 75% 40%,
+            rgba(217, 217, 217, 0) 10.137%,
+            #f5f0e8 72.919%
+        ) !important;
     }
     .light-mode .slide::after {
-        background: linear-gradient(to right, rgba(245,240,232,0.16), transparent) !important;
+        content: none !important;
+        background: none !important;
     }
 }
 
 @media (max-width: 430px) {
     .light-mode .slide::before {
-        background: none !important;
+        background: radial-gradient(
+            ellipse 50% 85.536% at 75% 40%,
+            rgba(217, 217, 217, 0) 10.137%,
+            #f5f0e8 72.919%
+        ) !important;
     }
     .light-mode .slide::after {
-        background: linear-gradient(to right, rgba(245,240,232,0.14), transparent) !important;
+        content: none !important;
+        background: none !important;
     }
 }
 
 @media (max-width: 360px) {
     .light-mode .slide::before {
-        background: none !important;
+        background: radial-gradient(
+            ellipse 50% 85.536% at 75% 40%,
+            rgba(217, 217, 217, 0) 10.137%,
+            #f5f0e8 72.919%
+        ) !important;
     }
     .light-mode .slide::after {
-        background: linear-gradient(to right, rgba(245,240,232,0.12), transparent) !important;
+        content: none !important;
+        background: none !important;
     }
 }
 
@@ -566,6 +587,7 @@ body, html,
     background: #c0392b;
     color: #fff;
 }
+
 
 .light-mode .admin-empty {
     color: #bbb;

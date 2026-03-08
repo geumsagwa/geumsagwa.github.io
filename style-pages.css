@@ -35,12 +35,9 @@
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: radial-gradient(
-        ellipse 50% 85.536% at 75% 50%,
-        transparent 46%,
-        rgba(0,0,0,0.22) 60%,
-        rgba(0,0,0,0.42) 74%,
-        rgba(0,0,0,0.66) 88%,
-        rgba(0,0,0,0.86) 100%
+        ellipse 50% 85.536% at 75% 40%,
+        rgba(217, 217, 217, 0) 10.137%,
+        #000000 72.919%
     );
     z-index: 2;
     pointer-events: none;
@@ -48,21 +45,14 @@
 
 /* 텍스트 가독성용 왼쪽 그라디언트 */
 .slide::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 36%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.32), transparent);
-    z-index: 3;
-    pointer-events: none;
+    content: none;
 }
 
 .slide.active {
     opacity: 1;
     z-index: 2;
 }
+
 
 /* 1,2,3번 공통: 텍스트 그라디언트 위에 표시, 왼쪽 정렬 */
 .slide .text-overlay {
@@ -105,6 +95,12 @@
 /* 3번: 한 줄 더 밑에 배치 */
 .slide-container .slide:nth-child(3) .text-overlay {
     margin-top: 4.4em;
+}
+
+/* 2,3번 배경은 원본 비율 차이로 약간 위로 보일 수 있어 미세 보정 */
+.slide-container .slide:nth-child(2),
+.slide-container .slide:nth-child(3) {
+    background-position: calc(100% - 1.5%) calc(50% - 0.1%);
 }
 
 /* 이 프로젝트 공통: 제목=바탕 Bold+큰 크기, 내용=바탕 Regular+작은 크기 (font-size·font-weight로 구별) */
@@ -2913,8 +2909,8 @@
         background: none !important;
     }
     .slide::after {
-        width: 24%;
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.16), transparent) !important;
+        content: none !important;
+        background: none !important;
     }
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2957,8 +2953,8 @@
         background: none !important;
     }
     .slide::after {
-        width: 22%;
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.14), transparent) !important;
+        content: none !important;
+        background: none !important;
     }
     .library-tab,
     .blog-tab,
@@ -3023,8 +3019,8 @@
         background: none !important;
     }
     .slide::after {
-        width: 20%;
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.12), transparent) !important;
+        content: none !important;
+        background: none !important;
     }
     .library-tab,
     .blog-tab,
@@ -3056,4 +3052,5 @@
         font-size: 0.7rem;
     }
 }
+
 
