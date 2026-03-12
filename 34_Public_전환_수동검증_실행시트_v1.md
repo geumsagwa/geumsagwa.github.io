@@ -86,7 +86,6 @@ gh api repos/geumsagwa/geumsagwa.github.io/branches/master/protection
 통과 기준:
 - `required_status_checks` 설정 존재
 - `enforce_admins`/`required_pull_request_reviews` 중 최소 정책 활성화
-- 권장: required check에 `CodeShield Homepage Check / homepage-check` 포함
 
 ## 6) 최종 판정 체크
 

@@ -28,7 +28,6 @@
    - 일반 계정: `admin.html` 접근 차단
 5. 원격 보호 장치 확인
    - GitHub branch protection / required checks 최종 확인
-   - CI 워크플로우: `.github/workflows/codeshield-homepage.yml` (`homepage-check` job)
 6. 상세 수동검증 시트 사용
    - `34_Public_전환_수동검증_실행시트_v1.md`
 7. 최종 서명 원페이지 작성
