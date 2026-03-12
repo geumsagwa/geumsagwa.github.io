@@ -3,6 +3,14 @@ let allMembers = [];
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', async () => {
+    if (typeof isCurrentUserAdmin === 'function') {
+        const isAdmin = await isCurrentUserAdmin();
+        if (!isAdmin) {
+            window.location.href = 'index.html';
+            return;
+        }
+    }
+
     await loadMembers();
 
     // 필터 탭 이벤트
@@ -58,21 +66,35 @@ function renderMembers() {
         return;
     }
 
-    list.innerHTML = filtered.map(m => `
-        <div class="admin-member-card" data-id="${m.id}" data-status="${m.status}">
+    list.innerHTML = filtered.map(m => {
+        const safeStatus = getSafeStatus(m.status);
+        const safeId = String(m.id);
+        return `
+        <div class="admin-member-card" data-id="${safeId}" data-status="${safeStatus}">
             <div class="admin-member-info">
                 <div class="admin-member-top">
                     <span class="admin-member-nickname">${escapeHtml(m.nickname || '익명')}</span>
-                    <span class="admin-member-status admin-status-${m.status}">${getStatusLabel(m.status)}</span>
+                    <span class="admin-member-status admin-status-${safeStatus}">${getStatusLabel(safeStatus)}</span>
                 </div>
                 <div class="admin-member-email">${escapeHtml(m.email)}</div>
                 <div class="admin-member-date">가입: ${formatDate(m.created_at)}</div>
             </div>
             <div class="admin-member-actions">
-                ${getActionButtons(m)}
+                ${getActionButtons(safeId, safeStatus)}
             </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
+
+    list.querySelectorAll('[data-action="approve"]').forEach(btn => {
+        btn.addEventListener('click', () => updateStatus(btn.dataset.id, 'approved'));
+    });
+    list.querySelectorAll('[data-action="reject"]').forEach(btn => {
+        btn.addEventListener('click', () => updateStatus(btn.dataset.id, 'rejected'));
+    });
+    list.querySelectorAll('[data-action="delete"]').forEach(btn => {
+        btn.addEventListener('click', () => deleteMember(btn.dataset.id));
+    });
 }
 
 function getStatusLabel(status) {
@@ -80,21 +102,26 @@ function getStatusLabel(status) {
     return labels[status] || status;
 }
 
-function getActionButtons(member) {
-    switch (member.status) {
+function getSafeStatus(status) {
+    return ['pending', 'approved', 'rejected'].includes(status) ? status : 'pending';
+}
+
+function getActionButtons(memberId, status) {
+    const idAttr = escapeHtml(memberId);
+    switch (status) {
         case 'pending':
             return `
-                <button class="admin-btn admin-btn-approve" onclick="updateStatus(${member.id}, 'approved')">승인</button>
-                <button class="admin-btn admin-btn-reject" onclick="updateStatus(${member.id}, 'rejected')">거절</button>
+                <button class="admin-btn admin-btn-approve" data-action="approve" data-id="${idAttr}">승인</button>
+                <button class="admin-btn admin-btn-reject" data-action="reject" data-id="${idAttr}">거절</button>
             `;
         case 'approved':
             return `
-                <button class="admin-btn admin-btn-reject" onclick="updateStatus(${member.id}, 'rejected')">거절</button>
+                <button class="admin-btn admin-btn-reject" data-action="reject" data-id="${idAttr}">거절</button>
             `;
         case 'rejected':
             return `
-                <button class="admin-btn admin-btn-approve" onclick="updateStatus(${member.id}, 'approved')">승인</button>
-                <button class="admin-btn admin-btn-delete" onclick="deleteMember(${member.id})">삭제</button>
+                <button class="admin-btn admin-btn-approve" data-action="approve" data-id="${idAttr}">승인</button>
+                <button class="admin-btn admin-btn-delete" data-action="delete" data-id="${idAttr}">삭제</button>
             `;
         default:
             return '';

@@ -1,9 +1,42 @@
 // 공개 페이지 목록 (인증 불필요)
 const PUBLIC_PAGES = ['index.html', 'login.html', ''];
 
-// 관리자 이메일 (Diary, 회원관리 접근 권한)
-const ADMIN_EMAIL = 'blue6074@gmail.com';
 const ADMIN_PAGES = ['diary.html', 'admin.html'];
+let memberCache = null;
+
+function resetMemberCache() {
+    memberCache = null;
+}
+
+async function getCurrentMember(force = false) {
+    if (!force && memberCache) return memberCache;
+
+    const user = await getCurrentUser();
+    if (!user) {
+        memberCache = null;
+        return null;
+    }
+
+    const { data, error } = await _supabase
+        .from('members')
+        .select('id, user_id, email, nickname, status, role')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+    if (error) {
+        console.error('멤버 조회 실패:', error);
+        memberCache = null;
+        return null;
+    }
+
+    memberCache = data || null;
+    return memberCache;
+}
+
+async function isCurrentUserAdmin() {
+    const member = await getCurrentMember();
+    return !!(member && member.status === 'approved' && member.role === 'admin');
+}
 
 // 인증 상태 관리
 document.addEventListener('DOMContentLoaded', async () => {
@@ -14,6 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 인증 상태 변경 감지
     _supabase.auth.onAuthStateChange((event, session) => {
+        resetMemberCache();
         updateAuthUI();
         // 로그아웃 시 보호 페이지에서 홈으로 이동
         if (event === 'SIGNED_OUT') {
@@ -36,12 +70,36 @@ async function requireAuth() {
             window.location.href = 'login.html';
             return;
         }
-        if (ADMIN_PAGES.includes(page) && user.email !== ADMIN_EMAIL) {
-            window.location.href = 'index.html';
+        if (ADMIN_PAGES.includes(page)) {
+            const isAdmin = await isCurrentUserAdmin();
+            if (!isAdmin) {
+                window.location.href = 'index.html';
+            }
         }
     } catch (e) {
         window.location.href = 'login.html';
     }
+}
+
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+}
+
+function renderLoggedInAuthArea(authArea, nickname) {
+    authArea.innerHTML = `
+        <span class="auth-nickname">${escapeHtml(nickname)}</span>
+        <button class="auth-btn auth-logout-btn" onclick="signOut()">로그아웃</button>
+        ${getThemeToggleHTML()}
+    `;
+}
+
+function renderLoggedOutAuthArea(authArea) {
+    authArea.innerHTML = `
+        <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
+        ${getThemeToggleHTML()}
+    `;
 }
 
 // 회원가입
@@ -102,32 +160,22 @@ async function updateAuthUI() {
 
         if (user) {
             const nickname = getUserNickname(user);
-            authArea.innerHTML = `
-                <span class="auth-nickname">${nickname}</span>
-                <button class="auth-btn auth-logout-btn" onclick="signOut()">로그아웃</button>
-                ${getThemeToggleHTML()}
-            `;
-            updateAdminMenus(user);
-            ensureMemberRow(user);
+            renderLoggedInAuthArea(authArea, nickname);
+            await ensureMemberRow(user);
+            await updateAdminMenus();
         } else {
-            authArea.innerHTML = `
-                <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
-                ${getThemeToggleHTML()}
-            `;
-            updateAdminMenus(null);
+            renderLoggedOutAuthArea(authArea);
+            await updateAdminMenus();
         }
     } catch (e) {
-        authArea.innerHTML = `
-            <a href="login.html" class="auth-btn auth-login-btn">로그인</a>
-            ${getThemeToggleHTML()}
-        `;
-        updateAdminMenus(null);
+        renderLoggedOutAuthArea(authArea);
+        await updateAdminMenus();
     }
 }
 
 // 관리자 전용 메뉴 표시 (Diary, 관리)
-function updateAdminMenus(user) {
-    const isAdmin = user && user.email === ADMIN_EMAIL;
+async function updateAdminMenus() {
+    const isAdmin = await isCurrentUserAdmin();
     document.querySelectorAll('.diary-menu, .admin-menu').forEach(el => {
         el.style.display = isAdmin ? '' : 'none';
     });
@@ -139,19 +187,24 @@ async function ensureMemberRow(user) {
     try {
         const { data } = await _supabase
             .from('members')
-            .select('id')
+            .select('id, status, role')
             .eq('user_id', user.id)
             .maybeSingle();
 
         if (!data) {
-            const isAdmin = user.email === ADMIN_EMAIL;
-            await _supabase.from('members').insert({
+            const { error } = await _supabase.from('members').insert({
                 user_id: user.id,
                 email: user.email,
                 nickname: user.user_metadata?.nickname || user.email?.split('@')[0] || '익명',
-                status: isAdmin ? 'approved' : 'pending'
+                status: 'pending',
+                role: 'member'
             });
+            if (error) {
+                console.error('members 생성 실패:', error);
+                return;
+            }
         }
+        resetMemberCache();
     } catch (e) {
         console.error('회원 등록 확인 실패:', e);
     }

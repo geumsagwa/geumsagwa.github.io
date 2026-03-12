@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
     <title>서평 - 생각을 잇다</title>
         <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
 <link rel="stylesheet" href="style.css">
@@ -106,9 +107,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (data.translator) metaParts.push(data.translator + ' 역');
     if (data.year) metaParts.push(String(data.year));
     if (data.publisher) metaParts.push(data.publisher);
-    metaEl.innerHTML = metaParts
-        .map(p => `<span>${p}</span>`)
-        .join('<span class="meta-sep">/</span>');
+    metaEl.textContent = '';
+    metaParts.forEach((part, idx) => {
+        const span = document.createElement('span');
+        span.textContent = part;
+        metaEl.appendChild(span);
+        if (idx < metaParts.length - 1) {
+            const sep = document.createElement('span');
+            sep.className = 'meta-sep';
+            sep.textContent = '/';
+            metaEl.appendChild(sep);
+        }
+    });
 
     const dateStr = new Date(data.created_at).toLocaleDateString('ko-KR', {
         year: 'numeric', month: '2-digit', day: '2-digit'
@@ -125,7 +135,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const md = data.body_markdown || '';
     const html = renderMarkdown(md);
-    document.getElementById('review-body').innerHTML = html;
+    document.getElementById('review-body').innerHTML = sanitizeHtml(html);
 
     document.getElementById('review-loading').style.display = 'none';
     document.getElementById('review-article').style.display = '';
@@ -175,6 +185,31 @@ function renderMarkdown(md) {
 function showError() {
     document.getElementById('review-loading').style.display = 'none';
     document.getElementById('review-error').style.display = '';
+}
+
+function sanitizeHtml(unsafeHtml) {
+    const template = document.createElement('template');
+    template.innerHTML = unsafeHtml || '';
+
+    template.content
+        .querySelectorAll('script,iframe,object,embed,link,meta,style')
+        .forEach((el) => el.remove());
+
+    template.content.querySelectorAll('*').forEach((el) => {
+        [...el.attributes].forEach((attr) => {
+            const name = attr.name.toLowerCase();
+            const value = attr.value || '';
+            if (name.startsWith('on')) {
+                el.removeAttribute(attr.name);
+                return;
+            }
+            if ((name === 'href' || name === 'src') && /^\s*javascript:/i.test(value)) {
+                el.removeAttribute(attr.name);
+            }
+        });
+    });
+
+    return template.innerHTML;
 }
 </script>
 

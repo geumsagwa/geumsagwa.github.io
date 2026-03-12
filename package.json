@@ -1,0 +1,9 @@
+{
+  "name": "homepage-quality-gate",
+  "private": true,
+  "scripts": {
+    "check:syntax": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/check-syntax.ps1",
+    "check:public": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/public-precheck.ps1",
+    "check": "npm run check:syntax && npm run check:public"
+  }
+}

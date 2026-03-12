@@ -35,7 +35,7 @@ async function loadMarkdownPostDetail(config) {
 
     marked.setOptions({ breaks: true, gfm: true });
     const bodyEl = document.getElementById(config.bodyId);
-    if (bodyEl) bodyEl.innerHTML = marked.parse(data.body_markdown || '');
+    if (bodyEl) bodyEl.innerHTML = sanitizeHtml(marked.parse(data.body_markdown || ''));
 
     if (typeof config.afterRender === 'function') {
         config.afterRender(data);
@@ -61,4 +61,29 @@ function showDetailError(config) {
     const errorEl = document.getElementById(config.errorId);
     if (loadingEl) loadingEl.style.display = 'none';
     if (errorEl) errorEl.style.display = '';
+}
+
+function sanitizeHtml(unsafeHtml) {
+    const template = document.createElement('template');
+    template.innerHTML = unsafeHtml || '';
+
+    template.content
+        .querySelectorAll('script,iframe,object,embed,link,meta,style')
+        .forEach((el) => el.remove());
+
+    template.content.querySelectorAll('*').forEach((el) => {
+        [...el.attributes].forEach((attr) => {
+            const name = attr.name.toLowerCase();
+            const value = attr.value || '';
+            if (name.startsWith('on')) {
+                el.removeAttribute(attr.name);
+                return;
+            }
+            if ((name === 'href' || name === 'src') && /^\s*javascript:/i.test(value)) {
+                el.removeAttribute(attr.name);
+            }
+        });
+    });
+
+    return template.innerHTML;
 }
