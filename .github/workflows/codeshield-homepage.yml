@@ -16,36 +16,7 @@ on:
 
 jobs:
   homepage-check:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-name: CodeShield Homepage Check
-
-on:
-  push:
-    branches:
-      - master
-      - main
-      - "chore/**"
-      - "feat/**"
-      - "fix/**"
-  pull_request:
-    branches:
-      - master
-      - main
-  workflow_dispatch:
-
-jobs:
-  homepage-check:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 10
     steps:
       - name: Checkout
