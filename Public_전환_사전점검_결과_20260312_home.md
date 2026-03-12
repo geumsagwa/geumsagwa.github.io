@@ -12,7 +12,7 @@
 - Medium: 1건
 - Low: 2건
 - 자동 점검: `scripts/public-precheck.ps1` 최신 실행 결과 **READY**
-  - 리포트: `reports/public_precheck_20260312_144232.md`
+  - 리포트: `reports/public_precheck_20260312_150230.md`
   - 수동검증 실행시트: `34_Public_전환_수동검증_실행시트_v1.md`
   - 최종서명 원페이지: `35_Public_전환_최종서명_원페이지_v1.md`
   - 전환후 1분 점검: `36_Public_전환후_1분점검_체크리스트_v1.md`
@@ -60,7 +60,7 @@
 - [x] 관리자 운영 SQL(`seed/transfer/revoke`) 실제 환경 적용 확인 (seed 적용 + admin 1건 확인)
 - [x] 전체 HTML CSP 메타 적용 완료
 - [x] `npm run` 기반 최소 품질 점검 명령 정리 (`package.json`의 `check/check:syntax/check:public`)
-- [x] Public 전환 직전 민감정보 재스캔 1회 수행 (`reports/public_precheck_20260312_144232.md`)
+- [x] Public 전환 직전 민감정보 재스캔 1회 수행 (`reports/public_precheck_20260312_150230.md`)
 - [x] GitHub branch protection 적용 확인 (`master`)
 
 ## 추가 조치 완료 (이번 턴)

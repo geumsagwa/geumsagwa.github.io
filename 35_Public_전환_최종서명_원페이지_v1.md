@@ -2,7 +2,7 @@
 
 ## 현재 상태 (2026-03-12)
 
-- 자동 품질 점검: `READY` (`reports/public_precheck_20260312_144232.md`)
+- 자동 품질 점검: `READY` (`reports/public_precheck_20260312_150230.md`)
 - 코드 기준 완료:
   - 권한 로직 DB/RLS 이관 코드 반영
   - CSP 전체 HTML 적용
