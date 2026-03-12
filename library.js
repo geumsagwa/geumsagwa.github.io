@@ -62,7 +62,14 @@ async function loadBooks(category) {
             empty.href = '#';
             empty.className = 'book-spine';
             empty.style.cssText = '--spine-color: #2a2a2a; --spine-height: 220px; --spine-width: 50px; opacity: 0.4; cursor: default;';
-            empty.innerHTML = '<span class="spine-title">준비 중</span><span class="spine-author">—</span>';
+            const emptyTitle = document.createElement('span');
+            emptyTitle.className = 'spine-title';
+            emptyTitle.textContent = '준비 중';
+            const emptyAuthor = document.createElement('span');
+            emptyAuthor.className = 'spine-author';
+            emptyAuthor.textContent = '—';
+            empty.appendChild(emptyTitle);
+            empty.appendChild(emptyAuthor);
             empty.addEventListener('click', e => e.preventDefault());
             shelf.insertBefore(empty, surface);
             return;
@@ -73,7 +80,14 @@ async function loadBooks(category) {
             a.href = '#';
             a.className = 'book-spine';
             a.style.cssText = `--spine-color: ${book.spine_color}; --spine-height: ${book.spine_height}px; --spine-width: ${book.spine_width}px;`;
-            a.innerHTML = `<span class="spine-title">${book.title}</span><span class="spine-author">${book.author}</span>`;
+            const titleSpan = document.createElement('span');
+            titleSpan.className = 'spine-title';
+            titleSpan.textContent = book.title || '';
+            const authorSpan = document.createElement('span');
+            authorSpan.className = 'spine-author';
+            authorSpan.textContent = book.author || '';
+            a.appendChild(titleSpan);
+            a.appendChild(authorSpan);
             a.addEventListener('click', (e) => {
                 e.preventDefault();
                 openBookAnimation(book);

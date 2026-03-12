@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.dataset.id = entry.id;
 
             const dateStr = formatDate(entry.written_date);
-            const bodyHtml = entry.body.replace(/\n/g, '<br>');
+            const bodyHtml = escapeHtml(entry.body || '').replace(/\n/g, '<br>');
 
             card.innerHTML = `
                 <div class="diary-entry-header">
@@ -74,6 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
         const wd = weekdays[d.getDay()];
         return `${y}. ${m}. ${day} (${wd})`;
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
     }
 
     // 저장 (신규 / 수정)

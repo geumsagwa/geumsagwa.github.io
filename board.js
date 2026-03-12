@@ -57,6 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${y}. ${m}. ${day}`;
     }
 
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     // 메모 렌더링
     function renderMemos() {
         const memos = loadMemos();
@@ -70,19 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (memo.reply) {
                 replyHTML = `
                     <div class="memo-reply">
-                        <span class="memo-reply-name">${memo.reply.name}</span>
-                        <p class="memo-reply-text">${memo.reply.text}</p>
-                        <span class="memo-reply-date">${memo.reply.date}</span>
+                        <span class="memo-reply-name">${escapeHtml(memo.reply.name || '')}</span>
+                        <p class="memo-reply-text">${escapeHtml(memo.reply.text || '')}</p>
+                        <span class="memo-reply-date">${escapeHtml(memo.reply.date || '')}</span>
                     </div>
                 `;
             }
 
             card.innerHTML = `
                 <div class="memo-header">
-                    <span class="memo-author">${memo.name}</span>
-                    <span class="memo-date">${memo.date}</span>
+                    <span class="memo-author">${escapeHtml(memo.name || '')}</span>
+                    <span class="memo-date">${escapeHtml(memo.date || '')}</span>
                 </div>
-                <p class="memo-content">${memo.text}</p>
+                <p class="memo-content">${escapeHtml(memo.text || '')}</p>
                 ${replyHTML}
             `;
 
