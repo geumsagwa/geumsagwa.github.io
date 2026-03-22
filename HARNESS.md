@@ -12,3 +12,14 @@ cd ..\harness
 ```
 
 원격만 쓸 때: `geumsagwa-harness`를 클론해 `project`와 나란히 두거나, 템플릿만 복사해 사용합니다.
+
+## v1 게이트 (이 저장소)
+
+형제 폴더에 `harness`가 있을 때, 홈페이지 품질 검사:
+
+```powershell
+cd ..\harness
+.\scripts\gate-website.ps1
+```
+
+전체(구조 + 홈페이지 + openclaw): `.\scripts\gate-all.ps1` — README는 **geumsagwa-harness** 참고.
