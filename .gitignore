@@ -5,6 +5,8 @@ Thumbs.db
 .env.*
 !.env.example
 node_modules/
+coverage/
+reports/weekly-quality-*.md
 migrate-reviews.js
 migrate-essays.js
 business-card.html

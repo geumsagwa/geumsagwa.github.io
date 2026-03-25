@@ -6,7 +6,7 @@
 .slide-container {
     position: relative;
     width: 100%;
-    height: 84vh;              /* 100vh - 16vh(메뉴바) */
+    height: calc(100vh - 16vh); /* 메뉴바(16vh) 제외 높이 */
 }
 
 .slide {
@@ -28,6 +28,23 @@
     padding: 28vh 2rem 2rem 12rem;
     z-index: 1;
 }
+
+.slide--main {
+    background-image: url('Images/main_nanobanana_01.png');
+}
+
+.slide--main,
+.slide-container .slide:nth-child(2),
+.slide-container .slide:nth-child(3) {
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 88.89% auto;
+}
+
+.slide--main {
+    background-position: right -1%;
+}
+
 
 /* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
 .slide::before {
@@ -97,10 +114,16 @@
     margin-top: 4.4em;
 }
 
-/* 2,3번 배경은 원본 비율 차이로 약간 위로 보일 수 있어 미세 보정 */
-.slide-container .slide:nth-child(2),
-.slide-container .slide:nth-child(3) {
-    background-position: calc(100% - 1.5%) calc(50% - 0.1%);
+@media (max-width: 768px) {
+    .slide-container {
+        height: calc(100vh - 14vh); /* 태블릿 메뉴바(14vh) 제외 */
+    }
+}
+
+@media (max-width: 430px) {
+    .slide-container {
+        height: calc(100vh - 12vh); /* 모바일 메뉴바 최소 높이(12vh) 제외 */
+    }
 }
 
 /* 이 프로젝트 공통: 제목=바탕 Bold+큰 크기, 내용=바탕 Regular+작은 크기 (font-size·font-weight로 구별) */
@@ -2905,12 +2928,21 @@
     .light-mode .slide p.text-overlay {
         font-size: 1.25rem !important;
     }
-    .slide::before {
+    .slide:not(.slide--main)::before {
         background: none !important;
     }
-    .slide::after {
+    .slide:not(.slide--main)::after {
         content: none !important;
         background: none !important;
+    }
+    .slide-container .slide:nth-child(2),
+    .slide-container .slide:nth-child(3) {
+        background-position: right top !important;
+        background-size: 93.33% auto !important;
+    }
+    .slide--main {
+        background-position: right -1% !important;
+        background-size: 93.33% auto !important;
     }
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2949,12 +2981,21 @@
     .light-mode .slide p.text-overlay {
         font-size: 1.05rem !important;
     }
-    .slide::before {
+    .slide:not(.slide--main)::before {
         background: none !important;
     }
-    .slide::after {
+    .slide:not(.slide--main)::after {
         content: none !important;
         background: none !important;
+    }
+    .slide-container .slide:nth-child(2),
+    .slide-container .slide:nth-child(3) {
+        background-position: right top !important;
+        background-size: 109.33% auto !important;
+    }
+    .slide--main {
+        background-position: right -1% !important;
+        background-size: 109.33% auto !important;
     }
     .library-tab,
     .blog-tab,
@@ -3015,12 +3056,21 @@
     .slide-container .slide:nth-child(3) .text-overlay {
         margin-top: 0 !important;
     }
-    .slide::before {
+    .slide:not(.slide--main)::before {
         background: none !important;
     }
-    .slide::after {
+    .slide:not(.slide--main)::after {
         content: none !important;
         background: none !important;
+    }
+    .slide-container .slide:nth-child(2),
+    .slide-container .slide:nth-child(3) {
+        background-position: right top !important;
+        background-size: 113.33% auto !important;
+    }
+    .slide--main {
+        background-position: right -1% !important;
+        background-size: 113.33% auto !important;
     }
     .library-tab,
     .blog-tab,
