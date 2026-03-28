@@ -1,5 +1,6 @@
 // Board - 메모 게시판 (localStorage 기반)
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await waitForSiteAuthReady();
     const nameInput = document.getElementById('memo-name');
     const textInput = document.getElementById('memo-text');
     const charCount = document.getElementById('memo-char-count');

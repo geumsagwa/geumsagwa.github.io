@@ -2,6 +2,7 @@ let easyMDE;
 let editId = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
+  await waitForSiteAuthReady();
   easyMDE = new EasyMDE({
     element: document.getElementById('f-body'),
     spellChecker: false,

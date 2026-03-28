@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await waitForSiteAuthReady();
     const dateInput = document.getElementById('diary-date');
     const textInput = document.getElementById('diary-text');
     const saveBtn = document.getElementById('diary-save');
@@ -177,5 +178,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 초기 로드
-    loadDiaries();
+    await loadDiaries();
 });
