@@ -6,13 +6,13 @@
 ## 브랜치·원격
 - 브랜치: `chore/public-readiness-20260312` (`origin/chore/public-readiness-20260312`와 동기)
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **원격 최신 커밋:** `4355af6` — docs: progress.md 갱신 (로고·반응형·명함·커밋 요약)
-- **이전 참고:** `131900e` (명함 추적), `af39bfa` (로고·반응형·배포·프리체크 등)
-- **`master`와의 차이:** chore 브랜치가 `master`보다 **10커밋** 앞섬 (머지·배포 대기)
+- **원격 최신 커밋:** `fb68cab` — chore: progress 갱신 및 public precheck 리포트 추가
+- **이전 참고:** `4355af6` (progress·문서), `131900e` (명함 추적), `af39bfa` (로고·반응형·배포·프리체크 등)
+- **`master`와의 차이:** chore 브랜치가 `master`보다 **11커밋** 앞섬 (머지·배포 대기)
 
 ## 워킹트리 상태 (2026-04-05)
-- **커밋되지 않은 수정 다수:** 예) `index.html`, `style-pages.css`, 로고 SVG·`logo-variants-compare.html`, `.github/workflows/deploy-pages.yml`, `admin.html`·블로그·리더 등 HTML/JS, `repair_promote_admin.sql` 등.
-- **미추적(로컬):** `main-page-1920.png` 등 브레이크포인트 캡처, `Images/logo-for-mspaint.png`, `Picture/` 내 PNG 등 — 의도적 제외 유지 권장.
+- **추적 파일:** 깨끗함 (마지막 푸시 `fb68cab` 기준).
+- **미추적(로컬):** `main-page-*.png`, `Images/logo-for-mspaint.png`, `Images/logo-variants-for-mspaint.png`, `Picture/` 내 PNG 등 — 의도적 제외 유지 권장.
 - 하네스 `gate-website` / `npm run check` : `2026-04-05` 기준 `public-precheck` 요약 **CONDITIONAL** (CSP coverage **20/21** WARN) → `gate-all` 파이프라인에서 실패할 수 있음. 최신 리포트 예: `reports/public_precheck_20260405_163805.md`
 
 ## 이번 기간에 한 일 (요약) — 이미 원격에 반영된 범위
@@ -37,7 +37,6 @@
 
 ## 미커밋 / 로컬만
 - 스크린샷·미리보기 PNG: `main-page-*.png`, `Images/logo-for-mspaint.png`, `Images/logo-variants-for-mspaint.png`, `Picture/` 등 (의도적으로 커밋 제외 권장)
-- **추가:** 현재 워킹트리에 **이미 추적된 파일의 수정**이 많이 남아 있음 → 다음 작업에서 커밋/리버트 결정 필요
 
 ## 막힌 일 / blocked
 - **품질 게이트:** CSP 커버리지 WARN (20/21)로 precheck가 CONDITIONAL일 때 harness `gate-all` 실패 가능
