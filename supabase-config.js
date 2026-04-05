@@ -8,4 +8,12 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 // 클라이언트는 DB 결과를 읽어 UI 표시만 보조한다.
 
 // Supabase 클라이언트 초기화 (CDN의 전역 supabase와 충돌 방지)
-const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: {
+    flowType: 'pkce',
+    detectSessionInUrl: true,
+    persistSession: true,
+    autoRefreshToken: true,
+    storage: window.localStorage,
+  },
+});

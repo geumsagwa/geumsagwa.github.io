@@ -4,6 +4,16 @@ const PUBLIC_PAGES = ['index.html', 'login.html', ''];
 const ADMIN_PAGES = ['diary.html', 'admin.html'];
 let memberCache = null;
 
+// requireAuth + updateAuthUI 1차 완료 후 resolve — DB/Storage를 쓰는 스크립트는 이후에 실행할 것 (경쟁 상태 방지)
+let _resolveSiteAuthReady;
+window.__siteAuthReadyPromise = new Promise((resolve) => {
+  _resolveSiteAuthReady = resolve;
+});
+
+function waitForSiteAuthReady() {
+  return window.__siteAuthReadyPromise || Promise.resolve();
+}
+
 function resetMemberCache() {
     memberCache = null;
 }
@@ -40,23 +50,23 @@ async function isCurrentUserAdmin() {
 
 // 인증 상태 관리
 document.addEventListener('DOMContentLoaded', async () => {
-    // 페이지 접근 권한 체크
-    await requireAuth();
+    try {
+        await requireAuth();
+        await updateAuthUI();
 
-    await updateAuthUI();
-
-    // 인증 상태 변경 감지
-    _supabase.auth.onAuthStateChange((event, session) => {
-        resetMemberCache();
-        updateAuthUI();
-        // 로그아웃 시 보호 페이지에서 홈으로 이동
-        if (event === 'SIGNED_OUT') {
-            const page = window.location.pathname.split('/').pop() || '';
-            if (!PUBLIC_PAGES.includes(page)) {
-                window.location.href = 'index.html';
+        _supabase.auth.onAuthStateChange((event, session) => {
+            resetMemberCache();
+            updateAuthUI();
+            if (event === 'SIGNED_OUT') {
+                const page = window.location.pathname.split('/').pop() || '';
+                if (!PUBLIC_PAGES.includes(page)) {
+                    window.location.href = 'index.html';
+                }
             }
-        }
-    });
+        });
+    } finally {
+        _resolveSiteAuthReady();
+    }
 });
 
 // 보호 페이지 접근 시 인증 체크 → 미인증이면 로그인으로 리다이렉트

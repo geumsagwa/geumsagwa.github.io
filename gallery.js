@@ -1,5 +1,6 @@
 // Gallery 카테고리 탭 전환 + 라이트박스
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await waitForSiteAuthReady();
     const tabs = document.querySelectorAll('.gallery-tab');
     const panels = document.querySelectorAll('.gallery-panel');
 

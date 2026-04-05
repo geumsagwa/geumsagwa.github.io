@@ -297,8 +297,9 @@
 
 <!-- 상단 메뉴바 영역 -->
 <nav class="menu-bar">
-    <a href="index.html" class="menu-logo">
-        <span class="menu-logo-text">생각을 잇다</span>
+    <a href="index.html" class="menu-logo" aria-label="생각을 잇다 홈">
+        <img class="menu-logo-img menu-logo-img--dark" src="Images/logo-saenggak.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
+        <img class="menu-logo-img menu-logo-img--light" src="Images/logo-saenggak-light.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
     </a>
     <ul class="menu-list">
         <li><a href="index.html">Home</a></li>
@@ -358,15 +359,14 @@
     const epubPath = params.get('path') || '';
     const bookName = decodeURIComponent(params.get('title') || '');
 
-    if (!epubPath) {
-        document.getElementById('book-title').textContent = '책을 선택해주세요';
-        throw new Error('No book path specified');
-    }
-
     // Supabase Storage에서 epub 파일 직접 다운로드 후 로드
     async function initReader() {
         try {
-            // 세션 복원 대기
+            if (!epubPath) {
+                document.getElementById('book-title').textContent = '책을 선택해주세요';
+                return;
+            }
+
             const { data: { session } } = await _supabase.auth.getSession();
 
             if (!session) {
@@ -745,10 +745,12 @@
     } // loadEpub 함수 끝
 </script>
 <script src="supabase-config.js"></script>
-<script src="auth.js?v=2"></script>
+<script src="auth.js?v=3"></script>
 <script>
-    // Supabase 로드 후 리더 초기화
-    initReader();
+    document.addEventListener('DOMContentLoaded', async () => {
+        await waitForSiteAuthReady();
+        await initReader();
+    });
 </script>
 
 </body>

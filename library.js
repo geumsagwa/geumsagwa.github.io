@@ -11,7 +11,8 @@ const CATEGORY_KEYWORDS = {
     psychology: ['심리', '감정', '인지', '무의식', '상담', 'psychology']
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await waitForSiteAuthReady();
     initTabs();
     loadAllBooks();
     initUpload();
@@ -96,6 +97,18 @@ async function loadBooks(category) {
         });
     } catch (err) {
         console.error(`${category} 책 로드 실패:`, err);
+        const surface = shelf.querySelector('.shelf-surface');
+        const hint = document.createElement('div');
+        hint.className = 'book-spine library-load-error';
+        hint.setAttribute('role', 'alert');
+        const code = err && (err.code || err.status || err.message);
+        hint.innerHTML =
+            '<span class="spine-title">목록을 불러오지 못함</span>' +
+            '<span class="spine-author">Supabase·로그인·RLS를 확인하세요</span>';
+        hint.title = code ? String(code) : '';
+        hint.style.cssText =
+            '--spine-color: #5c2a2a; --spine-height: 220px; --spine-width: 180px; opacity: 1; cursor: help; flex-direction: column; gap: 0.35rem;';
+        if (surface) shelf.insertBefore(hint, surface);
     }
 }
 

@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: code-shield-homepage-gate
+        name: code-shield homepage gate
+        entry: powershell -NoProfile -Command "npm run check"
+        language: system
+        pass_filenames: false
