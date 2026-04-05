@@ -6,12 +6,12 @@
 ## 브랜치·원격
 - 브랜치: `chore/public-readiness-20260312` (`origin/chore/public-readiness-20260312`와 동기)
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **원격 최신 커밋:** `fb68cab` — chore: progress 갱신 및 public precheck 리포트 추가
-- **이전 참고:** `4355af6` (progress·문서), `131900e` (명함 추적), `af39bfa` (로고·반응형·배포·프리체크 등)
-- **`master`와의 차이:** chore 브랜치가 `master`보다 **11커밋** 앞섬 (머지·배포 대기)
+- **원격 tip:** `git fetch` 후 `git log -1 origin/chore/public-readiness-20260312`로 확인
+- **최근 반영된 작업 예:** progress·public precheck 리포트 추가, progress·워킹트리 설명 정합 (중간 커밋: `fb68cab`, `a40b8c4` 등)
+- **`master`와의 차이:** `git rev-list --count master..chore/public-readiness-20260312` (머지·배포 전 커밋 수)
 
 ## 워킹트리 상태 (2026-04-05)
-- **추적 파일:** 깨끗함 (마지막 푸시 `fb68cab` 기준).
+- **추적 파일:** 깨끗함 (`origin/chore/public-readiness-20260312`와 동기화된 상태를 가정).
 - **미추적(로컬):** `main-page-*.png`, `Images/logo-for-mspaint.png`, `Images/logo-variants-for-mspaint.png`, `Picture/` 내 PNG 등 — 의도적 제외 유지 권장.
 - 하네스 `gate-website` / `npm run check` : `2026-04-05` 기준 `public-precheck` 요약 **CONDITIONAL** (CSP coverage **20/21** WARN) → `gate-all` 파이프라인에서 실패할 수 있음. 최신 리포트 예: `reports/public_precheck_20260405_163805.md`
 
