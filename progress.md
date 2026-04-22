@@ -1,7 +1,8 @@
 # Progress — website (geumsagwa.github.io)
 
 ## 마지막 갱신
-- 시각(ISO): 2026-04-05T17:00:00+09:00
+- 시각(ISO): 2026-04-23T18:00:00+09:00
+- **최신 프리체크:** `npm run check` — syntax OK, public-precheck **CONDITIONAL** (CSP 20/21, 미변경).
 
 ## 브랜치·원격
 - 브랜치: `chore/public-readiness-20260312` (`origin/chore/public-readiness-20260312`와 동기)
@@ -13,14 +14,16 @@
 ## 워킹트리 상태 (2026-04-05)
 - **추적 파일:** 깨끗함 (`origin/chore/public-readiness-20260312`와 동기화된 상태를 가정).
 - **미추적(로컬):** `main-page-*.png`, `Images/logo-for-mspaint.png`, `Images/logo-variants-for-mspaint.png`, `Picture/` 내 PNG 등 — 의도적 제외 유지 권장.
-- 하네스 `gate-website` / `npm run check` : `2026-04-05` 기준 `public-precheck` 요약 **CONDITIONAL** (CSP coverage **20/21** WARN) → `gate-all` 파이프라인에서 실패할 수 있음. 최신 리포트 예: `reports/public_precheck_20260405_163805.md`
+- 하네스 `gate-website` / `npm run check` : `2026-04-23` 기준 `public-precheck` 요약 **CONDITIONAL** (CSP coverage **20/21** WARN) → `gate-all` 파이프라인에서 실패. 최신 리포트: `reports/public_precheck_20260423_082415.md` (이전 예: `reports/public_precheck_20260405_163805.md`)
 
 ## 이번 기간에 한 일 (요약) — 이미 원격에 반영된 범위
 
-### 반응형 (메인 히어로 우선, 단위 px `max-width`)
-- 구간: **1920 · 1366 · 768 · 480 · 420** (FHD / 노트북 / 태블릿 / 중형 모바일 / 작은 폰)
-- `style-pages.css`: 슬라이드·`.slide-container` 높이(dvh 보조)·히어로 패딩·통합 미디어쿼리 블록 정리
-- `style.css`: 메뉴 로고 이미지 여백·`max-width` (가로형 로고 대비)
+### 반응형 (전역 통일, 2026-04-23)
+- 구간(공통): **1280 · 768 · 480** (`max-width` px) — 모바일은 iPhone·갤럭시 대표 세로 폭(480px 이하)을 한 티어로 합침
+- `style.css`: 네비 — 1280 / 768 / 480(옛 430·360·420 통합)
+- `style-pages.css`: 히어로·페이지 — 기존 1920/1366/420 제거, 하단 “Unified”를 1280/768/480 3단으로 재구성; 서평 768 규칙을 도서관 등 768 블록과 병합
+- `style-light.css`: 슬라이드 라이트 비네팅 `768`만 유지(430/360 중복 제거)
+- `index.html`: 스타일 캐시 `?v=20260423r3`
 
 ### 로고
 - **A안 채택**: 펼친 책 + 골드 실 (`Images/logo-saenggak.svg`, 라이트: `logo-saenggak-light.svg`)

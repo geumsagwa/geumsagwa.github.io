@@ -227,6 +227,8 @@ html.light-mode .menu-logo-img--light,
     border-color: rgba(170, 170, 170, 0.4);
 }
 
+/* Breakpoints: 1280 (좁은 데스크톱) · 768 (태블릿) · 480 (모바일, ~iPhone/갤럭시 가로) */
+
 /* -- 테마 토글 버튼 -- */
 .theme-toggle-btn {
     font-weight: 700;
@@ -272,9 +274,6 @@ html.light-mode .menu-logo-img--light,
     .menu-logo-img {
         height: 1.85rem;
         max-width: min(44vw, 172px);
-    }
-    .slide-container {
-        height: 86vh;
     }
     .menu-list li {
         padding: 0 0.8rem;
@@ -328,12 +327,12 @@ html.light-mode .menu-logo-img--light,
     }
 }
 
-/* ---------- Responsive: Mobile Large (<=430) ---------- */
-@media (max-width: 430px) {
+/* ---------- Responsive: phone (<=480) — iPhone(390~430) · Galaxy(~360~412) 공통 ---------- */
+@media (max-width: 480px) {
     .menu-bar {
         height: auto;
         min-height: 12vh;
-        padding: 0.7rem 1rem;
+        padding: 0.55rem 0.8rem;
         flex-direction: column;
         align-items: flex-start;
         gap: 0.6rem;
@@ -342,7 +341,7 @@ html.light-mode .menu-logo-img--light,
         gap: 0.6rem;
     }
     .menu-logo-img {
-        height: 1.65rem;
+        height: 1.5rem;
         max-width: min(58vw, 158px);
     }
     .menu-list {
@@ -355,7 +354,7 @@ html.light-mode .menu-logo-img--light,
         padding: 0.25rem 0.45rem;
     }
     .menu-list li a {
-        font-size: 0.84rem;
+        font-size: 0.8rem;
     }
     .auth-area {
         width: 100%;
@@ -365,26 +364,12 @@ html.light-mode .menu-logo-img--light,
     }
     .auth-login-btn,
     .auth-logout-btn {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         padding: 0.38rem 0.9rem;
     }
     .theme-toggle-btn {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         padding: 0.38rem 0.85rem;
-    }
-}
-
-/* ---------- Responsive: Mobile Small (<=360) ---------- */
-@media (max-width: 360px) {
-    .menu-bar {
-        padding: 0.55rem 0.8rem;
-    }
-    .menu-logo-img {
-        height: 1.5rem;
-        max-width: min(62vw, 148px);
-    }
-    .menu-list li a {
-        font-size: 0.8rem;
     }
     .library-container,
     .blog-container,
@@ -399,10 +384,5 @@ html.light-mode .menu-logo-img--light,
     .diary-theme-text,
     .gallery-theme-text {
         font-size: 0.74rem;
-    }
-    .auth-login-btn,
-    .auth-logout-btn,
-    .theme-toggle-btn {
-        font-size: 0.88rem;
     }
 }

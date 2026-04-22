@@ -69,35 +69,8 @@ body.light-mode,
     content: none;
 }
 
+/* 768 이하(태블릿·모바일) — 슬라이드 비네팅(라이트) */
 @media (max-width: 768px) {
-    .light-mode .slide::before {
-        background: radial-gradient(
-            ellipse 50% 85.536% at 75% 40%,
-            rgba(217, 217, 217, 0) 10.137%,
-            #f5f0e8 72.919%
-        ) !important;
-    }
-    .light-mode .slide::after {
-        content: none !important;
-        background: none !important;
-    }
-}
-
-@media (max-width: 430px) {
-    .light-mode .slide::before {
-        background: radial-gradient(
-            ellipse 50% 85.536% at 75% 40%,
-            rgba(217, 217, 217, 0) 10.137%,
-            #f5f0e8 72.919%
-        ) !important;
-    }
-    .light-mode .slide::after {
-        content: none !important;
-        background: none !important;
-    }
-}
-
-@media (max-width: 360px) {
     .light-mode .slide::before {
         background: radial-gradient(
             ellipse 50% 85.536% at 75% 40%,
