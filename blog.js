@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await waitForSiteAuthReady();
     const tabs = document.querySelectorAll('.blog-tab');
     const panels = document.querySelectorAll('.blog-panel');
 

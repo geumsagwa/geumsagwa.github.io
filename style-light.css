@@ -15,7 +15,7 @@
 /* -- 전환 애니메이션 -- */
 body, html,
 .menu-bar,
-.menu-logo-text,
+.menu-logo-img,
 .menu-list li a,
 .blog-card,
 .frame-mat,
@@ -45,10 +45,6 @@ body.light-mode,
 
 .light-mode .menu-bar {
     background-color: #f5f0e8;
-}
-
-.light-mode .menu-logo-text {
-    color: #2a2520;
 }
 
 .light-mode .menu-list li a {

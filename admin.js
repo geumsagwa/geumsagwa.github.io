@@ -3,6 +3,7 @@ let allMembers = [];
 let currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', async () => {
+    await waitForSiteAuthReady();
     if (typeof isCurrentUserAdmin === 'function') {
         const isAdmin = await isCurrentUserAdmin();
         if (!isAdmin) {

@@ -1,0 +1,33 @@
+name: weekly-quality-report
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 0 * * 1"
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate weekly report
+        run: npm run report:weekly
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-quality-report
+          path: reports/weekly-quality-*.md
+          if-no-files-found: error

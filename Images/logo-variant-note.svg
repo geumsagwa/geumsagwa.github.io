@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 228 52" fill="none" aria-hidden="true">
+  <!-- variant C: notebook margin + thread -->
+  <line x1="18" y1="16" x2="108" y2="16" stroke="rgba(255,255,255,0.45)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="18" y1="26" x2="118" y2="26" stroke="rgba(255,255,255,0.45)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="18" y1="36" x2="98" y2="36" stroke="rgba(255,255,255,0.45)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="14" y1="12" x2="14" y2="40" stroke="#c9b896" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M14 28 Q88 18 168 26 T212 30" stroke="#c9b896" stroke-width="1.75" stroke-linecap="round" fill="none" opacity="0.95"/>
+  <circle cx="218" cy="30" r="4.5" fill="#ffffff"/>
+  <circle cx="14" cy="28" r="2.8" fill="#c9b896"/>
+</svg>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; connect-src 'self' https://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https: https://fonts.gstatic.com; frame-src 'self' blob: data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
+    <title>명함 - 임종탁</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;700&family=Noto+Serif+KR:wght@400;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #d5d0ca;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .card {
+            width: 90mm;
+            height: 50mm;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.1);
+            display: flex;
+            position: relative;
+        }
+
+        /* ── 왼쪽: 캐리커처 ── */
+        .card-left {
+            width: 36%;
+            height: 100%;
+            background: #f5f2ee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .card-left img {
+            width: 102%;
+            height: auto;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        /* ── 오른쪽: 정보 ── */
+        .card-right {
+            flex: 1;
+            background: #1c1c1c;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 6mm;
+            position: relative;
+        }
+
+        /* 사이트 공식 로고 (다크 배경용 SVG) */
+        .card-logo {
+            height: 5.2mm;
+            width: auto;
+            max-width: 36mm;
+            margin-bottom: 2.2mm;
+            display: block;
+            object-fit: contain;
+        }
+
+        .card-right::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            bottom: 15%;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, #8f7d60, #dabb7e, #8f7d60, transparent);
+        }
+
+        .card-name-kr {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 15pt;
+            font-weight: 700;
+            color: #f0ebe4;
+            letter-spacing: 0.35em;
+            margin-bottom: 1mm;
+        }
+
+        .card-name-en {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 5.5pt;
+            font-weight: 200;
+            color: #665e52;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 3.5mm;
+        }
+
+        .card-divider {
+            width: 100%;
+            height: 0.5px;
+            background: linear-gradient(90deg, #8f7d60 0%, rgba(143,125,96,0.1) 100%);
+            margin-bottom: 3.5mm;
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8mm;
+        }
+
+        .card-row {
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+
+        .card-label {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 4.5pt;
+            font-weight: 400;
+            color: #8f7d60;
+            width: 6mm;
+            text-align: right;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+
+        .card-value {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 7pt;
+            font-weight: 300;
+            color: #b0a898;
+            letter-spacing: 0.06em;
+        }
+
+        .card-tagline {
+            position: absolute;
+            right: 5mm;
+            bottom: 3mm;
+            font-family: 'Noto Serif KR', serif;
+            font-size: 5pt;
+            color: #a89878;
+            letter-spacing: 0.15em;
+        }
+
+        @media print {
+            body { background: white; }
+            .card { box-shadow: none; border: 0.5px solid #ccc; }
+            @page { size: A4; margin: 20mm; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="card-left">
+        <img src="Images/caricature-color.png" alt="캐리커처">
+    </div>
+    <div class="card-right">
+        <img class="card-logo" src="Images/logo-saenggak.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
+        <div class="card-name-kr">임종탁</div>
+        <div class="card-name-en">Jong Tak Lim</div>
+        <div class="card-divider"></div>
+        <div class="card-info">
+            <div class="card-row">
+                <span class="card-label">TEL</span>
+                <span class="card-value">010-2484-6074</span>
+            </div>
+            <div class="card-row">
+                <span class="card-label">WEB</span>
+                <span class="card-value">geumsagwa.github.io</span>
+            </div>
+        </div>
+        <div class="card-tagline">생각을 잇다</div>
+    </div>
+</div>
+
+</body>
+</html>

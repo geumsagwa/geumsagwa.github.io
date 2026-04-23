@@ -1,0 +1,40 @@
+{
+  "version": "1",
+  "project": "website",
+  "updated_at": "2026-03-22T00:00:00+09:00",
+  "priority": ["WEB-001", "WEB-002"],
+  "tasks": [
+    {
+      "id": "WEB-001",
+      "title": "품질 게이트 유지 — npm run check 통과",
+      "status": "doing",
+      "owner": "human",
+      "blocked_by": [],
+      "acceptance": [
+        "npm run check (syntax + public-precheck) exit 0"
+      ],
+      "links": []
+    },
+    {
+      "id": "WEB-002",
+      "title": "GitHub Pages 배포·콘텐츠와 하네스 tasks/progress 주간 갱신",
+      "status": "pending",
+      "owner": "human",
+      "blocked_by": [],
+      "acceptance": [
+        "배포 URL 접속 확인",
+        "progress.md 주 1회 이상 갱신"
+      ],
+      "links": []
+    },
+    {
+      "id": "WEB-003",
+      "title": "접근성·반응형 점검 (필요 시)",
+      "status": "pending",
+      "owner": "human",
+      "blocked_by": ["WEB-001"],
+      "acceptance": ["주요 뷰포트에서 핵심 플로우 확인"],
+      "links": []
+    }
+  ]
+}

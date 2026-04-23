@@ -6,17 +6,18 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'">
     <title>생각을 잇다</title>
         <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
-<link rel="stylesheet" href="style.css?v=20260308a">
-<link rel="stylesheet" href="style-pages.css?v=20260308a">
-<link rel="stylesheet" href="style-light.css?v=20260308a">
+<link rel="stylesheet" href="style.css?v=20260328logoA">
+<link rel="stylesheet" href="style-pages.css?v=20260328bp">
+<link rel="stylesheet" href="style-light.css?v=20260328logoA">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
 <!-- 상단 메뉴바 영역 -->
 <nav class="menu-bar">
-    <a href="index.html" class="menu-logo">
-        <span class="menu-logo-text">생각을 잇다</span>
+    <a href="index.html" class="menu-logo" aria-label="생각을 잇다 홈">
+        <img class="menu-logo-img menu-logo-img--dark" src="Images/logo-saenggak.svg" alt="" width="176" height="40" decoding="async" />
+        <img class="menu-logo-img menu-logo-img--light" src="Images/logo-saenggak-light.svg" alt="" width="176" height="40" decoding="async" />
     </a>
     <ul class="menu-list">
         <li><a href="index.html">Home</a></li>
@@ -31,7 +32,7 @@
 </nav>
 
 <div class="slide-container">
-    <div class="slide active" style="background-image: url('Images/main.png');">
+    <div class="slide slide--main active">
         <h1 class="text-overlay">생각을 잇다</h1>
     </div>
 
@@ -46,7 +47,7 @@
 
 <script src="main.js"></script>
 <script src="supabase-config.js"></script>
-<script src="auth.js"></script>
+<script src="auth.js?v=3"></script>
 
 </body>
 </html>

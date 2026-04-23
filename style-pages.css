@@ -6,7 +6,9 @@
 .slide-container {
     position: relative;
     width: 100%;
-    height: 84vh;              /* 100vh - 16vh(메뉴바) */
+    /* 100vh: 구형 브라우저 — 100dvh: 모바일 주소창 변동에 유리 */
+    height: calc(100vh - 16vh);
+    height: calc(100dvh - 16vh);
 }
 
 .slide {
@@ -28,6 +30,23 @@
     padding: 28vh 2rem 2rem 12rem;
     z-index: 1;
 }
+
+.slide--main {
+    background-image: url('Images/main_nanobanana_01.png');
+}
+
+.slide--main,
+.slide-container .slide:nth-child(2),
+.slide-container .slide:nth-child(3) {
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 88.89% auto;
+}
+
+.slide--main {
+    background-position: right -1%;
+}
+
 
 /* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
 .slide::before {
@@ -97,10 +116,25 @@
     margin-top: 4.4em;
 }
 
-/* 2,3번 배경은 원본 비율 차이로 약간 위로 보일 수 있어 미세 보정 */
-.slide-container .slide:nth-child(2),
-.slide-container .slide:nth-child(3) {
-    background-position: calc(100% - 1.5%) calc(50% - 0.1%);
+@media (max-width: 768px) {
+    .slide-container {
+        height: calc(100vh - 14vh);
+        height: calc(100dvh - 14vh);
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-container {
+        height: calc(100vh - 12vh);
+        height: calc(100dvh - 12vh);
+    }
+}
+
+@media (max-width: 420px) {
+    .slide-container {
+        height: calc(100vh - 11vh);
+        height: calc(100dvh - 11vh);
+    }
 }
 
 /* 이 프로젝트 공통: 제목=바탕 Bold+큰 크기, 내용=바탕 Regular+작은 크기 (font-size·font-weight로 구별) */
@@ -2868,11 +2902,26 @@
 }
 
 /* =========================================================
-   Unified Breakpoints (1280 / 768 / 430 / 360)
+   Unified Breakpoints (px)
+   데스크톱 FHD ≤1920 · 노트북 ≤1366 · 태블릿 ≤768
+   중형 모바일 ≤480 · 작은 스마트폰 ≤420
+   (메인 히어로 우선 적용)
    ========================================================= */
 
-/* ---------- Desktop (<=1280) ---------- */
-@media (max-width: 1280px) {
+/* ---------- Full HD and below (≤1920px) ---------- */
+@media (max-width: 1920px) {
+    /* 메인 히어로: 초광폭 대비 좌측 여백만 살짝 축소 */
+    .slide-container .slide {
+        padding: 28vh 2rem 2rem 10rem;
+    }
+}
+
+/* ---------- Laptop (≤1366px) ---------- */
+@media (max-width: 1366px) {
+    /* 메인 슬라이드: 좌측 패딩 완화 */
+    .slide-container .slide {
+        padding: 26vh 1.75rem 1.75rem 5rem;
+    }
     .photo-grid {
         gap: 1rem;
     }
@@ -2884,12 +2933,14 @@
     }
 }
 
-/* ---------- Tablet (<=768) ---------- */
+/* ---------- Tablet (≤768px) ---------- */
 @media (max-width: 768px) {
     .slide {
         /* 배경+페이드 세트(768): 반영 누락 방지 */
         background-size: 98% auto !important;
         background-position: center center !important;
+        /* 메인: 좁은 폭에서 좌·상 패딩 축소 + 노치 여유 */
+        padding: 20vh max(1rem, env(safe-area-inset-right, 0px)) 1.25rem max(1.25rem, env(safe-area-inset-left, 0px)) !important;
     }
     .slide h1.text-overlay,
     .slide p.text-overlay,
@@ -2905,12 +2956,14 @@
     .light-mode .slide p.text-overlay {
         font-size: 1.25rem !important;
     }
-    .slide::before {
-        background: none !important;
+    .slide-container .slide:nth-child(2),
+    .slide-container .slide:nth-child(3) {
+        background-position: right top !important;
+        background-size: 93.33% auto !important;
     }
-    .slide::after {
-        content: none !important;
-        background: none !important;
+    .slide--main {
+        background-position: right -1% !important;
+        background-size: 93.33% auto !important;
     }
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2928,12 +2981,13 @@
     }
 }
 
-/* ---------- Mobile Large (<=430) ---------- */
-@media (max-width: 430px) {
+/* ---------- Medium mobile (≤480px) ---------- */
+@media (max-width: 480px) {
     .slide {
-        /* 배경+페이드 세트(430): 피사체 보이게 유지 */
+        /* 배경+페이드 세트(480): 피사체 보이게 유지 */
         background-size: 93% auto !important;
         background-position: center center !important;
+        padding: 18vh max(0.85rem, env(safe-area-inset-right, 0px)) 1rem max(1rem, env(safe-area-inset-left, 0px)) !important;
     }
     .slide h1.text-overlay,
     .slide p.text-overlay,
@@ -2949,12 +3003,14 @@
     .light-mode .slide p.text-overlay {
         font-size: 1.05rem !important;
     }
-    .slide::before {
-        background: none !important;
+    .slide-container .slide:nth-child(2),
+    .slide-container .slide:nth-child(3) {
+        background-position: right top !important;
+        background-size: 109.33% auto !important;
     }
-    .slide::after {
-        content: none !important;
-        background: none !important;
+    .slide--main {
+        background-position: right -1% !important;
+        background-size: 109.33% auto !important;
     }
     .library-tab,
     .blog-tab,
@@ -2991,11 +3047,11 @@
     }
 }
 
-/* ---------- Mobile Small (<=360) ---------- */
-@media (max-width: 360px) {
+/* ---------- Small smartphone (≤420px) ---------- */
+@media (max-width: 420px) {
     .slide {
-        /* 배경+페이드 세트(360): 피사체 보이게 유지 */
-        padding: 18vh 0.8rem 1rem 2rem !important;
+        /* 배경+페이드 세트(420): 피사체 보이게 유지 */
+        padding: 16vh max(0.7rem, env(safe-area-inset-right, 0px)) 1rem max(0.85rem, env(safe-area-inset-left, 0px)) !important;
         background-size: 87% auto !important;
         background-position: center center !important;
     }
@@ -3015,12 +3071,14 @@
     .slide-container .slide:nth-child(3) .text-overlay {
         margin-top: 0 !important;
     }
-    .slide::before {
-        background: none !important;
+    .slide-container .slide:nth-child(2),
+    .slide-container .slide:nth-child(3) {
+        background-position: right top !important;
+        background-size: 113.33% auto !important;
     }
-    .slide::after {
-        content: none !important;
-        background: none !important;
+    .slide--main {
+        background-position: right -1% !important;
+        background-size: 113.33% auto !important;
     }
     .library-tab,
     .blog-tab,

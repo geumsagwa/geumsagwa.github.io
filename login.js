@@ -113,7 +113,8 @@ async function socialLogin(provider) {
   const { error } = await _supabase.auth.signInWithOAuth({
     provider,
     options: {
-      redirectTo: window.location.origin + '/index.html',
+      // 루트·GitHub Pages 프로젝트 경로(/repo/) 모두에서 동작하도록 현재 문서 기준 절대 URL 사용
+      redirectTo: new URL('index.html', window.location.href).href,
     },
   });
 

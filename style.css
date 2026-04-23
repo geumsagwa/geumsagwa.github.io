@@ -47,13 +47,31 @@ body, html {
     gap: 1rem;
     text-decoration: none;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
-.menu-logo-text {
-    font-weight: 700;
-    font-size: 1.6rem;
-    color: #fff;
-    letter-spacing: 0.05em;
+/* 심볼 로고: 가로형 고정 — 좁은 화면에서도 세로 줄바꿈 없음 */
+.menu-logo-img {
+    height: 2.35rem;
+    width: auto;
+    max-width: min(50vw, 200px);
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.menu-logo-img--light {
+    display: none !important;
+}
+
+html.light-mode .menu-logo-img--dark,
+.light-mode .menu-logo-img--dark {
+    display: none !important;
+}
+
+html.light-mode .menu-logo-img--light,
+.light-mode .menu-logo-img--light {
+    display: block !important;
 }
 
 .menu-list {
@@ -239,8 +257,9 @@ body, html {
     .menu-list li a {
         font-size: 1rem;
     }
-    .menu-logo-text {
-        font-size: 1.35rem;
+    .menu-logo-img {
+        height: 2rem;
+        max-width: min(46vw, 184px);
     }
 }
 
@@ -251,10 +270,8 @@ body, html {
         height: 14vh;
     }
     .menu-logo-img {
-        height: 10vh;
-    }
-    .menu-logo-text {
-        font-size: 0.95rem;
+        height: 1.85rem;
+        max-width: min(44vw, 172px);
     }
     .slide-container {
         height: 86vh;
@@ -324,8 +341,9 @@ body, html {
     .menu-logo {
         gap: 0.6rem;
     }
-    .menu-logo-text {
-        font-size: 0.9rem;
+    .menu-logo-img {
+        height: 1.65rem;
+        max-width: min(58vw, 158px);
     }
     .menu-list {
         width: 100%;
@@ -361,9 +379,9 @@ body, html {
     .menu-bar {
         padding: 0.55rem 0.8rem;
     }
-    .menu-logo-text {
-        font-size: 0.82rem;
-        letter-spacing: 0.02em;
+    .menu-logo-img {
+        height: 1.5rem;
+        max-width: min(62vw, 148px);
     }
     .menu-list li a {
         font-size: 0.8rem;

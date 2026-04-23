@@ -4,6 +4,10 @@
   "scripts": {
     "check:syntax": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/check-syntax.ps1",
     "check:public": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/public-precheck.ps1",
-    "check": "npm run check:syntax && npm run check:public"
+    "check": "npm run check:syntax && npm run check:public",
+    "verify:onboarding": "npm run check",
+    "branch-protection:check": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/branch-protection.ps1 -Mode Check",
+    "branch-protection:apply": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/branch-protection.ps1 -Mode Apply",
+    "report:weekly": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/weekly-quality-report.ps1"
   }
 }
