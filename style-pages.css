@@ -43,9 +43,9 @@
     background-position: right top;
     background-size: 88.89% auto;
 }
-/* 1번만: 배경 살짝 위(최초 조정 수치) */
+/* 1번만: 이전 수직 nudge(-8/-6/-5)의 절반만큼 아래(덜 올림) */
 .slide--main {
-    background-position: right -8px;
+    background-position: right -4px;
 }
 
 /* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
@@ -2931,7 +2931,7 @@
         background-size: 93.33% auto !important;
     }
     .slide--main {
-        background-position: right -6px !important;
+        background-position: right -3px !important;
         background-size: 93.33% auto !important;
     }
     .photo-grid {
@@ -2985,7 +2985,7 @@
         background-size: 113.33% auto !important;
     }
     .slide--main {
-        background-position: right -5px !important;
+        background-position: right -2.5px !important;
         background-size: 113.33% auto !important;
     }
     .library-tab,
