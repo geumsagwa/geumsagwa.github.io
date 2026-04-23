@@ -35,13 +35,17 @@
     background-image: url('Images/main_nanobanana_01.png?v=20260425');
 }
 
-/* 1~3번: 동일한 앵커(우상단) — 전환 시 인물 높이·위치가 흔들이지 않도록 1번만 쓰던 right -1% 제거 */
+/* 1~3번: 우측·크기 정합(2·3는 top) */
 .slide--main,
 .slide-container .slide:nth-child(2),
 .slide-container .slide:nth-child(3) {
     background-repeat: no-repeat;
     background-position: right top;
     background-size: 88.89% auto;
+}
+/* 1번만: main 이미지 구도 — 배경을 살짝 위로 (세로 -8px) */
+.slide--main {
+    background-position: right -8px;
 }
 
 /* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
@@ -2921,10 +2925,13 @@
     .light-mode .slide p.text-overlay {
         font-size: 1.25rem !important;
     }
-    .slide--main,
     .slide-container .slide:nth-child(2),
     .slide-container .slide:nth-child(3) {
         background-position: right top !important;
+        background-size: 93.33% auto !important;
+    }
+    .slide--main {
+        background-position: right -6px !important;
         background-size: 93.33% auto !important;
     }
     .photo-grid {
@@ -2972,10 +2979,13 @@
     .slide-container .slide:nth-child(3) .text-overlay {
         margin-top: 0 !important;
     }
-    .slide--main,
     .slide-container .slide:nth-child(2),
     .slide-container .slide:nth-child(3) {
         background-position: right top !important;
+        background-size: 113.33% auto !important;
+    }
+    .slide--main {
+        background-position: right -5px !important;
         background-size: 113.33% auto !important;
     }
     .library-tab,
