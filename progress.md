@@ -4,14 +4,14 @@
 
 ## 마지막 갱신
 - 시각(ISO): `2026-04-23T20:00:00+09:00`
-- **원격 tip (`origin/chore/public-readiness-20260312`):** `430dd86` — 반응형(`cdba904`) + 소셜 로그인·CSP·OAuth 흐름(`430dd86`) 등 포함.
+- **원격 tip (`origin/chore/public-readiness-20260312`):** `cf436b8` — 위 반영 + `progress.md` handover/PR#8·팁 정합; 기능 커밋: 반응형 `cdba904`, 소셜·CSP·OAuth `430dd86`.
 - **최신 프리체크:** `npm run check` — syntax OK, public-precheck **CONDITIONAL** (CSP **20/21**, 미해결). 하네스 `gate-all`은 이 상태에서 **완전 통과 전**.
 - **PR:** [`#8` merge](https://github.com/geumsagwa/geumsagwa.github.io/pull/8) → `master`·GitHub Pages 반영이 **다음 병합 목표**.
 
 ## 브랜치·원격
 - 브랜치: `chore/public-readiness-20260312` (`origin/chore/public-readiness-20260312`와 동기)
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **원격 tip:** `430dd86` (또는 `git fetch` 후 `git log -1 origin/chore/public-readiness-20260312`)
+- **원격 tip:** `cf436b8` (또는 `git fetch` 후 `git log -1 origin/chore/public-readiness-20260312`)
 - **최근 반영된 작업 예:** progress·public precheck 리포트, 반응형·로그인/CSP (커밋: `cdba904`, `430dd86` 등, 이전: `fb68cab`, `a40b8c4` 등)
 - **`master`와의 차이:** `git rev-list --count master..chore/public-readiness-20260312` (머지·배포 전 커밋 수)
 
