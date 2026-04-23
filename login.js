@@ -110,13 +110,19 @@ async function handleSignUp(e) {
 }
 
 async function socialLogin(provider) {
-  const { error } = await _supabase.auth.signInWithOAuth({
+  const { data, error } = await _supabase.auth.signInWithOAuth({
     provider,
     options: {
       // 루트·GitHub Pages 프로젝트 경로(/repo/) 모두에서 동작하도록 현재 문서 기준 절대 URL 사용
       redirectTo: new URL('index.html', window.location.href).href,
     },
   });
+
+  if (data?.url) {
+    /* 일부 환경·CSP/브라우저에서 SDK가 자동으로 이동하지 않을 수 있어 명시 이동 */
+    window.location.assign(data.url);
+    return;
+  }
 
   if (error) {
     const activeTab = document.querySelector('.auth-tab.active').id;

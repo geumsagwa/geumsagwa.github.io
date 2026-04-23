@@ -32,9 +32,10 @@
 }
 
 .slide--main {
-    background-image: url('Images/main_nanobanana_01.png');
+    background-image: url('Images/main_nanobanana_01.png?v=20260425');
 }
 
+/* 1~3번: 동일한 앵커(우상단) — 전환 시 인물 높이·위치가 흔들이지 않도록 1번만 쓰던 right -1% 제거 */
 .slide--main,
 .slide-container .slide:nth-child(2),
 .slide-container .slide:nth-child(3) {
@@ -42,11 +43,6 @@
     background-position: right top;
     background-size: 88.89% auto;
 }
-
-.slide--main {
-    background-position: right -1%;
-}
-
 
 /* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
 .slide::before {
@@ -114,27 +110,6 @@
 /* 3번: 한 줄 더 밑에 배치 */
 .slide-container .slide:nth-child(3) .text-overlay {
     margin-top: 4.4em;
-}
-
-@media (max-width: 768px) {
-    .slide-container {
-        height: calc(100vh - 14vh);
-        height: calc(100dvh - 14vh);
-    }
-}
-
-@media (max-width: 480px) {
-    .slide-container {
-        height: calc(100vh - 12vh);
-        height: calc(100dvh - 12vh);
-    }
-}
-
-@media (max-width: 420px) {
-    .slide-container {
-        height: calc(100vh - 11vh);
-        height: calc(100dvh - 11vh);
-    }
 }
 
 /* 이 프로젝트 공통: 제목=바탕 Bold+큰 크기, 내용=바탕 Regular+작은 크기 (font-size·font-weight로 구별) */
@@ -2275,7 +2250,7 @@
     line-height: 1.9;
 }
 
-/* 반응형 처리 */
+/* 반응형: 공통 768(태블릿) — 히어로/메인 히어로는 파일 하단 Unified 구간 */
 
 @media (max-width: 768px) {
     .library-tab {
@@ -2417,6 +2392,45 @@
     }
     .upload-title {
         font-size: 1rem;
+    }
+    /* 서평 (768) */
+    .review-hero {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .review-cover {
+        width: 140px;
+    }
+    .review-book-info {
+        text-align: center;
+        border-left: none;
+        border-top: 2px solid #8f7d60;
+        padding: 1rem 0 0 0;
+    }
+    .review-book-meta {
+        justify-content: center;
+    }
+    .review-book-title {
+        font-size: 1.3rem;
+    }
+    .review-book-meta span {
+        font-size: 0.75rem;
+    }
+    .review-title-label {
+        font-size: 0.8rem;
+    }
+    .review-body {
+        font-size: 0.78rem;
+    }
+    .review-body h2 {
+        font-size: 1rem;
+    }
+    .review-body .review-first-para::first-letter {
+        font-size: 2.6em;
+    }
+    .review-author-section {
+        padding: 1rem;
     }
 }
 
@@ -2770,48 +2784,6 @@
     user-select: none;
 }
 
-/* 서평 반응형 */
-@media (max-width: 768px) {
-    .review-hero {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-    }
-    .review-cover {
-        width: 140px;
-    }
-    .review-book-info {
-        text-align: center;
-        border-left: none;
-        border-top: 2px solid #8f7d60;
-        padding: 1rem 0 0 0;
-    }
-    .review-book-meta {
-        justify-content: center;
-    }
-    .review-book-title {
-        font-size: 1.3rem;
-    }
-    .review-book-meta span {
-        font-size: 0.75rem;
-    }
-    .review-title-label {
-        font-size: 0.8rem;
-    }
-    .review-body {
-        font-size: 0.78rem;
-    }
-    .review-body h2 {
-        font-size: 1rem;
-    }
-    .review-body .review-first-para::first-letter {
-        font-size: 2.6em;
-    }
-    .review-author-section {
-        padding: 1rem;
-    }
-}
-
 /* ── 소셜 로그인 ── */
 .auth-divider {
     display: flex;
@@ -2902,23 +2874,14 @@
 }
 
 /* =========================================================
-   Unified Breakpoints (px)
-   데스크톱 FHD ≤1920 · 노트북 ≤1366 · 태블릿 ≤768
-   중형 모바일 ≤480 · 작은 스마트폰 ≤420
-   (메인 히어로 우선 적용)
+   공통 뷰포트 구간 (이 파일 + style.css 동일)
+   1280 — 좁은 데스크톱/노트
+   768  — 태블릿·아이패드 세로
+   480  — 모바일 (iPhone 12~15·Galaxy S 등 대부분 세로 <480)
    ========================================================= */
 
-/* ---------- Full HD and below (≤1920px) ---------- */
-@media (max-width: 1920px) {
-    /* 메인 히어로: 초광폭 대비 좌측 여백만 살짝 축소 */
-    .slide-container .slide {
-        padding: 28vh 2rem 2rem 10rem;
-    }
-}
-
-/* ---------- Laptop (≤1366px) ---------- */
-@media (max-width: 1366px) {
-    /* 메인 슬라이드: 좌측 패딩 완화 */
+/* ---------- ≤1280: 랩탑 — 히어로 좌측 여백·그리드 간격만 조정 ---------- */
+@media (max-width: 1280px) {
     .slide-container .slide {
         padding: 26vh 1.75rem 1.75rem 5rem;
     }
@@ -2933,13 +2896,15 @@
     }
 }
 
-/* ---------- Tablet (≤768px) ---------- */
+/* ---------- ≤768: 태블릿 (메뉴 14vh와 높이 맞춤) ---------- */
 @media (max-width: 768px) {
+    .slide-container {
+        height: calc(100vh - 14vh);
+        height: calc(100dvh - 14vh);
+    }
     .slide {
-        /* 배경+페이드 세트(768): 반영 누락 방지 */
         background-size: 98% auto !important;
         background-position: center center !important;
-        /* 메인: 좁은 폭에서 좌·상 패딩 축소 + 노치 여유 */
         padding: 20vh max(1rem, env(safe-area-inset-right, 0px)) 1.25rem max(1.25rem, env(safe-area-inset-left, 0px)) !important;
     }
     .slide h1.text-overlay,
@@ -2956,13 +2921,10 @@
     .light-mode .slide p.text-overlay {
         font-size: 1.25rem !important;
     }
+    .slide--main,
     .slide-container .slide:nth-child(2),
     .slide-container .slide:nth-child(3) {
         background-position: right top !important;
-        background-size: 93.33% auto !important;
-    }
-    .slide--main {
-        background-position: right -1% !important;
         background-size: 93.33% auto !important;
     }
     .photo-grid {
@@ -2981,82 +2943,21 @@
     }
 }
 
-/* ---------- Medium mobile (≤480px) ---------- */
+/* ---------- ≤480: 폰 (메뉴 ~12vh · 좁은 기기 단일 티어) ---------- */
 @media (max-width: 480px) {
+    .slide-container {
+        height: calc(100vh - 12vh);
+        height: calc(100dvh - 12vh);
+    }
     .slide {
-        /* 배경+페이드 세트(480): 피사체 보이게 유지 */
-        background-size: 93% auto !important;
-        background-position: center center !important;
-        padding: 18vh max(0.85rem, env(safe-area-inset-right, 0px)) 1rem max(1rem, env(safe-area-inset-left, 0px)) !important;
-    }
-    .slide h1.text-overlay,
-    .slide p.text-overlay,
-    .light-mode .slide h1.text-overlay,
-    .light-mode .slide p.text-overlay {
-        font-family: 'GyeonggiBatang', serif !important;
-    }
-    .slide h1.text-overlay,
-    .light-mode .slide h1.text-overlay {
-        font-size: 1.25rem !important;
-    }
-    .slide p.text-overlay,
-    .light-mode .slide p.text-overlay {
-        font-size: 1.05rem !important;
-    }
-    .slide-container .slide:nth-child(2),
-    .slide-container .slide:nth-child(3) {
-        background-position: right top !important;
-        background-size: 109.33% auto !important;
-    }
-    .slide--main {
-        background-position: right -1% !important;
-        background-size: 109.33% auto !important;
-    }
-    .library-tab,
-    .blog-tab,
-    .gallery-tab {
-        padding: 0.42rem 0.85rem;
-    }
-    .tab-label-code {
-        font-size: 0.86rem;
-    }
-    .cafe-tab-name,
-    .gallery-tab-label {
-        font-size: 0.63rem;
-    }
-    .shelf-row {
-        padding: 0 0.6rem;
-        min-height: 170px;
-    }
-    .book-spine {
-        --spine-width: 34px !important;
-        --spine-height: 150px !important;
-    }
-    .photo-grid {
-        grid-template-columns: 1fr;
-        gap: 0.7rem;
-    }
-    .exhibit-wall {
-        columns: 1;
-    }
-    .memo-content,
-    .diary-entry-body,
-    .review-body {
-        font-size: 0.75rem;
-        line-height: 1.75;
-    }
-}
-
-/* ---------- Small smartphone (≤420px) ---------- */
-@media (max-width: 420px) {
-    .slide {
-        /* 배경+페이드 세트(420): 피사체 보이게 유지 */
         padding: 16vh max(0.7rem, env(safe-area-inset-right, 0px)) 1rem max(0.85rem, env(safe-area-inset-left, 0px)) !important;
         background-size: 87% auto !important;
         background-position: center center !important;
     }
     .slide h1.text-overlay,
-    .slide p.text-overlay {
+    .slide p.text-overlay,
+    .light-mode .slide h1.text-overlay,
+    .light-mode .slide p.text-overlay {
         font-family: 'GyeonggiBatang', serif !important;
     }
     .slide h1.text-overlay,
@@ -3071,13 +2972,10 @@
     .slide-container .slide:nth-child(3) .text-overlay {
         margin-top: 0 !important;
     }
+    .slide--main,
     .slide-container .slide:nth-child(2),
     .slide-container .slide:nth-child(3) {
         background-position: right top !important;
-        background-size: 113.33% auto !important;
-    }
-    .slide--main {
-        background-position: right -1% !important;
         background-size: 113.33% auto !important;
     }
     .library-tab,
@@ -3093,6 +2991,10 @@
     .tab-label-name {
         font-size: 0.56rem;
     }
+    .shelf-row {
+        padding: 0 0.6rem;
+        min-height: 170px;
+    }
     .book-spine {
         --spine-width: 30px !important;
         --spine-height: 136px !important;
@@ -3104,10 +3006,18 @@
     .spine-author {
         font-size: 0.4rem;
     }
+    .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+    .exhibit-wall {
+        columns: 1;
+    }
     .memo-content,
     .diary-entry-body,
     .review-body {
         font-size: 0.7rem;
+        line-height: 1.75;
     }
 }
 
