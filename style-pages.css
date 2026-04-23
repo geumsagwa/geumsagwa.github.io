@@ -43,9 +43,9 @@
     background-position: right top;
     background-size: 88.89% auto;
 }
-/* 1번만: main — 위·좌 nudge(풀 + 풀의 절반: 기존 20/-8 + 추가 10/-4) */
+/* 1번만: main — 세로는 유지, 가로만 우로 20px(이전 대비 N-20) */
 .slide--main {
-    background-position: calc(100% - 30px) -12px;
+    background-position: calc(100% - 10px) -12px;
 }
 
 /* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
@@ -2931,7 +2931,7 @@
         background-size: 93.33% auto !important;
     }
     .slide--main {
-        background-position: calc(100% - 24px) -9px !important;
+        background-position: calc(100% - 4px) -9px !important;
         background-size: 93.33% auto !important;
     }
     .photo-grid {
@@ -2985,7 +2985,7 @@
         background-size: 113.33% auto !important;
     }
     .slide--main {
-        background-position: calc(100% - 18px) -7.5px !important;
+        background-position: calc(100% + 2px) -7.5px !important;
         background-size: 113.33% auto !important;
     }
     .library-tab,
