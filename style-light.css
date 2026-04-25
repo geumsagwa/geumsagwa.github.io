@@ -83,7 +83,7 @@ body.light-mode,
         background:
             linear-gradient(270deg, #f5f0e8 0%, rgba(245, 240, 232, 0.5) 28%, rgba(245, 240, 232, 0) 48%),
             linear-gradient(180deg, #f5f0e8 0%, rgba(245, 240, 232, 0) 22%, rgba(245, 240, 232, 0) 78%, #f5f0e8 100%),
-            radial-gradient(ellipse 52% 90% at 78% 28%, rgba(217, 217, 217, 0) 6%, #f5f0e8 74%) !important;
+            radial-gradient(ellipse 52% 90% at 78% 18%, rgba(217, 217, 217, 0) 6%, #f5f0e8 74%) !important;
     }
     .light-mode .slide::after {
         content: none !important;
@@ -97,7 +97,7 @@ body.light-mode,
         background:
             linear-gradient(270deg, #f5f0e8 0%, rgba(245, 240, 232, 0.55) 24%, rgba(245, 240, 232, 0) 46%),
             linear-gradient(180deg, #f5f0e8 0%, rgba(245, 240, 232, 0) 18%, rgba(245, 240, 232, 0) 80%, #f5f0e8 100%),
-            radial-gradient(ellipse 55% 92% at 80% 26%, rgba(217, 217, 217, 0) 5%, #f5f0e8 76%) !important;
+            radial-gradient(ellipse 55% 92% at 80% 16%, rgba(217, 217, 217, 0) 5%, #f5f0e8 76%) !important;
     }
 }
 

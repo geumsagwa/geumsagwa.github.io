@@ -2933,7 +2933,7 @@
         background:
             linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.4) 28%, rgba(0, 0, 0, 0) 48%),
             linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 22%, rgba(0, 0, 0, 0) 78%, #000 100%),
-            radial-gradient(ellipse 52% 90% at 78% 28%, rgba(217, 217, 217, 0) 6%, #000 74%);
+            radial-gradient(ellipse 52% 90% at 78% 18%, rgba(217, 217, 217, 0) 6%, #000 74%);
     }
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2991,7 +2991,7 @@
         background:
             linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.5) 24%, rgba(0, 0, 0, 0) 46%),
             linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, 0) 80%, #000 100%),
-            radial-gradient(ellipse 55% 92% at 80% 26%, rgba(217, 217, 217, 0) 5%, #000 76%);
+            radial-gradient(ellipse 55% 92% at 80% 16%, rgba(217, 217, 217, 0) 5%, #000 76%);
     }
     .library-tab,
     .blog-tab,
