@@ -36,7 +36,7 @@
     background-image: url('Images/main_hero_clean_v2_1777112206985.png?v=20260425');
     background-repeat: no-repeat;
     background-position: right 10% center;
-    background-size: 44.5% auto;
+    background-size: 34% auto;
 }
 
 /* 실사 2·3: 배경은 ::after에만 — 1번(합성)과 톤 맞춤, filter는 비네팅(::before)과 분리 */
@@ -3038,7 +3038,7 @@
 
     .slide--main {
         background-position: right 10% center !important;
-        background-size: 55% auto !important;
+        background-size: 42% auto !important;
     }
 
     .slide-container .slide:nth-child(2)::after,
@@ -3107,7 +3107,7 @@
 
     .slide--main {
         background-position: center center !important;
-        background-size: 65% auto !important;
+        background-size: 55% auto !important;
     }
 
     .slide-container .slide:nth-child(2)::after,
