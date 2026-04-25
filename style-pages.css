@@ -2927,6 +2927,14 @@
         background-position: right top !important;
         background-size: 93.33% auto !important;
     }
+    /* 2·3: me / me_c — 사진이 contain으로 직사각형이 드러남. 우·상·하 끝을 #000에 묶어 1번과 비슷한 톤 */
+    .slide-container .slide:nth-child(2)::before,
+    .slide-container .slide:nth-child(3)::before {
+        background:
+            linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.4) 28%, rgba(0, 0, 0, 0) 48%),
+            linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 22%, rgba(0, 0, 0, 0) 78%, #000 100%),
+            radial-gradient(ellipse 52% 90% at 78% 38%, rgba(217, 217, 217, 0) 6%, #000 74%);
+    }
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.8rem;
@@ -2977,6 +2985,13 @@
     .slide-container .slide:nth-child(3) {
         background-position: right top !important;
         background-size: 113.33% auto !important;
+    }
+    .slide-container .slide:nth-child(2)::before,
+    .slide-container .slide:nth-child(3)::before {
+        background:
+            linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.5) 24%, rgba(0, 0, 0, 0) 46%),
+            linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, 0) 80%, #000 100%),
+            radial-gradient(ellipse 55% 92% at 80% 36%, rgba(217, 217, 217, 0) 5%, #000 76%);
     }
     .library-tab,
     .blog-tab,
