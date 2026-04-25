@@ -19,7 +19,8 @@
     height: 100%;
     /* 해상도에 맞춰 잘리지 않게 축소 표시 */
     background-size: contain;
-    background-position: right center;  /* 이미지를 오른쪽에 완전히 붙임 */
+    background-position: right center;
+    /* 이미지를 오른쪽에 완전히 붙임 */
     background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
@@ -32,51 +33,50 @@
 }
 
 .slide--main {
-    background-image: url('Images/me_c.jpg') !important;
+    background-image: url('Images/main_hero_clean_v2_1777112206985.png?v=20260425');
     background-repeat: no-repeat;
-    background-position: right top !important;
-    background-size: 88.89% auto !important;
-    filter: grayscale(100%); /* 1번: 흑백 */
+    background-position: right top;
+    background-size: 88.89% auto;
 }
 
-
-/* 실사 2·3: 배경은 ::after에만 — 1번(합성)과 톤 맞춤 */
+/* 실사 2·3: 배경은 ::after에만 — 1번(합성)과 톤 맞춤, filter는 비네팅(::before)과 분리 */
 .slide-container .slide:nth-child(2)::after,
 .slide-container .slide:nth-child(3)::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 0;
-    background-image: url('Images/me_c.jpg') !important;
     background-repeat: no-repeat;
-    background-position: right top !important;
-    background-size: 88.89% auto !important;
+    background-position: right top;
+    background-size: 88.89% auto;
     pointer-events: none;
-}
-/* 2번 슬라이드: 흑백 */
-.slide-container .slide:nth-child(2)::after {
-    filter: grayscale(100%) brightness(1.12) contrast(1.08) saturate(1.04);
-}
-/* 3번 슬라이드: 컬러 오리지널 */
-.slide-container .slide:nth-child(3)::after {
     filter: brightness(1.12) contrast(1.08) saturate(1.04);
+}
+
+.slide-container .slide:nth-child(2)::after {
+    background-image: url('Images/main_hero_v2_style_1777112432011.png');
+}
+
+.slide-container .slide:nth-child(3)::after {
+    background-image: url('Images/main_hero_v3_style_1777112467030.png');
 }
 
 /* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
 .slide::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(
-        ellipse 50% 85.536% at 75% 40%,
-        rgba(217, 217, 217, 0) 10.137%,
-        #000000 72.919%
-    );
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse 50% 85.536% at 75% 40%,
+            rgba(217, 217, 217, 0) 10.137%,
+            #000000 72.919%);
     z-index: 2;
     pointer-events: none;
 }
 
-/* 텍스트 가독성용 왼쪽 그라디언트 초기화 */
+/* 텍스트 가독성용 왼쪽 그라디언트 */
 .slide::after {
     content: none;
 }
@@ -90,7 +90,8 @@
 /* 1,2,3번 공통: 텍스트 그라디언트 위에 표시, 왼쪽 정렬 */
 .slide .text-overlay {
     position: relative;
-    z-index: 5;                /* ::before(2), ::after(3)보다 위에 표시 */
+    z-index: 5;
+    /* ::before(2), ::after(3)보다 위에 표시 */
     text-align: left;
 }
 
@@ -100,7 +101,7 @@
     font-weight: 600;
     font-size: 2.16rem;
     color: white;
-    text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
     margin: 0;
 }
 
@@ -114,25 +115,36 @@
     margin: 0;
     letter-spacing: 0.02em;
     text-shadow:
-        0 0 2px rgba(0,0,0,1),
-        0 0 8px rgba(0,0,0,0.9),
-        0 1px 3px rgba(0,0,0,0.8),
-        0 2px 6px rgba(0,0,0,0.6),
-        1px 1px 4px rgba(0,0,0,0.7);
+        0 0 2px rgba(0, 0, 0, 1),
+        0 0 8px rgba(0, 0, 0, 0.9),
+        0 1px 3px rgba(0, 0, 0, 0.8),
+        0 2px 6px rgba(0, 0, 0, 0.6),
+        1px 1px 4px rgba(0, 0, 0, 0.7);
 }
+
 /* 2번: 두 줄 표시, 한 줄 밑에 배치 → 차례대로 읽어나가는 느낌 */
 .slide-container .slide:nth-child(2) .text-overlay {
     margin-top: 2.2em;
     white-space: pre-line;
 }
+
 /* 3번: 한 줄 더 밑에 배치 */
 .slide-container .slide:nth-child(3) .text-overlay {
     margin-top: 4.4em;
 }
 
 /* 이 프로젝트 공통: 제목=바탕 Bold+큰 크기, 내용=바탕 Regular+작은 크기 (font-size·font-weight로 구별) */
-.font-title { font-family: 'GyeonggiBatang', sans-serif; font-weight: 700; font-size: 3rem; }
-.font-body { font-family: 'GyeonggiBatang', sans-serif; font-weight: 400; font-size: 1.5rem; }
+.font-title {
+    font-family: 'GyeonggiBatang', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.font-body {
+    font-family: 'GyeonggiBatang', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
 
 /* 1번 슬라이드만: 사진 먼저 보인 뒤 타이핑 시작 */
 .slide-container .slide:first-child.active .text-overlay {
@@ -153,7 +165,8 @@
     animation:
         typing 3s steps(30, end) forwards,
         blink-caret .75s step-end infinite;
-    animation-delay: 0.5s; /* 페이드 인 후 시작되도록 지연 */
+    animation-delay: 0.5s;
+    /* 페이드 인 후 시작되도록 지연 */
 }
 
 /* 타이핑 애니메이션 */
@@ -287,10 +300,9 @@
     right: 0;
     height: 8px;
     background: linear-gradient(to bottom,
-        #5a4530 0%,
-        #3e2e1e 40%,
-        #2a1f14 100%
-    );
+            #5a4530 0%,
+            #3e2e1e 40%,
+            #2a1f14 100%);
     border-radius: 0 0 2px 2px;
     box-shadow:
         0 2px 8px rgba(0, 0, 0, 0.6),
@@ -306,7 +318,7 @@
     left: 5%;
     right: 5%;
     height: 12px;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
 }
 
 /* ── 책등 (Book Spine) ── */
@@ -317,27 +329,26 @@
     align-items: center;
     width: var(--spine-width, 54px);
     height: var(--spine-height, 220px);
-    background: linear-gradient(
-        to right,
-        rgba(0,0,0,0.35) 0%,
-        var(--spine-color, #5B3A29) 10%,
-        color-mix(in srgb, var(--spine-color, #5B3A29), #fff 8%) 48%,
-        color-mix(in srgb, var(--spine-color, #5B3A29), #fff 14%) 50%,
-        color-mix(in srgb, var(--spine-color, #5B3A29), #fff 8%) 52%,
-        var(--spine-color, #5B3A29) 90%,
-        rgba(0,0,0,0.25) 100%
-    );
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.35) 0%,
+            var(--spine-color, #5B3A29) 10%,
+            color-mix(in srgb, var(--spine-color, #5B3A29), #fff 8%) 48%,
+            color-mix(in srgb, var(--spine-color, #5B3A29), #fff 14%) 50%,
+            color-mix(in srgb, var(--spine-color, #5B3A29), #fff 8%) 52%,
+            var(--spine-color, #5B3A29) 90%,
+            rgba(0, 0, 0, 0.25) 100%);
     border-radius: 2px 3px 3px 2px;
     text-decoration: none;
     position: relative;
     cursor: pointer;
-    margin-bottom: 8px; /* 선반 위에 얹힘 */
+    margin-bottom: 8px;
+    /* 선반 위에 얹힘 */
     padding: 20px 0 16px;
     transition: transform 0.4s ease, box-shadow 0.4s ease, margin 0.3s ease;
     box-shadow:
-        2px 2px 6px rgba(0,0,0,0.5),
-        -1px 0 3px rgba(0,0,0,0.3),
-        inset 1px 0 0 rgba(255,255,255,0.05);
+        2px 2px 6px rgba(0, 0, 0, 0.5),
+        -1px 0 3px rgba(0, 0, 0, 0.3),
+        inset 1px 0 0 rgba(255, 255, 255, 0.05);
 }
 
 /* 책등 상단 장식선 */
@@ -371,7 +382,7 @@
     font-size: 0.75rem;
     color: rgba(255, 220, 160, 0.85);
     letter-spacing: 0.18em;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -400,9 +411,9 @@
 .book-spine:hover {
     transform: translateY(-12px);
     box-shadow:
-        2px 6px 16px rgba(0,0,0,0.6),
-        -1px 0 3px rgba(0,0,0,0.3),
-        inset 1px 0 0 rgba(255,255,255,0.08);
+        2px 6px 16px rgba(0, 0, 0, 0.6),
+        -1px 0 3px rgba(0, 0, 0, 0.3),
+        inset 1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
 .book-spine:hover .spine-title {
@@ -524,6 +535,7 @@
     text-align: right;
     margin-bottom: 0.8rem;
 }
+
 .blog-write-btn {
     font-size: 0.78rem;
     color: #000;
@@ -534,7 +546,10 @@
     font-weight: 700;
     transition: background 0.3s ease;
 }
-.blog-write-btn:hover { background: #dabb7e; }
+
+.blog-write-btn:hover {
+    background: #dabb7e;
+}
 
 .grid-message {
     color: #555;
@@ -581,12 +596,10 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(30, 20, 10, 0.15) 0%,
-        rgba(30, 20, 10, 0.05) 50%,
-        rgba(30, 20, 10, 0.3) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(30, 20, 10, 0.15) 0%,
+            rgba(30, 20, 10, 0.05) 50%,
+            rgba(30, 20, 10, 0.3) 100%);
     mix-blend-mode: multiply;
 }
 
@@ -602,12 +615,10 @@
     left: 0;
     right: 0;
     padding: 2.5rem 1.2rem 1.2rem;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.85) 0%,
-        rgba(0, 0, 0, 0.4) 60%,
-        transparent 100%
-    );
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.4) 60%,
+            transparent 100%);
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -717,7 +728,9 @@
     margin-bottom: 3vh;
 }
 
-.post-header { margin-bottom: 4vh; }
+.post-header {
+    margin-bottom: 4vh;
+}
 
 .post-back,
 .editor-back,
@@ -1021,12 +1034,39 @@
     line-height: 2;
 }
 
-.editor-preview-content p { margin-bottom: 1.5rem; }
-.editor-preview-content h2 { font-weight: 700; font-size: 1.4rem; color: #ccc; margin: 2rem 0 1rem; }
-.editor-preview-content blockquote { border-left: 2px solid #444; padding: 0.8rem 1.5rem; margin: 1.5rem 0; color: #888; font-style: italic; }
-.editor-preview-content hr { border: none; height: 1px; background: #333; margin: 2rem 0; }
-.editor-preview-content strong { color: #ddd; }
-.editor-preview-content em { color: #999; }
+.editor-preview-content p {
+    margin-bottom: 1.5rem;
+}
+
+.editor-preview-content h2 {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #ccc;
+    margin: 2rem 0 1rem;
+}
+
+.editor-preview-content blockquote {
+    border-left: 2px solid #444;
+    padding: 0.8rem 1.5rem;
+    margin: 1.5rem 0;
+    color: #888;
+    font-style: italic;
+}
+
+.editor-preview-content hr {
+    border: none;
+    height: 1px;
+    background: #333;
+    margin: 2rem 0;
+}
+
+.editor-preview-content strong {
+    color: #ddd;
+}
+
+.editor-preview-content em {
+    color: #999;
+}
 
 .editor-output-code {
     width: 100%;
@@ -1366,13 +1406,11 @@
 .book-open-page-inner {
     position: absolute;
     inset: 50px 40px;
-    background: repeating-linear-gradient(
-        to bottom,
-        transparent,
-        transparent 24px,
-        rgba(0, 0, 0, 0.05) 24px,
-        rgba(0, 0, 0, 0.05) 25px
-    );
+    background: repeating-linear-gradient(to bottom,
+            transparent,
+            transparent 24px,
+            rgba(0, 0, 0, 0.05) 24px,
+            rgba(0, 0, 0, 0.05) 25px);
 }
 
 /* 표지 (앞면 → 왼쪽으로 펼쳐짐) */
@@ -1420,8 +1458,14 @@
     height: 1px;
     background: rgba(255, 200, 100, 0.15);
 }
-.book-open-cover-front::before { top: 20%; }
-.book-open-cover-front::after { bottom: 20%; }
+
+.book-open-cover-front::before {
+    top: 20%;
+}
+
+.book-open-cover-front::after {
+    bottom: 20%;
+}
 
 .book-open-cover-title {
     font-weight: 700;
@@ -1450,10 +1494,9 @@
     width: 6px;
     height: 100%;
     background: linear-gradient(to right,
-        rgba(0,0,0,0.15),
-        rgba(0,0,0,0.25) 50%,
-        rgba(0,0,0,0.15)
-    );
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.25) 50%,
+            rgba(0, 0, 0, 0.15));
     z-index: 5;
 }
 
@@ -1582,7 +1625,8 @@
 /* 사진 */
 .frame-photo {
     width: 100%;
-    padding-bottom: 70%; /* 기본 가로형 비율 */
+    padding-bottom: 70%;
+    /* 기본 가로형 비율 */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1901,14 +1945,14 @@
 
 .admin-subtitle {
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
     margin: 0;
 }
 
 .admin-tabs {
     display: flex;
     gap: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 1.5rem;
 }
 
@@ -1919,7 +1963,7 @@
     padding: 0.7rem 0;
     font-family: 'GyeonggiBatang', serif;
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255, 255, 255, 0.35);
     cursor: pointer;
     transition: all 0.3s ease;
     border-bottom: 2px solid transparent;
@@ -1927,7 +1971,7 @@
 }
 
 .admin-tab:hover {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .admin-tab.active {
@@ -1961,12 +2005,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     transition: background 0.2s;
 }
 
 .admin-member-card:hover {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .admin-member-info {
@@ -1984,7 +2028,7 @@
 .admin-member-nickname {
     font-size: 0.95rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .admin-member-status {
@@ -2011,13 +2055,13 @@
 
 .admin-member-email {
     font-size: 0.8rem;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
     margin-bottom: 0.15rem;
 }
 
 .admin-member-date {
     font-size: 0.72rem;
-    color: rgba(255,255,255,0.25);
+    color: rgba(255, 255, 255, 0.25);
 }
 
 .admin-member-actions {
@@ -2059,8 +2103,8 @@
 }
 
 .admin-btn-delete {
-    background: rgba(255,255,255,0.05);
-    color: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .admin-btn-delete:hover {
@@ -2071,7 +2115,7 @@
 .admin-empty {
     text-align: center;
     padding: 3rem 0;
-    color: rgba(255,255,255,0.25);
+    color: rgba(255, 255, 255, 0.25);
     font-size: 0.9rem;
 }
 
@@ -2274,58 +2318,73 @@
     .library-tab {
         padding: 0.5rem 1.2rem 0.4rem;
     }
+
     .tab-label-code {
         font-size: 1rem;
     }
+
     .tab-label-name {
         font-size: 0.6rem;
     }
+
     .shelf-row {
         padding: 0 1rem;
         min-height: 200px;
     }
+
     .book-spine {
         --spine-width: 40px !important;
         --spine-height: 180px !important;
         padding: 16px 0 12px !important;
     }
+
     .spine-title {
         font-size: 0.6rem;
     }
+
     .spine-author {
         font-size: 0.42rem;
     }
+
     /* Blog 반응형 */
     .blog-tab {
         padding: 0.4rem 1.2rem;
         gap: 0.3rem;
     }
+
     .cafe-tab-icon {
         font-size: 0.8rem;
     }
+
     .cafe-tab-name {
         font-size: 0.75rem;
     }
+
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.8rem;
     }
+
     .photo-card-title {
         font-size: 0.75rem;
     }
+
     .photo-card-excerpt {
         font-size: 0.6rem;
         -webkit-line-clamp: 1;
     }
+
     .photo-card-date {
         font-size: 0.55rem;
     }
+
     .photo-card::before {
         width: 20px;
         height: 20px;
         top: 8px;
         right: 8px;
     }
+
     /* Board 반응형 */
     .memo-write,
     .memo-list,
@@ -2333,70 +2392,89 @@
     .diary-list {
         max-width: 100%;
     }
+
     .memo-content {
         font-size: 0.8rem;
     }
+
     .memo-reply-text {
         font-size: 0.75rem;
     }
+
     /* Diary 반응형 */
-    
+
     .diary-entry-body {
         font-size: 0.85rem;
     }
+
     .diary-entry-actions {
         opacity: 1;
     }
+
     /* Gallery 반응형 */
     .gallery-tab {
         padding: 0.5rem 1.2rem;
     }
+
     .gallery-tab-label {
         font-size: 0.7rem;
         letter-spacing: 0.12em;
     }
+
     .exhibit-wall {
         columns: 2;
         column-gap: 1rem;
     }
+
     .exhibit-frame {
         margin-bottom: 1rem;
     }
+
     .frame-mat {
         padding: 6px;
     }
+
     .frame-caption {
         font-size: 0.7rem;
         margin-top: 0.5rem;
     }
+
     /* 글 보기/에디터/서평 반응형 */
     .post-container,
     .editor-container,
     .review-container {
         padding: 2vh 1.5rem 2rem;
     }
+
     .post-title {
         font-size: 1.3rem;
     }
+
     .post-subtitle {
         font-size: 0.8rem;
     }
+
     .post-body {
         font-size: 0.75rem;
     }
+
     .post-body h2 {
         font-size: 1rem;
     }
+
     .editor-title {
         font-size: 1rem;
     }
+
     .editor-textarea {
         min-height: 30vh;
     }
+
     /* bookshelf 추가 반응형: 선반 두께 조정 */
     .shelf-surface {
         height: 6px;
     }
+
     /* Upload 반응형 */
     .library-upload-btn {
         bottom: 1.5rem;
@@ -2405,48 +2483,61 @@
         height: 42px;
         font-size: 1.3rem;
     }
+
     .upload-card {
         padding: 1.5rem;
     }
+
     .upload-title {
         font-size: 1rem;
     }
+
     /* 서평 (768) */
     .review-hero {
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
     }
+
     .review-cover {
         width: 140px;
     }
+
     .review-book-info {
         text-align: center;
         border-left: none;
         border-top: 2px solid #8f7d60;
         padding: 1rem 0 0 0;
     }
+
     .review-book-meta {
         justify-content: center;
     }
+
     .review-book-title {
         font-size: 1.3rem;
     }
+
     .review-book-meta span {
         font-size: 0.75rem;
     }
+
     .review-title-label {
         font-size: 0.8rem;
     }
+
     .review-body {
         font-size: 0.78rem;
     }
+
     .review-body h2 {
         font-size: 1rem;
     }
+
     .review-body .review-first-para::first-letter {
         font-size: 2.6em;
     }
+
     .review-author-section {
         padding: 1rem;
     }
@@ -2729,9 +2820,10 @@
 .review-body a {
     color: #c4a96a;
     text-decoration: none;
-    border-bottom: 1px solid rgba(196,169,106,0.3);
+    border-bottom: 1px solid rgba(196, 169, 106, 0.3);
     transition: color 0.3s ease, border-color 0.3s ease;
 }
+
 .review-body a:hover {
     color: #dabb7e;
     border-bottom-color: #dabb7e;
@@ -2903,9 +2995,11 @@
     .slide-container .slide {
         padding: 26vh 1.75rem 1.75rem 5rem;
     }
+
     .photo-grid {
         gap: 1rem;
     }
+
     .memo-write,
     .memo-list,
     .diary-write,
@@ -2920,34 +3014,41 @@
         height: calc(100vh - 14vh);
         height: calc(100dvh - 14vh);
     }
+
     .slide {
         background-size: 98% auto !important;
         background-position: center center !important;
         padding: 20vh max(1rem, env(safe-area-inset-right, 0px)) 1.25rem max(1.25rem, env(safe-area-inset-left, 0px)) !important;
     }
+
     .slide h1.text-overlay,
     .slide p.text-overlay,
     .light-mode .slide h1.text-overlay,
     .light-mode .slide p.text-overlay {
         font-family: 'GyeonggiBatang', serif !important;
     }
+
     .slide h1.text-overlay,
     .light-mode .slide h1.text-overlay {
         font-size: 1.6rem !important;
     }
+
     .slide p.text-overlay,
     .light-mode .slide p.text-overlay {
         font-size: 1.25rem !important;
     }
+
     .slide--main {
         background-position: right top !important;
         background-size: 93.33% auto !important;
     }
+
     .slide-container .slide:nth-child(2)::after,
     .slide-container .slide:nth-child(3)::after {
         background-position: right top !important;
         background-size: 93.33% auto !important;
     }
+
     /* 2·3: me / me_c — 사진이 contain으로 직사각형이 드러남. 우·상·하 끝을 #000에 묶어 1번과 비슷한 톤 */
     .slide-container .slide:nth-child(2)::before,
     .slide-container .slide:nth-child(3)::before {
@@ -2961,14 +3062,17 @@
                 rgba(0, 0, 0, 0.14) 48%,
                 #000 80%);
     }
+
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.8rem;
     }
+
     .exhibit-wall {
         columns: 2;
         column-gap: 1rem;
     }
+
     .memo-write,
     .memo-list,
     .diary-write,
@@ -2983,38 +3087,46 @@
         height: calc(100vh - 12vh);
         height: calc(100dvh - 12vh);
     }
+
     .slide {
         padding: 16vh max(0.7rem, env(safe-area-inset-right, 0px)) 1rem max(0.85rem, env(safe-area-inset-left, 0px)) !important;
         background-size: 87% auto !important;
         background-position: center center !important;
     }
+
     .slide h1.text-overlay,
     .slide p.text-overlay,
     .light-mode .slide h1.text-overlay,
     .light-mode .slide p.text-overlay {
         font-family: 'GyeonggiBatang', serif !important;
     }
+
     .slide h1.text-overlay,
     .light-mode .slide h1.text-overlay {
         font-size: 1.1rem !important;
     }
+
     .slide p.text-overlay,
     .light-mode .slide p.text-overlay {
         font-size: 0.95rem !important;
     }
+
     .slide-container .slide:nth-child(2) .text-overlay,
     .slide-container .slide:nth-child(3) .text-overlay {
         margin-top: 0 !important;
     }
+
     .slide--main {
         background-position: right top !important;
         background-size: 113.33% auto !important;
     }
+
     .slide-container .slide:nth-child(2)::after,
     .slide-container .slide:nth-child(3)::after {
         background-position: right top !important;
         background-size: 113.33% auto !important;
     }
+
     .slide-container .slide:nth-child(2)::before,
     .slide-container .slide:nth-child(3)::before {
         background:
@@ -3027,41 +3139,51 @@
                 rgba(0, 0, 0, 0.16) 49%,
                 #000 82%);
     }
+
     .library-tab,
     .blog-tab,
     .gallery-tab {
         padding: 0.34rem 0.64rem;
     }
+
     .tab-label-code {
         font-size: 0.76rem;
     }
+
     .cafe-tab-name,
     .gallery-tab-label,
     .tab-label-name {
         font-size: 0.56rem;
     }
+
     .shelf-row {
         padding: 0 0.6rem;
         min-height: 170px;
     }
+
     .book-spine {
         --spine-width: 30px !important;
         --spine-height: 136px !important;
         padding: 12px 0 10px !important;
     }
+
     .spine-title {
         font-size: 0.54rem;
     }
+
     .spine-author {
         font-size: 0.4rem;
     }
+
     .photo-grid {
         grid-template-columns: 1fr;
         gap: 0.7rem;
     }
+
     .exhibit-wall {
         columns: 1;
     }
+
     .memo-content,
     .diary-entry-body,
     .review-body {
@@ -3069,5 +3191,3 @@
         line-height: 1.75;
     }
 }
-
-
