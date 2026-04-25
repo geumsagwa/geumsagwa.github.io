@@ -96,10 +96,7 @@ body.light-mode,
                 rgba(217, 217, 217, 0) 14%,
                 #f5f0e8 80%) !important;
     }
-    .light-mode .slide::after {
-        content: none !important;
-        background: none !important;
-    }
+    /* ::after — 실사 슬(2·3)은 사진이 ::after에 있음. !important로 전부 끄면 768·라이트에서 사진 소실 */
 }
 
 @media (max-width: 480px) {
