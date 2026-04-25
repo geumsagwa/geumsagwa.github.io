@@ -32,30 +32,34 @@
 }
 
 .slide--main {
-    background-image: url('Images/main_nanobanana_01.png?v=20260425');
+    background-image: url('Images/me_c.jpg') !important;
     background-repeat: no-repeat;
-    background-position: right top;
-    background-size: 88.89% auto;
+    background-position: right top !important;
+    background-size: 88.89% auto !important;
+    filter: grayscale(100%); /* 1번: 흑백 */
 }
 
-/* 실사 2·3: 배경은 ::after에만 — 1번(합성)과 톤 맞춤, filter는 비네팅(::before)과 분리 */
+
+/* 실사 2·3: 배경은 ::after에만 — 1번(합성)과 톤 맞춤 */
 .slide-container .slide:nth-child(2)::after,
 .slide-container .slide:nth-child(3)::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 0;
+    background-image: url('Images/me_c.jpg') !important;
     background-repeat: no-repeat;
-    background-position: right top;
-    background-size: 88.89% auto;
+    background-position: right top !important;
+    background-size: 88.89% auto !important;
     pointer-events: none;
-    filter: brightness(1.12) contrast(1.08) saturate(1.04);
 }
+/* 2번 슬라이드: 흑백 */
 .slide-container .slide:nth-child(2)::after {
-    background-image: url('Images/me.jpg');
+    filter: grayscale(100%) brightness(1.12) contrast(1.08) saturate(1.04);
 }
+/* 3번 슬라이드: 컬러 오리지널 */
 .slide-container .slide:nth-child(3)::after {
-    background-image: url('Images/me_c.jpg');
+    filter: brightness(1.12) contrast(1.08) saturate(1.04);
 }
 
 /* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
@@ -72,7 +76,7 @@
     pointer-events: none;
 }
 
-/* 텍스트 가독성용 왼쪽 그라디언트 */
+/* 텍스트 가독성용 왼쪽 그라디언트 초기화 */
 .slide::after {
     content: none;
 }

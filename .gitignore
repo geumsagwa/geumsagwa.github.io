@@ -10,3 +10,7 @@ reports/weekly-quality-*.md
 migrate-reviews.js
 migrate-essays.js
 Images/caricature-*.png
+
+# 뷰포트 캡처(Playwright·로컬) — repo에 올리지 않음
+main-live-*.png
+main-page-*.png
