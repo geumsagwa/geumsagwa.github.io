@@ -58,11 +58,7 @@ body.light-mode,
 
 /* -- 슬라이드 (Home) -- */
 .light-mode .slide::before {
-    background: radial-gradient(
-        ellipse 50% 85.536% at 75% 40%,
-        rgba(217, 217, 217, 0) 10.137%,
-        #f5f0e8 72.919%
-    );
+    background: none;
 }
 
 /* 실사 2·3::after only — 1번은 generic slide::after 유지(아래) */
@@ -78,23 +74,11 @@ body.light-mode,
 /* 768 이하(태블릿·모바일) — 슬라이드 비네팅(라이트) */
 @media (max-width: 768px) {
     .light-mode .slide::before {
-        background: radial-gradient(
-            ellipse 50% 85.536% at 75% 40%,
-            rgba(217, 217, 217, 0) 10.137%,
-            #f5f0e8 72.919%
-        ) !important;
+        background: none !important;
     }
     .light-mode .slide-container .slide:nth-child(2)::before,
     .light-mode .slide-container .slide:nth-child(3)::before {
-        background:
-            linear-gradient(270deg, #f5f0e8 0%, rgba(245, 240, 232, 0.5) 28%, rgba(245, 240, 232, 0) 48%),
-            linear-gradient(180deg, #f5f0e8 0%, rgba(245, 240, 232, 0) 22%, rgba(245, 240, 232, 0) 78%, #f5f0e8 100%),
-            radial-gradient(ellipse 52% 90% at 83% -22%,
-                rgba(255, 255, 255, 0.1) 0%,
-                rgba(255, 255, 255, 0.03) 6%,
-                rgba(255, 255, 255, 0) 10%,
-                rgba(217, 217, 217, 0) 16%,
-                #f5f0e8 80%) !important;
+        background: none !important;
     }
     /* ::after — 실사 슬(2·3)은 사진이 ::after에 있음. !important로 전부 끄면 768·라이트에서 사진 소실 */
 }
@@ -102,15 +86,7 @@ body.light-mode,
 @media (max-width: 480px) {
     .light-mode .slide-container .slide:nth-child(2)::before,
     .light-mode .slide-container .slide:nth-child(3)::before {
-        background:
-            linear-gradient(270deg, #f5f0e8 0%, rgba(245, 240, 232, 0.55) 24%, rgba(245, 240, 232, 0) 46%),
-            linear-gradient(180deg, #f5f0e8 0%, rgba(245, 240, 232, 0) 18%, rgba(245, 240, 232, 0) 80%, #f5f0e8 100%),
-            radial-gradient(ellipse 55% 92% at 85% -24%,
-                rgba(255, 255, 255, 0.12) 0%,
-                rgba(255, 255, 255, 0.04) 5%,
-                rgba(255, 255, 255, 0) 9%,
-                rgba(217, 217, 217, 0) 14%,
-                #f5f0e8 82%) !important;
+        background: none !important;
     }
 }
 

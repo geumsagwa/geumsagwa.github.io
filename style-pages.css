@@ -35,8 +35,8 @@
 .slide--main {
     background-image: url('Images/main_hero_clean_v2_1777112206985.png?v=20260425');
     background-repeat: no-repeat;
-    background-position: right top;
-    background-size: 88.89% auto;
+    background-position: right 10% center;
+    background-size: 44.5% auto;
 }
 
 /* 실사 2·3: 배경은 ::after에만 — 1번(합성)과 톤 맞춤, filter는 비네팅(::before)과 분리 */
@@ -47,8 +47,8 @@
     inset: 0;
     z-index: 0;
     background-repeat: no-repeat;
-    background-position: right top;
-    background-size: 88.89% auto;
+    background-position: right 10% center;
+    background-size: 44.5% auto;
     pointer-events: none;
     filter: brightness(1.12) contrast(1.08) saturate(1.04);
 }
@@ -69,9 +69,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse 50% 85.536% at 75% 40%,
-            rgba(217, 217, 217, 0) 10.137%,
-            #000000 72.919%);
+    background: none;
     z-index: 2;
     pointer-events: none;
 }
@@ -3039,28 +3037,19 @@
     }
 
     .slide--main {
-        background-position: right top !important;
-        background-size: 93.33% auto !important;
+        background-position: right 10% center !important;
+        background-size: 55% auto !important;
     }
 
     .slide-container .slide:nth-child(2)::after,
     .slide-container .slide:nth-child(3)::after {
-        background-position: right top !important;
-        background-size: 93.33% auto !important;
+        background-position: right 10% center !important;
+        background-size: 55% auto !important;
     }
 
-    /* 2·3: me / me_c — 사진이 contain으로 직사각형이 드러남. 우·상·하 끝을 #000에 묶어 1번과 비슷한 톤 */
     .slide-container .slide:nth-child(2)::before,
     .slide-container .slide:nth-child(3)::before {
-        background:
-            linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.4) 28%, rgba(0, 0, 0, 0) 48%),
-            linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 22%, rgba(0, 0, 0, 0) 78%, #000 100%),
-            radial-gradient(ellipse 52% 90% at 83% -22%,
-                rgba(255, 255, 255, 0.07) 0%,
-                rgba(255, 255, 255, 0.02) 7%,
-                rgba(217, 217, 217, 0) 14%,
-                rgba(0, 0, 0, 0.14) 48%,
-                #000 80%);
+        background: none !important;
     }
 
     .photo-grid {
@@ -3117,27 +3106,19 @@
     }
 
     .slide--main {
-        background-position: right top !important;
-        background-size: 113.33% auto !important;
+        background-position: center center !important;
+        background-size: 65% auto !important;
     }
 
     .slide-container .slide:nth-child(2)::after,
     .slide-container .slide:nth-child(3)::after {
-        background-position: right top !important;
-        background-size: 113.33% auto !important;
+        background-position: center center !important;
+        background-size: 65% auto !important;
     }
 
     .slide-container .slide:nth-child(2)::before,
     .slide-container .slide:nth-child(3)::before {
-        background:
-            linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.5) 24%, rgba(0, 0, 0, 0) 46%),
-            linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, 0) 80%, #000 100%),
-            radial-gradient(ellipse 55% 92% at 85% -24%,
-                rgba(255, 255, 255, 0.07) 0%,
-                rgba(255, 255, 255, 0.02) 6%,
-                rgba(217, 217, 217, 0) 13%,
-                rgba(0, 0, 0, 0.16) 49%,
-                #000 82%);
+        background: none !important;
     }
 
     .library-tab,
