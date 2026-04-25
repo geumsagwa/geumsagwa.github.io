@@ -33,15 +33,29 @@
 
 .slide--main {
     background-image: url('Images/main_nanobanana_01.png?v=20260425');
-}
-
-/* 1~3번: 동일 앵커(우상단) — 1·2·3 정합, 옛 1번만 right -1% 제거 */
-.slide--main,
-.slide-container .slide:nth-child(2),
-.slide-container .slide:nth-child(3) {
     background-repeat: no-repeat;
     background-position: right top;
     background-size: 88.89% auto;
+}
+
+/* 실사 2·3: 배경은 ::after에만 — 1번(합성)과 톤 맞춤, filter는 비네팅(::before)과 분리 */
+.slide-container .slide:nth-child(2)::after,
+.slide-container .slide:nth-child(3)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 88.89% auto;
+    pointer-events: none;
+    filter: brightness(1.1) contrast(1.05) saturate(1.03);
+}
+.slide-container .slide:nth-child(2)::after {
+    background-image: url('Images/me.jpg');
+}
+.slide-container .slide:nth-child(3)::after {
+    background-image: url('Images/me_c.jpg');
 }
 
 /* 방사형 비네팅: 축소된 이미지 가장자리를 검정 배경으로 자연스럽게 페이드 */
@@ -2921,9 +2935,12 @@
     .light-mode .slide p.text-overlay {
         font-size: 1.25rem !important;
     }
-    .slide--main,
-    .slide-container .slide:nth-child(2),
-    .slide-container .slide:nth-child(3) {
+    .slide--main {
+        background-position: right top !important;
+        background-size: 93.33% auto !important;
+    }
+    .slide-container .slide:nth-child(2)::after,
+    .slide-container .slide:nth-child(3)::after {
         background-position: right top !important;
         background-size: 93.33% auto !important;
     }
@@ -2985,9 +3002,12 @@
     .slide-container .slide:nth-child(3) .text-overlay {
         margin-top: 0 !important;
     }
-    .slide--main,
-    .slide-container .slide:nth-child(2),
-    .slide-container .slide:nth-child(3) {
+    .slide--main {
+        background-position: right top !important;
+        background-size: 113.33% auto !important;
+    }
+    .slide-container .slide:nth-child(2)::after,
+    .slide-container .slide:nth-child(3)::after {
         background-position: right top !important;
         background-size: 113.33% auto !important;
     }
