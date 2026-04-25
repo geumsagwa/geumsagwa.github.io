@@ -68,7 +68,7 @@ body.light-mode,
 /* 실사 2·3::after only — 1번은 generic slide::after 유지(아래) */
 .light-mode .slide-container .slide:nth-child(2)::after,
 .light-mode .slide-container .slide:nth-child(3)::after {
-    filter: brightness(1.05) contrast(1.02) saturate(1.02);
+    filter: brightness(1.1) contrast(1.03) saturate(1.03);
 }
 
 .light-mode .slide::after {
