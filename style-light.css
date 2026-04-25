@@ -58,13 +58,11 @@ body.light-mode,
 
 /* -- 슬라이드 (Home) -- */
 .light-mode .slide::before {
-    background: none;
-}
-
-/* 실사 2·3::after only — 1번은 generic slide::after 유지(아래) */
-.light-mode .slide-container .slide:nth-child(2)::after,
-.light-mode .slide-container .slide:nth-child(3)::after {
-    filter: brightness(1.04) contrast(1.08) saturate(1.04);
+    background: radial-gradient(
+        ellipse 50% 85.536% at 75% 40%,
+        rgba(217, 217, 217, 0) 10.137%,
+        #f5f0e8 72.919%
+    );
 }
 
 .light-mode .slide::after {
@@ -74,18 +72,14 @@ body.light-mode,
 /* 768 이하(태블릿·모바일) — 슬라이드 비네팅(라이트) */
 @media (max-width: 768px) {
     .light-mode .slide::before {
-        background: none !important;
+        background: radial-gradient(
+            ellipse 50% 85.536% at 75% 40%,
+            rgba(217, 217, 217, 0) 10.137%,
+            #f5f0e8 72.919%
+        ) !important;
     }
-    .light-mode .slide-container .slide:nth-child(2)::before,
-    .light-mode .slide-container .slide:nth-child(3)::before {
-        background: none !important;
-    }
-    /* ::after — 실사 슬(2·3)은 사진이 ::after에 있음. !important로 전부 끄면 768·라이트에서 사진 소실 */
-}
-
-@media (max-width: 480px) {
-    .light-mode .slide-container .slide:nth-child(2)::before,
-    .light-mode .slide-container .slide:nth-child(3)::before {
+    .light-mode .slide::after {
+        content: none !important;
         background: none !important;
     }
 }

@@ -3,9 +3,9 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(팁·CSP·PR·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-04-25T19:00:00+09:00`
+- 시각(ISO): `2026-04-23T20:00:00+09:00`
 - **원격 tip:** `git fetch` 후 `git rev-parse --short origin/chore/public-readiness-20260312` 로 확인(문서에 고정해 두면 “팁을 적는 문서” 커밋 때문에 한 끗 어긋날 수 있음). **기능·문서 뼈대:** 반응형 `cdba904`, 소셜·CSP·OAuth `430dd86`, `progress`·Handover 정합 `cf436b8`+.
-- **최신 프리체크:** `npm run check` — syntax OK, public-precheck **PASS** (CSP **21/21**, 해결됨). 하네스 `gate-all` 통과 대기 중.
+- **최신 프리체크:** `npm run check` — syntax OK, public-precheck **CONDITIONAL** (CSP **20/21**, 미해결). 하네스 `gate-all`은 이 상태에서 **완전 통과 전**.
 - **PR:** [`#8` merge](https://github.com/geumsagwa/geumsagwa.github.io/pull/8) → `master`·GitHub Pages 반영이 **다음 병합 목표**.
 
 ## 브랜치·원격
@@ -18,7 +18,7 @@
 ## 워킹트리 상태 (2026-04-05)
 - **추적 파일:** 깨끗함 (`origin/chore/public-readiness-20260312`와 동기화된 상태를 가정).
 - **미추적(로컬):** `main-page-*.png`, `Images/logo-for-mspaint.png`, `Images/logo-variants-for-mspaint.png`, `Picture/` 내 PNG 등 — 의도적 제외 유지 권장.
-- 하네스 `gate-website` / `npm run check` : `2026-04-25` 기준 `public-precheck` 요약 **PASS** (CSP coverage **21/21**) → `gate-all` 파이프라인 통과 가능 상태.
+- 하네스 `gate-website` / `npm run check` : `2026-04-23` 기준 `public-precheck` 요약 **CONDITIONAL** (CSP coverage **20/21** WARN) → `gate-all` 파이프라인에서 실패. 최신 리포트: `reports/public_precheck_20260423_082415.md` (이전 예: `reports/public_precheck_20260405_163805.md`)
 
 ## 이번 기간에 한 일 (요약) — 이미 원격에 반영된 범위
 
@@ -45,17 +45,16 @@
 ### 기타 (동일 커밋 범위에 포함된 항목)
 - `.github/workflows/deploy-pages.yml`, `repair_promote_admin.sql`
 - `reports/public_precheck_20260328_*.md` 다수, 여러 HTML/JS(auth·library·blog 등) 정리
-- **CSP 해결**: `Images/logo-variants-compare.html` 내 누락된 CSP 메타 태그 삽입 (21/21 완료)
 
 ## 미커밋 / 로컬만
 - 스크린샷·미리보기 PNG: `main-page-*.png`, `Images/logo-for-mspaint.png`, `Images/logo-variants-for-mspaint.png`, `Picture/` 등 (의도적으로 커밋 제외 권장)
 
 ## 막힌 일 / blocked
-- **PR #8** merge(쓰기·리뷰)·**품질 게이트:** CSP 해결로 precheck **PASS** 상태로 전환됨.
+- **PR #8** merge(쓰기·리뷰)·**품질 게이트:** CSP 커버리지 WARN (20/21)로 precheck가 CONDITIONAL일 때 harness `gate-all` 실패 가능
 
 ## 다음에 할 일 (최대 3개)
 1. **PR #8** merge·[Pages](https://geumsagwa.github.io/) 확인; 필요 시 `master`에서 `git pull` 후 로컬 정합
-2. `gate-website.ps1`·`gate-all` 재검 및 최종 배포 확인
+2. CSP 누락 1건 해결 → `npm run check` 및 `reports/public_precheck_*.md`가 허용 상태인지 확인 → `gate-website.ps1`·`gate-all` 재검
 3. 좁은 폭 히어로 세로 스택 등 UI 튜닝은 `style-pages.css` 중심으로 진행; 변경 후 `gate-website` 재실행 습관 유지. **끝날 때** `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md` 동기
 
 ## 하네스 메모
