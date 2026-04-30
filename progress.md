@@ -4,7 +4,7 @@
 
 ## 마지막 갱신
 - 시각(ISO): `2026-04-30T18:30:00+09:00`
-- **Git 정본 (배포·원격 히스토리):** 브랜치 **`master`**. `git fetch` 후 `git rev-parse --short origin/master` — 문서 반영 시점 **`ee0136c`** (`docs: progress.md에 master tip·워킹트리·초대 카드 반영`). 로컬 `master`와 `origin/master` **동기** (ahead/behind 0).
+- **Git 정본 (배포·원격 히스토리):** 브랜치 **`master`**. `git fetch` 후 `git rev-parse --short origin/master` — 문서 반영 시점 **`b2a034c`** (`docs: 원격 tip ee0136c로 progress.md 동기`). 로컬 `master`와 `origin/master` **동기** (ahead/behind 0).
 - **레거시 브랜치:** `chore/public-readiness-20260312` 원격 tip **`4413071`**. `origin/master` 기준 **`git rev-list --count origin/chore/public-readiness-20260312..origin/master` = 33** — **과거 인계·작업 분기**로만 두고, **현재 작업·배포 기준은 `master`**.
 - **프리체크·게이트:** `master` tip이 갱신되었으므로 **`npm run check`**, 하네스 **`gate-website.ps1`**(및 필요 시 `gate-all.ps1`) **재실행**으로 최종 여부 확인 권장. 이전 스냅샷(2026-04-23): public-precheck **CONDITIONAL**, CSP **20/21** WARN 가능.
 
@@ -12,15 +12,18 @@
 - **작업 브랜치:** `master`
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
 - **원격 tip 확인:** `git fetch` 후 `git log -1 --oneline origin/master`
-- **최근 `master` 히스토리 (요약, 2026-04-30):** 히어로·슬라이드 튜닝 시리즈 **`ab91b73`에서 해당 튜닝 이전 상태로 revert** → **`4f64a07`**에서 **로고 비교용 HTML의 CSP 메타** 정리 → **`ee0136c`**에서 **`progress.md` 인계·워킹트리 기록 반영**(푸시됨).
+- **최근 `master` 히스토리 (요약, 2026-04-30):** 히어로·슬라이드 튜닝 시리즈 **`ab91b73`에서 해당 튜닝 이전 상태로 revert** → **`4f64a07`**에서 **로고 비교용 HTML의 CSP 메타** 정리 → **`ee0136c`**·**`b2a034c`**에서 **`progress.md` 정리·원격 tip 문장 동기** 후 푸시.
 
 ## 워킹트리 상태 (2026-04-30, Git 기준)
 - **상태:** **더러움** — `git status`상 추적 파일 **다수 수정**으로 표시되나, **`git diff HEAD` 기준 실제 줄 변경**은 종종 **`package.json` · `package-lock.json`** 등 소수에만 해당하는 패턴 관찰 — 나먼지 `M`은 **CRLF/인덱스 표시**(내용 무변) 가능성.
 - **수정(M) 예:** 상동 — 정본 확인은 **`git diff HEAD --stat`** 권장.
 - **미추적(??) 예:** `onse-soldae-invitation/`(온세솔대 요양원 **개업 초대 카드** HTML·PNG·Playwright 스크립트), `Images/*` 일부(webp/png), `main-live-*.png`, `main-page-*.png`, `.capture-tmp/`, `reports/public_precheck_*.md` 등 — 커밋·제외 정책 결정 필요.
-- **주의:** 위 **미추적·로컬만** 항목은 **`origin/master`(`ee0136c`)** 본 트리에 **포함되지 않음**(문서 커밋만 있고 자산 폴더는 미추적) — 배포 사이트와 로컬 미리보기가 다를 수 있음.
+- **주의:** 위 **미추적·로컬만** 항목은 **`origin/master`(`b2a034c`)** 본 트리에 **포함되지 않음**(문서 커밋만 있고 자산 폴더는 미추적) — 배포 사이트와 로컬 미리보기가 다를 수 있음.
 
 ## 이번 기간에 한 일 (요약) — 원격 `master` 히스토리에 포함된 범위
+
+### tip `b2a034c` (2026-04-30)
+- **`progress.md`** — 원격 tip 문구·섹션을 **`ee0136c` 반영 이후 상태**와 맞춤(`docs: 원격 tip ee0136c로 progress.md 동기`).
 
 ### tip `ee0136c` (2026-04-30)
 - **`progress.md`** — 원격 **`master`** tip·워킹트리·미추적 초대 카드 폴더 설명 반영 후 푸시.
