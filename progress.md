@@ -3,7 +3,7 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-04T09:00:00+09:00`
+- 시각(ISO): `2026-05-04T20:25:00+09:00`
 - **Git 정본 (배포·원격 히스토리):** 브랜치 **`master`**. **최신 SHA·메시지는** 저장소 기준 **`git fetch origin` 후** `git rev-parse --short origin/master` 및 `git log -1 --oneline origin/master`로 확인한다(본 파일에 적힌 과거 커밋 줄은 참고용). 로컬 `master`와 `origin/master`는 통상 **`git pull` 후 동기**.
 - **레거시 브랜치:** `chore/public-readiness-20260312` 원격 tip **`4413071`**. `origin/master` 기준 **`git rev-list --count origin/chore/public-readiness-20260312..origin/master` = 33** — **과거 인계·작업 분기**로만 두고, **현재 작업·배포 기준은 `master`**.
 - **프리체크·게이트:** `master` tip이 갱신되었으므로 **`npm run check`**, 하네스 **`gate-website.ps1`**(및 필요 시 `gate-all.ps1`) **재실행**으로 최종 여부 확인 권장. 이전 스냅샷(2026-04-23): public-precheck **CONDITIONAL**, CSP **20/21** WARN 가능.
@@ -12,7 +12,7 @@
 - **작업 브랜치:** `master`
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
 - **원격 tip 확인:** `git fetch` 후 `git log -1 --oneline origin/master`
-- **최근 `master` 히스토리 (요약, 2026-04-30):** 히어로·슬라이드 튜닝 시리즈 **`ab91b73`에서 해당 튜닝 이전 상태로 revert** → **`4f64a07`**에서 **로고 비교용 HTML의 CSP 메타** 정리 → 같은 날 **`ee0136c`·`b2a034c` 이후 추가 커밋**으로 **`progress.md` 내용 반영·푸시**(정확한 개수와 SHA는 위 명령으로 확인).
+- **최근 `master` 히스토리 (요약, 2026-05-04):** 히어로·슬라이드 튜닝 시리즈 revert → 로고 비교용 HTML CSP 정리 → `progress.md` 반영·푸시 → **`e22d696`** (CSS 캐시버스트·escapeHtml 중복 제거·supabase-config 개선) → **`afda2b0`** (초대장 CSP) → **`015815f`** (한글 인코딩 복구). 최신은 `git log -1 --oneline origin/master`로 확인.
 
 ## 워킹트리 상태 (2026-04-30, Git 기준)
 - **상태:** **더러움** — `git status`상 추적 파일 **다수 수정**으로 표시되나, **`git diff HEAD` 기준 실제 줄 변경**은 종종 **`package.json` · `package-lock.json`** 등 소수에만 해당하는 패턴 관찰 — 나먼지 `M`은 **CRLF/인덱스 표시**(내용 무변) 가능성.
@@ -22,10 +22,17 @@
 
 ## 이번 기간에 한 일 (요약) — 원격 `master` 히스토리에 포함된 범위
 
-### 로컬 수정 (2026-05-04, 미커밋) — 코드 리뷰 후 3가지 개선
-- **CSS 캐시버스트 통일:** 전체 17개 HTML에 `style.css?v=20260504`, `style-pages.css?v=20260504`, `style-light.css?v=20260504` 일괄 적용 (index.html만 있던 캐시버스트를 모든 페이지로 확산)
-- **`escapeHtml` 중복 제거:** `board.js`·`admin.js`·`diary.js`에 각각 있던 `escapeHtml` 함수 제거, `auth.js`의 전역 함수로 통일
-- **`supabase-config.js` 개선:** `window.__env` 오버라이드 지원 추가 (배포 파이프라인에서 주입 가능), `.env.example` 참조 주석 추가
+### tip `015815f` (2026-05-04)
+- **한글 인코딩 복구:** `e22d696`에서 발생한 17개 HTML 파일 한글 깨짐을 이전 정상 버전(`e22d696^`)에서 복원. CSS 캐시버스트(`v=20260504`)는 유지. 배포 페이지(GitHub Pages) 한글 정상 출력 확인 완료.
+
+### tip `afda2b0` (2026-05-04)
+- **초대장 CSP 추가:** `onse-soldae-invitation` 3개 페이지에 CSP 메타 태그 추가. `npm run check` **READY** (CSP 24/24).
+
+### tip `e22d696` (2026-05-04)
+- **코드 리뷰 기반 3가지 개선:**
+  - CSS 캐시버스트 통일: 전체 17개 HTML에 `style.css?v=20260504`, `style-pages.css?v=20260504`, `style-light.css?v=20260504` 일괄 적용
+  - `escapeHtml` 중복 제거: `board.js`·`admin.js`·`diary.js`에 각각 있던 `escapeHtml` 함수 제거, `auth.js`의 전역 함수로 통일
+  - `supabase-config.js` 개선: `window.__env` 오버라이드 지원 추가, `.env.example` 참조 주석 추가
 
 ### tip `b2a034c` (2026-04-30)
 - **`progress.md`** — 원격 tip 문구·섹션을 **`ee0136c` 반영 이후 상태**와 맞춤(`docs: 원격 tip ee0136c로 progress.md 동기`).
@@ -53,16 +60,17 @@
 - `.github/workflows`, `reports/public_precheck_*.md`, 기타 HTML/JS 정리
 
 ## 미커밋 / 로컬만
-- `git diff HEAD --name-only`에 잡히는 수정: **`package*.json`** 등 소수 + **2026-05-04 세션 3가지 개선**(CSS 캐시버스트·escapeHtml 중복 제거·supabase-config 개선). `git status` `M`과 불일치 가능.
+- `git diff HEAD --name-only`에 잡히는 수정: 없음 (3가지 개선 + 인코딩 복구 모두 커밋 완료). 단, `git status` `M`(CRLF) 표시는 여전할 수 있음.
 - 미추적: **`onse-soldae-invitation/`**(개업 초대 카드 웹/HTML·PNG) 등 — 스크린샷·시안 PNG는 의도적으로 제외할지, 커밋할지 구분 필요.
 
 ## 막힌 일 / blocked
-- **로컬 워킹트리**와 **`origin/master`** 불일치 — 정리 전에는 “로컬에서 본 화면”과 “실제 Pages”가 어긋날 수 있음
+- **(해소)** `e22d696` 한글 인코딩 깨짐 → `015815f` 복구·배포 확인 완료
 - **품질 게이트:** `master` tip 변경 후 **precheck·CSP** — 재실행 결과로 확정
+- 잔여 CRLF(`package*.json` 등) 미커밋 — 내용 변화 없는 `M` 표시. 정리 방침 결정 필요.
 
 ## 다음에 할 일 (최대 3개)
-1. **2026-05-04 로컬 수정 3건**을 커밋할지 결정 → 필요 시 커밋·푸시
-2. **`npm run check`**, 하네스 **`gate-website.ps1`**·필요 시 **`gate-all.ps1`** 실행 → 결과를 본 문서·`Desktop\Harness`에 기록
+1. **잔여 CRLF/package 변경** 정리 방침 결정
+2. 하네스 **`gate-website.ps1`**·필요 시 **`gate-all.ps1`** 실행 → 결과 기록
 3. **세션 종료 시** `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 본 파일 **동기**
 
 ## 하네스 메모
