@@ -77,12 +77,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         return `${y}. ${m}. ${day} (${wd})`;
     }
 
-    function escapeHtml(str) {
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-
     // 저장 (신규 / 수정)
     saveBtn.addEventListener('click', async () => {
         const body = textInput.value.trim();

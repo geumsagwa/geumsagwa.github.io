@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https:; frame-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
-    <title>Library - 생각을 잇다</title>
+    <title>Library - ?�각???�다</title>
         <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
-<link rel="stylesheet" href="style.css?v=2">
-<link rel="stylesheet" href="style-pages.css">
-<link rel="stylesheet" href="style-light.css">
+<link rel="stylesheet" href="style.css?v=20260504">
+<link rel="stylesheet" href="style-pages.css?v=20260504">
+<link rel="stylesheet" href="style-light.css?v=20260504">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-<!-- 상단 메뉴바 영역 -->
+<!-- ?�단 메뉴�??�역 -->
 <nav class="menu-bar">
-    <a href="index.html" class="menu-logo" aria-label="생각을 잇다 홈">
+    <a href="index.html" class="menu-logo" aria-label="?�각???�다 ??>
         <img class="menu-logo-img menu-logo-img--dark" src="Images/logo-saenggak.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
         <img class="menu-logo-img menu-logo-img--light" src="Images/logo-saenggak-light.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
     </a>
@@ -26,36 +26,36 @@
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="board.html">Board</a></li>
         <li class="diary-menu" style="display:none"><a href="diary.html">Diary</a></li>
-        <li class="admin-menu" style="display:none"><a href="admin.html">관리</a></li>
+        <li class="admin-menu" style="display:none"><a href="admin.html">관�?/a></li>
     </ul>
     <div class="auth-area" id="auth-area"></div>
 </nav>
 
-<!-- Library 콘텐츠 영역 -->
+<!-- Library 콘텐�??�역 -->
 <div class="library-container">
 
-    <!-- 테마 문구 -->
+    <!-- ?�마 문구 -->
     <div class="library-theme">
-        <p class="library-theme-text">'어떤' 생각은 시대를 넘어 이어진다.</p>
+        <p class="library-theme-text">'?�떤' ?�각?� ?��?�??�어 ?�어진다.</p>
     </div>
 
-    <!-- 카테고리 탭 (도서관 분류표 스타일) -->
+    <!-- 카테고리 ??(?�서관 분류???��??? -->
     <div class="library-tabs">
         <button class="library-tab active" data-category="history">
-            <span class="tab-label-code">Ⅰ</span>
+            <span class="tab-label-code">??/span>
             <span class="tab-label-name">History</span>
         </button>
         <button class="library-tab" data-category="philosophy">
-            <span class="tab-label-code">Ⅱ</span>
+            <span class="tab-label-code">??/span>
             <span class="tab-label-name">Philosophy</span>
         </button>
         <button class="library-tab" data-category="psychology">
-            <span class="tab-label-code">Ⅲ</span>
+            <span class="tab-label-code">??/span>
             <span class="tab-label-name">Psychology</span>
         </button>
     </div>
 
-    <!-- 카테고리별 책 목록 (DB에서 동적 로드) -->
+    <!-- 카테고리�?�?목록 (DB?�서 ?�적 로드) -->
     <div class="library-content">
         <div class="library-panel active" data-category="history">
             <div class="bookshelf">
@@ -80,19 +80,19 @@
         </div>
     </div>
 
-    <!-- EPUB 업로드 모달 (로그인 사용자만 표시) -->
+    <!-- EPUB ?�로??모달 (로그???�용?�만 ?�시) -->
     <div class="upload-modal" id="upload-modal">
         <div class="upload-backdrop" onclick="closeUploadModal()"></div>
         <div class="upload-card">
-            <h3 class="upload-title">책 등록</h3>
+            <h3 class="upload-title">�??�록</h3>
             <form id="upload-form" class="upload-form">
                 <div class="upload-field">
-                    <label class="upload-label">제목</label>
-                    <input type="text" id="upload-book-title" class="upload-input" placeholder="책 제목" required>
+                    <label class="upload-label">?�목</label>
+                    <input type="text" id="upload-book-title" class="upload-input" placeholder="�??�목" required>
                 </div>
                 <div class="upload-field">
-                    <label class="upload-label">저자</label>
-                    <input type="text" id="upload-book-author" class="upload-input" placeholder="저자명" required>
+                    <label class="upload-label">?�??/label>
+                    <input type="text" id="upload-book-author" class="upload-input" placeholder="?�?�명" required>
                 </div>
                 <div class="upload-field">
                     <label class="upload-label">카테고리</label>
@@ -103,13 +103,13 @@
                     </div>
                 </div>
                 <div class="upload-field">
-                    <label class="upload-label">책등 색상</label>
+                    <label class="upload-label">책등 ?�상</label>
                     <input type="color" id="upload-spine-color" class="upload-color" value="#8B4513">
                 </div>
                 <div class="upload-field">
-                    <label class="upload-label">EPUB 파일</label>
+                    <label class="upload-label">EPUB ?�일</label>
                     <div class="upload-dropzone" id="upload-dropzone">
-                        <span class="upload-dropzone-text" id="upload-dropzone-text">파일을 드래그하거나 클릭하여 선택</span>
+                        <span class="upload-dropzone-text" id="upload-dropzone-text">?�일???�래그하거나 ?�릭?�여 ?�택</span>
                         <input type="file" id="upload-file" accept=".epub" hidden>
                     </div>
                     <p class="upload-message" id="upload-auto-info"></p>
@@ -117,31 +117,31 @@
                 </div>
                 <div class="upload-actions">
                     <button type="button" class="upload-btn upload-btn-cancel" onclick="closeUploadModal()">취소</button>
-                    <button type="submit" class="upload-btn upload-btn-submit" id="upload-submit-btn">등록</button>
+                    <button type="submit" class="upload-btn upload-btn-submit" id="upload-submit-btn">?�록</button>
                 </div>
                 <p class="upload-message" id="upload-message"></p>
             </form>
         </div>
     </div>
 
-    <!-- 업로드 버튼 (로그인 사용자만 표시) -->
+    <!-- ?�로??버튼 (로그???�용?�만 ?�시) -->
     <button class="library-upload-btn" id="library-upload-btn" style="display:none;" onclick="openUploadModal()">+</button>
 
 </div>
 
-<!-- 책 펼침 애니메이션 오버레이 -->
+<!-- �??�침 ?�니메이???�버?�이 -->
 <div class="book-open-overlay" id="book-open-overlay">
     <div class="book-open-scene">
         <div class="book-open-book" id="book-open-book">
-            <!-- 왼쪽 페이지 (표지 뒷면) -->
+            <!-- ?�쪽 ?�이지 (?��? ?�면) -->
             <div class="book-open-left">
                 <div class="book-open-page-inner"></div>
             </div>
-            <!-- 오른쪽 페이지 -->
+            <!-- ?�른�??�이지 -->
             <div class="book-open-right">
                 <div class="book-open-page-inner"></div>
             </div>
-            <!-- 표지 (펼쳐지는 부분) -->
+            <!-- ?��? (?�쳐지??부�? -->
             <div class="book-open-cover" id="book-open-cover">
                 <div class="book-open-cover-front" id="book-open-cover-front">
                     <span class="book-open-cover-title" id="book-open-title"></span>

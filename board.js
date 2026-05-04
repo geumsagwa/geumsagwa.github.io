@@ -58,12 +58,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         return `${y}. ${m}. ${day}`;
     }
 
-    function escapeHtml(str) {
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-
     // 메모 렌더링
     function renderMemos() {
         const memos = loadMemos();
