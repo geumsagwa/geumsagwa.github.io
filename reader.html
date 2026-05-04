@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https: https://fonts.gstatic.com; frame-src 'self' blob: data: https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
-    <title>Reader - ?�각???�다</title>
+    <title>Reader - 생각을 잇다</title>
     <style>html,body{background:#000 !important;}</style>
         <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
 <link rel="stylesheet" href="style.css?v=20260504">
@@ -14,12 +14,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="epub.min.js"></script>
     <style>
-        /* 리더 ?�용 ?��???*/
+        /* 리더 전용 스타일 */
         body, html {
             overflow: hidden;
         }
 
-        /* ?�?� ?�체 ?�이?�웃: 좌측 목차 + ?�측 본문 ?�?� */
+        /* ── 전체 레이아웃: 좌측 목차 + 우측 본문 ── */
         .reader-container {
             width: 100%;
             height: 84vh;
@@ -27,7 +27,7 @@
             flex-direction: row;
         }
 
-        /* ?�?� 좌측 목차 ?�이?�바 ?�?� */
+        /* ── 좌측 목차 사이드바 ── */
         .reader-toc {
             width: 260px;
             min-width: 260px;
@@ -99,7 +99,7 @@
             background: rgba(218, 187, 126, 0.05);
         }
 
-        /* ?�?� ?�측 본문 ?�역 ?�?� */
+        /* ── 우측 본문 영역 ── */
         .reader-main {
             flex: 1;
             height: 100%;
@@ -108,7 +108,7 @@
             min-width: 0;
         }
 
-        /* ?�단 �?*/
+        /* 상단 바 */
         .reader-header {
             width: 100%;
             display: flex;
@@ -138,7 +138,7 @@
             color: #fff;
         }
 
-        /* epub 뷰어 - 종이 ?�낌 */
+        /* epub 뷰어 - 종이 느낌 */
         .reader-viewer {
             flex: 1;
             position: relative;
@@ -185,7 +185,7 @@
             background: transparent !important;
         }
 
-        /* 중앙 ?�본??*/
+        /* 중앙 제본선 */
         .book-spine-overlay {
             position: absolute;
             top: 0;
@@ -207,7 +207,7 @@
             pointer-events: none;
         }
 
-        /* 가?�자�?그림??*/
+        /* 가장자리 그림자 */
         .book-edge-overlay {
             position: absolute;
             inset: 0;
@@ -221,7 +221,7 @@
             border-radius: 3px;
         }
 
-        /* ?�이지 ?�동 버튼 */
+        /* 페이지 이동 버튼 */
         .reader-nav {
             position: absolute;
             top: 0;
@@ -259,7 +259,7 @@
             color: #555;
         }
 
-        /* ?�단 진행 �?*/
+        /* 하단 진행 바 */
         .reader-footer {
             width: 100%;
             padding: 0.5rem 2.5rem;
@@ -295,9 +295,9 @@
 </head>
 <body>
 
-<!-- ?�단 메뉴�??�역 -->
+<!-- 상단 메뉴바 영역 -->
 <nav class="menu-bar">
-    <a href="index.html" class="menu-logo" aria-label="?�각???�다 ??>
+    <a href="index.html" class="menu-logo" aria-label="생각을 잇다 홈">
         <img class="menu-logo-img menu-logo-img--dark" src="Images/logo-saenggak.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
         <img class="menu-logo-img menu-logo-img--light" src="Images/logo-saenggak-light.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
     </a>
@@ -308,27 +308,27 @@
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="board.html">Board</a></li>
         <li class="diary-menu" style="display:none"><a href="diary.html">Diary</a></li>
-        <li class="admin-menu" style="display:none"><a href="admin.html">관�?/a></li>
+        <li class="admin-menu" style="display:none"><a href="admin.html">관리</a></li>
     </ul>
     <div class="auth-area" id="auth-area"></div>
 </nav>
 
-<!-- 리더 ?�역 -->
+<!-- 리더 영역 -->
 <div class="reader-container">
 
     <!-- 좌측 목차 -->
     <div class="reader-toc">
         <div class="toc-header">
             <span class="toc-title">목차</span>
-            <a href="library.html" class="toc-back">??Library</a>
+            <a href="library.html" class="toc-back">← Library</a>
         </div>
         <div class="toc-list" id="toc-list"></div>
     </div>
 
-    <!-- ?�측 본문 -->
+    <!-- 우측 본문 -->
     <div class="reader-main">
         <div class="reader-header">
-            <span class="reader-book-title" id="book-title">불러?�는 �?..</span>
+            <span class="reader-book-title" id="book-title">불러오는 중...</span>
         </div>
 
         <div class="reader-viewer">
@@ -336,10 +336,10 @@
             <div class="book-spine-overlay"></div>
             <div class="book-edge-overlay"></div>
             <div class="reader-nav reader-nav-prev" id="prev">
-                <span class="reader-nav-arrow">??/span>
+                <span class="reader-nav-arrow">‹</span>
             </div>
             <div class="reader-nav reader-nav-next" id="next">
-                <span class="reader-nav-arrow">??/span>
+                <span class="reader-nav-arrow">›</span>
             </div>
         </div>
 
@@ -354,57 +354,58 @@
 </div>
 
 <script>
-    // URL?�서 epub Storage 경로 가?�오�?    const params = new URLSearchParams(window.location.search);
+    // URL에서 epub Storage 경로 가져오기
+    const params = new URLSearchParams(window.location.search);
     const epubPath = params.get('path') || '';
     const bookName = decodeURIComponent(params.get('title') || '');
 
-    // Supabase Storage?�서 epub ?�일 직접 ?�운로드 ??로드
+    // Supabase Storage에서 epub 파일 직접 다운로드 후 로드
     async function initReader() {
         try {
             if (!epubPath) {
-                document.getElementById('book-title').textContent = '책을 ?�택?�주?�요';
+                document.getElementById('book-title').textContent = '책을 선택해주세요';
                 return;
             }
 
             const { data: { session } } = await _supabase.auth.getSession();
 
             if (!session) {
-                document.getElementById('book-title').textContent = '로그?�이 ?�요?�니??;
+                document.getElementById('book-title').textContent = '로그인이 필요합니다';
                 return;
             }
 
-            document.getElementById('book-title').textContent = '?�운로드 �?..';
+            document.getElementById('book-title').textContent = '다운로드 중...';
 
-            console.log('?�운로드 ?�도:', epubPath);
+            console.log('다운로드 시도:', epubPath);
 
             const { data, error } = await _supabase.storage
                 .from('epubs')
                 .download(epubPath, { cacheControl: 'no-cache' });
 
             if (error || !data) {
-                document.getElementById('book-title').textContent = '?�운로드 ?�패';
-                console.error('?�운로드 ?�패:', error);
+                document.getElementById('book-title').textContent = '다운로드 실패';
+                console.error('다운로드 실패:', error);
                 return;
             }
 
-            console.log('?�운로드 ?�공, ?�기:', data.size);
-            document.getElementById('book-title').textContent = '로딩 �?..';
+            console.log('다운로드 성공, 크기:', data.size);
+            document.getElementById('book-title').textContent = '로딩 중...';
 
-            // ArrayBuffer�?변?�하??epub.js??직접 ?�달
+            // ArrayBuffer로 변환하여 epub.js에 직접 전달
             const arrayBuffer = await data.arrayBuffer();
             loadEpub(arrayBuffer);
         } catch (err) {
-            console.error('리더 초기???�패:', err);
-            document.getElementById('book-title').textContent = '?�류: ' + err.message;
+            console.error('리더 초기화 실패:', err);
+            document.getElementById('book-title').textContent = '오류: ' + err.message;
         }
     }
 
     async function loadEpub(bookData) {
 
-    // epub ?�더�?(ArrayBuffer�?직접 ?�기)
+    // epub 렌더링 (ArrayBuffer를 직접 열기)
     const book = ePub();
 
-    // ?�스???��???(?�두??배경??맞게) - open ?�에 ?�정
+    // 텍스트 스타일 (어두운 배경에 맞게) - open 전에 설정
     const rendition = book.renderTo('epub-viewer', {
         width: '100%',
         height: '100%',
@@ -452,14 +453,14 @@
         }
     });
 
-    // EPUB ?�더�???�?�?br, �??�소) ?�거
+    // EPUB 렌더링 시 빈 줄(br, 빈 요소) 제거
     rendition.hooks.content.register(function(contents) {
         const doc = contents.document;
         const body = doc.body;
 
-        // ?�?� 모든 챕터 �?�??�전 ?�거 ??CSS�??�치 강제 지???�?�
+        // ── 모든 챕터 빈 줄 완전 제거 후 CSS로 위치 강제 지정 ──
 
-        // 1) �??�소 ?�별
+        // 1) 빈 요소 판별
         function isEmpty(node) {
             if (node.nodeName === 'BR') return true;
             if (node.nodeType === 3) return node.textContent.trim() === '';
@@ -473,34 +474,35 @@
             return false;
         }
 
-        // 2) 컨테?�너 ??모든 �?�??�전 ?�거
+        // 2) 컨테이너 내 모든 빈 줄 완전 제거
         function removeAllEmpties(container) {
             Array.from(container.childNodes).forEach(node => {
                 if (isEmpty(node)) node.remove();
             });
         }
 
-        // 3) body 직속 + 모든 ?�위 컨테?�너 + p ?��? br 모두 ?�거
+        // 3) body 직속 + 모든 하위 컨테이너 + p 내부 br 모두 제거
         removeAllEmpties(body);
         body.querySelectorAll('div, section, article, aside, header, main').forEach(el => {
             removeAllEmpties(el);
         });
-        // p ?�그 ?��? br 모두 ?�거 (�?줄용 br�?
+        // p 태그 내부 br 모두 제거 (빈 줄용 br만)
         body.querySelectorAll('p').forEach(p => {
             const text = p.textContent.replace(/\u00a0/g, '').trim();
             if (text === '') {
                 p.remove();
             } else {
-                // p ?�작/?�의 br ?�거
+                // p 시작/끝의 br 제거
                 while (p.firstChild && p.firstChild.nodeName === 'BR') p.firstChild.remove();
                 while (p.lastChild && p.lastChild.nodeName === 'BR') p.lastChild.remove();
             }
         });
 
-        // 4) CSS�??�확???�치 지??        //    1????28px (15px * 1.85)
-        //    ?�목: ?�에??3?�째 ??padding-top 2?�분 = 56px
-        //    본문: 5?�째 ???�목 ?�래 1??간격 = 28px
-        // ?�목(h1~h3)�??�치 조정, ?�반 본문 ?�이지??건드리�? ?�음
+        // 4) CSS로 정확한 위치 지정
+        //    1행 ≈ 28px (15px * 1.85)
+        //    제목: 위에서 3행째 → padding-top 2행분 = 56px
+        //    본문: 5행째 → 제목 아래 1행 간격 = 28px
+        // 제목(h1~h3)만 위치 조정, 일반 본문 페이지는 건드리지 않음
         const style = doc.createElement('style');
         style.textContent = `
             h1, h2, h3 {
@@ -514,7 +516,7 @@
         `;
         doc.head.appendChild(style);
 
-        // ?�목(h1~h3) ?�에 ?�는 ?�속 br/�??�소 ?�거
+        // 제목(h1~h3) 앞에 있는 연속 br/빈 요소 제거
         doc.querySelectorAll('h1, h2, h3').forEach(heading => {
             let el = heading.previousSibling;
             while (el) {
@@ -532,7 +534,7 @@
             }
         });
 
-        // ?�목 바로 ??�?�?최�? 6�??�거
+        // 제목 바로 뒤 빈 줄 최대 6개 제거
         doc.querySelectorAll('h1, h2, h3').forEach(heading => {
             let el = heading.nextSibling;
             let removed = 0;
@@ -553,7 +555,7 @@
             }
         });
 
-        // SVG ?��?지??zoom-in 커서 ?�시
+        // SVG 이미지에 zoom-in 커서 표시
         doc.querySelectorAll('svg image').forEach(function(img) {
             var svg = img.closest('svg');
             if (svg) svg.style.cursor = 'zoom-in';
@@ -561,19 +563,19 @@
     });
 
     try {
-        // ArrayBuffer?�서 epub ?�기 (?�료 ?��?
+        // ArrayBuffer에서 epub 열기 (완료 대기)
         await book.open(bookData);
         await rendition.display();
-        console.log('epub ?�더�??�료');
+        console.log('epub 렌더링 완료');
     } catch (err) {
-        console.error('epub ?�더�??�류:', err);
-        document.getElementById('book-title').textContent = '로딩 ?�패 - ?�일???�인?�주?�요';
+        console.error('epub 렌더링 오류:', err);
+        document.getElementById('book-title').textContent = '로딩 실패 - 파일을 확인해주세요';
         return;
     }
 
-    // �??�목 + 목차 로드
+    // 책 제목 + 목차 로드
     book.ready.then(() => {
-        const title = bookName || book.package.metadata.title || '?�목 ?�음';
+        const title = bookName || book.package.metadata.title || '제목 없음';
         document.getElementById('book-title').textContent = title;
 
         // 목차(TOC) 로드
@@ -581,11 +583,11 @@
     }).then(nav => {
         const tocList = document.getElementById('toc-list');
 
-        // "?��???�? ??��??목차 �??�에 추�? (spine 2번째 ??��)
+        // "작가의 말" 항목을 목차 맨 위에 추가 (spine 2번째 항목)
         book.loaded.spine.then(() => {
             const authorNote = document.createElement('a');
             authorNote.className = 'toc-item';
-            authorNote.textContent = '?��???�?;
+            authorNote.textContent = '작가의 말';
             authorNote.href = '#';
 
             const spineItems = book.spine.spineItems;
@@ -619,11 +621,11 @@
             });
         }
     }).catch(err => {
-        console.error('�??�보 로드 ?�패:', err);
-        document.getElementById('book-title').textContent = '로딩 ?�패';
+        console.error('책 정보 로드 실패:', err);
+        document.getElementById('book-title').textContent = '로딩 실패';
     });
 
-    // ?�이지 ?�동
+    // 페이지 이동
     document.getElementById('prev').addEventListener('click', () => {
         rendition.prev();
     });
@@ -632,27 +634,28 @@
         rendition.next();
     });
 
-    // ?�보???�동
+    // 키보드 이동
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') rendition.prev();
         if (e.key === 'ArrowRight') rendition.next();
     });
 
-    // iframe ?��? ?�보???�벤??    rendition.on('keydown', (e) => {
+    // iframe 내부 키보드 이벤트
+    rendition.on('keydown', (e) => {
         if (e.key === 'ArrowLeft') rendition.prev();
         if (e.key === 'ArrowRight') rendition.next();
         if (e.key === 'Escape') closeImageZoom();
     });
 
-    // ?��?지 ?��? ?�버?�이 (부�??�이지)
+    // 이미지 확대 오버레이 (부모 페이지)
     let zoomOverlay = document.getElementById('epub-zoom-overlay');
     if (!zoomOverlay) {
         zoomOverlay = document.createElement('div');
         zoomOverlay.id = 'epub-zoom-overlay';
-        zoomOverlay.style.css?v=20260504Text = 'display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.9);z-index:99999;cursor:zoom-out;justify-content:center;align-items:center;';
+        zoomOverlay.style.cssText = 'display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.9);z-index:99999;cursor:zoom-out;justify-content:center;align-items:center;';
         const zoomImg = document.createElement('img');
         zoomImg.id = 'epub-zoom-img';
-        zoomImg.style.css?v=20260504Text = 'max-width:92vw;max-height:92vh;object-fit:contain;border-radius:4px;';
+        zoomImg.style.cssText = 'max-width:92vw;max-height:92vh;object-fit:contain;border-radius:4px;';
         zoomOverlay.appendChild(zoomImg);
         document.body.appendChild(zoomOverlay);
         zoomOverlay.addEventListener('click', closeImageZoom);
@@ -666,7 +669,7 @@
         if (ov) ov.style.display = 'none';
     }
 
-    // rendition.on('click')?�로 ?��?지 ?�릭 감�?
+    // rendition.on('click')으로 이미지 클릭 감지
     rendition.on('click', (e) => {
         let target = e.target;
         let svg = null;
@@ -683,7 +686,8 @@
                   || imgEl.getAttribute('href');
         if (!href) return;
 
-        // blob URL ??부�??�이지??img�??�달 ???�근 불�??????�으므�?data URL�?변??        const iframeWin = svg.ownerDocument.defaultView;
+        // blob URL → 부모 페이지의 img로 전달 시 접근 불가할 수 있으므로 data URL로 변환
+        const iframeWin = svg.ownerDocument.defaultView;
         iframeWin.fetch(href)
             .then(r => r.blob())
             .then(blob => {
@@ -697,7 +701,7 @@
                 reader.readAsDataURL(blob);
             })
             .catch(() => {
-                // fallback: 직접 URL ?�용
+                // fallback: 직접 URL 사용
                 const zImg = document.getElementById('epub-zoom-img');
                 zImg.src = href;
                 const ov = document.getElementById('epub-zoom-overlay');
@@ -705,13 +709,14 @@
             });
     });
 
-    // ?�이지 ?�동 ??목차 ?�성 ??�� ?�데?�트
+    // 페이지 이동 시 목차 활성 항목 업데이트
     rendition.on('relocated', (location) => {
         const currentHref = location.start.href;
         document.querySelectorAll('.toc-item').forEach(item => {
             item.classList.remove('active');
         });
-        // ?�재 챕터???�당?�는 목차 ??�� ?�성??        const tocItems = document.querySelectorAll('.toc-item');
+        // 현재 챕터에 해당하는 목차 항목 활성화
+        const tocItems = document.querySelectorAll('.toc-item');
         tocItems.forEach(item => {
             if (item._href && currentHref.includes(item._href)) {
                 item.classList.add('active');
@@ -719,9 +724,9 @@
         });
     });
 
-    // 진행�??�시
+    // 진행률 표시
     rendition.on('relocated', (location) => {
-        // locations가 준비되�??�확??진행�? ?�니�??�?�적 ?�시
+        // locations가 준비되면 정확한 진행률, 아니면 대략적 표시
         if (book.locations.length()) {
             const progress = book.locations.percentageFromCfi(location.start.cfi);
             const percent = Math.round(progress * 100);
@@ -730,14 +735,15 @@
         }
     });
 
-    // locations??비동기로 천천???�성 (로딩??차단?��? ?�음)
+    // locations는 비동기로 천천히 생성 (로딩을 차단하지 않음)
     book.ready.then(() => {
         book.locations.generate(2000).then(() => {
-            console.log('?�치 ?�이???�성 ?�료');
+            console.log('위치 데이터 생성 완료');
         });
     });
 
-    } // loadEpub ?�수 ??</script>
+    } // loadEpub 함수 끝
+</script>
 <script src="supabase-config.js"></script>
 <script src="auth.js?v=3"></script>
 <script>

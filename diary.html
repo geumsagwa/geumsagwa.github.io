@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https:; frame-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
-    <title>Diary - ?�각???�다</title>
+    <title>Diary - 생각을 잇다</title>
     <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
     <link rel="stylesheet" href="style.css?v=20260504">
     <link rel="stylesheet" href="style-pages.css?v=20260504">
@@ -13,9 +13,9 @@
 </head>
 <body>
 
-<!-- ?�단 메뉴�??�역 -->
+<!-- 상단 메뉴바 영역 -->
 <nav class="menu-bar">
-    <a href="index.html" class="menu-logo" aria-label="?�각???�다 ??>
+    <a href="index.html" class="menu-logo" aria-label="생각을 잇다 홈">
         <img class="menu-logo-img menu-logo-img--dark" src="Images/logo-saenggak.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
         <img class="menu-logo-img menu-logo-img--light" src="Images/logo-saenggak-light.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
     </a>
@@ -26,34 +26,34 @@
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="board.html">Board</a></li>
         <li class="diary-menu active" style="display:none"><a href="diary.html">Diary</a></li>
-        <li class="admin-menu" style="display:none"><a href="admin.html">관�?/a></li>
+        <li class="admin-menu" style="display:none"><a href="admin.html">관리</a></li>
     </ul>
     <div class="auth-area" id="auth-area"></div>
 </nav>
 
-<!-- Diary 콘텐�??�역 -->
+<!-- Diary 콘텐츠 영역 -->
 <div class="diary-container">
 
-    <!-- ?�마 문구 -->
+    <!-- 테마 문구 -->
     <div class="diary-theme">
-        <p class="diary-theme-text">?�루�?기록?�다</p>
+        <p class="diary-theme-text">하루를 기록하다</p>
     </div>
 
-    <!-- 글?�기 ?�역 -->
+    <!-- 글쓰기 영역 -->
     <div class="diary-write" id="diary-write">
         <div class="diary-write-top">
             <input type="date" class="diary-date-input" id="diary-date">
             <div class="diary-write-actions">
                 <button class="diary-cancel-btn" id="diary-cancel" style="display:none">취소</button>
-                <button class="diary-save-btn" id="diary-save">기록?�기</button>
+                <button class="diary-save-btn" id="diary-save">기록하기</button>
             </div>
         </div>
-        <textarea class="diary-text-input" id="diary-text" placeholder="?�늘 ?�루, ?�떤 ?�각???�나??.."></textarea>
+        <textarea class="diary-text-input" id="diary-text" placeholder="오늘 하루, 어떤 생각을 했나요..."></textarea>
     </div>
 
-    <!-- ?�기 목록 -->
+    <!-- 일기 목록 -->
     <div class="diary-list" id="diary-list">
-        <!-- JS�??�더�?-->
+        <!-- JS로 렌더링 -->
     </div>
 
 </div>

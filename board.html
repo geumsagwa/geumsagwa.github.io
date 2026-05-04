@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https:; frame-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
-    <title>Board - ?�각???�다</title>
+    <title>Board - 생각을 잇다</title>
         <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
 <link rel="stylesheet" href="style.css?v=20260504">
 <link rel="stylesheet" href="style-pages.css?v=20260504">
@@ -13,9 +13,9 @@
 </head>
 <body>
 
-<!-- ?�단 메뉴�??�역 -->
+<!-- 상단 메뉴바 영역 -->
 <nav class="menu-bar">
-    <a href="index.html" class="menu-logo" aria-label="?�각???�다 ??>
+    <a href="index.html" class="menu-logo" aria-label="생각을 잇다 홈">
         <img class="menu-logo-img menu-logo-img--dark" src="Images/logo-saenggak.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
         <img class="menu-logo-img menu-logo-img--light" src="Images/logo-saenggak-light.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
     </a>
@@ -26,32 +26,32 @@
         <li><a href="gallery.html">Gallery</a></li>
         <li class="active"><a href="board.html">Board</a></li>
         <li class="diary-menu" style="display:none"><a href="diary.html">Diary</a></li>
-        <li class="admin-menu" style="display:none"><a href="admin.html">관�?/a></li>
+        <li class="admin-menu" style="display:none"><a href="admin.html">관리</a></li>
     </ul>
     <div class="auth-area" id="auth-area"></div>
 </nav>
 
-<!-- Board 콘텐�??�역 -->
+<!-- Board 콘텐츠 영역 -->
 <div class="board-container">
 
-    <!-- ?�마 문구 -->
+    <!-- 테마 문구 -->
     <div class="board-theme">
-        <p class="board-theme-text">'?�떤' ?�각?� 결국, ?��? 만든??</p>
+        <p class="board-theme-text">'어떤' 생각은 결국, 나를 만든다.</p>
     </div>
 
-    <!-- 글?�기 ?�역 -->
+    <!-- 글쓰기 영역 -->
     <div class="memo-write">
-        <input type="text" class="memo-name-input" id="memo-name" placeholder="?�름 (?�명)" maxlength="20">
-        <textarea class="memo-text-input" id="memo-text" placeholder="?�각???�겨주세??.." maxlength="300"></textarea>
+        <input type="text" class="memo-name-input" id="memo-name" placeholder="이름 (익명)" maxlength="20">
+        <textarea class="memo-text-input" id="memo-text" placeholder="생각을 남겨주세요..." maxlength="300"></textarea>
         <div class="memo-write-footer">
             <span class="memo-char-count" id="memo-char-count">0 / 300</span>
-            <button class="memo-submit" id="memo-submit">?�기�?/button>
+            <button class="memo-submit" id="memo-submit">남기기</button>
         </div>
     </div>
 
     <!-- 메모 목록 -->
     <div class="memo-list" id="memo-list">
-        <!-- JS�??�더�?-->
+        <!-- JS로 렌더링 -->
     </div>
 
 </div>

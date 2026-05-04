@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https:; frame-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
-    <title>Blog - ?�각???�다</title>
+    <title>Blog - 생각을 잇다</title>
         <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
 <link rel="stylesheet" href="style.css?v=20260504">
 <link rel="stylesheet" href="style-pages.css?v=20260504">
@@ -13,9 +13,9 @@
 </head>
 <body>
 
-<!-- ?�단 메뉴�??�역 -->
+<!-- 상단 메뉴바 영역 -->
 <nav class="menu-bar">
-    <a href="index.html" class="menu-logo" aria-label="?�각???�다 ??>
+    <a href="index.html" class="menu-logo" aria-label="생각을 잇다 홈">
         <img class="menu-logo-img menu-logo-img--dark" src="Images/logo-saenggak.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
         <img class="menu-logo-img menu-logo-img--light" src="Images/logo-saenggak-light.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
     </a>
@@ -26,54 +26,54 @@
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="board.html">Board</a></li>
         <li class="diary-menu" style="display:none"><a href="diary.html">Diary</a></li>
-        <li class="admin-menu" style="display:none"><a href="admin.html">관�?/a></li>
+        <li class="admin-menu" style="display:none"><a href="admin.html">관리</a></li>
     </ul>
     <div class="auth-area" id="auth-area"></div>
 </nav>
 
-<!-- Blog 콘텐�??�역 -->
+<!-- Blog 콘텐츠 영역 -->
 <div class="blog-container">
 
-    <!-- ?�마 문구 -->
+    <!-- 테마 문구 -->
     <div class="blog-theme">
-        <p class="blog-theme-text">'?�떤' ?�각?� ?�람 ?�이�??�어준??</p>
+        <p class="blog-theme-text">'어떤' 생각은 사람 사이를 이어준다.</p>
     </div>
 
-    <!-- 카테고리 ??(카페 메뉴 ?��??? -->
+    <!-- 카테고리 탭 (카페 메뉴 스타일) -->
     <div class="blog-tabs">
         <button class="blog-tab active" data-category="book-review">
-            <span class="cafe-tab-icon">??/span>
+            <span class="cafe-tab-icon">☕</span>
             <span class="cafe-tab-name">Book Review</span>
         </button>
         <button class="blog-tab" data-category="essay">
-            <span class="cafe-tab-icon">??/span>
+            <span class="cafe-tab-icon">✍</span>
             <span class="cafe-tab-name">Essay</span>
         </button>
         <button class="blog-tab" data-category="ai-writing">
-            <span class="cafe-tab-icon">?��</span>
+            <span class="cafe-tab-icon">🤖</span>
             <span class="cafe-tab-name">AI Writing</span>
         </button>
     </div>
 
-    <!-- 카테고리�?글 목록 (?�진카드 그리?? -->
+    <!-- 카테고리별 글 목록 (사진카드 그리드) -->
     <div class="blog-content">
         <div class="blog-panel active" data-category="book-review">
             <div class="blog-write-area">
-                <a href="review-editor.html" class="blog-write-btn" style="display:none;">+ ??글 ?�성</a>
+                <a href="review-editor.html" class="blog-write-btn" style="display:none;">+ 새 글 작성</a>
             </div>
             <div class="photo-grid" id="book-review-grid">
             </div>
         </div>
         <div class="blog-panel" data-category="essay">
             <div class="blog-write-area">
-                <a href="essay-editor.html" id="btn-new-essay" class="blog-write-btn" style="display:none;">+ ??글 ?�성</a>
+                <a href="essay-editor.html" id="btn-new-essay" class="blog-write-btn" style="display:none;">+ 새 글 작성</a>
             </div>
             <div class="photo-grid" id="essay-grid">
             </div>
         </div>
         <div class="blog-panel" data-category="ai-writing">
             <div class="blog-write-area">
-                <a href="ai-writing-editor.html" class="blog-write-btn" style="display:none;">+ ??글 ?�성</a>
+                <a href="ai-writing-editor.html" class="blog-write-btn" style="display:none;">+ 새 글 작성</a>
             </div>
             <div class="photo-grid" id="ai-writing-grid">
             </div>
