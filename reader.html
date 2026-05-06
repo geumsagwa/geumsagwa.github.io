@@ -358,7 +358,7 @@
         }
 
         /* 반응형 */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .reader-viewer {
                 margin: 0 0.3rem;
             }
@@ -507,7 +507,7 @@
     const book = ePub();
 
     // 텍스트 스타일 (어두운 배경에 맞게) - open 전에 설정
-    const isNarrow = window.innerWidth <= 768;
+    const isNarrow = window.innerWidth <= 1024;
     const rendition = book.renderTo('epub-viewer', {
         width: '100%',
         height: '100%',
