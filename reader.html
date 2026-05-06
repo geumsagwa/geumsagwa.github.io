@@ -374,6 +374,9 @@
             .reader-footer {
                 padding: 0.4rem 0.8rem;
             }
+            .book-spine-overlay {
+                display: none;
+            }
         }
         @media (max-width: 480px) {
             .reader-viewer {
@@ -504,10 +507,11 @@
     const book = ePub();
 
     // 텍스트 스타일 (어두운 배경에 맞게) - open 전에 설정
+    const isNarrow = window.innerWidth <= 768;
     const rendition = book.renderTo('epub-viewer', {
         width: '100%',
         height: '100%',
-        spread: 'auto',
+        spread: isNarrow ? 'none' : 'auto',
         flow: 'paginated'
     });
 
