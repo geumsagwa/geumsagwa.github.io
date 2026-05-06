@@ -110,12 +110,19 @@ async function handleSignUp(e) {
 }
 
 async function socialLogin(provider) {
+  const options = {
+    // 루트·GitHub Pages 프로젝트 경로(/repo/) 모두에서 동작하도록 현재 문서 기준 절대 URL 사용
+    redirectTo: new URL('index.html', window.location.href).href,
+  };
+
+  // Kakao: 앱 동의항목에 맞춰 요청 scope 제한
+  if (provider === 'kakao') {
+    options.scopes = 'profile_nickname';
+  }
+
   const { data, error } = await _supabase.auth.signInWithOAuth({
     provider,
-    options: {
-      // 루트·GitHub Pages 프로젝트 경로(/repo/) 모두에서 동작하도록 현재 문서 기준 절대 URL 사용
-      redirectTo: new URL('index.html', window.location.href).href,
-    },
+    options,
   });
 
   if (data?.url) {
