@@ -268,8 +268,15 @@ html.light-mode .menu-logo-img--light,
 /* ---------- Responsive: Tablet (<=768) ---------- */
 @media (max-width: 768px) {
     .menu-bar {
-        padding: 0 1.5rem;
-        height: 14vh;
+        padding: 0.75rem 1.5rem;
+        height: auto;
+        min-height: 14vh;
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+    .menu-list {
+        flex-wrap: wrap;
+        row-gap: 0.3rem;
     }
     .menu-logo-img {
         height: 1.85rem;

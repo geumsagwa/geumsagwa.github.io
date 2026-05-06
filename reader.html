@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko" style="background:#000;">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
             overflow: hidden;
         }
 
-        /* ── 전체 레이아웃: 좌측 목차 + 우측 본문 ── */
+        /* ── 전체 레이아웃: 본문 전체 차지 (목차는 오버레이) ── */
         .reader-container {
             width: 100%;
             height: 84vh;
@@ -27,13 +27,38 @@
             flex-direction: row;
         }
 
-        /* ── 좌측 목차 사이드바 ── */
+        /* ── 목차 오버레이 (기본 숨김, 버튼 클릭 시 투명하게 등장) ── */
         .reader-toc {
-            width: 260px;
-            min-width: 260px;
-            height: 100%;
-            background: #0a0a08;
-            border-right: 1px solid rgba(255, 255, 255, 0.06);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 500;
+            display: none;
+            background: rgba(0, 0, 0, 0.0);
+            transition: background 0.3s ease;
+            pointer-events: none;
+        }
+
+        .reader-toc.open {
+            display: block;
+            background: rgba(0, 0, 0, 0.75);
+            pointer-events: auto;
+        }
+
+        .reader-toc-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(420px, 90vw);
+            max-height: 80vh;
+            background: rgba(20, 18, 14, 0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -55,17 +80,32 @@
             letter-spacing: 0.08em;
         }
 
+        .toc-close {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: #666;
+            cursor: pointer;
+            padding: 0 0.3rem;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .toc-close:hover {
+            color: #dabb7e;
+        }
+
         .toc-back {
             font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
             font-weight: 400;
-            font-size: 0.72rem;
-            color: #555;
+            font-size: 0.82rem;
+            color: #dabb7e;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .toc-back:hover {
-            color: #dabb7e;
+            color: #fff;
         }
 
         .toc-list {
@@ -78,28 +118,47 @@
             display: block;
             font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
             font-weight: 400;
-            font-size: 0.78rem;
-            color: #888;
+            font-size: 0.82rem;
+            color: #bbb;
             text-decoration: none;
-            padding: 0.55rem 1.5rem;
+            padding: 0.6rem 1.5rem;
             line-height: 1.4;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border-left: 2px solid transparent;
         }
 
         .toc-item:hover {
-            color: #ccc;
-            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+            border-left-color: #dabb7e;
         }
 
         .toc-item.active {
             color: #dabb7e;
             border-left-color: #dabb7e;
-            background: rgba(218, 187, 126, 0.05);
+            background: rgba(218, 187, 126, 0.08);
         }
 
-        /* ── 우측 본문 영역 ── */
+        /* ── 목차 열기 버튼 (좌측 여백에 작게) ── */
+        .toc-toggle-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            color: #999;
+            font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toc-toggle-btn:hover {
+            color: #dabb7e;
+            border-color: #dabb7e;
+        }
+
+        /* ── 우측 본문 영역 (전체 너비) ── */
         .reader-main {
             flex: 1;
             height: 100%;
@@ -116,6 +175,12 @@
             align-items: center;
             padding: 0.6rem 2.5rem;
             background: #050503;
+        }
+
+        .reader-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
         .reader-book-title {
@@ -143,7 +208,7 @@
             flex: 1;
             position: relative;
             min-height: 0;
-            margin: 0 2rem;
+            margin: 0 1rem;
             /* 종이 질감 배경 */
             background:
                 repeating-linear-gradient(
@@ -291,6 +356,30 @@
             min-width: 3rem;
             text-align: right;
         }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .reader-viewer {
+                margin: 0 0.3rem;
+            }
+            .reader-header {
+                padding: 0.5rem 0.8rem;
+            }
+            .reader-header-left {
+                gap: 0.5rem;
+            }
+            .reader-book-title {
+                font-size: 0.75rem;
+            }
+            .reader-footer {
+                padding: 0.4rem 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .reader-viewer {
+                margin: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -316,19 +405,28 @@
 <!-- 리더 영역 -->
 <div class="reader-container">
 
-    <!-- 좌측 목차 -->
-    <div class="reader-toc">
-        <div class="toc-header">
-            <span class="toc-title">목차</span>
-            <a href="library.html" class="toc-back">← Library</a>
+    <!-- 목차 오버레이 -->
+    <div class="reader-toc" id="reader-toc">
+        <div class="reader-toc-inner">
+            <div class="toc-header">
+                <span class="toc-title">목차</span>
+                <button class="toc-close" id="toc-close-btn" aria-label="Close toc">&times;</button>
+            </div>
+            <div class="toc-list" id="toc-list"></div>
+            <div class="toc-header" style="border-top:1px solid rgba(255,255,255,0.06);border-bottom:none;">
+                <a href="library.html" class="toc-back">← Library</a>
+            </div>
         </div>
-        <div class="toc-list" id="toc-list"></div>
     </div>
 
-    <!-- 우측 본문 -->
+    <!-- 본문 -->
     <div class="reader-main">
         <div class="reader-header">
-            <span class="reader-book-title" id="book-title">불러오는 중...</span>
+            <div class="reader-header-left">
+                <button class="toc-toggle-btn" id="toc-toggle-btn">≡ 목차</button>
+                <span class="reader-book-title" id="book-title">불러오는 중...</span>
+            </div>
+            <a href="library.html" class="reader-back">← Library</a>
         </div>
 
         <div class="reader-viewer">
@@ -409,7 +507,7 @@
     const rendition = book.renderTo('epub-viewer', {
         width: '100%',
         height: '100%',
-        spread: 'always',
+        spread: 'auto',
         flow: 'paginated'
     });
 
@@ -422,7 +520,11 @@
             'font-family': "'GyeonggiBatang', 'Malgun Gothic', serif !important",
             'font-size': '15px !important',
             'letter-spacing': '0.01em !important',
-            'word-spacing': '0.02em !important'
+            'word-spacing': '0.02em !important',
+            'box-sizing': 'border-box !important',
+            'max-width': '100% !important',
+            'word-wrap': 'break-word !important',
+            'overflow-wrap': 'break-word !important'
         },
         'p, div, span, li': {
             'color': '#333 !important'
@@ -638,6 +740,25 @@
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') rendition.prev();
         if (e.key === 'ArrowRight') rendition.next();
+    });
+
+    // 목차 오버레이 토글
+    const tocOverlay = document.getElementById('reader-toc');
+    const tocToggle = document.getElementById('toc-toggle-btn');
+    const tocClose = document.getElementById('toc-close-btn');
+
+    function openToc() { tocOverlay.classList.add('open'); }
+    function closeToc() { tocOverlay.classList.remove('open'); }
+
+    if (tocToggle) tocToggle.addEventListener('click', openToc);
+    if (tocClose) tocClose.addEventListener('click', closeToc);
+    if (tocOverlay) tocOverlay.addEventListener('click', (e) => {
+        if (e.target === tocOverlay) closeToc();
+    });
+    // 목차 항목 클릭 시 닫기
+    document.addEventListener('click', (e) => {
+        const item = e.target.closest('.toc-item');
+        if (item) closeToc();
     });
 
     // iframe 내부 키보드 이벤트
