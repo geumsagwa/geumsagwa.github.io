@@ -6,7 +6,11 @@ Thumbs.db
 !.env.example
 node_modules/
 coverage/
-reports/weekly-quality-*.md
+reports/
+.capture-tmp/
+test-results/
+main-live-*.png
+main-page-*.png
 migrate-reviews.js
 migrate-essays.js
 Images/caricature-*.png
