@@ -3,15 +3,15 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-06T06:30:00+09:00`
-- **Git 정본 (배포·원격 히스토리):** 브랜치 **`master`**. 마지막 원격 커밋: **`256eb7d`** (진행 상황 동일, 이번 세션 신규 커밋 없음).
+- 시각(ISO): `2026-05-06T16:00:00+09:00`
+- **Git 정본 (배포·원격 히스토리):** 브랜치 **`master`**. 마지막 원격 커밋: **`9195d23`** (Reader TOC 오버레이, slide2/메뉴바 768px, spread 렌더링 수정 커밋·푸시).
 - **레거시 브랜치:** `chore/public-readiness-20260312` 원격 tip **`4413071`** (변동 없음).
-- **금일 로컬 변경 (미커밋):** slide2/메뉴바 768px 수정, Reader TOC 오버레이 전환, spread 렌더링 수정
+- **금일 로컬 변경:** 없음 (전량 `9195d23` 커밋).
 
 ## 브랜치·원격
 - **작업 브랜치:** `master`
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **최근 `master` 히스토리 (변동 없음):** 마지막 커밋 `256eb7d` 유지. 금일 작업은 모두 미커밋.
+- **최근 `master` 히스토리:** `9195d23` (Reader TOC 오버레이, slide2/메뉴바 768px, spread 렌더링 수정)
 
 ## 워킹트리 상태 (2026-04-30, Git 기준)
 - **상태:** **더러움** — `git status`상 추적 파일 **다수 수정**으로 표시되나, **`git diff HEAD` 기준 실제 줄 변경**은 종종 **`package.json` · `package-lock.json`** 등 소수에만 해당하는 패턴 관찰 — 나먼지 `M`은 **CRLF/인덱스 표시**(내용 무변) 가능성.
