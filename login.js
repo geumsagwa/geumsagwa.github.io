@@ -137,81 +137,84 @@ async function socialLogin(provider) {
   }
 }
 
-async function kakaoLogin() {
-  const activeTab = document.querySelector('.auth-tab.active');
-  const msgId = activeTab?.id === 'tab-signup' ? 'signup-message' : 'login-message';
+// -------- Kakao OAuth (SDK 없이 직접 구현) --------
 
-  if (typeof Kakao === 'undefined' || !Kakao.isInitialized()) {
-    showMessage(msgId, 'Kakao SDK가 초기화되지 않았습니다. 페이지를 새로고침해주세요.', true);
-    return;
-  }
+const KAKAO_JS_KEY = 'e4915b568634050ccefdf508399a9ec4';
+const KAKAO_STATE = 'kakao_login';
+
+let _handlingKakaoCallback = false;
+
+// 페이지 로드 시 Kakao OAuth 콜백 처리
+async function handleKakaoCallback() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  if (!code || state !== KAKAO_STATE) return;
+
+  _handlingKakaoCallback = true;
+  window.history.replaceState({}, '', window.location.pathname);
 
   try {
-    // 1. Kakao JS SDK 팝업으로 직접 OAuth (Supabase GoTrue 우회, scope: profile_nickname만)
-    const authObj = await new Promise((resolve, reject) => {
-      Kakao.Auth.login({
-        scope: 'profile_nickname',
-        success: resolve,
-        fail: (err) => {
-          reject(new Error(err.error_description || err.error || err.message || 'Kakao login failed'));
-        },
-      });
+    // 1. code → token 교환 (JS Key는 client_secret 불필요)
+    const tokenRes = await fetch('https://kauth.kakao.com/oauth/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type: 'authorization_code',
+        client_id: KAKAO_JS_KEY,
+        redirect_uri: window.location.origin + window.location.pathname,
+        code,
+      }),
     });
+    if (!tokenRes.ok) throw new Error('토큰 교환 실패');
+    const tokens = await tokenRes.json();
 
     // 2. Kakao API로 사용자 정보 조회
     const userRes = await fetch('https://kapi.kakao.com/v2/user/me', {
-      headers: { Authorization: `Bearer ${authObj.access_token}` },
+      headers: { Authorization: `Bearer ${tokens.access_token}` },
     });
     if (!userRes.ok) throw new Error('Kakao API 조회 실패');
     const kakaoUser = await userRes.json();
     const kakaoId = kakaoUser.id;
     const nickname = kakaoUser.kakao_account?.profile?.nickname || `kakao_${kakaoId}`;
 
-    // 3. 고유 이메일 생성 (kakao ID 기반, 도달 불가능한 주소)
+    // 3. 고유 이메일 기반 Supabase 회원가입/로그인
     const email = `u-${kakaoId}@k.social`;
     const pwKey = `kpw_${kakaoId}`;
     let password = localStorage.getItem(pwKey);
 
     if (!password) {
-      // 최초 방문: 신규 회원가입 (mailer_autoconfirm=true 이므로 세션 즉시 발급)
       password = Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(36).padStart(2, '0')).join('');
       localStorage.setItem(pwKey, password);
 
       const { data, error: signUpError } = await _supabase.auth.signUp({
-        email,
-        password,
+        email, password,
         options: { data: { nickname } },
       });
       if (signUpError) throw signUpError;
-
-      if (data?.session) {
-        // auto-confirm으로 이미 로그인됨
-        showMessage(msgId, '로그인 성공! 이동 중...', false);
-        setTimeout(() => { window.location.href = 'index.html'; }, 800);
-        return;
-      }
-      // session이 없으면 fallthrough → signInWithPassword
+      if (data?.session) return;
     }
 
-    // 4. 재방문 또는 signUp이 세션을 반환하지 않은 경우
-    const { error: signInError } = await _supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const { error: signInError } = await _supabase.auth.signInWithPassword({ email, password });
     if (signInError) throw signInError;
-
-    showMessage(msgId, '로그인 성공! 이동 중...', false);
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 800);
   } catch (err) {
-    const msg = err.message || '알 수 없는 오류';
-    if (msg.includes('cancel') || msg.includes('denied') || msg === 'consent_canceled') {
-      showMessage(msgId, '카카오 로그인이 취소되었습니다.', true);
-    } else {
-      showMessage(msgId, '카카오 로그인에 실패했습니다: ' + msg, true);
-    }
+    console.error('Kakao callback error:', err);
+  } finally {
+    // 성공/실패 모두 index.html로 이동 (auth.js가 세션 확인)
+    window.location.href = 'index.html';
   }
+}
+
+async function kakaoLogin() {
+  // Kakao OAuth authorize URL로 리다이렉트 (팝업/JS SDK 미사용)
+  const params = new URLSearchParams({
+    response_type: 'code',
+    client_id: KAKAO_JS_KEY,
+    redirect_uri: window.location.origin + window.location.pathname,
+    scope: 'profile_nickname',
+    state: KAKAO_STATE,
+  });
+  window.location.href = `https://kauth.kakao.com/oauth/authorize?${params}`;
 }
 
 async function redirectIfLoggedIn() {
@@ -224,6 +227,9 @@ async function redirectIfLoggedIn() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Kakao OAuth 콜백 (code 파라미터로 돌아온 경우) — 처리 후 index.html 이동
+  handleKakaoCallback();
+
   document.getElementById('tab-login').addEventListener('click', () => switchTab('login'));
   document.getElementById('tab-signup').addEventListener('click', () => switchTab('signup'));
   document.getElementById('form-login').addEventListener('submit', handleLogin);
@@ -231,9 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.js-social-login').forEach((btn) => {
     btn.addEventListener('click', () => socialLogin(btn.dataset.provider));
   });
-  // Kakao SDK 초기화
-  if (typeof Kakao !== 'undefined') {
-    Kakao.init('e4915b568634050ccefdf508399a9ec4');
-  }
-  redirectIfLoggedIn();
+  // Kakao 콜백 처리 중이 아니고 이미 로그인된 경우만 리다이렉트
+  if (!_handlingKakaoCallback) redirectIfLoggedIn();
 });
