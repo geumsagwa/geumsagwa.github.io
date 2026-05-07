@@ -147,37 +147,69 @@ async function kakaoLogin() {
   }
 
   try {
-    // Kakao JS SDK 팝업으로 직접 OAuth (Supabase GoTrue 우회, scope 제한 목적)
+    // 1. Kakao JS SDK 팝업으로 직접 OAuth (Supabase GoTrue 우회, scope: profile_nickname만)
     const authObj = await new Promise((resolve, reject) => {
       Kakao.Auth.login({
-        scope: 'profile_nickname,openid',
+        scope: 'profile_nickname',
         success: resolve,
-        fail: reject,
+        fail: (err) => {
+          reject(new Error(err.error_description || err.error || err.message || 'Kakao login failed'));
+        },
       });
     });
 
-    if (!authObj.id_token) {
-      showMessage(msgId, 'Kakao OIDC가 활성화되지 않았습니다. Kakao Developers 콘솔에서 OpenID Connect를 확인해주세요.', true);
-      return;
+    // 2. Kakao API로 사용자 정보 조회
+    const userRes = await fetch('https://kapi.kakao.com/v2/user/me', {
+      headers: { Authorization: `Bearer ${authObj.access_token}` },
+    });
+    if (!userRes.ok) throw new Error('Kakao API 조회 실패');
+    const kakaoUser = await userRes.json();
+    const kakaoId = kakaoUser.id;
+    const nickname = kakaoUser.kakao_account?.profile?.nickname || `kakao_${kakaoId}`;
+
+    // 3. 고유 이메일 생성 (kakao ID 기반, 도달 불가능한 주소)
+    const email = `u-${kakaoId}@k.social`;
+    const pwKey = `kpw_${kakaoId}`;
+    let password = localStorage.getItem(pwKey);
+
+    if (!password) {
+      // 최초 방문: 신규 회원가입 (mailer_autoconfirm=true 이므로 세션 즉시 발급)
+      password = Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(36).padStart(2, '0')).join('');
+      localStorage.setItem(pwKey, password);
+
+      const { data, error: signUpError } = await _supabase.auth.signUp({
+        email,
+        password,
+        options: { data: { nickname } },
+      });
+      if (signUpError) throw signUpError;
+
+      if (data?.session) {
+        // auto-confirm으로 이미 로그인됨
+        showMessage(msgId, '로그인 성공! 이동 중...', false);
+        setTimeout(() => { window.location.href = 'index.html'; }, 800);
+        return;
+      }
+      // session이 없으면 fallthrough → signInWithPassword
     }
 
-    // 받은 id_token으로 Supabase 세션 생성
-    const { data, error } = await _supabase.auth.signInWithIdToken({
-      provider: 'kakao',
-      token: authObj.id_token,
+    // 4. 재방문 또는 signUp이 세션을 반환하지 않은 경우
+    const { error: signInError } = await _supabase.auth.signInWithPassword({
+      email,
+      password,
     });
-
-    if (error) throw error;
+    if (signInError) throw signInError;
 
     showMessage(msgId, '로그인 성공! 이동 중...', false);
     setTimeout(() => {
       window.location.href = 'index.html';
     }, 800);
   } catch (err) {
-    if (err.message?.includes('cancel') || err.message?.includes('denied') || err.message === 'consent_canceled') {
+    const msg = err.message || '알 수 없는 오류';
+    if (msg.includes('cancel') || msg.includes('denied') || msg === 'consent_canceled') {
       showMessage(msgId, '카카오 로그인이 취소되었습니다.', true);
     } else {
-      showMessage(msgId, '카카오 로그인에 실패했습니다: ' + err.message, true);
+      showMessage(msgId, '카카오 로그인에 실패했습니다: ' + msg, true);
     }
   }
 }
