@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https:; frame-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://t1.kakaocdn.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://kauth.kakao.com https://kapi.kakao.com; img-src 'self' data: blob: https:; font-src 'self' data: https:; frame-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
     <title>로그인 - 생각을 잇다</title>
     <script src="theme-init.js"></script>
     <link rel="stylesheet" href="style.css?v=20260504">
@@ -115,6 +115,7 @@
 
 </div>
 
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.1/kakao.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="supabase-config.js"></script>
 <script src="login.js"></script>
 

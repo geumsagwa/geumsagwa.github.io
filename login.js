@@ -110,15 +110,15 @@ async function handleSignUp(e) {
 }
 
 async function socialLogin(provider) {
+  if (provider === 'kakao') {
+    await kakaoLogin();
+    return;
+  }
+
+  // Google/GitHub — 기존 Supabase OAuth
   const options = {
-    // 루트·GitHub Pages 프로젝트 경로(/repo/) 모두에서 동작하도록 현재 문서 기준 절대 URL 사용
     redirectTo: new URL('index.html', window.location.href).href,
   };
-
-  // Kakao: 앱 동의항목에 맞춰 요청 scope 제한
-  if (provider === 'kakao') {
-    options.scopes = 'profile_nickname';
-  }
 
   const { data, error } = await _supabase.auth.signInWithOAuth({
     provider,
@@ -126,7 +126,6 @@ async function socialLogin(provider) {
   });
 
   if (data?.url) {
-    /* 일부 환경·CSP/브라우저에서 SDK가 자동으로 이동하지 않을 수 있어 명시 이동 */
     window.location.assign(data.url);
     return;
   }
@@ -135,6 +134,51 @@ async function socialLogin(provider) {
     const activeTab = document.querySelector('.auth-tab.active').id;
     const msgId = activeTab === 'tab-login' ? 'login-message' : 'signup-message';
     showMessage(msgId, '소셜 로그인에 실패했습니다: ' + error.message, true);
+  }
+}
+
+async function kakaoLogin() {
+  const activeTab = document.querySelector('.auth-tab.active');
+  const msgId = activeTab?.id === 'tab-signup' ? 'signup-message' : 'login-message';
+
+  if (typeof Kakao === 'undefined' || !Kakao.isInitialized()) {
+    showMessage(msgId, 'Kakao SDK가 초기화되지 않았습니다. 페이지를 새로고침해주세요.', true);
+    return;
+  }
+
+  try {
+    // Kakao JS SDK 팝업으로 직접 OAuth (Supabase GoTrue 우회, scope 제한 목적)
+    const authObj = await new Promise((resolve, reject) => {
+      Kakao.Auth.login({
+        scope: 'profile_nickname,openid',
+        success: resolve,
+        fail: reject,
+      });
+    });
+
+    if (!authObj.id_token) {
+      showMessage(msgId, 'Kakao OIDC가 활성화되지 않았습니다. Kakao Developers 콘솔에서 OpenID Connect를 확인해주세요.', true);
+      return;
+    }
+
+    // 받은 id_token으로 Supabase 세션 생성
+    const { data, error } = await _supabase.auth.signInWithIdToken({
+      provider: 'kakao',
+      token: authObj.id_token,
+    });
+
+    if (error) throw error;
+
+    showMessage(msgId, '로그인 성공! 이동 중...', false);
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 800);
+  } catch (err) {
+    if (err.message?.includes('cancel') || err.message?.includes('denied') || err.message === 'consent_canceled') {
+      showMessage(msgId, '카카오 로그인이 취소되었습니다.', true);
+    } else {
+      showMessage(msgId, '카카오 로그인에 실패했습니다: ' + err.message, true);
+    }
   }
 }
 
@@ -155,5 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.js-social-login').forEach((btn) => {
     btn.addEventListener('click', () => socialLogin(btn.dataset.provider));
   });
+  // Kakao SDK 초기화
+  if (typeof Kakao !== 'undefined') {
+    Kakao.init('e4915b568634050ccefdf508399a9ec4');
+  }
   redirectIfLoggedIn();
 });
