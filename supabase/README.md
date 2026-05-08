@@ -9,6 +9,11 @@
 - [내 애플리케이션](https://developers.kakao.com/console/app) → REST API 키 → **Client secret** 사용(ON) 유지 가능.
 - Redirect URI: `https://geumsagwa.github.io/login.html` (REST API 키 쪽에 등록).
 
+### 1-b) Supabase Auth (카카오 전용 가짜 이메일)
+
+- `login.js`는 카카오 사용자마다 `u-{kakaoId}@k.social` 형태로 **가입·로그인**한다.
+- 프로젝트에서 **이메일 확인(confirm)** 을 필수로 두면, 첫 카카오 로그인 직후 `signInWithPassword` 가 막힐 수 있다. 그럴 때는 Dashboard → **Authentication** → 이메일 확인 정책을 조정하거나, 서버 측에서 자동 확인 처리 등을 검토한다.
+
 ### 2) Supabase 시크릿
 
 **자동 (권장):** `supabase/.secrets.env.example` 을 복사해 **`supabase/.secrets.env`** 를 만들고 `KAKAO_REST_API_KEY`, `KAKAO_CLIENT_SECRET` 를 채웁니다. (이 파일은 `.gitignore`에 있음.)

@@ -143,11 +143,37 @@ async function socialLogin(provider) {
 // Redirect URI: 현재 페이지 전체(origin + pathname)를 카카오 REST API 키 Redirect URI에 등록.
 
 const KAKAO_STATE = 'kakao_login';
+const KAKAO_TAB_KEY = 'kakao_auth_tab';
 
 let _handlingKakaoCallback = false;
 
 function kakaoRedirectUri() {
   return window.location.origin + window.location.pathname;
+}
+
+function kakaoAuthMessageId() {
+  try {
+    return sessionStorage.getItem(KAKAO_TAB_KEY) === 'tab-signup' ? 'signup-message' : 'login-message';
+  } catch (_) {
+    return 'login-message';
+  }
+}
+
+function clearKakaoAuthTab() {
+  try {
+    sessionStorage.removeItem(KAKAO_TAB_KEY);
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+/** 로그인/가입 탭 중 어디서 카카오를 눌렀는지에 맞춰 탭 전환 후 메시지 표시 */
+function showKakaoMessage(text, isError) {
+  const id = kakaoAuthMessageId();
+  if (id === 'signup-message') switchTab('signup');
+  else switchTab('login');
+  showMessage(id, text, isError);
+  clearKakaoAuthTab();
 }
 
 /** 카카오가 error 쿼리로 되돌려 보낸 경우 (KOE205 등) */
@@ -172,7 +198,7 @@ function handleKakaoOAuthErrorReturn() {
   } else if (detail) {
     msg += ' ' + detail;
   }
-  showMessage('login-message', msg, true);
+  showKakaoMessage(msg, true);
   return true;
 }
 
@@ -233,26 +259,40 @@ async function handleKakaoCallback() {
       });
       if (signUpError) throw signUpError;
       if (data?.session) {
-        showMessage('login-message', '로그인 성공! 이동 중...', false);
+        showKakaoMessage('로그인 성공! 이동 중...', false);
         setTimeout(() => { window.location.href = 'index.html'; }, 600);
         return;
       }
     }
 
     const { error: signInError } = await _supabase.auth.signInWithPassword({ email, password });
-    if (signInError) throw signInError;
+    if (signInError) {
+      const em = signInError.message || '';
+      if (em.includes('Email not confirmed') || em.includes('email_not_confirmed')) {
+        throw new Error(
+          'Supabase에서 이메일 확인이 켜져 있으면 카카오 가입 직후 처리가 막힐 수 있습니다. Dashboard → Authentication → Providers에서 이메일 확인 필요 여부를 조정해 주세요.',
+        );
+      }
+      throw signInError;
+    }
 
-    showMessage('login-message', '로그인 성공! 이동 중...', false);
+    showKakaoMessage('로그인 성공! 이동 중...', false);
     setTimeout(() => { window.location.href = 'index.html'; }, 600);
   } catch (err) {
     console.error('Kakao callback error:', err);
     const raw = err && err.message ? err.message : String(err);
-    showMessage('login-message', '카카오 로그인 처리 중 오류: ' + raw, true);
+    showKakaoMessage('카카오 로그인 처리 중 오류: ' + raw, true);
     _handlingKakaoCallback = false;
   }
 }
 
 async function kakaoLogin() {
+  try {
+    const active = document.querySelector('.auth-tab.active');
+    if (active && active.id) sessionStorage.setItem(KAKAO_TAB_KEY, active.id);
+  } catch (_) {
+    /* ignore */
+  }
   const params = new URLSearchParams({
     response_type: 'code',
     client_id: KAKAO_REST_API_KEY,
