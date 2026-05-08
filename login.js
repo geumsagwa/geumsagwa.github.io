@@ -138,8 +138,9 @@ async function socialLogin(provider) {
 }
 
 // -------- Kakao OAuth (SDK 없이 직접 구현) --------
-// client_id: supabase-config.js 의 KAKAO_REST_API_KEY (REST API 키).
-// Redirect URI: 현재 페이지 URL 전체(origin + pathname)를 카카오 콘솔에 등록해야 함(예: …/login.html).
+// authorize: 브라우저에서 REST API 키 + redirect (카카오 문서 정합).
+// 토큰 교환: Supabase Edge Function `kakao-token` (client_secret은 서버만).
+// Redirect URI: 현재 페이지 전체(origin + pathname)를 카카오 REST API 키 Redirect URI에 등록.
 
 const KAKAO_STATE = 'kakao_login';
 
@@ -186,24 +187,32 @@ async function handleKakaoCallback() {
   window.history.replaceState({}, '', window.location.pathname);
 
   try {
-    const tokenRes = await fetch('https://kauth.kakao.com/oauth/token', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        grant_type: 'authorization_code',
-        client_id: KAKAO_REST_API_KEY,
-        redirect_uri: redir,
-        code,
-      }),
+    const { data: tokenPayload, error: fnError } = await _supabase.functions.invoke('kakao-token', {
+      body: { code, redirect_uri: redir },
     });
-    const tokens = await tokenRes.json();
-    if (!tokenRes.ok) {
-      const kakaoErr = [tokens.error, tokens.error_description].filter(Boolean).join(': ');
-      throw new Error(kakaoErr || '토큰 교환 실패');
+    if (fnError) {
+      let detail = fnError.message || 'Edge Function 호출 실패';
+      const body = fnError.context?.body;
+      if (typeof body === 'string') {
+        try {
+          const parsed = JSON.parse(body);
+          if (parsed?.error) detail = String(parsed.error);
+        } catch (_) {
+          /* keep detail */
+        }
+      } else if (body && typeof body === 'object' && body.error) {
+        detail = String(body.error);
+      }
+      throw new Error(detail);
     }
+    if (!tokenPayload?.access_token) {
+      const fallback = tokenPayload?.error ? String(tokenPayload.error) : '토큰 응답 없음';
+      throw new Error(fallback);
+    }
+    const accessToken = tokenPayload.access_token;
 
     const userRes = await fetch('https://kapi.kakao.com/v2/user/me', {
-      headers: { Authorization: `Bearer ${tokens.access_token}` },
+      headers: { Authorization: `Bearer ${accessToken}` },
     });
     if (!userRes.ok) throw new Error('Kakao API 조회 실패');
     const kakaoUser = await userRes.json();

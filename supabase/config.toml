@@ -1,0 +1,5 @@
+# supabase/README.md 참고. `supabase link` 후 id 가 들어갈 수 있음.
+project_id = "qswzutgxtiuigrocqcmc"
+
+[functions.kakao-token]
+verify_jwt = true

@@ -4,6 +4,9 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+# Kakao Edge secrets (로컬만, 절대 커밋 금지)
+supabase/.secrets.env
+supabase/.temp/
 node_modules/
 coverage/
 reports/
