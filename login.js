@@ -138,13 +138,43 @@ async function socialLogin(provider) {
 }
 
 // -------- Kakao OAuth (SDK 없이 직접 구현) --------
+// client_id: supabase-config.js 의 KAKAO_REST_API_KEY (REST API 키).
+// Redirect URI: 현재 페이지 URL 전체(origin + pathname)를 카카오 콘솔에 등록해야 함(예: …/login.html).
 
-const KAKAO_JS_KEY = 'e4915b568634050ccefdf508399a9ec4';
 const KAKAO_STATE = 'kakao_login';
 
 let _handlingKakaoCallback = false;
 
-// 페이지 로드 시 Kakao OAuth 콜백 처리
+function kakaoRedirectUri() {
+  return window.location.origin + window.location.pathname;
+}
+
+/** 카카오가 error 쿼리로 되돌려 보낸 경우 (KOE205 등) */
+function handleKakaoOAuthErrorReturn() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('state') !== KAKAO_STATE || !params.get('error')) return false;
+
+  _handlingKakaoCallback = true;
+  const err = params.get('error');
+  let detail = params.get('error_description') || err || '';
+  try {
+    detail = decodeURIComponent(detail.replace(/\+/g, ' '));
+  } catch (_) {
+    /* keep raw */
+  }
+
+  window.history.replaceState({}, '', window.location.pathname);
+
+  let msg = '카카오 로그인에 실패했습니다.';
+  if (err === 'access_denied') {
+    msg = '카카오 로그인이 취소되었습니다.';
+  } else if (detail) {
+    msg += ' ' + detail;
+  }
+  showMessage('login-message', msg, true);
+  return true;
+}
+
 async function handleKakaoCallback() {
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
@@ -152,24 +182,26 @@ async function handleKakaoCallback() {
   if (!code || state !== KAKAO_STATE) return;
 
   _handlingKakaoCallback = true;
+  const redir = kakaoRedirectUri();
   window.history.replaceState({}, '', window.location.pathname);
 
   try {
-    // 1. code → token 교환 (JS Key는 client_secret 불필요)
     const tokenRes = await fetch('https://kauth.kakao.com/oauth/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
         grant_type: 'authorization_code',
-        client_id: KAKAO_JS_KEY,
-        redirect_uri: window.location.origin + window.location.pathname,
+        client_id: KAKAO_REST_API_KEY,
+        redirect_uri: redir,
         code,
       }),
     });
-    if (!tokenRes.ok) throw new Error('토큰 교환 실패');
     const tokens = await tokenRes.json();
+    if (!tokenRes.ok) {
+      const kakaoErr = [tokens.error, tokens.error_description].filter(Boolean).join(': ');
+      throw new Error(kakaoErr || '토큰 교환 실패');
+    }
 
-    // 2. Kakao API로 사용자 정보 조회
     const userRes = await fetch('https://kapi.kakao.com/v2/user/me', {
       headers: { Authorization: `Bearer ${tokens.access_token}` },
     });
@@ -178,7 +210,6 @@ async function handleKakaoCallback() {
     const kakaoId = kakaoUser.id;
     const nickname = kakaoUser.kakao_account?.profile?.nickname || `kakao_${kakaoId}`;
 
-    // 3. 고유 이메일 기반 Supabase 회원가입/로그인
     const email = `u-${kakaoId}@k.social`;
     const pwKey = `kpw_${kakaoId}`;
     let password = localStorage.getItem(pwKey);
@@ -192,25 +223,31 @@ async function handleKakaoCallback() {
         options: { data: { nickname } },
       });
       if (signUpError) throw signUpError;
-      if (data?.session) return;
+      if (data?.session) {
+        showMessage('login-message', '로그인 성공! 이동 중...', false);
+        setTimeout(() => { window.location.href = 'index.html'; }, 600);
+        return;
+      }
     }
 
     const { error: signInError } = await _supabase.auth.signInWithPassword({ email, password });
     if (signInError) throw signInError;
+
+    showMessage('login-message', '로그인 성공! 이동 중...', false);
+    setTimeout(() => { window.location.href = 'index.html'; }, 600);
   } catch (err) {
     console.error('Kakao callback error:', err);
-  } finally {
-    // 성공/실패 모두 index.html로 이동 (auth.js가 세션 확인)
-    window.location.href = 'index.html';
+    const raw = err && err.message ? err.message : String(err);
+    showMessage('login-message', '카카오 로그인 처리 중 오류: ' + raw, true);
+    _handlingKakaoCallback = false;
   }
 }
 
 async function kakaoLogin() {
-  // Kakao OAuth authorize URL로 리다이렉트 (팝업/JS SDK 미사용)
   const params = new URLSearchParams({
     response_type: 'code',
-    client_id: KAKAO_JS_KEY,
-    redirect_uri: window.location.origin + window.location.pathname,
+    client_id: KAKAO_REST_API_KEY,
+    redirect_uri: kakaoRedirectUri(),
     scope: 'profile_nickname',
     state: KAKAO_STATE,
   });
@@ -227,8 +264,9 @@ async function redirectIfLoggedIn() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Kakao OAuth 콜백 (code 파라미터로 돌아온 경우) — 처리 후 index.html 이동
-  handleKakaoCallback();
+  if (!handleKakaoOAuthErrorReturn()) {
+    handleKakaoCallback();
+  }
 
   document.getElementById('tab-login').addEventListener('click', () => switchTab('login'));
   document.getElementById('tab-signup').addEventListener('click', () => switchTab('signup'));

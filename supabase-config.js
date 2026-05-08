@@ -1,11 +1,15 @@
 // Supabase 설정
 // Supabase URL과 anon key는 public 값입니다. RLS 정책이 실제 보안을 담당합니다.
-// 배포 시 window.__env 를 설정하여 기본값을 재정의할 수 있습니다:
-//   <script>window.__env = { SUPABASE_URL: '...', SUPABASE_ANON_KEY: '...' }</script>
+// 배포 시 window.__env 로 기본값을 재정의할 수 있습니다:
+//   <script>window.__env = { SUPABASE_URL: '...', SUPABASE_ANON_KEY: '...', KAKAO_REST_API_KEY: '...' }</script>
 // .env.example 파일도 참고하세요.
 const ENV = window.__env || {};
 const SUPABASE_URL = ENV.SUPABASE_URL || 'https://qswzutgxtiuigrocqcmc.supabase.co';
 const SUPABASE_ANON_KEY = ENV.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzd3p1dGd4dGl1aWdyb2NxY21jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3NzkxMjksImV4cCI6MjA3OTM1NTEyOX0.FezD3WM7YMhh45t6pYrUoi2yNWK8e1MQXPzzk6EjK8M';
+
+// Kakao: authorize/token 의 client_id 는 REST API 키(카카오 콘솔 > 앱 키). JavaScript 키와 다릅니다.
+// login.js 직접 OAuth 전용. Supabase Dashboard에 넣은 Kakao Client ID와 동일한 값이면 됩니다.
+const KAKAO_REST_API_KEY = ENV.KAKAO_REST_API_KEY || 'daa0f2c3a8dfeac385bf5b02919f8cd7';
 
 // 관리자 권한은 members 테이블 role/status + RLS 정책에서 최종 판정
 // 클라이언트는 DB 결과를 읽어 UI 표시만 보조한다.
