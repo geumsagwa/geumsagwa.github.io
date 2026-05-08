@@ -3,11 +3,13 @@
   Supabase Edge Secrets: KAKAO_REST_API_KEY, KAKAO_CLIENT_SECRET
   사전 조건:
     1) supabase/.secrets.env 파일 (이 폴더의 .secrets.env.example 참고)
-    2) $env:SUPABASE_ACCESS_TOKEN — https://supabase.com/dashboard/account/tokens
+    2) PAT: $env:SUPABASE_ACCESS_TOKEN 또는 supabase/.access-token (한 줄 sbp_...)
 
   사용 (homepage 저장소 루트에서):
-    $env:SUPABASE_ACCESS_TOKEN = "sbp_..."
     .\supabase\set-kakao-secrets.ps1
+
+  secrets + 배포 한 번에:
+    .\supabase\push-kakao-edge.ps1
 #>
 $ErrorActionPreference = 'Stop'
 
@@ -15,16 +17,10 @@ $scriptDir = $PSScriptRoot
 $repoRoot = Split-Path -Parent $scriptDir
 $envFile = Join-Path $scriptDir '.secrets.env'
 
-if (-not $env:SUPABASE_ACCESS_TOKEN) {
-  Write-Error @'
-SUPABASE_ACCESS_TOKEN 이 비어 있습니다.
-1) https://supabase.com/dashboard/account/tokens 에서 토큰 생성
-2) PowerShell: $env:SUPABASE_ACCESS_TOKEN = "sbp_..."  후 다시 실행
-'@
-}
+. (Join-Path $scriptDir 'Ensure-SupabaseToken.ps1')
 
 if (-not (Test-Path -LiteralPath $envFile)) {
-  Write-Error "먼저 supabase/.secrets.env 를 만드세요. 예: Copy-Item supabase/.secrets.env.example supabase/.secrets.env 후 KAKAO_* 값 입력"
+  Write-Error "Create supabase/.secrets.env first (see .secrets.env.example)."
 }
 
 $projectRef = 'qswzutgxtiuigrocqcmc'

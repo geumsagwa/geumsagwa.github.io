@@ -1,0 +1,5 @@
+# 이 예시를 복사해 같은 폴더에 파일 이름만 `.access-token` 으로 저장하세요.
+# 첫 줄(주석 아닌 줄)에 Personal Access Token 한 줄만 넣습니다.
+# 발급: https://supabase.com/dashboard/account/tokens
+#
+# sbp_여기에_붙여넣기

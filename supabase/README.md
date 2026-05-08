@@ -13,11 +13,13 @@
 
 **자동 (권장):** `supabase/.secrets.env.example` 을 복사해 **`supabase/.secrets.env`** 를 만들고 `KAKAO_REST_API_KEY`, `KAKAO_CLIENT_SECRET` 를 채웁니다. (이 파일은 `.gitignore`에 있음.)
 
+Personal Access Token (`sbp_...`)은 **[Account → Access Tokens](https://supabase.com/dashboard/account/tokens)** 에서만 발급됩니다. 매번 환경 변수에 넣기 귀찮으면 **`supabase/.access-token.example`** 을 참고해 **`supabase/.access-token`** 파일을 만들고 첫 줄에 토큰만 넣으면 됩니다. (이 파일도 gitignore)
+
 ```powershell
 cd C:\Users\pass6\project\homepage
-# https://supabase.com/dashboard/account/tokens 에서 Personal Access Token 생성
-$env:SUPABASE_ACCESS_TOKEN = "sbp_여기에_토큰"
-.\supabase\set-kakao-secrets.ps1
+# PAT: $env:SUPABASE_ACCESS_TOKEN = "sbp_..."  또는 supabase/.access-token
+.\supabase\push-kakao-edge.ps1   # secrets 업로드 + kakao-token 배포 한 번에
+# 시크릿만 올릴 때: .\supabase\set-kakao-secrets.ps1
 ```
 
 **수동 (CLI):**
