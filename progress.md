@@ -5,14 +5,14 @@
 ## 마지막 갱신
 - 시각(ISO): `2026-05-08T22:30:00+09:00` — Desktop `Harness\progress.md`·`handover-progress.md`·`geumsagwa-harness` `docs/desktop-handoff/` 와 주요 사실 동기.
 - **Kakao:** 직접 OAuth + Supabase Edge **`kakao-token`**(시크릿·allowlist), **프로덕션(`geumsagwa.github.io`) 로그인 성공** 확인. 상세: Desktop `handover-progress.md`.
-- **Git 정본:** 브랜치 **`master`**, **`origin/master` tip = `0d3cbf1`** (인계·하네스 tip 정리 `progress.md`); 기능 변경 **`dd325d1`** (카카오 콜백·README).
+- **Git 정본:** 브랜치 **`master`**, **`origin/master` tip = `31be345`** (인계·하네스 tip 정리 `progress.md`); 기능 변경 **`dd325d1`** (카카오 콜백·README).
 - **레거시 브랜치:** `chore/public-readiness-20260312` 원격 tip **`4413071`** (변동 없음).
-- **하네스 인계 미러:** `geumsagwa-harness` `main` tip **`dcfd5ff`** → `docs/desktop-handoff/` (`handover-progress.md`, `progress.md`).
+- **하네스 인계 미러:** `geumsagwa-harness` `main` tip **`b920dcb`** → `docs/desktop-handoff/` (`handover-progress.md`, `progress.md`).
 
 ## 브랜치·원격
 - **작업 브랜치:** `master`
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **최근 `master` 히스토리:** tip **`0d3cbf1`** (progress·인계 동기); Kakao Edge·스크립트·직접 OAuth 누적은 **`dd325d1`** 등. 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존.
+- **최근 `master` 히스토리:** tip **`31be345`** (progress·인계 동기); Kakao Edge·스크립트·직접 OAuth 누적은 **`dd325d1`** 등. 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존.
 
 ## 워킹트리 상태 (2026-04-30, Git 기준)
 - **상태:** **더러움** — `git status`상 추적 파일 **다수 수정**으로 표시되나, **`git diff HEAD` 기준 실제 줄 변경**은 종종 **`package.json` · `package-lock.json`** 등 소수에만 해당하는 패턴 관찰 — 나먼지 `M`은 **CRLF/인덱스 표시**(내용 무변) 가능성.
