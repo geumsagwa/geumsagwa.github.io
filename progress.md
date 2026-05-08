@@ -3,16 +3,16 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-08T20:00:00+09:00` (Desktop `Harness\progress.md`·`handover-progress.md`와 맞춤)
-- **Kakao (직접 OAuth):** `client_id`를 **REST API 키**로 통일 (`supabase-config.js` `KAKAO_REST_API_KEY` + `login.js`). JS 키 사용이 실패 원인이었음 → **로컬에서 동작 확인.** 상세·에이전트 교훈: `C:\Users\pass6\Desktop\Harness\handover-progress.md`.
-- **Git 정본:** 브랜치 **`master`**. **`origin/master` tip = `HEAD` = `5d792d9`** (@ fix: Kakao JS SDK 제거 → OAuth redirect 직접 구현). **아래 Kakao REST 키·에러 UI 수정은 아직 워킹트리만 변경(미커밋)** — 배포 반영하려면 **커밋·푸시** 후 본 절·Desktop 인계의 tip을 갱신.
+- 시각(ISO): `2026-05-08T22:30:00+09:00` — Desktop `Harness\progress.md`·`handover-progress.md`·`geumsagwa-harness` `docs/desktop-handoff/` 와 주요 사실 동기.
+- **Kakao:** 직접 OAuth + Supabase Edge **`kakao-token`**(시크릿·allowlist), **프로덕션(`geumsagwa.github.io`) 로그인 성공** 확인. 상세: Desktop `handover-progress.md`.
+- **Git 정본:** 브랜치 **`master`**, **`origin/master` tip = `dd325d1`** (콜백 탭·이메일 확인 안내·README — 직전 `441bd22` PAT 스크립트, `37171bd` Edge·allowlist).
 - **레거시 브랜치:** `chore/public-readiness-20260312` 원격 tip **`4413071`** (변동 없음).
-- **금일 로컬 변경 (미커밋, Kakao 관련):** `.env.example`, `login.js`, `supabase-config.js`, `progress.md`(본 파일).
+- **하네스 인계 미러:** `geumsagwa-harness` → `docs/desktop-handoff/` (`handover-progress.md`, `progress.md`).
 
 ## 브랜치·원격
 - **작업 브랜치:** `master`
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **최근 `master` 히스토리:** tip **`5d792d9`** (Kakao SDK 제거·직접 OAuth code→token); 그 이전 **`c6953f5`**, **`c8463a9`** 등 Kakao 우회 시도 커밋. Reader TOC 등 **`9195d23`** 이전 시점 작업은 히스토리에 보존됨(필요 시 `git log` 참고).
+- **최근 `master` 히스토리:** tip **`dd325d1`**; Kakao Edge·스크립트·직접 OAuth 누적. 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존.
 
 ## 워킹트리 상태 (2026-04-30, Git 기준)
 - **상태:** **더러움** — `git status`상 추적 파일 **다수 수정**으로 표시되나, **`git diff HEAD` 기준 실제 줄 변경**은 종종 **`package.json` · `package-lock.json`** 등 소수에만 해당하는 패턴 관찰 — 나먼지 `M`은 **CRLF/인덱스 표시**(내용 무변) 가능성.
