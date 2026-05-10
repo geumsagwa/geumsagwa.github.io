@@ -77,8 +77,15 @@
       border-right: 0.35pt solid var(--hairline);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
     .sheet-panels .panel:last-child { border-right: none; }
+
+    /* 안쪽 면: 하단 패딩·블록 간격 소폭 축소 */
+    .sheet--inner .sheet-panels > .panel {
+      padding: 10mm 9mm 6.5mm;
+    }
 
     .panel--bleed {
       padding: 0;
@@ -656,7 +663,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2mm;
-      margin-bottom: 2.5mm;
+      margin-bottom: 1.75mm;
     }
     .inner-inline-photos img {
       width: 100%;
@@ -674,7 +681,15 @@
     }
     .inner-panel--services .inner-thumb {
       height: 22mm;
-      margin-bottom: 2mm;
+      margin-bottom: 1.45mm;
+    }
+
+    .sheet--inner .inner-panel--services h2 {
+      margin: 0 0 2mm;
+      padding-bottom: 1.45mm;
+    }
+    .sheet--inner .inner-panel--services .service-list--pptx li {
+      padding: 1.35mm 0 1.35mm 4mm;
     }
     .inner-panel {
       background: var(--cream);
@@ -824,6 +839,10 @@
       background: rgba(218, 135, 180, 0.07);
       border-radius: 2px;
     }
+    .sheet--inner .inner-panel--dense .route-lines {
+      margin: 0 0 1.45mm;
+      padding: 2mm 2.6mm;
+    }
     .route-lines .r-label {
       display: block;
       font-weight: 700;
@@ -832,11 +851,22 @@
       margin-bottom: 1.5mm;
     }
     .inner-panel--dense .inner-thumb {
-      margin-bottom: 2.5mm;
+      margin-bottom: 1.85mm;
     }
     .inner-panel--dense .admission-box {
-      margin-top: 2.5mm;
-      padding: 3mm 3.5mm;
+      margin-top: 1.65mm;
+      padding: 2.5mm 3.2mm;
+    }
+
+    .sheet--inner .inner-panel--dense h2 {
+      margin: 0 0 2mm;
+      padding-bottom: 1.45mm;
+    }
+    .sheet--inner .inner-panel--dense h3 {
+      margin: 2.1mm 0 1.15mm;
+    }
+    .sheet--inner .inner-panel--dense .footnote-inner {
+      margin-top: 1.35mm;
     }
     .inner-panel--dense .admission-box ul {
       font-size: 8pt;
@@ -850,11 +880,11 @@
       font-family: "Noto Serif KR", serif;
     }
 
-    /* 안쪽 왼쪽 패널: 앞면 좌측(.front-panel)과 동일 리듬 — 큰 제목·메타·파란 소제목·doc-list */
+    /* 안쪽 왼쪽 패널: 앞면 좌측(.front-panel)과 동일 리듬 — 큰 제목·메타·파란 소제목·doc-list. 족욕 사진은 남는 세로 공간을 채우도록 flex 성장. */
     .inner-panel.inner-panel--feature-left {
       display: flex;
       flex-direction: column;
-      gap: 2.35mm;
+      gap: 1.55mm;
       background: var(--cream);
     }
     .inner-panel.inner-panel--feature-left > h2.front-section-title {
@@ -872,8 +902,8 @@
       font-size: 7.35pt;
       font-weight: 600;
       color: var(--blue);
-      margin: 0 0 1.35mm;
-      padding-bottom: 0.85mm;
+      margin: 0 0 0.95mm;
+      padding-bottom: 0.55mm;
       border-bottom: 1px solid rgba(57, 177, 220, 0.28);
       letter-spacing: inherit;
     }
@@ -881,7 +911,7 @@
       margin-top: 0;
     }
     .inner-panel.inner-panel--feature-left .doc-list + .leaflet-blue-section-title {
-      margin-top: 1.4mm;
+      margin-top: 0.85mm;
     }
     .inner-panel.inner-panel--feature-left .lead {
       margin: 0 0 0.35mm;
@@ -890,7 +920,7 @@
     }
     .inner-panel.inner-panel--feature-left .inner-meta--baeksenuri {
       margin: 0 0 0.35mm;
-      padding: 2mm 2.6mm;
+      padding: 1.45mm 2.2mm;
       font-size: 7.85pt;
       line-height: 1.4;
     }
@@ -899,10 +929,10 @@
       flex-direction: column;
       align-items: stretch;
       gap: 0;
-      margin: 0 0 0.35mm;
+      margin: 0 0 0.15mm;
     }
     .inner-panel.inner-panel--feature-left .baeksenuri-program-block > .inner-meta--baeksenuri {
-      margin: 0 0 0.55mm;
+      margin: 0 0 0.4mm;
       width: 100%;
       box-sizing: border-box;
     }
@@ -910,7 +940,7 @@
       display: flex;
       flex-direction: row;
       align-items: stretch;
-      gap: 2.8mm;
+      gap: 2.4mm;
     }
     .inner-panel.inner-panel--feature-left .baeksenuri-program-brand {
       flex: 0 0 27mm;
@@ -921,7 +951,7 @@
     }
     .inner-panel.inner-panel--feature-left .baeksenuri-program-brand img {
       width: 100%;
-      max-height: 46mm;
+      max-height: 42mm;
       height: auto;
       object-fit: contain;
       object-position: center top;
@@ -943,7 +973,7 @@
       align-items: flex-start;
       gap: 2mm;
       margin: 0;
-      padding: 1mm 0;
+      padding: 0.55mm 0;
       font-size: 7.25pt;
       line-height: 1.38;
       border-bottom: none;
@@ -964,20 +994,26 @@
       min-width: 0;
     }
     .inner-panel.inner-panel--feature-left .inner-footbath-lead {
-      margin: 0 0 0.35mm;
+      margin: 0 0 0.2mm;
       font-size: 7.85pt;
       line-height: 1.48;
       color: var(--ink-soft);
       text-align: justify;
       word-break: keep-all;
     }
-    .inner-footbath-figure {
-      margin: 1mm 0 0;
+    .inner-panel.inner-panel--feature-left .inner-footbath-figure {
+      flex: 1 1 auto;
+      margin: 0.35mm 0 0;
+      min-height: 34mm;
+      display: flex;
+      flex-direction: column;
     }
-    .inner-footbath-figure img {
+    .inner-panel.inner-panel--feature-left .inner-footbath-figure img {
+      flex: 1 1 auto;
       display: block;
       width: 100%;
-      max-height: 48mm;
+      min-height: 34mm;
+      max-height: none;
       object-fit: cover;
       object-position: center;
       border-radius: 2px;
@@ -1255,7 +1291,7 @@
         <span class="r-label" style="margin-top:2mm;">마을버스</span>
         2-1 — 대우연구소 하차 후 도보 약 2분
       </div>
-      <p style="font-size:7.9pt; margin:0 0 2.5mm; color:var(--ink-soft);">네비 검색: 경기도 수원시 장안구 수일로117번길 18-2</p>
+      <p style="font-size:7.9pt; margin:0 0 1.55mm; color:var(--ink-soft);">네비 검색: 경기도 수원시 장안구 수일로117번길 18-2</p>
       <div class="admission-box">
         <h3>상담 및 문의</h3>
         <ul>
