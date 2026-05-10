@@ -1,0 +1,8 @@
+﻿<!-- 안심가득 서비스 소제목용 레이아웃 아이콘 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+  <path stroke="#da87b4" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"
+    d="M9 29V15l7-9 7 9v14"/>
+  <path stroke="#39b1dc" stroke-width="1.45" stroke-linecap="round"
+    d="M8 29h17"/>
+  <circle cx="16" cy="21" r="1.8" fill="#39b1dc"/>
+</svg>

@@ -10,7 +10,7 @@
     족욕 사진: leaflet-footbath-photo.png (원본 OneDrive\…\족욕사진.png).
     백세누리 블록: 상단 전폭 제목 → 아래 단에서 로고(baeksenuri-program-logo.png) 좌·항목(icon-baek-*.svg) 우.
     식단(네츄럴 푸드): 백세누리와 동일 리듬 — lead → 메타 박스 → 좌 로고(세로 가운데)·우 항목.icon-food-*.svg.
-    안쪽 우측 패널(.inner-panel--living-housing): 생활 주거 서비스·맞춤돌봄·실버케어 전문가·안심가득 서비스.
+    안쪽 우측 패널: 생활 주거 서비스(선진국형 라인은 inner-meta)·소제목 아이콘 leaflet-assets/icon-living-*.svg.
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
@@ -967,15 +967,6 @@
       gap: 0.45mm;
       background: var(--cream);
     }
-    .inner-panel.inner-panel--living-housing .living-housing-kicker {
-      margin: 0 0 0.55mm;
-      font-size: 8.45pt;
-      font-weight: 700;
-      color: var(--blue);
-      letter-spacing: -0.03em;
-      line-height: 1.38;
-      font-family: "Noto Sans KR", system-ui, sans-serif;
-    }
     .inner-panel.inner-panel--living-housing .living-housing-lead {
       margin: 0 0 0.92mm;
       font-size: 7.52pt;
@@ -983,6 +974,29 @@
       color: var(--ink-soft);
       text-align: justify;
       word-break: keep-all;
+    }
+    .inner-panel.inner-panel--living-housing > .inner-meta.inner-meta--baeksenuri {
+      margin-bottom: 0.5mm;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-section-head.leaflet-blue-section-title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.95mm;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-section-ico {
+      flex-shrink: 0;
+      width: 5.6mm;
+      height: 5.6mm;
+      display: block;
+      object-fit: contain;
+      margin: 0;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-section-head__text {
+      flex: 1;
+      min-width: 0;
+      line-height: 1.3;
+      padding-bottom: 0.06em;
     }
     .inner-panel.inner-panel--living-housing .living-housing-block {
       margin: 0 0 0.08mm;
@@ -1148,7 +1162,8 @@
       line-height: 1.99;
     }
     .inner-panel.inner-panel--feature-left .inner-meta--baeksenuri,
-    .inner-panel.inner-panel--services-detail .inner-meta--baeksenuri {
+    .inner-panel.inner-panel--services-detail .inner-meta--baeksenuri,
+    .inner-panel.inner-panel--living-housing .inner-meta--baeksenuri {
       margin: 0 0 0.35mm;
       padding: 1.45mm 2.2mm;
       font-size: 7.85pt;
@@ -1502,12 +1517,15 @@
 
     <section class="panel inner-panel inner-panel--living-housing">
       <h2 class="front-section-title">생활 주거 서비스</h2>
-      <p class="living-housing-kicker">선진국형 노인요양시스템</p>
+      <div class="inner-meta inner-meta--baeksenuri"><strong>선진국형</strong> 노인요양시스템</div>
       <p class="living-housing-lead">
         우리보다 노인요양 서비스의 역사가 오랜 해외에서의 경험과 검증된 노하우를 바탕으로 차별화된 요양시스템 적용
       </p>
 
-      <h3 class="leaflet-blue-section-title">맞춤돌봄 서비스</h3>
+      <h3 class="leaflet-blue-section-title living-housing-section-head">
+        <img class="living-housing-section-ico" src="./leaflet-assets/icon-living-tailored.svg" alt="" width="32" height="32" decoding="async">
+        <span class="living-housing-section-head__text">맞춤돌봄 서비스</span>
+      </h3>
       <div class="living-housing-block">
         <p class="living-housing-sublabel">위생관리</p>
         <ul class="living-housing-midot-list">
@@ -1516,7 +1534,10 @@
         </ul>
       </div>
 
-      <h3 class="leaflet-blue-section-title">숙련된 실버케어 전문가</h3>
+      <h3 class="leaflet-blue-section-title living-housing-section-head">
+        <img class="living-housing-section-ico" src="./leaflet-assets/icon-living-expert.svg" alt="" width="32" height="32" decoding="async">
+        <span class="living-housing-section-head__text">숙련된 실버케어 전문가</span>
+      </h3>
       <div class="living-housing-block">
         <p class="living-housing-sublabel">의료</p>
         <ul class="living-housing-midot-list">
@@ -1533,7 +1554,10 @@
         </ul>
       </div>
 
-      <h3 class="leaflet-blue-section-title">안심가득 서비스</h3>
+      <h3 class="leaflet-blue-section-title living-housing-section-head">
+        <img class="living-housing-section-ico" src="./leaflet-assets/icon-living-reassurance.svg" alt="" width="32" height="32" decoding="async">
+        <span class="living-housing-section-head__text">안심가득 서비스</span>
+      </h3>
       <div class="living-housing-block">
         <p class="living-housing-sublabel">소통</p>
         <ul class="living-housing-midot-list">

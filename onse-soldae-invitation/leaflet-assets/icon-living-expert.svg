@@ -1,0 +1,8 @@
+﻿<!-- 숙련된 실버케어 전문가 소제목용 레이아웃 아이콘 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+  <circle cx="16" cy="11" r="4.5" stroke="#39b1dc" stroke-width="1.5"/>
+  <path stroke="#39b1dc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+    d="M10 29v-4.5h12V29"/>
+  <path stroke="#da87b4" stroke-width="1.5" stroke-linecap="round"
+    d="M6 29V18h8M26 29V18h-8"/>
+</svg>
