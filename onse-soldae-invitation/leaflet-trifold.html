@@ -772,6 +772,13 @@
       color: var(--ink-soft);
     }
     .inner-meta strong { color: var(--ink); }
+    /* 안쪽 면: 일반 p 규칙보다 구체적으로 메타 박스 배경·세로줄 고정 */
+    .sheet--inner .inner-panel p.inner-meta.inner-meta--baeksenuri {
+      background: rgba(57, 177, 220, 0.08);
+      border-left: 3px solid var(--blue);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
     .service-list {
       list-style: none;
       margin: 0;
@@ -1052,6 +1059,9 @@
       padding: 1.45mm 2.2mm;
       font-size: 7.85pt;
       line-height: 1.92;
+      background: rgba(57, 177, 220, 0.08);
+      border-left: 3px solid var(--blue);
+      box-sizing: border-box;
     }
     .inner-panel.inner-panel--feature-left .baeksenuri-program-block {
       display: flex;
