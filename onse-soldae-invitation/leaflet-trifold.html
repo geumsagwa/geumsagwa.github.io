@@ -367,7 +367,8 @@
       flex-direction: column;
       justify-content: flex-start;
       gap: 2.35mm;
-      padding: 10mm 9mm 4mm;
+      /* 하단 패딩을 표지(.cover)와 동일하게 두어 margin-top:auto 상담 박스가 표지 E-mail 줄 높이대로 맞춰지도록 함 */
+      padding: 10mm 9mm 10mm;
       min-height: 100%;
       box-sizing: border-box;
     }
@@ -409,6 +410,7 @@
     }
     .front-panel .admission-box {
       margin-top: auto;
+      margin-bottom: 3.5mm;
       padding: 2.2mm 2.8mm;
       flex-shrink: 0;
     }
@@ -420,6 +422,19 @@
     }
     .front-panel .admission-box ul {
       font-size: 7.35pt;
+    }
+    .front-panel figure.front-panel-photo {
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .front-panel figure.front-panel-photo img {
+      display: block;
+      width: 100%;
+      max-height: 36mm;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 2px;
+      border: 0.5pt solid rgba(182, 152, 109, 0.38);
     }
     /* ─── END FROZEN 좌측 패널(이용 안내·입소 준비) 스타일 ─── */
     .front-center-panel {
@@ -956,28 +971,39 @@
     .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title:first-of-type {
       margin-top: 0;
     }
-    .inner-panel.inner-panel--services-detail h3.leaflet-blue-section-title ~ h3.leaflet-blue-section-title,
-    .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title ~ h3.leaflet-blue-section-title {
-      margin-top: 1.05mm;
+    .inner-panel.inner-panel--services-detail h3.leaflet-blue-section-title ~ h3.leaflet-blue-section-title {
+      margin-top: 1.25mm;
     }
 
-    /* 안쪽 오른쪽 패널: 생활 주거 서비스 (본문 과다 방지 위해 여백·글자 크기 조밀 처리) */
+    /* 안쪽 오른쪽 패널: 생활 주거 서비스 — 줄간격·블록 간격은 안쪽 왼쪽 패널과 동일 리듬 */
     .inner-panel.inner-panel--living-housing {
       display: flex;
       flex-direction: column;
-      gap: 0.82mm;
+      gap: 1.65mm;
       background: var(--cream);
     }
-    .inner-panel.inner-panel--living-housing .living-housing-lead {
-      margin: 0 0 0.72mm;
-      font-size: 7.08pt;
-      line-height: 1.62;
+    .sheet--inner .inner-panel.inner-panel--living-housing p.living-housing-lead {
+      margin: 0 0 0.35mm;
+      font-size: 7.85pt;
+      line-height: 1.99;
       color: var(--ink-soft);
       text-align: justify;
       word-break: keep-all;
     }
+    .inner-panel.inner-panel--living-housing figure.living-housing-hero-photo {
+      margin: 0 0 0;
+    }
+    .inner-panel.inner-panel--living-housing figure.living-housing-hero-photo img {
+      display: block;
+      width: 100%;
+      max-height: 28mm;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 2px;
+      border: 0.5pt solid rgba(182, 152, 109, 0.38);
+    }
     .inner-panel.inner-panel--living-housing > .inner-meta.inner-meta--baeksenuri {
-      margin-bottom: 0.4mm;
+      margin-bottom: 0;
     }
     /* 생활주거 패널: 공통 leaflet-blue 규칙보다 우선하여 제목/아이콘 줄 정렬 */
     .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title.living-housing-section-head {
@@ -987,7 +1013,7 @@
       gap: 1.55mm;
       border-bottom: none;
       padding-bottom: 0;
-      margin-bottom: 0.35mm;
+      margin: 0 0 0.95mm;
     }
     .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title.living-housing-section-head ~ .living-housing-block {
       margin-top: 0;
@@ -1003,32 +1029,32 @@
     .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title.living-housing-section-head .living-housing-section-head__text {
       flex: 1;
       min-width: 0;
-      line-height: 1.32;
-      padding-bottom: 0.52mm;
+      line-height: 1.45;
+      padding-bottom: 0.55mm;
       border-bottom: 1px solid rgba(57, 177, 220, 0.28);
     }
     .inner-panel.inner-panel--living-housing .living-housing-block {
-      margin: 0 0 0.08mm;
+      margin: 0 0 0.25mm;
     }
     .inner-panel.inner-panel--living-housing .living-housing-sublabel {
-      margin: 0 0 0.2mm;
-      font-size: 7.06pt;
+      margin: 0 0 0.35mm;
+      font-size: 7.35pt;
       font-weight: 700;
       color: var(--ink);
       letter-spacing: -0.02em;
-      line-height: 1.36;
+      line-height: 1.45;
       font-family: "Noto Sans KR", system-ui, sans-serif;
     }
     .inner-panel.inner-panel--living-housing .living-housing-midot-list {
       list-style: none;
-      margin: 0 0 0.25mm;
-      padding: 0 0 0 2.4mm;
+      margin: 0 0 0.35mm;
+      padding: 0 0 0 2.6mm;
     }
     .inner-panel.inner-panel--living-housing .living-housing-midot-list li {
       position: relative;
-      padding: 0 0 0 2.92mm;
-      font-size: 6.76pt;
-      line-height: 1.56;
+      padding: 0.45mm 0 0.45mm 3.05mm;
+      font-size: 7.25pt;
+      line-height: 1.92;
       color: var(--ink-soft);
       text-align: justify;
       word-break: keep-all;
@@ -1037,27 +1063,20 @@
       content: "·";
       position: absolute;
       left: 0;
-      top: 0.06em;
+      top: 0.55em;
       font-weight: 700;
       color: var(--blue);
     }
     .inner-panel.inner-panel--living-housing .living-housing-midot-list + .living-housing-sublabel {
-      margin-top: 0.48mm;
+      margin-top: 0.72mm;
     }
 
-    /* 생활주거 패널만 안쪽 패딩 미세 삭감으로 세로 분량 확보(인쇄 시 잘림 방지) */
     .sheet--inner .sheet-panels > .panel.inner-panel--living-housing {
-      padding: 9.85mm 8.85mm 5.95mm;
+      padding: 10mm 9mm 5.5mm;
     }
-    .inner-panel.inner-panel--living-housing .inner-meta.inner-meta--baeksenuri {
-      padding: 1.18mm 2.05mm;
-      font-size: 7.75pt;
-      line-height: 1.78;
-    }
-
     .inner-panel.inner-panel--living-housing .living-housing-contact {
-      margin: 0.42mm 0 0;
-      padding-top: 0.42mm;
+      margin: 0.85mm 0 0;
+      padding-top: 0.55mm;
       border-top: 0.4pt solid rgba(182, 152, 109, 0.35);
       font-size: 6.68pt;
       line-height: 1.48;
@@ -1090,11 +1109,12 @@
     }
     .inner-panel.inner-panel--services-detail .services-photo-caption {
       margin: 0.45mm 0 0;
-      font-size: 6.65pt;
-      line-height: 1.48;
+      font-size: 5.55pt;
+      line-height: 1.35;
       color: var(--ink-soft);
       text-align: center;
-      word-break: keep-all;
+      white-space: nowrap;
+      letter-spacing: -0.015em;
     }
     /* 식단 블록: 백세누리 프로그램과 동일 리듬(메타 → 로고·본문 2단, 로고 세로 가운데) */
     .inner-panel.inner-panel--services-detail .services-food-program-block {
@@ -1299,6 +1319,18 @@
       border-radius: 2px;
       border: 0.5pt solid rgba(182, 152, 109, 0.38);
     }
+    .inner-panel.inner-panel--feature-left figure.inner-baeksenuri-gap-photo {
+      margin: 1mm 0 0;
+    }
+    .inner-panel.inner-panel--feature-left figure.inner-baeksenuri-gap-photo img {
+      display: block;
+      width: 100%;
+      max-height: 38mm;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 2px;
+      border: 0.5pt solid rgba(182, 152, 109, 0.38);
+    }
     .sheet-label {
       flex: 0 0 auto;
       width: 100%;
@@ -1357,6 +1389,9 @@
         <li>전기면도기(남자 어르신 해당)·사용 보장구 또는 생활용품(워커 등)</li>
         <li>평소 좋아하는 소지품 또는 가족사진</li>
       </ul>
+      <figure class="front-panel-photo">
+        <img src="./leaflet-assets/leaflet-front-panel-kakao-20260508-02.jpg" alt="" width="900" height="700" decoding="async">
+      </figure>
       <div class="admission-box">
         <h3>상담·문의</h3>
         <ul>
@@ -1478,6 +1513,10 @@
         </div>
       </div>
 
+      <figure class="inner-baeksenuri-gap-photo">
+        <img src="./leaflet-assets/leaflet-inner-kakao-20260508.jpg" alt="" width="900" height="700" decoding="async">
+      </figure>
+
       <h3 class="leaflet-blue-section-title">족욕 서비스</h3>
       <p class="inner-footbath-lead">
         어르신의 신진대사 기능 촉진 및 체내 노폐물 배출과 불면증 개선 등 스트레스를 완화시킬 수 있도록 반신욕 및 족욕 시설을 보유합니다.
@@ -1498,7 +1537,7 @@
       <figure class="services-photo-figure">
         <img src="./leaflet-assets/asfr-workmate-rehab.jpg" alt="워크메이트 재활 운동 기구" width="900" height="600" decoding="async">
         <figcaption class="services-photo-caption">
-          보행재활기기의 명품, 맞춤형 재활 전문 운동기구인 「워크메이트」 도입으로 재활 운동 실시
+          보행재활기기의 명품, 맞춤형 재활 전문 운동기구인 「워크메이트」 도입
         </figcaption>
       </figure>
       <p>
@@ -1556,6 +1595,10 @@
       <p class="living-housing-lead">
         우리보다 노인요양 서비스의 역사가 오랜 해외에서의 경험과 검증된 노하우를 바탕으로 차별화된 요양시스템 적용
       </p>
+
+      <figure class="living-housing-hero-photo">
+        <img src="./leaflet-assets/leaflet-living-housing-dropshot.jpg" alt="" width="1200" height="800" decoding="async">
+      </figure>
 
       <h3 class="leaflet-blue-section-title living-housing-section-head">
         <img class="living-housing-section-ico" src="./leaflet-assets/icon-living-tailored.svg" alt="" width="32" height="32" decoding="async">
