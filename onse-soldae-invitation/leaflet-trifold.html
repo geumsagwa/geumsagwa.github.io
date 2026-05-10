@@ -951,13 +951,6 @@
       flex-direction: column;
       gap: 1.2mm;
     }
-    .inner-panel.inner-panel--services-detail .services-asfr-title {
-      margin: 0;
-      font-size: 7.65pt;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.42;
-    }
     .inner-panel.inner-panel--services-detail .services-photo-figure {
       margin: 0.35mm 0 0;
     }
@@ -977,14 +970,6 @@
       color: var(--ink-soft);
       text-align: center;
       word-break: keep-all;
-    }
-    .inner-panel.inner-panel--services-detail .services-food-tagline {
-      margin: 0 0 0.25mm;
-      font-size: 7.85pt;
-      font-weight: 600;
-      color: var(--ink);
-      text-align: center;
-      line-height: 1.48;
     }
     .inner-panel.inner-panel--services-detail .services-food-two-col {
       display: flex;
@@ -1061,7 +1046,8 @@
       font-size: 7.85pt;
       line-height: 1.99;
     }
-    .inner-panel.inner-panel--feature-left .inner-meta--baeksenuri {
+    .inner-panel.inner-panel--feature-left .inner-meta--baeksenuri,
+    .inner-panel.inner-panel--services-detail .inner-meta--baeksenuri {
       margin: 0 0 0.35mm;
       padding: 1.45mm 2.2mm;
       font-size: 7.85pt;
@@ -1348,7 +1334,7 @@
       <h2 class="front-section-title">특화 서비스</h2>
 
       <h3 class="leaflet-blue-section-title">재활특화 실버케어</h3>
-      <p class="services-asfr-title">ASFR(Active Standing &amp; Function Recovery) 요양 서비스</p>
+      <p class="inner-meta inner-meta--baeksenuri"><strong>ASFR</strong>(Active Standing &amp; Function Recovery) 요양 서비스</p>
       <p>
         환자의 적극적인 참여를 통해 재활치료의 효과를 더 높일 수 있는 신개념 재활 치료법입니다.
       </p>
@@ -1364,7 +1350,7 @@
       </p>
 
       <h3 class="leaflet-blue-section-title">체계적인 식단관리</h3>
-      <p class="services-food-tagline">건강한 식재료에 정성을 다한 정직한 식사</p>
+      <p class="inner-meta inner-meta--baeksenuri">건강한 식재료에 정성을 다한 정직한 식사</p>
       <div class="services-food-two-col">
         <div class="services-food-brand">
           <img src="./leaflet-assets/natural-food-logo.png" alt="네츄럴 푸드 로고" width="240" height="200" decoding="async">
