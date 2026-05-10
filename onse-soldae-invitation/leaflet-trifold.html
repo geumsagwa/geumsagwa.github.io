@@ -8,7 +8,7 @@
   <!--
     인쇄: Chrome/Edge → 인쇄 → 용지 A4, 방향 가로, 여백 없음, «배경 그래픽» 켜기.
     족욕 사진: leaflet-footbath-photo.png (원본 OneDrive\…\족욕사진.png).
-    백세누리 블록: leaflet-assets/baeksenuri-program-logo.png(좌) + 프로그램 목록(우) 2단.
+    백세누리 블록: leaflet-assets/baeksenuri-program-logo.png(좌) + 프로그램 목록(우, 항목별 leaflet-assets/icon-baek-*.svg).
     접지 순서는 인쇄소와 한 번 확인하는 것이 안전합니다. 화면은 «앞면 3칸 → 뒷면 3칸» 순입니다.
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -931,15 +931,29 @@
       margin: 0;
     }
     .inner-panel.inner-panel--feature-left .doc-list--feature-programs li {
-      display: block;
+      display: flex;
+      align-items: flex-start;
+      gap: 2mm;
       margin: 0;
-      padding: 0.95mm 0;
+      padding: 1mm 0;
       font-size: 7.25pt;
       line-height: 1.38;
       border-bottom: none;
     }
     .inner-panel.inner-panel--feature-left .doc-list--feature-programs li::before {
       display: none;
+    }
+    .inner-panel.inner-panel--feature-left .program-ico-img {
+      flex-shrink: 0;
+      width: 5.2mm;
+      height: 5.2mm;
+      object-fit: contain;
+      display: block;
+      margin-top: 0.2em;
+    }
+    .inner-panel.inner-panel--feature-left .program-li-body {
+      flex: 1;
+      min-width: 0;
     }
     .inner-panel.inner-panel--feature-left .inner-footbath-lead {
       margin: 0 0 0.35mm;
@@ -1118,10 +1132,22 @@
         <div class="baeksenuri-program-body">
           <p class="inner-meta inner-meta--baeksenuri"><strong>백세누리</strong> 프로그램</p>
           <ul class="doc-list doc-list--feature-programs">
-            <li><strong>오감나무</strong> 오감체험을 통한 심리안정 프로그램입니다.</li>
-            <li><strong>인지수</strong> 실버브레인 프로그램으로, 치매 예방 및 인지 기능 유지에 중점을 둡니다.</li>
-            <li><strong>소리샘</strong> 음악 요법·합창 등 마음 회복 프로그램입니다.</li>
-            <li><strong>아트팜</strong> 영화 스토리텔링·미술 테라피를 통한 자존감 회복 프로그램입니다.</li>
+            <li>
+              <img class="program-ico-img" src="./leaflet-assets/icon-baek-ogam-tree.svg" alt="" width="32" height="32" decoding="async">
+              <span class="program-li-body"><strong>오감나무</strong> 오감체험을 통한 심리안정 프로그램입니다.</span>
+            </li>
+            <li>
+              <img class="program-ico-img" src="./leaflet-assets/icon-baek-jigi-water.svg" alt="" width="32" height="32" decoding="async">
+              <span class="program-li-body"><strong>인지수</strong> 실버브레인 프로그램으로, 치매 예방 및 인지 기능 유지에 중점을 둡니다.</span>
+            </li>
+            <li>
+              <img class="program-ico-img" src="./leaflet-assets/icon-baek-sori-music.svg" alt="" width="32" height="32" decoding="async">
+              <span class="program-li-body"><strong>소리샘</strong> 음악 요법·합창 등 마음 회복 프로그램입니다.</span>
+            </li>
+            <li>
+              <img class="program-ico-img" src="./leaflet-assets/icon-baek-art-sparkle.svg" alt="" width="32" height="32" decoding="async">
+              <span class="program-li-body"><strong>아트팜</strong> 영화 스토리텔링·미술 테라피를 통한 자존감 회복 프로그램입니다.</span>
+            </li>
           </ul>
         </div>
       </div>
