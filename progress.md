@@ -3,10 +3,10 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-11T18:00:00+09:00` — Desktop `Harness\progress.md`·`handover-progress.md`와 본 파일 동기. **`origin/master` tip = `8a346d5`** (`progress.md` 인계 포함; 리플릿·에셋 본문은 **`2df59e4`**).
+- 시각(ISO): `2026-05-11T18:00:00+09:00` — Desktop `Harness\progress.md`·`handover-progress.md`와 본 파일 동기. **`origin/master`** 에 **2026-05-11** 온세솔대 리플릿(`2df59e4`)·`progress.md` 인계(`8a346d5` 등)·문서 정합분 **푸시 완료** — **정확한 최신 해시는 `git rev-parse origin/master`**.
 - **온세솔대 리플릿:** `onse-soldae-invitation/` 전체(HTML·에셋·PNG·스크립트·`package.json`) **커밋·푸시 완료** (`2df59e4`). HTML 수정 후 PNG는 `node export-leaflet-png.mjs` (무진님 지시, `task-continuity.mdc` 반영).
 - **Kakao:** 직접 OAuth + Edge **`kakao-token`**, 프로덕션 로그인 성공 상태 유지. 상세: Desktop `handover-progress.md`.
-- **Git 정본:** 브랜치 **`master`**. **최신 tip:** **`8a346d5`**. **카카오·Edge 기준점(과거):** **`dd325d1`**, **`441bd22`**, **`37171bd`**.
+- **Git 정본:** 브랜치 **`master`**. **최신 tip:** **`git fetch` 후 `git rev-parse origin/master`**. **카카오·Edge 기준점(과거):** **`dd325d1`**, **`441bd22`**, **`37171bd`**.
 - **레거시 브랜치:** `chore/public-readiness-20260312` 원격 tip **`4413071`** (변동 없음).
 - **하네스 인계 미러:** `geumsagwa-harness` → **`docs/desktop-handoff/`** — **`origin/main` tip** 은 해당 저장소에서 확인.
 
@@ -16,7 +16,7 @@
 - **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존.
 
 ## 워킹트리 상태 (2026-05-11, Git 기준)
-- **상태:** **`origin/master` = `8a346d5`와 동기** (리플릿·문서 인계).
+- **상태:** 로컬에서 **`git pull`** 로 **`origin/master`** 와 맞출 것(리플릿·문서 인계 푸시 완료 시점 기준).
 - **리플릿:** 배포에 HTML이 필요하면 **`geumsagwa.github.io` 저장소의 `onse-soldae-invitation/`** 경로로 확인(본 커밋에 포함됨).
 - **기타 로컬만:** `.capture-tmp/`, 일부 `Images/*`·스크린샷 등은 여전히 **정책에 따라** `.gitignore`/커밋 여부 확인 권장.
 
@@ -72,7 +72,7 @@
 - `.github/workflows`, `reports/public_precheck_*.md`, 기타 HTML/JS 정리
 
 ## 미커밋 / 로컬만
-- **`8a346d5` 시점:** `git fetch` 후 **`origin/master`** 와 로컬 일치 확인 권장.
+- **`origin/master`** 확인: **`git fetch`** 후 **`git rev-parse origin/master`** 또는 **`git log -1 --oneline origin/master`**.
 - `git status`의 `M`이 **내용 없음(CRLF)** 일 수 있음 — **`git diff HEAD --stat`** 으로 확인.
 
 ## 막힌 일 / blocked
