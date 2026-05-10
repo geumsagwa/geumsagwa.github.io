@@ -3,9 +3,11 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-08T22:30:00+09:00` — Desktop `Harness\progress.md`·`handover-progress.md`·`geumsagwa-harness` `docs/desktop-handoff/` 와 주요 사실 동기.
-- **Kakao:** 직접 OAuth + Supabase Edge **`kakao-token`**(시크릿·allowlist), **프로덕션(`geumsagwa.github.io`) 로그인 성공** 확인. 상세: Desktop `handover-progress.md`.
-- **Git 정본:** 브랜치 **`master`**. **`origin/master` 최신 tip** 은 `git rev-parse origin/master` 또는 GitHub에서 확인. **카카오·Edge 기능 묶음:** **`dd325d1`** (콜백·README), 그 앞선 **`441bd22`**, **`37171bd`**.
+- 시각(ISO): `2026-05-11T18:00:00+09:00` — Desktop `Harness\progress.md`·`handover-progress.md`와 본 파일 동기. **`origin/master` tip = `2df59e4`** (리플릿 등 반영 완료).
+- **로컬 편집:** 본 **`progress.md`** 인계 갱신 직후 **`git status` → `M progress.md`** 예상 — 필요 시 **별도 커밋·푸시**.
+- **온세솔대 리플릿:** `onse-soldae-invitation/` 전체(HTML·에셋·PNG·스크립트·`package.json`) **커밋·푸시 완료** (`2df59e4`). HTML 수정 후 PNG는 `node export-leaflet-png.mjs` (무진님 지시, `task-continuity.mdc` 반영).
+- **Kakao:** 직접 OAuth + Edge **`kakao-token`**, 프로덕션 로그인 성공 상태 유지. 상세: Desktop `handover-progress.md`.
+- **Git 정본:** 브랜치 **`master`**. **최신 tip:** **`2df59e4`**. **카카오·Edge 기준점(과거):** **`dd325d1`**, **`441bd22`**, **`37171bd`**.
 - **레거시 브랜치:** `chore/public-readiness-20260312` 원격 tip **`4413071`** (변동 없음).
 - **하네스 인계 미러:** `geumsagwa-harness` → **`docs/desktop-handoff/`** — **`origin/main` tip** 은 해당 저장소에서 확인.
 
@@ -14,13 +16,16 @@
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
 - **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존.
 
-## 워킹트리 상태 (2026-04-30, Git 기준)
-- **상태:** **더러움** — `git status`상 추적 파일 **다수 수정**으로 표시되나, **`git diff HEAD` 기준 실제 줄 변경**은 종종 **`package.json` · `package-lock.json`** 등 소수에만 해당하는 패턴 관찰 — 나먼지 `M`은 **CRLF/인덱스 표시**(내용 무변) 가능성.
-- **수정(M) 예:** 상동 — 정본 확인은 **`git diff HEAD --stat`** 권장.
-- **미추적(??) 예:** `onse-soldae-invitation/`(온세솔대 요양원 **개업 초대 카드** HTML·PNG·Playwright 스크립트), `Images/*` 일부(webp/png), `main-live-*.png`, `main-page-*.png`, `.capture-tmp/`, `reports/public_precheck_*.md` 등 — 커밋·제외 정책 결정 필요.
-- **주의:** 위 **미추적·로컬만** 항목은 **최신 `origin/master` 트리**에 포함되지 않을 수 있음(문서·코드 커밋만 있고 자산 폴더는 미추적) — 배포 사이트와 로컬 미리보기가 다를 수 있음.
+## 워킹트리 상태 (2026-05-11, Git 기준)
+- **상태:** **`origin/master` = `2df59e4`와 동기** (리플릿·코드). **인계용 `progress.md` 갱신**으로 로컬에 **`M progress.md`** 가 남을 수 있음.
+- **리플릿:** 배포에 HTML이 필요하면 **`geumsagwa.github.io` 저장소의 `onse-soldae-invitation/`** 경로로 확인(본 커밋에 포함됨).
+- **기타 로컬만:** `.capture-tmp/`, 일부 `Images/*`·스크린샷 등은 여전히 **정책에 따라** `.gitignore`/커밋 여부 확인 권장.
 
 ## 이번 기간에 한 일 (요약) — 원격 `master` 히스토리에 포함된 범위
+
+### tip `2df59e4` (2026-05-11)
+- **온세솔대 리플릿 저장소 반영:** `leaflet-trifold.html` 갱신분, `leaflet-assets/`·`leaflet-front.png`·`leaflet-back.png`·한글 파일명 PNG, `package.json` / `package-lock.json`, 내보내기·추출 보조 스크립트, 참고 PDF·TXT 등 **일괄 추가 후 푸시**.
+- 직전 커밋(요약): `24e8985` head 주석 닫힘 수정, `552c644` 생활주거 패널·연락처 등(리플릿 관련 마크업/CSS).
 
 ### tip `256eb7d` (2026-05-04)
 - **`progress.md`** — 한글 인코딩 복구 내역 반영.
@@ -65,10 +70,9 @@
 - `.github/workflows`, `reports/public_precheck_*.md`, 기타 HTML/JS 정리
 
 ## 미커밋 / 로컬만
-- **추적 파일 수정(M):** `.env.example`, `login.js`, `supabase-config.js`, `progress.md` — Kakao REST 키·에러 처리·문서(본 파일). **커밋·푸시 대기.**
-- **미추적(??):** `onse-soldae-invitation/export-kakao-png.cjs`, `export-mobile-invitation-png.cjs`, `kakaotalk-invitation.png`, `logo.png`, `mobile-invitation-card.png` — 커밋 여부·용량 정책 결정 필요.
-- 그 밖에 **`onse-soldae-invitation/`** HTML·기타 에셋, `Images/*`, `.capture-tmp/` 등은 과거 메모와 동일하게 정책 결정 필요.
-- `git status`에서 `M`이 CRLF만 때문일 수 있음 — 정본은 **`git diff HEAD --stat`** 으로 확인.
+- **문서만 수정 시:** 본 **`progress.md`** 를 갱신한 뒤에는 `git status`에 **`M progress.md`** 가 남을 수 있음 — 필요 시 **별도 커밋·푸시**.
+- **`2df59e4` 시점의 `master`:** 리플릿·코드 쪽은 이미 **원격 반영 완료**.
+- `git status`의 `M`이 **내용 없음(CRLF)** 일 수 있음 — **`git diff HEAD --stat`** 으로 확인.
 
 ## 막힌 일 / blocked
 - **(해소)** 카카오 로그인 — **직접 OAuth 경로**: REST API 키·Redirect URI·`profile_nickname` 동의. (과거 “리다이렉트만으로 해결” 메모와 **통로 혼동 주의** — Supabase `signInWithOAuth('kakao')`는 GoTrue scope 이슈가 별도.)
@@ -77,9 +81,9 @@
 - 잔여 CRLF/`package-lock` 표시 등(내용 무변 가능) — 필요 시 `git diff HEAD`로 확인
 
 ## 다음에 할 일 (최대 3개)
-1. **우선:** Kakao·문서 워킹트리 변경 **커밋·푸시** → GitHub Pages에 REST 키·에러 UI 반영 **후** 본 파일·Desktop Harness 인계 tip 갱신
-2. `onse-soldae-invitation` 미추적 에셋·스크립트 **커밋 정책** 결정
-3. (백로그) Reader·스타일 등 기존 미커밋·CRLF 정리
+1. (선택) 갱신한 **`homepage/progress.md`** 를 **레포에 커밋·푸시**할지 결정(인계만 로컬·Desktop으로 둘 수도 있음).
+2. (선택) `Images/*`·`.capture-tmp/` 등 **용량** 기준 `.gitignore`/커밋 정리
+3. (백로그) Reader·반응형·CRLF 표시 등 소소한 정리
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
