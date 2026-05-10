@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src * data: blob: https:; frame-ancestors 'none'; base-uri 'self'">
+  <title>온세솔대요양원 — 3단 리플릿 (인쇄용)</title>
+  <!--
+    인쇄: Chrome/Edge → 인쇄 → 용지 A4, 방향 가로, 여백 없음, «배경 그래픽» 켜기.
+    족욕 사진: leaflet-footbath-photo.png (원본 OneDrive\…\족욕사진.png).
+    백세누리 블록: leaflet-assets/baeksenuri-program-logo.png(좌) + 프로그램 목록(우) 2단.
+    접지 순서는 인쇄소와 한 번 확인하는 것이 안전합니다. 화면은 «앞면 3칸 → 뒷면 3칸» 순입니다.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #39b1dc;
+      --pink: #da87b4;
+      --gold: #b6986d;
+      --cream: #fefcfa;
+      --paper: #faf7f3;
+      --ink: #2a2622;
+      --ink-soft: #4a4540;
+      --hairline: rgba(182, 152, 109, 0.55);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", system-ui, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.55;
+      color: var(--ink);
+      background: #c8c4be;
+    }
+
+    h2, h3 {
+      font-family: "Noto Serif KR", "Times New Roman", serif;
+      font-weight: 600;
+    }
+
+    .screen-hint {
+      max-width: 900px;
+      margin: 16px auto;
+      padding: 14px 18px;
+      background: #fff;
+      border-left: 4px solid var(--blue);
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+    .screen-hint kbd { font-family: inherit; border: 1px solid #ccc; padding: 1px 6px; border-radius: 3px; }
+
+    /* --- Sheets: A4 landscape 297×210mm --- */
+    .sheet {
+      width: 297mm;
+      min-height: 210mm;
+      margin: 16px auto;
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
+    }
+    .sheet-panels {
+      display: grid;
+      grid-template-columns: 99mm 99mm 99mm;
+      width: 297mm;
+      flex: 1 1 auto;
+      min-height: 210mm;
+    }
+
+    .panel {
+      min-height: 210mm;
+      padding: 11mm 9mm;
+      border-right: 0.35pt solid var(--hairline);
+      position: relative;
+      overflow: hidden;
+    }
+    .sheet-panels .panel:last-child { border-right: none; }
+
+    .panel--bleed {
+      padding: 0;
+    }
+
+    /* =====================================================================
+       FROZEN — 리플릿 표지면 (우측 패널 `.panel.cover`)
+       무진님 확정 레이아웃. 사용자가 표지 수정을 명시하지 않으면 변경하지 않는다.
+       뒷면·안쪽 패널만 조정할 때는 이 블록과 아래 표지 마크업을 건드리지 않는다.
+       ===================================================================== */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      min-height: 210mm;
+      background:
+        linear-gradient(165deg, rgba(57,177,220,.12) 0%, transparent 42%),
+        linear-gradient(335deg, rgba(218,135,180,.1) 0%, transparent 38%),
+        var(--cream);
+      text-align: center;
+      padding: 10mm 9mm 10mm;
+    }
+    .cover-stack {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 0;
+      width: 100%;
+    }
+    /* 로고 상단 존재에 맞춰 위쪽 스펀이 작게, 아래가 크게 분배 → 중앙 히어로가 미세하게 올라 균형 */
+    .cover-stack-balance {
+      flex: 1 1 0;
+      min-height: 2mm;
+      width: 100%;
+      pointer-events: none;
+    }
+    .cover-stack-balance--top {
+      flex: 0.42 1 0;
+    }
+    .cover-stack-balance--below {
+      flex: 1.58 1 0;
+      min-height: 3mm;
+    }
+    .cover-hero-cluster {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      flex-shrink: 0;
+      gap: 4mm;
+    }
+    /* 표지: CI(크레스트+메인 로고) 먼저 — 장기요양 로고는 .cover 직계 자식으로 패딩 상단에 붙임 */
+    .cover-ci-head {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 0;
+      margin-top: 0;
+      gap: 3mm;
+    }
+    /* 장기요양보험 로고: 패널 상단 패딩 안쪽에 붙여 가운데 정렬 */
+    .cover > .cover-ltc-badge-row {
+      flex-shrink: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 0;
+      padding: 0 0 3.5mm;
+    }
+    .cover-ltc-badge {
+      width: 36mm;
+      max-width: 82%;
+      height: auto;
+      object-fit: contain;
+      opacity: 1;
+      display: block;
+    }
+    .cover .cover-top-shot {
+      width: calc(100% + 18mm);
+      height: 56mm;
+      min-height: 50mm;
+      max-height: 60mm;
+      flex-shrink: 0;
+      object-fit: cover;
+      object-position: center;
+      margin: 0 -9mm 0 -9mm;
+      display: block;
+      border-radius: 2px;
+    }
+    .cover-mid {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      padding: 0 0 1mm;
+    }
+    .cover .crest {
+      font-size: 7.5pt;
+      letter-spacing: 0.42em;
+      color: var(--pink);
+      font-weight: 600;
+      margin: 0;
+      flex-shrink: 0;
+      width: 100%;
+      text-align: center;
+    }
+    .cover .cover-ci {
+      width: 65mm;
+      max-width: 84%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .cover-address {
+      align-self: stretch;
+      width: 100%;
+      flex-shrink: 0;
+      margin-top: 0;
+      padding: 4mm 3.5mm 3.5mm;
+      text-align: left;
+      font-size: 9pt;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      border-top: 0.75pt solid var(--hairline);
+    }
+    .cover-address p {
+      margin: 0 0 2.5mm;
+      word-break: keep-all;
+    }
+    .cover-address p:last-child { margin-bottom: 0; }
+    .cover-address .la {
+      display: inline-block;
+      min-width: 13mm;
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 8.5pt;
+    }
+    .cover-address a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(57, 177, 220, 0.35);
+    }
+    .cover-email-placeholder {
+      color: var(--gold);
+      font-size: 7.8pt;
+    }
+    .cover .tagline {
+      font-family: "Noto Serif KR", serif;
+      font-size: 9pt;
+      color: var(--ink-soft);
+      line-height: 1.45;
+      margin: 0;
+      padding: 0 2mm;
+      font-weight: 500;
+      max-width: 88mm;
+      flex-shrink: 0;
+      letter-spacing: -0.02em;
+    }
+    .cover .tagline .tagline-line {
+      display: block;
+    }
+    .cover .tagline .tagline-line:first-child {
+      white-space: nowrap;
+      font-size: 9.5pt;
+      letter-spacing: -0.06em;
+      word-spacing: -0.1em;
+    }
+    .cover .tagline .tagline-line + .tagline-line {
+      margin-top: 1.8mm;
+      letter-spacing: -0.04em;
+      font-size: 8.55pt;
+      white-space: nowrap;
+    }
+    .rule-gold {
+      width: 40mm;
+      height: 1.5pt;
+      margin: 1.5mm auto 3mm;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      border: none;
+      flex-shrink: 0;
+    }
+    /* ─── END FROZEN 표지 스타일 (.rule-gold 포함) ─── */
+
+    .photo-stack {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .photo-stack img.mainshot {
+      width: 100%;
+      height: 58%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .photo-stack .caption-block {
+      flex: 1;
+      padding: 8mm 8mm 10mm;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .photo-stack blockquote {
+      margin: 0;
+      padding: 0 0 0 3.5mm;
+      border-left: 3px solid var(--blue);
+      font-family: "Noto Serif KR", serif;
+      font-size: 11pt;
+      line-height: 1.65;
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .photo-stack cite {
+      display: block;
+      margin-top: 4mm;
+      font-size: 8pt;
+      font-style: normal;
+      color: var(--pink);
+      letter-spacing: .06em;
+      font-weight: 600;
+    }
+
+    /* Back strip (앞면 왼쪽 — 접었을 때 뒷면 정보) */
+    .back-info {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6mm;
+    }
+    .back-info h2 {
+      font-size: 11pt;
+      margin: 0 0 2mm;
+      color: var(--blue);
+      letter-spacing: .06em;
+    }
+    .back-info p {
+      margin: 0;
+      font-size: 9pt;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .back-info .phone {
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--pink);
+      letter-spacing: .04em;
+    }
+    .back-info .web {
+      font-size: 8.5pt;
+      word-break: break-all;
+      color: var(--blue);
+      font-weight: 600;
+    }
+    .ornament {
+      width: 100%;
+      height: 22mm;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 2px;
+      margin-top: 2mm;
+    }
+
+    /* =====================================================================
+       FROZEN — 리플릿 앞면 좌측 패널 「이용 안내 및 입소 준비물」(`.panel.front-panel`)
+       무진님 확정. 사용자가 해당 패널 수정을 명시하지 않으면 변경하지 않는다.
+       다른 패널만 조정할 때는 이 블록과 아래 해당 마크업을 건드리지 않는다.
+       ===================================================================== */
+    .front-panel {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 2.35mm;
+      padding: 10mm 9mm 4mm;
+      min-height: 100%;
+      box-sizing: border-box;
+    }
+    .front-panel .front-section-title {
+      margin: 0 0 0.55mm;
+      padding-bottom: 1.35mm;
+      flex-shrink: 0;
+    }
+    .front-panel .front-panel-meta-line {
+      margin: 0 0 2.6mm;
+      padding: 2mm 2.6mm;
+      font-size: 7.85pt;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    /* 좌측 패널 전용 파란 소제목(중앙 패널 .directions-block h3 톤과 동일) */
+    .leaflet-blue-section-title {
+      font-family: "Noto Serif KR", serif;
+      font-size: 7.35pt;
+      font-weight: 600;
+      color: var(--blue);
+      margin: 0 0 1.35mm;
+      padding-bottom: 0.85mm;
+      border-bottom: 1px solid rgba(57, 177, 220, 0.28);
+      flex-shrink: 0;
+    }
+    /* 두 번째 소제목(준비 물품) 앞 여백 — 소제목 사이 간격 강조 */
+    .front-panel .doc-list + .leaflet-blue-section-title {
+      margin-top: 1.4mm;
+    }
+    .front-panel .doc-list {
+      margin: 0 0 0.35mm;
+      flex-shrink: 0;
+    }
+    .front-panel .doc-list li {
+      font-size: 7.25pt;
+      padding: 1.35mm 0 1.35mm 3.6mm;
+      line-height: 1.38;
+    }
+    .front-panel .admission-box {
+      margin-top: auto;
+      padding: 2.2mm 2.8mm;
+      flex-shrink: 0;
+    }
+    .front-panel .admission-box h3 {
+      font-family: "Noto Serif KR", serif;
+      font-size: 9pt;
+      margin: 0 0 1.5mm;
+      color: var(--ink);
+    }
+    .front-panel .admission-box ul {
+      font-size: 7.35pt;
+    }
+    /* ─── END FROZEN 좌측 패널(이용 안내·입소 준비) 스타일 ─── */
+    .front-center-panel {
+      background: var(--cream);
+      padding: 10mm 7.5mm 10mm;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+      overflow: hidden;
+    }
+    .front-section-title {
+      font-family: "Noto Serif KR", serif;
+      font-size: 10.25pt;
+      color: var(--pink);
+      margin: 1mm 0 0.5mm;
+      padding-bottom: 1.5mm;
+      border-bottom: 2px solid rgba(57, 177, 220, 0.35);
+    }
+    .front-greet {
+      font-size: 7.75pt;
+      line-height: 1.47;
+      color: var(--ink-soft);
+      margin: 0 0 1.5mm;
+      text-align: justify;
+      word-break: keep-all;
+    }
+    /* 장비 사진: 잘림 없이 전체가 보이도록 */
+    .img-contain-box {
+      flex-shrink: 0;
+      width: 100%;
+      min-height: 36mm;
+      max-height: 42mm;
+      background: linear-gradient(180deg, #f7f3ec 0%, #ebe4d9 100%);
+      border: 0.5pt solid rgba(182, 152, 109, 0.4);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5mm 1mm;
+    }
+    .img-contain-box img {
+      max-width: 100%;
+      max-height: 38mm;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+    .front-photo-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2mm;
+      flex-shrink: 0;
+      margin: 0.5mm 0 1mm;
+    }
+    .front-photo-row figure {
+      margin: 0;
+    }
+    .front-photo-row img {
+      width: 100%;
+      height: 26mm;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 2px;
+      display: block;
+    }
+    .front-photo-row figcaption {
+      font-size: 6.4pt;
+      color: var(--gold);
+      font-weight: 600;
+      margin-top: 0.8mm;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .service-list--pptx {
+      margin-top: 0.5mm;
+    }
+    .service-list--pptx li {
+      border-bottom: 0.35pt solid rgba(182, 152, 109, 0.2);
+    }
+    .front-center-panel .service-list--pptx li {
+      font-size: 6.45pt;
+      line-height: 1.36;
+      padding: 1.15mm 0 1.15mm 3.8mm;
+    }
+    .front-center-panel .service-list--pptx strong {
+      font-size: 6.95pt;
+    }
+    /* =====================================================================
+       FROZEN — 리플릿 앞면 중앙 패널 「찾아오시는 길」(`.front-center-panel--directions`)
+       무진님 확정. 사용자가 해당 패널 수정을 명시하지 않으면 변경하지 않는다.
+       다른 패널만 조정할 때는 이 블록과 아래 해당 마크업·전용 에셋 경로를 건드리지 않는다.
+       ===================================================================== */
+    /* 찾아오시는 길(중앙 패널) — 지도·대중교통·네비·웹(홈페이지) 안내 */
+    .front-center-panel--directions {
+      gap: 2.45mm;
+    }
+    .front-center-panel--directions .front-section-title {
+      margin: 0 0 0.75mm;
+      padding-bottom: 1.55mm;
+    }
+    .directions-map-wrap {
+      flex-shrink: 0;
+      width: 100%;
+      max-height: 62mm;
+      background: #f7f3ec;
+      border: 0.5pt solid rgba(182, 152, 109, 0.4);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.15mm;
+      overflow: hidden;
+    }
+    .directions-map-wrap img {
+      max-width: 100%;
+      max-height: 57mm;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+    .directions-body {
+      display: flex;
+      flex-direction: column;
+      gap: 2.35mm;
+      flex-shrink: 0;
+      margin-top: 0.85mm;
+      text-align: left;
+    }
+    .directions-body > .directions-block:not(:first-child) {
+      padding-top: 1.75mm;
+      margin-top: 1mm;
+      border-top: 0.5pt dashed rgba(182, 152, 109, 0.45);
+    }
+    .directions-block h3 {
+      font-family: "Noto Serif KR", serif;
+      font-size: 7.35pt;
+      font-weight: 600;
+      color: var(--blue);
+      margin: 0 0 1.35mm;
+      padding-bottom: 0.85mm;
+      border-bottom: 1px solid rgba(57, 177, 220, 0.28);
+    }
+    .directions-sub {
+      margin: 0 0 1.15mm;
+      font-size: 6.35pt;
+      line-height: 1.48;
+      color: var(--ink-soft);
+      word-break: keep-all;
+    }
+    .directions-sub strong {
+      display: block;
+      font-size: 6.65pt;
+      color: var(--ink);
+      margin-bottom: 0.65mm;
+    }
+    .directions-line {
+      margin: 0 0 0.75mm;
+      padding-left: 0;
+      font-size: 6.35pt;
+      line-height: 1.46;
+      color: var(--ink-soft);
+      word-break: keep-all;
+      text-indent: 0;
+    }
+    .directions-line .d-mark {
+      color: var(--ink);
+      font-weight: 600;
+      margin-right: 0.35em;
+    }
+    .directions-address {
+      margin: 0.35mm 0 0;
+      font-size: 9.25pt;
+      font-weight: 700;
+      line-height: 1.48;
+      color: var(--ink);
+      word-break: keep-all;
+      letter-spacing: -0.03em;
+    }
+    .directions-nav-note {
+      margin: 1.1mm 0 0;
+      font-size: 6pt;
+      color: var(--gold);
+      line-height: 1.42;
+    }
+    .directions-web-block .directions-qr-slot {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.65mm;
+    }
+    .directions-qr-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 3.2mm;
+      flex-wrap: nowrap;
+    }
+    .directions-qr-row .directions-blog-cap {
+      flex: 1 1 auto;
+      max-width: 48%;
+      max-height: 32mm;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      object-position: center left;
+      display: block;
+      border-radius: 2px;
+      border: 0.35pt solid rgba(182, 152, 109, 0.35);
+    }
+    .directions-qr-row .directions-qr-img {
+      flex: 0 0 auto;
+      width: 26mm;
+      height: 26mm;
+      object-fit: contain;
+      display: block;
+    }
+    .directions-qr-caption {
+      font-size: 6.35pt;
+      color: var(--ink-soft);
+      margin: 0.85mm 0 0;
+      text-align: center;
+      line-height: 1.45;
+    }
+    /* ─── END FROZEN 찾아오시는 길(중앙 패널) 스타일 ─── */
+
+    .service-list--pptx li::before {
+      width: 2mm;
+      height: 2mm;
+      top: 1.15em;
+    }
+    .inner-inline-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2mm;
+      margin-bottom: 2.5mm;
+    }
+    .inner-inline-photos img {
+      width: 100%;
+      height: 22mm;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .inner-panel .service-list--pptx li {
+      font-size: 7.35pt;
+      line-height: 1.42;
+      padding: 1.7mm 0 1.7mm 4mm;
+    }
+    .inner-panel .service-list--pptx strong {
+      font-size: 8pt;
+    }
+    .inner-panel--services .inner-thumb {
+      height: 22mm;
+      margin-bottom: 2mm;
+    }
+    .inner-panel {
+      background: var(--cream);
+    }
+    .inner-panel h2 {
+      font-size: 11.5pt;
+      color: var(--pink);
+      margin: 0 0 3mm;
+      padding-bottom: 2mm;
+      border-bottom: 2px solid rgba(57,177,220,.35);
+    }
+    .inner-panel h3 {
+      font-family: "Noto Sans KR", system-ui, sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--blue);
+      margin: 3.5mm 0 2mm;
+      letter-spacing: -0.02em;
+    }
+    .inner-panel h3:first-of-type { margin-top: 0; }
+    .inner-panel p {
+      margin: 0 0 2.8mm;
+      font-size: 8.6pt;
+      color: var(--ink-soft);
+      text-align: justify;
+      word-break: keep-all;
+      line-height: 1.52;
+    }
+    .inner-panel .lead {
+      font-size: 9pt;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .inner-meta {
+      margin: 0 0 3mm;
+      padding: 2.8mm 3mm;
+      background: rgba(57, 177, 220, 0.08);
+      border-left: 3px solid var(--blue);
+      font-size: 8.5pt;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+    .inner-meta strong { color: var(--ink); }
+    .service-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .service-list li {
+      position: relative;
+      padding: 2.2mm 0 2.2mm 4.5mm;
+      border-bottom: 0.5pt solid rgba(182,152,109,.22);
+      font-size: 8.15pt;
+      line-height: 1.45;
+    }
+    .service-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.5mm;
+      height: 2.5mm;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .service-list strong {
+      display: block;
+      font-size: 8.85pt;
+      color: var(--blue);
+      margin-bottom: 0.6mm;
+      font-weight: 600;
+    }
+    .service-list--compact li {
+      padding: 1.9mm 0 1.9mm 4.5mm;
+      font-size: 8pt;
+      line-height: 1.4;
+    }
+    .service-list--compact strong {
+      font-size: 8.55pt;
+    }
+    .admission-box {
+      margin-top: 4mm;
+      padding: 4mm 4.5mm;
+      background: linear-gradient(135deg, rgba(57,177,220,.1), rgba(218,135,180,.08));
+      border: 1pt solid rgba(182,152,109,.45);
+      border-radius: 2px;
+    }
+    .admission-box h3 {
+      font-size: 10pt;
+      margin: 0 0 2mm;
+      color: var(--ink);
+    }
+    .admission-box ul {
+      margin: 0;
+      padding-left: 4mm;
+      font-size: 8.5pt;
+      color: var(--ink-soft);
+    }
+    .inner-thumb {
+      width: 100%;
+      height: 30mm;
+      object-fit: cover;
+      object-position: center;
+      margin-bottom: 3mm;
+      border-radius: 2px;
+    }
+    /* 안쪽 좌·우 상단 대표 사진 높이 = 중앙 패널 상단 사진 + 2열 사진 + 여백 */
+    .inner-thumb.inner-back-hero {
+      height: calc(22mm + 2mm + 22mm + 2.5mm);
+      object-fit: cover;
+      object-position: center;
+    }
+    .inner-panel:not(.inner-panel--dense) .inner-thumb.inner-back-hero {
+      margin-bottom: 3mm;
+    }
+    .doc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .doc-list li {
+      position: relative;
+      padding: 1.8mm 0 1.8mm 3.8mm;
+      font-size: 7.85pt;
+      line-height: 1.42;
+      color: var(--ink-soft);
+      border-bottom: 0.35pt dashed rgba(182, 152, 109, 0.35);
+    }
+    .doc-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 1.8mm;
+      height: 1.8mm;
+      background: var(--pink);
+      opacity: 0.65;
+      border-radius: 1px;
+    }
+    .route-lines {
+      font-size: 7.9pt;
+      line-height: 1.48;
+      color: var(--ink-soft);
+      margin: 0 0 2mm;
+      padding: 2.5mm 3mm;
+      background: rgba(218, 135, 180, 0.07);
+      border-radius: 2px;
+    }
+    .route-lines .r-label {
+      display: block;
+      font-weight: 700;
+      color: var(--blue);
+      font-size: 8.1pt;
+      margin-bottom: 1.5mm;
+    }
+    .inner-panel--dense .inner-thumb {
+      margin-bottom: 2.5mm;
+    }
+    .inner-panel--dense .admission-box {
+      margin-top: 2.5mm;
+      padding: 3mm 3.5mm;
+    }
+    .inner-panel--dense .admission-box ul {
+      font-size: 8pt;
+    }
+    .footnote-inner {
+      margin-top: 2.5mm;
+      font-size: 7.35pt;
+      line-height: 1.45;
+      color: var(--gold);
+      text-align: center;
+      font-family: "Noto Serif KR", serif;
+    }
+
+    /* 안쪽 왼쪽 패널: 앞면 좌측(.front-panel)과 동일 리듬 — 큰 제목·메타·파란 소제목·doc-list */
+    .inner-panel.inner-panel--feature-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2.35mm;
+      background: var(--cream);
+    }
+    .inner-panel.inner-panel--feature-left > h2.front-section-title {
+      margin: 0 0 0.55mm;
+      padding-bottom: 1.35mm;
+      font-size: 10.25pt;
+      font-family: "Noto Serif KR", serif;
+      font-weight: 600;
+      color: var(--pink);
+      border-bottom: 2px solid rgba(57, 177, 220, 0.35);
+      letter-spacing: -0.02em;
+    }
+    .inner-panel.inner-panel--feature-left h3.leaflet-blue-section-title {
+      font-family: "Noto Serif KR", serif;
+      font-size: 7.35pt;
+      font-weight: 600;
+      color: var(--blue);
+      margin: 0 0 1.35mm;
+      padding-bottom: 0.85mm;
+      border-bottom: 1px solid rgba(57, 177, 220, 0.28);
+      letter-spacing: inherit;
+    }
+    .inner-panel.inner-panel--feature-left h3.leaflet-blue-section-title:first-of-type {
+      margin-top: 0;
+    }
+    .inner-panel.inner-panel--feature-left .doc-list + .leaflet-blue-section-title {
+      margin-top: 1.4mm;
+    }
+    .inner-panel.inner-panel--feature-left .lead {
+      margin: 0 0 0.35mm;
+      font-size: 7.85pt;
+      line-height: 1.48;
+    }
+    .inner-panel.inner-panel--feature-left .inner-meta--baeksenuri {
+      margin: 0 0 0.35mm;
+      padding: 2mm 2.6mm;
+      font-size: 7.85pt;
+      line-height: 1.4;
+    }
+    .inner-panel.inner-panel--feature-left .baeksenuri-program-block {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: 2.8mm;
+      margin: 0 0 0.35mm;
+    }
+    .inner-panel.inner-panel--feature-left .baeksenuri-program-brand {
+      flex: 0 0 27mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+    }
+    .inner-panel.inner-panel--feature-left .baeksenuri-program-brand img {
+      width: 100%;
+      max-height: 46mm;
+      height: auto;
+      object-fit: contain;
+      object-position: center top;
+      display: block;
+      border-radius: 2px;
+    }
+    .inner-panel.inner-panel--feature-left .baeksenuri-program-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25mm;
+    }
+    .inner-panel.inner-panel--feature-left .baeksenuri-program-body .inner-meta--baeksenuri {
+      margin: 0 0 0.3mm;
+    }
+    .inner-panel.inner-panel--feature-left .doc-list--feature-programs {
+      margin: 0;
+    }
+    .inner-panel.inner-panel--feature-left .doc-list--feature-programs li {
+      display: block;
+      margin: 0;
+      padding: 0.95mm 0;
+      font-size: 7.25pt;
+      line-height: 1.38;
+      border-bottom: none;
+    }
+    .inner-panel.inner-panel--feature-left .doc-list--feature-programs li::before {
+      display: none;
+    }
+    .inner-panel.inner-panel--feature-left .inner-footbath-lead {
+      margin: 0 0 0.35mm;
+      font-size: 7.85pt;
+      line-height: 1.48;
+      color: var(--ink-soft);
+      text-align: justify;
+      word-break: keep-all;
+    }
+    .inner-footbath-figure {
+      margin: 1mm 0 0;
+    }
+    .inner-footbath-figure img {
+      display: block;
+      width: 100%;
+      max-height: 48mm;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 2px;
+      border: 0.5pt solid rgba(182, 152, 109, 0.38);
+    }
+    .sheet-label {
+      flex: 0 0 auto;
+      width: 100%;
+      font-size: 8pt;
+      color: #888;
+      padding: 4px 8px;
+      background: #eee;
+      text-align: center;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .screen-hint, .sheet-label { display: none !important; }
+      .sheet {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+      .sheet:last-of-type { page-break-after: auto; }
+    }
+
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="screen-hint no-print">
+    <strong>인쇄 방법:</strong> Chrome 또는 Edge에서 <kbd>Ctrl</kbd>+<kbd>P</kbd> → 용지 <strong>A4</strong>, 방향 <strong>가로</strong>, 여백 <strong>없음</strong>, 옵션에서 <strong>배경 그래픽</strong> 켜기.
+    두 페이지가 나오면 1페이지·2페이지를 양면으로 인쇄합니다. 접지 방향은 인쇄소와 맞춰 주세요.
+  </p>
+
+  <!-- ========== 앞면 (바깥 3패널) ========== -->
+  <div class="sheet sheet--front" aria-label="리플릿 앞면">
+    <div class="sheet-label">앞면 (인쇄 시 좌·우 순서는 접지에 따라 바꿀 수 있음)</div>
+    <div class="sheet-panels">
+
+    <!-- FROZEN START: 앞면 좌측 패널 「이용 안내 및 입소 준비물」 — 사용자 명시 없이 수정 금지 -->
+    <section class="panel front-panel">
+      <h2 class="front-section-title">이용 안내 및 입소 준비물</h2>
+      <p class="inner-meta front-panel-meta-line"><strong>입소정원</strong> 49명 · <strong>이용가능등급</strong> 노인장기요양 등급자</p>
+      <h3 class="leaflet-blue-section-title">입소 시 준비 서류</h3>
+      <ul class="doc-list">
+        <li>장기요양인정서(공단 발행)·표준장기요양이용계획서(공단 발행)</li>
+        <li>시설입소용 감염병진단서(결핵, 간염 등)</li>
+        <li>가족관계 증명서(어르신 기준)</li>
+        <li>주민등록등본 또는 주민등록증(각 1통)</li>
+        <li>의사 진단서 또는 소견서·약 처방전 및 개인약(15일분 이상)</li>
+        <li>연계기록지(타 기관 이용 시)·수급권자 증명서 또는 의료급여증</li>
+      </ul>
+      <h3 class="leaflet-blue-section-title">입소 시 준비 물품</h3>
+      <ul class="doc-list">
+        <li>개인 사복(계절별 여벌)·양말, 속옷(내의류 포함)·실내화</li>
+        <li>전기면도기(남자 어르신 해당)·사용 보장구 또는 생활용품(워커 등)</li>
+        <li>평소 좋아하는 소지품 또는 가족사진</li>
+      </ul>
+      <div class="admission-box">
+        <h3>상담·문의</h3>
+        <ul>
+          <li>전화 031-546-3588 (입소 상담)</li>
+          <li>E-mail onsesoldae@naver.com</li>
+        </ul>
+      </div>
+    </section>
+    <!-- FROZEN END: 앞면 좌측 패널 「이용 안내 및 입소 준비물」 -->
+
+    <section class="panel front-center-panel front-center-panel--directions">
+      <h2 class="front-section-title">찾아오시는 길</h2>
+      <div class="directions-map-wrap">
+        <img src="./leaflet-assets/leaflet-directions-map.png" alt="" width="1200" height="800" decoding="async">
+      </div>
+      <div class="directions-body">
+        <div class="directions-block directions-transit-block">
+          <h3>대중교통 이용 시</h3>
+          <div class="directions-sub">
+            <strong>노선버스</strong>
+            <p class="directions-line"><span class="d-mark">-</span>7-2, 25, 27, 300, 300-1, 310, 777, 900, 2007, 3000, 7770</p>
+            <p class="directions-line"><span class="d-mark">-</span>수일여중·대우건설 기술연구원 하차 후 도보 약 8분</p>
+          </div>
+          <div class="directions-sub">
+            <strong>마을버스</strong>
+            <p class="directions-line"><span class="d-mark">-</span>2-1</p>
+            <p class="directions-line"><span class="d-mark">-</span>대우연구소 하차 후 도보 약 2분</p>
+          </div>
+        </div>
+        <div class="directions-block directions-nav-block">
+          <h3>네비게이션 이용 시</h3>
+          <p class="directions-address">경기도 수원시 장안구 수일로117번길 18-2</p>
+          <p class="directions-nav-note">온세솔대요양원</p>
+        </div>
+        <div class="directions-block directions-web-block">
+          <h3>홈페이지 찾아오실 때</h3>
+          <div class="directions-qr-slot">
+            <div class="directions-qr-row">
+              <img class="directions-blog-cap" src="./leaflet-assets/leaflet-blog-cover.png" alt="" width="600" height="400" decoding="async">
+              <img class="directions-qr-img" src="./leaflet-assets/homepage-qr.png" alt="" width="400" height="400" decoding="async">
+            </div>
+            <p class="directions-qr-caption">블로그 · 홈페이지 QR로 소식을 확인하실 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FROZEN END: 앞면 중앙 패널 「찾아오시는 길」 -->
+
+    <!-- FROZEN START: 표지면 section.panel.cover — 사용자 명시 없이 수정 금지. 상단 장기요양보험 로고 → CI → 건물 사진 → 카피·연락처 -->
+    <section class="panel cover">
+      <div class="cover-ltc-badge-row">
+        <img class="cover-ltc-badge" src="./leaflet-assets/longcare-insurance-logo-horizontal.png" alt="노인장기요양보험" width="700" height="152" decoding="async">
+      </div>
+      <div class="cover-stack">
+        <div class="cover-stack-balance cover-stack-balance--top" aria-hidden="true"></div>
+        <div class="cover-hero-cluster">
+          <div class="cover-ci-head">
+            <p class="crest">요양 · 돌봄 · 품격</p>
+            <img class="cover-ci" src="./logo-transparent.png" alt="온세솔대요양원 CI" width="400" height="280" decoding="async">
+          </div>
+          <img class="cover-top-shot" src="./leaflet-assets/leaflet-cover-top.jpg" alt="" width="800" height="500" decoding="async">
+          <div class="cover-mid">
+            <hr class="rule-gold">
+            <p class="tagline">
+              <span class="tagline-line">프리미엄급 최신 시설·전문 돌봄, 집 같은 편안함.</span>
+              <span class="tagline-line">어르신과 가족 모두의 행복을 응원합니다.</span>
+            </p>
+          </div>
+        </div>
+        <div class="cover-stack-balance cover-stack-balance--below" aria-hidden="true"></div>
+        <address class="cover-address">
+          <p><span class="la">주소</span> 수원시 장안구 수일로117번길 18-2</p>
+          <p><span class="la">전화</span> 031-546-3588</p>
+          <p><span class="la">E-mail</span> <a href="mailto:onsesoldae@naver.com">onsesoldae@naver.com</a></p>
+        </address>
+      </div>
+    </section>
+    <!-- FROZEN END: 표지면 -->
+    </div>
+  </div>
+
+  <!-- ========== 뒷면 (안쪽 3패널) ========== -->
+  <div class="sheet sheet--inner" aria-label="리플릿 안쪽">
+    <div class="sheet-label">안쪽 (펼쳤을 때 읽는 순서: 좌 → 중 → 우)</div>
+    <div class="sheet-panels">
+
+    <section class="panel inner-panel inner-panel--feature-left">
+      <h2 class="front-section-title">특화 서비스</h2>
+      <h3 class="leaflet-blue-section-title">맞춤형 케어 시스템</h3>
+      <p class="lead">
+        실버케어 전문가들이 어르신의 개별적인 증상 및 불편한 부위를 확인하고 최적의 서비스를 제공합니다.
+      </p>
+      <div class="baeksenuri-program-block">
+        <div class="baeksenuri-program-brand">
+          <img src="./leaflet-assets/baeksenuri-program-logo.png" alt="백세누리 Connect Play Senior" width="400" height="320" decoding="async">
+        </div>
+        <div class="baeksenuri-program-body">
+          <p class="inner-meta inner-meta--baeksenuri"><strong>백세누리</strong> 프로그램</p>
+          <ul class="doc-list doc-list--feature-programs">
+            <li><strong>오감나무</strong> 오감체험을 통한 심리안정 프로그램입니다.</li>
+            <li><strong>인지수</strong> 실버브레인 프로그램으로, 치매 예방 및 인지 기능 유지에 중점을 둡니다.</li>
+            <li><strong>소리샘</strong> 음악 요법·합창 등 마음 회복 프로그램입니다.</li>
+            <li><strong>아트팜</strong> 영화 스토리텔링·미술 테라피를 통한 자존감 회복 프로그램입니다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="leaflet-blue-section-title">족욕 서비스</h3>
+      <p class="inner-footbath-lead">
+        어르신의 신진대사 기능 촉진 및 체내 노폐물 배출과 불면증 개선 등 스트레스를 완화시킬 수 있도록 반신욕 및 족욕 시설을 보유합니다.
+      </p>
+      <figure class="inner-footbath-figure">
+        <img src="./leaflet-assets/leaflet-footbath-photo.png" alt="족욕 시설" width="900" height="700" decoding="async">
+      </figure>
+    </section>
+
+    <section class="panel inner-panel inner-panel--services">
+      <img class="inner-thumb" src="./leaflet-assets/leaflet-inner-b.jpg" alt="" width="600" height="400" decoding="async">
+      <div class="inner-inline-photos">
+        <img class="img-footbath" src="./leaflet-assets/leaflet-footbath.png" alt="족욕 시설" width="386" height="283" decoding="async">
+        <img src="./leaflet-assets/leaflet-scene-6Ww.jpg" alt="시설 풍경" width="400" height="300" decoding="async">
+      </div>
+      <h2>특화 서비스</h2>
+      <ul class="service-list service-list--pptx">
+        <li>
+          <strong>맞춤형 케어 시스템</strong>
+          실버케어 전문가가 어르신의 개별 증상 및 불편 부위를 확인하고 최적의 서비스를 제공합니다.
+        </li>
+        <li>
+          <strong>오감·심리 프로그램</strong>
+          어릴 때 뛰어놀던 자연을 배경으로 한 오감체험 중심의 자신감 부여·심리안정 프로그램을 운영합니다.
+        </li>
+        <li>
+          <strong>실버브레인</strong>
+          뇌건강을 위한 인지수업으로 치매 예방과 기능 유지에 중점을 둡니다.
+        </li>
+        <li>
+          <strong>음악·마음 회복</strong>
+          생애주기별 음악 요법, 솔루션 기반 마음회복 프로그램을 제공합니다.
+        </li>
+        <li>
+          <strong>영화·미술 테라피</strong>
+          영화감상 스토리텔링, 자존감 회복 심리치유 미술 테라피 프로그램입니다.
+        </li>
+        <li>
+          <strong>선진 족욕 시스템</strong>
+          해외 운영 노하우를 바탕으로 한 차별화된 요양 시스템, 반신욕 및 족욕 시설로 신진대사 촉진·노폐물 배출·불면 완화 등을 돕습니다.
+        </li>
+        <li>
+          <strong>재활특화 실버케어센터</strong>
+          「워크메이트」 맞춤형 재활 전문 운동기구로 재활 운동을 실시합니다.
+        </li>
+        <li>
+          <strong>ASFR 재활</strong>
+          Active Standing &amp; Functional Rehabilitation — 적극적 참여 기반 재활, 전신 협응을 통한 복합 재활 접근입니다.
+        </li>
+        <li>
+          <strong>체계적 식단 관리</strong>
+          GAP·친환경·천연 조미·저염 조리(레몬·오렌지즙 등)로 식단을 관리합니다.
+        </li>
+        <li>
+          <strong>맞춤 돌봄 · 위생</strong>
+          목욕·이미용·구강 등 위생 관리, 의복·침구 관리, 레크레이션·위문·기념 행사를 제공합니다.
+        </li>
+        <li>
+          <strong>안심가득 서비스</strong>
+          전용 밴드·수시 업로드, 분기·수시 개별상담(어르신 및 보호자)을 진행합니다.
+        </li>
+        <li>
+          <strong>전문 간호 · 의료 연계</strong>
+          촉탁의사·간호 상주, 투약·식이·욕창·응급·병원 연계, 작업·재활·체조·인지·심리 지원과 실버케어 전문가 소통을 제공합니다.
+        </li>
+      </ul>
+    </section>
+
+    <section class="panel inner-panel inner-panel--dense">
+      <img class="inner-thumb inner-back-hero" src="./leaflet-assets/leaflet-inner-a.jpg" alt="" width="600" height="400" decoding="async">
+      <h2>입소 안내</h2>
+      <h3>입소 시 준비 서류</h3>
+      <ul class="doc-list">
+        <li>장기요양인정서(공단 발행)·표준장기요양이용계획서(공단 발행)</li>
+        <li>시설입소용 감염병진단서(결핵·간염 등)</li>
+        <li>가족관계증명서(어르신 기준)</li>
+        <li>주민등록등본 또는 주민등록증(각 1통)</li>
+        <li>의사 진단서 또는 소견서·약 처방전 및 개인약(15일분 이상)</li>
+        <li>연계기록지(타 기관 이용 시)·수급권자 증명서 또는 의료급여증</li>
+      </ul>
+      <h3>입소 시 준비 물품</h3>
+      <ul class="doc-list">
+        <li>개인 사복(계절별 여벌), 양말·속옷(내의 포함), 실내화</li>
+        <li>전기면도기(해당 어르신), 사용 보장구·생활용품(워커 등)</li>
+        <li>평소 소지품·가족사진 등</li>
+      </ul>
+      <h3>오시는 길</h3>
+      <div class="route-lines">
+        <span class="r-label">시내버스</span>
+        7-2, 25, 27, 300, 300-1, 310, 777, 900, 2007, 3000, 7770 — 수일여중·대우건설기술연구원 하차 후 도보 약 8분<br>
+        <span class="r-label" style="margin-top:2mm;">마을버스</span>
+        2-1 — 대우연구소 하차 후 도보 약 2분
+      </div>
+      <p style="font-size:7.9pt; margin:0 0 2.5mm; color:var(--ink-soft);">네비 검색: 경기도 수원시 장안구 수일로117번길 18-2</p>
+      <div class="admission-box">
+        <h3>상담 및 문의</h3>
+        <ul>
+          <li>전화 031-546-3588 (입소 상담)</li>
+          <li>이메일 onsesoldae@naver.com</li>
+          <li>웹 blue607426806.imweb.me</li>
+        </ul>
+      </div>
+      <p class="footnote-inner">홈페이지 QR코드 및 실시간 소식은 웹사이트에서 확인해 주세요.</p>
+    </section>
+    </div>
+  </div>
+
+</body>
+</html>
