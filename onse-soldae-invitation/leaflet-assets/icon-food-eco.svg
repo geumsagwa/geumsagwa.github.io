@@ -1,0 +1,6 @@
+﻿<!-- 안쪽 가운데 패널 식단 블록 친환경 아이콘 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+  <path fill="#5aad6e" d="M16 4c-4 5-7 9.5-7 14.5a7 7 0 1 0 14 0C23 13.5 20 9 16 4z"/>
+  <path fill="#7ec88a" d="M16 9c-2 2.5-4 5.5-4 9a4 4 0 1 0 8 0c0-3.5-2-6.5-4-9z" opacity=".55"/>
+  <path fill="none" stroke="#6b4e2e" stroke-width="1.2" stroke-linecap="round" d="M16 10v14"/>
+</svg>

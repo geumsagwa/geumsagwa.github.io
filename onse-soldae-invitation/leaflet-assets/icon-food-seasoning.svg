@@ -1,0 +1,8 @@
+﻿<!-- 안쪽 가운데 패널 식단 블록 천연조미 아이콘 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+  <ellipse cx="16" cy="22" rx="10" ry="5.5" fill="#da87b4" opacity=".35"/>
+  <ellipse cx="16" cy="20" rx="8.5" ry="4.5" fill="#f4e8c1" stroke="#b6986d" stroke-width="1"/>
+  <circle cx="12" cy="11" r="3.5" fill="#7ec88a"/>
+  <circle cx="19" cy="9" r="2.8" fill="#39b1dc"/>
+  <circle cx="21" cy="15" r="2.5" fill="#da87b4"/>
+</svg>

@@ -1,0 +1,6 @@
+﻿<!-- 안쪽 가운데 패널 식단 블록 저염조리 아이콘 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+  <circle cx="15" cy="17" r="10" fill="#ffe566" stroke="#e8b020" stroke-width="1.2"/>
+  <path fill="#fff8dc" d="M10 18c2.5-4 6.5-7 11-8 .8 3-.5 7.5-3 11-5 .5-8-1.5-8-3z" opacity=".9"/>
+  <ellipse cx="13" cy="13" rx="2" ry="3.5" fill="#fff8dc" opacity=".65"/>
+</svg>
