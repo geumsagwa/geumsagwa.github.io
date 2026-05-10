@@ -9,8 +9,8 @@
     인쇄: Chrome/Edge → 인쇄 → 용지 A4, 방향 가로, 여백 없음, «배경 그래픽» 켜기.
     족욕 사진: leaflet-footbath-photo.png (원본 OneDrive\…\족욕사진.png).
     백세누리 블록: 상단 전폭 제목 → 아래 단에서 로고(baeksenuri-program-logo.png) 좌·항목(icon-baek-*.svg) 우.
-    안쪽 가운데 패널: asfr-workmate-rehab.jpg, natural-food-logo.png, icon-food-*.svg(식단 항목).
-  -->
+    식단(네츄럴 푸드): 백세누리와 동일 리듬 — lead → 메타 박스 → 좌 로고(세로 가운데)·우 항목.icon-food-*.svg.
+    안쪽 우측 패널(.inner-panel--living-housing): 생활 주거 서비스·맞춤돌봄·실버케어 전문가·안심가득 서비스.
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
@@ -772,10 +772,14 @@
       color: var(--ink-soft);
     }
     .inner-meta strong { color: var(--ink); }
-    /* 안쪽 면: 일반 p 규칙보다 구체적으로 메타 박스 배경·세로줄 고정 */
-    .sheet--inner .inner-panel p.inner-meta.inner-meta--baeksenuri {
-      background: rgba(57, 177, 220, 0.08);
-      border-left: 3px solid var(--blue);
+    /* 안쪽 면 메타 박스: p 단락 규칙과 분리(div)·배경·세로줄 명시 */
+    .sheet--inner .inner-panel .inner-meta.inner-meta--baeksenuri {
+      display: block;
+      background-color: rgba(57, 177, 220, 0.2);
+      border-left: 4px solid var(--blue);
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -923,7 +927,8 @@
       background: var(--cream);
     }
     .inner-panel.inner-panel--feature-left > h2.front-section-title,
-    .inner-panel.inner-panel--services-detail > h2.front-section-title {
+    .inner-panel.inner-panel--services-detail > h2.front-section-title,
+    .inner-panel.inner-panel--living-housing > h2.front-section-title {
       margin: 0 0 0.55mm;
       padding-bottom: 1.35mm;
       font-size: 10.25pt;
@@ -934,7 +939,8 @@
       letter-spacing: -0.02em;
     }
     .inner-panel.inner-panel--feature-left h3.leaflet-blue-section-title,
-    .inner-panel.inner-panel--services-detail h3.leaflet-blue-section-title {
+    .inner-panel.inner-panel--services-detail h3.leaflet-blue-section-title,
+    .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title {
       font-family: "Noto Serif KR", serif;
       font-size: 7.35pt;
       font-weight: 600;
@@ -945,18 +951,81 @@
       letter-spacing: inherit;
     }
     .inner-panel.inner-panel--feature-left h3.leaflet-blue-section-title:first-of-type,
-    .inner-panel.inner-panel--services-detail h3.leaflet-blue-section-title:first-of-type {
+    .inner-panel.inner-panel--services-detail h3.leaflet-blue-section-title:first-of-type,
+    .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title:first-of-type {
       margin-top: 0;
     }
-    .inner-panel.inner-panel--services-detail h3.leaflet-blue-section-title ~ h3.leaflet-blue-section-title {
+    .inner-panel.inner-panel--services-detail h3.leaflet-blue-section-title ~ h3.leaflet-blue-section-title,
+    .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title ~ h3.leaflet-blue-section-title {
       margin-top: 1.25mm;
+    }
+
+    /* 안쪽 오른쪽 패널: 생활 주거 서비스 */
+    .inner-panel.inner-panel--living-housing {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45mm;
+      background: var(--cream);
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-kicker {
+      margin: 0 0 0.55mm;
+      font-size: 8.45pt;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: -0.03em;
+      line-height: 1.38;
+      font-family: "Noto Sans KR", system-ui, sans-serif;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-lead {
+      margin: 0 0 0.92mm;
+      font-size: 7.52pt;
+      line-height: 1.74;
+      color: var(--ink-soft);
+      text-align: justify;
+      word-break: keep-all;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-block {
+      margin: 0 0 0.08mm;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-sublabel {
+      margin: 0 0 0.3mm;
+      font-size: 7.52pt;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.42;
+      font-family: "Noto Sans KR", system-ui, sans-serif;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-midot-list {
+      list-style: none;
+      margin: 0 0 0.38mm;
+      padding: 0 0 0 2.6mm;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-midot-list li {
+      position: relative;
+      padding: 0.12mm 0 0.12mm 3.05mm;
+      font-size: 7.08pt;
+      line-height: 1.74;
+      color: var(--ink-soft);
+      text-align: justify;
+      word-break: keep-all;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-midot-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-midot-list + .living-housing-sublabel {
+      margin-top: 0.58mm;
     }
 
     /* 안쪽 가운데 패널: 재활특화 실버케어 · 체계적 식단관리 상세 */
     .inner-panel.inner-panel--services-detail {
       display: flex;
       flex-direction: column;
-      gap: 1.2mm;
+      gap: 1.38mm;
     }
     .inner-panel.inner-panel--services-detail .services-photo-figure {
       margin: 0.35mm 0 0;
@@ -978,37 +1047,57 @@
       text-align: center;
       word-break: keep-all;
     }
-    .inner-panel.inner-panel--services-detail .services-food-two-col {
+    /* 식단 블록: 백세누리 프로그램과 동일 리듬(메타 → 로고·본문 2단, 로고 세로 가운데) */
+    .inner-panel.inner-panel--services-detail .services-food-program-block {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      margin: 0 0 0.15mm;
+    }
+    .inner-panel.inner-panel--services-detail .services-food-program-block > .inner-meta--baeksenuri {
+      margin: 0 0 0.4mm;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .inner-panel.inner-panel--services-detail .services-food-program-columns {
       display: flex;
       flex-direction: row;
-      align-items: flex-start;
-      gap: 2.2mm;
-      margin-top: 0.35mm;
+      align-items: stretch;
+      gap: 2.4mm;
     }
-    .inner-panel.inner-panel--services-detail .services-food-brand {
-      flex: 0 0 22mm;
+    .inner-panel.inner-panel--services-detail .services-food-program-brand {
+      flex: 0 0 27mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
     }
-    .inner-panel.inner-panel--services-detail .services-food-brand img {
+    .inner-panel.inner-panel--services-detail .services-food-program-brand img {
       display: block;
       width: 100%;
+      max-height: 46mm;
       height: auto;
       object-fit: contain;
+      object-position: center center;
+      border-radius: 2px;
     }
-    .inner-panel.inner-panel--services-detail .services-food-points {
+    .inner-panel.inner-panel--services-detail .services-food-program-body {
       flex: 1;
       min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15mm;
+      padding-top: 0.15mm;
     }
     .inner-panel.inner-panel--services-detail .services-food-point {
-      margin: 0 0 0.95mm;
-    }
-    .inner-panel.inner-panel--services-detail .services-food-point:last-child {
-      margin-bottom: 0;
+      margin: 0;
     }
     .inner-panel.inner-panel--services-detail .services-food-point-head {
       display: flex;
       align-items: center;
-      gap: 1.5mm;
-      margin: 0 0 0.25mm;
+      gap: 1.65mm;
+      margin: 0 0 0.48mm;
     }
     .inner-panel.inner-panel--services-detail .services-food-point-head .services-food-ico {
       flex-shrink: 0;
@@ -1027,18 +1116,18 @@
       margin: 0;
       padding: 0 0 0 6.3mm;
       font-size: 7pt;
-      line-height: 1.52;
+      line-height: 1.82;
       color: var(--ink-soft);
     }
     .inner-panel.inner-panel--services-detail .services-food-sublist li {
       position: relative;
-      padding: 0.12mm 0;
+      padding: 0.38mm 0;
     }
     .inner-panel.inner-panel--services-detail .services-food-sublist li::before {
       content: "";
       position: absolute;
       left: -4mm;
-      top: 0.55em;
+      top: 0.62em;
       width: 1.3mm;
       height: 1.3mm;
       background: var(--pink);
@@ -1053,14 +1142,22 @@
       font-size: 7.85pt;
       line-height: 1.99;
     }
+    .inner-panel.inner-panel--services-detail .lead {
+      margin: 0 0 0.45mm;
+      font-size: 7.85pt;
+      line-height: 1.99;
+    }
     .inner-panel.inner-panel--feature-left .inner-meta--baeksenuri,
     .inner-panel.inner-panel--services-detail .inner-meta--baeksenuri {
       margin: 0 0 0.35mm;
       padding: 1.45mm 2.2mm;
       font-size: 7.85pt;
       line-height: 1.92;
-      background: rgba(57, 177, 220, 0.08);
-      border-left: 3px solid var(--blue);
+      background-color: rgba(57, 177, 220, 0.2);
+      border-left: 4px solid var(--blue);
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
       box-sizing: border-box;
     }
     .inner-panel.inner-panel--feature-left .baeksenuri-program-block {
@@ -1303,7 +1400,7 @@
         실버케어 전문가들이 어르신의 개별적인 증상 및 불편한 부위를 확인하고 최적의 서비스를 제공합니다.
       </p>
       <div class="baeksenuri-program-block">
-        <p class="inner-meta inner-meta--baeksenuri"><strong>백세누리</strong> 프로그램</p>
+        <div class="inner-meta inner-meta--baeksenuri"><strong>백세누리</strong> 프로그램</div>
         <div class="baeksenuri-program-columns">
           <div class="baeksenuri-program-brand">
             <img src="./leaflet-assets/baeksenuri-program-logo.png" alt="백세누리 Connect Play Senior" width="400" height="320" decoding="async">
@@ -1344,7 +1441,7 @@
       <h2 class="front-section-title">특화 서비스</h2>
 
       <h3 class="leaflet-blue-section-title">재활특화 실버케어</h3>
-      <p class="inner-meta inner-meta--baeksenuri"><strong>ASFR</strong>(Active Standing &amp; Function Recovery) 요양 서비스</p>
+      <div class="inner-meta inner-meta--baeksenuri"><strong>ASFR</strong>(Active Standing &amp; Function Recovery) 요양 서비스</div>
       <p>
         환자의 적극적인 참여를 통해 재활치료의 효과를 더 높일 수 있는 신개념 재활 치료법입니다.
       </p>
@@ -1360,12 +1457,14 @@
       </p>
 
       <h3 class="leaflet-blue-section-title">체계적인 식단관리</h3>
-      <p class="inner-meta inner-meta--baeksenuri">건강한 식재료에 정성을 다한 정직한 식사</p>
-      <div class="services-food-two-col">
-        <div class="services-food-brand">
-          <img src="./leaflet-assets/natural-food-logo.png" alt="네츄럴 푸드 로고" width="240" height="200" decoding="async">
-        </div>
-        <div class="services-food-points">
+      <p class="lead">건강한 식재료에 정성을 다한 정직한 식사</p>
+      <div class="services-food-program-block">
+        <div class="inner-meta inner-meta--baeksenuri"><strong>네츄럴 푸드</strong> 식자재 공급</div>
+        <div class="services-food-program-columns">
+          <div class="services-food-program-brand">
+            <img src="./leaflet-assets/natural-food-logo.png" alt="네츄럴 푸드 로고" width="240" height="200" decoding="async">
+          </div>
+          <div class="services-food-program-body">
           <div class="services-food-point">
             <div class="services-food-point-head">
               <img class="services-food-ico" src="./leaflet-assets/icon-food-eco.svg" alt="" width="32" height="32" decoding="async">
@@ -1396,45 +1495,52 @@
               <li>소금 대신 레몬, 오렌지 즙 등 천연 재료를 활용한 저염 조리법</li>
             </ul>
           </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="panel inner-panel inner-panel--dense">
-      <img class="inner-thumb inner-back-hero" src="./leaflet-assets/leaflet-inner-a.jpg" alt="" width="600" height="400" decoding="async">
-      <h2>입소 안내</h2>
-      <h3>입소 시 준비 서류</h3>
-      <ul class="doc-list">
-        <li>장기요양인정서(공단 발행)·표준장기요양이용계획서(공단 발행)</li>
-        <li>시설입소용 감염병진단서(결핵·간염 등)</li>
-        <li>가족관계증명서(어르신 기준)</li>
-        <li>주민등록등본 또는 주민등록증(각 1통)</li>
-        <li>의사 진단서 또는 소견서·약 처방전 및 개인약(15일분 이상)</li>
-        <li>연계기록지(타 기관 이용 시)·수급권자 증명서 또는 의료급여증</li>
-      </ul>
-      <h3>입소 시 준비 물품</h3>
-      <ul class="doc-list">
-        <li>개인 사복(계절별 여벌), 양말·속옷(내의 포함), 실내화</li>
-        <li>전기면도기(해당 어르신), 사용 보장구·생활용품(워커 등)</li>
-        <li>평소 소지품·가족사진 등</li>
-      </ul>
-      <h3>오시는 길</h3>
-      <div class="route-lines">
-        <span class="r-label">시내버스</span>
-        7-2, 25, 27, 300, 300-1, 310, 777, 900, 2007, 3000, 7770 — 수일여중·대우건설기술연구원 하차 후 도보 약 8분<br>
-        <span class="r-label" style="margin-top:2mm;">마을버스</span>
-        2-1 — 대우연구소 하차 후 도보 약 2분
-      </div>
-      <p style="font-size:7.9pt; margin:0 0 1.55mm; color:var(--ink-soft);">네비 검색: 경기도 수원시 장안구 수일로117번길 18-2</p>
-      <div class="admission-box">
-        <h3>상담 및 문의</h3>
-        <ul>
-          <li>전화 031-546-3588 (입소 상담)</li>
-          <li>이메일 onsesoldae@naver.com</li>
-          <li>웹 blue607426806.imweb.me</li>
+    <section class="panel inner-panel inner-panel--living-housing">
+      <h2 class="front-section-title">생활 주거 서비스</h2>
+      <p class="living-housing-kicker">선진국형 노인요양시스템</p>
+      <p class="living-housing-lead">
+        우리보다 노인요양 서비스의 역사가 오랜 해외에서의 경험과 검증된 노하우를 바탕으로 차별화된 요양시스템 적용
+      </p>
+
+      <h3 class="leaflet-blue-section-title">맞춤돌봄 서비스</h3>
+      <div class="living-housing-block">
+        <p class="living-housing-sublabel">위생관리</p>
+        <ul class="living-housing-midot-list">
+          <li>목욕, 이미용, 면도, 손발톱 정리, 구강관리 등</li>
+          <li>의복 및 침구 관리</li>
         </ul>
       </div>
-      <p class="footnote-inner">홈페이지 QR코드 및 실시간 소식은 웹사이트에서 확인해 주세요.</p>
+
+      <h3 class="leaflet-blue-section-title">숙련된 실버케어 전문가</h3>
+      <div class="living-housing-block">
+        <p class="living-housing-sublabel">의료</p>
+        <ul class="living-housing-midot-list">
+          <li>전문간호 서비스</li>
+          <li>촉탁의사 왕진, 간호 전문인력 상주</li>
+          <li>투약 관리, 식이 관리, 욕창 관리</li>
+          <li>응급처치 및 신속한 병원이동</li>
+        </ul>
+        <p class="living-housing-sublabel">기능회복</p>
+        <ul class="living-housing-midot-list">
+          <li>전문인력 작업치료 및 재활운동</li>
+          <li>건강체조 및 산책</li>
+          <li>인지활동 및 심리상담</li>
+        </ul>
+      </div>
+
+      <h3 class="leaflet-blue-section-title">안심가득 서비스</h3>
+      <div class="living-housing-block">
+        <p class="living-housing-sublabel">소통</p>
+        <ul class="living-housing-midot-list">
+          <li>전용 밴드 운영 및 수시 업로드</li>
+          <li>분기별 및 수시 개별상담 (어르신 및 보호자)</li>
+        </ul>
+      </div>
     </section>
     </div>
   </div>
