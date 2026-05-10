@@ -8,7 +8,7 @@
   <!--
     인쇄: Chrome/Edge → 인쇄 → 용지 A4, 방향 가로, 여백 없음, «배경 그래픽» 켜기.
     족욕 사진: leaflet-footbath-photo.png (원본 OneDrive\…\족욕사진.png).
-    백세누리 블록: leaflet-assets/baeksenuri-program-logo.png(좌) + 프로그램 목록(우, 항목별 leaflet-assets/icon-baek-*.svg).
+    백세누리 블록: 상단 전폭 제목 → 아래 단에서 로고(baeksenuri-program-logo.png) 좌·항목(icon-baek-*.svg) 우.
     접지 순서는 인쇄소와 한 번 확인하는 것이 안전합니다. 화면은 «앞면 3칸 → 뒷면 3칸» 순입니다.
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -896,10 +896,21 @@
     }
     .inner-panel.inner-panel--feature-left .baeksenuri-program-block {
       display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      margin: 0 0 0.35mm;
+    }
+    .inner-panel.inner-panel--feature-left .baeksenuri-program-block > .inner-meta--baeksenuri {
+      margin: 0 0 0.55mm;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .inner-panel.inner-panel--feature-left .baeksenuri-program-columns {
+      display: flex;
       flex-direction: row;
       align-items: stretch;
       gap: 2.8mm;
-      margin: 0 0 0.35mm;
     }
     .inner-panel.inner-panel--feature-left .baeksenuri-program-brand {
       flex: 0 0 27mm;
@@ -922,10 +933,7 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.25mm;
-    }
-    .inner-panel.inner-panel--feature-left .baeksenuri-program-body .inner-meta--baeksenuri {
-      margin: 0 0 0.3mm;
+      gap: 0;
     }
     .inner-panel.inner-panel--feature-left .doc-list--feature-programs {
       margin: 0;
@@ -1126,29 +1134,31 @@
         실버케어 전문가들이 어르신의 개별적인 증상 및 불편한 부위를 확인하고 최적의 서비스를 제공합니다.
       </p>
       <div class="baeksenuri-program-block">
-        <div class="baeksenuri-program-brand">
-          <img src="./leaflet-assets/baeksenuri-program-logo.png" alt="백세누리 Connect Play Senior" width="400" height="320" decoding="async">
-        </div>
-        <div class="baeksenuri-program-body">
-          <p class="inner-meta inner-meta--baeksenuri"><strong>백세누리</strong> 프로그램</p>
-          <ul class="doc-list doc-list--feature-programs">
-            <li>
-              <img class="program-ico-img" src="./leaflet-assets/icon-baek-ogam-tree.svg" alt="" width="32" height="32" decoding="async">
-              <span class="program-li-body"><strong>오감나무</strong> 오감체험을 통한 심리안정 프로그램입니다.</span>
-            </li>
-            <li>
-              <img class="program-ico-img" src="./leaflet-assets/icon-baek-jigi-water.svg" alt="" width="32" height="32" decoding="async">
-              <span class="program-li-body"><strong>인지수</strong> 실버브레인 프로그램으로, 치매 예방 및 인지 기능 유지에 중점을 둡니다.</span>
-            </li>
-            <li>
-              <img class="program-ico-img" src="./leaflet-assets/icon-baek-sori-music.svg" alt="" width="32" height="32" decoding="async">
-              <span class="program-li-body"><strong>소리샘</strong> 음악 요법·합창 등 마음 회복 프로그램입니다.</span>
-            </li>
-            <li>
-              <img class="program-ico-img" src="./leaflet-assets/icon-baek-art-sparkle.svg" alt="" width="32" height="32" decoding="async">
-              <span class="program-li-body"><strong>아트팜</strong> 영화 스토리텔링·미술 테라피를 통한 자존감 회복 프로그램입니다.</span>
-            </li>
-          </ul>
+        <p class="inner-meta inner-meta--baeksenuri"><strong>백세누리</strong> 프로그램</p>
+        <div class="baeksenuri-program-columns">
+          <div class="baeksenuri-program-brand">
+            <img src="./leaflet-assets/baeksenuri-program-logo.png" alt="백세누리 Connect Play Senior" width="400" height="320" decoding="async">
+          </div>
+          <div class="baeksenuri-program-body">
+            <ul class="doc-list doc-list--feature-programs">
+              <li>
+                <img class="program-ico-img" src="./leaflet-assets/icon-baek-ogam-tree.svg" alt="" width="32" height="32" decoding="async">
+                <span class="program-li-body"><strong>오감나무</strong> 오감체험을 통한 심리안정 프로그램입니다.</span>
+              </li>
+              <li>
+                <img class="program-ico-img" src="./leaflet-assets/icon-baek-jigi-water.svg" alt="" width="32" height="32" decoding="async">
+                <span class="program-li-body"><strong>인지수</strong> 실버브레인 프로그램으로, 치매 예방 및 인지 기능 유지에 중점을 둡니다.</span>
+              </li>
+              <li>
+                <img class="program-ico-img" src="./leaflet-assets/icon-baek-sori-music.svg" alt="" width="32" height="32" decoding="async">
+                <span class="program-li-body"><strong>소리샘</strong> 음악 요법·합창 등 마음 회복 프로그램입니다.</span>
+              </li>
+              <li>
+                <img class="program-ico-img" src="./leaflet-assets/icon-baek-art-sparkle.svg" alt="" width="32" height="32" decoding="async">
+                <span class="program-li-body"><strong>아트팜</strong> 영화 스토리텔링·미술 테라피를 통한 자존감 회복 프로그램입니다.</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
