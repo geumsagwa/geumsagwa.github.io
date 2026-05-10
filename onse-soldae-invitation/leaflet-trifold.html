@@ -82,7 +82,7 @@
 
     /* 안쪽 면: 패널 패딩만 소폭 축소(사진 확대로 빈칸 채우지 않음) */
     .sheet--inner .sheet-panels > .panel {
-      padding: 10mm 9mm 8mm;
+      padding: 10mm 9mm 6.75mm;
     }
 
     .panel--bleed {
@@ -681,10 +681,6 @@
       height: 22mm;
       margin-bottom: 1.45mm;
     }
-
-    .sheet--inner .inner-panel--services .service-list--pptx li {
-      padding: 1.35mm 0 1.35mm 4mm;
-    }
     .inner-panel {
       background: var(--cream);
     }
@@ -712,19 +708,54 @@
       word-break: keep-all;
       line-height: 1.52;
     }
-    /* 안쪽 면 공통: 소제목(h2/h3)·단락(p) 사이 여백만 조정 */
+    /* 안쪽 면: 소제목·단락·목록 줄간격·브록 간격 소폭 타이트 */
     .sheet--inner .inner-panel h2 {
-      margin: 0 0 2.35mm;
-      padding-bottom: 1.65mm;
+      margin: 0 0 2.05mm;
+      padding-bottom: 1.5mm;
     }
     .sheet--inner .inner-panel h3 {
-      margin: 2.45mm 0 1.45mm;
+      margin: 2.15mm 0 1.25mm;
     }
     .sheet--inner .inner-panel h3:first-of-type {
       margin-top: 0;
     }
     .sheet--inner .inner-panel p {
-      margin: 0 0 2.1mm;
+      margin: 0 0 1.85mm;
+      line-height: 1.46;
+    }
+    .sheet--inner .inner-panel .service-list:not(.service-list--pptx) li {
+      line-height: 1.38;
+      padding: 1.95mm 0 1.95mm 4.5mm;
+    }
+    .sheet--inner .inner-panel .service-list strong {
+      margin-bottom: 0.45mm;
+    }
+    .sheet--inner .inner-panel .service-list--pptx li {
+      line-height: 1.36;
+      padding: 1.15mm 0 1.15mm 4mm;
+    }
+    .sheet--inner .inner-panel .doc-list li {
+      line-height: 1.36;
+      padding: 1.5mm 0 1.5mm 3.8mm;
+    }
+    .sheet--inner .inner-panel--dense .route-lines {
+      line-height: 1.42;
+      padding: 1.85mm 2.5mm;
+      margin: 0 0 1.25mm;
+    }
+    .sheet--inner .inner-panel--dense .route-lines .r-label {
+      margin-bottom: 1.15mm;
+    }
+    .sheet--inner .inner-panel--dense .admission-box {
+      margin-top: 1.45mm;
+      padding: 2.15mm 3mm;
+    }
+    .sheet--inner .inner-panel--dense .admission-box ul {
+      line-height: 1.4;
+    }
+    .sheet--inner .inner-panel--dense .footnote-inner {
+      line-height: 1.38;
+      margin-top: 1.15mm;
     }
     .inner-panel .lead {
       font-size: 9pt;
@@ -847,10 +878,6 @@
       background: rgba(218, 135, 180, 0.07);
       border-radius: 2px;
     }
-    .sheet--inner .inner-panel--dense .route-lines {
-      margin: 0 0 1.45mm;
-      padding: 2mm 2.6mm;
-    }
     .route-lines .r-label {
       display: block;
       font-weight: 700;
@@ -869,9 +896,6 @@
     .sheet--inner .inner-panel--dense h3 {
       margin: 2.1mm 0 1.15mm;
     }
-    .sheet--inner .inner-panel--dense .footnote-inner {
-      margin-top: 1.35mm;
-    }
     .inner-panel--dense .admission-box ul {
       font-size: 8pt;
     }
@@ -888,7 +912,7 @@
     .inner-panel.inner-panel--feature-left {
       display: flex;
       flex-direction: column;
-      gap: 1.85mm;
+      gap: 1.65mm;
       background: var(--cream);
     }
     .inner-panel.inner-panel--feature-left > h2.front-section-title {
@@ -920,13 +944,13 @@
     .inner-panel.inner-panel--feature-left .lead {
       margin: 0 0 0.35mm;
       font-size: 7.85pt;
-      line-height: 1.48;
+      line-height: 1.42;
     }
     .inner-panel.inner-panel--feature-left .inner-meta--baeksenuri {
       margin: 0 0 0.35mm;
       padding: 1.45mm 2.2mm;
       font-size: 7.85pt;
-      line-height: 1.4;
+      line-height: 1.34;
     }
     .inner-panel.inner-panel--feature-left .baeksenuri-program-block {
       display: flex;
@@ -979,7 +1003,7 @@
       margin: 0;
       padding: 0.55mm 0;
       font-size: 7.25pt;
-      line-height: 1.38;
+      line-height: 1.34;
       border-bottom: none;
     }
     .inner-panel.inner-panel--feature-left .doc-list--feature-programs li::before {
@@ -1000,7 +1024,7 @@
     .inner-panel.inner-panel--feature-left .inner-footbath-lead {
       margin: 0 0 0.35mm;
       font-size: 7.85pt;
-      line-height: 1.48;
+      line-height: 1.42;
       color: var(--ink-soft);
       text-align: justify;
       word-break: keep-all;
