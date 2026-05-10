@@ -708,7 +708,7 @@
       word-break: keep-all;
       line-height: 1.52;
     }
-    /* 안쪽 면: 소제목·단락·목록 — 줄간격(line-height)을 넓혀 본문 세로 분량을 늘리고 하단 빈 여백 완화 */
+    /* 안쪽 면 줄간격: 필요 시 lh_new = lh + 0.7×(lh−1) 로 여유분만 확대 */
     .sheet--inner .inner-panel h2 {
       margin: 0 0 2.05mm;
       padding-bottom: 1.5mm;
@@ -721,25 +721,25 @@
     }
     .sheet--inner .inner-panel p {
       margin: 0 0 1.85mm;
-      line-height: 1.58;
+      line-height: 2.09;
     }
     .sheet--inner .inner-panel .service-list:not(.service-list--pptx) li {
-      line-height: 1.5;
+      line-height: 1.95;
       padding: 1.95mm 0 1.95mm 4.5mm;
     }
     .sheet--inner .inner-panel .service-list strong {
       margin-bottom: 0.45mm;
     }
     .sheet--inner .inner-panel .service-list--pptx li {
-      line-height: 1.52;
+      line-height: 1.99;
       padding: 1.15mm 0 1.15mm 4mm;
     }
     .sheet--inner .inner-panel .doc-list li {
-      line-height: 1.5;
+      line-height: 1.95;
       padding: 1.5mm 0 1.5mm 3.8mm;
     }
     .sheet--inner .inner-panel--dense .route-lines {
-      line-height: 1.52;
+      line-height: 1.99;
       padding: 1.85mm 2.5mm;
       margin: 0 0 1.25mm;
     }
@@ -751,10 +751,10 @@
       padding: 2.15mm 3mm;
     }
     .sheet--inner .inner-panel--dense .admission-box ul {
-      line-height: 1.52;
+      line-height: 1.99;
     }
     .sheet--inner .inner-panel--dense .footnote-inner {
-      line-height: 1.48;
+      line-height: 1.92;
       margin-top: 1.15mm;
     }
     .inner-panel .lead {
@@ -944,13 +944,13 @@
     .inner-panel.inner-panel--feature-left .lead {
       margin: 0 0 0.35mm;
       font-size: 7.85pt;
-      line-height: 1.52;
+      line-height: 1.99;
     }
     .inner-panel.inner-panel--feature-left .inner-meta--baeksenuri {
       margin: 0 0 0.35mm;
       padding: 1.45mm 2.2mm;
       font-size: 7.85pt;
-      line-height: 1.48;
+      line-height: 1.92;
     }
     .inner-panel.inner-panel--feature-left .baeksenuri-program-block {
       display: flex;
@@ -1003,7 +1003,7 @@
       margin: 0;
       padding: 0.55mm 0;
       font-size: 7.25pt;
-      line-height: 1.48;
+      line-height: 1.92;
       border-bottom: none;
     }
     .inner-panel.inner-panel--feature-left .doc-list--feature-programs li::before {
@@ -1024,7 +1024,7 @@
     .inner-panel.inner-panel--feature-left .inner-footbath-lead {
       margin: 0 0 0.35mm;
       font-size: 7.85pt;
-      line-height: 1.52;
+      line-height: 1.99;
       color: var(--ink-soft);
       text-align: justify;
       word-break: keep-all;
