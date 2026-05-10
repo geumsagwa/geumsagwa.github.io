@@ -957,69 +957,77 @@
     }
     .inner-panel.inner-panel--services-detail h3.leaflet-blue-section-title ~ h3.leaflet-blue-section-title,
     .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title ~ h3.leaflet-blue-section-title {
-      margin-top: 1.25mm;
+      margin-top: 1.05mm;
     }
 
-    /* 안쪽 오른쪽 패널: 생활 주거 서비스 */
+    /* 안쪽 오른쪽 패널: 생활 주거 서비스 (본문 과다 방지 위해 여백·글자 크기 조밀 처리) */
     .inner-panel.inner-panel--living-housing {
       display: flex;
       flex-direction: column;
-      gap: 0.45mm;
+      gap: 0.82mm;
       background: var(--cream);
     }
     .inner-panel.inner-panel--living-housing .living-housing-lead {
-      margin: 0 0 0.92mm;
-      font-size: 7.52pt;
-      line-height: 1.74;
+      margin: 0 0 0.72mm;
+      font-size: 7.08pt;
+      line-height: 1.62;
       color: var(--ink-soft);
       text-align: justify;
       word-break: keep-all;
     }
     .inner-panel.inner-panel--living-housing > .inner-meta.inner-meta--baeksenuri {
-      margin-bottom: 0.5mm;
+      margin-bottom: 0.4mm;
     }
-    .inner-panel.inner-panel--living-housing .living-housing-section-head.leaflet-blue-section-title {
+    /* 생활주거 패널: 공통 leaflet-blue 규칙보다 우선하여 제목/아이콘 줄 정렬 */
+    .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title.living-housing-section-head {
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 1.95mm;
+      gap: 1.55mm;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0.35mm;
+    }
+    .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title.living-housing-section-head ~ .living-housing-block {
+      margin-top: 0;
     }
     .inner-panel.inner-panel--living-housing .living-housing-section-ico {
       flex-shrink: 0;
-      width: 5.6mm;
-      height: 5.6mm;
+      width: 5.1mm;
+      height: 5.1mm;
       display: block;
       object-fit: contain;
-      margin: 0;
+      margin: 0 0 0.15mm 0;
     }
-    .inner-panel.inner-panel--living-housing .living-housing-section-head__text {
+    .inner-panel.inner-panel--living-housing h3.leaflet-blue-section-title.living-housing-section-head .living-housing-section-head__text {
       flex: 1;
       min-width: 0;
-      line-height: 1.3;
-      padding-bottom: 0.06em;
+      line-height: 1.32;
+      padding-bottom: 0.52mm;
+      border-bottom: 1px solid rgba(57, 177, 220, 0.28);
     }
     .inner-panel.inner-panel--living-housing .living-housing-block {
       margin: 0 0 0.08mm;
     }
     .inner-panel.inner-panel--living-housing .living-housing-sublabel {
-      margin: 0 0 0.3mm;
-      font-size: 7.52pt;
+      margin: 0 0 0.2mm;
+      font-size: 7.06pt;
       font-weight: 700;
       color: var(--ink);
       letter-spacing: -0.02em;
-      line-height: 1.42;
+      line-height: 1.36;
       font-family: "Noto Sans KR", system-ui, sans-serif;
     }
     .inner-panel.inner-panel--living-housing .living-housing-midot-list {
       list-style: none;
-      margin: 0 0 0.38mm;
-      padding: 0 0 0 2.6mm;
+      margin: 0 0 0.25mm;
+      padding: 0 0 0 2.4mm;
     }
     .inner-panel.inner-panel--living-housing .living-housing-midot-list li {
       position: relative;
-      padding: 0.12mm 0 0.12mm 3.05mm;
-      font-size: 7.08pt;
-      line-height: 1.74;
+      padding: 0 0 0 2.92mm;
+      font-size: 6.76pt;
+      line-height: 1.56;
       color: var(--ink-soft);
       text-align: justify;
       word-break: keep-all;
@@ -1028,11 +1036,37 @@
       content: "·";
       position: absolute;
       left: 0;
+      top: 0.06em;
       font-weight: 700;
       color: var(--blue);
     }
     .inner-panel.inner-panel--living-housing .living-housing-midot-list + .living-housing-sublabel {
-      margin-top: 0.58mm;
+      margin-top: 0.48mm;
+    }
+
+    /* 생활주거 패널만 안쪽 패딩 미세 삭감으로 세로 분량 확보(인쇄 시 잘림 방지) */
+    .sheet--inner .sheet-panels > .panel.inner-panel--living-housing {
+      padding: 9.85mm 8.85mm 5.95mm;
+    }
+    .inner-panel.inner-panel--living-housing .inner-meta.inner-meta--baeksenuri {
+      padding: 1.18mm 2.05mm;
+      font-size: 7.75pt;
+      line-height: 1.78;
+    }
+
+    .inner-panel.inner-panel--living-housing .living-housing-contact {
+      margin: 0.42mm 0 0;
+      padding-top: 0.42mm;
+      border-top: 0.4pt solid rgba(182, 152, 109, 0.35);
+      font-size: 6.68pt;
+      line-height: 1.48;
+      color: var(--ink-soft);
+      text-align: center;
+      word-break: keep-all;
+    }
+    .inner-panel.inner-panel--living-housing .living-housing-contact strong {
+      color: var(--ink);
+      font-weight: 600;
     }
 
     /* 안쪽 가운데 패널: 재활특화 실버케어 · 체계적 식단관리 상세 */
@@ -1565,6 +1599,7 @@
           <li>분기별 및 수시 개별상담 (어르신 및 보호자)</li>
         </ul>
       </div>
+      <div class="living-housing-contact" role="note">문의 · <strong>031-546-3588</strong> · onsesoldae@naver.com · blue607426806.imweb.me</div>
     </section>
     </div>
   </div>
