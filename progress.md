@@ -3,7 +3,7 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-11T23:40:00+09:00` — **`origin/master`** tip **`90fb916`** (직전 **`47123bc`** 세계사 Ⅲ 지도·EPUB·스크립트 본 반영).
+- 시각(ISO): `2026-05-11T23:45:00+09:00` — **`origin/master`** tip **`8f066a3`** (`47123bc` 세계사 Ⅲ 지도 본반영·이후 progress 문구만 추가).
 - 직전(ISO): `2026-05-11T21:15:00+09:00` — Desktop 인계·세계사 Ⅲ 로컬 산출 정리.
 - 직전 갱신(ISO): `2026-05-11T18:00:00+09:00` — **`origin/master`** 에 **2026-05-11** 온세솔대 리플릿(`2df59e4`)·`progress.md` 인계(`8a346d5` 등)·문서 정합분 **푸시 완료** — **정확한 최신 해시는 `git rev-parse origin/master`**.
 - **온세솔대 리플릿:** `onse-soldae-invitation/` 전체(HTML·에셋·PNG·스크립트·`package.json`) **커밋·푸시 완료** (`2df59e4`). HTML 수정 후 PNG는 `node export-leaflet-png.mjs` (무진님 지시, `task-continuity.mdc` 반영).
@@ -18,7 +18,7 @@
 - **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존.
 
 ## 워킹트리 상태 (2026-05-11, Git 기준)
-- **tip:** **`90fb916`** (`origin/master`, 2026-05-11) — **`git fetch` 후 `git rev-parse origin/master`** 로 재확인.
+- **tip:** **`8f066a3`** (`origin/master`, 2026-05-11) — **`git fetch` 후 `git rev-parse origin/master`** 로 재확인.
 - **상태:** 세계사 Ⅲ `map/` 산출은 **저장소에 반영됨**. 로컬에만 둘 **`epub/history3.epub`**, 주석 TXT 등은 **미추적** — 필요 시 `.gitignore` 또는 별도 보관.
 - **리플릿:** 배포에 HTML이 필요하면 **`geumsagwa.github.io` 저장소의 `onse-soldae-invitation/`** 경로로 확인(본 커밋에 포함됨).
 - **기타 로컬만:** `.capture-tmp/`, 일부 `Images/*`·스크린샷 등은 여전히 **정책에 따라** `.gitignore`/커밋 여부 확인 권장.
