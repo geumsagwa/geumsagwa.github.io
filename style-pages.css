@@ -1031,9 +1031,6 @@
 
 /* ── Library 업로드 버튼 (우하단 FAB) ── */
 .library-upload-btn {
-    position: fixed;
-    bottom: 2.5rem;
-    right: 2.5rem;
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -1056,6 +1053,52 @@
     border-color: #dabb7e;
     transform: scale(1.1);
     box-shadow: 0 4px 20px rgba(218, 187, 126, 0.15);
+}
+
+/* ── 업로드/삭제 액션 버튼 영역 ── */
+.library-actions {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 50;
+}
+
+.library-upload-btn {
+    position: relative;
+    bottom: auto;
+    right: auto;
+}
+
+.library-delete-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(200, 50, 50, 0.3);
+    background: rgba(40, 15, 15, 0.9);
+    color: #e06060;
+    font-size: 1.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.library-delete-btn:hover {
+    background: rgba(60, 20, 20, 0.95);
+    border-color: #e06060;
+    transform: scale(1.1);
+}
+
+.library-delete-btn.active {
+    background: rgba(192, 57, 43, 0.3);
+    border-color: #c0392b;
+    box-shadow: 0 0 15px rgba(192, 57, 43, 0.3);
 }
 
 /* ── 업로드 모달 ── */

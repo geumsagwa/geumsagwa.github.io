@@ -124,8 +124,11 @@
         </div>
     </div>
 
-    <!-- 업로드 버튼 (로그인 사용자만 표시) -->
-    <button class="library-upload-btn" id="library-upload-btn" style="display:none;" onclick="openUploadModal()">+</button>
+    <!-- 업로드/삭제 버튼 (로그인 사용자만 표시) -->
+    <div class="library-actions" id="library-actions" style="display:none;">
+        <button class="library-upload-btn" id="library-upload-btn" onclick="openUploadModal()" title="책 등록">+</button>
+        <button class="library-delete-btn" id="library-delete-btn" onclick="toggleDeleteMode()" title="삭제 모드">−</button>
+    </div>
 
 </div>
 

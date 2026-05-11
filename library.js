@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadAllBooks();
     initUpload();
 
-    const btn = document.getElementById('library-upload-btn');
-    if (btn) btn.style.display = 'flex';
+    const actions = document.getElementById('library-actions');
+    if (actions) actions.style.display = 'flex';
 });
 
 function initTabs() {
@@ -93,14 +93,15 @@ async function loadBooks(category) {
                 e.preventDefault();
                 openBookAnimation(book);
             });
-            // 삭제 버튼 (admin 권한 있을 때 표시)
-            const delBtn = document.createElement('button');
-            delBtn.textContent = '×';
-            delBtn.className = 'book-delete-btn';
-            delBtn.title = '삭제';
-            delBtn.style.cssText = 'position:absolute;top:2px;right:2px;width:20px;height:20px;border:none;border-radius:50%;background:rgba(200,50,50,0.8);color:#fff;font-size:12px;line-height:20px;text-align:center;cursor:pointer;z-index:5;';
-            delBtn.addEventListener('click', async (e) => {
-                e.stopPropagation();
+            // 삭제 모드 표시 (선택 시 빨간 테두리)
+            if (window._deleteMode) a.style.boxShadow = '0 0 0 3px #c0392b';
+            a.addEventListener('click', async (e) => {
+                if (!window._deleteMode) {
+                    e.preventDefault();
+                    openBookAnimation(book);
+                    return;
+                }
+                e.preventDefault();
                 if (!confirm(`"${book.title}"을(를) 삭제하시겠습니까?`)) return;
                 try {
                     const { error } = await _supabase.from('library').delete().eq('id', book.id);
@@ -110,8 +111,6 @@ async function loadBooks(category) {
                     alert('삭제 실패: ' + (err.message || err));
                 }
             });
-            a.style.position = 'relative';
-            a.appendChild(delBtn);
 
             shelf.insertBefore(a, surface);
         });
@@ -130,6 +129,13 @@ async function loadBooks(category) {
             '--spine-color: #5c2a2a; --spine-height: 220px; --spine-width: 180px; opacity: 1; cursor: help; flex-direction: column; gap: 0.35rem;';
         if (surface) shelf.insertBefore(hint, surface);
     }
+}
+
+function toggleDeleteMode() {
+    window._deleteMode = !window._deleteMode;
+    const btn = document.getElementById('library-delete-btn');
+    if (btn) btn.classList.toggle('active');
+    loadAllBooks();
 }
 
 function openUploadModal() {
