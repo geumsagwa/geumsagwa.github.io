@@ -106,12 +106,6 @@ async function loadBooks(category) {
             });
             // 삭제 모드 표시 (선택 시 빨간 테두리)
             if (window._deleteMode) a.style.boxShadow = '0 0 0 3px #c0392b';
-                    if (error) throw error;
-                    await loadBooks(category);
-                } catch (err) {
-                    alert('삭제 실패: ' + (err.message || err));
-                }
-            });
 
             shelf.insertBefore(a, surface);
         });
