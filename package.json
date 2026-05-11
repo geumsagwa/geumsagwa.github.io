@@ -9,5 +9,8 @@
     "branch-protection:check": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/branch-protection.ps1 -Mode Check",
     "branch-protection:apply": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/branch-protection.ps1 -Mode Apply",
     "report:weekly": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/weekly-quality-report.ps1"
+  },
+  "dependencies": {
+    "archiver": "^5.3.2"
   }
 }
