@@ -32,11 +32,11 @@ jobs:
         run: |
           if [ -f package.json ]; then
             npm install
-            npm run check; rc=$?; if [ $rc -eq 1 ]; then exit 0; else exit $rc; fi
+            npm run check || rc=$?; if [ ${rc:-0} -eq 1 ]; then exit 0; else exit ${rc:-0}; fi
           elif [ -f project/homepage/package.json ]; then
             cd project/homepage
             npm install
-            npm run check; rc=$?; if [ $rc -eq 1 ]; then exit 0; else exit $rc; fi
+            npm run check || rc=$?; if [ ${rc:-0} -eq 1 ]; then exit 0; else exit ${rc:-0}; fi
           else
             echo "No package.json found. Skipping check for this revision."
           fi
