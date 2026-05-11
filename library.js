@@ -93,6 +93,26 @@ async function loadBooks(category) {
                 e.preventDefault();
                 openBookAnimation(book);
             });
+            // 삭제 버튼 (admin 권한 있을 때 표시)
+            const delBtn = document.createElement('button');
+            delBtn.textContent = '×';
+            delBtn.className = 'book-delete-btn';
+            delBtn.title = '삭제';
+            delBtn.style.cssText = 'position:absolute;top:2px;right:2px;width:20px;height:20px;border:none;border-radius:50%;background:rgba(200,50,50,0.8);color:#fff;font-size:12px;line-height:20px;text-align:center;cursor:pointer;z-index:5;';
+            delBtn.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                if (!confirm(`"${book.title}"을(를) 삭제하시겠습니까?`)) return;
+                try {
+                    const { error } = await _supabase.from('library').delete().eq('id', book.id);
+                    if (error) throw error;
+                    await loadBooks(category);
+                } catch (err) {
+                    alert('삭제 실패: ' + (err.message || err));
+                }
+            });
+            a.style.position = 'relative';
+            a.appendChild(delBtn);
+
             shelf.insertBefore(a, surface);
         });
     } catch (err) {
