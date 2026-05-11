@@ -1061,7 +1061,7 @@
     bottom: 2.5rem;
     right: 2.5rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.5rem;
     z-index: 50;
 }
@@ -1076,9 +1076,9 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 1px solid rgba(200, 50, 50, 0.3);
-    background: rgba(40, 15, 15, 0.9);
-    color: #e06060;
+    border: 1px solid rgba(200, 169, 110, 0.3);
+    background: rgba(30, 25, 15, 0.9);
+    color: #dabb7e;
     font-size: 1.5rem;
     font-weight: 300;
     cursor: pointer;
@@ -1090,9 +1090,10 @@
 }
 
 .library-delete-btn:hover {
-    background: rgba(60, 20, 20, 0.95);
-    border-color: #e06060;
+    background: rgba(60, 45, 25, 0.95);
+    border-color: #dabb7e;
     transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(218, 187, 126, 0.15);
 }
 
 .library-delete-btn.active {
