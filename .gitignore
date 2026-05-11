@@ -12,6 +12,8 @@ node_modules/
 coverage/
 reports/
 .capture-tmp/
+# EPUB 임시 압축 해제(지도 작업용)
+map/temp_extract_history3/
 test-results/
 main-live-*.png
 main-page-*.png

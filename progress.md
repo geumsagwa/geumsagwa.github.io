@@ -3,7 +3,9 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-11T18:00:00+09:00` — Desktop `Harness\progress.md`·`handover-progress.md`와 본 파일 동기. **`origin/master`** 에 **2026-05-11** 온세솔대 리플릿(`2df59e4`)·`progress.md` 인계(`8a346d5` 등)·문서 정합분 **푸시 완료** — **정확한 최신 해시는 `git rev-parse origin/master`**.
+- 시각(ISO): `2026-05-11T21:45:00+09:00` — **이야기 세계사 Ⅲ** 지도 12장(`map/`·`history3_with_maps.epub`)·`verify-history3.js`·`upload-history3.js`·`.gitignore`(`map/temp_extract_history3/`) **커밋·원격 푸시 반영**. 최신 tip 은 **`git fetch` 후 `git rev-parse origin/master`**.
+- 직전(ISO): `2026-05-11T21:15:00+09:00` — Desktop 인계·세계사 Ⅲ 로컬 산출 정리.
+- 직전 갱신(ISO): `2026-05-11T18:00:00+09:00` — **`origin/master`** 에 **2026-05-11** 온세솔대 리플릿(`2df59e4`)·`progress.md` 인계(`8a346d5` 등)·문서 정합분 **푸시 완료** — **정확한 최신 해시는 `git rev-parse origin/master`**.
 - **온세솔대 리플릿:** `onse-soldae-invitation/` 전체(HTML·에셋·PNG·스크립트·`package.json`) **커밋·푸시 완료** (`2df59e4`). HTML 수정 후 PNG는 `node export-leaflet-png.mjs` (무진님 지시, `task-continuity.mdc` 반영).
 - **Kakao:** 직접 OAuth + Edge **`kakao-token`**, 프로덕션 로그인 성공 상태 유지. 상세: Desktop `handover-progress.md`.
 - **Git 정본:** 브랜치 **`master`**. **최신 tip:** **`git fetch` 후 `git rev-parse origin/master`**. **카카오·Edge 기준점(과거):** **`dd325d1`**, **`441bd22`**, **`37171bd`**.
@@ -16,11 +18,22 @@
 - **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존.
 
 ## 워킹트리 상태 (2026-05-11, Git 기준)
-- **상태:** 로컬에서 **`git pull`** 로 **`origin/master`** 와 맞출 것(리플릿·문서 인계 푸시 완료 시점 기준).
+- **tip:** **`git fetch` 후 `git rev-parse origin/master`** (세계사 Ⅲ·`progress.md` 갱신이 포함된 커밋이 tip).
+- **상태:** 세계사 Ⅲ `map/` 산출은 **저장소에 반영됨**. 로컬에만 둘 **`epub/history3.epub`**, 주석 TXT 등은 **미추적** — 필요 시 `.gitignore` 또는 별도 보관.
 - **리플릿:** 배포에 HTML이 필요하면 **`geumsagwa.github.io` 저장소의 `onse-soldae-invitation/`** 경로로 확인(본 커밋에 포함됨).
 - **기타 로컬만:** `.capture-tmp/`, 일부 `Images/*`·스크린샷 등은 여전히 **정책에 따라** `.gitignore`/커밋 여부 확인 권장.
 
 ## 이번 기간에 한 일 (요약) — 원격 `master` 히스토리에 포함된 범위
+
+### 금일 반영 (2026-05-11 — 세계사 Ⅲ 지도, `master` 커밋)
+- **경로:** `project/homepage/map/` (작업 레포 워킹디렉터리 기준 **상대 경로 `map/`**).
+- **`temp_history3.epub`**: 삽입용 **원본 EPUB**(스크립트는 이 파일을 입력으로 사용; 본문에 지도 블록을 직접 넣지 않음).
+- **`embed-all-maps-history3.js`**: 제74~85화 구간에 지도 **12개** 삽입, SVG `<image>` + `afterParagraph` 맥락 배치, viewBox **`1200×800`** (`optimize-images.js` 결과에 맞춤).
+- **이미지:** `ch74_…` ~ `ch85_…` PNG·JPEG(1200폭 변환 후 삽입).
+- **결과 EPUB:** **`history3_with_maps.epub`** — 실제 확인·배포용은 이 파일.
+- **검증:** `node map/verify-history3.js` — 12개 Section·이미지 통과.
+- **업로드:** `map/upload-history3.js` — `DEFAULT_STORAGE_PATH`를 `library.epub_path`와 맞춘 뒤 실행(또는 `HISTORY3_EPUB_PATH`).
+- **룰:** `.cursor/rules/epub-map-project.mdc` 에 3권 작업 파일 표 갱신(Supabase `history3` 네이밍 참고).
 
 ### tip `8a346d5` (2026-05-11)
 - **`progress.md`** 인계 갱신(본 파일·Desktop·하네스 `docs/desktop-handoff/` 동기 반영) **커밋·푸시**.
@@ -72,6 +85,7 @@
 - `.github/workflows`, `reports/public_precheck_*.md`, 기타 HTML/JS 정리
 
 ## 미커밋 / 로컬만
+- **(선택)** `epub/history3.epub`, `epub/주석 명령문.txt` 등 — 저장소 미포함, 필요 시 정리.
 - **`origin/master`** 확인: **`git fetch`** 후 **`git rev-parse origin/master`** 또는 **`git log -1 --oneline origin/master`**.
 - `git status`의 `M`이 **내용 없음(CRLF)** 일 수 있음 — **`git diff HEAD --stat`** 으로 확인.
 
@@ -82,9 +96,9 @@
 - 잔여 CRLF/`package-lock` 표시 등(내용 무변 가능) — 필요 시 `git diff HEAD`로 확인
 
 ## 다음에 할 일 (최대 3개)
-1. (선택) `Images/*`·`.capture-tmp/` 등 **용량** 기준 `.gitignore`/커밋 정리
-2. (백로그) Reader·반응형·CRLF 표시 등 소소한 정리
-3. (백로그) 하네스 레포 기타 로컬 변경분 정리
+1. **세계사 Ⅲ** — Supabase Storage 업로드(`upload-history3.js` 경로 설정)·`library` 테이블 `epub_path`·리더 연동 확인
+2. (선택) `Images/*`·`.capture-tmp/` 등 **용량** 기준 `.gitignore`/커밋 정리
+3. (백로그) Reader·반응형·CRLF 표시 등 소소한 정리
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
