@@ -89,22 +89,23 @@ async function loadBooks(category) {
             authorSpan.textContent = book.author || '';
             a.appendChild(titleSpan);
             a.appendChild(authorSpan);
-            a.addEventListener('click', (e) => {
+            a.addEventListener('click', async (e) => {
                 e.preventDefault();
+                if (window._deleteMode) {
+                    if (!confirm(`"${book.title}"을(를) 삭제하시겠습니까?`)) return;
+                    try {
+                        const { error } = await _supabase.from('library').delete().eq('id', book.id);
+                        if (error) throw error;
+                        await loadBooks(category);
+                    } catch (err) {
+                        alert('삭제 실패: ' + (err.message || err));
+                    }
+                    return;
+                }
                 openBookAnimation(book);
             });
             // 삭제 모드 표시 (선택 시 빨간 테두리)
             if (window._deleteMode) a.style.boxShadow = '0 0 0 3px #c0392b';
-            a.addEventListener('click', async (e) => {
-                if (!window._deleteMode) {
-                    e.preventDefault();
-                    openBookAnimation(book);
-                    return;
-                }
-                e.preventDefault();
-                if (!confirm(`"${book.title}"을(를) 삭제하시겠습니까?`)) return;
-                try {
-                    const { error } = await _supabase.from('library').delete().eq('id', book.id);
                     if (error) throw error;
                     await loadBooks(category);
                 } catch (err) {
