@@ -3,7 +3,8 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-11` — 세계사 Ⅲ 지도·EPUB **`47123bc`** 푸시 완료. **`progress.md`**만 수정한 짧은 후속 커밋 가능 — **`git fetch` 후 `git rev-parse origin/master`** 로 tip 확인할 것.
+- 시각(ISO): `2026-05-12` (인계 동기) — **`origin/master`** tip **`397a594`** (`git fetch` 후 확인). CI/CD 전면 통과 상태 유지. Desktop **`C:\Users\pass6\Desktop\Harness\handover-progress.md`**·**`progress.md`** 와 본 파일 **주요 사실 동기**.
+- 직전(ISO): `2026-05-11` — 세계사 Ⅲ 지도·EPUB **`47123bc`** 푸시 완료. 이후 **`397a594`** 에서 `library.js`·CodeShield 등 CI 수정 분 반영.
 - 직전(ISO): `2026-05-11T21:15:00+09:00` — Desktop 인계·세계사 Ⅲ 로컬 산출 정리.
 - 직전 갱신(ISO): `2026-05-11T18:00:00+09:00` — **`origin/master`** 에 **2026-05-11** 온세솔대 리플릿(`2df59e4`)·`progress.md` 인계(`8a346d5` 등)·문서 정합분 **푸시 완료** — **정확한 최신 해시는 `git rev-parse origin/master`**.
 - **온세솔대 리플릿:** `onse-soldae-invitation/` 전체(HTML·에셋·PNG·스크립트·`package.json`) **커밋·푸시 완료** (`2df59e4`). HTML 수정 후 PNG는 `node export-leaflet-png.mjs` (무진님 지시, `task-continuity.mdc` 반영).
@@ -17,8 +18,8 @@
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
 - **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존.
 
-## 워킹트리 상태 (2026-05-11, Git 기준)
-- **tip:** **`git fetch` 후 `git rev-parse origin/master`** 로 확인 (세계사 Ⅲ 본 기능 커밋 단편 **`47123bc`**).
+## 워킹트리 상태 (2026-05-12, Git 기준)
+- **tip:** **`397a594`** (`2026-05-12`, CodeShield bash `exit 1` 처리 등 CI 안정화). **원격과 동기:** `git fetch` 후 **`git rev-parse origin/master`** — 세계사 Ⅲ 본 기능 커밋 단편 **`47123bc`** 이전·포함 히스토리 유지.
 - **상태:** 세계사 Ⅲ `map/` 산출은 **저장소에 반영됨**. 로컬에만 둘 **`epub/history3.epub`**, 주석 TXT 등은 **미추적** — 필요 시 `.gitignore` 또는 별도 보관.
 - **리플릿:** 배포에 HTML이 필요하면 **`geumsagwa.github.io` 저장소의 `onse-soldae-invitation/`** 경로로 확인(본 커밋에 포함됨).
 - **기타 로컬만:** `.capture-tmp/`, 일부 `Images/*`·스크린샷 등은 여전히 **정책에 따라** `.gitignore`/커밋 여부 확인 권장.
