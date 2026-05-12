@@ -3,7 +3,7 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-12` (인계 동기) — **최신 `master` tip 은 `git fetch` 후 `git rev-parse origin/master` 로 확인.** 본 문서·Desktop 인계·Harness 미러를 **동일 날짜에 맞춤**. 참고 시점: CI 안정화 **`397a594`**, 세계사 Ⅲ **`47123bc`**, 하네스 미러 커밋 **`782896d`** (이후 하네스는 `git rev-parse origin/main`).
+- 시각(ISO): `2026-05-12` (인계 동기) — **최신 `master` tip 은 `git fetch` 후 `git rev-parse origin/master` 로 확인.** 본 문서·Desktop 인계·Harness 미러를 **동일 날짜에 맞춤**. 참고 시점: CI 안정화 **`397a594`**, 세계사 Ⅲ **`47123bc`**. 하네스 tip 은 **`git rev-parse origin/main`**.
 - 직전(ISO): `2026-05-11` — 세계사 Ⅲ 지도·EPUB **`47123bc`** 푸시 완료. 이후 **`397a594`** 에서 `library.js`·CodeShield 등 CI 수정 분 반영.
 - 직전(ISO): `2026-05-11T21:15:00+09:00` — Desktop 인계·세계사 Ⅲ 로컬 산출 정리.
 - 직전 갱신(ISO): `2026-05-11T18:00:00+09:00` — **`origin/master`** 에 **2026-05-11** 온세솔대 리플릿(`2df59e4`)·`progress.md` 인계(`8a346d5` 등)·문서 정합분 **푸시 완료** — **정확한 최신 해시는 `git rev-parse origin/master`**.
