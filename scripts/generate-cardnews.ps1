@@ -21,6 +21,11 @@ foreach ($line in $content -split "`n") {
     if ($cur -and $buf.Count -gt 0) { $sec[$cur] = $buf.Clone() }
     $cur = $matches[1].Trim(); $order += $cur; $buf = @()
   }
+  # ## 레벨 헤더(오늘의 일정, 이메일 요약, 홈페이지 상태)를 만나면 현재 섹션 마감
+  elseif ($t -match "^##\s+\d+\.\s+(.+)") {
+    if ($cur -and $buf.Count -gt 0) { $sec[$cur] = $buf.Clone() }
+    $cur = ""; $buf = @()
+  }
   elseif ($t -match "^- \[(.+?)\]\((.+?)\)") {
     $title = $matches[1]; $url = ($matches[2] -split "\?")[0]
     $rest = $t -replace "^- \[.+?\]\(.+?\)\s*",""
@@ -55,7 +60,7 @@ foreach ($line in $content -split "`n") {
     $weekItems = $weekRaw -split "\s*/\s*"
     foreach ($item in $weekItems) {
       $item = $item.Trim()
-      if ($item -and $item -notmatch "undefined") { $schedExtra += $item }
+      if ($item) { $schedExtra += ($item -replace "\(undefined\)","" -replace "undefined","").Trim() }
     }
   }
 }
@@ -65,35 +70,35 @@ $cl = @{"정치"="#e74c3c";"경제"="#2ecc71";"사회"="#f39c12";"세계"="#3498
 
 $css = @"
 *{margin:0;padding:0;box-sizing:border-box}
-body{word-break:keep-all;overflow-wrap:break-word;font-family:-apple-system,'Noto Sans KR','Malgun Gothic',sans-serif;background:#f0f2f5;padding:40px 16px;display:flex;flex-direction:column;align-items:center}
-.wrap{max-width:420px;width:100%;display:flex;flex-direction:column;gap:16px}
-.header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;border-radius:20px;padding:36px 24px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','Malgun Gothic',sans-serif;background:#f5f0e8;padding:40px 16px;display:flex;flex-direction:column;align-items:center}
+.wrap{max-width:420px;width:100%;display:flex;flex-direction:column;gap:14px}
+.header{background:linear-gradient(135deg,#2a2520,#3d3530);color:#f5f0e8;border-radius:20px;padding:36px 24px;text-align:center;box-shadow:0 8px 24px rgba(42,37,32,.2)}
 .header .date{font-size:13px;opacity:.6;margin-bottom:6px;letter-spacing:1px}
 .header h1{font-size:24px;font-weight:700;line-height:1.4;margin-bottom:4px}
 .header .sub{font-size:13px;opacity:.5}
-.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.card .st{padding:14px 20px 12px;font-size:13px;font-weight:700;letter-spacing:1px;border-bottom:2px solid #f0f2f5}
-.item{padding:12px 20px;border-bottom:1px solid #f5f5f5;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:flex-start}
+.card{background:#faf6f0;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(42,37,32,.08)}
+.card .st{padding:14px 20px 12px;font-size:13px;font-weight:700;letter-spacing:1px;border-bottom:2px solid #ede6dc}
+.item{padding:12px 20px;border-bottom:1px solid #ede6dc;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:flex-start}
 .item:last-child{border-bottom:none}
-.num{display:inline-flex;width:20px;height:20px;background:#e8ecf0;border-radius:50%;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#666;flex-shrink:0;margin-top:1px}
-.tle{font-size:14px;font-weight:500;line-height:1.5;color:#222;flex:1;word-break:keep-all;overflow-wrap:break-word}
-.tle a{color:#222;text-decoration:none}
-.tle a:hover{color:#1a73e8;text-decoration:underline}
-.src{font-size:11px;color:#999;flex:0 0 100%;padding-left:28px;margin-top:-4px}
+.num{display:inline-flex;width:20px;height:20px;background:#ede6dc;border-radius:50%;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#7a7060;flex-shrink:0;margin-top:1px}
+.tle{font-size:14px;font-weight:500;line-height:1.5;color:#2a2520;flex:1;word-break:keep-all;overflow-wrap:break-word}
+.tle a{color:#2a2520;text-decoration:none}
+.tle a:hover{color:#8f7d60;text-decoration:underline}
+.src{font-size:11px;color:#7a7060;flex:0 0 100%;padding-left:28px;margin-top:-4px}
 .sc{padding:16px 20px}
 .si{display:flex;align-items:center;gap:10px;padding:6px 0}
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.stx{font-size:14px;color:#444}
+.stx{font-size:14px;color:#2a2520}
 .ec{padding:16px 20px}
-.ei{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:13px;color:#444}
+.ei{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:13px;color:#2a2520}
 .el{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:600;margin-right:4px}
-.el.imp{background:#fab1a0;color:#c0392b}
-.el.spam{background:#dfe6e9;color:#636e72}
+.el.imp{background:#f5e6d3;color:#8f5a3a}
+.el.spam{background:#ede6dc;color:#7a7060}
 .stat{padding:16px 20px;display:flex;align-items:center;gap:14px}
-.stat .ico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;background:#d4edda;flex-shrink:0}
-.stat .st1{font-size:13px;color:#888}
-.stat .st2{font-size:14px;font-weight:600;color:#222}
-.ft{text-align:center;padding:24px 20px;color:#bbb;font-size:11px}
+.stat .ico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;background:#e8e0d4;flex-shrink:0}
+.stat .st1{font-size:13px;color:#7a7060}
+.stat .st2{font-size:14px;font-weight:600;color:#2a2520}
+.ft{text-align:center;padding:24px 20px;color:#b5a898;font-size:11px;font-family:'Malgun Gothic',sans-serif}
 "@
 
 $html = "<!DOCTYPE html>
@@ -123,6 +128,8 @@ foreach ($sk in $order) {
   $html += "<div class=""card""><div class=""st"" style=""color:$c"">$e $sk</div>`n"
   $ri = 1
   foreach ($item in $items) {
+    # AI/IT 섹션에서 메일 링크 제외
+    if ($sk -eq "AI/IT" -and $item.u -match "mail\.google\.com") { continue }
     $t = $item.t -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
     $url = $item.u
     $src = if ($url) { Get-Src $url } else { "" }
@@ -145,7 +152,7 @@ $html += "<div class=""card""><div class=""st"" style=""color:#1a73e8"">📅 오
 "
 foreach ($extra in $schedExtra) {
   $extraEsc = $extra -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
-  $html += "<div class=""si""><div class=""dot"" style=""background:#f39c12""></div><div class=""stx"" style=""color:#888"">$extraEsc</div></div>`n"
+  $html += "<div class=""si""><div class=""dot"" style=""background:#f39c12""></div><div class=""stx"" style=""color:#7a7060"">$extraEsc</div></div>`n"
 }
 $html += "</div></div>
 "
@@ -165,16 +172,18 @@ if ($content -match "(?s)## 3\. 이메일 요약\s*\n(.*?)(?=\n##|\z)") {
       }
     } elseif ($l -match "스팸 처리 결과:\s*(.+)") {
       $spamText = $matches[1].Trim()
+    } elseif ($l -match "\[(\d+)\]건 처리 완료\s*(.*)") {
+      $spamText = "[$($matches[1])]건 처리 완료 $($matches[2])".Trim()
     }
   }
   if ($spamText -and $spamText -ne "스팸 없음") {
     $spamEsc = $spamText -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
-    $eh += "<div style=""margin-top:10px;padding-top:10px;border-top:1px solid #eee"">`n"
+    $eh += "<div style=""margin-top:10px;padding-top:10px;border-top:1px solid #ede6dc"">`n"
     $eh += "<div class=""ei""><span class=""el spam"">스팸</span>$spamEsc</div>`n"
     $eh += "</div>`n"
   }
   $eh += "</div></div>`n"
-  if ($hc) { $html += $eh }
+  if ($hc -or ($spamText -and $spamText -ne "스팸 없음")) { $html += $eh }
 }
 
 $httpCode = "200"; $respTime = ""; $sslOk = ""
