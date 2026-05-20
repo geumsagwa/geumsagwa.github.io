@@ -44,7 +44,21 @@ function Get-Src($url) {
 }
 
 $sched = "근무"
-if ($content -match "\(종일\):\s*(.+?)$") { $sched = $matches[1].Trim() }
+$schedExtra = @()
+foreach ($line in $content -split "`n") {
+  if ($line -match "\(종일\):\s*(.+)") {
+    $sched = $matches[1].Trim()
+  }
+  # "이번 주:" 일정 줄 (괄호로 감싸진 줄)
+  elseif ($line -match "^\s*\((.+)\)\s*$" -and $matches[1] -match "이번 주:\s*(.+)") {
+    $weekRaw = $matches[1]  # "이번 주:" 이후 내용
+    $weekItems = $weekRaw -split "\s*/\s*"
+    foreach ($item in $weekItems) {
+      $item = $item.Trim()
+      if ($item -and $item -notmatch "undefined") { $schedExtra += $item }
+    }
+  }
+}
 
 $ej = @{"정치"="🗳️";"경제"="💰";"사회"="🚨";"세계"="🌍";"문화"="🎭";"손흥민"="⚽";"AI/IT"="🤖"}
 $cl = @{"정치"="#e74c3c";"경제"="#2ecc71";"사회"="#f39c12";"세계"="#3498db";"문화"="#9b59b6";"손흥민"="#e67e22";"AI/IT"="#1abc9c"}
@@ -128,33 +142,52 @@ $schedEsc = $sched -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
 $html += "<div class=""card""><div class=""st"" style=""color:#1a73e8"">📅 오늘의 일정</div>
 <div class=""sc"">
 <div class=""si""><div class=""dot"" style=""background:#1a73e8""></div><div class=""stx""><strong>$schedEsc</strong></div></div>
-</div></div>
+"
+foreach ($extra in $schedExtra) {
+  $extraEsc = $extra -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
+  $html += "<div class=""si""><div class=""dot"" style=""background:#f39c12""></div><div class=""stx"" style=""color:#888"">$extraEsc</div></div>`n"
+}
+$html += "</div></div>
 "
 
-if ($content -match "## 3\. 이메일 요약\s*\n(.*?)(?=\n##|\z)") {
+if ($content -match "(?s)## 3\. 이메일 요약\s*\n(.*?)(?=\n##|\z)") {
   $et = $matches[1]
   $eh = "<div class=""card""><div class=""st"" style=""color:#e74c3c"">📧 중요 메일</div><div class=""ec"">`n"
-  $hc = $false
+  $hc = $false; $spamText = ""
   foreach ($l in $et -split "`n") {
     if ($l -match "^- \[(.+?)\]") {
       $mt = $matches[1] -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
       $lb = if ($mt -match "Cursor|결제") { "<span class=""el imp"">중요</span>" } else { "" }
-      $eh += "<div class=""ei"">$lb$mt</div>`n"; $hc = $true
+      if ($lb) {
+        $eh += "<div class=""ei"">$lb$mt</div>`n"; $hc = $true
+      } else {
+        $eh += "<div class=""ei""><span>$mt</span></div>`n"; $hc = $true
+      }
+    } elseif ($l -match "스팸 처리 결과:\s*(.+)") {
+      $spamText = $matches[1].Trim()
     }
   }
-  if ($et -match "처리 완료") {
-    $eh += "<div style=""margin-top:8px;padding-top:8px;border-top:1px solid #eee"">`n"
-    $eh += "<div class=""ei""><span class=""el spam"">스팸</span>$($matches[0])</div>`n"
+  if ($spamText -and $spamText -ne "스팸 없음") {
+    $spamEsc = $spamText -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
+    $eh += "<div style=""margin-top:10px;padding-top:10px;border-top:1px solid #eee"">`n"
+    $eh += "<div class=""ei""><span class=""el spam"">스팸</span>$spamEsc</div>`n"
     $eh += "</div>`n"
   }
   $eh += "</div></div>`n"
   if ($hc) { $html += $eh }
 }
 
+$httpCode = "200"; $respTime = ""; $sslOk = ""
+if ($content -match "\| HTTP 상태\s*\|\s*(\d+)") { $httpCode = $matches[1] }
+if ($content -match "\| 응답 시간\s*\|\s*(.+?)\|") { $respTime = $matches[1].Trim() }
+if ($content -match "\| SSL 인증서\s*\|\s*(.+?)\|") { $sslOk = $matches[1].Trim() }
+$statusDetail = "HTTP $httpCode"
+if ($respTime) { $statusDetail += ", $respTime" }
+if ($sslOk -eq "유효") { $statusDetail += ", SSL 유효" }
 $html += "<div class=""card""><div class=""st"" style=""color:#2ecc71"">✅ 홈페이지 상태</div>
 <div class=""stat"">
 <div class=""ico"">✓</div>
-<div><div class=""st1"">geumsagwa.github.io</div><div class=""st2"">정상 (HTTP 200)</div></div>
+<div><div class=""st1"">geumsagwa.github.io</div><div class=""st2"">정상 ($statusDetail)</div></div>
 </div></div>
 
 <div class=""ft"">게발이 브리핑 · $ds 자동 생성<br>생각을 잇다</div>
