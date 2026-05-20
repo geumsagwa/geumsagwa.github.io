@@ -84,7 +84,7 @@ function renderPostCard(row, config) {
     const date = new Date(row.created_at)
         .toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' })
         .replace(/\s/g, ' ');
-    const bgImage = row.card_image_url || row.cover_url || config.defaultImage;
+    const bgImage = row.cover_url || row.card_image_url || config.defaultImage;
     const displayTitle = config.getDisplayTitle ? config.getDisplayTitle(row) : row.title;
 
     return `<a href="${config.detailPage}?id=${row.id}" class="photo-card">
