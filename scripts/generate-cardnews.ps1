@@ -105,10 +105,25 @@ $manifest = @{ items = @() }
 if (Test-Path $mf) {
   try { $manifest = Get-Content $mf -Encoding UTF8 | ConvertFrom-Json } catch {}
 }
+<<<<<<< HEAD
 $existing = @($manifest.items.date)
 if ($ds -notin $existing) {
   $manifest.items = @(@{date=$ds;summary=$summaryText}) + @($manifest.items)
   $manifest | ConvertTo-Json -Depth 3 | Set-Content -Path $mf -Encoding UTF8
+=======
+# 해당 날짜가 이미 있으면 갱신, 없으면 추가
+$found = $false
+for ($i = 0; $i -lt $manifest.items.Count; $i++) {
+  if ($manifest.items[$i].date -eq $ds) {
+    $manifest.items[$i].summary = $summaryText
+    $found = $true
+    break
+  }
+>>>>>>> 15b6806 (카드뉴스: 요약문에 뉴스 제목 포함, 기존 날짜도 갱신)
 }
+if (-not $found) {
+  $manifest.items = @(@{date=$ds;summary=$summaryText}) + @($manifest.items)
+}
+$manifest | ConvertTo-Json -Depth 3 | Set-Content -Path $mf -Encoding UTF8
 Write-Output "OK: $outFile"
 
