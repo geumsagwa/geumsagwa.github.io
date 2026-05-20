@@ -3,8 +3,15 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): **`2026-05-20`** (근무일) — **카드뉴스 기능 추가.** 게발이 브리핑을 관리자 전용 카드뉴스로 자동 변환하는 파이프라인 구축.
-  - `admin.html`·`admin.js`: 회원관리/카드뉴스 탭 전환, 모달 뷰어
+- 시각(ISO): **`2026-05-20`** (근무일) — **4권 105화(문화대혁명) 최종 확정.**
+  - **105화 축약 완료:** 5개 덩어리 약 44→17줄로 축약. 흐름 유지, 분량 약 30% 감소.
+  - **HWP 변환 오류 수정:** `[33]`→각주, `문혁`→`문화대혁명`, 인터넷 용어 제거, 각주 11건 추가.
+  - **각주 연속성 검증:** `[^1]`~`[^86]` 전체 연속, 마커-정의 일치 확인.
+  - **92화 각주 정의 누락 수정:** `[^12]`(안보리 거부권) 정의 누락 발견하여 추가.
+  - **Wiki tip:** **`4713f15`** (`origin/master` 일치). **105화 수정 금지.**
+- 직전(ISO): **`2026-05-20`** (북 리뷰 카드 이미지 수정 + 카드뉴스 기능 추가)
+  - **북 리뷰:** `blog.js` `cover_url` 폴백 순서 수정 (`cover_url` → `card_image_url` → 기본 이미지). **`9a829d2`**
+  - **카드뉴스:** `admin.html`·`admin.js`: 회원관리/카드뉴스 탭 전환, 모달 뷰어
   - `scripts/generate-cardnews.ps1`: 브리핑 → 카드뉴스 HTML 자동 생성
   - `admin/cardnews/`: 생성된 카드뉴스 + manifest 저장소
 - 직전(ISO): **`2026-05-18`** (Harness 인계 동기) — **DeepSeek 공식 API** 전환·LiteLLM/NVIDIA 정리 반영. **`master` tip `ba82d38`** (`origin/master` 일치). Harness **`35c7065`**.
@@ -103,10 +110,11 @@
 
 ## 다음에 할 일 (최대 3개)
 1. **세계사 Ⅲ** — Supabase Storage 업로드(`upload-history3.js` 경로 설정)·`library` 테이블 `epub_path`·리더 연동 확인
-2. (선택) `Images/*`·`.capture-tmp/` 등 **용량** 기준 `.gitignore`/커밋 정리
-3. (백로그) Reader·반응형·CRLF 표시 등 소소한 정리
+2. **세계사 Ⅳ EPUB 생성** — 지도 작업·커버 이미지·홈페이지 업로드
+3. (선택) `Images/*`·`.capture-tmp/` 등 **용량** 기준 `.gitignore`/커밋 정리
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
+- **LLM Wiki:** `94836dd` — 102화(일본 경제 성장) 최종 확정. 수정 금지.
 - 하네스 `gate-website.ps1`는 `configs/projects.v2.json`의 `homepage` **workspace**(본 레포 경로)에서 `npm run check`
 - 로컬 Ollama 등은 **통합 progress(Desktop)** 쪽 기록; 본 파일은 **사이트 repo·Git tip·워킹트리** 중심

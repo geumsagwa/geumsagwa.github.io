@@ -1,0 +1,16 @@
+우랄산맥<sup><a href="#note1" id="ref1" style="text-decoration: none">(1)</a></sup>
+알타이산맥<sup><a href="#note2" id="ref2" style="text-decoration: none">(2)</a></sup>
+
+<section class="footnotes"> 
+<ol> 
+<li id="note1"><a href="#ref1" style="text-decoration: none">지금의 러시아 북부를 북에서 남으로 뻗어 있는 산맥.</a> 
+</li>
+<li id="note2"><a href="#ref2" style="text-decoration: none">중앙아시아에서 북동아시아에 걸쳐있는 산맥. 중국, 러시아, 카자흐스탄, 몽골이 만나는 지역을 북서쪽에서 남동쪽으로 가로지른다.</a> 
+</li>
+</ol>
+</section>
+<br/>
+</body>
+</html>
+
+<ol start="3">
