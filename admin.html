@@ -18,12 +18,13 @@
     .admin-page-content { display: none; }
     .admin-page-content.active { display: block; }
     .cardnews-list { display: flex; flex-direction: column; gap: 12px; }
-    .cardnews-item { background: white; border-radius: 12px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: space-between; }
+    .cardnews-item { background: white; border-radius: 12px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 12px; }
+    .cardnews-item .cardnews-info { flex: 1; min-width: 0; }
     .cardnews-item .cardnews-date { font-size: 16px; font-weight: 600; color: #222; }
-    .cardnews-item .cardnews-status { font-size: 13px; color: #666; }
-    .cardnews-item .cardnews-status .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+    .cardnews-item .cardnews-status { font-size: 13px; color: #666; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cardnews-item .cardnews-status .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; flex-shrink: 0; }
     .cardnews-item .cardnews-status .dot.active { background: #2ecc71; }
-    .cardnews-item .cardnews-actions { display: flex; gap: 8px; }
+    .cardnews-item .cardnews-actions { flex-shrink: 0; display: flex; gap: 8px; }
     .cardnews-item .cardnews-actions a { padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; transition: all 0.2s; }
     .btn-view { background: #e8f0fe; color: #1a73e8; }
     .btn-view:hover { background: #d2e3fc; }

@@ -203,7 +203,7 @@ function renderCardnewsList(manifest) {
         const dateStr = item.date.replace(/-/g, '.');
         return `
         <div class="cardnews-item">
-            <div>
+            <div class="cardnews-info">
                 <div class="cardnews-date">📰 ${dateStr}</div>
                 <div class="cardnews-status"><span class="dot active"></span>${item.summary || '게발이 아침 카드뉴스'}</div>
             </div>
