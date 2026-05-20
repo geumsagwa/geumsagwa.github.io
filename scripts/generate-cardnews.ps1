@@ -26,6 +26,9 @@ foreach ($line in $content -split "`n") {
     $order += $cur
     $buf = @()
   }
+  elseif ($tline -match "^- \[(.+?)\]\(.+?\)\s*—\s*(.+)$") { $title = $matches[1]; $desc = $matches[2]; $buf += @{t=$title; d=$desc} }
+  elseif ($tline -match "^- \[(.+?)\]\(.+?\)\s*[-–]\s*(.+)$") { $title = $matches[1]; $desc = $matches[2]; $buf += @{t=$title; d=$desc} }
+  elseif ($tline -match "^- \[(.+?)\]\(.+?\)(.+)$") { $title = $matches[1]; $desc = $matches[2].Trim(); $buf += @{t=$title; d=$desc} }
   elseif ($tline -match "^- \[(.+?)\]\(.+?\)") { $title = $matches[1]; $buf += @{t=$title} }
   elseif ($tline -match "^- \[(.+?)\]") { $buf += @{t=$matches[1]} }
 }
@@ -53,7 +56,7 @@ function GetKey($v) {
 }
 
 $html = "<!DOCTYPE html><html lang=""ko""><head><meta charset=""UTF-8""><meta name=""viewport"" content=""width=device-width,initial-scale=1.0""><title>Card News - $ds</title>"
-$html += "<style>*{margin:0;padding:0;box-sizing:border-box}body{word-break:keep-all;overflow-wrap:break-word;font-family:-apple-system,sans-serif;background:#f0f2f5;padding:40px 20px;display:flex;flex-direction:column;align-items:center}.cw{max-width:420px;width:100%;display:flex;flex-direction:column;gap:20px}.ch{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;border-radius:20px;padding:40px 28px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.15)}.ch .dt{font-size:14px;opacity:.7;margin-bottom:8px}.ch h1{font-size:26px;font-weight:700;line-height:1.4;margin-bottom:12px}.cc{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.08)}.cc .st{padding:18px 24px 14px;font-size:14px;font-weight:700;border-bottom:2px solid #f0f2f5}.ci{padding:14px 24px;border-bottom:1px solid #f5f5f5;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:flex-start}.ci:last-child{border-bottom:none}.ci .rk{display:inline-block;width:22px;height:22px;background:#e8ecf0;border-radius:50%;text-align:center;line-height:22px;font-size:12px;font-weight:700;color:#666;flex-shrink:0;margin-top:2px}.ci .tl{font-size:15px;font-weight:500;line-height:1.5;color:#222;flex:1;word-break:keep-all;overflow-wrap:break-word}.cs{padding:20px 24px}.csi{display:flex;align-items:center;gap:12px;padding:8px 0}.cd{width:8px;height:8px;border-radius:50%;background:#1a73e8;flex-shrink:0}.cst{font-size:15px;color:#333}.cf{text-align:center;padding:30px 20px;color:#999;font-size:12px}</style></head><body><div class=""cw""><div class=""ch""><div class=""dt"">$y.$m.$d ($wd)</div><h1>Gaebali<br>Card News</h1></div>"
+$html += "<style>*{margin:0;padding:0;box-sizing:border-box}body{word-break:keep-all;overflow-wrap:break-word;font-family:-apple-system,sans-serif;background:#f0f2f5;padding:40px 20px;display:flex;flex-direction:column;align-items:center}.cw{max-width:420px;width:100%;display:flex;flex-direction:column;gap:20px}.ch{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;border-radius:20px;padding:40px 28px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.15)}.ch .dt{font-size:14px;opacity:.7;margin-bottom:8px}.ch h1{font-size:26px;font-weight:700;line-height:1.4;margin-bottom:12px}.cc{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.08)}.cc .st{padding:18px 24px 14px;font-size:14px;font-weight:700;border-bottom:2px solid #f0f2f5}.ci{padding:14px 24px;border-bottom:1px solid #f5f5f5;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:flex-start}.ci:last-child{border-bottom:none}.ci .rk{display:inline-block;width:22px;height:22px;background:#e8ecf0;border-radius:50%;text-align:center;line-height:22px;font-size:12px;font-weight:700;color:#666;flex-shrink:0;margin-top:2px}.ci .tl{font-size:15px;font-weight:500;line-height:1.5;color:#222;flex:1;word-break:keep-all;overflow-wrap:break-word}.ci .tl .desc{font-size:13px;font-weight:400;color:#666;line-height:1.4;display:block;margin-top:4px}.cs{padding:20px 24px}.csi{display:flex;align-items:center;gap:12px;padding:8px 0}.cd{width:8px;height:8px;border-radius:50%;background:#1a73e8;flex-shrink:0}.cst{font-size:15px;color:#333}.cf{text-align:center;padding:30px 20px;color:#999;font-size:12px}</style></head><body><div class=""cw""><div class=""ch""><div class=""dt"">$y.$m.$d ($wd)</div><h1>Gaebali<br>Card News</h1></div>"
 
 foreach ($sk in $order) {
   $items = $sec[$sk]
@@ -64,7 +67,9 @@ foreach ($sk in $order) {
   $ri = 1
   foreach ($item in $items) {
     $t = $item.t -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
-    $html += "<div class=""ci""><span class=""rk"">$ri</span><div class=""tl"">$t</div></div>"
+    $d = if ($item.d) { $item.d -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;" } else { "" }
+    if ($d) { $html += "<div class=""ci""><span class=""rk"">$ri</span><div class=""tl""><strong>$t</strong><br><span class=""desc"">$d</span></div></div>" }
+    else { $html += "<div class=""ci""><span class=""rk"">$ri</span><div class=""tl"">$t</div></div>" }
     $ri++
   }
   $html += "</div>"
