@@ -23,7 +23,7 @@ async function loadBookReviews() {
     await loadPostGrid({
         gridId: 'book-review-grid',
         table: 'book_reviews',
-        selectFields: 'id, review_title, title, excerpt, card_image_url, created_at',
+        selectFields: 'id, review_title, title, excerpt, card_image_url, cover_url, created_at',
         emptyMessage: '등록된 서평이 없습니다.',
         errorMessage: '서평을 불러올 수 없습니다.',
         detailPage: 'review.html',
@@ -84,7 +84,7 @@ function renderPostCard(row, config) {
     const date = new Date(row.created_at)
         .toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' })
         .replace(/\s/g, ' ');
-    const bgImage = row.card_image_url || config.defaultImage;
+    const bgImage = row.card_image_url || row.cover_url || config.defaultImage;
     const displayTitle = config.getDisplayTitle ? config.getDisplayTitle(row) : row.title;
 
     return `<a href="${config.detailPage}?id=${row.id}" class="photo-card">
