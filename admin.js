@@ -1,4 +1,4 @@
-// 회원관리 페이지 로직
+// 관리자 페이지 로직
 let allMembers = [];
 let currentFilter = 'all';
 
@@ -12,9 +12,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    await loadMembers();
+    // 페이지 탭 전환
+    document.querySelectorAll('.admin-page-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.admin-page-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            document.querySelectorAll('.admin-page-content').forEach(c => c.classList.remove('active'));
+            const page = document.getElementById('page-' + tab.dataset.page);
+            if (page) page.classList.add('active');
+        });
+    });
 
-    // 필터 탭 이벤트
+    await loadMembers();
+    await loadCardnews();
+
+    // 회원 필터 탭
     document.querySelectorAll('.admin-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
@@ -162,5 +174,57 @@ async function deleteMember(id) {
 function formatDate(dateStr) {
     const d = new Date(dateStr);
     return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+}
+
+/* ===== 카드뉴스 ===== */
+
+async function loadCardnews() {
+    const list = document.getElementById('cardnews-list');
+    try {
+        // 카드뉴스 목록 manifest 로드
+        const resp = await fetch('admin/cardnews/index.json');
+        if (!resp.ok) throw new Error('Not found');
+        const manifest = await resp.json();
+        renderCardnewsList(manifest);
+    } catch (e) {
+        // manifest 없으면 디렉토리 스캔 대신 기본 메시지
+        list.innerHTML = '<div class="cardnews-empty">카드뉴스가 없습니다.<br>게발이 브리핑 생성 후 자동으로 만들어집니다.</div>';
+    }
+}
+
+function renderCardnewsList(manifest) {
+    const list = document.getElementById('cardnews-list');
+    const items = manifest.items || [];
+    if (items.length === 0) {
+        list.innerHTML = '<div class="cardnews-empty">카드뉴스가 없습니다.</div>';
+        return;
+    }
+    list.innerHTML = items.map(item => {
+        const dateStr = item.date.replace(/-/g, '.');
+        return `
+        <div class="cardnews-item">
+            <div>
+                <div class="cardnews-date">📰 ${dateStr}</div>
+                <div class="cardnews-status"><span class="dot active"></span>${item.summary || '게발이 아침 카드뉴스'}</div>
+            </div>
+            <div class="cardnews-actions">
+                <a class="btn-view" href="javascript:void(0)" onclick="openCardnewsViewer('${item.date}')">보기</a>
+            </div>
+        </div>
+    `}).join('');
+}
+
+function openCardnewsViewer(dateStr) {
+    const viewer = document.getElementById('cardnews-viewer');
+    const iframe = document.getElementById('cardnews-iframe');
+    iframe.src = 'admin/cardnews/' + dateStr + '.html';
+    viewer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCardnewsViewer() {
+    const viewer = document.getElementById('cardnews-viewer');
+    viewer.classList.remove('open');
+    document.body.style.overflow = '';
 }
 

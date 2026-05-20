@@ -3,7 +3,12 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): `2026-05-12` (인계 동기) — **최신 `master` tip 은 `git fetch` 후 `git rev-parse origin/master` 로 확인.** 본 문서·Desktop 인계·Harness 미러를 **동일 날짜에 맞춤**. 참고 시점: CI 안정화 **`397a594`**, 세계사 Ⅲ **`47123bc`**. 하네스 tip 은 **`git rev-parse origin/main`**.
+- 시각(ISO): **`2026-05-20`** (근무일) — **카드뉴스 기능 추가.** 게발이 브리핑을 관리자 전용 카드뉴스로 자동 변환하는 파이프라인 구축.
+  - `admin.html`·`admin.js`: 회원관리/카드뉴스 탭 전환, 모달 뷰어
+  - `scripts/generate-cardnews.ps1`: 브리핑 → 카드뉴스 HTML 자동 생성
+  - `admin/cardnews/`: 생성된 카드뉴스 + manifest 저장소
+- 직전(ISO): **`2026-05-18`** (Harness 인계 동기) — **DeepSeek 공식 API** 전환·LiteLLM/NVIDIA 정리 반영. **`master` tip `ba82d38`** (`origin/master` 일치). Harness **`35c7065`**.
+- 직전(ISO): `2026-05-12` (인계 동기) — **최신 `master` tip 은 `git fetch` 후 `git rev-parse origin/master` 로 확인.** 참고 시점: CI 안정화 **`397a594`**, 세계사 Ⅲ **`47123bc`**.
 - 직전(ISO): `2026-05-11` — 세계사 Ⅲ 지도·EPUB **`47123bc`** 푸시 완료. 이후 **`397a594`** 에서 `library.js`·CodeShield 등 CI 수정 분 반영.
 - 직전(ISO): `2026-05-11T21:15:00+09:00` — Desktop 인계·세계사 Ⅲ 로컬 산출 정리.
 - 직전 갱신(ISO): `2026-05-11T18:00:00+09:00` — **`origin/master`** 에 **2026-05-11** 온세솔대 리플릿(`2df59e4`)·`progress.md` 인계(`8a346d5` 등)·문서 정합분 **푸시 완료** — **정확한 최신 해시는 `git rev-parse origin/master`**.

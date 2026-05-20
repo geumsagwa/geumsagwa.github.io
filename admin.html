@@ -4,16 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https:; frame-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
-    <title>회원관리 - 생각을 잇다</title>
+    <title>관리자 - 생각을 잇다</title>
     <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
     <link rel="stylesheet" href="style.css?v=20260504">
     <link rel="stylesheet" href="style-pages.css?v=20260504">
     <link rel="stylesheet" href="style-light.css?v=20260504">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+    .admin-page-tabs { display: flex; gap: 4px; margin-bottom: 24px; background: #f0f2f5; border-radius: 12px; padding: 4px; }
+    .admin-page-tab { flex: 1; padding: 10px 20px; border: none; background: transparent; border-radius: 10px; font-size: 14px; font-weight: 600; color: #666; cursor: pointer; transition: all 0.2s; }
+    .admin-page-tab:hover { color: #333; }
+    .admin-page-tab.active { background: white; color: #1a73e8; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .admin-page-content { display: none; }
+    .admin-page-content.active { display: block; }
+    .cardnews-list { display: flex; flex-direction: column; gap: 12px; }
+    .cardnews-item { background: white; border-radius: 12px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: space-between; }
+    .cardnews-item .cardnews-date { font-size: 16px; font-weight: 600; color: #222; }
+    .cardnews-item .cardnews-status { font-size: 13px; color: #666; }
+    .cardnews-item .cardnews-status .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+    .cardnews-item .cardnews-status .dot.active { background: #2ecc71; }
+    .cardnews-item .cardnews-actions { display: flex; gap: 8px; }
+    .cardnews-item .cardnews-actions a { padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+    .btn-view { background: #e8f0fe; color: #1a73e8; }
+    .btn-view:hover { background: #d2e3fc; }
+    .cardnews-empty { text-align: center; padding: 60px 20px; color: #999; font-size: 15px; }
+    .cardnews-viewer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; display: none; align-items: center; justify-content: center; overflow-y: auto; padding: 40px 20px; }
+    .cardnews-viewer.open { display: flex; }
+    .cardnews-viewer iframe { width: 420px; max-width: 100%; height: 90vh; border: none; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); background: white; }
+    .cardnews-viewer .close-btn { position: fixed; top: 20px; right: 30px; background: rgba(0,0,0,0.5); color: white; border: none; width: 44px; height: 44px; border-radius: 50%; font-size: 24px; cursor: pointer; }
+    </style>
 </head>
 <body>
 
-<!-- 상단 메뉴바 영역 -->
 <nav class="menu-bar">
     <a href="index.html" class="menu-logo" aria-label="생각을 잇다 홈">
         <img class="menu-logo-img menu-logo-img--dark" src="Images/logo-saenggak.svg?v=20260328a" alt="" width="200" height="45" decoding="async" />
@@ -31,28 +53,49 @@
     <div class="auth-area" id="auth-area"></div>
 </nav>
 
-<!-- 회원관리 콘텐츠 영역 -->
+<!-- 관리자 콘텐츠 -->
 <div class="admin-container">
 
-    <!-- 테마 문구 -->
-    <div class="admin-header">
-        <h1 class="admin-title">회원 관리</h1>
-        <p class="admin-subtitle">가입 승인 및 회원 현황</p>
+    <!-- 페이지 탭 -->
+    <div class="admin-page-tabs">
+        <button class="admin-page-tab active" data-page="members">회원 관리</button>
+        <button class="admin-page-tab" data-page="cardnews">카드뉴스</button>
     </div>
 
-    <!-- 필터 탭 -->
-    <div class="admin-tabs">
-        <button class="admin-tab active" data-filter="all">전체</button>
-        <button class="admin-tab" data-filter="pending">대기 <span class="admin-tab-count" id="count-pending">0</span></button>
-        <button class="admin-tab" data-filter="approved">승인</button>
-        <button class="admin-tab" data-filter="rejected">거절</button>
+    <!-- 회원관리 -->
+    <div class="admin-page-content active" id="page-members">
+        <div class="admin-header">
+            <h1 class="admin-title">회원 관리</h1>
+            <p class="admin-subtitle">가입 승인 및 회원 현황</p>
+        </div>
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-filter="all">전체</button>
+            <button class="admin-tab" data-filter="pending">대기 <span class="admin-tab-count" id="count-pending">0</span></button>
+            <button class="admin-tab" data-filter="approved">승인</button>
+            <button class="admin-tab" data-filter="rejected">거절</button>
+        </div>
+        <div class="admin-list" id="admin-list">
+            <!-- JS로 렌더링 -->
+        </div>
     </div>
 
-    <!-- 회원 목록 -->
-    <div class="admin-list" id="admin-list">
-        <!-- JS로 렌더링 -->
+    <!-- 카드뉴스 -->
+    <div class="admin-page-content" id="page-cardnews">
+        <div class="admin-header">
+            <h1 class="admin-title">📰 카드뉴스</h1>
+            <p class="admin-subtitle">게발이 브리핑으로 자동 생성된 카드뉴스</p>
+        </div>
+        <div class="cardnews-list" id="cardnews-list">
+            <!-- JS로 렌더링 -->
+        </div>
     </div>
 
+</div>
+
+<!-- 카드뉴스 뷰어 (모달) -->
+<div class="cardnews-viewer" id="cardnews-viewer">
+    <button class="close-btn" onclick="closeCardnewsViewer()">✕</button>
+    <iframe id="cardnews-iframe" srcdoc=""></iframe>
 </div>
 
 <script src="supabase-config.js"></script>
