@@ -86,13 +86,28 @@ $outFile = Join-Path $OutputDir "$ds.html"
 $html | Set-Content -Path $outFile -Encoding UTF8
 
 $mf = Join-Path $OutputDir "index.json"
+# 요약문 생성 (첫 3개 카테고리에서 첫 뉴스 제목 추출)
+$summaryLines = @()
+$catCount = 0
+foreach ($sk in $order) {
+  $items = $sec[$sk]
+  if (-not $items -or $items.Count -eq 0) { continue }
+  $k = GetKey $sk
+  if (-not $k -or @("Schedule","Email","Son") -contains $k) { continue }  # 일정/이메일/스포츠는 제외
+  $firstTitle = $items[0].t -replace '["""''''"]', ''
+  $summaryLines += "$sk $firstTitle 외 $($items.Count-1)건"
+  $catCount++
+  if ($catCount -ge 2) { break }
+}
+$summaryText = $summaryLines -join " / "
+
 $manifest = @{ items = @() }
 if (Test-Path $mf) {
   try { $manifest = Get-Content $mf -Encoding UTF8 | ConvertFrom-Json } catch {}
 }
 $existing = @($manifest.items.date)
 if ($ds -notin $existing) {
-  $manifest.items = @(@{date=$ds;summary="Gaebali Card News"}) + @($manifest.items)
+  $manifest.items = @(@{date=$ds;summary=$summaryText}) + @($manifest.items)
   $manifest | ConvertTo-Json -Depth 3 | Set-Content -Path $mf -Encoding UTF8
 }
 Write-Output "OK: $outFile"
