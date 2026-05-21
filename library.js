@@ -53,7 +53,7 @@ async function loadBooks(category) {
             .from('library')
             .select('*')
             .eq('category', category)
-            .order('created_at', { ascending: true });
+            .order('title', { ascending: true });
 
         if (error) throw error;
         const surface = shelf.querySelector('.shelf-surface');

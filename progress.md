@@ -3,10 +3,14 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
-- 시각(ISO): **`2026-05-21`** — **4권 각주 번호 재할당. 1-2권 각주 개편 시도 후 롤백.**
-  - **4권 빌드 스크립트 수정:** `extractChapters()` 각주 번호를 챕터별로 **1부터 순차 재할당** (`fnIdMap`). 본문 `[^n]` 참조와 정의 번호 불일치(원고 내 결번)로 인한 깨진 링크 수정.
-  - **1-2권 각주 스타일 통일 시도:** 4권과 동일한 구조(인라인 스타일, `<a>` 태그 래핑, `!important` 제거, 클래스명 `footnotes` 통일) 적용했으나 리더기에서 미적용. 원인 불명. **모든 1-2권 수정 사항은 롤백 완료.**
+- 시각(ISO): **`2026-05-21`** — **1-2권 각주 통일 해결. EPUB_BUILD_GUIDE.md 각주 규칙 종합.**
+  - **1-2권 각주 통일 해결:** `endnotes.xhtml`에 인라인 스타일 직접 주입 + CSS 패치로 리더기 렌더링 문제 해결.
+    - `unify-footnotes-epub.mjs`: 마크업·인라인 스타일 4권 형식으로 통일, `<br/>` 제거
+    - `renumber-footnotes-book.mjs`: 책 전체 각주 번호 1부터 순차 재할당
+    - 백업: `history1.epub.bak-footnotes`, `history2.epub.bak-footnotes`
+  - **4권 각주 번호 재할당:** `extractChapters()` 각주 번호를 챕터별로 **1부터 순차 재할당** (`fnIdMap`). 본문 `[^n]` 참조와 정의 번호 불일치(원고 내 결번)로 인한 깨진 링크 수정. (직전 작업)
   - **3권 각주:** EPUB 내 각주 없음 확인. 원고 PDF만 존재, 마크다운 소스 없음.
+  - **EPUB_BUILD_GUIDE.md 각주 규칙 종합 정리:** 챕터별 각주(4권 표준) vs endnotes(1-2권 레거시) 규칙 분리 문서화. 원고 `[^n]` 표기법·HTML 구조·CSS·번호 체계·빌드 로직 전 섹션 완비.
   - **Wiki tip:** **`git rev-parse origin/master` 로 최신 확인.**
 - 직전(ISO): **`2026-05-20`** (북 리뷰 카드 이미지 수정 + 카드뉴스 기능 추가)
   - **북 리뷰:** `blog.js` `cover_url` 폴백 순서 수정 (`cover_url` → `card_image_url` → 기본 이미지). **`9a829d2`**
@@ -105,19 +109,22 @@
 - **(해소)** 카카오 로그인 — **직접 OAuth 경로**: REST API 키·Redirect URI·`profile_nickname` 동의. (과거 “리다이렉트만으로 해결” 메모와 **통로 혼동 주의** — Supabase `signInWithOAuth('kakao')`는 GoTrue scope 이슈가 별도.)
 - **(해소)** GitHub 소셜로그인 — 동작 확인 완료
 - **(해소)** `e22d696` 한글 인코딩 깨짐 → `015815f` 복구·배포 확인 완료
+- **(해소) 1-2권 각주 리더기 미적용 문제** → `unify-footnotes-epub.mjs` + `renumber-footnotes-book.mjs`로 인라인 스타일 직접 주입하여 해결
 - 잔여 CRLF/`package-lock` 표시 등(내용 무변 가능) — 필요 시 `git diff HEAD`로 확인
 
 ## EPUB 빌드 규칙 (2026-05-21 통일)
 **모든 EPUB 권은 동일한 구조를 따라야 함.** 규칙 파일:
-- `C:\Users\pass6\project\homepage\ebooks\EPUB_BUILD_GUIDE.md`
+- `C:\Users\pass6\project\homepage\ebooks\EPUB_BUILD_GUIDE.md` (각주 규칙 종합 포함)
 
 **핵심 규칙 요약:**
 - CSS: `Style0001.css` 통일
 - 작가의 말: `Section0000.xhtml` 통일
-- 각주: `<section class="footnotes"><ol><li id="note{n}"><a href="#ref{n}">...</a></li></ol></section>` 형식 강제
-- 본문 각주 참조: `<sup><a href="#note{n}" id="ref{n}">[{n}]</a></sup>`
+- 각주 (신규 권): `<section class="footnotes"><ol><li id="note{n}"><a href="#ref{n}">...</a></li></ol></section>` + **인라인 스타일 필수**
+- 각주 (레거시 1-2권): `endnotes.xhtml` — 수정 완료, 추가 작업 불필요
+- 본문 각주 참조: `<sup><a href="#note{n}" id="ref{n}" style="text-decoration:none;color:inherit;">[{n}]</a></sup>`
 - 빌드 템플릿: `이야기_세계사_4\build-ebook.mjs` 복사 후 경로만 수정
 - 지도는 EPUB에 직접 포함 금지 (커서 별도 작업)
+- 각주 HTML 구조 전체는 `EPUB_BUILD_GUIDE.md` §각주 규칙 참조
 
 ## 다음에 할 일 (최대 3개)
 1. **세계사 Ⅲ** — Supabase Storage 업로드(`upload-history3.js` 경로 설정)·`library` 테이블 `epub_path`·리더 연동 확인
