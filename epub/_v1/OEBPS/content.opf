@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package version="2.0" unique-identifier="BookId" xmlns="http://www.idpf.org/2007/opf">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:identifier opf:scheme="UUID" id="BookId">urn:uuid:e5a47d81-6719-42c9-a919-6ce5214efdf4</dc:identifier>
+    <dc:language>ko</dc:language>
+    <dc:title>[제목을 넣으세요]</dc:title>
+    <meta name="Sigil version" content="2.6.2"/>
+    <dc:date opf:event="modification" xmlns:opf="http://www.idpf.org/2007/opf">2025-12-24</dc:date>
+    <meta name="cover" content="Contemporary_Art_eBook_Cover.jpg"/>
+  </metadata>
+  <manifest>
+    <item id="Section0040.xhtml" href="Text/Section0040.xhtml" media-type="application/xhtml+xml"/>
+    
+    <item id="font" href="Fonts/GyeonggiBatang_Regular.ttf" media-type="application/x-font-ttf"/>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+    <item id="writing.xhtml" href="Text/Authors_note.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0001.xhtml" href="Text/Section0001.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Contemporary_Art_eBook_Cover.jpg" href="Images/cover.jpg" media-type="image/jpeg"/>
+    <item id="Section0002.xhtml" href="Text/Section0002.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0003.xhtml" href="Text/Section0003.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0004.xhtml" href="Text/Section0004.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0005.xhtml" href="Text/Section0005.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0006.xhtml" href="Text/Section0006.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0007.xhtml" href="Text/Section0007.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0009.xhtml" href="Text/endnotes.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0008.xhtml" href="Text/Section0008.xhtml" media-type="application/xhtml+xml"/>
+    <item id="x4836675c-00fc-4163-900d-9ca3d3a57f83" href="Text/Section0009.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0010.xhtml" href="Text/Section0010.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0011.xhtml" href="Text/Section0011.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0012.xhtml" href="Text/Section0012.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0013.xhtml" href="Text/Section0013.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0014.xhtml" href="Text/Section0014.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0015.xhtml" href="Text/Section0015.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0016.xhtml" href="Text/Section0016.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0017.xhtml" href="Text/Section0017.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0018.xhtml" href="Text/Section0018.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0019.xhtml" href="Text/Section0019.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0020.xhtml" href="Text/Section0020.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0021.xhtml" href="Text/Section0021.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0022.xhtml" href="Text/Section0022.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0023.xhtml" href="Text/Section0023.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0024.xhtml" href="Text/Section0024.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0025.xhtml" href="Text/Section0025.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0027.xhtml" href="Text/Section0027.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0028.xhtml" href="Text/Section0028.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0029.xhtml" href="Text/Section0029.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0030.xhtml" href="Text/Section0030.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0031.xhtml" href="Text/Section0031.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0032.xhtml" href="Text/Section0032.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0033.xhtml" href="Text/Section0033.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0034.xhtml" href="Text/Section0034.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0035.xhtml" href="Text/Section0035.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0036.xhtml" href="Text/Section0036.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0037.xhtml" href="Text/Section0037.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0038.xhtml" href="Text/Section0038.xhtml" media-type="application/xhtml+xml"/>
+    <item id="Section0039.xhtml" href="Text/Section0039.xhtml" media-type="application/xhtml+xml"/>
+    <item id="cover.xhtml" href="Text/cover.xhtml" media-type="application/xhtml+xml"/>
+      <item id="ch04_human_migration.jpg" href="Images/ch04_human_migration.jpg" media-type="image/jpeg"/>
+    <item id="ch06_four_civilizations.jpg" href="Images/ch06_four_civilizations.jpg" media-type="image/jpeg"/>
+    <item id="ch08_aegean_greece.jpg" href="Images/ch08_aegean_greece.jpg" media-type="image/jpeg"/>
+    <item id="ch10_persian_wars.jpg" href="Images/ch10_persian_wars.jpg" media-type="image/jpeg"/>
+    <item id="ch11_alexander.jpg" href="Images/ch11_alexander.jpg" media-type="image/jpeg"/>
+    <item id="ch12_qin_unification.jpg" href="Images/ch12_qin_unification.jpg" media-type="image/jpeg"/>
+    <item id="ch13_rome_carthage.jpg" href="Images/ch13_rome_carthage.jpg" media-type="image/jpeg"/>
+    <item id="ch14_silk_road.jpg" href="Images/ch14_silk_road.jpg" media-type="image/jpeg"/>
+    <item id="ch17_roman_empire.jpg" href="Images/ch17_roman_empire.jpg" media-type="image/jpeg"/>
+    <item id="ch18_three_kingdoms.jpg" href="Images/ch18_three_kingdoms.jpg" media-type="image/jpeg"/>
+    <item id="ch19_gupta_empire.jpg" href="Images/ch19_gupta_empire.jpg" media-type="image/jpeg"/>
+    <item id="ch20_grand_canal.jpg" href="Images/ch20_grand_canal.jpg" media-type="image/jpeg"/>
+    <item id="ch21_tang_dynasty.jpg" href="Images/ch21_tang_dynasty.jpg" media-type="image/jpeg"/>
+    <item id="ch24_islamic_expansion.jpg" href="Images/ch24_islamic_expansion.jpg" media-type="image/jpeg"/>
+    <item id="ch27_carolingian_empire.jpg" href="Images/ch27_carolingian_empire.jpg" media-type="image/jpeg"/>
+    <item id="ch29_invasions_feudalism.jpg" href="Images/ch29_invasions_feudalism.jpg" media-type="image/jpeg"/>
+    <item id="ch33_american_civilizations.jpg" href="Images/ch33_american_civilizations.jpg" media-type="image/jpeg"/>
+    <item id="ch34_crusades.jpg" href="Images/ch34_crusades.jpg" media-type="image/jpeg"/>
+    <item id="ch35_mongol_empire.jpg" href="Images/ch35_mongol_empire.jpg" media-type="image/jpeg"/>
+    <item id="ch36_black_death.jpg" href="Images/ch36_black_death.jpg" media-type="image/jpeg"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="cover.xhtml"/>
+    <itemref idref="writing.xhtml"/>
+    <itemref idref="Section0001.xhtml"/>
+    <itemref idref="Section0002.xhtml"/>
+    <itemref idref="Section0003.xhtml"/>
+    <itemref idref="Section0004.xhtml"/>
+    <itemref idref="Section0005.xhtml"/>
+    <itemref idref="Section0006.xhtml"/>
+    <itemref idref="Section0007.xhtml"/>
+    <itemref idref="Section0008.xhtml"/>
+    <itemref idref="x4836675c-00fc-4163-900d-9ca3d3a57f83"/>
+    <itemref idref="Section0010.xhtml"/>
+    <itemref idref="Section0011.xhtml"/>
+    <itemref idref="Section0012.xhtml"/>
+    <itemref idref="Section0013.xhtml"/>
+    <itemref idref="Section0014.xhtml"/>
+    <itemref idref="Section0015.xhtml"/>
+    <itemref idref="Section0016.xhtml"/>
+    <itemref idref="Section0017.xhtml"/>
+    <itemref idref="Section0018.xhtml"/>
+    <itemref idref="Section0019.xhtml"/>
+    <itemref idref="Section0020.xhtml"/>
+    <itemref idref="Section0021.xhtml"/>
+    <itemref idref="Section0022.xhtml"/>
+    <itemref idref="Section0023.xhtml"/>
+    <itemref idref="Section0024.xhtml"/>
+    <itemref idref="Section0025.xhtml"/>
+    <itemref idref="Section0027.xhtml"/>
+    <itemref idref="Section0028.xhtml"/>
+    <itemref idref="Section0029.xhtml"/>
+    <itemref idref="Section0030.xhtml"/>
+    <itemref idref="Section0031.xhtml"/>
+    <itemref idref="Section0032.xhtml"/>
+    <itemref idref="Section0033.xhtml"/>
+    <itemref idref="Section0034.xhtml"/>
+    <itemref idref="Section0035.xhtml"/>
+    <itemref idref="Section0036.xhtml"/>
+    <itemref idref="Section0037.xhtml"/>
+    <itemref idref="Section0038.xhtml"/>
+    <itemref idref="Section0039.xhtml"/>
+    <itemref idref="Section0040.xhtml"/>
+    <itemref idref="Section0009.xhtml"/>
+  </spine>
+  <guide>
+    <reference type="cover" title="표지" href="Text/cover.xhtml"/>
+  </guide>
+</package>

@@ -1,0 +1,84 @@
+
+/* ===== 각주(footnotes) ===== */
+.footnotes{
+  margin: 25px 20px 0 20px;      /* p와 같은 좌우 여백 → 본문 폭까지만 */
+  padding-top: 20px;             /* 선과 각주 내용 사이 간격 */
+  border-top: 1px solid #ddd;    /* 얇은 실선 */
+  text-indent: 0;                /* p의 들여쓰기 영향 방지 */
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+
+/* 나눔명조 글꼴 사용을 위한 지시어 */
+@font-face {
+    font-family: 'GyeonggiBatang';
+    font-weight: normal;
+    font-style: normal;
+    src: url(../Fonts/GyeonggiBatang_Regular.ttf);
+}
+
+
+/* -- 모든 태그에 적용 -- */
+* {
+	margin: 0;
+   font-family: 'GyeonggiBatang';		/* 나눔명조 글꼴 사용 */
+}
+
+/* --- 글 제목 --- */
+h3 {
+   font-size: 1.5em;
+	margin: 50px 0 30px 20px;		/* 상·우·하·좌 여백 */ 
+	text-align: center;			/* 문단 중앙 정렬 */
+}
+
+/* ----- 본문 ----- */
+p {
+	margin: 0px 20px 15px 20px;		/* 상·우·하·좌 여백 */ 
+	text-indent: 1em;			/* 들여 쓰기 간격 */
+	text-align: justify;		/* 문단 양쪽 맞춤 */
+	line-height: 1.8;			/* 줄 높이 */
+}
+
+/* ---- 저자명 ---- */
+.author {
+	line-height: 3.0;			/* 줄 높이 간격 */
+	text-align: right;			/* 문단 오른쪽 정렬 */
+	font-weight: bold;			/* 텍스트를 굵게 */
+}
+
+/* ---- 각주 (4권 통일) ---- */
+.footnotes {
+  margin: 25px 20px 0 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  font-size: 0.8em;
+  line-height: 1.4;
+}
+.footnotes ol {
+  padding-left: 2em;
+}
+.footnotes li {
+  margin-bottom: 0;
+}
+.footnotes a,
+.footnotes a:link,
+.footnotes a:visited,
+.footnotes a:hover,
+.footnotes a:active {
+  text-decoration: none !important;
+  color: inherit !important;
+  border: none !important;
+  background: none !important;
+}
+sup {
+  font-size: 0.75em;
+}
+sup a,
+sup a:link,
+sup a:visited,
+sup a:hover,
+sup a:active {
+  text-decoration: none !important;
+  color: inherit !important;
+}

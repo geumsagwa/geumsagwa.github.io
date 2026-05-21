@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'GyeonggiBatang';
+    font-weight: normal;
+    font-style: normal;
+    src: url(../Fonts/GyeonggiBatang_Regular.ttf);
+}
+
+/* 나눔명조 글꼴 사용을 위한 지시어 *//* -- 모든 태그에 적용 -- */
+* {
+	margin: 0;
+   font-family: 'GyeonggiBatang';		/* 나눔명조 글꼴 사용 */
+}
+
+/* --- 글 제목 --- */
+h3 {
+   font-size: 1.5em;
+	margin: 50px 0 30px 20px;		/* 상·우·하·좌 여백 */ 
+	text-align: center;			/* 문단 중앙 정렬 */
+}
+
+/* ----- 본문 ----- */
+p {
+	margin: 0px 20px 15px 20px;		/* 상·우·하·좌 여백 */ 
+	text-indent: 1em;			/* 들여 쓰기 간격 */
+	text-align: justify;		/* 문단 양쪽 맞춤 */
+	line-height: 1.8;			/* 줄 높이 */
+}
+
+/* ---- 저자명 ---- */
+.author {
+	line-height: 3.0;			/* 줄 높이 간격 */
+	text-align: right;			/* 문단 오른쪽 정렬 */
+	font-weight: bold;			/* 텍스트를 굵게 */
+}
+
+/* ---- 주석 ---- */
+.footnotes {
+  font-size: 0.9em;
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid #ccc;
+}
+
+.footnotes a {
+    text-decoration: none;
+}
+
+sup {
+  font-size: 0.8em;
+
+}
+/* 본문의 미주 번호 링크 */
+a[href^="endnotes.xhtml"] {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a[href^="endnotes.xhtml"]:hover {
+  text-decoration: underline;
+}
+
+a[href^="endnotes.xhtml"] sup {
+  font-size: 0.75em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+/* 미주 페이지 스타일 */
+.endnotes-section {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.endnotes-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3em;
+}
+
+.endnotes-section ol {
+  padding-left: 2em;
+  line-height: 1.6;
+}
+
+.endnotes-section li {
+  margin-bottom: 1em;
+}
+
+/* 미주의 돌아가기 링크 */
+.endnotes-section a[href*="chapter"] {
+  text-decoration: none;
+  color: #666;
+  margin-right: 0.5em;
+  font-weight: bold;
+}
+
+.endnotes-section a[href*="chapter"]:hover {
+  color: #0066cc;
+}
+
+/* ---- 각주 (4권 통일) ---- */
+.footnotes {
+  margin: 25px 20px 0 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  font-size: 0.8em;
+  line-height: 1.4;
+}
+.footnotes ol {
+  padding-left: 2em;
+}
+.footnotes li {
+  margin-bottom: 0;
+}
+.footnotes a,
+.footnotes a:link,
+.footnotes a:visited,
+.footnotes a:hover,
+.footnotes a:active {
+  text-decoration: none !important;
+  color: inherit !important;
+  border: none !important;
+  background: none !important;
+}
+sup {
+  font-size: 0.75em;
+}
+sup a,
+sup a:link,
+sup a:visited,
+sup a:hover,
+sup a:active {
+  text-decoration: none !important;
+  color: inherit !important;
+}
