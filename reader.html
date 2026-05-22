@@ -19,7 +19,7 @@
             overflow: hidden;
         }
 
-        /* ── 전체 레이아웃: 본문 전체 차지 (목차는 오버레이) ── */
+        /* ── 전체 레이아웃 ── */
         .reader-container {
             width: 100%;
             height: 84vh;
@@ -27,7 +27,9 @@
             flex-direction: row;
         }
 
-        /* ── 목차 오버레이 (기본 숨김, 버튼 클릭 시 투명하게 등장) ── */
+        /* ── 목차: 모바일/태블릿(≤1024px)은 오버레이, 데스크톱(≥1025px)은 좌측 고정 사이드바 ── */
+
+        /* 모바일/태블릿: 오버레이 (기본값) */
         .reader-toc {
             position: fixed;
             top: 0;
@@ -62,6 +64,56 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+        }
+
+        /* 데스크톱(≥1025px): 좌측 고정 사이드바 */
+        @media (min-width: 1025px) {
+            .reader-toc {
+                position: static;
+                width: 260px;
+                min-width: 260px;
+                height: 100%;
+                background: #0a0a08;
+                border-right: 1px solid rgba(255, 255, 255, 0.06);
+                display: flex !important;
+                flex-direction: column;
+                overflow: hidden;
+                z-index: auto;
+                pointer-events: auto;
+                transition: none;
+            }
+
+            .reader-toc.open {
+                background: #0a0a08;
+            }
+
+            .reader-toc-inner {
+                position: static;
+                top: auto;
+                left: auto;
+                transform: none;
+                width: 100%;
+                max-height: 100%;
+                background: transparent;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                border: none;
+                border-radius: 0;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                height: 100%;
+            }
+
+            /* 데스크톱에서 닫기 버튼 숨김 */
+            #toc-close-btn {
+                display: none;
+            }
+
+            /* 데스크톱에서 ≡ 목차 버튼 숨김 */
+            .toc-toggle-btn {
+                display: none !important;
+            }
         }
 
         .toc-header {
@@ -140,7 +192,7 @@
             background: rgba(218, 187, 126, 0.08);
         }
 
-        /* ── 목차 열기 버튼 (좌측 여백에 작게) ── */
+        /* ── 목차 열기 버튼 (모바일에서만 표시) ── */
         .toc-toggle-btn {
             background: none;
             border: 1px solid rgba(255, 255, 255, 0.12);
