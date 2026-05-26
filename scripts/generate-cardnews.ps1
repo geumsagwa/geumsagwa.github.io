@@ -7,7 +7,8 @@ if (-not $BriefingFile) {
 }
 
 $ds = [System.IO.Path]::GetFileNameWithoutExtension($BriefingFile) -replace "briefing-", ""
-$y = $ds.Substring(0,4); $mn = [int]$ds.Substring(5,2); $dd = [int]$ds.Substring(8,2)
+$y = $ds.Substring(0,4); $mn = $ds.Substring(5,2)
+$dd = $ds.Substring(8,2)
 $dt = Get-Date "$y-$mn-$dd"
 $wdk = @{"Monday"="월";"Tuesday"="화";"Wednesday"="수";"Thursday"="목";"Friday"="금";"Saturday"="토";"Sunday"="일"}
 $wk = $wdk[$dt.DayOfWeek.ToString()]
@@ -57,16 +58,20 @@ function Get-Src($url) {
          "joongang.co.kr"="중앙일보";"chosun.com"="조선일보";"sedaily.com"="서울경제"
          "news1.kr"="뉴스1";"newsis.com"="뉴시스";"espn.com"="ESPN"
          "github.com"="GitHub";"google.com"="Google";"autonocion.com"="Autonocion"
-         "scientificamerican.com"="Scientific American"}
+         "scientificamerican.com"="Scientific American";"apollo.com"="Apollo"
+         "tomshardware.com"="Tom's Hardware";"theguardian.com"="The Guardian"
+         "bloter.com"="Bloter";"zdnet.co.kr"="ZDNet Korea"}
   if ($m.ContainsKey($h)) { return $m[$h] }
   return $h
 }
 
-$sched = "근무"
+$sched = ""
 $schedExtra = @()
+$hasSchedule = $false
 foreach ($line in $content -split "`n") {
   if ($line -match "\(종일\):\s*(.+)") {
     $sched = $matches[1].Trim()
+    $hasSchedule = $true
   }
   # "이번 주:" 일정 줄 (괄호로 감싸진 줄)
   elseif ($line -match "^\s*\((.+)\)\s*$" -and $matches[1] -match "이번 주:\s*(.+)") {
@@ -77,6 +82,10 @@ foreach ($line in $content -split "`n") {
       if ($item) { $schedExtra += ($item -replace "\(undefined\)","" -replace "undefined","").Trim() }
     }
   }
+}
+# 오늘 일정이 없으면 "등록된 일정 없음"으로 표시
+if (-not $hasSchedule) {
+  $sched = "등록된 일정 없음"
 }
 
 $ej = @{"정치"="🗳️";"경제"="💰";"사회"="🚨";"세계"="🌍";"문화"="🎭";"손흥민"="⚽";"AI/IT"="🤖"}
@@ -144,11 +153,11 @@ foreach ($sk in $order) {
   foreach ($item in $items) {
     # AI/IT 섹션에서 메일 링크 제외
     if ($sk -eq "AI/IT" -and $item.u -match "mail\.google\.com") { continue }
-    $t = $item.t -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
+    $t = $item.t -replace "&(?!(?:#\d+|#x[0-9a-fA-F]+|amp|lt|gt);)","&amp;" -replace "<","&lt;" -replace ">","&gt;"
     $url = $item.u
     $src = if ($url) { Get-Src $url } else { "" }
     if ($url) {
-      $html += "<div class=""item""><span class=""num"">$ri</span><div class=""tle""><a href=""$url"" target=""_blank"" rel=""noopener"">$t</a></div>"
+      $html += "<div class=""item""><span class=""num"">$ri</span><div class=""tle""><a href=""$url"" target=""_blank"" rel=""noopener noreferrer"">$t</a></div>"
     } else {
       $html += "<div class=""item""><span class=""num"">$ri</span><div class=""tle"">$t</div>"
     }
