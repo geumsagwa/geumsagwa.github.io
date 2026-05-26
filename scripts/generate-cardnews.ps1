@@ -36,6 +36,20 @@ foreach ($line in $content -split "`n") {
 }
 if ($cur -and $buf.Count -gt 0) { $sec[$cur] = $buf.Clone() }
 
+# --- 검증: 뉴스 항목에 실제 URL이 있는지 확인 ---
+$newsSections = $order | Where-Object { $_ -notin @("오늘의 일정", "이메일 요약", "홈페이지 상태") }
+$validItems = 0
+foreach ($sk in $newsSections) {
+  $items = $sec[$sk]
+  if ($items) {
+    $validItems += @($items | Where-Object { $_.u -and $_.u -ne "" }).Count
+  }
+}
+if ($validItems -eq 0) {
+  Write-Error "검증 실패: 브리핑 파일에 실제 뉴스 링크(URL)가 없습니다. 생성 중단: $BriefingFile"
+  exit 2
+}
+
 function Get-Src($url) {
   $h = ($url -replace "https?://(www\.)?","") -split "/" | Select-Object -First 1
   $m = @{"hani.co.kr"="한겨레";"khan.co.kr"="경향신문";"donga.com"="동아일보"
