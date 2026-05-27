@@ -17,6 +17,11 @@ CREATE TABLE IF NOT EXISTS book_reviews (
 
 ALTER TABLE book_reviews ENABLE ROW LEVEL SECURITY;
 
+-- book_reviews Data API 접근 권한 (Supabase 2026-05-30 변경 대응)
+GRANT SELECT ON public.book_reviews TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.book_reviews TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.book_reviews TO service_role;
+
 CREATE POLICY "book_reviews_public_read"
 ON book_reviews FOR SELECT USING (true);
 

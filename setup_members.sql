@@ -33,6 +33,11 @@ create unique index if not exists members_user_id_uq on public.members(user_id);
 
 alter table public.members enable row level security;
 
+-- members Data API 접근 권한 (Supabase 2026-05-30 변경 대응)
+-- anon은 members 테이블에 접근 불가 (비공개)
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.members TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.members TO service_role;
+
 create or replace function public.handle_new_auth_user()
 returns trigger
 language plpgsql

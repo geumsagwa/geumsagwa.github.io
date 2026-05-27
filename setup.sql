@@ -44,6 +44,11 @@ CREATE POLICY "library_public_read"
 ON library FOR SELECT
 USING (true);
 
+-- 7a. Library Data API 접근 권한 (Supabase 2026-05-30 변경 대응)
+GRANT SELECT ON public.library TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.library TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.library TO service_role;
+
 -- 8. Library RLS 정책: 인증된 사용자만 추가 가능
 CREATE POLICY "library_auth_insert"
 ON library FOR INSERT
@@ -82,6 +87,11 @@ ALTER TABLE book_reviews ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "book_reviews_public_read"
 ON book_reviews FOR SELECT USING (true);
 
+-- 12a. book_reviews Data API 접근 권한 (Supabase 2026-05-30 변경 대응)
+GRANT SELECT ON public.book_reviews TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.book_reviews TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.book_reviews TO service_role;
+
 -- 13. book_reviews RLS 정책: 인증된 사용자만 추가 가능
 CREATE POLICY "book_reviews_auth_insert"
 ON book_reviews FOR INSERT
@@ -118,6 +128,11 @@ ALTER TABLE essays ENABLE ROW LEVEL SECURITY;
 -- 18. essays RLS 정책: 누구나 읽기 가능
 CREATE POLICY "essays_public_read"
 ON essays FOR SELECT USING (true);
+
+-- 18a. essays Data API 접근 권한 (Supabase 2026-05-30 변경 대응)
+GRANT SELECT ON public.essays TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.essays TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.essays TO service_role;
 
 -- 19. essays RLS 정책: 인증된 사용자만 추가 가능
 CREATE POLICY "essays_auth_insert"
@@ -157,6 +172,11 @@ ALTER TABLE ai_writings ENABLE ROW LEVEL SECURITY;
 -- 24. ai_writings RLS 정책: 누구나 읽기 가능
 CREATE POLICY "ai_writings_public_read"
 ON ai_writings FOR SELECT USING (true);
+
+-- 24a. ai_writings Data API 접근 권한 (Supabase 2026-05-30 변경 대응)
+GRANT SELECT ON public.ai_writings TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.ai_writings TO authenticated;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.ai_writings TO service_role;
 
 -- 25. ai_writings RLS 정책: 인증된 사용자만 추가 가능
 CREATE POLICY "ai_writings_auth_insert"

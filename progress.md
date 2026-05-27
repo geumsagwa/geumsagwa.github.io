@@ -3,6 +3,14 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-05-27T12:00+09:00`** — **Supabase GRANT 대응 완료 + WIKI-005 문서화.**
+  - **Supabase Data API GRANT 대응:**
+    - 6개 테이블(library, book_reviews, essays, ai_writings, members, diaries)에 명시적 GRANT 추가
+    - `setup.sql`, `setup_members.sql`, `create_book_reviews.sql` 수정
+    - `setup_diaries.sql` (신규), `supabase/grant_data_api_access.sql` (신규)
+    - Supabase Management API로 운영 DB 직접 적용 완료
+  - LLM Wiki: concept 2,635개 / sources 363개 / 링크 12,427개
+  - WIKI-005 그래프 뷰어: 현황 문서화 후 보류 (`D:\wiki\outputs\WIKI-005-graph-viewer-status.md`)
 - 시각(ISO): **`2026-05-21`** — **1-2권 각주 통일 해결. EPUB_BUILD_GUIDE.md 각주 규칙 종합.**
   - **1-2권 각주 통일 해결:** `endnotes.xhtml`에 인라인 스타일 직접 주입 + CSS 패치로 리더기 렌더링 문제 해결.
     - `unify-footnotes-epub.mjs`: 마크업·인라인 스타일 4권 형식으로 통일, `<br/>` 제거
