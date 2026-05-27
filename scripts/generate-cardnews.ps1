@@ -28,7 +28,7 @@ foreach ($line in $content -split "`n") {
     $cur = ""; $buf = @()
   }
   elseif ($t -match "^- \[(.+?)\]\((.+?)\)") {
-    $title = $matches[1]; $url = ($matches[2] -split "\?")[0]
+    $title = $matches[1]; $url = $matches[2]
     $rest = $t -replace "^- \[.+?\]\(.+?\)\s*",""
     $desc = if ($rest) { $rest } else { "" }
     $buf += @{t=$title; u=$url; d=$desc}
