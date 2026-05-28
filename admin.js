@@ -182,7 +182,7 @@ async function loadCardnews() {
     const list = document.getElementById('cardnews-list');
     try {
         // 카드뉴스 목록 manifest 로드
-        const resp = await fetch('admin/cardnews/index.json');
+        const resp = await fetch('admin/cardnews/index.json?_=' + Date.now());
         if (!resp.ok) throw new Error('Not found');
         const manifest = await resp.json();
         renderCardnewsList(manifest);
