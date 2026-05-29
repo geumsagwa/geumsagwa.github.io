@@ -222,8 +222,37 @@ $html += "<div class=""card""><div class=""st"" style=""color:#2ecc71"">✅ 홈�
 <div class=""ico"">✓</div>
 <div><div class=""st1"">geumsagwa.github.io</div><div class=""st2"">정상 ($statusDetail)</div></div>
 </div></div>
+"
 
-<div class=""ft"">게발이 브리핑 · $ds 자동 생성<br>생각을 잇다</div>
+# LLM Wiki 상태 섹션 (## 5.)
+$wikiSectionStart = $content.IndexOf("## 5. LLM Wiki")
+if ($wikiSectionStart -ge 0) {
+  $wikiSectionEnd = $content.IndexOf("`n## ", $wikiSectionStart + 10)
+  if ($wikiSectionEnd -lt 0) { $wikiSectionEnd = $content.Length }
+  $wikiBlock = $content.Substring($wikiSectionStart, $wikiSectionEnd - $wikiSectionStart)
+  $wc = ""; $wb = ""; $ww = ""; $wl = ""
+  foreach ($line in $wikiBlock -split "`n") {
+    $t = $line.Trim()
+    if ($t -match "^개념:\s*(\d+)") { $wc = $matches[1] }
+    elseif ($t -match "^깨진 링크:\s*(\d+)") { $wb = $matches[1] }
+    elseif ($t -match "^현재 작업:\s*(.+)") { $ww = $matches[1].Trim() }
+    elseif ($t -match "^low confidence:\s*(\d+)") { $wl = $matches[1] }
+  }
+  if ($wc) {
+    $wd = "개념 ${wc}개"
+    if ($wb) { $wd += " / 깨진링크 $wb" }
+    if ($wl) { $wd += " / low:$wl" }
+    $wp = if ($ww) { $ww } else { "LLM Wiki" }
+    $html += "<div class=""card""><div class=""st"" style=""color:#8e44ad"">📚 LLM Wiki</div>
+<div class=""stat"">
+<div class=""ico"">📖</div>
+<div><div class=""st1"">$wp</div><div class=""st2"">$wd</div></div>
+</div></div>
+"
+  }
+}
+
+$html += "<div class=""ft"">게발이 브리핑 · $ds 자동 생성<br>생각을 잇다</div>
 
 </div>
 </body>
