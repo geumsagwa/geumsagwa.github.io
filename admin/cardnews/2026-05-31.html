@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -21,16 +21,18 @@ body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','
 .tle a{color:#2a2520;text-decoration:none}
 .tle a:hover{color:#8f7d60;text-decoration:underline}
 .src{font-size:11px;color:#7a7060;flex:0 0 100%;padding-left:28px;margin-top:-4px}
-.sc{padding:16px 20px}
-.si{display:flex;align-items:center;gap:10px;padding:6px 0}
-.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.stx{font-size:14px;color:#2a2520}
-.ec{padding:16px 20px}
-.ei{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:13px;color:#2a2520}
-.el{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:600;margin-right:4px}
+.sc{padding:12px 20px}
+.si{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #ede6dc}
+.si:last-child{border-bottom:none}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.stx{font-size:14px;color:#2a2520;line-height:1.5}
+.ec{padding:12px 20px}
+.ei{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #ede6dc;font-size:13px;color:#2a2520}
+.ei:last-child{border-bottom:none}
+.el{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:600;margin-right:4px;flex-shrink:0}
 .el.imp{background:#f5e6d3;color:#8f5a3a}
 .el.spam{background:#ede6dc;color:#7a7060}
-.stat{padding:16px 20px;display:flex;align-items:center;gap:14px}
+.stat{padding:12px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #ede6dc}
 .stat .ico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;background:#e8e0d4;flex-shrink:0}
 .stat .st1{font-size:13px;color:#7a7060}
 .stat .st2{font-size:14px;font-weight:600;color:#2a2520}
@@ -67,8 +69,11 @@ body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','
 <div class="card"><div class="st" style="color:#3498db">🌍 세계</div>
 <div class="item"><span class="num">1</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260531002300099" target="_blank" rel="noopener noreferrer">"우크라 드론, 자포리자 원전 공격"…러-우 공격 지속</a></div><div class="src">연합뉴스</div></div>
 </div>
-<div class="src">The Guardian</div></div>
+<div class="card"><div class="st" style="color:#e67e22">⚽ 손흥민</div>
+<div class="item"><span class="num">1</span><div class="tle"><a href="https://www.theguardian.com/football/2026/may/30/paris-saint-germain-retain-champions-league-as-arsenal-dream-dashed-in-shootout" target="_blank" rel="noopener noreferrer">Paris Saint-Germain retain Champions League as Arsenal dream dashed in shootout</a></div><div class="src">The Guardian</div></div>
 </div>
+<div class="card"><div class="st" style="color:#1abc9c">🤖 AI/IT</div>
+<div class="item"><span class="num">1</span><div class="tle"><a href="https://zdnet.co.kr/view/?no=20260529170252" target="_blank" rel="noopener noreferrer">신세계백화점, 英 주얼리 브랜드 ‘제시카 맥코맥’ 팝업 운영</a></div><div class="src">ZDNet Korea</div></div>
 <div class="item"><span class="num">2</span><div class="tle"><a href="https://zdnet.co.kr/view/?no=20260530115600" target="_blank" rel="noopener noreferrer">엠바크스튜디오 '아크 레이더스', 노르딕 게임 어워드 3관왕</a></div><div class="src">ZDNet Korea</div></div>
 </div>
 <div class="card"><div class="st" style="color:#1a73e8">📅 오늘의 일정</div>
@@ -77,6 +82,10 @@ body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','
 <div class="si"><div class="dot" style="background:#f39c12"></div><div class="stx" style="color:#7a7060">06-02(화) 근무</div></div>
 <div class="si"><div class="dot" style="background:#f39c12"></div><div class="stx" style="color:#7a7060">06-04(목) 근무</div></div>
 <div class="si"><div class="dot" style="background:#f39c12"></div><div class="stx" style="color:#7a7060">06-06(토) 근무</div></div>
+</div></div>
+<div class="card"><div class="st" style="color:#e74c3c">📧 이메일 요약</div><div class="ec">
+<div class="ei"><span style="color:#7a7060">중요 메일 없음</span></div>
+<div class="ei"><span style="color:#7a7060">스팸 없음</span></div>
 </div></div>
 <div class="card"><div class="st" style="color:#2ecc71">✅ 홈페이지 상태</div>
 <div class="stat">
@@ -93,5 +102,4 @@ body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','
 </div>
 </body>
 </html>
-
 

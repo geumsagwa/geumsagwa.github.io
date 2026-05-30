@@ -108,16 +108,18 @@ body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','
 .tle a{color:#2a2520;text-decoration:none}
 .tle a:hover{color:#8f7d60;text-decoration:underline}
 .src{font-size:11px;color:#7a7060;flex:0 0 100%;padding-left:28px;margin-top:-4px}
-.sc{padding:16px 20px}
-.si{display:flex;align-items:center;gap:10px;padding:6px 0}
-.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.stx{font-size:14px;color:#2a2520}
-.ec{padding:16px 20px}
-.ei{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:13px;color:#2a2520}
-.el{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:600;margin-right:4px}
+.sc{padding:12px 20px}
+.si{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #ede6dc}
+.si:last-child{border-bottom:none}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.stx{font-size:14px;color:#2a2520;line-height:1.5}
+.ec{padding:12px 20px}
+.ei{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #ede6dc;font-size:13px;color:#2a2520}
+.ei:last-child{border-bottom:none}
+.el{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:600;margin-right:4px;flex-shrink:0}
 .el.imp{background:#f5e6d3;color:#8f5a3a}
 .el.spam{background:#ede6dc;color:#7a7060}
-.stat{padding:16px 20px;display:flex;align-items:center;gap:14px}
+.stat{padding:12px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #ede6dc}
 .stat .ico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;background:#e8e0d4;flex-shrink:0}
 .stat .st1{font-size:13px;color:#7a7060}
 .stat .st2{font-size:14px;font-weight:600;color:#2a2520}
@@ -181,34 +183,40 @@ foreach ($extra in $schedExtra) {
 $html += "</div></div>
 "
 
+# 이메일 요약 — 항상 표시 (메일/스팸 없어도 "없음" 표시)
+$emailHtml = "<div class=""card""><div class=""st"" style=""color:#e74c3c"">📧 이메일 요약</div><div class=""ec"">`n"
+$hasImportantMail = $false; $spamLabel = "스팸 없음"
 if ($content -match "(?s)## 3\. 이메일 요약\s*\n(.*?)(?=\n##|\z)") {
   $et = $matches[1]
-  $eh = "<div class=""card""><div class=""st"" style=""color:#e74c3c"">📧 중요 메일</div><div class=""ec"">`n"
-  $hc = $false; $spamText = ""
   foreach ($l in $et -split "`n") {
     if ($l -match "^- \[(.+?)\]") {
       $mt = $matches[1] -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
       $lb = if ($mt -match "Cursor|결제") { "<span class=""el imp"">중요</span>" } else { "" }
       if ($lb) {
-        $eh += "<div class=""ei"">$lb$mt</div>`n"; $hc = $true
+        $emailHtml += "<div class=""ei"">$lb$mt</div>`n"; $hasImportantMail = $true
       } else {
-        $eh += "<div class=""ei""><span>$mt</span></div>`n"; $hc = $true
+        $emailHtml += "<div class=""ei""><span>$mt</span></div>`n"; $hasImportantMail = $true
       }
     } elseif ($l -match "스팸 처리 결과:\s*(.+)") {
-      $spamText = $matches[1].Trim()
+      $spamLabel = $matches[1].Trim()
     } elseif ($l -match "\[(\d+)\]건 처리 완료\s*(.*)") {
-      $spamText = "[$($matches[1])]건 처리 완료 $($matches[2])".Trim()
+      $spamLabel = "[$($matches[1])]건 처리 완료 $($matches[2])".Trim()
     }
   }
-  if ($spamText -and $spamText -ne "스팸 없음") {
-    $spamEsc = $spamText -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
-    $eh += "<div style=""margin-top:10px;padding-top:10px;border-top:1px solid #ede6dc"">`n"
-    $eh += "<div class=""ei""><span class=""el spam"">스팸</span>$spamEsc</div>`n"
-    $eh += "</div>`n"
-  }
-  $eh += "</div></div>`n"
-  if ($hc -or ($spamText -and $spamText -ne "스팸 없음")) { $html += $eh }
 }
+if (-not $hasImportantMail) {
+  $emailHtml += "<div class=""ei""><span style=""color:#7a7060"">중요 메일 없음</span></div>`n"
+}
+$spamEsc = $spamLabel -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
+if ($spamLabel -and $spamLabel -ne "스팸 없음") {
+  $emailHtml += "<div style=""margin-top:10px;padding-top:10px;border-top:1px solid #ede6dc"">`n"
+  $emailHtml += "<div class=""ei""><span class=""el spam"">스팸</span>$spamEsc</div>`n"
+  $emailHtml += "</div>`n"
+} else {
+  $emailHtml += "<div class=""ei""><span style=""color:#7a7060"">스팸 없음</span></div>`n"
+}
+$emailHtml += "</div></div>`n"
+$html += $emailHtml
 
 $httpCode = "200"; $respTime = ""; $sslOk = ""
 if ($content -match "\| HTTP 상태\s*\|\s*(\d+)") { $httpCode = $matches[1] }
