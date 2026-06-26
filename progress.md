@@ -5,7 +5,7 @@
 ## 마지막 갱신
 - 시각(ISO): **`2026-06-26T15:50+09:00`** — **세계사 Ⅲ & Ⅳ 지도 반영 및 업로드 완료.**
   - **세계사 Ⅲ 지도 반영 및 업로드:** `map/history3_with_maps.epub` (9.19 MB, 12개 지도) 검증 완료 후 `map/upload-history3.js` 경로 설정 변경하여 Supabase Storage(`history/1779351897979_history3.epub`) 업로드 완료. 로컬 `epub/history3.epub`도 동기화.
-  - **세계사 Ⅳ 지도 반영 및 업로드:** `map/history4_with_maps.epub` (12.88 MB, 16개 지도) 생성 및 검증 완료 후 Supabase Storage(`history/1779351946349_history4.epub`) 업로드 완료. 로컬 `epub/history4.epub`도 동기화.
+  - **세계사 Ⅳ 지도 반영 및 업로드:** 1:1 비율의 정사각형 지도(16개)가 페이지 전체를 차지하고 캡션이 잘리는 현상을 수정하기 위해, 레이아웃에 `break-inside:avoid`를 추가하고 SVG 크기를 `width:55%; max-width:320px`로 축소하는 스타일 개선을 적용하여 빌드 및 검증 완료 후 Supabase Storage(`history/1779351946349_history4.epub`) 및 로컬 `epub/history4.epub`에 최종 반영/업로드하였습니다.
   - **리더 페이지 복구:** 로컬 테스트 우회 코드를 제거하고 `reader.html`을 원래의 Supabase 로드 로직으로 복구 완료.
 - 시각(ISO): **`2026-05-27T12:00+09:00`** — **Supabase GRANT 대응 완료 + WIKI-005 문서화.**
   - **Supabase Data API GRANT 대응:**

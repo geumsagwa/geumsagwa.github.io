@@ -111,11 +111,11 @@ async function embedAllMaps() {
     let html = await sectionEntry.async('string');
 
     const mapHtml = `
-<div style="float:left; width:100%; text-align:center; margin:4px 0; padding:0;">
-  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" version="1.1" viewBox="0 0 ${m.w} ${m.h}" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width:88%; height:auto;">
+<div style="float:left; width:100%; text-align:center; margin:10px 0; padding:0; page-break-inside:avoid; break-inside:avoid;">
+  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" version="1.1" viewBox="0 0 ${m.w} ${m.h}" xmlns:xlink="http://www.w3.org/1999/xlink" style="width:55%; max-width:320px; height:auto;">
     <image width="${m.w}" height="${m.h}" xlink:href="../Images/${m.file}"/>
   </svg>
-  <div style="font-size:0.75em; color:#888; text-indent:0; text-align:center; margin:4px 0 0 0; line-height:1.4;">
+  <div style="font-size:0.75em; color:#888; text-indent:0; text-align:center; margin:6px 0 0 0; line-height:1.4;">
     ${m.caption}
   </div>
 </div>`;
