@@ -3,6 +3,9 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-06-29T11:20+09:00`** — **깨진 위키링크 보완 및 세계사 6권 관련 파일 Git 커밋/푸시 완료 (llm-wiki).**
+  - **깨진 위키링크 해결**: `create-stub-concepts.mjs`를 작동하여 128개의 스텁 개념 문서를 자동 생성하고 깨진 위키링크를 0개로 조치하였습니다.
+  - **Git 커밋 및 푸시**: 세계사 6권 제127~136화 수정본, 제137~138화 신규 원고 및 출처 검증 문서, 스텁 개념 문서들을 Git에 등록하여 커밋 및 원격 저장소(`master`) 푸시를 완료하였습니다.
 - 시각(ISO): **`2026-06-28T11:13+09:00`** — **Token Optimization Stack 설치 완료 (rtk + serena + codebase-memory-mcp).**
   - **rtk v0.42.4 설치:** `C:\Users\pass6\AppData\Local\token-saving-stack\bin\rtk.exe` — CLI 출력 토큰 최적화 프록시 (ls/tree/read/git/gh 등 명령어 출력 압축).
   - **Claude Hook 연동:** `PreToolUse` 훅으로 모든 Bash/PowerShell 명령어 실행 전 `rtk hook claude` 적용 — 불필요한 출력 필터링 및 요약.
