@@ -3,6 +3,17 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-06-28T11:13+09:00`** — **Token Optimization Stack 설치 완료 (rtk + serena + codebase-memory-mcp).**
+  - **rtk v0.42.4 설치:** `C:\Users\pass6\AppData\Local\token-saving-stack\bin\rtk.exe` — CLI 출력 토큰 최적화 프록시 (ls/tree/read/git/gh 등 명령어 출력 압축).
+  - **Claude Hook 연동:** `PreToolUse` 훅으로 모든 Bash/PowerShell 명령어 실행 전 `rtk hook claude` 적용 — 불필요한 출력 필터링 및 요약.
+  - **serena:** `.serena/project.yml` 설정 유지 (기존 설치 유지, 설정 정합성 확인).
+  - **codebase-memory-mcp:** `token-saving-stack/bin/codebase-memory-mcp.exe` 배치 완료 (MCP 서버 기존 인덱스와 정상 연동).
+- 시각(ISO): **`2026-06-26T21:42+09:00`** — **세계사 6권 127~138화 출처 검증 반영 및 본문·각주 수정 완료.**
+  - **작업 근거:** `출처_검증_보고서.md` 기준 12개 화 총 8건 오류 지적에 대해 본문 및 각주 수정 완료.
+  - **본문 수정:** 대부분 기반영 (김영삼 "150만 대", 호주 산불 "2,400만 헥타르", 그린란드 빙상 "연간 2,700억 톤", 아프리카 스타트업 "2022년 65억→2023년 35억" 등)
+  - **각주 최종 정정 (2026-06-26):** 제131화[^119] 호주 산불 면적 수치, 제136화[^172] 아세모글루 저서 연도·저자명.
+  - **산출물:** `출처_검증_수정_인계서.md` — 수정 내역 전반 문서화 완료.
+  - **6권 집필:** 18/18화 (100%) — 전 화 출처 검증 및 수정 완료 ✅
 - 시각(ISO): **`2026-06-26T15:50+09:00`** — **세계사 Ⅲ & Ⅳ 지도 반영 및 업로드 완료.**
   - **세계사 Ⅲ 지도 반영 및 업로드:** `map/history3_with_maps.epub` (9.19 MB, 12개 지도) 검증 완료 후 `map/upload-history3.js` 경로 설정 변경하여 Supabase Storage(`history/1779351897979_history3.epub`) 업로드 완료. 로컬 `epub/history3.epub`도 동기화.
   - **세계사 Ⅳ 지도 반영 및 업로드:** 1:1 비율의 정사각형 지도(16개)가 페이지 전체를 차지하고 캡션이 잘리는 현상을 수정하기 위해, 레이아웃에 `break-inside:avoid`를 추가하고 SVG 크기를 `width:55%; max-width:320px`로 축소하는 스타일 개선을 적용하여 빌드 및 검증 완료 후 Supabase Storage(`history/1779351946349_history4.epub`) 및 로컬 `epub/history4.epub`에 최종 반영/업로드하였습니다.
@@ -141,6 +152,7 @@
 ## 다음에 할 일 (최대 3개)
 1. **세계사 3 & 4권 실서비스 확인** — 실제 서비스에서 지도 노출 상태 최종 모니터링
 2. (선택) `Images/*`·`.capture-tmp/` 등 **용량** 기준 `.gitignore`/커밋 정리
+3. (필요시) **세계사 6권 EPUB 최종 빌드** — 출처 검증 완료된 원고 기반 EPUB 제작
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
