@@ -3,6 +3,11 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-06-30T13:00+09:00`** — **@book-108 채널 30개 영상 인제스트 완료 (llm-wiki).**
+  - **[Claude Code]** @book-108 채널 전체 30개 영상 스크립트 인제스트 완료
+  - **처리:** 30/30 — raw 저장, wiki source 요약, concept 페이지 생성 (신규 개념 약 230개+)
+  - **Git:** llm-wiki — **✅ push 완료** (`0a370cb2`, 2,112 files, working tree clean)
+  - **인계:** Desktop\Harness\progress.md·handover-progress.md 동기 완료
 - 시각(ISO): **`2026-06-29T20:45+09:00`** — **@FeynmanWayKR 채널 동영상 15종 스크립트 인제스트 및 깨진 링크 보완 완료 (llm-wiki).**
   - **인물/주제 인제스트**: @FeynmanWayKR 채널의 동영상 15종의 자막 스크립트를 추출하고 인제스트를 완료하였습니다.
   - **깨진 위키링크 해결**: 신규 인제스트로 발생한 깨진 위키링크들에 대해 스텁 개념 문서를 자동 생성하여 전체 깨진 링크를 0개로 유지하였습니다.
