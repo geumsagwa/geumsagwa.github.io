@@ -3,6 +3,12 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-07-18T07:00+09:00`** — **게발이 브리핑 생성 (2026-07-18).**
+  - **[Claude Code]** 게발이 브리핑 생성 (2026-07-18)
+    - 브리핑 마크다운 생성 → 카드뉴스 HTML 생성 → Git 커밋/푸시 완료
+    - **Git:** homepage `31d9ad6` — ✅ push 완료 (워킹트리 clean)
+    - 주요 뉴스: 여당 전대 컷오프, 정청래 3.8억 후원, 12월 3일 국민주권의날, 뉴욕증시 반도체 하락, 일본 국기손괴죄
+  - **[LLM Wiki]** 개념 12,677개 / 깨진 링크 0개 / low confidence 7,466개 (변동 없음)
 - 시각(ISO): **`2026-06-30T13:00+09:00`** — **@book-108 채널 30개 영상 인제스트 완료 (llm-wiki).**
   - **[Claude Code]** @book-108 채널 전체 30개 영상 스크립트 인제스트 완료
   - **처리:** 30/30 — raw 저장, wiki source 요약, concept 페이지 생성 (신규 개념 약 230개+)
@@ -172,12 +178,13 @@
 - 각주 HTML 구조 전체는 `EPUB_BUILD_GUIDE.md` §각주 규칙 참조
 
 ## 다음에 할 일 (최대 3개)
-1. **세계사 3 & 4권 실서비스 확인** — 실제 서비스에서 지도 노출 상태 최종 모니터링
-2. (선택) `Images/*`·`.capture-tmp/` 등 **용량** 기준 `.gitignore`/커밋 정리
-3. (필요시) **세계사 6권 EPUB 최종 빌드** — 출처 검증 완료된 원고 기반 EPUB 제작
+1. (선택) Gemini로 `confidence:low` 문서 재생성 파이프라인 구축
+2. (선택) YAML frontmatter 누락 source 파일 597개 정리
+3. (선택) `scripts/slug.mjs` 기반 Claude Code·Gemini 공용 워크플로 문서화
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
-- **LLM Wiki:** `94836dd` — 102화(일본 경제 성장) 최종 확정. 수정 금지.
+- **LLM Wiki:** `918c9eac` — slug 정규화·중복 정리·위키링크 fix 완료. 개념 12,677개.
+- **homepage:** `31d9ad6` — 자동: 카드뉴스 갱신 (2026-07-18) ✅ push 완료
 - 하네스 `gate-website.ps1`는 `configs/projects.v2.json`의 `homepage` **workspace**(본 레포 경로)에서 `npm run check`
 - 로컬 Ollama 등은 **통합 progress(Desktop)** 쪽 기록; 본 파일은 **사이트 repo·Git tip·워킹트리** 중심
