@@ -119,18 +119,18 @@ async function loadEssays() {
         </div>`;
     }
 
-    // 시리즈 섹션
-    for (const key of seriesKeys) {
-        items.push(sectionHeader(key, '📚'));
-        for (const row of seriesMap[key]) {
+    // 단독 에세이 섹션 (위 — 계속 갱신되는 글)
+    if (standalone.length > 0) {
+        items.push(sectionHeader('에세이', '✍'));
+        for (const row of standalone) {
             items.push(renderEssayCard(row, defaultImage));
         }
     }
 
-    // 단독 에세이 섹션
-    if (standalone.length > 0) {
-        items.push(sectionHeader('에세이', '✍'));
-        for (const row of standalone) {
+    // 시리즈 섹션 (아래 — 완결성 있는 연재)
+    for (const key of seriesKeys) {
+        items.push(sectionHeader(key, '📚'));
+        for (const row of seriesMap[key]) {
             items.push(renderEssayCard(row, defaultImage));
         }
     }
