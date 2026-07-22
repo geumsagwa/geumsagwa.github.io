@@ -51,15 +51,112 @@ async function loadBookReviews() {
 }
 
 async function loadEssays() {
-    await loadPostGrid({
-        gridId: 'essay-grid',
-        table: 'essays',
-        selectFields: 'id, title, excerpt, card_image_url, created_at',
-        emptyMessage: '등록된 에세이가 없습니다.',
-        errorMessage: '에세이를 불러올 수 없습니다.',
-        detailPage: 'essay.html',
-        defaultImage: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=530&fit=crop&crop=center'
+    const grid = document.getElementById('essay-grid');
+    if (!grid) return;
+
+    grid.innerHTML = '<p class="grid-message">불러오는 중...</p>';
+
+    const { data, error } = await _supabase
+        .from('essays')
+        .select('id, title, excerpt, card_image_url, created_at, series, episode_number');
+
+    if (error) {
+        grid.innerHTML = `<p class="grid-message">에세이를 불러올 수 없습니다.</p>`;
+        return;
+    }
+
+    if (!data || data.length === 0) {
+        grid.innerHTML = `<p class="grid-message">등록된 에세이가 없습니다.</p>`;
+        return;
+    }
+
+    // 시리즈별 + 일반 에세이 분리
+    const seriesMap = {};
+    const standalone = [];
+
+    for (const row of data) {
+        if (row.series) {
+            if (!seriesMap[row.series]) seriesMap[row.series] = [];
+            seriesMap[row.series].push(row);
+        } else {
+            standalone.push(row);
+        }
+    }
+
+    // 각 시리즈 내부: episode_number 오름차순, null은 뒤로
+    for (const key of Object.keys(seriesMap)) {
+        seriesMap[key].sort((a, b) => {
+            if (a.episode_number !== null && b.episode_number !== null) return a.episode_number - b.episode_number;
+            if (a.episode_number !== null) return -1;
+            if (b.episode_number !== null) return 1;
+            return new Date(b.created_at) - new Date(a.created_at);
+        });
+    }
+
+    // 시리즈 정렬: episode_number가 있는 시리즈 우선, 이름순
+    const seriesKeys = Object.keys(seriesMap).sort((a, b) => {
+        const aHasEp = seriesMap[a].some(r => r.episode_number !== null);
+        const bHasEp = seriesMap[b].some(r => r.episode_number !== null);
+        if (aHasEp && !bHasEp) return -1;
+        if (!aHasEp && bHasEp) return 1;
+        return a.localeCompare(b, 'ko');
     });
+
+    // 일반 에세이: created_at 내림차순
+    standalone.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+    const defaultImage = 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=530&fit=crop&crop=center';
+
+    let html = '';
+
+    // 시리즈별 렌더링
+    for (const key of seriesKeys) {
+        const episodes = seriesMap[key];
+        html += `<div class="essay-series-section" style="margin-bottom:2rem;">`;
+        html += `<h3 class="essay-series-title" style="font-family:'GyeonggiBatang',sans-serif; font-size:1rem; color:#8f7d60; margin-bottom:0.8rem; padding-bottom:0.3rem; border-bottom:1px solid rgba(143,125,96,0.2);">📚 ${key}</h3>`;
+        html += `<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:1.2rem;">`;
+        for (const row of episodes) {
+            html += renderEssayCard(row, defaultImage);
+        }
+        html += `</div></div>`;
+    }
+
+    // 일반 에세이
+    if (standalone.length > 0) {
+        if (seriesKeys.length > 0) {
+            html += `<h3 class="essay-series-title" style="font-family:'GyeonggiBatang',sans-serif; font-size:1rem; color:#8f7d60; margin:2rem 0 0.8rem; padding-bottom:0.3rem; border-bottom:1px solid rgba(143,125,96,0.2);">📝 일반 에세이</h3>`;
+        }
+        html += `<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:1.2rem;">`;
+        for (const row of standalone) {
+            html += renderEssayCard(row, defaultImage);
+        }
+        html += `</div>`;
+    }
+
+    grid.innerHTML = html;
+}
+
+function renderEssayCard(row, defaultImage) {
+    const date = new Date(row.created_at)
+        .toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' })
+        .replace(/\s/g, ' ');
+    const bgImage = row.card_image_url || defaultImage;
+    let displayTitle = row.title || '';
+    // 회차 라벨 추가 (제목에 이미 포함되어 있을 수 있으므로 series+episode_number만 별도 표시)
+    let badgeHtml = '';
+    if (row.series && row.episode_number) {
+        badgeHtml = `<span style="position:absolute; top:0.5rem; left:0.5rem; background:#8f7d60; color:#000; font-size:0.65rem; font-weight:700; padding:0.15rem 0.5rem; border-radius:2px; z-index:2; letter-spacing:0.03em;">${row.series} 제${row.episode_number}화</span>`;
+    }
+
+    return `<a href="essay.html?id=${row.id}" class="photo-card" style="position:relative;">
+        ${badgeHtml}
+        <div class="photo-card-img" style="background-image: url('${bgImage}');"></div>
+        <div class="photo-card-overlay">
+            <span class="photo-card-date">${date}</span>
+            <h3 class="photo-card-title">${displayTitle}</h3>
+            <p class="photo-card-excerpt">${row.excerpt || ''}</p>
+        </div>
+    </a>`;
 }
 
 async function loadAiWritings() {

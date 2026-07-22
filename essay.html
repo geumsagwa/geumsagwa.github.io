@@ -41,6 +41,7 @@
     <article class="review-article" id="essay-article" style="display:none;">
 
         <div class="review-book-info" style="border-left: 3px solid #8f7d60; padding-left: 1.5rem; margin-bottom: 2rem;">
+            <div id="essay-series-badge" style="display:none; margin-bottom:0.5rem;"></div>
             <h1 class="review-book-title" id="essay-title"></h1>
             <time class="review-date" id="essay-date"></time>
         </div>
@@ -78,7 +79,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadingId: 'essay-loading',
         articleId: 'essay-article',
         errorId: 'essay-error',
-        editorPage: 'essay-editor.html'
+        editorPage: 'essay-editor.html',
+        afterRender: (data) => {
+            const badge = document.getElementById('essay-series-badge');
+            if (badge && data.series) {
+                let label = data.series;
+                if (data.episode_number) {
+                    label += ` 제${data.episode_number}화`;
+                }
+                badge.style.display = 'block';
+                badge.innerHTML = `<span style="display:inline-block; background:#8f7d60; color:#000; font-size:0.75rem; font-weight:700; padding:0.2rem 0.7rem; border-radius:3px; letter-spacing:0.05em;">${label}</span>`;
+            }
+        }
     });
 });
 </script>

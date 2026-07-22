@@ -3,6 +3,24 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-07-22T11:30+09:00`** — **철학사 제4화 초안 + 홈페이지 에세이 업로드 + ponytail 활성화.**
+  - **[게발이 브리핑]** 2026-07-22 카드뉴스 생성 ✅ (`bbafe84`, push 완료)
+    - Google Auth 토큰 만료로 fallback 처리 (재인증 필요)
+  - **[일정 변경]** 수원 동기 저녁 7/27 19:00 코지하우스 / 청유회 공사 7/23 17:00 김경자대구뽈찜
+  - **[제4화]** 「탈레스 — 최초의 철학자」 초안 작성 (7개 섹션, 15,800자)
+  - **[에세이 연동]** 1~3화 essays 테이블 업로드 + 각주·제목·링크 수정 (`d6507ee`, push)
+  - **[ponytail]** `enabledPlugins` 등록 + statusline 설정
+  - **Git:** homepage `d6507ee` ✅ / llm-wiki `8555f167` ⚠️ 미푸시
+
+### 철학사 1권 현황
+| 화 | 제목 | 상태 |
+|:--:|:-----|:----:|
+| 1 | 철학의 탄생 | ✅ 확정 (홈페이지 업로드) |
+| 2 | 신화에서 철학으로 | ✅ 확정 (홈페이지 업로드) |
+| 3 | 왜 그리스인가? - 밀레토스의 기적 - | ✅ 확정 (홈페이지 업로드) |
+| 4 | 탈레스 — 최초의 철학자 | ✅ 초안 |
+| 5 | 아낙시만드로스 (예정) | 📝 대기 |
+
 - 시각(ISO): **`2026-07-18T07:00+09:00`** — **게발이 브리핑 생성 (2026-07-18).**
   - **[Claude Code]** 게발이 브리핑 생성 (2026-07-18)
     - 브리핑 마크다운 생성 → 카드뉴스 HTML 생성 → Git 커밋/푸시 완료
@@ -178,13 +196,16 @@
 - 각주 HTML 구조 전체는 `EPUB_BUILD_GUIDE.md` §각주 규칙 참조
 
 ## 다음에 할 일 (최대 3개)
-1. (선택) Gemini로 `confidence:low` 문서 재생성 파이프라인 구축
-2. (선택) YAML frontmatter 누락 source 파일 597개 정리
-3. (선택) `scripts/slug.mjs` 기반 Claude Code·Gemini 공용 워크플로 문서화
+1. (⚠️) Google OAuth 재인증 — Gmail/캘린더 토큰 만료
+2. (선택) 철학사 제4화 검토 및 수정
+3. (선택) 제5화 「아낙시만드로스」 집필
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
-- **LLM Wiki:** `918c9eac` — slug 정규화·중복 정리·위키링크 fix 완료. 개념 12,677개.
-- **homepage:** `31d9ad6` — 자동: 카드뉴스 갱신 (2026-07-18) ✅ push 완료
+- **LLM Wiki:** `8555f167` — feat(wiki): regenerate low-confidence pipeline script. ⚠️ 미푸시 (382개 파일 변경)
+- **homepage:** `d6507ee` — fix: 철학사 에세이 렌더링 개선 ✅ push 완료 (워킹트리 clean)
+- **openclaw-local-mvp:** `75f493b` — ✅ push 완료 (워킹트리 clean)
+- **ponytail v4.8.4:** `enabledPlugins` + statusline 설정 완료. 다음 세션부터 자동 활성화.
+- **철학사 1~3화:** Blog > Essay 탭에서 읽기 가능 (id=3,4,5)
+- **Google OAuth:** 토큰 2개 모두 만료. 다음 Gmail/캘린더 작업 시 재인증 필요
 - 하네스 `gate-website.ps1`는 `configs/projects.v2.json`의 `homepage` **workspace**(본 레포 경로)에서 `npm run check`
-- 로컬 Ollama 등은 **통합 progress(Desktop)** 쪽 기록; 본 파일은 **사이트 repo·Git tip·워킹트리** 중심

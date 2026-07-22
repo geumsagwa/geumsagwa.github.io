@@ -36,6 +36,8 @@ async function loadEssay(id) {
   document.getElementById('f-title').value = data.title || '';
   document.getElementById('f-excerpt').value = data.excerpt || '';
   document.getElementById('f-card-image').value = data.card_image_url || '';
+  document.getElementById('f-series').value = data.series || '';
+  document.getElementById('f-episode').value = data.episode_number || '';
   easyMDE.value(data.body_markdown || '');
 }
 
@@ -52,11 +54,15 @@ async function saveEssay() {
     return;
   }
 
+  const seriesVal = document.getElementById('f-series').value.trim() || null;
+  const episodeVal = document.getElementById('f-episode').value.trim();
   const row = {
     title,
     excerpt: document.getElementById('f-excerpt').value.trim() || null,
     body_markdown: body,
     card_image_url: document.getElementById('f-card-image').value.trim() || null,
+    series: seriesVal,
+    episode_number: episodeVal ? parseInt(episodeVal, 10) : null,
     updated_at: new Date().toISOString(),
   };
 

@@ -118,6 +118,8 @@ CREATE TABLE IF NOT EXISTS essays (
     excerpt TEXT,
     body_markdown TEXT NOT NULL,
     card_image_url TEXT,
+    series TEXT,                          -- 시리즈명 (예: '철학사')
+    episode_number INTEGER,               -- 회차 (예: 1, 2, 3...)
     created_at TIMESTAMPTZ DEFAULT now(),
     updated_at TIMESTAMPTZ DEFAULT now()
 );
