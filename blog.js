@@ -70,7 +70,7 @@ async function loadEssays() {
         return;
     }
 
-    // 시리즈별 + 일반 에세이 분리
+    // 시리즈별 + 단독 에세이 분리
     const seriesMap = {};
     const standalone = [];
 
@@ -83,7 +83,7 @@ async function loadEssays() {
         }
     }
 
-    // 각 시리즈 내부: episode_number 오름차순, null은 뒤로
+    // 각 시리즈 내부: episode_number 오름차순
     for (const key of Object.keys(seriesMap)) {
         seriesMap[key].sort((a, b) => {
             if (a.episode_number !== null && b.episode_number !== null) return a.episode_number - b.episode_number;
@@ -93,7 +93,7 @@ async function loadEssays() {
         });
     }
 
-    // 시리즈 정렬: episode_number가 있는 시리즈 우선, 이름순
+    // 시리즈 정렬: 회차가 있는 시리즈 우선, 이름순
     const seriesKeys = Object.keys(seriesMap).sort((a, b) => {
         const aHasEp = seriesMap[a].some(r => r.episode_number !== null);
         const bHasEp = seriesMap[b].some(r => r.episode_number !== null);
@@ -102,38 +102,40 @@ async function loadEssays() {
         return a.localeCompare(b, 'ko');
     });
 
-    // 일반 에세이: created_at 내림차순
+    // 단독 에세이: created_at 내림차순
     standalone.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
     const defaultImage = 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=530&fit=crop&crop=center';
 
-    let html = '';
+    // 하나의 photo-grid 안에 모두 배치 (섹션 헤더는 full-width)
+    const gridClass = 'photo-grid';
+    grid.className = gridClass;
 
-    // 시리즈별 렌더링
+    const items = [];
+
+    function sectionHeader(label, emoji) {
+        return `<div style="grid-column:1/-1; padding:0;">
+            <h3 style="font-family:'GyeonggiBatang',sans-serif; font-size:1rem; color:#8f7d60; padding:0.5rem 0 0.3rem; border-bottom:1px solid rgba(143,125,96,0.2); margin:0;">${emoji} ${label}</h3>
+        </div>`;
+    }
+
+    // 시리즈 섹션
     for (const key of seriesKeys) {
-        const episodes = seriesMap[key];
-        html += `<div class="essay-series-section" style="margin-bottom:2rem;">`;
-        html += `<h3 class="essay-series-title" style="font-family:'GyeonggiBatang',sans-serif; font-size:1rem; color:#8f7d60; margin-bottom:0.8rem; padding-bottom:0.3rem; border-bottom:1px solid rgba(143,125,96,0.2);">📚 ${key}</h3>`;
-        html += `<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:1.2rem;">`;
-        for (const row of episodes) {
-            html += renderEssayCard(row, defaultImage);
+        items.push(sectionHeader(key, '📚'));
+        for (const row of seriesMap[key]) {
+            items.push(renderEssayCard(row, defaultImage));
         }
-        html += `</div></div>`;
     }
 
-    // 일반 에세이
+    // 단독 에세이 섹션
     if (standalone.length > 0) {
-        if (seriesKeys.length > 0) {
-            html += `<h3 class="essay-series-title" style="font-family:'GyeonggiBatang',sans-serif; font-size:1rem; color:#8f7d60; margin:2rem 0 0.8rem; padding-bottom:0.3rem; border-bottom:1px solid rgba(143,125,96,0.2);">📝 일반 에세이</h3>`;
-        }
-        html += `<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:1.2rem;">`;
+        items.push(sectionHeader('에세이', '✍'));
         for (const row of standalone) {
-            html += renderEssayCard(row, defaultImage);
+            items.push(renderEssayCard(row, defaultImage));
         }
-        html += `</div>`;
     }
 
-    grid.innerHTML = html;
+    grid.innerHTML = items.join('');
 }
 
 function renderEssayCard(row, defaultImage) {
