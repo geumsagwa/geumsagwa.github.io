@@ -1,3 +1,40 @@
+// 마크다운 전처리: 각주 문법을 HTML로 변환 (marked.js가 [^n] 문법을 지원하지 않음)
+// 1. 본문 중 [^n] 참조 → <sup class="fn-ref"><a href="#fn-{n}">[{n}]</a></sup>
+// 2. 말단 [^n]: 정의 → <li id="fn-{n}"><a href="#fn-ref-{n}">[{n}]</a> {내용}</li>
+function preprocessFootnotes(markdown) {
+  // 각주 정의 수집 ([^n]: ... )
+  const fnDefs = {};
+  let processed = markdown.replace(/^\[\^(\d+)\]:\s*(.*)$/gm, (match, n, content) => {
+    fnDefs[n] = content.trim();
+    return ''; // 정의 라인 제거
+  });
+
+  // 본문의 [^n] 참조 → sup 태그로 변환
+  let refIndex = 0;
+  processed = processed.replace(/\[\^(\d+)\]/g, (match, n) => {
+    refIndex++;
+    return `<sup class="fn-ref"><a href="#fn-${n}" id="fn-ref-${n}">[${n}]</a></sup>`;
+  });
+
+  // 각주 목록이 있으면 말단에 추가
+  const keys = Object.keys(fnDefs);
+  if (keys.length > 0) {
+    processed += `\n\n<hr class="fn-sep">\n<ol class="footnotes">\n`;
+    for (const n of keys) {
+      const content = fnDefs[n].replace(/\n/g, ' ');
+      processed += `  <li id="fn-${n}"><a href="#fn-ref-${n}">[${n}]</a> ${content}</li>\n`;
+    }
+    processed += `</ol>\n`;
+  }
+
+  return processed;
+}
+
+// 첫 번째 # 제목 라인 제거 (DB title과 중복 방지)
+function stripFirstTitle(markdown) {
+  return markdown.replace(/^#\s+.*\n?/, '');
+}
+
 async function loadMarkdownPostDetail(config) {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
@@ -33,9 +70,14 @@ async function loadMarkdownPostDetail(config) {
         dateEl.textContent = dateStr;
     }
 
+    // 전처리: 첫 번째 제목 제거 + 각주 변환
+    let bodyMd = data.body_markdown || '';
+    bodyMd = stripFirstTitle(bodyMd);
+    bodyMd = preprocessFootnotes(bodyMd);
+
     marked.setOptions({ breaks: true, gfm: true });
     const bodyEl = document.getElementById(config.bodyId);
-    if (bodyEl) bodyEl.innerHTML = sanitizeHtml(marked.parse(data.body_markdown || ''));
+    if (bodyEl) bodyEl.innerHTML = sanitizeHtml(marked.parse(bodyMd));
 
     if (typeof config.afterRender === 'function') {
         config.afterRender(data);

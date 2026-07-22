@@ -10,8 +10,26 @@ document.addEventListener('DOMContentLoaded', async () => {
             tab.classList.add('active');
             panels.forEach(p => p.classList.remove('active'));
             document.querySelector(`.blog-panel[data-category="${category}"]`).classList.add('active');
+            // URL 업데이트 (히스토리 보존)
+            const url = new URL(window.location);
+            url.searchParams.set('category', category);
+            history.replaceState(null, '', url);
         });
     });
+
+    // URL 파라미터 ?category=essay 등으로 탭 활성화
+    const params = new URLSearchParams(window.location.search);
+    const activeCategory = params.get('category');
+    if (activeCategory) {
+        const targetTab = document.querySelector(`.blog-tab[data-category="${activeCategory}"]`);
+        if (targetTab) {
+            tabs.forEach(t => t.classList.remove('active'));
+            targetTab.classList.add('active');
+            panels.forEach(p => p.classList.remove('active'));
+            const targetPanel = document.querySelector(`.blog-panel[data-category="${activeCategory}"]`);
+            if (targetPanel) targetPanel.classList.add('active');
+        }
+    }
 
     loadBookReviews();
     loadEssays();

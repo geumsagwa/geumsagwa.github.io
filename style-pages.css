@@ -2747,6 +2747,55 @@
     font-weight: 700;
 }
 
+/* ── 각주 스타일 ── */
+.review-body .fn-ref {
+    font-size: 0.75em;
+    vertical-align: super;
+    line-height: 1;
+}
+.review-body .fn-ref a {
+    color: #8f7d60;
+    text-decoration: none;
+}
+.review-body .fn-ref a:hover {
+    text-decoration: underline;
+}
+.review-body hr.fn-sep {
+    margin: 3rem 0 1.5rem;
+    border: none;
+    border-top: 1px solid rgba(100, 80, 50, 0.2);
+    width: 50%;
+}
+.review-body .footnotes {
+    font-size: 0.8em;
+    color: #888;
+    line-height: 1.7;
+    padding-left: 1.2em;
+}
+.review-body .footnotes li {
+    margin-bottom: 0.6em;
+}
+.review-body .footnotes li a {
+    color: #8f7d60;
+    text-decoration: none;
+    margin-right: 0.3em;
+}
+.review-body .footnotes li a:hover {
+    text-decoration: underline;
+}
+
+/* ── 리뷰 헤더 카테고리 링크 ── */
+.review-category-link {
+    color: #8f7d60;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.review-category-link:hover {
+    color: #dabb7e;
+    text-decoration: underline;
+}
+
 .review-body em {
     color: #b39768;
 }
