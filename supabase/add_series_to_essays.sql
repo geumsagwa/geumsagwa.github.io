@@ -14,6 +14,7 @@ UPDATE essays SET series = '철학사', episode_number = 2 WHERE id = 4;  -- 제
 UPDATE essays SET series = '철학사', episode_number = 3 WHERE id = 5;  -- 제3화 왜 그리스인가?
 
 -- 3. 새 컬럼에 대한 접근 권한 부여
+-- (DELETE는 컬럼 레벨 권한이 불가능하므로 제외)
 GRANT SELECT (series, episode_number) ON public.essays TO anon;
-GRANT SELECT, INSERT, UPDATE, DELETE (series, episode_number) ON public.essays TO authenticated;
-GRANT SELECT, INSERT, UPDATE, DELETE (series, episode_number) ON public.essays TO service_role;
+GRANT SELECT, INSERT, UPDATE (series, episode_number) ON public.essays TO authenticated;
+GRANT SELECT, INSERT, UPDATE (series, episode_number) ON public.essays TO service_role;
