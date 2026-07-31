@@ -3,6 +3,20 @@
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-07-31T17:50+09:00`** — **김주연 철학사수업 I PDF 정리·파이프라인 구축·LLM Wiki 인제스트.**
+  - **[PDF 정리]** 철학사수업1_20250209.pdf (196면, 책 150~541쪽) 텍스트 추출·LLM 교정·그림 삽입 ✅
+    - 핵심 발견: 한 면에 책 두 쪽(좌:짝수, 우:홀수). **책 쪽수 = 2×PDF면 + (좌148/우149)**
+    - 처리: 좌/우 분리 OCR(300dpi+PSM6) → DeepSeek 교정(145청크, thinking disabled) → 그림 65개 추출
+    - 산출물: `G:\내 드라이브\Claude\김주연_철학사수업1\` — **11개 MD + images/ 65개 PNG**
+  - **[파이프라인 저장]** `F:\wiki\scripts\pdf-2page-extract\` (5스크립트 + README) ✅
+    - CLAUDE.md에 등록 + 파라미터화 (쪽수 보정값 인자)
+    - **Git:** llm-wiki `65788adc` + `a84e3cc2` ✅
+  - **[LLM Wiki 인제스트]** 철학사수업 I → 11개 source 요약 + **개념 84개 신규** ✅
+    - 깨진 링크 0 (fix-wikilinks 52 + 스텁 104) / 검색 인덱스 14,105개
+    - ingest.mjs에 `thinking disabled` 패치 (DeepSeek 추론 모델 속도 개선)
+    - **Git:** llm-wiki `7540b8e0` ✅ push 완료
+  - **Git:** llm-wiki `7540b8e0` ✅, homepage `18df703` ✅ — 워킹트리 clean
+  - **다음:** (내일) 무진님이 PDF 그림 수동 크롭 → G:\ MD 교체 예정 (인제스트 재실행 불필요)
 - 시각(ISO): **`2026-07-31T06:30+09:00`** — **게발이 브리핑 생성 (2026-07-31).**
   - **[게발이 브리핑]** 2026-07-31 카드뉴스 생성 및 푸시 ✅
     - **Git:** homepage `7510733` — ✅ push 완료 (워킹트리 clean)
