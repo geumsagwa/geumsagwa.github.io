@@ -2,7 +2,21 @@
 
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
+**⚠️ 자동 아카이브 하드 룰 (2026-08-01):** `handover-progress.md`가 **30KB 초과**이거나 읽을 때 컨텍스트가 잘리면, **별도 지시 없이 즉시** `C:\Users\pass6\project\harness\scripts\optimize-handover.ps1` 실행 → 최근 5개 세션만 유지, 나머지는 `handover-progress-archive.md`로 아카이브. (진행 중 세션 최신 반영 후 실행, UTF-8 BOM 유지)
+
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-01T08:10+09:00`** — **게발이 브리핑 발행 (2026-08-01) + 인계 파일 자동 아카이브 규칙 구축.**
+  - **[게발이 브리핑]** 2026-08-01 카드뉴스 생성 및 푸시 ✅
+    - **Git:** homepage `fbe40f6` — ✅ push 완료 (로컬=원격 확인, 워킹트리 clean)
+    - 주요 뉴스: 특별감찰관 10년 만에 후보 추천, 레버리지 예탁금 거래대금 75% 급감, 美 F-35B 추락, 손흥민 MLS 올스타전 멀티골
+    - 홈페이지 상태: HTTP 200, 287ms, SSL 유효 ✅
+    - LLM Wiki: 개념 16,763개 / **깨진 링크 3종** (신규 발견) / low confidence 9,358개
+    - 오늘의 일정: (종일) 근무 (이번 주: 08-03(월)·08-05(수)·08-07(금) 근무)
+    - 이메일: GitHub Actions 실패 알림 4건 스팸 삭제
+  - **[자동 아카이브 규칙]** handover-progress.md 30KB 초과 시 **별도 지시 없이 자동 실행** 규칙 구축 ✅
+    - 분할 실행: 80KB → 22KB (28→5개 세션, 23개는 archive로 이동) / 백업 `handover-progress.bak-20260801`
+    - 규칙 명시: handover-progress.md 하드 룰 + `Desktop\Harness\CLAUDE.md` 신규 + progress.md + serena 메모리
+  - **Git:** homepage `fbe40f6` ✅, llm-wiki `7540b8e0` ✅, openclaw-local-mvp `1ee806d` ✅ — 전 저장소 clean
 - 시각(ISO): **`2026-07-31T17:50+09:00`** — **김주연 철학사수업 I PDF 정리·파이프라인 구축·LLM Wiki 인제스트.**
   - **[PDF 정리]** 철학사수업1_20250209.pdf (196면, 책 150~541쪽) 텍스트 추출·LLM 교정·그림 삽입 ✅
     - 핵심 발견: 한 면에 책 두 쪽(좌:짝수, 우:홀수). **책 쪽수 = 2×PDF면 + (좌148/우149)**
