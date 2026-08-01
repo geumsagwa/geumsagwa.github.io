@@ -14,7 +14,7 @@
     - 검색 인덱스 14,436개 / 변경 9,736개 파일
     - **Git:** llm-wiki `5201c961` — ✅ push 완료 (워킹트리 clean)
     - 신규 스크립트: `scripts/promote-stubs.mjs`, `scripts/run-regenerate-loop.ps1`
-  - **Git:** llm-wiki `5201c961` ✅, homepage `d12efb5` ✅, harness `740500c` ✅, openclaw-local-mvp `1ee806d` ✅
+  - **Git:** llm-wiki `5201c961` ✅, homepage `8015967` ✅, harness `740500c` ✅, openclaw-local-mvp `1ee806d` ✅
 - 시각(ISO): **`2026-08-01T08:30+09:00`** — **게발이 브리핑 발행 + 인계 자동 아카이브 규칙 + 툴 도입(claude-hud·주간 스캔).**
   - **[게발이 브리핑]** 2026-08-01 카드뉴스 생성 및 푸시 ✅
     - **Git:** homepage `fbe40f6` — ✅ push 완료 (로컬=원격 확인, 워킹트리 clean)
