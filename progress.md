@@ -5,13 +5,15 @@
 **⚠️ 자동 아카이브 하드 룰 (2026-08-01):** `handover-progress.md`가 **30KB 초과**이거나 읽을 때 컨텍스트가 잘리면, **별도 지시 없이 즉시** `C:\Users\pass6\project\harness\scripts\optimize-handover.ps1` 실행 → 최근 5개 세션만 유지, 나머지는 `handover-progress-archive.md`로 아카이브. (진행 중 세션 최신 반영 후 실행, UTF-8 BOM 유지)
 
 ## 마지막 갱신
-- 시각(ISO): **`2026-08-02T14:28+09:00`** — **LLM Wiki CRLF 버그 수정 + 숨겨진 low-confidence 전면 정리.**
+- 시각(ISO): **`2026-08-02T14:41+09:00`** — **LLM Wiki CRLF 버그 수정 + 숨겨진 low-confidence 정리 완료 + claude-hud 컨텍스트 표시 확인 + 그림 교정 진행 중.**
   - **[CRLF 버그 수정]** lint frontmatter regex가 CRLF 미지원 → CRLF 파일 641개 frontmatter 오분류·`confidence:low` **47개 숨김** (noFrontmatter 644→3) ✅
     - 수정: `wiki-lint.mjs`·`promote-stubs.mjs`·`regenerate-low-confidence.mjs` regex `\r?\n` 지원
     - 숨겨진 47개 정리: 스텁 23 승격 + concepts 13 LLM 재생성 + sources 11 승격 + 구버전 `adscft-대응` 삭제
     - 깨진 링크 5종 정리 (끈이론·말다세나·맥태거트 스텁 + 신곡·전략-공격 링크 수정)
     - regenerate 중복 파일 버그 수정 (LLM title slug → 원본 파일명 유지)
     - CLAUDE.md 재발 방지 규칙 문서화 (`--skip-stub-concepts` 고정)
+  - **[claude-hud 확인]** HUD 89% vs "99% context used" → 동일 소스이나 갱신 시점 차이 (HUD=statusline 스냅샷 지연, UI=실시간). 200K 기준 99%로 **자동 컴팩트 발동 가능**
+  - **[그림 교정 진행 중]** 무진님이 PDF에서 직접 크롭 후 `G:\내 드라이브\Claude\김주연_철학사수업1\` MD에 교체 작업 중 (인제스트 재실행 불필요)
   - **결과:** confidence:low **0** / 깨진 링크 **0** / 검색 인덱스 14,438
   - **Git:** llm-wiki `f5224700` ✅ push 완료 (워킹트리 clean)
 - 시각(ISO): **`2026-08-01T14:30+09:00`** — **LLM Wiki low-confidence 전면 정리 (9,358 → 0).**
@@ -435,7 +437,7 @@
 - 각주 HTML 구조 전체는 `EPUB_BUILD_GUIDE.md` §각주 규칙 참조
 
 ## 다음에 할 일 (최대 4개)
-1. (협의) 철학사수업1 그림 수동 교정 — 무진님이 PDF에서 직접 크롭 후 `G:\내 드라이브\Claude\김주연_철학사수업1\` MD에 교체 예정 (인제스트 재실행 불필요)
+1. (진행 중) 철학사수업1 그림 수동 교정 — 무진님이 PDF에서 직접 크롭 후 `G:\내 드라이브\Claude\김주연_철학사수업1\` MD에 교체 작업 중 (교체 후 인제스트 재실행 불필요, `raw/` 재동기화·커밋 선택)
 2. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파)
 3. (선택) 철학사 신규 화 업로드 (philosophy-essay-upload 스킬 사용)
 4. (선택) 신규 채널 인제스트 시 재발 방지 절차 준수 (promote-stubs + `--skip-stub-concepts` 고정)
