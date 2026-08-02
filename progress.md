@@ -5,6 +5,15 @@
 **⚠️ 자동 아카이브 하드 룰 (2026-08-01):** `handover-progress.md`가 **30KB 초과**이거나 읽을 때 컨텍스트가 잘리면, **별도 지시 없이 즉시** `C:\Users\pass6\project\harness\scripts\optimize-handover.ps1` 실행 → 최근 5개 세션만 유지, 나머지는 `handover-progress-archive.md`로 아카이브. (진행 중 세션 최신 반영 후 실행, UTF-8 BOM 유지)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-02T14:28+09:00`** — **LLM Wiki CRLF 버그 수정 + 숨겨진 low-confidence 전면 정리.**
+  - **[CRLF 버그 수정]** lint frontmatter regex가 CRLF 미지원 → CRLF 파일 641개 frontmatter 오분류·`confidence:low` **47개 숨김** (noFrontmatter 644→3) ✅
+    - 수정: `wiki-lint.mjs`·`promote-stubs.mjs`·`regenerate-low-confidence.mjs` regex `\r?\n` 지원
+    - 숨겨진 47개 정리: 스텁 23 승격 + concepts 13 LLM 재생성 + sources 11 승격 + 구버전 `adscft-대응` 삭제
+    - 깨진 링크 5종 정리 (끈이론·말다세나·맥태거트 스텁 + 신곡·전략-공격 링크 수정)
+    - regenerate 중복 파일 버그 수정 (LLM title slug → 원본 파일명 유지)
+    - CLAUDE.md 재발 방지 규칙 문서화 (`--skip-stub-concepts` 고정)
+  - **결과:** confidence:low **0** / 깨진 링크 **0** / 검색 인덱스 14,438
+  - **Git:** llm-wiki `f5224700` ✅ push 완료 (워킹트리 clean)
 - 시각(ISO): **`2026-08-01T14:30+09:00`** — **LLM Wiki low-confidence 전면 정리 (9,358 → 0).**
   - **[LLM Wiki 정리]** low-confidence **9,358 → 0개** 전면 해결 ✅
     - 분석: 스텁 8,023개(85.7%) + 일반 low 1,335개(14.3%) (lint-report 전수 분석)
@@ -426,17 +435,17 @@
 - 각주 HTML 구조 전체는 `EPUB_BUILD_GUIDE.md` §각주 규칙 참조
 
 ## 다음에 할 일 (최대 4개)
-1. (선택) low-confidence 재생성 68회차
-2. (선택) LLM Wiki 깨진 링크 44~59종 스텁 생성
-3. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파)
-4. (선택) 철학사 신규 화 업로드 (philosophy-essay-upload 스킬 사용)
+1. (협의) 철학사수업1 그림 수동 교정 — 무진님이 PDF에서 직접 크롭 후 `G:\내 드라이브\Claude\김주연_철학사수업1\` MD에 교체 예정 (인제스트 재실행 불필요)
+2. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파)
+3. (선택) 철학사 신규 화 업로드 (philosophy-essay-upload 스킬 사용)
+4. (선택) 신규 채널 인제스트 시 재발 방지 절차 준수 (promote-stubs + `--skip-stub-concepts` 고정)
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
-- **철학사 1권:** 제1~4화 새 버전 교체 완료 ✅ / 제5화「파르메니데스」신규 업로드 ✅ (Supabase essays id=7)
+- **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
-- **LLM Wiki:** `e4d1658d` — ✅ push 완료 (워킹트리 clean) — 재생성 67회차
-- **homepage:** `b8de4eb` — 게발이 브리핑 (2026-07-28) ✅ push 완료 (워킹트리 clean)
-- **openclaw-local-mvp:** `75f493b` — ✅ push 완료 (워킹트리 clean)
-- **confidence:low 재생성:** ~9,254개 유지. 67회차 완료
+- **LLM Wiki:** `f5224700` — ✅ push 완료 (워킹트리 clean) — CRLF 버그 수정 + low-confidence 전면 정리
+- **homepage:** `091f082` — progress.md 인계 동기 (2026-08-01) ✅
+- **openclaw-local-mvp:** `1ee806d` — ✅ push 완료 (워킹트리 clean)
+- **confidence:low:** **0개** ✅ / 깨진 링크 **0개** ✅ / 검색 인덱스 14,438
 - **Google OAuth:** 토큰 만료 (갱신 필요시 refreshAccessToken() 사용 가능)
