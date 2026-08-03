@@ -22,7 +22,12 @@
     - DESIGN.md export ↔ HTML `:root` **변수 키 완전 동기화** 검증
     - WCAG 대비 보정 2곳: 번호·스팸 라벨 `#7a7060`→`#5a5042` (3.93:1→5.5:1)
     - **Git:** homepage `2d212d1` — ✅ push 완료
-  - **Git:** homepage `2d212d1` ✅, llm-wiki `f5224700` ✅, harness `740500c` ✅, openclaw-local-mvp `1ee806d` ✅ — 전 저장소 clean
+  - **[홈페이지 DESIGN.md 1단계]** 홈페이지 디자인 토큰 문서화 ✅ (디자인 변경 없음, 기준 문서화)
+    - `homepage\DESIGN.md` 생성 (170줄) — **20색/4타이포/5간격/4라운딩/22컴포넌트**, lint **errors 0/warnings 0**
+    - 골드/브라운 웜톤 팔레트 + 다크모드(dark-*) 5종 + 경기바탕/말굽고딕/Consolas 서체
+    - lint 발견: 버튼은 검정 텍스트(#000)라 대비 충분 확인 / 비활성 버튼(#555) 대비 2.82:1 → 산문에 접근성 개선 대상으로 기록
+    - **Git:** homepage `58bbb17` — ✅ push 완료
+  - **Git:** homepage `58bbb17` ✅, llm-wiki `f5224700` ✅, harness `740500c` ✅, openclaw-local-mvp `1ee806d` ✅ — 전 저장소 clean
 - 시각(ISO): **`2026-08-02T14:41+09:00`** — **LLM Wiki CRLF 버그 수정 + 숨겨진 low-confidence 정리 완료 + claude-hud 컨텍스트 표시 확인 + 그림 교정 진행 중.**
   - **[CRLF 버그 수정]** lint frontmatter regex가 CRLF 미지원 → CRLF 파일 641개 frontmatter 오분류·`confidence:low` **47개 숨김** (noFrontmatter 644→3) ✅
     - 수정: `wiki-lint.mjs`·`promote-stubs.mjs`·`regenerate-low-confidence.mjs` regex `\r?\n` 지원
@@ -465,8 +470,9 @@
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `f5224700` — ✅ push 완료 (워킹트리 clean) — CRLF 버그 수정 + low-confidence 전면 정리
-- **homepage:** `2d212d1` — 브리핑(`a58a42b`) + 카드뉴스 DESIGN.md 구조화(`2d212d1`) ✅ push 완료
-- **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
+- **homepage:** `58bbb17` — 브리핑(`a58a42b`) + 카드뉴스 구조화(`2d212d1`) + 홈페이지 DESIGN.md(`58bbb17`) ✅ push 완료
+- **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 카드뉴스 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
+- **홈페이지 DESIGN.md:** `homepage\DESIGN.md` — 홈페이지 디자인 토큰 문서화 (20색/22컴포넌트, lint 클린). 1단계 완료. 2단계(`:root` 변수)·3단계(CLAUDE.md 참조) 진행 예정
 - **openclaw-local-mvp:** `1ee806d` — ✅ push 완료 (워킹트리 clean)
 - **confidence:low:** **0개** ✅ / 깨진 링크 **0개** ✅ / 검색 인덱스 14,438
 - **Google OAuth:** 토큰 만료 (갱신 필요시 refreshAccessToken() 사용 가능)
