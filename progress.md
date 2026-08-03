@@ -5,6 +5,24 @@
 **⚠️ 자동 아카이브 하드 룰 (2026-08-01):** `handover-progress.md`가 **30KB 초과**이거나 읽을 때 컨텍스트가 잘리면, **별도 지시 없이 즉시** `C:\Users\pass6\project\harness\scripts\optimize-handover.ps1` 실행 → 최근 5개 세션만 유지, 나머지는 `handover-progress-archive.md`로 아카이브. (진행 중 세션 최신 반영 후 실행, UTF-8 BOM 유지)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-03T14:52+09:00`** — **게발이 브리핑 발행 + @google/design.md 도입 + 카드뉴스 디자인 구조화(DESIGN.md 단일 소스).**
+  - **[게발이 브리핑]** 2026-08-03 카드뉴스 생성 및 푸시 ✅
+    - **Git:** homepage `a58a42b` — ✅ push 완료 (스테일 `origin/master.lock` 정리)
+    - 주요 뉴스: 정청래 與전대 부울경 1위, 서울 상위 5% 집값 25%↑(세계 2위), 코스피 급락 '마통' 1.8조↑, 인도네시아 여객선 화재(5사망·41실종), **손흥민 4경기 연속 득점 MLS 최다 타이**
+    - 일정: (종일) 근무 — 이번 주 08-05(수)·08-07(금)·08-09(일) 근무
+    - 이메일: GitHub Actions 실패 4건 + Cowork 1건 스팸 처리 / 홈페이지 HTTP 200·SSL 유효
+    - LLM Wiki: 개념 17,096 / 깨진 링크 0 / low confidence 0
+  - **[툴 도입]** @google/design.md 전역 설치 (v0.4.0) ✅
+    - 구글 랩스 공식, DESIGN.md 포맷 린터·익스포터 (lint/diff/export/spec) — WCAG 대비·토큰 회귀 검증
+    - **명령은 `designmd` 사용** (bin `design.md`는 Windows 실행 불가, `npx @google/design.md`는 빈 출력 이슈)
+    - `tool-recommendations.md` 1순위 등록
+  - **[카드뉴스 구조화]** 카드뉴스 디자인 → DESIGN.md 단일 소스 체계 구축 ✅ (시각 변화 없음, 구조만 체계화)
+    - `admin/cardnews/DESIGN.md` 생성·보관 — **19색/4타이포/16컴포넌트**, lint **errors 0/warnings 0**
+    - `generate-cardnews.ps1` CSS를 `:root` CSS 변수 + 카테고리 클래스(`cat-politics` 등)로 리팩터링 — 인라인 색상 **0개**
+    - DESIGN.md export ↔ HTML `:root` **변수 키 완전 동기화** 검증
+    - WCAG 대비 보정 2곳: 번호·스팸 라벨 `#7a7060`→`#5a5042` (3.93:1→5.5:1)
+    - **Git:** homepage `2d212d1` — ✅ push 완료
+  - **Git:** homepage `2d212d1` ✅, llm-wiki `f5224700` ✅, harness `740500c` ✅, openclaw-local-mvp `1ee806d` ✅ — 전 저장소 clean
 - 시각(ISO): **`2026-08-02T14:41+09:00`** — **LLM Wiki CRLF 버그 수정 + 숨겨진 low-confidence 정리 완료 + claude-hud 컨텍스트 표시 확인 + 그림 교정 진행 중.**
   - **[CRLF 버그 수정]** lint frontmatter regex가 CRLF 미지원 → CRLF 파일 641개 frontmatter 오분류·`confidence:low` **47개 숨김** (noFrontmatter 644→3) ✅
     - 수정: `wiki-lint.mjs`·`promote-stubs.mjs`·`regenerate-low-confidence.mjs` regex `\r?\n` 지원
@@ -447,7 +465,8 @@
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `f5224700` — ✅ push 완료 (워킹트리 clean) — CRLF 버그 수정 + low-confidence 전면 정리
-- **homepage:** `091f082` — progress.md 인계 동기 (2026-08-01) ✅
+- **homepage:** `2d212d1` — 브리핑(`a58a42b`) + 카드뉴스 DESIGN.md 구조화(`2d212d1`) ✅ push 완료
+- **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
 - **openclaw-local-mvp:** `1ee806d` — ✅ push 완료 (워킹트리 clean)
 - **confidence:low:** **0개** ✅ / 깨진 링크 **0개** ✅ / 검색 인덱스 14,438
 - **Google OAuth:** 토큰 만료 (갱신 필요시 refreshAccessToken() 사용 가능)
