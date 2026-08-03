@@ -8,6 +8,8 @@ Thumbs.db
 supabase/.secrets.env
 supabase/.access-token
 supabase/.temp/
+# Supabase service role key (로컬만, 절대 커밋 금지)
+service_role key_supabase.txt
 node_modules/
 coverage/
 reports/
