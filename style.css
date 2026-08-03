@@ -12,6 +12,43 @@
     src: url('Fonts/경기천년체_220929/TTF/경기천년바탕_Regular.ttf') format('truetype');
 }
 
+/* ============================================================
+   디자인 토큰 (DESIGN.md 단일 소스 — designmd export --format css-vars)
+   수정 시: DESIGN.md → `designmd export --format css-vars` → 아래 반영
+   기존 코드는 하드코딩 유지, 신규 코드부터 var() 사용 권장
+   ============================================================ */
+:root {
+  --color-primary: #8f7d60;
+  --color-brand-gold: #dabb7e;
+  --color-brand-gold-light: #c4a87a;
+  --color-brand-gold-soft: #c4a070;
+  --color-text-primary: #333333;
+  --color-text-secondary: #555555;
+  --color-text-muted: #888888;
+  --color-text-dark: #000000;
+  --color-background: #f5f0e8;
+  --color-background-light: #faf7f0;
+  --color-surface: #ffffff;
+  --color-border: #dddddd;
+  --color-border-strong: #bbbbbb;
+  --color-danger: #c0392b;
+  --color-success: #2ecc71;
+  --color-dark-bg: #1e1a15;
+  --color-dark-surface: #3a3530;
+  --color-dark-text: #faf7f0;
+  --color-dark-muted: #6b5a3e;
+  --color-dark-accent: #5b3a29;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+  --rounded-sm: 4px;
+  --rounded-md: 8px;
+  --rounded-lg: 24px;
+  --rounded-full: 9999px;
+}
+
 /* 기본 스타일 리셋 */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 button, input, textarea, select { font-family: inherit; }
