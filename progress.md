@@ -27,7 +27,11 @@
     - 골드/브라운 웜톤 팔레트 + 다크모드(dark-*) 5종 + 경기바탕/말굽고딕/Consolas 서체
     - lint 발견: 버튼은 검정 텍스트(#000)라 대비 충분 확인 / 비활성 버튼(#555) 대비 2.82:1 → 산문에 접근성 개선 대상으로 기록
     - **Git:** homepage `58bbb17` — ✅ push 완료
-  - **Git:** homepage `58bbb17` ✅, llm-wiki `f5224700` ✅, harness `740500c` ✅, openclaw-local-mvp `1ee806d` ✅ — 전 저장소 clean
+  - **[홈페이지 DESIGN.md 2·3단계]** CSS 변수 도입 + CLAUDE.md 등록 ✅ (기존 코드 유지, 리스크 없음)
+    - 2단계: `style.css`에 `:root` 디자인 토큰 변수 추가 (DESIGN.md와 **완전 동기화** 검증). 기존 CSS는 그대로, 신규 코드부터 `var()` 사용
+    - 3단계: `homepage\CLAUDE.md` 신규 — "디자인 단일 소스 DESIGN.md·기존 디자인 임의 변경 금지" 규칙 등록 (클로드 자동 인지)
+    - **Git:** homepage `916a72a` — ✅ push 완료
+  - **Git:** homepage `916a72a` ✅, llm-wiki `f5224700` ✅, harness `740500c` ✅, openclaw-local-mvp `1ee806d` ✅ — 전 저장소 clean
 - 시각(ISO): **`2026-08-02T14:41+09:00`** — **LLM Wiki CRLF 버그 수정 + 숨겨진 low-confidence 정리 완료 + claude-hud 컨텍스트 표시 확인 + 그림 교정 진행 중.**
   - **[CRLF 버그 수정]** lint frontmatter regex가 CRLF 미지원 → CRLF 파일 641개 frontmatter 오분류·`confidence:low` **47개 숨김** (noFrontmatter 644→3) ✅
     - 수정: `wiki-lint.mjs`·`promote-stubs.mjs`·`regenerate-low-confidence.mjs` regex `\r?\n` 지원
@@ -470,9 +474,9 @@
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `f5224700` — ✅ push 완료 (워킹트리 clean) — CRLF 버그 수정 + low-confidence 전면 정리
-- **homepage:** `58bbb17` — 브리핑(`a58a42b`) + 카드뉴스 구조화(`2d212d1`) + 홈페이지 DESIGN.md(`58bbb17`) ✅ push 완료
+- **homepage:** `916a72a` — 브리핑(`a58a42b`) + 카드뉴스 구조화(`2d212d1`) + 홈페이지 DESIGN.md 1~3단계(`58bbb17`·`916a72a`) ✅ push 완료
 - **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 카드뉴스 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
-- **홈페이지 DESIGN.md:** `homepage\DESIGN.md` — 홈페이지 디자인 토큰 문서화 (20색/22컴포넌트, lint 클린). 1단계 완료. 2단계(`:root` 변수)·3단계(CLAUDE.md 참조) 진행 예정
+- **홈페이지 DESIGN.md 1~3단계 완료:** `DESIGN.md`(토큰 문서화) → `style.css :root`(CSS 변수, 기존 코드 유지) → `CLAUDE.md`(디자인 기준 등록, 클로드 자동 인지)
 - **openclaw-local-mvp:** `1ee806d` — ✅ push 완료 (워킹트리 clean)
 - **confidence:low:** **0개** ✅ / 깨진 링크 **0개** ✅ / 검색 인덱스 14,438
 - **Google OAuth:** 토큰 만료 (갱신 필요시 refreshAccessToken() 사용 가능)
