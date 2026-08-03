@@ -89,41 +89,56 @@ if (-not $hasSchedule) {
 }
 
 $ej = @{"정치"="🗳️";"경제"="💰";"사회"="🚨";"세계"="🌍";"문화"="🎭";"손흥민"="⚽";"AI/IT"="🤖"}
-$cl = @{"정치"="#e74c3c";"경제"="#2ecc71";"사회"="#f39c12";"세계"="#3498db";"문화"="#9b59b6";"손흥민"="#e67e22";"AI/IT"="#1abc9c"}
+# 카테고리 → CSS 클래스 매핑 (디자인 토큰은 DESIGN.md 단일 소스로 관리)
+$cl = @{"정치"="cat-politics";"경제"="cat-economy";"사회"="cat-society";"세계"="cat-world";"문화"="cat-culture";"손흥민"="cat-son";"AI/IT"="cat-ai"}
 
+# 디자인 토큰 — DESIGN.md(admin/cardnews/DESIGN.md)와 동기화. 변경 시 designmd export --format css-vars 참조.
 $css = @"
+:root{--color-primary:#2a2520;--color-secondary:#7a7060;--color-tertiary:#8f7d60;--color-neutral:#f5f0e8;--color-surface:#faf6f0;--color-border:#ede6dc;--color-label-important-bg:#f5e6d3;--color-label-important-text:#8f5a3a;--color-stat-icon-bg:#e8e0d4;--color-footer-text:#b5a898;--color-accent-politics:#e74c3c;--color-accent-economy:#2ecc71;--color-accent-society:#f39c12;--color-accent-world:#3498db;--color-accent-culture:#9b59b6;--color-accent-son:#e67e22;--color-accent-ai:#1abc9c;--color-accent-schedule:#1a73e8;--color-accent-wiki:#8e44ad;--spacing-wrap-gap:14px;--rounded-lg:20px;--rounded-md:16px;--rounded-sm:4px;--rounded-full:9999px}
 *{margin:0;padding:0;box-sizing:border-box}
-body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','Malgun Gothic',sans-serif;background:#f5f0e8;padding:40px 16px;display:flex;flex-direction:column;align-items:center}
-.wrap{max-width:420px;width:100%;display:flex;flex-direction:column;gap:14px}
-.header{background:linear-gradient(135deg,#2a2520,#3d3530);color:#f5f0e8;border-radius:20px;padding:36px 24px;text-align:center;box-shadow:0 8px 24px rgba(42,37,32,.2)}
+body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','Malgun Gothic',sans-serif;background:var(--color-neutral);padding:40px 16px;display:flex;flex-direction:column;align-items:center}
+.wrap{max-width:420px;width:100%;display:flex;flex-direction:column;gap:var(--spacing-wrap-gap)}
+.header{background:linear-gradient(135deg,var(--color-primary),#3d3530);color:var(--color-neutral);border-radius:var(--rounded-lg);padding:36px 24px;text-align:center;box-shadow:0 8px 24px rgba(42,37,32,.2)}
 .header .date{font-size:13px;opacity:.6;margin-bottom:6px;letter-spacing:1px}
 .header h1{font-size:24px;font-weight:700;line-height:1.4;margin-bottom:4px}
 .header .sub{font-size:13px;opacity:.5}
-.card{background:#faf6f0;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(42,37,32,.08)}
-.card .st{padding:14px 20px 12px;font-size:13px;font-weight:700;letter-spacing:1px;border-bottom:2px solid #ede6dc}
-.item{padding:12px 20px;border-bottom:1px solid #ede6dc;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:flex-start}
+.card{background:var(--color-surface);border-radius:var(--rounded-md);overflow:hidden;box-shadow:0 2px 12px rgba(42,37,32,.08)}
+.card .st{padding:14px 20px 12px;font-size:13px;font-weight:700;letter-spacing:1px;border-bottom:2px solid var(--color-border)}
+.item{padding:12px 20px;border-bottom:1px solid var(--color-border);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:flex-start}
 .item:last-child{border-bottom:none}
-.num{display:inline-flex;width:20px;height:20px;background:#ede6dc;border-radius:50%;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#7a7060;flex-shrink:0;margin-top:1px}
-.tle{font-size:14px;font-weight:500;line-height:1.5;color:#2a2520;flex:1;word-break:keep-all;overflow-wrap:break-word}
-.tle a{color:#2a2520;text-decoration:none}
-.tle a:hover{color:#8f7d60;text-decoration:underline}
-.src{font-size:11px;color:#7a7060;flex:0 0 100%;padding-left:28px;margin-top:-4px}
+.num{display:inline-flex;width:20px;height:20px;background:var(--color-border);border-radius:var(--rounded-full);align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#5a5042;flex-shrink:0;margin-top:1px}
+.tle{font-size:14px;font-weight:500;line-height:1.5;color:var(--color-primary);flex:1;word-break:keep-all;overflow-wrap:break-word}
+.tle a{color:var(--color-primary);text-decoration:none}
+.tle a:hover{color:var(--color-tertiary);text-decoration:underline}
+.src{font-size:11px;color:var(--color-secondary);flex:0 0 100%;padding-left:28px;margin-top:-4px}
 .sc{padding:12px 20px}
-.si{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #ede6dc}
+.si{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--color-border)}
 .si:last-child{border-bottom:none}
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
-.stx{font-size:14px;color:#2a2520;line-height:1.5}
+.dot.dot-schedule{background:var(--color-accent-schedule)}
+.dot.dot-society{background:var(--color-accent-society)}
+.stx{font-size:14px;color:var(--color-primary);line-height:1.5}
 .ec{padding:12px 20px}
-.ei{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #ede6dc;font-size:13px;color:#2a2520}
+.ei{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--color-border);font-size:13px;color:var(--color-primary)}
 .ei:last-child{border-bottom:none}
-.el{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:600;margin-right:4px;flex-shrink:0}
-.el.imp{background:#f5e6d3;color:#8f5a3a}
-.el.spam{background:#ede6dc;color:#7a7060}
-.stat{padding:12px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #ede6dc}
-.stat .ico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;background:#e8e0d4;flex-shrink:0}
-.stat .st1{font-size:13px;color:#7a7060}
-.stat .st2{font-size:14px;font-weight:600;color:#2a2520}
-.ft{text-align:center;padding:24px 20px;color:#b5a898;font-size:11px;font-family:'Malgun Gothic',sans-serif}
+.el{display:inline-block;padding:1px 7px;border-radius:var(--rounded-sm);font-size:10px;font-weight:600;margin-right:4px;flex-shrink:0}
+.el.imp{background:var(--color-label-important-bg);color:var(--color-label-important-text)}
+.el.spam{background:var(--color-border);color:#5a5042}
+.stat{padding:12px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--color-border)}
+.stat .ico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--color-stat-icon-bg);flex-shrink:0}
+.stat .st1{font-size:13px;color:var(--color-secondary)}
+.stat .st2{font-size:14px;font-weight:600;color:var(--color-primary)}
+.ft{text-align:center;padding:24px 20px;color:var(--color-footer-text);font-size:11px;font-family:'Malgun Gothic',sans-serif}
+.st.cat-politics{color:var(--color-accent-politics)}
+.st.cat-economy{color:var(--color-accent-economy)}
+.st.cat-society{color:var(--color-accent-society)}
+.st.cat-world{color:var(--color-accent-world)}
+.st.cat-culture{color:var(--color-accent-culture)}
+.st.cat-son{color:var(--color-accent-son)}
+.st.cat-ai{color:var(--color-accent-ai)}
+.st.cat-schedule{color:var(--color-accent-schedule)}
+.st.cat-wiki{color:var(--color-accent-wiki)}
+.muted{color:var(--color-secondary)}
 "@
 
 $html = "<!DOCTYPE html>
@@ -149,9 +164,9 @@ $html = "<!DOCTYPE html>
 foreach ($sk in $order) {
   $items = $sec[$sk]
   if (-not $items -or $items.Count -eq 0) { continue }
-  $c = if ($cl.ContainsKey($sk)) { $cl[$sk] } else { "#1a73e8" }
+  $c = if ($cl.ContainsKey($sk)) { $cl[$sk] } else { "cat-schedule" }
   $e = if ($ej.ContainsKey($sk)) { $ej[$sk] } else { "📰" }
-  $html += "<div class=""card""><div class=""st"" style=""color:$c"">$e $sk</div>`n"
+  $html += "<div class=""card""><div class=""st $c"">$e $sk</div>`n"
   $ri = 1
   foreach ($item in $items) {
     # AI/IT 섹션에서 메일 링크 제외
@@ -172,19 +187,19 @@ foreach ($sk in $order) {
 }
 
 $schedEsc = $sched -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
-$html += "<div class=""card""><div class=""st"" style=""color:#1a73e8"">📅 오늘의 일정</div>
+$html += "<div class=""card""><div class=""st cat-schedule"">📅 오늘의 일정</div>
 <div class=""sc"">
-<div class=""si""><div class=""dot"" style=""background:#1a73e8""></div><div class=""stx""><strong>$schedEsc</strong></div></div>
+<div class=""si""><div class=""dot dot-schedule""></div><div class=""stx""><strong>$schedEsc</strong></div></div>
 "
 foreach ($extra in $schedExtra) {
   $extraEsc = $extra -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
-  $html += "<div class=""si""><div class=""dot"" style=""background:#f39c12""></div><div class=""stx"" style=""color:#7a7060"">$extraEsc</div></div>`n"
+  $html += "<div class=""si""><div class=""dot dot-society""></div><div class=""stx muted"">$extraEsc</div></div>`n"
 }
 $html += "</div></div>
 "
 
 # 이메일 요약 — 항상 표시 (메일/스팸 없어도 "없음" 표시)
-$emailHtml = "<div class=""card""><div class=""st"" style=""color:#e74c3c"">📧 이메일 요약</div><div class=""ec"">`n"
+$emailHtml = "<div class=""card""><div class=""st cat-politics"">📧 이메일 요약</div><div class=""ec"">`n"
 $hasImportantMail = $false; $spamLabel = "스팸 없음"
 if ($content -match "(?s)## 3\. 이메일 요약\s*\n(.*?)(?=\n##|\z)") {
   $et = $matches[1]
@@ -205,15 +220,15 @@ if ($content -match "(?s)## 3\. 이메일 요약\s*\n(.*?)(?=\n##|\z)") {
   }
 }
 if (-not $hasImportantMail) {
-  $emailHtml += "<div class=""ei""><span style=""color:#7a7060"">중요 메일 없음</span></div>`n"
+  $emailHtml += "<div class=""ei""><span class=""muted"">중요 메일 없음</span></div>`n"
 }
 $spamEsc = $spamLabel -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
 if ($spamLabel -and $spamLabel -ne "스팸 없음") {
-  $emailHtml += "<div style=""margin-top:10px;padding-top:10px;border-top:1px solid #ede6dc"">`n"
+  $emailHtml += "<div style=""margin-top:10px;padding-top:10px;border-top:1px solid var(--color-border)"">`n"
   $emailHtml += "<div class=""ei""><span class=""el spam"">스팸</span>$spamEsc</div>`n"
   $emailHtml += "</div>`n"
 } else {
-  $emailHtml += "<div class=""ei""><span style=""color:#7a7060"">스팸 없음</span></div>`n"
+  $emailHtml += "<div class=""ei""><span class=""muted"">스팸 없음</span></div>`n"
 }
 $emailHtml += "</div></div>`n"
 $html += $emailHtml
@@ -225,7 +240,7 @@ if ($content -match "\| SSL 인증서\s*\|\s*(.+?)\|") { $sslOk = $matches[1].Tr
 $statusDetail = "HTTP $httpCode"
 if ($respTime) { $statusDetail += ", $respTime" }
 if ($sslOk -eq "유효") { $statusDetail += ", SSL 유효" }
-$html += "<div class=""card""><div class=""st"" style=""color:#2ecc71"">✅ 홈페이지 상태</div>
+$html += "<div class=""card""><div class=""st cat-economy"">✅ 홈페이지 상태</div>
 <div class=""stat"">
 <div class=""ico"">✓</div>
 <div><div class=""st1"">geumsagwa.github.io</div><div class=""st2"">정상 ($statusDetail)</div></div>
@@ -251,7 +266,7 @@ if ($wikiSectionStart -ge 0) {
     if ($wb) { $wd += " / 깨진링크 $wb" }
     if ($wl) { $wd += " / low:$wl" }
     $wp = if ($ww) { $ww } else { "LLM Wiki" }
-    $html += "<div class=""card""><div class=""st"" style=""color:#8e44ad"">📚 LLM Wiki</div>
+    $html += "<div class=""card""><div class=""st cat-wiki"">📚 LLM Wiki</div>
 <div class=""stat"">
 <div class=""ico"">📖</div>
 <div><div class=""st1"">$wp</div><div class=""st2"">$wd</div></div>

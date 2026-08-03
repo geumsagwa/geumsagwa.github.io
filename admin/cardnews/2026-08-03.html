@@ -5,38 +5,51 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; frame-ancestors 'none'; base-uri 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>카드뉴스 - 2026-08-03</title>
-<style>*{margin:0;padding:0;box-sizing:border-box}
-body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','Malgun Gothic',sans-serif;background:#f5f0e8;padding:40px 16px;display:flex;flex-direction:column;align-items:center}
-.wrap{max-width:420px;width:100%;display:flex;flex-direction:column;gap:14px}
-.header{background:linear-gradient(135deg,#2a2520,#3d3530);color:#f5f0e8;border-radius:20px;padding:36px 24px;text-align:center;box-shadow:0 8px 24px rgba(42,37,32,.2)}
+<style>:root{--color-primary:#2a2520;--color-secondary:#7a7060;--color-tertiary:#8f7d60;--color-neutral:#f5f0e8;--color-surface:#faf6f0;--color-border:#ede6dc;--color-label-important-bg:#f5e6d3;--color-label-important-text:#8f5a3a;--color-stat-icon-bg:#e8e0d4;--color-footer-text:#b5a898;--color-accent-politics:#e74c3c;--color-accent-economy:#2ecc71;--color-accent-society:#f39c12;--color-accent-world:#3498db;--color-accent-culture:#9b59b6;--color-accent-son:#e67e22;--color-accent-ai:#1abc9c;--color-accent-schedule:#1a73e8;--color-accent-wiki:#8e44ad;--spacing-wrap-gap:14px;--rounded-lg:20px;--rounded-md:16px;--rounded-sm:4px;--rounded-full:9999px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','Malgun Gothic',sans-serif;background:var(--color-neutral);padding:40px 16px;display:flex;flex-direction:column;align-items:center}
+.wrap{max-width:420px;width:100%;display:flex;flex-direction:column;gap:var(--spacing-wrap-gap)}
+.header{background:linear-gradient(135deg,var(--color-primary),#3d3530);color:var(--color-neutral);border-radius:var(--rounded-lg);padding:36px 24px;text-align:center;box-shadow:0 8px 24px rgba(42,37,32,.2)}
 .header .date{font-size:13px;opacity:.6;margin-bottom:6px;letter-spacing:1px}
 .header h1{font-size:24px;font-weight:700;line-height:1.4;margin-bottom:4px}
 .header .sub{font-size:13px;opacity:.5}
-.card{background:#faf6f0;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(42,37,32,.08)}
-.card .st{padding:14px 20px 12px;font-size:13px;font-weight:700;letter-spacing:1px;border-bottom:2px solid #ede6dc}
-.item{padding:12px 20px;border-bottom:1px solid #ede6dc;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:flex-start}
+.card{background:var(--color-surface);border-radius:var(--rounded-md);overflow:hidden;box-shadow:0 2px 12px rgba(42,37,32,.08)}
+.card .st{padding:14px 20px 12px;font-size:13px;font-weight:700;letter-spacing:1px;border-bottom:2px solid var(--color-border)}
+.item{padding:12px 20px;border-bottom:1px solid var(--color-border);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:flex-start}
 .item:last-child{border-bottom:none}
-.num{display:inline-flex;width:20px;height:20px;background:#ede6dc;border-radius:50%;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#7a7060;flex-shrink:0;margin-top:1px}
-.tle{font-size:14px;font-weight:500;line-height:1.5;color:#2a2520;flex:1;word-break:keep-all;overflow-wrap:break-word}
-.tle a{color:#2a2520;text-decoration:none}
-.tle a:hover{color:#8f7d60;text-decoration:underline}
-.src{font-size:11px;color:#7a7060;flex:0 0 100%;padding-left:28px;margin-top:-4px}
+.num{display:inline-flex;width:20px;height:20px;background:var(--color-border);border-radius:var(--rounded-full);align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#5a5042;flex-shrink:0;margin-top:1px}
+.tle{font-size:14px;font-weight:500;line-height:1.5;color:var(--color-primary);flex:1;word-break:keep-all;overflow-wrap:break-word}
+.tle a{color:var(--color-primary);text-decoration:none}
+.tle a:hover{color:var(--color-tertiary);text-decoration:underline}
+.src{font-size:11px;color:var(--color-secondary);flex:0 0 100%;padding-left:28px;margin-top:-4px}
 .sc{padding:12px 20px}
-.si{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #ede6dc}
+.si{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--color-border)}
 .si:last-child{border-bottom:none}
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
-.stx{font-size:14px;color:#2a2520;line-height:1.5}
+.dot.dot-schedule{background:var(--color-accent-schedule)}
+.dot.dot-society{background:var(--color-accent-society)}
+.stx{font-size:14px;color:var(--color-primary);line-height:1.5}
 .ec{padding:12px 20px}
-.ei{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #ede6dc;font-size:13px;color:#2a2520}
+.ei{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--color-border);font-size:13px;color:var(--color-primary)}
 .ei:last-child{border-bottom:none}
-.el{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:600;margin-right:4px;flex-shrink:0}
-.el.imp{background:#f5e6d3;color:#8f5a3a}
-.el.spam{background:#ede6dc;color:#7a7060}
-.stat{padding:12px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #ede6dc}
-.stat .ico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;background:#e8e0d4;flex-shrink:0}
-.stat .st1{font-size:13px;color:#7a7060}
-.stat .st2{font-size:14px;font-weight:600;color:#2a2520}
-.ft{text-align:center;padding:24px 20px;color:#b5a898;font-size:11px;font-family:'Malgun Gothic',sans-serif}</style>
+.el{display:inline-block;padding:1px 7px;border-radius:var(--rounded-sm);font-size:10px;font-weight:600;margin-right:4px;flex-shrink:0}
+.el.imp{background:var(--color-label-important-bg);color:var(--color-label-important-text)}
+.el.spam{background:var(--color-border);color:#5a5042}
+.stat{padding:12px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--color-border)}
+.stat .ico{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--color-stat-icon-bg);flex-shrink:0}
+.stat .st1{font-size:13px;color:var(--color-secondary)}
+.stat .st2{font-size:14px;font-weight:600;color:var(--color-primary)}
+.ft{text-align:center;padding:24px 20px;color:var(--color-footer-text);font-size:11px;font-family:'Malgun Gothic',sans-serif}
+.st.cat-politics{color:var(--color-accent-politics)}
+.st.cat-economy{color:var(--color-accent-economy)}
+.st.cat-society{color:var(--color-accent-society)}
+.st.cat-world{color:var(--color-accent-world)}
+.st.cat-culture{color:var(--color-accent-culture)}
+.st.cat-son{color:var(--color-accent-son)}
+.st.cat-ai{color:var(--color-accent-ai)}
+.st.cat-schedule{color:var(--color-accent-schedule)}
+.st.cat-wiki{color:var(--color-accent-wiki)}
+.muted{color:var(--color-secondary)}</style>
 </head>
 <body>
 <div class="wrap">
@@ -47,62 +60,62 @@ body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','
 <div class="sub">AI가 선정한 오늘의 주요 뉴스</div>
 </div>
 
-<div class="card"><div class="st" style="color:#e74c3c">🗳️ 정치</div>
+<div class="card"><div class="st cat-politics">🗳️ 정치</div>
 <div class="item"><span class="num">1</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260802047451001" target="_blank" rel="noopener noreferrer">정청래, 與전대 부울경 당원투표 1위…김민석과 1승씩 주고받아(종합)</a></div><div class="src">연합뉴스</div></div>
 <div class="item"><span class="num">2</span><div class="tle"><a href="https://www.hani.co.kr/arti/politics/bluehouse/1271084.html" target="_blank" rel="noopener noreferrer">이 대통령, 귀국 당일 부동산·주식 점검회의 주재한다</a></div><div class="src">한겨레</div></div>
 <div class="item"><span class="num">3</span><div class="tle"><a href="https://www.hani.co.kr/arti/politics/politics_general/1271071.html" target="_blank" rel="noopener noreferrer">정청래, 민주 당대표 부울경 경선 1위…김민석 연승 저지</a></div><div class="src">한겨레</div></div>
 <div class="item"><span class="num">4</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260802050900001" target="_blank" rel="noopener noreferrer">李대통령 "한국과 독일, 많이 닮아…전쟁·분단 딛고 일어서"</a></div><div class="src">연합뉴스</div></div>
 </div>
-<div class="card"><div class="st" style="color:#2ecc71">💰 경제</div>
+<div class="card"><div class="st cat-economy">💰 경제</div>
 <div class="item"><span class="num">1</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260731172400002" target="_blank" rel="noopener noreferrer">온라인플랫폼·입점업체 분쟁 2.2배로↑…쿠팡 등 오픈마켓 집중</a></div><div class="src">연합뉴스</div></div>
 <div class="item"><span class="num">2</span><div class="tle"><a href="https://www.mk.co.kr/news/economy/12114546" target="_blank" rel="noopener noreferrer">美 채권자경단이 움직인다 ... 기준금리 인상 명분 강해졌다</a></div><div class="src">매일경제</div></div>
 <div class="item"><span class="num">3</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260802015200004" target="_blank" rel="noopener noreferrer">서울시, 대학생 진로 탐색 '서울영커리언스 캠프' 참가자 모집</a></div><div class="src">연합뉴스</div></div>
 <div class="item"><span class="num">4</span><div class="tle"><a href="https://www.hani.co.kr/arti/economy/property/1271017.html" target="_blank" rel="noopener noreferrer">서울 ‘상위 5%’ 집값 작년 25% 올라 세계 2위…1위는 도쿄</a></div><div class="src">한겨레</div></div>
 <div class="item"><span class="num">5</span><div class="tle"><a href="https://www.hani.co.kr/arti/economy/finance/1271026.html" target="_blank" rel="noopener noreferrer">코스피 급락에 ‘마통’ 1.8조 급증…‘빚투’로 “분할매수 노려”</a></div><div class="src">한겨레</div></div>
 </div>
-<div class="card"><div class="st" style="color:#f39c12">🚨 사회</div>
+<div class="card"><div class="st cat-society">🚨 사회</div>
 <div class="item"><span class="num">1</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260803003000034" target="_blank" rel="noopener noreferrer">낮 최고 39도 무더위…강원·충북 일부 소나기</a></div><div class="src">연합뉴스</div></div>
 <div class="item"><span class="num">2</span><div class="tle"><a href="https://www.hani.co.kr/arti/society/society_general/1271079.html" target="_blank" rel="noopener noreferrer">박성재 ‘김건희 사건 무마 청탁’ 혐의, 내란-종합 특검 실랑이에 표류 우려</a></div><div class="src">한겨레</div></div>
 <div class="item"><span class="num">3</span><div class="tle"><a href="https://www.hani.co.kr/arti/society/society_general/1271081.html" target="_blank" rel="noopener noreferrer">이흥구 대법관 후임 ‘진보’ 인선 목소리…‘청과 갈등’ 조희대 시험대</a></div><div class="src">한겨레</div></div>
 <div class="item"><span class="num">4</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260802055500530" target="_blank" rel="noopener noreferrer">그칠줄 모르는 폭염에 온열질환자 하루 96명 응급실행</a></div><div class="src">연합뉴스</div></div>
 </div>
-<div class="card"><div class="st" style="color:#3498db">🌍 세계</div>
+<div class="card"><div class="st cat-world">🌍 세계</div>
 <div class="item"><span class="num">1</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260803001300079" target="_blank" rel="noopener noreferrer">이란 외무부 "오만과 호르무즈 해협 관리 협의 막바지"</a></div><div class="src">연합뉴스</div></div>
 <div class="item"><span class="num">2</span><div class="tle"><a href="https://www.hani.co.kr/arti/international/international_general/1271036.html" target="_blank" rel="noopener noreferrer">글로벌 식품기업들, ‘초가공식품’ 규제 막으려 수백건 소송</a></div><div class="src">한겨레</div></div>
 <div class="item"><span class="num">3</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260803001500072" target="_blank" rel="noopener noreferrer">"해고에 엄마가 항의"…美Z세대 직장 참견하는 '헬리콥터 부모'</a></div><div class="src">연합뉴스</div></div>
 <div class="item"><span class="num">4</span><div class="tle"><a href="https://www.hani.co.kr/arti/international/international_general/1271072.html" target="_blank" rel="noopener noreferrer">인도네시아 해상서 271명 탄 여객선 화재…5명 사망· 41명 실종</a></div><div class="src">한겨레</div></div>
 </div>
-<div class="card"><div class="st" style="color:#9b59b6">🎭 문화</div>
+<div class="card"><div class="st cat-culture">🎭 문화</div>
 <div class="item"><span class="num">1</span><div class="tle"><a href="https://www.hani.co.kr/arti/culture/book/1270967.html" target="_blank" rel="noopener noreferrer">‘슬프다’는 영어 단어가 ‘배부르다’에서 왔다고? [.txt]</a></div><div class="src">한겨레</div></div>
 <div class="item"><span class="num">2</span><div class="tle"><a href="https://www.hani.co.kr/arti/culture/culture_general/1270979.html" target="_blank" rel="noopener noreferrer">한국 귀신 부르니 베트남 귀신도 왔다…‘월남보살’ 보셨나요</a></div><div class="src">한겨레</div></div>
 <div class="item"><span class="num">3</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260802038800062" target="_blank" rel="noopener noreferrer">태백 한강·낙동강 발원지축제 성황 속 폐막</a></div><div class="src">연합뉴스</div></div>
 <div class="item"><span class="num">4</span><div class="tle"><a href="https://www.yna.co.kr/view/AKR20260802045700054" target="_blank" rel="noopener noreferrer">'일과 휴식이 한 곳에'…전남광주 7개 시군 워케이션 사업</a></div><div class="src">연합뉴스</div></div>
 <div class="item"><span class="num">5</span><div class="tle"><a href="https://sports.donga.com/ent/article/all/20260802/134406312/1" target="_blank" rel="noopener noreferrer">블랙핑크 10주년 ‘뮷즈’ 나온다, 문화 유산 앰버서더된 케이팝</a></div><div class="src">sports.donga.com</div></div>
 </div>
-<div class="card"><div class="st" style="color:#e67e22">⚽ 손흥민</div>
+<div class="card"><div class="st cat-son">⚽ 손흥민</div>
 <div class="item"><span class="num">1</span><div class="tle"><a href="https://www.donga.com/news/Sports/article/all/20260803/134409066/2" target="_blank" rel="noopener noreferrer">손흥민, 4경기 연속 득점… MLS 최다 타이</a></div><div class="src">동아일보</div></div>
 </div>
-<div class="card"><div class="st" style="color:#1abc9c">🤖 AI/IT</div>
+<div class="card"><div class="st cat-ai">🤖 AI/IT</div>
 <div class="item"><span class="num">1</span><div class="tle"><a href="https://zdnet.co.kr/view/?no=20260802185639" target="_blank" rel="noopener noreferrer">삼성, '유효 판단' 오우라 美특허 상대 항소...무효분쟁 항소 5건으로 확대</a></div><div class="src">ZDNet Korea</div></div>
 <div class="item"><span class="num">2</span><div class="tle"><a href="https://zdnet.co.kr/view/?no=20260802183140" target="_blank" rel="noopener noreferrer">공정위, 코레일-SR 기업결합 승인…소비자 권익 증진 사업계획 마련</a></div><div class="src">ZDNet Korea</div></div>
 </div>
-<div class="card"><div class="st" style="color:#1a73e8">📅 오늘의 일정</div>
+<div class="card"><div class="st cat-schedule">📅 오늘의 일정</div>
 <div class="sc">
-<div class="si"><div class="dot" style="background:#1a73e8"></div><div class="stx"><strong>근무</strong></div></div>
-<div class="si"><div class="dot" style="background:#f39c12"></div><div class="stx" style="color:#7a7060">08-05(수) 근무</div></div>
-<div class="si"><div class="dot" style="background:#f39c12"></div><div class="stx" style="color:#7a7060">08-07(금) 근무</div></div>
-<div class="si"><div class="dot" style="background:#f39c12"></div><div class="stx" style="color:#7a7060">08-09(일) 근무</div></div>
+<div class="si"><div class="dot dot-schedule"></div><div class="stx"><strong>근무</strong></div></div>
+<div class="si"><div class="dot dot-society"></div><div class="stx muted">08-05(수) 근무</div></div>
+<div class="si"><div class="dot dot-society"></div><div class="stx muted">08-07(금) 근무</div></div>
+<div class="si"><div class="dot dot-society"></div><div class="stx muted">08-09(일) 근무</div></div>
 </div></div>
-<div class="card"><div class="st" style="color:#e74c3c">📧 이메일 요약</div><div class="ec">
-<div class="ei"><span style="color:#7a7060">중요 메일 없음</span></div>
-<div class="ei"><span style="color:#7a7060">스팸 없음</span></div>
+<div class="card"><div class="st cat-politics">📧 이메일 요약</div><div class="ec">
+<div class="ei"><span class="muted">중요 메일 없음</span></div>
+<div class="ei"><span class="muted">스팸 없음</span></div>
 </div></div>
-<div class="card"><div class="st" style="color:#2ecc71">✅ 홈페이지 상태</div>
+<div class="card"><div class="st cat-economy">✅ 홈페이지 상태</div>
 <div class="stat">
 <div class="ico">✓</div>
 <div><div class="st1">geumsagwa.github.io</div><div class="st2">정상 (HTTP 200, 5287ms, SSL 유효)</div></div>
 </div></div>
-<div class="card"><div class="st" style="color:#8e44ad">📚 LLM Wiki</div>
+<div class="card"><div class="st cat-wiki">📚 LLM Wiki</div>
 <div class="stat">
 <div class="ico">📖</div>
 <div><div class="st1">5권 제114화 — 소련의 종말 (예정)</div><div class="st2">개념 17096개 / 깨진링크 0 / low:0</div></div>

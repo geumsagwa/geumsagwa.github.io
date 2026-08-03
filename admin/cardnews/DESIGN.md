@@ -7,9 +7,19 @@ colors:
   neutral: "#f5f0e8"
   surface: "#faf6f0"
   border: "#ede6dc"
+  label-important-bg: "#f5e6d3"
+  label-important-text: "#8f5a3a"
+  stat-icon-bg: "#e8e0d4"
+  footer-text: "#b5a898"
   accent-politics: "#e74c3c"
   accent-economy: "#2ecc71"
-  footer-text: "#b5a898"
+  accent-society: "#f39c12"
+  accent-world: "#3498db"
+  accent-culture: "#9b59b6"
+  accent-son: "#e67e22"
+  accent-ai: "#1abc9c"
+  accent-schedule: "#1a73e8"
+  accent-wiki: "#8e44ad"
 typography:
   headline:
     fontFamily: "Gyeonggi Batang, Malgun Gothic, sans-serif"
@@ -55,6 +65,30 @@ components:
     rounded: "{rounded.full}"
   section-tag:
     textColor: "{colors.accent-politics}"
+  section-tag-economy:
+    textColor: "{colors.accent-economy}"
+  section-tag-society:
+    textColor: "{colors.accent-society}"
+  section-tag-world:
+    textColor: "{colors.accent-world}"
+  section-tag-culture:
+    textColor: "{colors.accent-culture}"
+  section-tag-son:
+    textColor: "{colors.accent-son}"
+  section-tag-ai:
+    textColor: "{colors.accent-ai}"
+  section-tag-schedule:
+    textColor: "{colors.accent-schedule}"
+  section-tag-wiki:
+    textColor: "{colors.accent-wiki}"
+  label-important:
+    backgroundColor: "{colors.label-important-bg}"
+    textColor: "{colors.label-important-text}"
+  label-spam:
+    backgroundColor: "{colors.border}"
+    textColor: "#5a5042"
+  stat-icon:
+    backgroundColor: "{colors.stat-icon-bg}"
   footer:
     textColor: "{colors.footer-text}"
 ---
@@ -74,7 +108,10 @@ components:
 - **neutral (#f5f0e8):** 페이지 배경 (웜 라임스톤).
 - **surface (#faf6f0):** 카드 배경.
 - **border (#ede6dc):** 카드 구분선·번호 배경.
-- **accent-politics (#e74c3c) / accent-economy (#2ecc71):** 카테고리 헤더 액센트.
+- **accent-politics (#e74c3c) / accent-economy (#2ecc71) / accent-society (#f39c12) / accent-world (#3498db) / accent-culture (#9b59b6) / accent-son (#e67e22) / accent-ai (#1abc9c) / accent-schedule (#1a73e8) / accent-wiki (#8e44ad):** 카테고리 헤더 액센트. 이메일 요약은 accent-politics, 홈페이지 상태는 accent-economy를 재사용.
+- **헤더 그라데이션:** primary(#2a2520) → #3d3530, 135° — 헤더 배경은 토큰이 아닌 리터럴 그라데이션으로 구현.
+- **label-important-bg (#f5e6d3) / label-important-text (#8f5a3a):** "중요" 이메일 라벨.
+- **stat-icon-bg (#e8e0d4):** 홈페이지 상태 아이콘 원 배경.
 
 ## Typography
 
@@ -102,7 +139,8 @@ components:
 - **header:** 딥 잉크 배경 + 라임스톤 텍스트. 날짜(opacity .6)·제목·부제(opacity .5) 계층.
 - **card:** 라임스톤 카드. 카테고리 헤더(border-bottom 2px) + 기사 목록(구분선 1px).
 - **item-number:** 회색 원형 번호(20×20).
-- **section-tag:** 카테고리 헤더, 카테고리별 액센트 컬러.
+- **section-tag:** 카테고리 헤더. 카테고리별 액센트 컬러 — section-tag(-economy·society·world·culture·son·ai·schedule·wiki) 각각 대응 토큰 참조. 이메일 요약·홈페이지 상태는 정치/경제 색 재사용.
+- **label-important / label-spam:** 이메일 라벨 배지 (imp=버프 액센트, spam=뉴트럴).
 
 ## Do's and Don'ts
 
