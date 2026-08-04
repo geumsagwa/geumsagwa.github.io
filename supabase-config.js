@@ -1,11 +1,12 @@
 // Supabase 설정
-// Supabase URL과 anon key는 public 값입니다. RLS 정책이 실제 보안을 담당합니다.
+// Supabase URL과 publishable key는 public 값입니다. RLS 정책이 실제 보안을 담당합니다.
+// (2026-08-04) 기존 legacy anon JWT → 신형 publishable key 전환 (sb_publishable_...)
 // 배포 시 window.__env 로 기본값을 재정의할 수 있습니다:
 //   <script>window.__env = { SUPABASE_URL: '...', SUPABASE_ANON_KEY: '...', KAKAO_REST_API_KEY: '...' }</script>
 // .env.example 파일도 참고하세요.
 const ENV = window.__env || {};
 const SUPABASE_URL = ENV.SUPABASE_URL || 'https://qswzutgxtiuigrocqcmc.supabase.co';
-const SUPABASE_ANON_KEY = ENV.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzd3p1dGd4dGl1aWdyb2NxY21jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3NzkxMjksImV4cCI6MjA3OTM1NTEyOX0.FezD3WM7YMhh45t6pYrUoi2yNWK8e1MQXPzzk6EjK8M';
+const SUPABASE_ANON_KEY = ENV.SUPABASE_ANON_KEY || 'sb_publishable_HdVmh17uc8bmp05LpxdEhQ_n4k8XLW7';
 
 // Kakao authorize 는 브라우저에서 REST 키 사용. 토큰 교환은 Edge Function kakao-token (client_secret).
 const KAKAO_REST_API_KEY = ENV.KAKAO_REST_API_KEY || 'daa0f2c3a8dfeac385bf5b02919f8cd7';
