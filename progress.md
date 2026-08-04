@@ -12,7 +12,7 @@
   - **[보안]** `service_role key_supabase.txt` GitHub 노출 발견 → `git rm --cached` + .gitignore (homepage `69505dd`)
   - **[API 키 전환]** legacy anon/service_role → **신형 publishable/secret** 전환 (homepage `0025efa`) — supabase-config.js·map/.env 교체, SDK 호환 검증, **Disable legacy API keys 활성화로 노출 키 완전 무효화(401 확인)**
   - **[카카오 로그인 개편]** localStorage 우회 제거 → 표준 OAuth(**KOE205** 이메일 동의 '권한 없음') → signInWithIdToken(**Supabase 500** OIDC) → **최종 직접 OAuth + 카카오 ID 고정 비밀번호** (homepage `721292a`) — 브라우저/기기 무관 로그인 ✅
-  - **Git:** homepage `721292a` ✅ (clean) / llm-wiki `f5224700` / harness `740500c` / openclaw-local-mvp `1ee806d` (package.json 미커밋 기존)
+  - **Git:** homepage `721292a` ✅ (clean) / llm-wiki `f5224700` / harness `740500c` / openclaw-local-mvp `781ed63` (chore: @google/design.md deps)
 - 시각(ISO): **`2026-08-03T14:52+09:00`** — **게발이 브리핑 발행 + @google/design.md 도입 + 카드뉴스 디자인 구조화(DESIGN.md 단일 소스).**
   - **[게발이 브리핑]** 2026-08-03 카드뉴스 생성 및 푸시 ✅
     - **Git:** homepage `a58a42b` — ✅ push 완료 (스테일 `origin/master.lock` 정리)
