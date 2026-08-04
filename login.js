@@ -138,13 +138,14 @@ async function socialLogin(provider) {
 }
 
 
-// -------- Kakao OAuth (직접 OAuth + signInWithIdToken) --------
-// 카카오 이메일 동의(KOE205) 문제로 Supabase 표준 OAuth 대신 직접 OAuth 사용.
-// OpenID Connect로 id_token을 받아 Supabase 세션 생성 (이메일 요청 없음, localStorage 불필요).
+// -------- Kakao OAuth (직접 OAuth + 고정 비밀번호) --------
+// 카카오 이메일 동의(KOE205)·Supabase OIDC(500) 문제로 표준 OAuth·signInWithIdToken 불가.
+// 카카오 OAuth로 닉네임만 받아, 카카오 ID 기반 고정 비밀번호로 Supabase 가입/로그인.
+// (localStorage 불필요 → 브라우저/기기 변경에도 로그인 유지)
 
 // KAKAO_REST_API_KEY는 supabase-config.js에서 전역 선언됨 (여기서 재선언 금지)
 const KAKAO_STATE_KEY = 'kakao_oauth_state';
-const KAKAO_NONCE_KEY = 'kakao_oauth_nonce';
+const KAKAO_FIXED_SALT = 'kakao_fixed_salt_v1'; // 카카오 ID 기반 고정 비밀번호 소금
 
 function kakaoRedirectUri() {
   return window.location.origin + window.location.pathname;
@@ -177,12 +178,12 @@ async function kakaoLogin() {
   } catch (_) {
     /* ignore */
   }
-  // nonce를 보내지 않음 → 카카오 ID 토큰에 nonce 미포함 → signInWithIdToken nonce 없이 통과
+  // 이메일 동의 불필요 (scope: profile_nickname만), nonce 불사용
   const params = new URLSearchParams({
     client_id: KAKAO_REST_API_KEY,
     redirect_uri: kakaoRedirectUri(),
     response_type: 'code',
-    scope: 'openid profile_nickname',
+    scope: 'profile_nickname',
     state,
   });
   window.location.href = `https://kauth.kakao.com/oauth/authorize?${params}`;
@@ -198,26 +199,55 @@ async function handleKakaoCallback() {
   if (savedState && state !== savedState) return;
   try {
     sessionStorage.removeItem(KAKAO_STATE_KEY);
-    sessionStorage.removeItem(KAKAO_NONCE_KEY);
   } catch (_) {
     /* ignore */
   }
   window.history.replaceState({}, '', window.location.pathname);
 
   try {
+    // 1) 카카오 code → access_token (Edge Function)
     const { data: tokenPayload, error: fnError } = await _supabase.functions.invoke('kakao-token', {
       body: { code, redirect_uri: kakaoRedirectUri() },
     });
     if (fnError) throw new Error(fnError.message || 'Edge Function 호출 실패');
-    if (!tokenPayload?.id_token) throw new Error('카카오 ID 토큰을 받지 못했습니다 (OpenID Connect 확인 필요)');
+    if (!tokenPayload?.access_token) throw new Error('카카오 access_token을 받지 못했습니다');
 
-    // nonce는 카카오 ID 토큰과 Supabase 기대값이 달라 mismatch 발생 → nonce 검증 생략 (state 검증으로 CSRF 대응)
-    const { error } = await _supabase.auth.signInWithIdToken({
-      provider: 'kakao',
-      token: tokenPayload.id_token,
+    // 2) 카카오 사용자 정보 (kakaoId, 닉네임)
+    const userRes = await fetch('https://kapi.kakao.com/v2/user/me', {
+      headers: { Authorization: `Bearer ${tokenPayload.access_token}` },
     });
-    if (error) throw error;
+    if (!userRes.ok) throw new Error('Kakao API 조회 실패');
+    const kakaoUser = await userRes.json();
+    const kakaoId = kakaoUser.id;
+    const nickname = kakaoUser.kakao_account?.profile?.nickname || `kakao_${kakaoId}`;
 
+    // 3) 고정 이메일/비밀번호 (브라우저 무관 동일 → 크로스 브라우저 로그인 유지)
+    const email = `u-${kakaoId}@k.social`;
+    const password = `kakao_${kakaoId}_${KAKAO_FIXED_SALT}`;
+
+    // 4) 가입 시도 → 이미 가입이면 로그인
+    const { data: signUpData, error: signUpError } = await _supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { nickname } },
+    });
+    if (signUpError) {
+      if (/already registered|User already/i.test(signUpError.message || '')) {
+        const { error: signInError } = await _supabase.auth.signInWithPassword({ email, password });
+        if (signInError) throw signInError;
+        showKakaoMessage('로그인 성공! 이동 중...', false);
+        setTimeout(() => { window.location.href = 'index.html'; }, 600);
+        return;
+      }
+      throw signUpError;
+    }
+    if (signUpData?.session) {
+      showKakaoMessage('로그인 성공! 이동 중...', false);
+      setTimeout(() => { window.location.href = 'index.html'; }, 600);
+      return;
+    }
+    const { error: signInError2 } = await _supabase.auth.signInWithPassword({ email, password });
+    if (signInError2) throw signInError2;
     showKakaoMessage('로그인 성공! 이동 중...', false);
     setTimeout(() => { window.location.href = 'index.html'; }, 600);
   } catch (err) {
