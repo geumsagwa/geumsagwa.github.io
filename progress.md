@@ -5,6 +5,13 @@
 **⚠️ 자동 아카이브 하드 룰 (2026-08-01):** `handover-progress.md`가 **30KB 초과**이거나 읽을 때 컨텍스트가 잘리면, **별도 지시 없이 즉시** `C:\Users\pass6\project\harness\scripts\optimize-handover.ps1` 실행 → 최근 5개 세션만 유지, 나머지는 `handover-progress-archive.md`로 아카이브. (진행 중 세션 최신 반영 후 실행, UTF-8 BOM 유지)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-04T19:40+09:00`** — **C 드라이브 대청소 (여유 19GB → 63.7GB, +44.7GB) + 레지스트리 정리.**
+  - **[용량 확보]** C: 여유 19.0GB → **63.7GB (+44.7GB)** — npm-cache(11.2)·C:\개인용(12.8)·Downloads(8.0)·WSL(6.1)·hiberfil(3.1)·브라우저 캐시(2.51)·SquirrelTemp/puppeteer/Temp(2.27)·스토어/Xbox 앱(~1) 이동·삭제
+  - **[이동]** npm-cache → `F:\npm-cache` / C:\개인용 → `F:\개인용` / Downloads → `F:\backup\Downloads` / **WSL → `F:\wsl\Ubuntu-22.04`** (export/import 완료)
+  - **[시스템]** hiberfil.sys 비활성(`powercfg /h off`) / **pagefile → `F:\pagefile.sys 8 16`** (**재시작 후 반영, +8.2GB**) / DISM WinSxS 정리 실행(완료 대기)
+  - **[레지스트리]** 시작 프로그램 6개 제거(KakaoTalk·Figma Agent·Chrome/Edge/Copilot 자동실행·wizvera) + 활동 기록 5종 정리 (백업 `F:\backup\registry-backup-20260804`)
+  - **[앱 정리]** 스토어 앱 10개 + Xbox/게임 5개 제거 (CrossDevice·XboxGameCallableUI는 시스템 연동으로 유지)
+  - **[백업/로그]** `F:\backup\` (registry-backup-20260804 · admin-tasks.log · wsl-move.log · dism-cleanup.log)
 - 시각(ISO): **`2026-08-04T14:30+09:00`** — **게발이 브리핑 + Supabase keepalive 견고화 + API 키 전환(legacy→신형) + 카카오 로그인 직접 OAuth 개편.**
   - **[게발이 브리핑]** 2026-08-04 카드뉴스 생성 및 푸시 ✅ (homepage `75e85ec`)
     - 주요 뉴스: 검찰 수사권 폐지법 거부권 논쟁, 정청래-김민석 0.99%p, 종부세 최고세율 2.7%→5%, 배터리 3사 호남 ESS, 나스닥 2%↑ / 손흥민 뉴스 없음
