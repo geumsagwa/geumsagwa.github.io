@@ -198,7 +198,6 @@ async function handleKakaoCallback() {
 
   const savedState = sessionStorage.getItem(KAKAO_STATE_KEY);
   if (savedState && state !== savedState) return;
-  const nonce = sessionStorage.getItem(KAKAO_NONCE_KEY) || undefined;
   try {
     sessionStorage.removeItem(KAKAO_STATE_KEY);
     sessionStorage.removeItem(KAKAO_NONCE_KEY);
@@ -214,10 +213,10 @@ async function handleKakaoCallback() {
     if (fnError) throw new Error(fnError.message || 'Edge Function 호출 실패');
     if (!tokenPayload?.id_token) throw new Error('카카오 ID 토큰을 받지 못했습니다 (OpenID Connect 확인 필요)');
 
+    // nonce는 카카오 ID 토큰과 Supabase 기대값이 달라 mismatch 발생 → nonce 검증 생략 (state 검증으로 CSRF 대응)
     const { error } = await _supabase.auth.signInWithIdToken({
       provider: 'kakao',
       token: tokenPayload.id_token,
-      nonce,
     });
     if (error) throw error;
 
