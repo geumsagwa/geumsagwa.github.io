@@ -142,7 +142,7 @@ async function socialLogin(provider) {
 // 카카오 이메일 동의(KOE205) 문제로 Supabase 표준 OAuth 대신 직접 OAuth 사용.
 // OpenID Connect로 id_token을 받아 Supabase 세션 생성 (이메일 요청 없음, localStorage 불필요).
 
-const KAKAO_REST_API_KEY = 'daa0f2c3a8dfeac385bf5b02919f8cd7';
+// KAKAO_REST_API_KEY는 supabase-config.js에서 전역 선언됨 (여기서 재선언 금지)
 const KAKAO_STATE_KEY = 'kakao_oauth_state';
 const KAKAO_NONCE_KEY = 'kakao_oauth_nonce';
 
