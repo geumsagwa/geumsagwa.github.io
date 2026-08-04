@@ -5,6 +5,14 @@
 **⚠️ 자동 아카이브 하드 룰 (2026-08-01):** `handover-progress.md`가 **30KB 초과**이거나 읽을 때 컨텍스트가 잘리면, **별도 지시 없이 즉시** `C:\Users\pass6\project\harness\scripts\optimize-handover.ps1` 실행 → 최근 5개 세션만 유지, 나머지는 `handover-progress-archive.md`로 아카이브. (진행 중 세션 최신 반영 후 실행, UTF-8 BOM 유지)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-05T06:44+09:00`** — **게발이 브리핑 발행 (2026-08-05).**
+  - **[게발이 브리핑]** 2026-08-05 카드뉴스 생성·푸시 ✅
+    - **Git:** homepage `e59048e` — "자동: 카드뉴스 갱신 (2026-08-05)" ✅ push 완료 (워킹트리 clean)
+    - 주요 뉴스: 민주 세제개편안 정교화, 쿠팡 상반기 적자 1조2000억·국세청 3000억 과세예고, 부울경 폭염 33~35도, 호르무즈 합의 임박, 스페이스X 분기 매출 92%↑, 무신사 日강진 위로 — 손흥민: LAFC 공동구단주 MLS 커미셔너 임명
+    - 일정: (종일) 근무 — 이번 주: 08-07(금)·08-09(일)·08-11(화) 근무
+    - 이메일: 중요 없음 / 스팸 19건 처리 (GitHub Actions 실패 17건 등)
+    - 홈페이지: HTTP 200, 295ms, SSL 유효 / 카드뉴스 배포 확인 (200)
+    - LLM Wiki: 개념 17,096 / 깨진 링크 0 / low confidence 0
 - 시각(ISO): **`2026-08-05T06:38+09:00`** — **재부팅(06:18) 후 pagefile 8~16GB(8192 16384) 반영 검증 완료.**
   - **[검증]** `PagingFiles` = `C:\pagefile.sys 8192 16384` + AutomaticManagedPagefile=0 반영 · 실제 pagefile **8GB 할당**(CurrentUsage 798MB, 정상) · FreeVirtualMemory **5.3GB**(소진 위험 해소) · C: 여유 **70.7GB**(pagefile ~8GB 성장분 차감, 정상)
   - **[아카이브 판정]** handover-progress.md 23,454B(22.9KiB) → 30KB 한도 내, optimize-handover.ps1 스킵
