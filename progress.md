@@ -5,6 +5,14 @@
 **⚠️ 자동 아카이브 하드 룰 (2026-08-01):** `handover-progress.md`가 **30KB 초과**이거나 읽을 때 컨텍스트가 잘리면, **별도 지시 없이 즉시** `C:\Users\pass6\project\harness\scripts\optimize-handover.ps1` 실행 → 최근 5개 세션만 유지, 나머지는 `handover-progress-archive.md`로 아카이브. (진행 중 세션 최신 반영 후 실행, UTF-8 BOM 유지)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-04T14:30+09:00`** — **게발이 브리핑 + Supabase keepalive 견고화 + API 키 전환(legacy→신형) + 카카오 로그인 직접 OAuth 개편.**
+  - **[게발이 브리핑]** 2026-08-04 카드뉴스 생성 및 푸시 ✅ (homepage `75e85ec`)
+    - 주요 뉴스: 검찰 수사권 폐지법 거부권 논쟁, 정청래-김민석 0.99%p, 종부세 최고세율 2.7%→5%, 배터리 3사 호남 ESS, 나스닥 2%↑ / 손흥민 뉴스 없음
+  - **[keepalive 견고화]** 공개 테이블(library) 읽기 쿼리(HTTP 206)로 활동 유발 확정 + 실행 로그(`supabase-keepalive.log`) + UTF-8 BOM (homepage `a5175bc`)
+  - **[보안]** `service_role key_supabase.txt` GitHub 노출 발견 → `git rm --cached` + .gitignore (homepage `69505dd`)
+  - **[API 키 전환]** legacy anon/service_role → **신형 publishable/secret** 전환 (homepage `0025efa`) — supabase-config.js·map/.env 교체, SDK 호환 검증, **Disable legacy API keys 활성화로 노출 키 완전 무효화(401 확인)**
+  - **[카카오 로그인 개편]** localStorage 우회 제거 → 표준 OAuth(**KOE205** 이메일 동의 '권한 없음') → signInWithIdToken(**Supabase 500** OIDC) → **최종 직접 OAuth + 카카오 ID 고정 비밀번호** (homepage `721292a`) — 브라우저/기기 무관 로그인 ✅
+  - **Git:** homepage `721292a` ✅ (clean) / llm-wiki `f5224700` / harness `740500c` / openclaw-local-mvp `1ee806d` (package.json 미커밋 기존)
 - 시각(ISO): **`2026-08-03T14:52+09:00`** — **게발이 브리핑 발행 + @google/design.md 도입 + 카드뉴스 디자인 구조화(DESIGN.md 단일 소스).**
   - **[게발이 브리핑]** 2026-08-03 카드뉴스 생성 및 푸시 ✅
     - **Git:** homepage `a58a42b` — ✅ push 완료 (스테일 `origin/master.lock` 정리)
