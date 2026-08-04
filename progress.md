@@ -5,6 +5,10 @@
 **⚠️ 자동 아카이브 하드 룰 (2026-08-01):** `handover-progress.md`가 **30KB 초과**이거나 읽을 때 컨텍스트가 잘리면, **별도 지시 없이 즉시** `C:\Users\pass6\project\harness\scripts\optimize-handover.ps1` 실행 → 최근 5개 세션만 유지, 나머지는 `handover-progress-archive.md`로 아카이브. (진행 중 세션 최신 반영 후 실행, UTF-8 BOM 유지)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-05T06:38+09:00`** — **재부팅(06:18) 후 pagefile 8~16GB(8192 16384) 반영 검증 완료.**
+  - **[검증]** `PagingFiles` = `C:\pagefile.sys 8192 16384` + AutomaticManagedPagefile=0 반영 · 실제 pagefile **8GB 할당**(CurrentUsage 798MB, 정상) · FreeVirtualMemory **5.3GB**(소진 위험 해소) · C: 여유 **70.7GB**(pagefile ~8GB 성장분 차감, 정상)
+  - **[아카이브 판정]** handover-progress.md 23,454B(22.9KiB) → 30KB 한도 내, optimize-handover.ps1 스킵
+  - **Git:** homepage `9d98a38`(06:27 progress.md 동기 커밋, repo↔Desktop MD5 일치) / llm-wiki `f5224700`(F:\wiki) / harness `740500c` / openclaw-local-mvp `781ed63` — 전부 clean
 - 시각(ISO): **`2026-08-05T06:26+09:00`** — **재부팅(06:18) 후 pagefile 검증 → 8~16MB 오류 발견·수정(8192 16384, 8~16GB) → 재부팅 대기.**
   - **[검증]** 재부팅(06:18) 후: 레지스트리 `C:\pagefile.sys 8 16` + AutomaticManagedPagefile=0 반영 확인 · `F:\pagefile.sys` 없음(정상) · C: 여유 **78.5GB**(인계 61.5GB → +17GB, DISM 완료 효과)
   - **[⚠️ 오류 발견]** `PagingFiles` 크기 단위가 **MB** → 실제 `C:\pagefile.sys` = **16,777,216B(16MB)** · CurrentUsage 15MB(거의 꽉 참) · FreeVirtual 0.45GB(가상 메모리 소진 위험) — 의도(8~16GB)와 불일치
@@ -488,11 +492,10 @@
 - 각주 HTML 구조 전체는 `EPUB_BUILD_GUIDE.md` §각주 규칙 참조
 
 ## 다음에 할 일 (최대 4개)
-1. **재부팅 후** pagefile 8~16GB(8192 16384) 반영·C: 여유 공간 확인
-2. (진행 중) 철학사수업1 그림 수동 교정 — 무진님이 PDF에서 직접 크롭 후 `G:\내 드라이브\Claude\김주연_철학사수업1\` MD에 교체 작업 중 (교체 후 인제스트 재실행 불필요, `raw/` 재동기화·커밋 선택)
-3. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파)
-4. (선택) 철학사 신규 화 업로드 (philosophy-essay-upload 스킬 사용)
-5. (선택) 신규 채널 인제스트 시 재발 방지 절차 준수 (promote-stubs + `--skip-stub-concepts` 고정)
+1. (진행 중) 철학사수업1 그림 수동 교정 — 무진님이 PDF에서 직접 크롭 후 `G:\내 드라이브\Claude\김주연_철학사수업1\` MD에 교체 작업 중 (교체 후 인제스트 재실행 불필요, `raw/` 재동기화·커밋 선택)
+2. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파)
+3. (선택) 철학사 신규 화 업로드 (philosophy-essay-upload 스킬 사용)
+4. (선택) 신규 채널 인제스트 시 재발 방지 절차 준수 (promote-stubs + `--skip-stub-concepts` 고정)
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
