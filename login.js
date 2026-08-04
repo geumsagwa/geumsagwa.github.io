@@ -172,20 +172,18 @@ function kakaoRandomToken() {
 
 async function kakaoLogin() {
   const state = kakaoRandomToken();
-  const nonce = kakaoRandomToken();
   try {
     sessionStorage.setItem(KAKAO_STATE_KEY, state);
-    sessionStorage.setItem(KAKAO_NONCE_KEY, nonce);
   } catch (_) {
     /* ignore */
   }
+  // nonce를 보내지 않음 → 카카오 ID 토큰에 nonce 미포함 → signInWithIdToken nonce 없이 통과
   const params = new URLSearchParams({
     client_id: KAKAO_REST_API_KEY,
     redirect_uri: kakaoRedirectUri(),
     response_type: 'code',
     scope: 'openid profile_nickname',
     state,
-    nonce,
   });
   window.location.href = `https://kauth.kakao.com/oauth/authorize?${params}`;
 }
