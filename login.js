@@ -110,7 +110,12 @@ async function handleSignUp(e) {
 }
 
 async function socialLogin(provider) {
-  // Google/GitHub/Kakao — Supabase 표준 OAuth
+  if (provider === 'kakao') {
+    await kakaoLogin();
+    return;
+  }
+
+  // Google/GitHub — Supabase 표준 OAuth
   const options = {
     redirectTo: new URL('index.html', window.location.href).href,
   };
@@ -133,6 +138,98 @@ async function socialLogin(provider) {
 }
 
 
+// -------- Kakao OAuth (직접 OAuth + signInWithIdToken) --------
+// 카카오 이메일 동의(KOE205) 문제로 Supabase 표준 OAuth 대신 직접 OAuth 사용.
+// OpenID Connect로 id_token을 받아 Supabase 세션 생성 (이메일 요청 없음, localStorage 불필요).
+
+const KAKAO_REST_API_KEY = 'daa0f2c3a8dfeac385bf5b02919f8cd7';
+const KAKAO_STATE_KEY = 'kakao_oauth_state';
+const KAKAO_NONCE_KEY = 'kakao_oauth_nonce';
+
+function kakaoRedirectUri() {
+  return window.location.origin + window.location.pathname;
+}
+
+function kakaoAuthMessageId() {
+  try {
+    const active = document.querySelector('.auth-tab.active');
+    return active && active.id === 'tab-signup' ? 'signup-message' : 'login-message';
+  } catch (_) {
+    return 'login-message';
+  }
+}
+
+function showKakaoMessage(text, isError) {
+  const id = kakaoAuthMessageId();
+  if (id === 'signup-message') switchTab('signup');
+  else switchTab('login');
+  showMessage(id, text, isError);
+}
+
+function kakaoRandomToken() {
+  return Array.from(crypto.getRandomValues(new Uint8Array(16)), (b) => b.toString(36).padStart(2, '0')).join('');
+}
+
+async function kakaoLogin() {
+  const state = kakaoRandomToken();
+  const nonce = kakaoRandomToken();
+  try {
+    sessionStorage.setItem(KAKAO_STATE_KEY, state);
+    sessionStorage.setItem(KAKAO_NONCE_KEY, nonce);
+  } catch (_) {
+    /* ignore */
+  }
+  const params = new URLSearchParams({
+    client_id: KAKAO_REST_API_KEY,
+    redirect_uri: kakaoRedirectUri(),
+    response_type: 'code',
+    scope: 'openid profile_nickname',
+    state,
+    nonce,
+  });
+  window.location.href = `https://kauth.kakao.com/oauth/authorize?${params}`;
+}
+
+async function handleKakaoCallback() {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  if (!code || !state) return;
+
+  const savedState = sessionStorage.getItem(KAKAO_STATE_KEY);
+  if (savedState && state !== savedState) return;
+  const nonce = sessionStorage.getItem(KAKAO_NONCE_KEY) || undefined;
+  try {
+    sessionStorage.removeItem(KAKAO_STATE_KEY);
+    sessionStorage.removeItem(KAKAO_NONCE_KEY);
+  } catch (_) {
+    /* ignore */
+  }
+  window.history.replaceState({}, '', window.location.pathname);
+
+  try {
+    const { data: tokenPayload, error: fnError } = await _supabase.functions.invoke('kakao-token', {
+      body: { code, redirect_uri: kakaoRedirectUri() },
+    });
+    if (fnError) throw new Error(fnError.message || 'Edge Function 호출 실패');
+    if (!tokenPayload?.id_token) throw new Error('카카오 ID 토큰을 받지 못했습니다 (OpenID Connect 확인 필요)');
+
+    const { error } = await _supabase.auth.signInWithIdToken({
+      provider: 'kakao',
+      token: tokenPayload.id_token,
+      nonce,
+    });
+    if (error) throw error;
+
+    showKakaoMessage('로그인 성공! 이동 중...', false);
+    setTimeout(() => { window.location.href = 'index.html'; }, 600);
+  } catch (err) {
+    console.error('Kakao callback error:', err);
+    const raw = err && err.message ? err.message : String(err);
+    showKakaoMessage('카카오 로그인 처리 중 오류: ' + raw, true);
+  }
+}
+
 async function redirectIfLoggedIn() {
   const {
     data: { session },
@@ -143,6 +240,7 @@ async function redirectIfLoggedIn() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  handleKakaoCallback();
   document.getElementById('tab-login').addEventListener('click', () => switchTab('login'));
   document.getElementById('tab-signup').addEventListener('click', () => switchTab('signup'));
   document.getElementById('form-login').addEventListener('submit', handleLogin);

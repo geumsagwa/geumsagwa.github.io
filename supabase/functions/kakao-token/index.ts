@@ -123,6 +123,7 @@ Deno.serve(async (req) => {
       access_token: kakaoJson.access_token,
       expires_in: kakaoJson.expires_in,
       refresh_token: kakaoJson.refresh_token,
+      id_token: kakaoJson.id_token ?? null,
     },
     req,
     200,
