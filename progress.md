@@ -7,13 +7,18 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
-- 시각(ISO): **`2026-08-06T00:00+09:00`** — **인계 서류 컨텍스트 절감 최적화 (읽기 가이드 도입).**
-  - **[최적화]** 무진님 지적(인계 읽기 컨텍스트 22%) → 두 인계 파일 최대 축소
+- 시각(ISO): **`2026-08-06T00:00+09:00`** — **인계 서류 최적화 + C 드라이브 60~70GB 유지 자동화.**
+  - **[인계 최적화]** 무진님 지적(인계 읽기 컨텍스트 22%) → 두 인계 파일 최대 축소
     - progress.md **55.1KiB → 8.3KiB** (마지막 갱신 최근 5건 + 핵심 요약부만 유지)
     - handover-progress.md **26.4KiB → 6.3KiB** (최근 2개 세션만 유지, 이전 5개 archive)
     - 오래된 기록 → `progress-archive.md`(신규 46.8KiB)·`handover-progress-archive.md`로 이동 (**전체 보존**)
     - **읽기 가이드** 양 파일 상단 추가 — 항상 읽을 구간 vs 필요 시 읽을 구간 구분
     - 백업 `progress.bak-20260806a`·`handover-progress.bak-20260806a` · 인코딩·줄바꿈 원본 유지
+  - **[C 드라이브 유지 자동화]** C: 여유 60-70GB 유지 (무진님 지시) — 새 파일은 F:로 이동
+    - 스크립트 `harness\scripts\maintain-c-drive.ps1` (백업 `F:\backup\`) — 3단계: ≥70GB 조치 없음 / 60~70GB Downloads→F 이동 / <60GB 임시+대용량 정리
+    - 시작 프로그램 `MaintainCDrive.cmd` 등록 (로그온 시 자동 실행, 예약 작업은 관리자 권한 필요로 대체)
+    - 로그 `F:\backup\c-drive-maintain.log` / 현재 C: 여유 **68.8GB** · F: 여유 684.2GB
+    - **Git:** homepage `e1cab97`(인계 동기) · harness `59f3ea3`(스크립트) ✅ push 완료
 - 시각(ISO): **`2026-08-05T16:43+09:00`** — **참고용 자료 정리: 영상 분석 + supanova-design-skill 분석·등록.**
   - **[영상 분석]** Builder Josh "클로드 코드로 디자인을 가장 잘하는 방법" (`2sNQ0Nvngdc`, 15:40) — AI Slop 극복 랜딩페이지 워크플로우 (재미나이 히어로 영상·webp·스크롤 애니메이션·Netlify Drop 배포)
   - **[스킬 분석]** uxjoseph/supanova-design-skill — 4종 SKILL.md(taste·redesign·soft·output) 분석. 한국어 퍼스트 프리미엄 랜딩페이지 생성 규칙 (단일 HTML+Tailwind CDN+Pretendard+Iconify)
