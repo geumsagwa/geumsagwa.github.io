@@ -5,6 +5,11 @@
 **⚠️ 자동 아카이브 하드 룰 (2026-08-01):** `handover-progress.md`가 **30KB 초과**이거나 읽을 때 컨텍스트가 잘리면, **별도 지시 없이 즉시** `C:\Users\pass6\project\harness\scripts\optimize-handover.ps1` 실행 → 최근 5개 세션만 유지, 나머지는 `handover-progress-archive.md`로 아카이브. (진행 중 세션 최신 반영 후 실행, UTF-8 BOM 유지)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-05T16:43+09:00`** — **참고용 자료 정리: 영상 분석 + supanova-design-skill 분석·등록.**
+  - **[영상 분석]** Builder Josh "클로드 코드로 디자인을 가장 잘하는 방법" (`2sNQ0Nvngdc`, 15:40) — AI Slop 극복 랜딩페이지 워크플로우 (재미나이 히어로 영상·webp·스크롤 애니메이션·Netlify Drop 배포)
+  - **[스킬 분석]** uxjoseph/supanova-design-skill — 4종 SKILL.md(taste·redesign·soft·output) 분석. 한국어 퍼스트 프리미엄 랜딩페이지 생성 규칙 (단일 HTML+Tailwind CDN+Pretendard+Iconify)
+  - **[등록]** `tool-recommendations.md` ⭐1순위 (2026-08-05) — 이후 랜딩페이지 작업 시 참고
+  - **참고 자료:** `Desktop\Harness\video-notes\` (영상·스킬 분석 2건) · 스킬 클론 `F:\backup\supanova-design-skill` · 자막 `F:\backup\video_2sNQ0Nvngdc.ko.srt`
 - 시각(ISO): **`2026-08-05T06:44+09:00`** — **게발이 브리핑 발행 (2026-08-05).**
   - **[게발이 브리핑]** 2026-08-05 카드뉴스 생성·푸시 ✅
     - **Git:** homepage `e59048e` — "자동: 카드뉴스 갱신 (2026-08-05)" ✅ push 완료 (워킹트리 clean)
