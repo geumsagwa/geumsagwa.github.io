@@ -16,9 +16,9 @@
     - 백업 `progress.bak-20260806a`·`handover-progress.bak-20260806a` · 인코딩·줄바꿈 원본 유지
   - **[C 드라이브 유지 자동화]** C: 여유 60-70GB 유지 (무진님 지시) — 새 파일은 F:로 이동
     - 스크립트 `harness\scripts\maintain-c-drive.ps1` (백업 `F:\backup\`) — 3단계: ≥70GB 조치 없음 / 60~70GB Downloads→F 이동 / <60GB 임시+대용량 정리
-    - 시작 프로그램 `MaintainCDrive.cmd` 등록 (로그온 시 자동 실행, 예약 작업은 관리자 권한 필요로 대체)
-    - 로그 `F:\backup\c-drive-maintain.log` / 현재 C: 여유 **68.8GB** · F: 여유 684.2GB
-    - **Git:** homepage `e1cab97`(인계 동기) · harness `59f3ea3`(스크립트) ✅ push 완료
+    - **예약 작업 `MaintainCDrive` 등록** (로그온 시 자동 실행, UAC 승인으로 등록·테스트 결과 0) · 로그 `F:\backup\c-drive-maintain.log`
+    - 현재 C: 여유 **68.8GB** · F: 여유 684.2GB
+    - **Git:** homepage `1d76bf5`(인계 동기) · harness `59f3ea3`(스크립트) ✅ push 완료
 - 시각(ISO): **`2026-08-05T16:43+09:00`** — **참고용 자료 정리: 영상 분석 + supanova-design-skill 분석·등록.**
   - **[영상 분석]** Builder Josh "클로드 코드로 디자인을 가장 잘하는 방법" (`2sNQ0Nvngdc`, 15:40) — AI Slop 극복 랜딩페이지 워크플로우 (재미나이 히어로 영상·webp·스크롤 애니메이션·Netlify Drop 배포)
   - **[스킬 분석]** uxjoseph/supanova-design-skill — 4종 SKILL.md(taste·redesign·soft·output) 분석. 한국어 퍼스트 프리미엄 랜딩페이지 생성 규칙 (단일 HTML+Tailwind CDN+Pretendard+Iconify)
