@@ -89,6 +89,7 @@
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `f5224700` — ✅ push 완료 (워킹트리 clean) — CRLF 버그 수정 + low-confidence 전면 정리
 - **homepage:** `916a72a` — 브리핑(`a58a42b`) + 카드뉴스 구조화(`2d212d1`) + 홈페이지 DESIGN.md 1~3단계(`58bbb17`·`916a72a`) ✅ push 완료
+- **게발이 브리핑 발행 루틴 (2026-08-08 등록):** ① `openclaw-local-mvp`에서 `npm run dev` → `data/output/briefing-YYYY-MM-DD.md` 생성 (로그 `F:\backup\briefing-YYYY-MM-DD.log`) ② `homepage\scripts\generate-cardnews.ps1` 실행 → `admin/cardnews/YYYY-MM-DD.html` 생성 ③ homepage 커밋·푸시 "자동: 카드뉴스 갱신" ④ GitHub Pages 배포 확인 (HTTP 200) — **경로 탐색 없이 즉시 실행**
 - **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 카드뉴스 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
 - **홈페이지 DESIGN.md 1~3단계 완료:** `DESIGN.md`(토큰 문서화) → `style.css :root`(CSS 변수, 기존 코드 유지) → `CLAUDE.md`(디자인 기준 등록, 클로드 자동 인지)
 - **openclaw-local-mvp:** `1ee806d` — ✅ push 완료 (워킹트리 clean)
