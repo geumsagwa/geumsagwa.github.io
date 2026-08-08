@@ -7,8 +7,16 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const SUPABASE_URL = "https://qswzutgxtiuigrocqcmc.supabase.co";
-const SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzd3p1dGd4dGl1aWdyb2NxY21jIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2Mzc3OTEyOSwiZXhwIjoyMDc5MzU1MTI5fQ.fqafiNy362gKs0X7dB594QlQXJ--M1Hqto1tvJjceow";
+// .env 에서 SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY 로드 (Node 20.12+)
+try { process.loadEnvFile(); } catch {}
+
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (!SUPABASE_URL || !SERVICE_ROLE_KEY) {
+  console.error("환경변수 누락: .env 에 SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY 를 설정하세요.");
+  process.exit(1);
+}
 
 const VOLUME_DIR = "F:/wiki/manuscripts/philosophy/volume1";
 
