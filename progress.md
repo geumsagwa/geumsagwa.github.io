@@ -7,6 +7,13 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-08T18:20+09:00`** — **08-08 작업: 브리핑 발행 + quality-gate 해소 + 아리스토텔레스 인제스트 + HWP→TXT 파이프라인.**
+  - **[게발이 브리핑]** 2026-08-08 카드뉴스 생성·푸시 ✅ — homepage `02515ce` "자동: 카드뉴스 갱신 (2026-08-08)" push 완료 · 배포 확인 (HTTP 200)
+    - 주요 뉴스: 李 "ISA·주가누르기 방지 개편안 전면 재검토", 美 중·러 견제 단거리 전술핵전략, 카카오 노사 임금협상(연봉 6.3%↑), S&P500 사상최고치, 태국 총기난사 7명, 마크롱 가짜뉴스 — 손흥민 없음 · 이메일 중요 없음/스팸 2건
+  - **[quality-gate 해소]** Supabase 키 하드코딩 제거 — `publish-philosophy-episodes.mjs` → `.env` 기반(`SUPABASE_URL`/`SUPABASE_SERVICE_ROLE_KEY` 검증), legacy 키 파일 삭제, SKILL.md 갱신 · homepage `f609734` "secret scan 통과" ✅ — **기존 전 커밋 BLOCK 해결**
+  - **[아리스토텔레스 형이상학 인제스트]** PDF(228p) → md → wiki ingest ✅ — llm-wiki `e03180b7` (ingest.mjs PDF 추출 버그 수정 포함) · 전헌상 2차 연구서로 source 등록, 활동·질료인·목적인 전체 작성(high)
+  - **[HWP→TXT 파이프라인]** pyhwp 0.1b15(hwp5txt.exe) 설치 · `이야기 철학사` hwp **32개 전부** 추출 완료 → `F:\wiki\tmp\hwp-extract\*.txt` · 재사용 스크립트 `harness\scripts\convert-hwp-to-txt.ps1` harness `74d3523` push ✅ (main)
+  - **[harness]** `74d3523` · [homepage] `f609734` · [llm-wiki] `e03180b7` — 전부 clean, 로컬=원격
 - 시각(ISO): **`2026-08-07T07:05+09:00`** — **게발이 브리핑 발행 (2026-08-07).**
   - **[게발이 브리핑]** 2026-08-07 카드뉴스 생성·푸시 ✅
     - **Git:** homepage `8ad7fb4` — "자동: 카드뉴스 갱신 (2026-08-07)" ✅ push 완료 (로컬=원격)
@@ -79,16 +86,17 @@
 
 ## 다음에 할 일 (최대 4개)
 1. (진행 중) 철학사수업1 그림 수동 교정 — 무진님이 PDF에서 직접 크롭 후 `G:\내 드라이브\Claude\김주연_철학사수업1\` MD에 교체 작업 중 (교체 후 인제스트 재실행 불필요, `raw/` 재동기화·커밋 선택)
-2. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파)
-3. (선택) 철학사 신규 화 업로드 (philosophy-essay-upload 스킬 사용)
-4. (선택) 신규 채널 인제스트 시 재발 방지 절차 준수 (promote-stubs + `--skip-stub-concepts` 고정)
+2. (선택) hwp 변환 txt 32개 — LLM-Wiki `raw/` ingest 여부 결정 (`F:\wiki\tmp\hwp-extract\*.txt` 참조, ingest 시 promote-stubs + `--skip-stub-concepts` 절차 준수)
+3. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파)
+4. (선택) 철학사 신규 화 업로드 (philosophy-essay-upload 스킬 사용)
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
-- **LLM Wiki:** `f5224700` — ✅ push 완료 (워킹트리 clean) — CRLF 버그 수정 + low-confidence 전면 정리
-- **homepage:** `916a72a` — 브리핑(`a58a42b`) + 카드뉴스 구조화(`2d212d1`) + 홈페이지 DESIGN.md 1~3단계(`58bbb17`·`916a72a`) ✅ push 완료
+- **LLM Wiki:** `e03180b7` — ✅ push 완료 (워킹트리 clean) — 아리스토텔레스 형이상학 인제스트 + ingest.mjs PDF 버그 수정
+- **homepage:** `f609734` — 08-08 브리핑(`02515ce`) + 루틴 메모(`a7a3708`) + Supabase 키 하드코딩 제거(`f609734`) ✅ push 완료 (quality-gate 해소)
+- **HWP→TXT 변환 루틴 (2026-08-08 등록):** pyhwp(hwp5txt.exe) 설치됨 — `C:\Users\pass6\AppData\Roaming\Python\Python313\Scripts\hwp5txt.exe`. 재사용 스크립트 `harness\scripts\convert-hwp-to-txt.ps1` (옵션: `-SourceDir`/`-OutputDir`/`-Force`). 변환 결과는 `F:\wiki\tmp\hwp-extract\`에 보관, wiki `raw/` ingest 여부 미결정
 - **게발이 브리핑 발행 루틴 (2026-08-08 등록):** ① `openclaw-local-mvp`에서 `npm run dev` → `data/output/briefing-YYYY-MM-DD.md` 생성 (로그 `F:\backup\briefing-YYYY-MM-DD.log`) ② `homepage\scripts\generate-cardnews.ps1` 실행 → `admin/cardnews/YYYY-MM-DD.html` 생성 ③ homepage 커밋·푸시 "자동: 카드뉴스 갱신" ④ GitHub Pages 배포 확인 (HTTP 200) — **경로 탐색 없이 즉시 실행**
 - **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 카드뉴스 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
 - **홈페이지 DESIGN.md 1~3단계 완료:** `DESIGN.md`(토큰 문서화) → `style.css :root`(CSS 변수, 기존 코드 유지) → `CLAUDE.md`(디자인 기준 등록, 클로드 자동 인지)
