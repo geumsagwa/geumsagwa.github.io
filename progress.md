@@ -7,6 +7,15 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-10T21:10+09:00`** — **08-10 작업: 게발이 브리핑 발행 + 철학사수업1 그림 수동 교정 마무리(1~9부).**
+  - **[게발이 브리핑]** 2026-08-10 카드뉴스 생성·푸시 ✅ — homepage `e33ddc5`(카드뉴스)+`f12f0c3`(인덱스) push 완료 · 배포 확인 (HTTP 200, ~70초)
+    - 주요 뉴스: 與 경선 2주차 1위 탈환(金), 민주 세제개편안 당·정 조율, 젤렌스키 "북한군 3~5만 명" 방공 지원 요청, 삼프로TV 개인정보 46만 건 유출, YTN 감사 결론, 후티 모카항 타격, 이스라엘 中 청두 총영사관 폐쇄, 블랙핑크 사과 — 손흥민 없음
+    - 일정: 등록 없음 — 08-11(화)·08-13(목)·08-15(토) 근무, 08-12 명재 저녁약속 · 이메일 중요 없음/스팸 없음 · 홈페이지 200, 281ms, SSL 유효
+  - **[철학사수업1 마무리]** 1~9부 교정 완료 → wiki raw/ 동기화·커밋 ✅
+    - 무링크 고아 PNG 1~8부 17개 정리 → `F:\backup\철학사수업1-orphan-images-20260810\` · images 62개 = MD 참조 전부 매칭
+    - 교정본 1~9부 MD5 동기화 (5부 중복 텍스트 ~100줄 제거 포함) · **llm-wiki `de3bfa7a`** push ✅ (10~11부 무변)
+  - Git: homepage `f12f0c3` · llm-wiki `de3bfa7a` · harness `74d3523` · openclaw `bd52797` — 전부 clean, 로컬=원격
+
 - 시각(ISO): **`2026-08-08T18:20+09:00`** — **08-08 작업: 브리핑 발행 + quality-gate 해소 + 아리스토텔레스 인제스트 + HWP→TXT 파이프라인.**
   - **[게발이 브리핑]** 2026-08-08 카드뉴스 생성·푸시 ✅ — homepage `02515ce` "자동: 카드뉴스 갱신 (2026-08-08)" push 완료 · 배포 확인 (HTTP 200)
     - 주요 뉴스: 李 "ISA·주가누르기 방지 개편안 전면 재검토", 美 중·러 견제 단거리 전술핵전략, 카카오 노사 임금협상(연봉 6.3%↑), S&P500 사상최고치, 태국 총기난사 7명, 마크롱 가짜뉴스 — 손흥민 없음 · 이메일 중요 없음/스팸 2건
@@ -89,7 +98,7 @@
 - 잔여 CRLF/`package-lock` 표시 등(내용 무변 가능) — 필요 시 `git diff HEAD`로 확인
 
 ## 다음에 할 일 (최대 4개)
-1. (진행 중) 철학사수업1 그림 수동 교정 — 무진님이 PDF에서 직접 크롭 후 `G:\내 드라이브\Claude\김주연_철학사수업1\` MD에 교체 작업 중 (교체 후 인제스트 재실행 불필요, `raw/` 재동기화·커밋 선택)
+1. (확인) 철학사수업1 10~11부 교정 필요 여부 — 현재 raw와 동일(미교정), 불필요 시 마무리 확정
 2. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파)
 3. (선택) 철학사 신규 화 업로드 (philosophy-essay-upload 스킬 사용)
 4. (선택) 스텁 개념 92개 중 주요 개념 채우기 (promote로 medium 승격됨, 내용 보강 시 high로)
@@ -98,12 +107,13 @@
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
-- **LLM Wiki:** `1b449aac` — ✅ push 완료 (워킹트리 clean) — 아리스토텔레스 인제스트 + 이야기 철학사 32건·PDF 2건 대량 인제스트 (개념 315 신규, 깨진 링크 0/low 0)
-- **homepage:** `f609734` — 08-08 브리핑(`02515ce`) + 루틴 메모(`a7a3708`) + Supabase 키 하드코딩 제거(`f609734`) ✅ push 완료 (quality-gate 해소)
+- **LLM Wiki:** `de3bfa7a` — ✅ push 완료 (clean) — 철학사수업1 1~9부 교정본 동기화 (이전 `1b449aac`: 아리스토텔레스+이야기 철학사 대량 인제스트)
+- **homepage:** `f12f0c3` — 08-10 브리핑(`e33ddc5`+`f12f0c3`) ✅ push 완료 (clean, 로컬=원격)
+- **철학사수업1 교정 (2026-08-10 마무리):** 1~9부 교정 완료 → `F:\wikiaw\` 동기화·커밋(`de3bfa7a`) · 무링크 고아 이미지 17개 → `F:\backup\철학사수업1-orphan-images-20260810\` · 교정본 소스 `G:\내 드라이브\Claude\김주연_철학사수업1\`
 - **HWP→TXT 변환 루틴 (2026-08-08 등록):** pyhwp(hwp5txt.exe) 설치됨 — `C:\Users\pass6\AppData\Roaming\Python\Python313\Scripts\hwp5txt.exe`. 재사용 스크립트 `harness\scripts\convert-hwp-to-txt.ps1` (옵션: `-SourceDir`/`-OutputDir`/`-Force`). 변환 결과는 `F:\wiki\tmp\hwp-extract\`에 보관, wiki `raw/` ingest 여부 미결정
 - **게발이 브리핑 발행 루틴 (2026-08-08 등록):** ① `openclaw-local-mvp`에서 `npm run dev` → `data/output/briefing-YYYY-MM-DD.md` 생성 (로그 `F:\backup\briefing-YYYY-MM-DD.log`) ② `homepage\scripts\generate-cardnews.ps1` 실행 → `admin/cardnews/YYYY-MM-DD.html` 생성 ③ homepage 커밋·푸시 "자동: 카드뉴스 갱신" ④ GitHub Pages 배포 확인 (HTTP 200) — **경로 탐색 없이 즉시 실행**
 - **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 카드뉴스 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
 - **홈페이지 DESIGN.md 1~3단계 완료:** `DESIGN.md`(토큰 문서화) → `style.css :root`(CSS 변수, 기존 코드 유지) → `CLAUDE.md`(디자인 기준 등록, 클로드 자동 인지)
 - **openclaw-local-mvp:** `1ee806d` — ✅ push 완료 (워킹트리 clean)
-- **confidence:low:** **0개** ✅ / 깨진 링크 **0개** ✅ / 검색 인덱스 14,438
+- **confidence:low:** **0개** ✅ / 깨진 링크 **0개** ✅ / 개념 17,417
 - **Google OAuth:** 토큰 만료 (갱신 필요시 refreshAccessToken() 사용 가능)
