@@ -9,6 +9,19 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-14T05:47+09:00`** — **08-14: 게발이 브리핑 자동 발행(하드 룰) + `## 6. 개인 컨텍스트` 반영 첫 실측 확인.**
+  - **[브리핑 자동 발행]** 인계문서 읽는 즉시 `harness\scripts\publish-briefing.ps1` 실행 → 오늘 md 없음 → openclaw `npm run dev` → `briefing-2026-08-14.md` 생성 → 카드뉴스 `admin/cardnews/2026-08-14.html` → homepage `c65aaf8` "자동: 카드뉴스 갱신 (2026-08-14)" push ✅ → **GitHub Pages HTTP 200 배포 확인** ✅
+  - **[개인 컨텍스트 첫 실측 ✅]** 어제(08-13 5차) 신설한 **`## 6. 개인 컨텍스트`가 오늘 브리핑에 정상 반영** — 결정 로그/무진님 컨텍스트/홈페이지 프로젝트 3항목 렌더링 · (참고) 결정 로그 항목은 상태 라인 여러 개가 그대로 이어져 다소 거슬림 — "사용하며 개선" 대상
+  - **[주요 내용]** 뉴스: 여당 의총 부동산 우려(선거 전멸 위기), 청와대 용산공원 공공 아파트, 한국금융지주 KDB생명 우선협상, 진도 해일주의보, 메시 부친 추모글(은퇴 암시), 美 백악관 對韓 환적 위험 지목, F&F 디스커버리 IP 8천만달러, LG전자 라이프스 굿 캠페인 — 손흥민: 해당 건 없음 · 일정: 등록 없음(08-15 토·08-17 월·08-19 수 근무, 08-20 수원동기 모임) · 이메일: CodePen 522(중요)/스팸 없음 · 홈페이지 200, 331ms, SSL 유효 · LLM Wiki 개념 18,326, 깨진 링크 0, low 0, 빈 문서 3
+  - **[Git]** homepage `c65aaf8` push ✅ (progress.md 커밋 포함) · harness `3ed92f7` · openclaw `c093a82` · llm-wiki `db3d2230` — 전부 clean, 로컬=원격
+- 시각(ISO): **`2026-08-13T16:10+09:00`** — **08-13 5차: 영상(게리 탠 "퍼스널 AGI") 검토 → 제안 3건 전면 도입 + 구현·커밋·푸시 완료.**
+  - **[영상 분석]** `youtube.com/watch?v=a2jsKDTOOJY`(게리 탠 — "지능은 빌리지 말고 소유하세요", Tech Bridge, 42:01) 분석 완료 — 노트 `C:\Users\pass6\Desktop\Harness\video-notes\personal-agi-garrytan-a2jsKDTOOJY.md`
+    - 핵심: 도서관+사서 구조 · 스킬 파일=마크다운=코드 · 잠재/결정론적 공간 분리 · 5단계 구축법(스킬화 포함) · **우리 시스템과 대조 결과 "80% 이미 구현"** → 적용 검토 3건 제안 → 무진님 **전면 도입 결정**
+  - **[① 스킬화 규율]** `harness\skills\` 신설 — README.md(규율: 언제 캡처/형식/세션 말미 체크) + 스킬 카드 2종: `supabase-management-api.md`(to_old 함정→트리거, CHECK drop/add, apikey 헤더) · `github-pages-cache.md`(?v=N 쿼리스트링 우회) — **harness `3ed92f7` push ✅**
+  - **[② 브리핑 개인화]** openclaw `morningBriefing.ts`에 **`## 6. 개인 컨텍스트` 섹션 신설** — `F:\wiki\wiki\personal\` 페이지의 진행상태/최근결정 핵심 라인을 읽어 브리핑에 포함 (LLM 비의존, 실패해도 생성 계속, 검증 게이트 폴백 추가). 기존 1~5번 번호 유지(카드뉴스 호환) — **openclaw `c093a82` push ✅**
+  - **[③ llm-wiki 개인 기록]** `F:\wiki\wiki\personal\` 신설 — `홈페이지-프로젝트.md`(진행상태/역할체계) · `무진님-컨텍스트.md`(작업 패턴/최근 결정) · `결정-로그.md`(결정 이력) — **llm-wiki `db3d2230` push ✅**
+  - **[카드뉴스 연동]** homepage `generate-cardnews.ps1`에 개인 컨텍스트 카드 추가 — `cat-personal` 클래스 + `--color-accent-personal`(금색 #c4a87a), `## 6.` 블록 파싱 → 테스트 브리핑으로 3항목 렌더링 검증 완료 · 기존 카드(뉴스/일정/이메일/홈페이지/위키) 로직 유지 — **homepage `279b4ba` push ✅** (배포 확인 예정)
+  - **[컨텍스트 게이지 문답]** 무진님이 하단 % 게이지의 "늘었다가 줄었다"를 관찰 → 원인은 **긴 도구 출력의 백그라운드 축약**(명시적 콤팩션 알림 없이 큰 블록이 조용히 요약 교체됨)으로 확인·무진님 인지 완료 — 다음 세션에서 재설명 불필요
 - 시각(ISO): **`2026-08-13T12:35+09:00`** — **08-13 4차: 회원 4단계 역할 체계(member/staff/manager/admin) 구현 + 운영 DB 적용 완료.**
   - **[기획]** 무진님 요청: 회원 중 스텝 선정·권한 분리 — **A방식(role 확장) 4단계** 채택 · 일기는 admin만 · 테스트 회원 재량 처리 승인
   - **[DB 스키마 적용]** `setup_members.sql`을 **Supabase Management API로 운영 DB 직접 적용** ✅ (`supabase/.access-token` PAT 사용, POST `/v1/projects/{ref}/database/query`)
@@ -148,20 +161,21 @@
 4. (참고) 철학사여행_20250312.pdf — 푸터 미확인으로 보류 (2면/쪽 파이프라인 재적용 시 쪽수 공식 판별부터)
 
 ## 하네스 메모
+- **스킬화·브리핑 개인화·llm-wiki 개인 기록 (2026-08-13 도입, 영상 검토 3건):** 게리 탠 "퍼스널 AGI" 영상 검토 후 **3건 전면 도입** — ① **스킬화 규율** `harness\skills\` (README 규율 + 카드 2종: supabase-management-api·github-pages-cache; 세션 말미 "재사용 스킬화 체크") · ② **브리핑 `## 6. 개인 컨텍스트`** openclaw `morningBriefing.ts`의 `buildPersonalSection()` (F:\wiki\wiki\personal\ 요약, LLM 비의존) · ③ **개인 위키** `F:\wiki\wiki\personal\` (홈페이지-프로젝트·무진님-컨텍스트·결정-로그) · **카드뉴스 개인 카드** `cat-personal`(금색 #c4a87a) — 커밋: harness `3ed92f7` · openclaw `c093a82` · llm-wiki `db3d2230` · homepage `279b4ba` (전부 push ✅)
 - **회원 4단계 역할 체계 (2026-08-13 도입):** member(0)<staff(1)<manager(2)<admin(3) — `setup_members.sql` 운영 DB 적용 완료 · `auth.js`(PAGE_MIN_ROLE) · `admin.html` 회원관리(역할 배지+변경 드롭다운) · **test3/test4=staff** · role 변경은 admin만(트리거) · 회원관리는 manager 이상, Diary는 admin만 · 스텝 선정은 admin.html 회원관리에서 role 드롭다운으로 · DB 재적용 시 `setup_members.sql` 통째로 실행(멱등, `to_old` 금지 — pg-meta 미지원)
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
 - **게발이 브리핑 자동 발행 (2026-08-13 등록·첫 실측 완료):** `harness\scripts\publish-briefing.ps1` — 인계문서를 읽은 즉시 자동 실행 (멱등: 이미 발행 시 스킵). 파이프라인: openclaw `npm run dev`(오늘 md 없을 때만) → `generate-cardnews.ps1` → homepage 커밋·푸시(admin/cardnews 범위) → GitHub Pages HTTP 200 확인 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date yyyy-MM-dd`/`-Force` 옵션 · **2026-08-13 전체 파이프라인 첫 실측 성공(homepage `6f9850c`) · 버그 3건 수정(harness `5b56ee8`): 네이티브 stderr NativeCommandError 중단 방지 / PS 스크립트 `$LASTEXITCODE` 판정 오류 → HTML 존재 검증 / git stderr 처리**
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
-- **LLM Wiki:** `dc49e1fa` — ✅ push 완료 (clean) — 4개 PDF 인제스트(4d0e48c1) + 후처리(dc49e1fa: 스텁 443 승격, 링크 정규화, 깨진 링크 0/low 0) (이전 `de3bfa7a`: 철학사수업1 1~9부)
-- **homepage:** `6f9850c` — 08-13 브리핑 카드뉴스 발행 ✅ push 완료 (clean, 로컬=원격) (이전 `26b1483`: 브리핑 자동화 하드 룰 반영)
-- **harness:** `5b56ee8` — publish-briefing.ps1 첫 실측 버그 수정 ✅ push 완료 (clean)
+- **LLM Wiki:** `db3d2230` — 개인 기록 확장(wiki/personal 신설) ✅ push 완료 (clean) (이전 `dc49e1fa`: 4개 PDF 인제스트+후처리)
+- **homepage:** `c65aaf8` — 08-14 브리핑 카드뉴스 발행 ✅ push 완료 (clean, 로컬=원격) (이전 `279b4ba`: 개인 컨텍스트 카드 · `6f9850c`: 08-13 브리핑)
+- **harness:** `3ed92f7` — skills: 스킬화 규율 도입 ✅ push 완료 (clean) (이전 `5b56ee8`: publish-briefing 버그 수정)
 - **4개 PDF 파이프라인 완료 (2026-08-11):** 피그마(21부)·예일대지성사강의(16부)·AI Agent(9부)·듀얼브레인(9부) — 2면/쪽 스캔 PDF 전체 처리 완료 · 출력 `G:\내 드라이브\Claude\피그마`·`예일대지성사강의`·`AI Agent`·`듀얼브레인` (MD + images/) · 파이프라인 `F:\wiki\scripts\pdf-2page-extract\`
 - **철학사수업1 교정 (2026-08-11 완료):** 1~9부(08-10)+10부+11부 전부 교정 완료 → `F:\wiki\raw\` 동기화·커밋(`2c2f0775`·`de65a7e4`) · 고아 이미지 5개 → `F:\backup\철학사수업1-orphan-images-20260811\` · 교정본 소스 `G:\내 드라이브\Claude\김주연_철학사수업1\` · 참조 59/폴더 59 매칭
 - **HWP→TXT 변환 루틴 (2026-08-08 등록):** pyhwp(hwp5txt.exe) 설치됨 — `C:\Users\pass6\AppData\Roaming\Python\Python313\Scripts\hwp5txt.exe`. 재사용 스크립트 `harness\scripts\convert-hwp-to-txt.ps1` (옵션: `-SourceDir`/`-OutputDir`/`-Force`). 변환 결과는 `F:\wiki\tmp\hwp-extract\`에 보관, wiki `raw/` ingest 여부 미결정
 - **게발이 브리핑 발행 루틴 (2026-08-08 등록):** ① `openclaw-local-mvp`에서 `npm run dev` → `data/output/briefing-YYYY-MM-DD.md` 생성 (로그 `F:\backup\briefing-YYYY-MM-DD.log`) ② `homepage\scripts\generate-cardnews.ps1` 실행 → `admin/cardnews/YYYY-MM-DD.html` 생성 ③ homepage 커밋·푸시 "자동: 카드뉴스 갱신" ④ GitHub Pages 배포 확인 (HTTP 200) — **경로 탐색 없이 즉시 실행** · **(2026-08-13부터) 트리거는 인계문서 읽으면 즉시 `harness\scripts\publish-briefing.ps1` 자동 실행으로 통합**
 - **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 카드뉴스 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
 - **홈페이지 DESIGN.md 1~3단계 완료:** `DESIGN.md`(토큰 문서화) → `style.css :root`(CSS 변수, 기존 코드 유지) → `CLAUDE.md`(디자인 기준 등록, 클로드 자동 인지)
-- **openclaw-local-mvp:** `1ee806d` — ✅ push 완료 (워킹트리 clean)
+- **openclaw-local-mvp:** `c093a82` — morningBriefing.ts 개인 컨텍스트 섹션 추가 ✅ push 완료 (워킹트리 clean) (이전 `1ee806d`)
 - **confidence:low:** **0개** ✅ / 깨진 링크 **0개** ✅ / 개념 15,668 (검색 인덱스 기준)
 - **Google OAuth:** 토큰 만료 (갱신 필요시 refreshAccessToken() 사용 가능)
