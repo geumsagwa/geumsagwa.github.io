@@ -1992,13 +1992,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    transition: background 0.2s;
+    padding: 0.9rem 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.13);
+    transition: background 0.15s ease;
 }
 
 .admin-member-card:hover {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.07);
 }
 
 .admin-member-info {
@@ -2009,7 +2009,7 @@
 .admin-member-top {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.35rem;
     margin-bottom: 0.25rem;
 }
 

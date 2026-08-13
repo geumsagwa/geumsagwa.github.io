@@ -508,11 +508,11 @@ body.light-mode,
 }
 
 .light-mode .admin-member-card {
-    border-bottom-color: rgba(0, 0, 0, 0.06);
+    border-bottom-color: rgba(0, 0, 0, 0.13);
 }
 
 .light-mode .admin-member-card:hover {
-    background: rgba(143, 125, 96, 0.04);
+    background: rgba(143, 125, 96, 0.1);
 }
 
 .light-mode .admin-member-nickname {
