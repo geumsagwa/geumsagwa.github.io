@@ -17,7 +17,7 @@
     - **test3(test3)·test4(test4) → staff 승격** ✅
   - **[프론트 구현]** `auth.js`: PAGE_MIN_ROLE(페이지별 최소 역할)·ROLE_RANK·hasMinRole/getCurrentRole · `admin.js`+`admin.html`: 역할 배지 + admin 전용 역할 변경 드롭다운(본인·마지막 admin 잠금) · manager는 카드뉴스 탭 숨김 · 에디터 3종(에세이·서평·AI writing): **staff 이상만 작성**
   - **역할체계:** member(0) < staff(1) < manager(2) < admin(3) — 회원관리 페이지는 manager 이상 · Diary 메뉴·역할 변경·삭제는 admin만
-  - **Git:** homepage `7bc0ec3` push ✅ (Actions 배포 진행 중)
+  - **Git:** homepage `7bc0ec3` push ✅ · **배포 완료 확인** (HTTP 200, auth.js/admin.js/admin.html/에디터 신규 코드 반영 확인)
 - 시각(ISO): **`2026-08-13T10:20+09:00`** — **08-13 3차: 홈페이지 테스트 계정 2건 정리(Supabase).**
   - **[정리]** 회원관리에 보이던 `nonexist-signup-{ts}@test.com` 계정 2건(08-04 생성, 가입 플로우 테스트 추정) — auth.users 2건 + members 2건 삭제 · 남은 nonexist/test 계정 0 · auth 사용자 9→7
   - **[메모]** Supabase 키 접근법: REST 직접 호출 시 `Authorization: Bearer`를 넣으면 401 — **`apikey` 헤더만** 사용해야 함 (secret 키는 supabase-js SDK로 admin API 정상 동작, library 200)
