@@ -7,7 +7,7 @@
     <title>관리자 - 생각을 잇다</title>
     <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
     <link rel="stylesheet" href="style.css?v=20260504">
-    <link rel="stylesheet" href="style-pages.css?v=20260504">
+    <link rel="stylesheet" href="style-pages.css?v=20260813">
     <link rel="stylesheet" href="style-light.css?v=20260504">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
@@ -16,8 +16,8 @@
     .admin-page-tab:hover { color: #333; }
     .admin-page-tab.active { background: white; color: #1a73e8; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
     .admin-page-content { display: none; }
-    .admin-page-content.active { display: block; }
-    .cardnews-list { display: flex; flex-direction: column; gap: 12px; }
+    .admin-page-content.active { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+    .cardnews-list { display: flex; flex-direction: column; gap: 12px; flex: 1; min-height: 0; overflow-y: auto; }
     .cardnews-item { background: white; border-radius: 12px; padding: 16px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 12px; }
     .cardnews-item .cardnews-info { flex: 1; min-width: 0; }
     .cardnews-item .cardnews-date { font-size: 16px; font-weight: 600; color: #222; }
