@@ -20,7 +20,8 @@
   - **Git:** homepage `7bc0ec3` push ✅ · **배포 완료 확인** (HTTP 200, auth.js/admin.js/admin.html/에디터 신규 코드 반영 확인)
   - **[스크롤 수정]** 무진님 보고: admin 회원관리 스크롤 불가(회원명단 잘림) — admin 페이지만 공통 페이지 컨테이너(84vh flex column) 패턴이 없었음 → `.admin-container`에 적용 + `.admin-list`·`.cardnews-list` `flex:1; min-height:0; overflow-y:auto` 내부 스크롤 · `style-pages.css` 버전 갱신(v=20260813) → homepage `cfff108` push ✅ · 배포 완료 확인 · **무진님 정상 작동 확인 완료** ✅
   - **[회원명-역할 구분 개선]** 무진님 요청: 회원명·역할 사이 간격이 벌어져 혼동 → **`닉네임 | 역할 [상태]` 순서 재배치** + 1px 세로 얇은 구분선(`.admin-role-sep`, 다크/라이트 대응) + `gap` 축소(0.6→0.5rem) · `style-pages.css?v=20260813b` → homepage `4a0e479` push ✅ · 배포 완료 확인
-  - **[캐시·드롭다운 수정]** 무진님 "변화 없어 보임" → 원인: admin.js가 캐시 버전 없이 로드(`<script src="admin.js">`)되어 구분선 미반영 → `admin.js?v=2` 추가 · **역할 드롭다운 높이 축소**(height 24px, padding 1px 8px, font-size 12px) → homepage `714faea` push ✅ · 배포 확인
+  - **[캐시·드롭다운 수정]** 무진님 "변화 없어 보임" → 원인: admin.js가 캐시 버전 없이 로드(`<script src="admin.js">`)되어 구분선 미반영 → `admin.js?v=2` 추가 · **역할 드롭다운 높이 축소**(height 24px → 22px, padding 0 6px, font-size 11px) → homepage `714faea`·`8e3d189` push ✅ · 배포 확인 · (GitHub Pages 캐시로 무진님 화면 미반영 → **`admin.html?v=999` 쿼리스트링 접속으로 캐시 우회** 확인)
+  - **[회원 카드 시각 개선]** 무진님 피드백 반영: 가로 구분선 뚜렷하게(border-bottom 0.06→0.13, 다크/라이트) + **롤오버 하이라이트 금색**(#c4a87a, 다크 0.22/라이트 0.28) + 닉네임-역할 간격 축소(gap 0.35rem) · `style-pages.css?v=20260813d`/`style-light.css?v=20260813b` → homepage `811835d`·`6d70fb9` push ✅ · **무진님 확인 완료** ✅
 - 시각(ISO): **`2026-08-13T10:20+09:00`** — **08-13 3차: 홈페이지 테스트 계정 2건 정리(Supabase).**
   - **[정리]** 회원관리에 보이던 `nonexist-signup-{ts}@test.com` 계정 2건(08-04 생성, 가입 플로우 테스트 추정) — auth.users 2건 + members 2건 삭제 · 남은 nonexist/test 계정 0 · auth 사용자 9→7
   - **[메모]** Supabase 키 접근법: REST 직접 호출 시 `Authorization: Bearer`를 넣으면 401 — **`apikey` 헤더만** 사용해야 함 (secret 키는 supabase-js SDK로 admin API 정상 동작, library 200)
