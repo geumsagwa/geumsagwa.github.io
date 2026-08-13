@@ -94,7 +94,7 @@ $cl = @{"정치"="cat-politics";"경제"="cat-economy";"사회"="cat-society";"�
 
 # 디자인 토큰 — DESIGN.md(admin/cardnews/DESIGN.md)와 동기화. 변경 시 designmd export --format css-vars 참조.
 $css = @"
-:root{--color-primary:#2a2520;--color-secondary:#7a7060;--color-tertiary:#8f7d60;--color-neutral:#f5f0e8;--color-surface:#faf6f0;--color-border:#ede6dc;--color-label-important-bg:#f5e6d3;--color-label-important-text:#8f5a3a;--color-stat-icon-bg:#e8e0d4;--color-footer-text:#b5a898;--color-accent-politics:#e74c3c;--color-accent-economy:#2ecc71;--color-accent-society:#f39c12;--color-accent-world:#3498db;--color-accent-culture:#9b59b6;--color-accent-son:#e67e22;--color-accent-ai:#1abc9c;--color-accent-schedule:#1a73e8;--color-accent-wiki:#8e44ad;--spacing-wrap-gap:14px;--rounded-lg:20px;--rounded-md:16px;--rounded-sm:4px;--rounded-full:9999px}
+:root{--color-primary:#2a2520;--color-secondary:#7a7060;--color-tertiary:#8f7d60;--color-neutral:#f5f0e8;--color-surface:#faf6f0;--color-border:#ede6dc;--color-label-important-bg:#f5e6d3;--color-label-important-text:#8f5a3a;--color-stat-icon-bg:#e8e0d4;--color-footer-text:#b5a898;--color-accent-politics:#e74c3c;--color-accent-economy:#2ecc71;--color-accent-society:#f39c12;--color-accent-world:#3498db;--color-accent-culture:#9b59b6;--color-accent-son:#e67e22;--color-accent-ai:#1abc9c;--color-accent-schedule:#1a73e8;--color-accent-wiki:#8e44ad;--color-accent-personal:#c4a87a;--spacing-wrap-gap:14px;--rounded-lg:20px;--rounded-md:16px;--rounded-sm:4px;--rounded-full:9999px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','Malgun Gothic',sans-serif;background:var(--color-neutral);padding:40px 16px;display:flex;flex-direction:column;align-items:center}
 .wrap{max-width:420px;width:100%;display:flex;flex-direction:column;gap:var(--spacing-wrap-gap)}
@@ -138,6 +138,7 @@ body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','
 .st.cat-ai{color:var(--color-accent-ai)}
 .st.cat-schedule{color:var(--color-accent-schedule)}
 .st.cat-wiki{color:var(--color-accent-wiki)}
+.st.cat-personal{color:var(--color-accent-personal)}
 .muted{color:var(--color-secondary)}
 "@
 
@@ -270,6 +271,31 @@ if ($wikiSectionStart -ge 0) {
 <div class=""stat"">
 <div class=""ico"">📖</div>
 <div><div class=""st1"">$wp</div><div class=""st2"">$wd</div></div>
+</div></div>
+"
+  }
+}
+
+# 개인 컨텍스트 섹션 (## 6.) — 무진님 프로젝트/결정 상태
+$personalSectionStart = $content.IndexOf("## 6. 개인 컨텍스트")
+if ($personalSectionStart -ge 0) {
+  $personalSectionEnd = $content.IndexOf("`n## ", $personalSectionStart + 10)
+  if ($personalSectionEnd -lt 0) { $personalSectionEnd = $content.Length }
+  $personalBlock = $content.Substring($personalSectionStart, $personalSectionEnd - $personalSectionStart)
+  $personalHtml = ""
+  foreach ($line in $personalBlock -split "`n") {
+    $t = $line.Trim()
+    if ($t -match "^- \*\*(.+?)\*\*:\s*(.+)") {
+      $pt = $matches[1].Trim(); $pv = $matches[2].Trim()
+      $ptEsc = $pt -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
+      $pvEsc = $pv -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
+      $personalHtml += "<div class=""si""><div class=""dot dot-schedule""></div><div class=""stx""><strong>$ptEsc</strong><br><span class=""muted"">$pvEsc</span></div></div>`n"
+    }
+  }
+  if ($personalHtml) {
+    $html += "<div class=""card""><div class=""st cat-personal"">🗂️ 개인 컨텍스트</div>
+<div class=""sc"">
+$personalHtml
 </div></div>
 "
   }
