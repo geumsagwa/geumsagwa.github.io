@@ -9,6 +9,9 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-13T10:20+09:00`** — **08-13 3차: 홈페이지 테스트 계정 2건 정리(Supabase).**
+  - **[정리]** 회원관리에 보이던 `nonexist-signup-{ts}@test.com` 계정 2건(08-04 생성, 가입 플로우 테스트 추정) — auth.users 2건 + members 2건 삭제 · 남은 nonexist/test 계정 0 · auth 사용자 9→7
+  - **[메모]** Supabase 키 접근법: REST 직접 호출 시 `Authorization: Bearer`를 넣으면 401 — **`apikey` 헤더만** 사용해야 함 (secret 키는 supabase-js SDK로 admin API 정상 동작, library 200)
 - 시각(ISO): **`2026-08-13T09:50+09:00`** — **08-13 2차: 게발이 브리핑 최초 자동 발행 완료 + publish-briefing.ps1 첫 실측 버그 3건 수정.**
   - **[브리핑 자동 발행 첫 실측 성공]** 하드 룰(인계 즉시 실행) 최초 실측 — 카드뉴스 `admin/cardnews/2026-08-13.html` 생성 · homepage `6f9850c` "자동: 카드뉴스 갱신 (2026-08-13)" push ✅ · **GitHub Pages HTTP 200 배포 확인** ✅
     - 주요 뉴스: 장동혁 물갈이, 김민석·정청래 설전, 카스쿨 페스티벌, 젤렌스키 패트리엇 5%, 北 파병 5만명, K-인디게임 게임스컴 — 손흥민: 래리 버그 MLS 커미셔너(중복) · 일정 (종일)근무 · 이메일 NVIDIA Nemotron 3.5 Lightning(중요)/스팸 없음 · 홈페이지 200, 380ms, SSL 유효 · LLM Wiki 개념 18,326
