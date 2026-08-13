@@ -9,6 +9,12 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-13T09:50+09:00`** — **08-13 2차: 게발이 브리핑 최초 자동 발행 완료 + publish-briefing.ps1 첫 실측 버그 3건 수정.**
+  - **[브리핑 자동 발행 첫 실측 성공]** 하드 룰(인계 즉시 실행) 최초 실측 — 카드뉴스 `admin/cardnews/2026-08-13.html` 생성 · homepage `6f9850c` "자동: 카드뉴스 갱신 (2026-08-13)" push ✅ · **GitHub Pages HTTP 200 배포 확인** ✅
+    - 주요 뉴스: 장동혁 물갈이, 김민석·정청래 설전, 카스쿨 페스티벌, 젤렌스키 패트리엇 5%, 北 파병 5만명, K-인디게임 게임스컴 — 손흥민: 래리 버그 MLS 커미셔너(중복) · 일정 (종일)근무 · 이메일 NVIDIA Nemotron 3.5 Lightning(중요)/스팸 없음 · 홈페이지 200, 380ms, SSL 유효 · LLM Wiki 개념 18,326
+  - **[스크립트 첫 실측 버그 3건 수정]** harness `5b56ee8` push ✅ (멱등성 스킵만 테스트됐던 신규 스크립트 전체 파이프라인에서 노출)
+    - ① npm run dev: EAP=Stop+네이티브 stderr(bloter RSS 경고) → NativeCommandError 중단 → 네이티브 구간 EAP 완화 ② 카드뉴스: PS 스크립트에 `$LASTEXITCODE` 판정 오류(항상 실패) → HTML 존재 검증으로 변경 ③ git push: stderr NativeCommandError 잠재 중단 → EAP 완화+exit code 개별 수집
+  - **[대기 해소]** 오늘(08-13) 브리핑 미발행 → 자동 발행 완료 · Google OAuth 정상(이메일 fetch 확인)
 - 시각(ISO): **`2026-08-13T09:35+09:00`** — **08-13 작업: 게발이 브리핑 자동 발행 자동화 구축 (publish-briefing.ps1 + 인계 하드 룰).**
   - **[자동 발행 자동화]** 인계문서를 읽은 즉시 브리핑 자동 발행 — `harness\scripts\publish-briefing.ps1` 신설 ✅
     - 멱등(오늘 발행 시 스킵) · 오늘 md 있으면 openclaw 재사용 · generate-cardnews → homepage 커밋·푸시(admin/cardnews 범위) → **HTTP 200 배포 확인** · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date`/`-Force` 옵션
@@ -127,11 +133,12 @@
 
 ## 하네스 메모
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
-- **게발이 브리핑 자동 발행 (2026-08-13 등록):** `harness\scripts\publish-briefing.ps1` — 인계문서를 읽은 즉시 자동 실행 (멱등: 이미 발행 시 스킵). 파이프라인: openclaw `npm run dev`(오늘 md 없을 때만) → `generate-cardnews.ps1` → homepage 커밋·푸시(admin/cardnews 범위) → GitHub Pages HTTP 200 확인 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date yyyy-MM-dd`/`-Force` 옵션
+- **게발이 브리핑 자동 발행 (2026-08-13 등록·첫 실측 완료):** `harness\scripts\publish-briefing.ps1` — 인계문서를 읽은 즉시 자동 실행 (멱등: 이미 발행 시 스킵). 파이프라인: openclaw `npm run dev`(오늘 md 없을 때만) → `generate-cardnews.ps1` → homepage 커밋·푸시(admin/cardnews 범위) → GitHub Pages HTTP 200 확인 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date yyyy-MM-dd`/`-Force` 옵션 · **2026-08-13 전체 파이프라인 첫 실측 성공(homepage `6f9850c`) · 버그 3건 수정(harness `5b56ee8`): 네이티브 stderr NativeCommandError 중단 방지 / PS 스크립트 `$LASTEXITCODE` 판정 오류 → HTML 존재 검증 / git stderr 처리**
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `dc49e1fa` — ✅ push 완료 (clean) — 4개 PDF 인제스트(4d0e48c1) + 후처리(dc49e1fa: 스텁 443 승격, 링크 정규화, 깨진 링크 0/low 0) (이전 `de3bfa7a`: 철학사수업1 1~9부)
-- **homepage:** `26b1483` — 08-13 브리핑 자동화 하드 룰 반영 ✅ push 완료 (clean, 로컬=원격)
+- **homepage:** `6f9850c` — 08-13 브리핑 카드뉴스 발행 ✅ push 완료 (clean, 로컬=원격) (이전 `26b1483`: 브리핑 자동화 하드 룰 반영)
+- **harness:** `5b56ee8` — publish-briefing.ps1 첫 실측 버그 수정 ✅ push 완료 (clean)
 - **4개 PDF 파이프라인 완료 (2026-08-11):** 피그마(21부)·예일대지성사강의(16부)·AI Agent(9부)·듀얼브레인(9부) — 2면/쪽 스캔 PDF 전체 처리 완료 · 출력 `G:\내 드라이브\Claude\피그마`·`예일대지성사강의`·`AI Agent`·`듀얼브레인` (MD + images/) · 파이프라인 `F:\wiki\scripts\pdf-2page-extract\`
 - **철학사수업1 교정 (2026-08-11 완료):** 1~9부(08-10)+10부+11부 전부 교정 완료 → `F:\wiki\raw\` 동기화·커밋(`2c2f0775`·`de65a7e4`) · 고아 이미지 5개 → `F:\backup\철학사수업1-orphan-images-20260811\` · 교정본 소스 `G:\내 드라이브\Claude\김주연_철학사수업1\` · 참조 59/폴더 59 매칭
 - **HWP→TXT 변환 루틴 (2026-08-08 등록):** pyhwp(hwp5txt.exe) 설치됨 — `C:\Users\pass6\AppData\Roaming\Python\Python313\Scripts\hwp5txt.exe`. 재사용 스크립트 `harness\scripts\convert-hwp-to-txt.ps1` (옵션: `-SourceDir`/`-OutputDir`/`-Force`). 변환 결과는 `F:\wiki\tmp\hwp-extract\`에 보관, wiki `raw/` ingest 여부 미결정
