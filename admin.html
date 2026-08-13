@@ -40,11 +40,11 @@
     .admin-member-role.role-manager { background: #fef7e0; color: #b26a00; }
     .admin-member-role.role-admin { background: #fde8e8; color: #d93025; }
     /* [2026-08-13] 닉네임-역할 얇은 구분선 */
-    .admin-role-sep { width: 1px; height: 13px; background: rgba(255,255,255,0.22); flex-shrink: 0; }
-    .light-mode .admin-role-sep { background: rgba(0,0,0,0.18); }
+    .admin-role-sep { width: 1px; height: 13px; background: rgba(255,255,255,0.4); flex-shrink: 0; }
+    .light-mode .admin-role-sep { background: rgba(0,0,0,0.3); }
     .admin-role-change { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
     .admin-role-label { font-size: 12px; color: #888; }
-    .admin-role-select { padding: 1px 8px; border-radius: 6px; border: 1px solid #ddd; font-size: 12px; height: 24px; line-height: 1; color: #333; background: white; cursor: pointer; }
+    .admin-role-select { padding: 0 6px; border-radius: 6px; border: 1px solid #ddd; font-size: 11px; height: 22px; line-height: 22px; color: #333; background: white; cursor: pointer; }
     .admin-role-select:disabled { background: #f5f5f5; color: #999; cursor: not-allowed; }
     </style>
 </head>
@@ -114,7 +114,7 @@
 
 <script src="supabase-config.js"></script>
 <script src="auth.js?v=3"></script>
-<script src="admin.js?v=2"></script>
+<script src="admin.js?v=3"></script>
 
 </body>
 </html>
