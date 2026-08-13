@@ -16,7 +16,8 @@
   - **[실측 결과]** **LAFC 08/16(일) 11:30 San Diego FC(홈) · 08/20(목) 10:30 Colorado Rapids(원정) / 아틀레티코 08/20(목) 04:00 Málaga(홈) / 대한민국 이번 주 예정 없음(다음: 9월 A매치 에콰도르·우루과이)**
   - **[③ 브리핑 반영]** openclaw `morningBriefing.ts` — **`## 7. 축구 일정` 섹션 신설** (기존 1~6번 유지) + 검증 게이트 폴백 추가 · tsc 통과 · vitest 9개 통과 — **openclaw `11a8f0a` push ✅**
   - **[④ 카드뉴스 연동]** homepage `generate-cardnews.ps1` — 카테고리 `축구 스타`(`cat-football`, 기존 son 주황 #e67e22 재사용) + **`⚽ 축구 일정` 카드**(`## 7.` 블록 파싱 → 팀·일정 리스트, `dot-football`) · 요약 스킵 목록 갱신 · 테스트 브리핑으로 렌더링 검증 완료 — **homepage `f5e567d` push ✅**
-  - **[Git]** homepage `f5e567d` push ✅ (progress.md 커밋 포함) · harness `3ed92f7` · openclaw `11a8f0a` · llm-wiki `db3d2230` — 전부 clean, 로컬=원격
+  - **[오늘 브리핑 재발행 ✅]** 무진님 승인 → `publish-briefing.ps1 -Force` 재실행 — **Google OAuth 재인증** 발생(토큰 만료, 브라우저 인증 완료 → `data/state/google-tokens.json` 07:22 갱신) · 1차 실행이 타임아웃으로 중단돼 **stale lock 제거 후 백그라운드 재실행** 성공 → 브리핑 md 재생성(`## 7. 축구 일정` 반영) → 카드뉴스 교체(⚽ 축구 일정 카드 포함) → **homepage `4917592` push ✅ → HTTP 200 배포 확인** ✅ · (축구 스타 뉴스는 재생성 시점에 직결 기사가 없어 빈 섹션 — 키워드 필터 설계상 정상)
+  - **[Git]** homepage `4917592` push ✅ (자동 카드뉴스 갱신) · `f5e567d`·`4ca72b7` 선행 · harness `3ed92f7` · openclaw `11a8f0a` · llm-wiki `db3d2230` — 전부 clean, 로컬=원격
 - 시각(ISO): **`2026-08-14T05:47+09:00`** — **08-14: 게발이 브리핑 자동 발행(하드 룰) + `## 6. 개인 컨텍스트` 반영 첫 실측 확인.**
   - **[브리핑 자동 발행]** 인계문서 읽는 즉시 `harness\scripts\publish-briefing.ps1` 실행 → 오늘 md 없음 → openclaw `npm run dev` → `briefing-2026-08-14.md` 생성 → 카드뉴스 `admin/cardnews/2026-08-14.html` → homepage `c65aaf8` "자동: 카드뉴스 갱신 (2026-08-14)" push ✅ → **GitHub Pages HTTP 200 배포 확인** ✅
   - **[개인 컨텍스트 첫 실측 ✅]** 어제(08-13 5차) 신설한 **`## 6. 개인 컨텍스트`가 오늘 브리핑에 정상 반영** — 결정 로그/무진님 컨텍스트/홈페이지 프로젝트 3항목 렌더링 · (참고) 결정 로그 항목은 상태 라인 여러 개가 그대로 이어져 다소 거슬림 — "사용하며 개선" 대상
@@ -177,7 +178,7 @@
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `db3d2230` — 개인 기록 확장(wiki/personal 신설) ✅ push 완료 (clean) (이전 `dc49e1fa`: 4개 PDF 인제스트+후처리)
-- **homepage:** `f5e567d` — 축구 일정 카드(`##7`) + 카테고리 축구 스타 개편 ✅ push 완료 (clean, 로컬=원격) (이전 `c65aaf8`: 08-14 브리핑 카드뉴스 발행 · `279b4ba`: 개인 컨텍스트 카드)
+- **homepage:** `4917592` — 08-14 브리핑 재발행(축구 일정 카드 반영) ✅ push 완료 (clean, 로컬=원격) (이전 `f5e567d`: 축구 일정 카드+카테고리 개편 · `c65aaf8`: 08-14 브리핑 카드뉴스 발행)
 - **harness:** `3ed92f7` — skills: 스킬화 규율 도입 ✅ push 완료 (clean) (이전 `5b56ee8`: publish-briefing 버그 수정)
 - **4개 PDF 파이프라인 완료 (2026-08-11):** 피그마(21부)·예일대지성사강의(16부)·AI Agent(9부)·듀얼브레인(9부) — 2면/쪽 스캔 PDF 전체 처리 완료 · 출력 `G:\내 드라이브\Claude\피그마`·`예일대지성사강의`·`AI Agent`·`듀얼브레인` (MD + images/) · 파이프라인 `F:\wiki\scripts\pdf-2page-extract\`
 - **철학사수업1 교정 (2026-08-11 완료):** 1~9부(08-10)+10부+11부 전부 교정 완료 → `F:\wiki\raw\` 동기화·커밋(`2c2f0775`·`de65a7e4`) · 고아 이미지 5개 → `F:\backup\철학사수업1-orphan-images-20260811\` · 교정본 소스 `G:\내 드라이브\Claude\김주연_철학사수업1\` · 참조 59/폴더 59 매칭
