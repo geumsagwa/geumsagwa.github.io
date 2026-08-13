@@ -88,9 +88,9 @@ if (-not $hasSchedule) {
   $sched = "등록된 일정 없음"
 }
 
-$ej = @{"정치"="🗳️";"경제"="💰";"사회"="🚨";"세계"="🌍";"문화"="🎭";"손흥민"="⚽";"AI/IT"="🤖"}
+$ej = @{"정치"="🗳️";"경제"="💰";"사회"="🚨";"세계"="🌍";"문화"="🎭";"축구 스타"="⚽";"AI/IT"="🤖"}
 # 카테고리 → CSS 클래스 매핑 (디자인 토큰은 DESIGN.md 단일 소스로 관리)
-$cl = @{"정치"="cat-politics";"경제"="cat-economy";"사회"="cat-society";"세계"="cat-world";"문화"="cat-culture";"손흥민"="cat-son";"AI/IT"="cat-ai"}
+$cl = @{"정치"="cat-politics";"경제"="cat-economy";"사회"="cat-society";"세계"="cat-world";"문화"="cat-culture";"축구 스타"="cat-football";"AI/IT"="cat-ai"}
 
 # 디자인 토큰 — DESIGN.md(admin/cardnews/DESIGN.md)와 동기화. 변경 시 designmd export --format css-vars 참조.
 $css = @"
@@ -117,6 +117,7 @@ body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
 .dot.dot-schedule{background:var(--color-accent-schedule)}
 .dot.dot-society{background:var(--color-accent-society)}
+.dot.dot-football{background:var(--color-accent-son)}
 .stx{font-size:14px;color:var(--color-primary);line-height:1.5}
 .ec{padding:12px 20px}
 .ei{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--color-border);font-size:13px;color:var(--color-primary)}
@@ -134,7 +135,7 @@ body{word-break:keep-all;overflow-wrap:break-word;font-family:'GyeonggiBatang','
 .st.cat-society{color:var(--color-accent-society)}
 .st.cat-world{color:var(--color-accent-world)}
 .st.cat-culture{color:var(--color-accent-culture)}
-.st.cat-son{color:var(--color-accent-son)}
+.st.cat-football{color:var(--color-accent-son)}
 .st.cat-ai{color:var(--color-accent-ai)}
 .st.cat-schedule{color:var(--color-accent-schedule)}
 .st.cat-wiki{color:var(--color-accent-wiki)}
@@ -301,6 +302,31 @@ $personalHtml
   }
 }
 
+# 축구 일정 섹션 (## 7.) — LAFC(손흥민)·아틀레티코(이강인)·대한민국
+$footballSectionStart = $content.IndexOf("## 7. 축구 일정")
+if ($footballSectionStart -ge 0) {
+  $footballSectionEnd = $content.IndexOf("`n## ", $footballSectionStart + 10)
+  if ($footballSectionEnd -lt 0) { $footballSectionEnd = $content.Length }
+  $footballBlock = $content.Substring($footballSectionStart, $footballSectionEnd - $footballSectionStart)
+  $footballHtml = ""
+  foreach ($line in $footballBlock -split "`n") {
+    $t = $line.Trim()
+    if ($t -match "^- \*\*(.+?)\*\*\s*·\s*(.+)") {
+      $ft = $matches[1].Trim(); $fv = $matches[2].Trim()
+      $ftEsc = $ft -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
+      $fvEsc = $fv -replace "&","&amp;" -replace "<","&lt;" -replace ">","&gt;"
+      $footballHtml += "<div class=""si""><div class=""dot dot-football""></div><div class=""stx""><strong>$ftEsc</strong><br><span class=""muted"">$fvEsc</span></div></div>`n"
+    }
+  }
+  if ($footballHtml) {
+    $html += "<div class=""card""><div class=""st cat-football"">⚽ 축구 일정</div>
+<div class=""sc"">
+$footballHtml
+</div></div>
+"
+  }
+}
+
 $html += "<div class=""ft"">게발이 브리핑 · $ds 자동 생성<br>생각을 잇다</div>
 
 </div>
@@ -315,7 +341,7 @@ $summaryLines = @(); $i = 0
 foreach ($sk in $order) {
   $items = $sec[$sk]
   if (-not $items -or $items.Count -eq 0) { continue }
-  if (@("손흥민","오늘의 일정","이메일 요약","홈페이지 상태") -contains $sk) { continue }
+  if (@("축구 스타","오늘의 일정","이메일 요약","홈페이지 상태") -contains $sk) { continue }
   $t = $items[0].t -replace '["""''''"]',''
   $summaryLines += "$sk $t 외 $($items.Count-1)건"
   $i++; if ($i -ge 2) { break }
