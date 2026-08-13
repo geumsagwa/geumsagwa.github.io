@@ -512,7 +512,7 @@ body.light-mode,
 }
 
 .light-mode .admin-member-card:hover {
-    background: rgba(143, 125, 96, 0.1);
+    background: rgba(196, 168, 122, 0.28);
 }
 
 .light-mode .admin-member-nickname {
