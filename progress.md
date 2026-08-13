@@ -9,6 +9,14 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-14T07:10+09:00`** — **08-14: 브리핑 손흥민 섹션 → "축구 스타" 개편 + `## 7. 축구 일정`(LAFC·아틀레티코·대한민국) 구현 완료.**
+  - **[기획]** 무진님 요청: 손흥민 섹션 이슈 적어 개편 — **① 이강인 뉴스 포함** · **② 한 주간 경기 일정: LAFC(손흥민)·아틀레티코 마드리드(이강인)·대한민국 국가대표** 3팀 표시. 구단 공식 홈페이지는 JS 렌더링/봇 차단으로 직접 파싱 불가 확인 → **ESPN 공개 API(키 불필요)를 데이터 소스로** 채택 (정확성 우선, 카드뉴스 하단에 출처 안내)
+  - **[① 뉴스 카테고리 개편]** openclaw `newsBriefing.ts` — 카테고리 `손흥민` → **`축구 스타`** · 축구 키워드 확장(이강인/kang-in/atletico/아틀레티코 등) · La Liga RSS 추가(Guardian La Liga) — Yahoo La Liga 피드는 404 확인 후 제외
+  - **[② 주간 일정 모듈 신설]** openclaw `footballSchedule.ts` 신설 — **ESPN scoreboard 날짜범위 조회**(`dates=YYYYMMDD-YYYYMMDD`, 팀: LAFC 18966/usa.1·아틀레티코 1068/esp.1·한국 451/fifa.world) + TheSportsDB 보조 + KFA 공식 뉴스로 다음 A매치 안내 · KST 통일(EDT 버킷 보정: URL [오늘-1, 오늘+6] → KST [오늘, 오늘+6] 필터)
+  - **[실측 결과]** **LAFC 08/16(일) 11:30 San Diego FC(홈) · 08/20(목) 10:30 Colorado Rapids(원정) / 아틀레티코 08/20(목) 04:00 Málaga(홈) / 대한민국 이번 주 예정 없음(다음: 9월 A매치 에콰도르·우루과이)**
+  - **[③ 브리핑 반영]** openclaw `morningBriefing.ts` — **`## 7. 축구 일정` 섹션 신설** (기존 1~6번 유지) + 검증 게이트 폴백 추가 · tsc 통과 · vitest 9개 통과 — **openclaw `11a8f0a` push ✅**
+  - **[④ 카드뉴스 연동]** homepage `generate-cardnews.ps1` — 카테고리 `축구 스타`(`cat-football`, 기존 son 주황 #e67e22 재사용) + **`⚽ 축구 일정` 카드**(`## 7.` 블록 파싱 → 팀·일정 리스트, `dot-football`) · 요약 스킵 목록 갱신 · 테스트 브리핑으로 렌더링 검증 완료 — **homepage `f5e567d` push ✅**
+  - **[Git]** homepage `f5e567d` push ✅ (progress.md 커밋 포함) · harness `3ed92f7` · openclaw `11a8f0a` · llm-wiki `db3d2230` — 전부 clean, 로컬=원격
 - 시각(ISO): **`2026-08-14T05:47+09:00`** — **08-14: 게발이 브리핑 자동 발행(하드 룰) + `## 6. 개인 컨텍스트` 반영 첫 실측 확인.**
   - **[브리핑 자동 발행]** 인계문서 읽는 즉시 `harness\scripts\publish-briefing.ps1` 실행 → 오늘 md 없음 → openclaw `npm run dev` → `briefing-2026-08-14.md` 생성 → 카드뉴스 `admin/cardnews/2026-08-14.html` → homepage `c65aaf8` "자동: 카드뉴스 갱신 (2026-08-14)" push ✅ → **GitHub Pages HTTP 200 배포 확인** ✅
   - **[개인 컨텍스트 첫 실측 ✅]** 어제(08-13 5차) 신설한 **`## 6. 개인 컨텍스트`가 오늘 브리핑에 정상 반영** — 결정 로그/무진님 컨텍스트/홈페이지 프로젝트 3항목 렌더링 · (참고) 결정 로그 항목은 상태 라인 여러 개가 그대로 이어져 다소 거슬림 — "사용하며 개선" 대상
@@ -161,6 +169,7 @@
 4. (참고) 철학사여행_20250312.pdf — 푸터 미확인으로 보류 (2면/쪽 파이프라인 재적용 시 쪽수 공식 판별부터)
 
 ## 하네스 메모
+- **브리핑 축구 일정 (2026-08-14 도입):** 뉴스 카테고리 `손흥민`→**`축구 스타`**(이강인 포함) · **`## 7. 축구 일정`** = LAFC(손흥민)·아틀레티코(이강인)·대한민국 주간 경기 (데이터: **ESPN 공개 API scoreboard** `site.api.espn.com/apis/site/v2/sports/soccer/{usa.1|esp.1|fifa.world}/scoreboard?dates=YYYYMMDD-YYYYMMDD` — 하이픈 없는 형식만 인식 · KST=UTC+9 · EDT 버킷 보정: URL [오늘-1,오늘+6]→KST 필터 · 팀ID LAFC 18966/아틀레티코 1068/한국 451) · TheSportsDB 보조 · KFA 뉴스로 다음 A매치 · 카드뉴스 `cat-football`+`dot-football`(주황) — openclaw `11a8f0a` · homepage `f5e567d` (전부 push ✅)
 - **스킬화·브리핑 개인화·llm-wiki 개인 기록 (2026-08-13 도입, 영상 검토 3건):** 게리 탠 "퍼스널 AGI" 영상 검토 후 **3건 전면 도입** — ① **스킬화 규율** `harness\skills\` (README 규율 + 카드 2종: supabase-management-api·github-pages-cache; 세션 말미 "재사용 스킬화 체크") · ② **브리핑 `## 6. 개인 컨텍스트`** openclaw `morningBriefing.ts`의 `buildPersonalSection()` (F:\wiki\wiki\personal\ 요약, LLM 비의존) · ③ **개인 위키** `F:\wiki\wiki\personal\` (홈페이지-프로젝트·무진님-컨텍스트·결정-로그) · **카드뉴스 개인 카드** `cat-personal`(금색 #c4a87a) — 커밋: harness `3ed92f7` · openclaw `c093a82` · llm-wiki `db3d2230` · homepage `279b4ba` (전부 push ✅)
 - **회원 4단계 역할 체계 (2026-08-13 도입):** member(0)<staff(1)<manager(2)<admin(3) — `setup_members.sql` 운영 DB 적용 완료 · `auth.js`(PAGE_MIN_ROLE) · `admin.html` 회원관리(역할 배지+변경 드롭다운) · **test3/test4=staff** · role 변경은 admin만(트리거) · 회원관리는 manager 이상, Diary는 admin만 · 스텝 선정은 admin.html 회원관리에서 role 드롭다운으로 · DB 재적용 시 `setup_members.sql` 통째로 실행(멱등, `to_old` 금지 — pg-meta 미지원)
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
@@ -168,7 +177,7 @@
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `db3d2230` — 개인 기록 확장(wiki/personal 신설) ✅ push 완료 (clean) (이전 `dc49e1fa`: 4개 PDF 인제스트+후처리)
-- **homepage:** `c65aaf8` — 08-14 브리핑 카드뉴스 발행 ✅ push 완료 (clean, 로컬=원격) (이전 `279b4ba`: 개인 컨텍스트 카드 · `6f9850c`: 08-13 브리핑)
+- **homepage:** `f5e567d` — 축구 일정 카드(`##7`) + 카테고리 축구 스타 개편 ✅ push 완료 (clean, 로컬=원격) (이전 `c65aaf8`: 08-14 브리핑 카드뉴스 발행 · `279b4ba`: 개인 컨텍스트 카드)
 - **harness:** `3ed92f7` — skills: 스킬화 규율 도입 ✅ push 완료 (clean) (이전 `5b56ee8`: publish-briefing 버그 수정)
 - **4개 PDF 파이프라인 완료 (2026-08-11):** 피그마(21부)·예일대지성사강의(16부)·AI Agent(9부)·듀얼브레인(9부) — 2면/쪽 스캔 PDF 전체 처리 완료 · 출력 `G:\내 드라이브\Claude\피그마`·`예일대지성사강의`·`AI Agent`·`듀얼브레인` (MD + images/) · 파이프라인 `F:\wiki\scripts\pdf-2page-extract\`
 - **철학사수업1 교정 (2026-08-11 완료):** 1~9부(08-10)+10부+11부 전부 교정 완료 → `F:\wiki\raw\` 동기화·커밋(`2c2f0775`·`de65a7e4`) · 고아 이미지 5개 → `F:\backup\철학사수업1-orphan-images-20260811\` · 교정본 소스 `G:\내 드라이브\Claude\김주연_철학사수업1\` · 참조 59/폴더 59 매칭
@@ -176,6 +185,6 @@
 - **게발이 브리핑 발행 루틴 (2026-08-08 등록):** ① `openclaw-local-mvp`에서 `npm run dev` → `data/output/briefing-YYYY-MM-DD.md` 생성 (로그 `F:\backup\briefing-YYYY-MM-DD.log`) ② `homepage\scripts\generate-cardnews.ps1` 실행 → `admin/cardnews/YYYY-MM-DD.html` 생성 ③ homepage 커밋·푸시 "자동: 카드뉴스 갱신" ④ GitHub Pages 배포 확인 (HTTP 200) — **경로 탐색 없이 즉시 실행** · **(2026-08-13부터) 트리거는 인계문서 읽으면 즉시 `harness\scripts\publish-briefing.ps1` 자동 실행으로 통합**
 - **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 카드뉴스 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
 - **홈페이지 DESIGN.md 1~3단계 완료:** `DESIGN.md`(토큰 문서화) → `style.css :root`(CSS 변수, 기존 코드 유지) → `CLAUDE.md`(디자인 기준 등록, 클로드 자동 인지)
-- **openclaw-local-mvp:** `c093a82` — morningBriefing.ts 개인 컨텍스트 섹션 추가 ✅ push 완료 (워킹트리 clean) (이전 `1ee806d`)
+- **openclaw-local-mvp:** `11a8f0a` — 축구 일정 섹션(`##7`) + 축구 스타 카테고리 ✅ push 완료 (워킹트리 clean) (이전 `c093a82`: 개인 컨텍스트 섹션)
 - **confidence:low:** **0개** ✅ / 깨진 링크 **0개** ✅ / 개념 15,668 (검색 인덱스 기준)
 - **Google OAuth:** 토큰 만료 (갱신 필요시 refreshAccessToken() 사용 가능)
