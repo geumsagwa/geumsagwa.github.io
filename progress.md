@@ -9,6 +9,15 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-13T12:35+09:00`** — **08-13 4차: 회원 4단계 역할 체계(member/staff/manager/admin) 구현 + 운영 DB 적용 완료.**
+  - **[기획]** 무진님 요청: 회원 중 스텝 선정·권한 분리 — **A방식(role 확장) 4단계** 채택 · 일기는 admin만 · 테스트 회원 재량 처리 승인
+  - **[DB 스키마 적용]** `setup_members.sql`을 **Supabase Management API로 운영 DB 직접 적용** ✅ (`supabase/.access-token` PAT 사용, POST `/v1/projects/{ref}/database/query`)
+    - role CHECK 확장(member/admin → 4단계) · `is_manager_user()`·`is_staff_user()`·`current_user_role()` 함수 신설 · 회원관리 RLS: select/status 수정=manager 이상 · delete=admin만
+    - **role 변경 제한 = 트리거(`members_role_change_guard`)** — RLS `to_old`는 pg-meta(Management API) 미지원(42P01)이라 표준 트리거로 구현 (service_role 우회 허용)
+    - **test3(test3)·test4(test4) → staff 승격** ✅
+  - **[프론트 구현]** `auth.js`: PAGE_MIN_ROLE(페이지별 최소 역할)·ROLE_RANK·hasMinRole/getCurrentRole · `admin.js`+`admin.html`: 역할 배지 + admin 전용 역할 변경 드롭다운(본인·마지막 admin 잠금) · manager는 카드뉴스 탭 숨김 · 에디터 3종(에세이·서평·AI writing): **staff 이상만 작성**
+  - **역할체계:** member(0) < staff(1) < manager(2) < admin(3) — 회원관리 페이지는 manager 이상 · Diary 메뉴·역할 변경·삭제는 admin만
+  - **Git:** homepage `7bc0ec3` push ✅ (Actions 배포 진행 중)
 - 시각(ISO): **`2026-08-13T10:20+09:00`** — **08-13 3차: 홈페이지 테스트 계정 2건 정리(Supabase).**
   - **[정리]** 회원관리에 보이던 `nonexist-signup-{ts}@test.com` 계정 2건(08-04 생성, 가입 플로우 테스트 추정) — auth.users 2건 + members 2건 삭제 · 남은 nonexist/test 계정 0 · auth 사용자 9→7
   - **[메모]** Supabase 키 접근법: REST 직접 호출 시 `Authorization: Bearer`를 넣으면 401 — **`apikey` 헤더만** 사용해야 함 (secret 키는 supabase-js SDK로 admin API 정상 동작, library 200)
@@ -114,7 +123,7 @@
 ## 브랜치·원격
 - **작업 브랜치:** `master`
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존.
+- **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존. (08-13: `a1ed16a` 테스트 계정 정리 → `7bc0ec3` 4단계 역할 체계)
 
 ## 미커밋 / 로컬만
 - **(선택)** `epub/history3.epub`, `epub/주석 명령문.txt` 등 — 저장소 미포함, 필요 시 정리.
@@ -135,6 +144,7 @@
 4. (참고) 철학사여행_20250312.pdf — 푸터 미확인으로 보류 (2면/쪽 파이프라인 재적용 시 쪽수 공식 판별부터)
 
 ## 하네스 메모
+- **회원 4단계 역할 체계 (2026-08-13 도입):** member(0)<staff(1)<manager(2)<admin(3) — `setup_members.sql` 운영 DB 적용 완료 · `auth.js`(PAGE_MIN_ROLE) · `admin.html` 회원관리(역할 배지+변경 드롭다운) · **test3/test4=staff** · role 변경은 admin만(트리거) · 회원관리는 manager 이상, Diary는 admin만 · 스텝 선정은 admin.html 회원관리에서 role 드롭다운으로 · DB 재적용 시 `setup_members.sql` 통째로 실행(멱등, `to_old` 금지 — pg-meta 미지원)
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
 - **게발이 브리핑 자동 발행 (2026-08-13 등록·첫 실측 완료):** `harness\scripts\publish-briefing.ps1` — 인계문서를 읽은 즉시 자동 실행 (멱등: 이미 발행 시 스킵). 파이프라인: openclaw `npm run dev`(오늘 md 없을 때만) → `generate-cardnews.ps1` → homepage 커밋·푸시(admin/cardnews 범위) → GitHub Pages HTTP 200 확인 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date yyyy-MM-dd`/`-Force` 옵션 · **2026-08-13 전체 파이프라인 첫 실측 성공(homepage `6f9850c`) · 버그 3건 수정(harness `5b56ee8`): 네이티브 stderr NativeCommandError 중단 방지 / PS 스크립트 `$LASTEXITCODE` 판정 오류 → HTML 존재 검증 / git stderr 처리**
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
