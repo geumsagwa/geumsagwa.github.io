@@ -7,7 +7,7 @@
     <title>관리자 - 생각을 잇다</title>
     <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
     <link rel="stylesheet" href="style.css?v=20260504">
-    <link rel="stylesheet" href="style-pages.css?v=20260813">
+    <link rel="stylesheet" href="style-pages.css?v=20260813b">
     <link rel="stylesheet" href="style-light.css?v=20260504">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
@@ -34,11 +34,14 @@
     .cardnews-viewer iframe { width: 480px; max-width: 100%; height: 90vh; border: none; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); background: white; }
     .cardnews-viewer .close-btn { position: fixed; top: 20px; right: 30px; background: rgba(0,0,0,0.5); color: white; border: none; width: 44px; height: 44px; border-radius: 50%; font-size: 24px; cursor: pointer; }
     /* [2026-08-13 4단계] 역할 배지 + 역할 변경 드롭다운 */
-    .admin-member-role { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+    .admin-member-role { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 600; }
     .admin-member-role.role-member { background: #eef0f3; color: #666; }
     .admin-member-role.role-staff { background: #e8f0fe; color: #1a73e8; }
     .admin-member-role.role-manager { background: #fef7e0; color: #b26a00; }
     .admin-member-role.role-admin { background: #fde8e8; color: #d93025; }
+    /* [2026-08-13] 닉네임-역할 얇은 구분선 */
+    .admin-role-sep { width: 1px; height: 13px; background: rgba(255,255,255,0.22); flex-shrink: 0; }
+    .light-mode .admin-role-sep { background: rgba(0,0,0,0.18); }
     .admin-role-change { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
     .admin-role-label { font-size: 12px; color: #888; }
     .admin-role-select { padding: 4px 8px; border-radius: 8px; border: 1px solid #ddd; font-size: 13px; color: #333; background: white; cursor: pointer; }

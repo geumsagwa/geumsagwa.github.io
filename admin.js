@@ -110,8 +110,9 @@ function renderMembers() {
             <div class="admin-member-info">
                 <div class="admin-member-top">
                     <span class="admin-member-nickname">${escapeHtml(m.nickname || '익명')}</span>
-                    <span class="admin-member-status admin-status-${safeStatus}">${getStatusLabel(safeStatus)}</span>
+                    <span class="admin-role-sep" aria-hidden="true"></span>
                     <span class="admin-member-role role-${escapeHtml(m.role || 'member')}">${getRoleLabel(m.role)}</span>
+                    <span class="admin-member-status admin-status-${safeStatus}">${getStatusLabel(safeStatus)}</span>
                 </div>
                 <div class="admin-member-email">${escapeHtml(m.email)}</div>
                 <div class="admin-member-date">가입: ${formatDate(m.created_at)}</div>
