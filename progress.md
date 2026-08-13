@@ -9,6 +9,13 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-13T09:35+09:00`** — **08-13 작업: 게발이 브리핑 자동 발행 자동화 구축 (publish-briefing.ps1 + 인계 하드 룰).**
+  - **[자동 발행 자동화]** 인계문서를 읽은 즉시 브리핑 자동 발행 — `harness\scripts\publish-briefing.ps1` 신설 ✅
+    - 멱등(오늘 발행 시 스킵) · 오늘 md 있으면 openclaw 재사용 · generate-cardnews → homepage 커밋·푸시(admin/cardnews 범위) → **HTTP 200 배포 확인** · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date`/`-Force` 옵션
+    - 검증: 문법 OK · 멱등성 스킵 테스트(08-11) 통과 · UTF-8 BOM+CRLF
+    - 하드 룰 반영: handover-progress.md 상단 + progress.md 상단/하네스 메모 (원본=사본 MD5 일치)
+  - **[Git]** harness `8eded96` ✅ · homepage `26b1483` ✅ — 전부 push 완료, clean
+  - **[대기]** 오늘(08-13) 브리핑 **미발행** — 다음 세션 하드 룰 자동 발행 예정 (전체 파이프라인 첫 실측)
 - 시각(ISO): **`2026-08-11T22:40+09:00`** — **08-11 작업: 게발이 브리핑 발행 + 철학사수업1 10·11부 교정 반영 + 4개 PDF(피그마·예일대지성사강의·AI Agent·듀얼브레인) 전체 파이프라인 완료·인제스트.**
   - **[게발이 브리핑]** 2026-08-11 카드뉴스 생성·푸시 ✅ — homepage `3a2b3bd` "자동: 카드뉴스 갱신 (2026-08-11)" push 완료
   - **[철학사수업1 10·11부 교정 반영]** 10부(이전 세션)에 이어 **11부 교정본 동기화 완료** ✅
@@ -124,11 +131,11 @@
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `dc49e1fa` — ✅ push 완료 (clean) — 4개 PDF 인제스트(4d0e48c1) + 후처리(dc49e1fa: 스텁 443 승격, 링크 정규화, 깨진 링크 0/low 0) (이전 `de3bfa7a`: 철학사수업1 1~9부)
-- **homepage:** `3a2b3bd` — 08-11 브리핑 ✅ push 완료 (clean, 로컬=원격)
+- **homepage:** `26b1483` — 08-13 브리핑 자동화 하드 룰 반영 ✅ push 완료 (clean, 로컬=원격)
 - **4개 PDF 파이프라인 완료 (2026-08-11):** 피그마(21부)·예일대지성사강의(16부)·AI Agent(9부)·듀얼브레인(9부) — 2면/쪽 스캔 PDF 전체 처리 완료 · 출력 `G:\내 드라이브\Claude\피그마`·`예일대지성사강의`·`AI Agent`·`듀얼브레인` (MD + images/) · 파이프라인 `F:\wiki\scripts\pdf-2page-extract\`
 - **철학사수업1 교정 (2026-08-11 완료):** 1~9부(08-10)+10부+11부 전부 교정 완료 → `F:\wiki\raw\` 동기화·커밋(`2c2f0775`·`de65a7e4`) · 고아 이미지 5개 → `F:\backup\철학사수업1-orphan-images-20260811\` · 교정본 소스 `G:\내 드라이브\Claude\김주연_철학사수업1\` · 참조 59/폴더 59 매칭
 - **HWP→TXT 변환 루틴 (2026-08-08 등록):** pyhwp(hwp5txt.exe) 설치됨 — `C:\Users\pass6\AppData\Roaming\Python\Python313\Scripts\hwp5txt.exe`. 재사용 스크립트 `harness\scripts\convert-hwp-to-txt.ps1` (옵션: `-SourceDir`/`-OutputDir`/`-Force`). 변환 결과는 `F:\wiki\tmp\hwp-extract\`에 보관, wiki `raw/` ingest 여부 미결정
-- **게발이 브리핑 발행 루틴 (2026-08-08 등록):** ① `openclaw-local-mvp`에서 `npm run dev` → `data/output/briefing-YYYY-MM-DD.md` 생성 (로그 `F:\backup\briefing-YYYY-MM-DD.log`) ② `homepage\scripts\generate-cardnews.ps1` 실행 → `admin/cardnews/YYYY-MM-DD.html` 생성 ③ homepage 커밋·푸시 "자동: 카드뉴스 갱신" ④ GitHub Pages 배포 확인 (HTTP 200) — **경로 탐색 없이 즉시 실행**
+- **게발이 브리핑 발행 루틴 (2026-08-08 등록):** ① `openclaw-local-mvp`에서 `npm run dev` → `data/output/briefing-YYYY-MM-DD.md` 생성 (로그 `F:\backup\briefing-YYYY-MM-DD.log`) ② `homepage\scripts\generate-cardnews.ps1` 실행 → `admin/cardnews/YYYY-MM-DD.html` 생성 ③ homepage 커밋·푸시 "자동: 카드뉴스 갱신" ④ GitHub Pages 배포 확인 (HTTP 200) — **경로 탐색 없이 즉시 실행** · **(2026-08-13부터) 트리거는 인계문서 읽으면 즉시 `harness\scripts\publish-briefing.ps1` 자동 실행으로 통합**
 - **카드뉴스 DESIGN.md:** `homepage\admin\cardnews\DESIGN.md` — 카드뉴스 디자인 토큰 단일 소스 (19색/16컴포넌트, lint 클린). 변경 시 `designmd export --format css-vars` → `generate-cardnews.ps1` `:root` 반영 후 재생성
 - **홈페이지 DESIGN.md 1~3단계 완료:** `DESIGN.md`(토큰 문서화) → `style.css :root`(CSS 변수, 기존 코드 유지) → `CLAUDE.md`(디자인 기준 등록, 클로드 자동 인지)
 - **openclaw-local-mvp:** `1ee806d` — ✅ push 완료 (워킹트리 clean)
