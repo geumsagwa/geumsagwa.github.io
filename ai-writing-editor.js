@@ -42,6 +42,11 @@ async function loadPost(id) {
 }
 
 async function savePost() {
+  // [2026-08-13 4단계] 스텝 이상만 작성 가능
+  if (typeof hasMinRole === 'function' && !(await hasMinRole('staff'))) {
+    showMsg('권한이 없습니다. 스텝 이상만 작성할 수 있습니다.', true);
+    return;
+  }
   const btn = document.getElementById('btn-save');
   btn.disabled = true;
 

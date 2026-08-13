@@ -1,7 +1,19 @@
 // 공개 페이지 목록 (인증 불필요)
 const PUBLIC_PAGES = ['index.html', 'login.html', ''];
 
-const ADMIN_PAGES = ['diary.html', 'admin.html'];
+// [2026-08-13 4단계] 페이지별 최소 필요 역할
+//   member < staff < manager < admin
+const PAGE_MIN_ROLE = {
+  'diary.html': 'admin',
+  'admin.html': 'manager',
+  'essay-editor.html': 'staff',
+  'review-editor.html': 'staff',
+  'ai-writing-editor.html': 'staff',
+};
+
+// 역할 순위 (숫자 클수록 높음)
+const ROLE_RANK = { member: 0, staff: 1, manager: 2, admin: 3 };
+
 let memberCache = null;
 
 // requireAuth + updateAuthUI 1차 완료 후 resolve — DB/Storage를 쓰는 스크립트는 이후에 실행할 것 (경쟁 상태 방지)
@@ -43,9 +55,31 @@ async function getCurrentMember(force = false) {
     return memberCache;
 }
 
+// 현재 승인된 회원의 역할 (없으면 'member')
+async function getCurrentRole() {
+    const member = await getCurrentMember();
+    return (member && member.status === 'approved' && member.role) || 'member';
+}
+
+// 최소 역할 이상인지 판정 (member < staff < manager < admin)
+async function hasMinRole(minRole) {
+    const role = await getCurrentRole();
+    return (ROLE_RANK[role] ?? 0) >= (ROLE_RANK[minRole] ?? 0);
+}
+
 async function isCurrentUserAdmin() {
     const member = await getCurrentMember();
     return !!(member && member.status === 'approved' && member.role === 'admin');
+}
+
+async function isCurrentUserManager() {
+    const member = await getCurrentMember();
+    return !!(member && member.status === 'approved' && (member.role === 'manager' || member.role === 'admin'));
+}
+
+async function isCurrentUserStaff() {
+    const member = await getCurrentMember();
+    return !!(member && member.status === 'approved' && ['staff', 'manager', 'admin'].includes(member.role));
 }
 
 // 인증 상태 관리
@@ -69,7 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// 보호 페이지 접근 시 인증 체크 → 미인증이면 로그인으로 리다이렉트
+// 보호 페이지 접근 시 인증 체크 → 미인증이면 로그인, 역할 부족 시 홈으로 리다이렉트
 async function requireAuth() {
     const page = window.location.pathname.split('/').pop() || '';
     if (PUBLIC_PAGES.includes(page)) return;
@@ -80,10 +114,12 @@ async function requireAuth() {
             window.location.href = 'login.html';
             return;
         }
-        if (ADMIN_PAGES.includes(page)) {
-            const isAdmin = await isCurrentUserAdmin();
-            if (!isAdmin) {
+        const minRole = PAGE_MIN_ROLE[page];
+        if (minRole) {
+            const ok = await hasMinRole(minRole);
+            if (!ok) {
                 window.location.href = 'index.html';
+                return;
             }
         }
     } catch (e) {
@@ -183,11 +219,15 @@ async function updateAuthUI() {
     }
 }
 
-// 관리자 전용 메뉴 표시 (Diary, 관리)
+// 역할별 메뉴 표시 — Diary: admin만 · 관리: manager 이상
 async function updateAdminMenus() {
     const isAdmin = await isCurrentUserAdmin();
-    document.querySelectorAll('.diary-menu, .admin-menu').forEach(el => {
+    document.querySelectorAll('.diary-menu').forEach(el => {
         el.style.display = isAdmin ? '' : 'none';
+    });
+    const isManager = await isCurrentUserManager();
+    document.querySelectorAll('.admin-menu').forEach(el => {
+        el.style.display = isManager ? '' : 'none';
     });
 }
 

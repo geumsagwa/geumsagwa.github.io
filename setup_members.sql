@@ -9,7 +9,7 @@ create table if not exists public.members (
     email text,
     nickname text,
     status text not null default 'pending' check (status in ('pending', 'approved', 'rejected')),
-    role text not null default 'member' check (role in ('member', 'admin')),
+    role text not null default 'member' check (role in ('member', 'staff', 'manager', 'admin')),
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 );
@@ -28,6 +28,12 @@ alter table public.members
     add column if not exists created_at timestamptz not null default now();
 alter table public.members
     add column if not exists updated_at timestamptz not null default now();
+
+-- [2026-08-13 4단계] role 제약 확장 (기존 2단계 member/admin → 4단계)
+-- create table if not exists는 기존 테이블 제약을 바꾸지 않으므로 명시적으로 재정의
+alter table public.members drop constraint if exists members_role_check;
+alter table public.members add constraint members_role_check
+    check (role in ('member', 'staff', 'manager', 'admin'));
 
 create unique index if not exists members_user_id_uq on public.members(user_id);
 
@@ -89,6 +95,11 @@ from auth.users u
 left join public.members m on m.user_id = u.id
 where m.user_id is null;
 
+-- ============================================
+-- 역할 판별 함수 (2026-08-13 4단계 확장: member/staff/manager/admin)
+-- is_admin_user() · is_manager_user() · is_staff_user() · current_user_role()
+-- ============================================
+
 create or replace function public.is_admin_user()
 returns boolean
 language sql
@@ -105,7 +116,55 @@ as $$
   );
 $$;
 
+create or replace function public.is_manager_user()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select exists (
+    select 1
+    from public.members m
+    where m.user_id = auth.uid()
+      and m.role in ('manager', 'admin')
+      and m.status = 'approved'
+  );
+$$;
+
+create or replace function public.is_staff_user()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select exists (
+    select 1
+    from public.members m
+    where m.user_id = auth.uid()
+      and m.role in ('staff', 'manager', 'admin')
+      and m.status = 'approved'
+  );
+$$;
+
+create or replace function public.current_user_role()
+returns text
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select coalesce(
+    (select m.role from public.members m where m.user_id = auth.uid() and m.status = 'approved'),
+    'member'
+  );
+$$;
+
 grant execute on function public.is_admin_user() to authenticated;
+grant execute on function public.is_manager_user() to authenticated;
+grant execute on function public.is_staff_user() to authenticated;
+grant execute on function public.current_user_role() to authenticated;
 
 drop policy if exists members_self_read on public.members;
 drop policy if exists members_insert on public.members;
@@ -129,18 +188,48 @@ for update
 using (user_id = auth.uid())
 with check (user_id = auth.uid());
 
+-- [2026-08-13 4단계] 회원 관리 정책:
+--   select/status(승인·거절) 수정  → manager 이상
+--   role(역할/스텝 선정) 변경      → admin만 (members_role_change_guard 트리거가 제한)
+--   delete                        → admin만
 drop policy if exists members_admin_select on public.members;
 create policy members_admin_select
 on public.members
 for select
-using (public.is_admin_user());
+using (public.is_manager_user());
 
 drop policy if exists members_admin_update on public.members;
 create policy members_admin_update
 on public.members
 for update
-using (public.is_admin_user())
-with check (public.is_admin_user());
+using (public.is_manager_user())
+with check (true);
+
+-- role 변경은 admin만 (Manager/일반/self는 role을 건드릴 수 없음)
+-- service_role은 트리거 우회 (관리 API 자동화용)
+create or replace function public.members_role_change_guard()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if auth.role() = 'service_role' then
+    return new;
+  end if;
+  if new.role is distinct from old.role then
+    if not public.is_admin_user() then
+      raise exception '역할(role) 변경은 관리자만 가능합니다.';
+    end if;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists members_role_change_guard on public.members;
+create trigger members_role_change_guard
+before update on public.members
+for each row execute function public.members_role_change_guard();
 
 drop policy if exists members_admin_delete on public.members;
 create policy members_admin_delete

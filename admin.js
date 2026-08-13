@@ -1,15 +1,30 @@
 // 관리자 페이지 로직
 let allMembers = [];
 let currentFilter = 'all';
+let currentUserIsAdmin = false;   // 현재 로그인 사용자가 admin인지
+let currentUserId = null;         // 현재 로그인 사용자 id
 
 document.addEventListener('DOMContentLoaded', async () => {
     await waitForSiteAuthReady();
-    if (typeof isCurrentUserAdmin === 'function') {
-        const isAdmin = await isCurrentUserAdmin();
-        if (!isAdmin) {
+    if (typeof hasMinRole === 'function') {
+        const ok = await hasMinRole('manager');
+        if (!ok) {
             window.location.href = 'index.html';
             return;
         }
+    }
+
+    // admin 여부·본인 id 캐시 (역할 변경 UI 노출용)
+    currentUserIsAdmin = typeof isCurrentUserAdmin === 'function' ? await isCurrentUserAdmin() : false;
+    const cur = await getCurrentUser();
+    currentUserId = cur ? cur.id : null;
+
+    // 카드뉴스 탭은 admin만 — manager에게는 숨김
+    if (!currentUserIsAdmin) {
+        const cardnewsTab = document.querySelector('.admin-page-tab[data-page="cardnews"]');
+        if (cardnewsTab) cardnewsTab.style.display = 'none';
+        const membersTab = document.querySelector('.admin-page-tab[data-page="members"]');
+        if (membersTab) membersTab.classList.add('active');
     }
 
     // 페이지 탭 전환
@@ -79,18 +94,28 @@ function renderMembers() {
         return;
     }
 
+    // 마지막 admin 보호: role='admin'인 회원이 1명뿐이면 그 계정은 role 변경 불가
+    const adminCount = allMembers.filter(m => m.role === 'admin').length;
+
     list.innerHTML = filtered.map(m => {
         const safeStatus = getSafeStatus(m.status);
         const safeId = String(m.id);
+        const isSelf = m.user_id === currentUserId;
+        // admin만 role 변경 UI 노출 (본인·마지막 admin은 변경 불가)
+        const roleSelect = currentUserIsAdmin && m.status === 'approved'
+            ? getRoleSelect(m, isSelf, adminCount <= 1 && m.role === 'admin')
+            : '';
         return `
         <div class="admin-member-card" data-id="${safeId}" data-status="${safeStatus}">
             <div class="admin-member-info">
                 <div class="admin-member-top">
                     <span class="admin-member-nickname">${escapeHtml(m.nickname || '익명')}</span>
                     <span class="admin-member-status admin-status-${safeStatus}">${getStatusLabel(safeStatus)}</span>
+                    <span class="admin-member-role role-${escapeHtml(m.role || 'member')}">${getRoleLabel(m.role)}</span>
                 </div>
                 <div class="admin-member-email">${escapeHtml(m.email)}</div>
                 <div class="admin-member-date">가입: ${formatDate(m.created_at)}</div>
+                ${roleSelect}
             </div>
             <div class="admin-member-actions">
                 ${getActionButtons(safeId, safeStatus)}
@@ -108,6 +133,49 @@ function renderMembers() {
     list.querySelectorAll('[data-action="delete"]').forEach(btn => {
         btn.addEventListener('click', () => deleteMember(btn.dataset.id));
     });
+    list.querySelectorAll('.admin-role-select').forEach(sel => {
+        sel.addEventListener('change', () => updateRole(sel.dataset.id, sel.value, sel));
+    });
+}
+
+function getRoleLabel(role) {
+    const labels = { member: '회원', staff: '스텝', manager: '부관리자', admin: '관리자' };
+    return labels[role] || role || '회원';
+}
+
+// 역할 변경 드롭다운 (admin만). isLocked면 변경 불가(본인/마지막 admin)
+function getRoleSelect(m, isSelf, isLocked) {
+    const opts = ['member', 'staff', 'manager', 'admin'].map(r =>
+        `<option value="${r}" ${m.role === r ? 'selected' : ''}>${getRoleLabel(r)}</option>`
+    ).join('');
+    const lockAttr = isLocked ? ' disabled' : '';
+    const title = isSelf ? '본인 계정은 변경할 수 없습니다' : (isLocked ? '마지막 관리자는 변경할 수 없습니다' : '역할 변경');
+    return `
+        <div class="admin-role-change">
+            <label class="admin-role-label" title="${title}">역할</label>
+            <select class="admin-role-select" data-id="${m.id}" data-current="${escapeHtml(m.role || 'member')}"${lockAttr}>
+                ${opts}
+            </select>
+        </div>
+    `;
+}
+
+async function updateRole(id, newRole, sel) {
+    if (!confirm(`역할을 '${getRoleLabel(newRole)}'로 변경하시겠습니까?`)) {
+        sel.value = sel.dataset.current;
+        return;
+    }
+    const { error } = await _supabase
+        .from('members')
+        .update({ role: newRole, updated_at: new Date().toISOString() })
+        .eq('id', id);
+
+    if (error) {
+        alert('역할 변경 실패: ' + error.message);
+        sel.value = sel.dataset.current;
+        return;
+    }
+    await loadMembers();
 }
 
 function getStatusLabel(status) {
