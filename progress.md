@@ -17,6 +17,7 @@
   - **[③ 브리핑 반영]** openclaw `morningBriefing.ts` — **`## 7. 축구 일정` 섹션 신설** (기존 1~6번 유지) + 검증 게이트 폴백 추가 · tsc 통과 · vitest 9개 통과 — **openclaw `11a8f0a` push ✅**
   - **[④ 카드뉴스 연동]** homepage `generate-cardnews.ps1` — 카테고리 `축구 스타`(`cat-football`, 기존 son 주황 #e67e22 재사용) + **`⚽ 축구 일정` 카드**(`## 7.` 블록 파싱 → 팀·일정 리스트, `dot-football`) · 요약 스킵 목록 갱신 · 테스트 브리핑으로 렌더링 검증 완료 — **homepage `f5e567d` push ✅**
   - **[오늘 브리핑 재발행 ✅]** 무진님 승인 → `publish-briefing.ps1 -Force` 재실행 — **Google OAuth 재인증** 발생(토큰 만료, 브라우저 인증 완료 → `data/state/google-tokens.json` 07:22 갱신) · 1차 실행이 타임아웃으로 중단돼 **stale lock 제거 후 백그라운드 재실행** 성공 → 브리핑 md 재생성(`## 7. 축구 일정` 반영) → 카드뉴스 교체(⚽ 축구 일정 카드 포함) → **homepage `4917592` push ✅ → HTTP 200 배포 확인** ✅ · (축구 스타 뉴스는 재생성 시점에 직결 기사가 없어 빈 섹션 — 키워드 필터 설계상 정상)
+  - **[무진님 확인 완료 ✅]** 새 파이프라인 정상 작동 확인 — "새로운 파이프라인이 잘 작동하는 것 같아. AI/IT 분야도 흥미로운 기사가 꽤 있고, 굿잡"
   - **[Git]** homepage `4917592` push ✅ (자동 카드뉴스 갱신) · `f5e567d`·`4ca72b7` 선행 · harness `3ed92f7` · openclaw `11a8f0a` · llm-wiki `db3d2230` — 전부 clean, 로컬=원격
 - 시각(ISO): **`2026-08-14T05:47+09:00`** — **08-14: 게발이 브리핑 자동 발행(하드 룰) + `## 6. 개인 컨텍스트` 반영 첫 실측 확인.**
   - **[브리핑 자동 발행]** 인계문서 읽는 즉시 `harness\scripts\publish-briefing.ps1` 실행 → 오늘 md 없음 → openclaw `npm run dev` → `briefing-2026-08-14.md` 생성 → 카드뉴스 `admin/cardnews/2026-08-14.html` → homepage `c65aaf8` "자동: 카드뉴스 갱신 (2026-08-14)" push ✅ → **GitHub Pages HTTP 200 배포 확인** ✅
