@@ -9,6 +9,11 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-18T06:51+09:00`** — **08-18: 게발이 브리핑 자동 발행(하드 룰) + 축구 일정 실측.**
+  - **[브리핑 자동 발행]** 인계문서 읽는 즉시 `harness\scripts\publish-briefing.ps1` 실행 → 오늘(08-18) md 없음 → openclaw `npm run dev` → `briefing-2026-08-18.md` 생성 → 카드뉴스 `admin/cardnews/2026-08-18.html` → homepage `569ddd3` "자동: 카드뉴스 갱신 (2026-08-18)" push ✅ → **GitHub Pages HTTP 200 배포 확인** ✅
+  - **[주요 내용]** 뉴스: 정청래 "이재명 정부 성공 위해 최선", 李 대통령-김민석·정청래·송영길 만찬(당내 통합·당정청 협력), 김민석 집중호우 피해 거제 방문, 장동혁 경남 수해현장, 대기업 신규채용 2년새 15%↓(청년↓·장년↑ 세대역전), 뉴욕증시 국제유가 상승에 하락(다우 0.5%↓), 美국방부·전쟁부 "트럼프 한미훈련 축소 지시 이행 작업 중", 英 신임 총리 '백악관 비서실장 사칭' 피해, AI 생성물 표시제, 애니 '길 위의 뭉이' 19일 개봉 — 축구 스타: 샌디에고 1-0 LAFC(LAFC 패) · 일정: 등록 없음(이번 주 08-19 수 근무·08-20 수원동기 모임·08-21~23 근무) · 이메일: 중요 없음/스팸 2건 처리(GitHub Actions 실패 알림 삭제) · 홈페이지 200, 464ms, SSL 유효 · LLM Wiki 개념 18,326, 깨진 링크 0, low 0, 빈 문서 3(수동 확인 — 브리핑 §5는 cmd ETIMEDOUT으로 일시 실패)
+  - **[축구 일정 실측]** LAFC 08/20(목) 10:30 Colorado Rapids(원정)·08/23(일) 11:30 Portland Timbers(홈) / 아틀레티코 08/20(목) 04:00 Málaga(홈)·08/24(월) 00:00 Villarreal(홈) / 대한민국 이번 주 없음(9월 A매치 에콰도르·우루과이) · `## 6. 개인 컨텍스트` 반영 정상
+  - **[Git]** homepage `569ddd3` push ✅ (자동 카드뉴스 갱신) · harness `3ed92f7` · openclaw `11a8f0a` · llm-wiki `db3d2230` — 전부 clean, 로컬=원격
 - 시각(ISO): **`2026-08-17T06:59+09:00`** — **08-17: 게발이 브리핑 자동 발행(하드 룰) + `## 7. 축구 일정` 실측 확인 + 인계 아카이브 정리.**
   - **[브리핑 자동 발행]** 인계문서 읽는 즉시 `harness\scripts\publish-briefing.ps1` 실행 → 오늘 md 없음 → openclaw `npm run dev` → `briefing-2026-08-17.md` 생성 → 카드뉴스 `admin/cardnews/2026-08-17.html` → homepage `5012a78` "자동: 카드뉴스 갱신 (2026-08-17)" push ✅ → **GitHub Pages HTTP 200 배포 확인** ✅
   - **[주요 내용]** 뉴스: 대통령 권력구조 개헌 제안(국힘 반발·불투명), 친명 최고위 후보 사퇴·김용 추대, 트럼프 "이란 비핵화 동참 사양"·"한미연합훈련 대폭 축소 지시", 러-우 밤새 드론 600대·미사일 난타전, 선관위 특검 출범, 정유사 정제마진 실적성장 전망, 실업급여 반복수급 역대 최다, 리벨리온 KB증권과 IPO 완주 — 축구 스타: 아틀레티코 알바레즈 영입 제안 거절 · 일정: (종일)근무(08-19 수·08-20 수원동기 모임·08-21~23 근무) · 이메일: Qwen 3.8 27B on Ollama(중요)/스팸 2건 처리 · 홈페이지 200, 296ms, SSL 유효 · LLM Wiki 개념 18,326, 깨진 링크 0, low 0, 빈 문서 3
@@ -156,7 +161,7 @@
 ## 브랜치·원격
 - **작업 브랜치:** `master`
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존. (08-13: `a1ed16a` 테스트 계정 정리 → `7bc0ec3` 4단계 역할 체계 · 08-17: `5012a78` 08-17 브리핑 카드뉴스)
+- **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존. (08-13: `a1ed16a` 테스트 계정 정리 → `7bc0ec3` 4단계 역할 체계 · 08-17: `5012a78` 08-17 브리핑 카드뉴스 · 08-18: `569ddd3` 08-18 브리핑 카드뉴스)
 
 ## 미커밋 / 로컬만
 - **(선택)** `epub/history3.epub`, `epub/주석 명령문.txt` 등 — 저장소 미포함, 필요 시 정리.
@@ -181,11 +186,11 @@
 - **스킬화·브리핑 개인화·llm-wiki 개인 기록 (2026-08-13 도입, 영상 검토 3건):** 게리 탠 "퍼스널 AGI" 영상 검토 후 **3건 전면 도입** — ① **스킬화 규율** `harness\skills\` (README 규율 + 카드 2종: supabase-management-api·github-pages-cache; 세션 말미 "재사용 스킬화 체크") · ② **브리핑 `## 6. 개인 컨텍스트`** openclaw `morningBriefing.ts`의 `buildPersonalSection()` (F:\wiki\wiki\personal\ 요약, LLM 비의존) · ③ **개인 위키** `F:\wiki\wiki\personal\` (홈페이지-프로젝트·무진님-컨텍스트·결정-로그) · **카드뉴스 개인 카드** `cat-personal`(금색 #c4a87a) — 커밋: harness `3ed92f7` · openclaw `c093a82` · llm-wiki `db3d2230` · homepage `279b4ba` (전부 push ✅)
 - **회원 4단계 역할 체계 (2026-08-13 도입):** member(0)<staff(1)<manager(2)<admin(3) — `setup_members.sql` 운영 DB 적용 완료 · `auth.js`(PAGE_MIN_ROLE) · `admin.html` 회원관리(역할 배지+변경 드롭다운) · **test3/test4=staff** · role 변경은 admin만(트리거) · 회원관리는 manager 이상, Diary는 admin만 · 스텝 선정은 admin.html 회원관리에서 role 드롭다운으로 · DB 재적용 시 `setup_members.sql` 통째로 실행(멱등, `to_old` 금지 — pg-meta 미지원)
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
-- **게발이 브리핑 자동 발행 (2026-08-13 등록·첫 실측 완료):** `harness\scripts\publish-briefing.ps1` — 인계문서를 읽은 즉시 자동 실행 (멱등: 이미 발행 시 스킵). 파이프라인: openclaw `npm run dev`(오늘 md 없을 때만) → `generate-cardnews.ps1` → homepage 커밋·푸시(admin/cardnews 범위) → GitHub Pages HTTP 200 확인 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date yyyy-MM-dd`/`-Force` 옵션 · **2026-08-13 전체 파이프라인 첫 실측 성공(homepage `6f9850c`) · 버그 3건 수정(harness `5b56ee8`): 네이티브 stderr NativeCommandError 중단 방지 / PS 스크립트 `$LASTEXITCODE` 판정 오류 → HTML 존재 검증 / git stderr 처리 · 08-17 재실측 성공(homepage `5012a78`)**
+- **게발이 브리핑 자동 발행 (2026-08-13 등록·첫 실측 완료):** `harness\scripts\publish-briefing.ps1` — 인계문서를 읽은 즉시 자동 실행 (멱등: 이미 발행 시 스킵). 파이프라인: openclaw `npm run dev`(오늘 md 없을 때만) → `generate-cardnews.ps1` → homepage 커밋·푸시(admin/cardnews 범위) → GitHub Pages HTTP 200 확인 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date yyyy-MM-dd`/`-Force` 옵션 · **2026-08-13 전체 파이프라인 첫 실측 성공(homepage `6f9850c`) · 버그 3건 수정(harness `5b56ee8`): 네이티브 stderr NativeCommandError 중단 방지 / PS 스크립트 `$LASTEXITCODE` 판정 오류 → HTML 존재 검증 / git stderr 처리 · 08-17 재실측 성공(homepage `5012a78`) · 08-18 재실측 성공(homepage `569ddd3`)**
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `db3d2230` — 개인 기록 확장(wiki/personal 신설) ✅ push 완료 (clean) (이전 `dc49e1fa`: 4개 PDF 인제스트+후처리)
-- **homepage:** `5012a78` — 08-17 브리핑 카드뉴스 ✅ push 완료 (clean, 로컬=원격) (이전 `4917592`: 08-14 브리핑 재발행(축구 일정 카드 반영) · `f5e567d`: 축구 일정 카드+카테고리 개편)
+- **homepage:** `569ddd3` — 08-18 브리핑 카드뉴스 ✅ push 완료 (clean, 로컬=원격) (이전 `5012a78`: 08-17 브리핑 카드뉴스 · `4917592`: 08-14 브리핑 재발행(축구 일정 카드 반영) · `f5e567d`: 축구 일정 카드+카테고리 개편)
 - **harness:** `3ed92f7` — skills: 스킬화 규율 도입 ✅ push 완료 (clean) (이전 `5b56ee8`: publish-briefing 버그 수정)
 - **4개 PDF 파이프라인 완료 (2026-08-11):** 피그마(21부)·예일대지성사강의(16부)·AI Agent(9부)·듀얼브레인(9부) — 2면/쪽 스캔 PDF 전체 처리 완료 · 출력 `G:\내 드라이브\Claude\피그마`·`예일대지성사강의`·`AI Agent`·`듀얼브레인` (MD + images/) · 파이프라인 `F:\wiki\scripts\pdf-2page-extract\`
 - **철학사수업1 교정 (2026-08-11 완료):** 1~9부(08-10)+10부+11부 전부 교정 완료 → `F:\wiki\raw\` 동기화·커밋(`2c2f0775`·`de65a7e4`) · 고아 이미지 5개 → `F:\backup\철학사수업1-orphan-images-20260811\` · 교정본 소스 `G:\내 드라이브\Claude\김주연_철학사수업1\` · 참조 59/폴더 59 매칭
