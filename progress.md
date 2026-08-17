@@ -9,6 +9,12 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-17T06:59+09:00`** — **08-17: 게발이 브리핑 자동 발행(하드 룰) + `## 7. 축구 일정` 실측 확인 + 인계 아카이브 정리.**
+  - **[브리핑 자동 발행]** 인계문서 읽는 즉시 `harness\scripts\publish-briefing.ps1` 실행 → 오늘 md 없음 → openclaw `npm run dev` → `briefing-2026-08-17.md` 생성 → 카드뉴스 `admin/cardnews/2026-08-17.html` → homepage `5012a78` "자동: 카드뉴스 갱신 (2026-08-17)" push ✅ → **GitHub Pages HTTP 200 배포 확인** ✅
+  - **[주요 내용]** 뉴스: 대통령 권력구조 개헌 제안(국힘 반발·불투명), 친명 최고위 후보 사퇴·김용 추대, 트럼프 "이란 비핵화 동참 사양"·"한미연합훈련 대폭 축소 지시", 러-우 밤새 드론 600대·미사일 난타전, 선관위 특검 출범, 정유사 정제마진 실적성장 전망, 실업급여 반복수급 역대 최다, 리벨리온 KB증권과 IPO 완주 — 축구 스타: 아틀레티코 알바레즈 영입 제안 거절 · 일정: (종일)근무(08-19 수·08-20 수원동기 모임·08-21~23 근무) · 이메일: Qwen 3.8 27B on Ollama(중요)/스팸 2건 처리 · 홈페이지 200, 296ms, SSL 유효 · LLM Wiki 개념 18,326, 깨진 링크 0, low 0, 빈 문서 3
+  - **[축구 일정 실측]** `## 7.` 정상 동작 — LAFC 08/20(목) 10:30 Colorado Rapids(원정)·08/23(일) 11:30 Portland Timbers(홈) / 아틀레티코 08/20(목) 04:00 Málaga(홈) / 대한민국 이번 주 없음(9월 A매치 에콰도르·우루과이) · `## 6. 개인 컨텍스트` 반영 정상
+  - **[인계 최적화]** handover-progress.md 22.2KB(30KB 미만 → optimize 스킵) · 세션 6개 → 최근 3개(08-17·08-14 2차·08-14) 유지 + 이전 3개(08-13 5차·4차·2차) archive 이동 (읽기 가이드 준수)
+  - **[Git]** homepage `5012a78` push ✅ · harness `3ed92f7` · openclaw `11a8f0a` · llm-wiki `db3d2230` — 전부 clean, 로컬=원격
 - 시각(ISO): **`2026-08-14T07:10+09:00`** — **08-14: 브리핑 손흥민 섹션 → "축구 스타" 개편 + `## 7. 축구 일정`(LAFC·아틀레티코·대한민국) 구현 완료.**
   - **[기획]** 무진님 요청: 손흥민 섹션 이슈 적어 개편 — **① 이강인 뉴스 포함** · **② 한 주간 경기 일정: LAFC(손흥민)·아틀레티코 마드리드(이강인)·대한민국 국가대표** 3팀 표시. 구단 공식 홈페이지는 JS 렌더링/봇 차단으로 직접 파싱 불가 확인 → **ESPN 공개 API(키 불필요)를 데이터 소스로** 채택 (정확성 우선, 카드뉴스 하단에 출처 안내)
   - **[① 뉴스 카테고리 개편]** openclaw `newsBriefing.ts` — 카테고리 `손흥민` → **`축구 스타`** · 축구 키워드 확장(이강인/kang-in/atletico/아틀레티코 등) · La Liga RSS 추가(Guardian La Liga) — Yahoo La Liga 피드는 404 확인 후 제외
@@ -150,7 +156,7 @@
 ## 브랜치·원격
 - **작업 브랜치:** `master`
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존. (08-13: `a1ed16a` 테스트 계정 정리 → `7bc0ec3` 4단계 역할 체계)
+- **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존. (08-13: `a1ed16a` 테스트 계정 정리 → `7bc0ec3` 4단계 역할 체계 · 08-17: `5012a78` 08-17 브리핑 카드뉴스)
 
 ## 미커밋 / 로컬만
 - **(선택)** `epub/history3.epub`, `epub/주석 명령문.txt` 등 — 저장소 미포함, 필요 시 정리.
@@ -175,11 +181,11 @@
 - **스킬화·브리핑 개인화·llm-wiki 개인 기록 (2026-08-13 도입, 영상 검토 3건):** 게리 탠 "퍼스널 AGI" 영상 검토 후 **3건 전면 도입** — ① **스킬화 규율** `harness\skills\` (README 규율 + 카드 2종: supabase-management-api·github-pages-cache; 세션 말미 "재사용 스킬화 체크") · ② **브리핑 `## 6. 개인 컨텍스트`** openclaw `morningBriefing.ts`의 `buildPersonalSection()` (F:\wiki\wiki\personal\ 요약, LLM 비의존) · ③ **개인 위키** `F:\wiki\wiki\personal\` (홈페이지-프로젝트·무진님-컨텍스트·결정-로그) · **카드뉴스 개인 카드** `cat-personal`(금색 #c4a87a) — 커밋: harness `3ed92f7` · openclaw `c093a82` · llm-wiki `db3d2230` · homepage `279b4ba` (전부 push ✅)
 - **회원 4단계 역할 체계 (2026-08-13 도입):** member(0)<staff(1)<manager(2)<admin(3) — `setup_members.sql` 운영 DB 적용 완료 · `auth.js`(PAGE_MIN_ROLE) · `admin.html` 회원관리(역할 배지+변경 드롭다운) · **test3/test4=staff** · role 변경은 admin만(트리거) · 회원관리는 manager 이상, Diary는 admin만 · 스텝 선정은 admin.html 회원관리에서 role 드롭다운으로 · DB 재적용 시 `setup_members.sql` 통째로 실행(멱등, `to_old` 금지 — pg-meta 미지원)
 - 인계·진행 사본: `C:\Users\pass6\Desktop\Harness\progress.md`, `handover-progress.md` — 갱신 시 **세 파일 동기**
-- **게발이 브리핑 자동 발행 (2026-08-13 등록·첫 실측 완료):** `harness\scripts\publish-briefing.ps1` — 인계문서를 읽은 즉시 자동 실행 (멱등: 이미 발행 시 스킵). 파이프라인: openclaw `npm run dev`(오늘 md 없을 때만) → `generate-cardnews.ps1` → homepage 커밋·푸시(admin/cardnews 범위) → GitHub Pages HTTP 200 확인 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date yyyy-MM-dd`/`-Force` 옵션 · **2026-08-13 전체 파이프라인 첫 실측 성공(homepage `6f9850c`) · 버그 3건 수정(harness `5b56ee8`): 네이티브 stderr NativeCommandError 중단 방지 / PS 스크립트 `$LASTEXITCODE` 판정 오류 → HTML 존재 검증 / git stderr 처리**
+- **게발이 브리핑 자동 발행 (2026-08-13 등록·첫 실측 완료):** `harness\scripts\publish-briefing.ps1` — 인계문서를 읽은 즉시 자동 실행 (멱등: 이미 발행 시 스킵). 파이프라인: openclaw `npm run dev`(오늘 md 없을 때만) → `generate-cardnews.ps1` → homepage 커밋·푸시(admin/cardnews 범위) → GitHub Pages HTTP 200 확인 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date yyyy-MM-dd`/`-Force` 옵션 · **2026-08-13 전체 파이프라인 첫 실측 성공(homepage `6f9850c`) · 버그 3건 수정(harness `5b56ee8`): 네이티브 stderr NativeCommandError 중단 방지 / PS 스크립트 `$LASTEXITCODE` 판정 오류 → HTML 존재 검증 / git stderr 처리 · 08-17 재실측 성공(homepage `5012a78`)**
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **LLM Wiki:** `db3d2230` — 개인 기록 확장(wiki/personal 신설) ✅ push 완료 (clean) (이전 `dc49e1fa`: 4개 PDF 인제스트+후처리)
-- **homepage:** `4917592` — 08-14 브리핑 재발행(축구 일정 카드 반영) ✅ push 완료 (clean, 로컬=원격) (이전 `f5e567d`: 축구 일정 카드+카테고리 개편 · `c65aaf8`: 08-14 브리핑 카드뉴스 발행)
+- **homepage:** `5012a78` — 08-17 브리핑 카드뉴스 ✅ push 완료 (clean, 로컬=원격) (이전 `4917592`: 08-14 브리핑 재발행(축구 일정 카드 반영) · `f5e567d`: 축구 일정 카드+카테고리 개편)
 - **harness:** `3ed92f7` — skills: 스킬화 규율 도입 ✅ push 완료 (clean) (이전 `5b56ee8`: publish-briefing 버그 수정)
 - **4개 PDF 파이프라인 완료 (2026-08-11):** 피그마(21부)·예일대지성사강의(16부)·AI Agent(9부)·듀얼브레인(9부) — 2면/쪽 스캔 PDF 전체 처리 완료 · 출력 `G:\내 드라이브\Claude\피그마`·`예일대지성사강의`·`AI Agent`·`듀얼브레인` (MD + images/) · 파이프라인 `F:\wiki\scripts\pdf-2page-extract\`
 - **철학사수업1 교정 (2026-08-11 완료):** 1~9부(08-10)+10부+11부 전부 교정 완료 → `F:\wiki\raw\` 동기화·커밋(`2c2f0775`·`de65a7e4`) · 고아 이미지 5개 → `F:\backup\철학사수업1-orphan-images-20260811\` · 교정본 소스 `G:\내 드라이브\Claude\김주연_철학사수업1\` · 참조 59/폴더 59 매칭
