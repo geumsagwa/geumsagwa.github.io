@@ -44,19 +44,33 @@ function escapeLoneTildes(markdown) {
   let i = 0;
   const len = markdown.length;
   while (i < len) {
+    // 원고 작성자의 \~ 이스케이프 → 백슬래시 없이 엔티티로 치환
+    // (CDN marked.js는 \~ 를 이스케이프로 무시하므로, 백슬래시를 남기면 화면에 \ 가 남는다)
+    if (markdown[i] === '\\' && markdown[i + 1] === '~') {
+      out += '&#126;';
+      i += 2;
+      continue;
+    }
     if (markdown[i] !== '~') {
       out += markdown[i++];
       continue;
     }
     if (markdown[i + 1] === '~') {
-      // ~~...~~ 의도된 취소선이면 닫는 ~~ 찾아 통째로 유지
-      const close = markdown.indexOf('~~', i + 2);
-      if (close !== -1) {
-        out += markdown.slice(i, close + 2);
-        i = close + 2;
-        continue;
+      // 연도·수치 범위 표기(30만~~35만, 19만5천~~20만)처럼 숫자에 붙은 ~~ 는
+      // 취소선이 아니라 단순 물결 중복이므로 이스케이프한다.
+      const prevCh = markdown[i - 1] || '';
+      const nextCh = markdown[i + 2] || '';
+      const isNumberRange = /\d/.test(prevCh) || /\d/.test(nextCh);
+      if (!isNumberRange) {
+        // ~~...~~ 의도된 취소선이면 닫는 ~~ 찾아 통째로 유지
+        const close = markdown.indexOf('~~', i + 2);
+        if (close !== -1) {
+          out += markdown.slice(i, close + 2);
+          i = close + 2;
+          continue;
+        }
       }
-      // 닫는 ~~ 이 없으면 쌍이 아니므로 각각 이스케이프
+      // 숫자에 붙었거나 닫는 ~~ 이 없으면 쌍이 아니므로 각각 이스케이프
       out += '&#126;&#126;';
       i += 2;
       continue;
