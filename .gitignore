@@ -18,6 +18,8 @@ reports/
 map/temp_extract_history3/
 test-results/
 main-live-*.png
+# 데이터 백업 (에세이 등 운영 데이터 스냅샷 — 커밋 제외, 로컬 보관)
+scripts/backup/
 main-page-*.png
 migrate-reviews.js
 migrate-essays.js

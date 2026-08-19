@@ -9,6 +9,12 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+- 시각(ISO): **`2026-08-19T20:58+09:00`** — **08-19 2차: 심리학사 1권 3화 초고 완성 + DeepSeek 요금 인상 조사·OpenRouter 전환 결정 + homepage 틸드 취소선 버그 수정.**
+  - **[심리학사 1-3화 초고 ✅]** `F:\wiki\manuscripts\psychology\volume1\1권_3화_영혼에서-마음으로.md` — 본문 16,933자(공백 포함, 각주 정의 제외) / 목표 14p 환산 약 12.5~14.1p, 각주 [^19]~[^41] 23개 · 구성: 아우구스티누스(고백록·시간 의식·삼위일체론) → 이슬람 세계(지혜의 집·이븐 시나·알하이탐·루시드) → 스콜라(아퀴나스·정념) → 르네상스(휴머니즘·피코·몽테뉴) → 해부학(뇌실설·베살리우스) → 베이컨 우상 · 집필지침 §5 분량표 1-3 행 + §6 각주 추적 23건 추가 — **llm-wiki 커밋 예정**
+  - **[DeepSeek 요금 인상 조사 ✅]** 2026-08-16 16:00 UTC부터 피크/오프피크 요금제 시행(V4-Flash: cache hit $0.0028→$0.014 · miss $0.14→$0.44 · output $0.28→$1.32, 인상폭 최대 약 1,100%) · 무진님 사용 패턴(Last 30일 $8.22/708,320,427 tokens, 캐시 적중 97~99%) 역산 → 직판 월 $18~36(피크 혼합 $28.94) · **OpenRouter에 동일 모델 `deepseek/deepseek-v4-flash` 플랫 요금(in $0.0826/out $0.1652/cache $0.0165 per 1M)으로 존재** (피크 없음) — **무진님 결정: 모델 만족 유지, 딥시크 잔액($21.55) 소진 후 OpenRouter 전환** (월 $14.92로 직판의 절반)
+  - **[homepage 틸드 버그 수정 ✅]** 에세이·서평·AI writing 본문의 단일 물결(~) 취소선 오인식 방지 — `blog-detail-common.js` `escapeLoneTildes` 신설·보강(\~ 이스케이프·숫자 인접 ~~ 보호) + `review.html` 자체 렌더러 동일 처리 (commit `b2ee767`·`cf40fe0` push 완료) · 같은 세션 커밋: 심리학사 연재 등록(`2b95b62` 1-1·1-2화) · 스크롤 수정(`8f16fff`·`09e523d`) · 발행 파이프라인 통합(`2bcf0d5` publish-series-episodes.mjs)
+  - **[homepage 정리 ✅]** `scripts/backup/`(에세이 운영 데이터 백업 JSON 2건, 290KB+192KB) → `.gitignore` 추가로 커밋 제외 · 가짜 modified(CRLF stat 캐시 잔상) `git add` 정리 · 임시 조사 파일(or_models_tmp.json) 삭제
+  - **[Git]** llm-wiki `d31789cb` — 심리학사 1-3화 초고 + 집필지침 갱신 선택 커밋 ✅ push 완료 (철학사 변경 등 다른 워킹트리 변경은 커밋하지 않음) · homepage `cf40fe0`(기존 커밋 전부 push 완료) + 본 progress.md·.gitignore 갱신 커밋
 - 시각(ISO): **`2026-08-19T05:58+09:00`** — **08-19: 게발이 브리핑 자동 발행(하드 룰) + llm-wiki 미푸시 커밋 정리 + LLM Wiki §5 수동 확인.**
   - **[브리핑 자동 발행]** 인계문서 읽는 즉시 `harness\scripts\publish-briefing.ps1` 실행 → 오늘(08-19) md 없음 → openclaw `npm run dev` → `briefing-2026-08-19.md` 생성 → 카드뉴스 `admin/cardnews/2026-08-19.html` → homepage `ba47069` "자동: 카드뉴스 갱신 (2026-08-19)" push ✅ → **GitHub Pages HTTP 200 배포 확인** ✅
   - **[주요 내용]** 뉴스: 부동산 신속 공급 대책(당정협의 뒤 발표·용산공원 논의), 정성호 법무 사직서, 국힘·서울시 '8·13 부동산 대책' 토론회(오세훈), 김민석 봉하마을 참배·文 예방, 국제유가 사흘 연속 상승(WTI 0.5%↑), 신규 코픽스 3.18%(1년7개월 만 최고), 거대 AI기업 회사채 가산금리 급등, 신진서 몽백합배 첫 8강, 애플 중국 메모리 불사용 압박(美 상원), UAE "이란 교역·금융거래 중단", 유아인 '뱀피르' 복귀, 광주비엔날레 — 축구 스타: 직결 기사 없음(빈 섹션, 설계상 정상) · 일정: (종일)근무(08-20 목 19:30 수원동기 모임·08-21~23·08-25 근무) · 이메일: 李대통령 "중국인 아파트 944채 매수" 보도 반박(중요)/CodePen 정기/Kombai 스팸성 — 스팸 처리 없음 · 홈페이지 200, 337ms, SSL 유효 · **LLM Wiki §5는 cmd ETIMEDOUT 2회 연속 실패 → 수동 확인 정상 (개념 18,326, 깨진 링크 0, high:low 0, 빈 문서 3, 현재 작업 5권 제114화 소련의 종말(예정))**
@@ -172,7 +178,7 @@
 ## 브랜치·원격
 - **작업 브랜치:** `master`
 - 원격: `https://github.com/geumsagwa/geumsagwa.github.io.git`
-- **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존. (08-13: `a1ed16a` 테스트 계정 정리 → `7bc0ec3` 4단계 역할 체계 · 08-17: `5012a78` 08-17 브리핑 카드뉴스 · 08-18: `569ddd3` 08-18 브리핑 카드뉴스 · 08-19: `ba47069` 08-19 브리핑 카드뉴스)
+- **최근 `master` 히스토리:** 카카오 Edge·직접 OAuth·인계 문서는 **`37171bd`** 이후 커밋들로 누적; 이전 **`5d792d9`**(SDK 제거·직접 OAuth code→token) 등은 히스토리 보존. (08-17: `5012a78` · 08-18: `569ddd3` · 08-19: `ba47069` 08-19 브리핑 카드뉴스 → `2b95b62` 심리학사 연재 등록 → `8f16fff`·`09e523d` 스크롤 UX → `2bcf0d5` 발행 파이프라인 통합 → `b2ee767`·`cf40fe0` 틸드 취소선 수정)
 
 ## 미커밋 / 로컬만
 - **(선택)** `epub/history3.epub`, `epub/주석 명령문.txt` 등 — 저장소 미포함, 필요 시 정리.
@@ -188,9 +194,9 @@
 
 ## 다음에 할 일 (최대 4개)
 1. (선택) LLM Wiki §5 cmd ETIMEDOUT 근본 원인 조사 — `publish-briefing.ps1`의 wiki stats 호출부 검토 (2회 연속 실패)
-2. (선택) 심리학사 1권 2화 집필 (목차 v1 1-2 참고, 각주 [^11]부터)
-3. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파)
-4. (참고) 철학사여행_20250312.pdf — 푸터 미확인으로 보류 (2면/쪽 파이프라인 재적용 시 쪽수 공식 판별부터)
+2. (진행) 심리학사 1권 3화 — 초고 완료(08-19, 16,933자) → 무진님 검토 후 확정·검토내용 파일 작성 → 1-4화 집필 (각주 [^42]부터)
+3. (대기) 딥시크 잔액($21.55) 소진 시 OpenRouter 동일 모델(`deepseek/deepseek-v4-flash`) 전환 — 키 발급·소액 충전·base_url 변경 테스트
+4. (선택) 철학사 제6화 집필 (예정: 아낙시메네스 또는 엘레아 학파) · (참고) 철학사여행 PDF 보류
 
 ## 하네스 메모
 - **브리핑 축구 일정 (2026-08-14 도입):** 뉴스 카테고리 `손흥민`→**`축구 스타`**(이강인 포함) · **`## 7. 축구 일정`** = LAFC(손흥민)·아틀레티코(이강인)·대한민국 주간 경기 (데이터: **ESPN 공개 API scoreboard** `site.api.espn.com/apis/site/v2/sports/soccer/{usa.1|esp.1|fifa.world}/scoreboard?dates=YYYYMMDD-YYYYMMDD` — 하이픈 없는 형식만 인식 · KST=UTC+9 · EDT 버킷 보정: URL [오늘-1,오늘+6]→KST 필터 · 팀ID LAFC 18966/아틀레티코 1068/한국 451) · TheSportsDB 보조 · KFA 뉴스로 다음 A매치 · 카드뉴스 `cat-football`+`dot-football`(주황) — openclaw `11a8f0a` · homepage `f5e567d` (전부 push ✅)
@@ -200,8 +206,9 @@
 - **게발이 브리핑 자동 발행 (2026-08-13 등록·첫 실측 완료):** `harness\scripts\publish-briefing.ps1` — 인계문서를 읽은 즉시 자동 실행 (멱등: 이미 발행 시 스킵). 파이프라인: openclaw `npm run dev`(오늘 md 없을 때만) → `generate-cardnews.ps1` → homepage 커밋·푸시(admin/cardnews 범위) → GitHub Pages HTTP 200 확인 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · `-Date yyyy-MM-dd`/`-Force` 옵션 · **2026-08-13 전체 파이프라인 첫 실측 성공(homepage `6f9850c`) · 버그 3건 수정(harness `5b56ee8`): 네이티브 stderr NativeCommandError 중단 방지 / PS 스크립트 `$LASTEXITCODE` 판정 오류 → HTML 존재 검증 / git stderr 처리 · 08-17 재실측 성공(homepage `5012a78`) · 08-18 재실측 성공(homepage `569ddd3`)**
 - **철학사 1권:** 제1~5화 업로드 완료 ✅ (Supabase essays) — 제6화 집필 대기
   - 업로드 스킬: `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
-- **LLM Wiki:** `bb8079ed` — 심리학사 1-1화 확정+검토내용 파일 (08-18 미푸시 14개 → **08-19 푸시 완료**) ✅ (clean) (이전 `db3d2230`: 개인 기록 확장(wiki/personal 신설) · `dc49e1fa`: 4개 PDF 인제스트+후처리)
-- **homepage:** `ba47069` — 08-19 브리핑 카드뉴스 ✅ push 완료 (clean, 로컬=원격) (이전 `569ddd3`: 08-18 브리핑 카드뉴스 · `5012a78`: 08-17 브리핑 카드뉴스 · `4917592`: 08-14 브리핑 재발행(축구 일정 카드 반영))
+- **DeepSeek 요금 인상·OpenRouter 전환 계획 (2026-08-19):** DeepSeek가 2026-08-16 16:00 UTC부터 피크/오프피크 요금제 시행 — V4-Flash: cache hit $0.0028→$0.014 · miss $0.14→$0.44 · output $0.28→$1.32 (피크 기준, 인상폭 최대 약 1,100%, 캐시 적중 최대 12배). 무진님 패턴(Last 30일 $8.22/708M tokens, 캐시 적중 97~99%) 기준 **직판 월 $28.94(피크 혼합)** → **OpenRouter 동일 모델 `deepseek/deepseek-v4-flash`(플랫 요금: in $0.0826/out $0.1652/cache $0.0165 per 1M, 피크 없음) 전환 예정 — 딥시크 잔액 $21.55 소진 후.** OpenRouter 기준 월 $14.92(직판의 절반) · 전환 준비: OpenRouter 키 발급·소액 충전·base_url 변경 테스트 (무진님 모델 만족 유지, 통로만 교체)
+- **LLM Wiki:** `d31789cb` — 심리학사 1-3화 초고 + 집필지침 §5/§6 갱신 ✅ push 완료 (clean) (이전 `47af67fb`: 1-2화 확정 · `bb8079ed`: 1-1화 확정+검토내용 · `db3d2230`: 개인 기록 확장 · `dc49e1fa`: 4개 PDF 인제스트)
+- **homepage:** `cf40fe0` — 틸드 취소선 보강 ✅ push 완료 (clean, 로컬=원격) (이전 `b2ee767`: 틸드 취소선 신설 · `2bcf0d5`: 연재 발행 파이프라인 통합 · `2b95b62`: 심리학사 연재 등록 · `ba47069`: 08-19 브리핑 카드뉴스 · `569ddd3`: 08-18 브리핑 카드뉴스)
 - **harness:** `3ed92f7` — skills: 스킬화 규율 도입 ✅ push 완료 (clean) (이전 `5b56ee8`: publish-briefing 버그 수정)
 - **4개 PDF 파이프라인 완료 (2026-08-11):** 피그마(21부)·예일대지성사강의(16부)·AI Agent(9부)·듀얼브레인(9부) — 2면/쪽 스캔 PDF 전체 처리 완료 · 출력 `G:\내 드라이브\Claude\피그마`·`예일대지성사강의`·`AI Agent`·`듀얼브레인` (MD + images/) · 파이프라인 `F:\wiki\scripts\pdf-2page-extract\`
 - **철학사수업1 교정 (2026-08-11 완료):** 1~9부(08-10)+10부+11부 전부 교정 완료 → `F:\wiki\raw\` 동기화·커밋(`2c2f0775`·`de65a7e4`) · 고아 이미지 5개 → `F:\backup\철학사수업1-orphan-images-20260811\` · 교정본 소스 `G:\내 드라이브\Claude\김주연_철학사수업1\` · 참조 59/폴더 59 매칭
