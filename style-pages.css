@@ -2629,6 +2629,7 @@
 .review-article {
     width: 100%;
     max-width: 720px;
+    flex-shrink: 0; /* flex 컨테이너(.review-container) 안에서 내용이 잘리지 않도록 스크롤 허용 */
     padding-bottom: 6vh;
 }
 
