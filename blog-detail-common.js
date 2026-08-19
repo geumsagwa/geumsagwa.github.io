@@ -35,6 +35,39 @@ function stripFirstTitle(markdown) {
   return markdown.replace(/^#\s+.*\n?/, '');
 }
 
+// 단일 물결(~) 취소선 오인식 방지
+// CDN 최신 marked.js는 ~~...~~ 뿐 아니라 단일 ~...~ 도 취소선으로 인식한다.
+// (연도 표기 '기원전 585~528경' 같은 단일 ~ 가 2개 있으면 그 사이 전체가 <del>이 되는 문제)
+// 의도된 GFM 취소선 ~~...~~ 은 그대로 유지하고, 나머지 단일 ~ 은 HTML 엔티티(&#126;)로 치환한다.
+function escapeLoneTildes(markdown) {
+  let out = '';
+  let i = 0;
+  const len = markdown.length;
+  while (i < len) {
+    if (markdown[i] !== '~') {
+      out += markdown[i++];
+      continue;
+    }
+    if (markdown[i + 1] === '~') {
+      // ~~...~~ 의도된 취소선이면 닫는 ~~ 찾아 통째로 유지
+      const close = markdown.indexOf('~~', i + 2);
+      if (close !== -1) {
+        out += markdown.slice(i, close + 2);
+        i = close + 2;
+        continue;
+      }
+      // 닫는 ~~ 이 없으면 쌍이 아니므로 각각 이스케이프
+      out += '&#126;&#126;';
+      i += 2;
+      continue;
+    }
+    // 단일 ~ → 엔티티로 치환 (취소선으로 오인되지 않음)
+    out += '&#126;';
+    i++;
+  }
+  return out;
+}
+
 async function loadMarkdownPostDetail(config) {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
@@ -70,10 +103,11 @@ async function loadMarkdownPostDetail(config) {
         dateEl.textContent = dateStr;
     }
 
-    // 전처리: 첫 번째 제목 제거 + 각주 변환
+    // 전처리: 첫 번째 제목 제거 + 각주 변환 + 단일 물결 이스케이프
     let bodyMd = data.body_markdown || '';
     bodyMd = stripFirstTitle(bodyMd);
     bodyMd = preprocessFootnotes(bodyMd);
+    bodyMd = escapeLoneTildes(bodyMd);
 
     marked.setOptions({ breaks: true, gfm: true });
     const bodyEl = document.getElementById(config.bodyId);
