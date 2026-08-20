@@ -2720,6 +2720,11 @@
     margin-bottom: 1.5rem;
 }
 
+.review-body img {
+    max-width: 100%;
+    height: auto;
+}
+
 .review-body h2 {
     font-weight: 700;
     font-size: 1.4rem;
