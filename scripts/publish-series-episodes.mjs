@@ -75,12 +75,12 @@ const SERIES_MAP = {
         excerpt: "세계 최초로 '영혼'이라는 주제를 하나의 학문으로 세운 아리스토텔레스. 『영혼론』에서 마음과 몸, 감각과 기억, 지성과 감정이 어떻게 다루어졌는지 — 심리학 최초의 교과서를 펼쳐 본다.",
         card_image_url: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=530&fit=crop&crop=center",
       },
-      // 3: {
-      //   file: "1권_3화_....md",
-      //   title: "제3화 ...",
-      //   excerpt: "...",
-      //   card_image_url: "...",
-      // },
+      3: {
+        file: "1권_3화_영혼에서-마음으로.md",
+        title: "제3화 영혼에서 마음으로 — 중세와 르네상스",
+        excerpt: "영혼의 이야기가 신학의 그늘 아래로 들어가던 천 년. 아우구스티누스가 『고백록』에서 연 내면의 문은 아랍 세계의 지혜의 집을 지나 아퀴나스의 『신학대전』을 거쳐, 르네상스의 인간과 해부 극장의 시체 위로 이어진다. psyche가 '영혼'의 그림자를 벗고 '마음'의 실마리를 찾아가는 여정을 좇는다.",
+        card_image_url: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=530&fit=crop&crop=center",
+      },
     },
   },
 };
