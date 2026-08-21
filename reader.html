@@ -511,6 +511,8 @@
     const params = new URLSearchParams(window.location.search);
     const epubPath = params.get('path') || '';
     const bookName = decodeURIComponent(params.get('title') || '');
+    // 특정 화(챕터)로 바로 이동 (예: target=제47화)
+    const epubTarget = params.get('target') || '';
 
     // Supabase Storage에서 epub 파일 직접 다운로드 후 로드
     async function initReader() {
@@ -777,6 +779,14 @@
                 });
                 tocList.appendChild(item);
             });
+
+            // 특정 화(target)로 바로 이동 (URL 파라미터 기반, 매칭 실패 시 무시)
+            if (epubTarget) {
+                const matched = nav.toc.find(ch => (ch.label || '').includes(epubTarget));
+                if (matched) {
+                    rendition.display(matched.href);
+                }
+            }
         }
     }).catch(err => {
         console.error('책 정보 로드 실패:', err);
