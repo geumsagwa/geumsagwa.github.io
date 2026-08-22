@@ -64,19 +64,19 @@ const SERIES_MAP = {
     volumeDir: "F:/wiki/manuscripts/psychology/volume1",
     episodes: {
       1: {
-        file: "1권_1화_심리학이라는-이름-psyche의-모험.md",
+        file: "1권_1화_01_심리학이라는-이름-psyche의-모험.md",
         title: "제1화 심리학이라는 이름 — psyche의 모험",
         excerpt: "프쉬케(psychē)와 로고스(logos), 영혼과 학문. '심리학'이라는 세 글자에 삼천 년에 가까운 여정이 숨어 있다. 숨결이 영혼이 되고, 영혼이 마음이 되고, 마음이 과학이 되기까지 — psyche의 모험을 좇는다.",
         card_image_url: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=530&fit=crop&crop=center",
       },
       2: {
-        file: "1권_2화_아리스토텔레스-영혼론의-지혜.md",
+        file: "1권_2화_01_아리스토텔레스-영혼론의-지혜.md",
         title: "제2화 아리스토텔레스 — 『영혼론』의 지혜",
         excerpt: "세계 최초로 '영혼'이라는 주제를 하나의 학문으로 세운 아리스토텔레스. 『영혼론』에서 마음과 몸, 감각과 기억, 지성과 감정이 어떻게 다루어졌는지 — 심리학 최초의 교과서를 펼쳐 본다.",
         card_image_url: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=530&fit=crop&crop=center",
       },
       3: {
-        file: "1권_3화_영혼에서-마음으로.md",
+        file: "1권_3화_01_영혼에서-마음으로.md",
         title: "제3화 영혼에서 마음으로 — 중세와 르네상스",
         excerpt: "영혼의 이야기가 신학의 그늘 아래로 들어가던 천 년. 아우구스티누스가 『고백록』에서 연 내면의 문은 아랍 세계의 지혜의 집을 지나 아퀴나스의 『신학대전』을 거쳐, 르네상스의 인간과 해부 극장의 시체 위로 이어진다. psyche가 '영혼'의 그림자를 벗고 '마음'의 실마리를 찾아가는 여정을 좇는다.",
         card_image_url: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=530&fit=crop&crop=center",
