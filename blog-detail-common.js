@@ -177,3 +177,49 @@ function sanitizeHtml(unsafeHtml) {
 
     return template.innerHTML;
 }
+
+// ── 본문 이미지 클릭 확대(라이트박스) ──
+// .review-body 안의 이미지를 클릭하면 전체 화면 오버레이로 확대 표시하고,
+// 오버레이를 다시 클릭하거나 Esc 를 누르면 원래 화면으로 돌아온다.
+function initImageLightbox() {
+  if (initImageLightbox.done) return;
+  initImageLightbox.done = true;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'img-lightbox';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-label', '이미지 확대 보기');
+  const lightImg = document.createElement('img');
+  overlay.appendChild(lightImg);
+
+  function open(src) {
+    lightImg.src = src;
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+    lightImg.removeAttribute('src');
+  }
+  overlay.addEventListener('click', close);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('show')) close();
+  });
+
+  // 마크다운 렌더링이 나중에 되어도 동작하도록 document 레벨 이벤트 위임
+  document.addEventListener('click', (e) => {
+    const img = e.target && e.target.closest ? e.target.closest('.review-body img') : null;
+    if (!img) return;
+    open(img.currentSrc || img.src);
+  });
+
+  document.body.appendChild(overlay);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initImageLightbox);
+} else {
+  initImageLightbox();
+}

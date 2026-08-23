@@ -3129,3 +3129,34 @@
 }
 
 
+
+/* ── 본문 이미지 클릭 확대(라이트박스) ──
+   .review-body 안의 그림을 클릭하면 전체 화면 오버레이로 확대 표시,
+   다시 클릭(또는 Esc)하면 원래 화면으로 돌아온다. (2026-08-23) */
+.review-body img {
+    cursor: zoom-in;
+}
+
+.img-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.92);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+.img-lightbox.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+.img-lightbox img {
+    max-width: 92vw;
+    max-height: 92vh;
+    border-radius: 6px;
+    box-shadow: 0 12px 60px rgba(0, 0, 0, 0.7);
+    cursor: zoom-out;
+}
