@@ -111,17 +111,25 @@ const SERIES_MAP = {
         excerpt: "스코틀랜드 에든버러의 청년 데이비드 흄은 마음의 모든 내용이 '인상과 관념'이라는 두 재료로 이루어진다고 말했다. 관념들은 유사·인접·인과의 연합으로 이어지고, 원인에 대한 믿음조차 '습관'이라는 심리적 기제로 설명된다. 자아는 지각의 다발, 이성은 정념의 하인. 경험에서 출발한 모든 지식의 바닥을 묻는 회의의 끝에서, 흄이 '인간의 과학'을 꿈꾼 여정을 좇는다.",
         card_image_url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=530&fit=crop",
       },
+      8: {
+        file: "1권_8화_01_칸트-마음의-구조를-묻다.md",
+        title: "제8화 칸트 — 마음의 구조를 묻다",
+        excerpt: "시계처럼 규칙적으로 사는 쾨니히스베르크의 철학자 칸트는 흄의 '독단적 잠'을 깨우는 일깨움 속에서, 경험이 성립하기 위한 조건을 묻기 시작한다. 시간과 공간이라는 감성의 틀, 열두 개의 범주라는 오성의 틀, 도식과 종합과 통각 — 세계를 비추는 거울이 아니라 세계를 짓는 손으로서의 능동적 마음. 칸트가 남긴 이중적 유산(수학 불가 판정과 인간학)을 통해, 심리학이 '마음을 재는 학문'이 되기 위한 도전의 문턱을 좇는다.",
+        card_image_url: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400&h=530&fit=crop",
+      },
     },
   },
 };
 
 async function main() {
   const args = process.argv.slice(2);
-  const key = args[0];
+  const isUpdateMode = args.includes("--update");
+  const key = args.find((a) => !a.startsWith("--"));
 
   // 시리즈키 없음 / list / --help → 사용법 출력
   if (!key || key === "list" || key === "--help" || key === "-h") {
-    console.log("사용법: node scripts/publish-series-episodes.mjs <시리즈키> [화번호...]");
+    console.log("사용법: node scripts/publish-series-episodes.mjs <시리즈키> [화번호...] [--update]");
+    console.log("  --update: 이미 업로드된 화도 본문/excerpt/카드 갱신");
     console.log("시리즈키:");
     for (const [k, v] of Object.entries(SERIES_MAP)) {
       const eps = Object.keys(v.episodes).map(Number);
@@ -162,7 +170,7 @@ async function main() {
       continue;
     }
 
-    // title 중복 체크 (이미 업로드된 에피소드는 스킵)
+    // title 중복 체크
     const checkRes = await fetch(
       `${SUPABASE_URL}/rest/v1/essays?title=eq.${encodeURIComponent(info.title)}&select=id,series,episode_number`,
       {
@@ -173,8 +181,11 @@ async function main() {
       }
     );
     const existing = await checkRes.json();
-    if (existing && existing.length > 0) {
-      console.log(`  ⏭️  이미 업로드됨: ${info.title} (id: ${existing[0].id}, series: ${existing[0].series ?? "(없음)"}, ep: ${existing[0].episode_number ?? "-"})`);
+    const existingRow = existing && existing.length > 0 ? existing[0] : null;
+
+    // --update 옵션: 이미 업로드된 에피소드도 body/excerpt/card 갱신
+    if (existingRow && !isUpdateMode) {
+      console.log(`  ⏭️  이미 업로드됨: ${info.title} (id: ${existingRow.id}, series: ${existingRow.series ?? "(없음)"}, ep: ${existingRow.episode_number ?? "-"}) — --update 옵션으로 갱신 가능`);
       continue;
     }
 
@@ -186,6 +197,28 @@ async function main() {
       series,
       episode_number: ep,
     };
+
+    if (existingRow) {
+      // UPDATE
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/essays?id=eq.${existingRow.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: SERVICE_ROLE_KEY,
+          Authorization: `Bearer ${SERVICE_ROLE_KEY}`,
+          Prefer: "return=representation",
+        },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) {
+        const err = await res.text();
+        console.error(`  ❌ ${info.title} 갱신 실패: ${err}`);
+        continue;
+      }
+      const result = await res.json();
+      console.log(`  ✅ ${info.title} → 갱신 (id: ${result[0]?.id ?? existingRow.id}, series=${result[0]?.series ?? series}, ep=${result[0]?.episode_number ?? ep})`);
+      continue;
+    }
 
     const res = await fetch(`${SUPABASE_URL}/rest/v1/essays`, {
       method: "POST",
