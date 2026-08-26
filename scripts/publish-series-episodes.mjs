@@ -69,6 +69,12 @@ const SERIES_MAP = {
         excerpt: "세상은 흐른다. 그리고 그 흐름 뒤에는 로고스라는 이치가 질서를 만든다. '같은 강물에 두 번 들어갈 수 없다'고 말한 에페소스의 어두운 철학자 헤라클레이토스. 변화와 질서를 한 몸에 품은 불의 철학을 좇는다.",
         card_image_url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&h=530&fit=crop",
       },
+      7: {
+        file: "1권_7화_01_파르메니데스-존재의-길.md",
+        title: "제7화 파르메니데스 — 존재의 길",
+        excerpt: "세상의 변화와 운동은 정말 존재할까? '있는 것은 있고, 없는 것은 없다'고 단언한 엘레아의 파르메니데스는 생성과 소멸, 운동과 다원성을 하나의 완전한 존재 앞에 부정했다. 태어나지 않고 죽지 않으며, 전체이고 균일하며, 움직이지 않고 완전한 존재 — 서양 존재론의 탄생을 좇는다.",
+        card_image_url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=530&fit=crop",
+      },
     },
   },
   psychology: {
@@ -139,6 +145,29 @@ const SERIES_MAP = {
   },
 };
 
+// 마크다운의 상대경로 이미지(![alt](파일명))를 base64 data URL로 치환 (도판 인라인)
+async function inlineImagesBase64(markdown, baseDir) {
+  const regex = /!\[([^\]]*)\]\(([^)]*)\)/g;
+  let result = markdown;
+  const matches = [...markdown.matchAll(regex)];
+  for (const m of matches) {
+    const alt = m[1];
+    const src = m[2];
+    if (src.startsWith("data:")) continue;
+    const filePath = path.resolve(baseDir, src);
+    try {
+      const buf = await fs.readFile(filePath);
+      const mime = src.toLowerCase().endsWith(".png") ? "image/png" : "image/jpeg";
+      const dataUrl = `data:${mime};base64,${buf.toString("base64")}`;
+      result = result.split(`![${alt}](${src})`).join(`![${alt}](${dataUrl})`);
+      console.log(`  🖼️  이미지 인라인: ${src} (${buf.length} bytes)`);
+    } catch (e) {
+      console.error(`  ⚠️ 이미지 인라인 실패: ${src} (${e.message})`);
+    }
+  }
+  return result;
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const isUpdateMode = args.includes("--update");
@@ -187,6 +216,9 @@ async function main() {
       console.error(`  ❌ 파일 없음: ${info.file}`);
       continue;
     }
+
+    // 상대경로 이미지 → base64 data URL 인라인 (홈페이지 렌더링 보장, §8.5 규칙 6)
+    bodyMarkdown = await inlineImagesBase64(bodyMarkdown, volumeDir);
 
     // title 중복 체크
     const checkRes = await fetch(
