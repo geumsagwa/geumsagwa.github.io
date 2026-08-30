@@ -90,6 +90,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
                 badge.style.display = 'block';
                 badge.innerHTML = `<span style="display:inline-block; background:#8f7d60; color:#000; font-size:0.75rem; font-weight:700; padding:0.2rem 0.7rem; border-radius:3px; letter-spacing:0.05em;">${label}</span>`;
+
+                // 시리즈 상세에서는 카테고리 링크를 Series 탭으로 전환
+                const catLink = document.querySelector('.review-category-link');
+                if (catLink) {
+                    catLink.textContent = 'Series';
+                    catLink.href = 'blog.html?category=series';
+                }
             }
         }
     });

@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     loadBookReviews();
     loadEssays();
+    loadSeries();
     loadAiWritings();
     showWriteButtons();
 });
@@ -50,37 +51,38 @@ async function loadBookReviews() {
     });
 }
 
-async function loadEssays() {
-    const grid = document.getElementById('essay-grid');
+function sectionHeader(label, emoji) {
+    return `<div style="grid-column:1/-1; padding:0;">
+        <h3 style="font-family:'GyeonggiBatang',sans-serif; font-size:1rem; color:#8f7d60; padding:0.5rem 0 0.3rem; border-bottom:1px solid rgba(143,125,96,0.2); margin:0;">${emoji} ${label}</h3>
+    </div>`;
+}
+
+async function loadSeries() {
+    const grid = document.getElementById('series-grid');
     if (!grid) return;
 
     grid.innerHTML = '<p class="grid-message">불러오는 중...</p>';
 
     const { data, error } = await _supabase
         .from('essays')
-        .select('id, title, excerpt, card_image_url, created_at, series, episode_number');
+        .select('id, title, excerpt, card_image_url, created_at, series, episode_number')
+        .not('series', 'is', null);
 
     if (error) {
-        grid.innerHTML = `<p class="grid-message">에세이를 불러올 수 없습니다.</p>`;
+        grid.innerHTML = `<p class="grid-message">시리즈를 불러올 수 없습니다.</p>`;
         return;
     }
 
     if (!data || data.length === 0) {
-        grid.innerHTML = `<p class="grid-message">등록된 에세이가 없습니다.</p>`;
+        grid.innerHTML = `<p class="grid-message">등록된 시리즈가 없습니다.</p>`;
         return;
     }
 
-    // 시리즈별 + 단독 에세이 분리
+    // 시리즈별 그룹핑
     const seriesMap = {};
-    const standalone = [];
-
     for (const row of data) {
-        if (row.series) {
-            if (!seriesMap[row.series]) seriesMap[row.series] = [];
-            seriesMap[row.series].push(row);
-        } else {
-            standalone.push(row);
-        }
+        if (!seriesMap[row.series]) seriesMap[row.series] = [];
+        seriesMap[row.series].push(row);
     }
 
     // 각 시리즈 내부: episode_number 오름차순
@@ -102,35 +104,53 @@ async function loadEssays() {
         return a.localeCompare(b, 'ko');
     });
 
-    // 단독 에세이: created_at 내림차순
-    standalone.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-
     const defaultImage = 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=530&fit=crop&crop=center';
 
-    // 하나의 photo-grid 안에 모두 배치 (섹션 헤더는 full-width)
-    const gridClass = 'photo-grid';
-    grid.className = gridClass;
+    grid.className = 'photo-grid';
 
     const items = [];
-
-    function sectionHeader(label, emoji) {
-        return `<div style="grid-column:1/-1; padding:0;">
-            <h3 style="font-family:'GyeonggiBatang',sans-serif; font-size:1rem; color:#8f7d60; padding:0.5rem 0 0.3rem; border-bottom:1px solid rgba(143,125,96,0.2); margin:0;">${emoji} ${label}</h3>
-        </div>`;
-    }
-
-    // 단독 에세이 섹션 (위 — 계속 갱신되는 글)
-    if (standalone.length > 0) {
-        items.push(sectionHeader('에세이', '✍'));
-        for (const row of standalone) {
+    for (const key of seriesKeys) {
+        items.push(sectionHeader(key, '📚'));
+        for (const row of seriesMap[key]) {
             items.push(renderEssayCard(row, defaultImage));
         }
     }
 
-    // 시리즈 섹션 (아래 — 완결성 있는 연재)
-    for (const key of seriesKeys) {
-        items.push(sectionHeader(key, '📚'));
-        for (const row of seriesMap[key]) {
+    grid.innerHTML = items.join('');
+}
+
+async function loadEssays() {
+    const grid = document.getElementById('essay-grid');
+    if (!grid) return;
+
+    grid.innerHTML = '<p class="grid-message">불러오는 중...</p>';
+
+    const { data, error } = await _supabase
+        .from('essays')
+        .select('id, title, excerpt, card_image_url, created_at, series, episode_number')
+        .is('series', null);
+
+    if (error) {
+        grid.innerHTML = `<p class="grid-message">에세이를 불러올 수 없습니다.</p>`;
+        return;
+    }
+
+    if (!data || data.length === 0) {
+        grid.innerHTML = `<p class="grid-message">등록된 에세이가 없습니다.</p>`;
+        return;
+    }
+
+    // 단독 에세이: created_at 내림차순
+    const standalone = [...data].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+    const defaultImage = 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=530&fit=crop&crop=center';
+
+    grid.className = 'photo-grid';
+
+    const items = [];
+    if (standalone.length > 0) {
+        items.push(sectionHeader('에세이', '✍'));
+        for (const row of standalone) {
             items.push(renderEssayCard(row, defaultImage));
         }
     }

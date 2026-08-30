@@ -417,6 +417,7 @@
 /* ── Blog 탭 (카페 메뉴 스타일) ── */
 .blog-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 4vh;
 }
