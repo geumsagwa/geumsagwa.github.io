@@ -75,7 +75,7 @@
 - 잔여 CRLF/`package-lock` 표시 등(내용 무변 가능) — 필요 시 `git diff HEAD`로 확인
 
 ## 다음에 할 일 (최대 4개)
-1. **심리학사 15화(2-1 분트) 분량 보강 → 무진님 검토 → 확정** — 14화 중복 제거 완료(현재 21,153자, 목표 20p 하한 24,000 미달 — §9 민족 심리학·§11 오해와 재평가·§12 등 확장 방향 무진님 결정 대기) → 확정 → 홈페이지 업로드(id=35 예정)
+1. **심리학사 15화(2-1 분트) 무진님 검토 → 확정** — **보강 완료(2026-09-01, 24,644자·40각주, 목표 20p 달성** — §2 경험론·§5 표상적 종합·§9 민족심리학·§11 오해·§12 철학체계 재확장) → 무진님 검토 → 확정 → 도판 3종 AI 제작 → 홈페이지 업로드
 2. **심리학사 16화(2-2 구조주의 — 티치너와 내성법) 무진님 검토 → 확정** — 초고 완성(26,883자·12절·각주 29·검토내용·사실 오류 3건 수정 완료) · 확정 시 도판 3종 AI 제작 → 홈페이지 업로드 · 인테이크 아카이브
 3. **심리학사 17화(2-3 기능주의 — 윌리엄 제임스와 미국 심리학, 22p) 집필**
 4. **철학사 11화(아리스토텔레스 — 학문의 제왕, 1-13) 집필** · **✅ DeepInfra 전환 완료(2026-08-31)** — `Claude-Code-DeepSeek.cmd` 실행 → **DeepInfra 직결**(DeepSeek-V4-Flash-0731, api.deepinfra.com/anthropic)로 열림 · 잔액 $5 · 버벅임 느끼시면 Flex 티어·Priority 티어·다른 provider(OpenInference $0.03) 검토 가능
@@ -88,7 +88,7 @@
 - **게발이 브리핑 자동 발행:** `harness\scripts\publish-briefing.ps1` — 인계 읽 즉시 실행(멱등 스킵) · openclaw `npm run dev`→`generate-cardnews.ps1`→homepage 커밋→GH Pages 200 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · 옵션 `-Date`/`-Force`
 - **철학사 1권:** 1~10화 확정·업로드 완료(id 8·15·16·17·18·27·29·30·31·32) · 11화(아리스토텔레스·1-13) 집필 예정 · 업로드 스킬 `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **심리학사 1권:** 1~14화 확정·업로드 완료(id 12·13·14·19·20·21·22·23·33·34·36) · 집필지침 §6.2 분량표·목차 갱신
-- **심리학사 2권:** 15화(2-1 분트) 초고→14화 중복 제거(21,153자, 20p 하한 미달→**보강 대기**) · 16화(2-2 구조주의) 초고 완성(26,883자·사실오류 3건 수정) · 17화(2-3 기능주의) 집필 예정 · 목차 2-1/2-2 초고 표기
+- **심리학사 2권:** 15화(2-1 분트) **보강 완료(2026-09-01, 24,644자·40각주 — §2·§5 표상적 종합·§9·§11·§12 재확장, 무진님 검토 대기)** · 16화(2-2 구조주의) 초고 완성(26,883자·사실오류 3건 수정) · 17화(2-3 기능주의) 집필 예정 · 목차 2-1 보강 반영 초고 표기
 - **Claude Code 통로 (DeepInfra 직결, 08-31):** 실행 `OneDrive\바탕 화면\AI\Claude-Code-DeepSeek.cmd` → `api.deepinfra.com/anthropic`(DeepSeek-V4-Flash-0731, $0.08/$0.18/$0.016, 피크 없음) · 키 `~\.claude\deepinfra-api-key.local` · 잔액 $5(blue6074@gmail.com) · `/login` 금지 · VS Code 자동실행 버그해결: cmd title 제거+claude.exe 직접 실행 · 롤백: OpenRouter 6종·딥시크 직판 런처 보존
 - **Git tip:** LLM Wiki `origin/master` · homepage `origin/master`(`project\homepage\progress.md` 동기) · harness `origin/main`(`docs\desktop-handoff\` 미러) · openclaw `origin/main` · CRLF `M`은 `git diff HEAD --stat` 확인
 - **(완료 참조 — 상세는 아카이브·저장소):** 4개 PDF 파이프라인(피그마·예일대지성사·AI Agent·듀얼브레인 → `G:\내 드라이브\Claude\`) · 철학사수업1 1~11부 교정 → `F:\wiki\raw\`(2c2f0775·de65a7e4) · HWP→TXT `harness\scripts\convert-hwp-to-txt.ps1`(pyhwp) · 카드뉴스·홈페이지 DESIGN.md 1~3단계(`homepage\admin\cardnews\DESIGN.md`→style.css :root→CLAUDE.md) · openclaw-local-mvp(축구/개인 카드) · confidence:low 0 · Google OAuth 토큰 만료(refreshAccessToken)
