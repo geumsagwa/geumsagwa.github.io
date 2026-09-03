@@ -1,4 +1,4 @@
-# Progress — website (geumsagwa.github.io)
+﻿# Progress — website (geumsagwa.github.io)
 
 **인계:** 동일 맥락 사본 `C:\Users\pass6\Desktop\Harness\progress.md`·`handover-progress.md`와 **주요 사실(Git tip·브랜치·워킹트리·다음 액션)** 을 맞춘다. 작업·세션 종료 시 **원본(본 파일)** 먼저 갱신한 뒤 **Desktop\Harness** 두 파일을 동기.
 
@@ -9,6 +9,18 @@
 **📖 인계 읽기 가이드 (2026-08-06):** 이 파일·`handover-progress.md`는 **항상 전체를 읽지 않는다.** 항상 읽을 구간 = 상단 규칙 + `## 마지막 갱신` 최근 2~3건 + `## 다음에 할 일` + `## 하네스 메모`. 이전 기록은 `progress-archive.md`·`handover-progress-archive.md` 참조. (세션 종료 시 원본 먼저 갱신 후 Desktop\Harness 두 파일 동기)
 
 ## 마지막 갱신
+
+- 시각(ISO): **`2026-09-04T06:47+09:00`** — **09-04: 심리학 17화(2-3 기능주의·윌리엄 제임스) 전체 재검증 → 무진님 "현재 수준 확정, 모두 승인" → 확정 → 발행(id=39·ep17) — 사실 수정 3건+각주 정의 철자 1건(원문 "joined"→"jointed"·Gutenberg #57628 직접 대조, 카를 라게 '독일의'→'덴마크의', 어린 시절 여행지 '취리히·본' 삭제), 도판 3종을 등장 절(§4·§5·§7) 뒤 실제 배치·번호/파일명 재정렬(그림2=마음의 굽이[§5]·그림3=감정과 몸[§7], git mv 03~05), 단어 코너 §5 이동, 검토내용·목차 2-3 발행 표기, 분량 실측 19,235자(목표 22p의 ~71% — 현재 분량 수준 확정, 내용 보강 없음), publish 파이프라인 episode별 dir 확장 — llm-wiki 3커밋·homepage 1커밋 푸시.**
+  - [자동수집 · Git] 마지막 세션(2026-09-03T23:00+09:00) 이후:
+    · homepage master: HEAD 0f9b20e / origin 0f9b20e(푸시 완료) :: 0f9b20e publish 파이프라인 episode별 dir(권) 오버라이드 지원 + 심리학사 15·16·17화 등록 / 6e58d0f 자동: 카드뉴스 갱신 (2026-09-04 브리핑 — 세션 초 publish-briefing 실행)
+    · llm-wiki master: HEAD 198a5af1 / origin 198a5af1(푸시 완료) :: 4a5ad1cb 제17화(기능주의·제임스) 확정 — 사실 수정 3건+도판 배치/재번호+단어 코너 §5 이동+검토내용·목차 확정 표기 / 3f3b71ea 각주 정의부 [^6] 원문 철자 정정(joined→jointed, Gutenberg #57628 명시) / 198a5af1 최종목차 2-3 발행 표기(id=39·19,235자)
+    · harness main: HEAD 6d10592 / origin 6d10592(변경 없음 — 아래 미러 동기 커밋 예정)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a(변경 없음)
+  - [17화 전체 재검증 → 확정 ✅ (무진님 2026-09-04 "현재 수준 확정, 모두 승인")] §5.1~5.9 게이트 재실행 — 절 12 연속 · 각주 16 마커↔정의 1:1·순서 일치 · 따옴표 짝수(홑 112·겹 6) · 전각 물음표 0 · 문장 수준 중복 0 · 사실 전수 대조(Gutenberg #57628·SEP·en_wp). **분량 실측 19,235자**(공백 포함, 각주 정의·도판 alt·캡션·단어 코너 제외) — 목차 22p(1,200~1,350자/쪽 환산 약 26,400~29,700자) 대비 약 71% → **현재 분량 수준으로 확정**(무진님 지시, 내용 보강 없음)
+  - [사실 수정 4건 ✅] ①§4 원문 인용 "It is nothing **joined**; it flows" → Gutenberg #57628(Vol.1, 'The Stream of Thought') 직접 대조로 **"It is nothing jointed; it flows"** 확정, 번역 "마디로 이어진 것이 아니라"로 정정 — 본문만 고치고 **각주 정의부 [^6]에 'joined' 잔존**한 누락을 발견해 3f3b71ea에서 정정·출처 Gutenberg 명시(DB 재업로드까지 반영) ②§7 카를 라게 "독일의"→**"덴마크의"**(SEP "the Danish physiologist Carl Lange"·en_wp) ③§1 어린 시절 여행지 "런던·파리·제네바·취리히·본"→**"런던·파리·제네바"**(취리히·본 근거 없음 — SEP 연표: 제네바·파리·불로뉴에서 수학)
+  - [도판·단어 코너 ✅] placeholder 3종(각 2,786B)을 본문 등장 절 뒤 실제 배치 — 그림1(의식의 흐름)§4[L55] · 그림2(마음의 굽이)§5[L79] · 그림3(감정과 몸)§7[L117]. 종전 번호가 등장 순서와 어긋남(그림2=감정과 몸[§7]이 그림3=마음의 굽이[§5]보다 늦은 절에 등장) → **번호·파일명 교환**(git mv: 02_그림1→03_그림1, 04_그림2=마음의-굽이, 05_그림3=감정과-몸) · 단어 코너(기능) 문서 말미 → **§5 뒤(그림 2 다음)로 이동**
+  - [발행 ✅ (Supabase)] essays INSERT **id=39**·심리학사 **ep17** — 본문 전체+도판 3개 base64 인라인(각주 16 보존) · wiki 확정본과 대조 검증(jointed·덴마크·Gutenberg 출처·dataURL 3·joined 잔존 0) · 블로그 시리즈 그리드 쿼리 1~17화 포함 확인 · blog.html HTTP 200 · publish-series-episodes.mjs 확장(episode별 `dir` 오버라이드 — 2권(volume2) 경로 지원, 심리학사 15·16·17화 등록, ep17 title/excerpt/card NYC unsplash)
+  - [다음 작업] 18화(2-4 의식의 흐름) 무진님 재검토(이상 항 사실 대조·도판 요소/색상 승인) → 확정 → 도판 → 발행 · 17화 도판 placeholder → 개념 도식 AI 제작 시 파일 교체 · 철학사 11화(아리스토텔레스 — 학문의 제왕) 집필
 
 - 시각(ISO): **`2026-09-03T23:00+09:00`** — **09-03 (연속 세션, 16:40 이후): 심리학 17화(기능주의·제임스) 무진님 라인별 검토 반영 — 맞춤법·문장부호(의문형 물음표·나열 쉼표·'나' 따옴표 통일)·문어체→평이어 8건·문장 구성 수정 다수 + 17화 검토내용 도판 스펙 5키 보완(그림1 §4 이동) + 18화(의식의 흐름) §10 이상(李箱)·동아시아 수용 반영(각주 17·22,125자) + 작성지침 §2-11 '수용사 적극 반영' 신설 — 17·18화 무진님 재검토 대기(확정 전), llm-wiki 2a485e17 커밋·푸시.**
   - [자동수집 · Git] 마지막 세션(2026-09-03T16:40+09:00) 이후:
@@ -37,7 +49,6 @@
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a (변경 없음)
   - [다음 작업] 17화·18화 무진님 검토 → 확정 → 도판 제작 → 발행 · 철학사 11화(아리스토텔레스) 집필
 
-
 - 시각(ISO): **`2026-09-02T07:58+09:00`** — **09-02 마무리: 심리학 16화(2-2 구조주의 — 티치너와 내성법) 무진님 검토 반영·수정 → 전체 재검증 PASS → 확정 → 홈페이지 발행(id=38·ep16) — 15화 중복 재서술 콜백 전환·화 내부 모티프 정리·문체 수정 10건·티치너 초상(실사) 그림1 도입 + 개념 도식 3종 placeholder·목차 2-2 발행 표기·wiki 3커밋 푸시.**
   - [자동수집 · Git] 마지막 세션(2026-09-01T22:16+09:00) 이후:
     · homepage master: HEAD fe904a1 / origin fe904a1 :: fe904a1 자동: 카드뉴스 갱신 (2026-09-02) / 5e3f58a 진행 기록: 인계 갱신 (15화 확정·17화 재작성 반영) / 10cb834 진행 기록: 인계 갱신 (update-handover auto) / 697d79f 진행 기록: 인계 갱신 (15화 보강 반영) / e6a936c 진행 기록: 인계 갱신 (update-handover auto) / 293ba87 자동: 카드뉴스 갱신 (2026-09-01)
@@ -52,27 +63,6 @@
   - [다음 작업] 17화(2-3 기능주의 — 윌리엄 제임스와 미국 심리학) 무진님 검토 → 확정 → 도판 → 발행 · 철학사 11화(아리스토텔레스 — 학문의 제왕) 집필
 
 - 시각(ISO): **`2026-09-01T22:16+09:00`** — **09-01 마무리: 심리학 15화(2-1 분트) 확정·발행(id=37) + 17화(2-3 기능주의·제임스) 전면 재작성 완료(초고) — 15화 전 재검증 PASS·실사 그림1·문체/맞춤법 정리·복원포인트 정리·목차 발행 표기 / 17화 다중 원천 기반 새 서사·새 문장으로 다시 집필(12절·각주16·24,123자) — llm-wiki 커밋·푸시, 16화 수정 시작.**
-
-- 시각(ISO): **`2026-09-01T06:47+09:00`** — **09-01: 심리학 15화(2-1 분트) 보강 완료 — §5 '표상적 종합' 신규 문단·각주 추가(SEP 4.2), §2 경험론·§9 민족심리학·§11 오해·§12 철학체계 재확장, 각주 32→40, 분량 21,153→24,644자(목표 20p 달성) — 검토내용·목차 v1 갱신, wiki 커밋·푸시.**
-
-- 시각(ISO): **`2026-08-31T19:43+09:00`** — **08-31 후속: 인계 아카이브 + 하네스 메모 경량화(51KB→23.8KB, 30KB 미만) + 안전 편집 도구·스킬 구축(progress-file-check.py 게이트 + update-handover.py 원스톱 갱신) — 5개 인계 미러 동기·harness/homepage 커밋 완료.**
-  - [자동수집 · Git] 마지막 세션(2026-08-31T17:20+09:00) 이후:
-    · homepage master: HEAD 0217e62 / origin 0217e62 :: 0217e62 진행 기록: 하네스 메모 경량화 동기 — Desktop\Harness 아카이브본(23.8KB<30KB) 반영 / f27ad96 진행 기록: 인계 아카이브 동기 — Desktop\Harness 최신본(optimize-handover 반영, 최근 5개 세션·7개 아카이브) 반영 / 5549616 진행 기록: Claude Code 통로 DeepInfra 직결 전환(OpenRouter 대체) — DeepInfra 가입·잔액 ·런처 5종·연결 테스트 성공·VS Code 자동 실행 버그 해결(title 제거+claude.exe 직접 실행) / 7801596 진행 기록: 심리학 15화(분트) 14화 중복 제거 수정 — 도입부·§1 축약·§3·§4 압축·각주 36→32(분량 21,153자 보강 대기) · w
-    · llm-wiki master: HEAD 481fa8dc / origin 481fa8dc ·작업트리 변경 64 :: 481fa8dc 심리학 15화(분트) 14화 중복 제거 수정 — 도입부·§1 '다시, 그 방' 축약, §3(칸트의 벽)·§4(반응 시간) 14화 참조로 압축, 각주 36→32 재번호(분량 21,153자 — 목표 20p 보강 대기) / 1908f465 심리학 14화 확정·발행(id=36) + 15화(분트) 초고 + 16화(구조주의 — 티치너와 내성법) 초고 완성 — 14화 무진님 검토 수정 8건 반영·재검증 26항목 통과(분량 24,447자)·1화 교차참조 수정(분트 15화 배정 반영), 15화 본문 24,463자·도판 placeholder 3, 16화 본문 26,883자·12절·각주 29·검토내용 작성·사실 오류 3건 수정(1897 회의 장소 이타카·워시번 두 번째 회장·몰번 입학 연령), 목차 v1 2-1
-    · harness  main: HEAD 5408ad3 / origin 5408ad3 ·작업트리 변경 3 :: 5408ad3 feat(scripts): update-handover.py 원스톱 인계 갱신 — collect(4 repo git 사실 초안)/apply(삽입+아카이브+5미러 동기+게이트+커밋); safe-file-edit 스킬에 자동화 연결 / 02b3ce7 feat(skills): safe-file-edit 스킬 + progress-file-check.py 게이트 — 고유 행 앵커·raw 문자열·바이트 무결성 검증 (인계 파일 잘림/제어문자 손상 예방); README 스킬 표 갱신(dav-critic 포함) / eb3729e docs(desktop-handoff): 하네스 메모 경량화 — 5개 세션 유지·꼬리 섹션 보존·Raw 문자열로 백슬래시 정확화 (23.8KB < 30KB) / 163772b doc
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - **[인계 아카이브 ✅ (30KB 하드룰)]** `optimize-handover.ps1`이 현재 문서 형식(`- 시각(ISO):`)을 인식 못 해 0건 스크립트 스킵 ↔ 새 형식 호환 보정(세션 마커·테일 섹션 보존·마지막 세션 절대인덱스 버그·UTF-8 BOM 한국어 리터럴) · 최근 5개 세션만 유지, 오래된 7개(08-30T12:56~08-27T21:35) 아카이브 — `handover-progress-archive.zip`·`progress-archive.zip` 모두 7개 포함(무손실) · 52,640→32,477B
-  - **[하네스 메모 경량화 ✅ (<30KB)]** 32,477→**23,789B**(<30KB=30,720) — 상세/이력 항목 압축, 핵심(브리핑·축구일정·회원역할·시리즈·DeepInfra·git tip) 보존 · **버그 2건 겪고 해결**: ①`.find("## 하네스 메모")`가 상단 규칙 속 인라인 언급을 오인해 파일 잘림 → 행 앵커 `^##\s*제목\s*$`로 해결 ②일반 문자열 백슬래시(`\b`·`\a`·`\r`)가 제어문자로 손상 → raw 문자열로 해결(원인: bash heredoc이 `\\`→`\` 축소 + cp949 콘솔 렌더링이 은폐) — git 미러(163772b)로 복원 후 재구성
-  - **[도구·스킬화 ✅]** ① `progress-file-check.py` 무결성 게이트(check·anchor·replace·sync — 고유 행 앵커·제어문자·CRLF·미러 동일) ② `safe-file-edit.md` 스킬(절차+함정 기록) ③ `update-handover.py` 원스톱 인계 갱신(collect→4 repo git 사실 초안 / apply→삽입+아카이브+5미러 동기+게이트+커밋) — harness 커밋: `02b3ce7`(도구/스킬)·`5408ad3`(update-handover)
-  - **[Git ✅]** 이 세션 변경: harness `0bc7ab5`(optimize 보정)·`163772b`(미러 동기)·`eb3729e`(경량화)·`02b3ce7`(게이트/스킬)·`5408ad3`(update-handover) + homepage `f27ad96`·`0217e62`(진행 동기) — 커밋·푸시 완료 · 남은 미커밋(내 작업 아님): `.cursor/rules/harness-handoff-first.mdc`·`docs/HARNESS*.md`
-
-- 시각(ISO): **`2026-08-31T17:20+09:00`** — **08-31 Claude Code 통로 전환 완료: OpenRouter → DeepInfra 직결 (무진님 지시 "deepseek 직판 api 사용하면서 모델만 deepseekinfra로") — DeepInfra 가입·키 발급·잔액 $5 확인 · 런처 5종 구축 · 연결 테스트 성공 · VS Code 자동 실행 버그 해결(cmd title 제거 + claude.exe 직접 실행) · 무진님 확인("잘했어... 버벅댔지만~").**
-  - **[DeepInfra 직결 전환 ✅ (무진님 지시)]** OpenRouter 경유가 느려 DeepInfra 직결로 전환 — **조사 결과**: 'deepseekinfra'는 모델명이 아니라 **DeepInfra(deepinfra.com, 미국 팔로알토, 2022 설립)** 라는 제3자 호스팅 회사 · **회사 신뢰성**: 총 $133M 투자(2026-05 Series B $107M — **NVIDIA·Samsung Next·Supermicro·500 Global·Felicis** 참여), 주간 5조 토큰, SOC2/ISO27001, 90일 가동률 100% → 망할 리스크 낮음 · **비용 비교**: DeepInfra 직결(입력 $0.08/출력 $0.18/캐시 $0.016, 플랫·피크 없음) vs 직판 오프피크($0.22/$0.66/$0.007) vs 직판 피크($0.44/$1.32/$0.014) → **출력 기준 직판 대비 3.7~7.3배 저렴** · 직판 잔액 $1 남짓 → DeepInfra 잔액 **$5.00 충전 확인**(blue6074@gmail.com)
-  - **[DeepInfra 설정 구축 ✅]** 새 파일 5종: `start-claude-deepinfra.ps1`(base_url `https://api.deepinfra.com/anthropic`, 모델 sonnet=DeepSeek-V4-Flash-0731/opus=DeepSeek-V4-Pro-0813/haiku=Ling-3.0-flash) · `settings.deepinfra.json`(env 블록 + autoConnectIde/autoInstallIdeExtension false) · `load/save-deepinfra-api-key.ps1` · 수정: `Claude-Code-DeepSeek.cmd` → DeepInfra 런처 호출 · 롤백 보존: OpenRouter 파일 6종 그대로 유지
-  - **[연결 테스트 ✅]** `api.deepinfra.com/anthropic/v1/messages` 실호출 → **CONNECTION_OK 응답** (12in/5out 토큰) · 엔드포인트 생존(401→키 인증 성공) · DeepSeek-V4-Flash-0731 모델 페이지 존재 확인($0.08/$0.18/$0.016, 1M 컨텍스트)
-  - **[VS Code 자동 실행 버그 해결 ✅ (무진님 증상 — "팝업처럼 켜졌다가 vs code 창만 열어놓고 종료")]** 원인: claude가 시작 시 **cmd 창 제목(title)을 읽어 VS Code에 전달**(Code.exe 명령줄에 "DeepInfra (DeepSeek V4 Flash 0731)" 제목이 인자로 들어감 확인) + claude.cmd 경유 시 VS Code 통합 트리거 → **해결 2건**: ①`Claude-Code-DeepSeek.cmd`에서 `title` 명령 제거 ②`start-claude-deepinfra.ps1`에서 claude.cmd 대신 **claude.exe 직접 실행** · 부수 조치: `CLAUDE_CODE_ENTRYPOINT=cli`·`CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL=1`·`CLAUDE_CODE_AUTO_CONNECT_IDE=false` 사용자 환경변수 영구 등록 · `.claude.json` `tengu_ide_rc_auto_enable=false`·`officialMarketplaceAutoInstalled=false` 초기화(백업 .bak-vscode-fix/.bak-marketplace) · PATH code 스텁(stub-bin) 생성 · **검증**: code-stdin 파일 18→18(새로 안 생김) · VS Code 프로세스 0→0 ✅
-  - **[Git ⚠️]** 설정 파일들은 저장소 밖(`~\.claude`, `OneDrive\바탕 화면\AI`)이라 커밋 대상 아님 — 인계 문서만 갱신
-  - **[다음 작업]** 무진님: `AI\Claude-Code-DeepSeek.cmd` 더블클릭 → DeepInfra 직결로 클로드 코드 실행 (버벅임 느끼시면 Flex 티어·Priority 티어 옵션 검토 가능) · 심리학 15화 분량 보강 → 검토 → 확정 · 16화 검토 → 확정 · 17화 집필
 
 ## 브랜치·원격
 - **작업 브랜치:** `master`
@@ -92,8 +82,8 @@
 - 잔여 CRLF/`package-lock` 표시 등(내용 무변 가능) — 필요 시 `git diff HEAD`로 확인
 
 ## 다음에 할 일 (최대 4개)
-1. **심리학사 16화(2-2 구조주의 — 티치너와 내성법) ✅ 확정·발행(2026-09-02, ep16·id=38)** — 전체 재검증 PASS(26,614자·각주 29)·무진님 지적 10건 반영·15화 중복 콜백 전환·티치너 초상(실사) 그림1 도입+개념 도식 3종 placeholder·목차 2-2 발행 표기
-2. **심리학사 17화(2-3 기능주의)·18화(2-4 의식의 흐름) 무진님 검토 → 확정 → 도판 → 발행** — 17화: 동어반복 제거·보강(09-03) 후 **무진님 라인 검토 반영(맞춤법·문장부호·문어체→평이어·문장 구성 다수)·도판 스펙 5키 보완(그림1 §4 이동)** — 무진님 재검토 대기(확정 전) · 18화: 초고 완성 후 **§10 이상(李箱)·동아시아 수용 반영(각주 17·22,125자)** — 재검토 대기 · 확정 → 도판(개념도식 AI 제작) → 발행
+1. **심리학사 17화(2-3 기능주의 — 윌리엄 제임스) ✅ 확정·발행(2026-09-04, ep17·id=39)** — 전체 재검증(사실 수정 4건·도판 등장순 배치/재번호·단어 코너 §5 이동)·분량 19,235자(목표 22p의 ~71%, **현재 분량 수준 확정** — 무진님 2026-09-04 지시)·검토내용 확정 갱신·목차 2-3 발행 표기
+2. **심리학사 18화(2-4 의식의 흐름 — 『심리학 원리』) 무진님 재검토 → 확정 → 도판 → 발행** — 초고 완성(각주 17·22,125자) + **§10 이상(李箱)·동아시아 수용 반영** — 무진님 재검토 대기(확정 전, 이상 항 사실 대조 예정) · 확정 → 도판(개념도식 AI 제작) → 발행
 3. **철학사 11화(아리스토텔레스 — 학문의 제왕, 1-13) 집필**
 4. **✅ DeepInfra 통로 유지(2026-08-31 전환)** — `Claude-Code-DeepSeek.cmd` 실행 → **DeepInfra 직결**(DeepSeek-V4-Flash-0731, api.deepinfra.com/anthropic)로 열림 · 잔액 $5 · 버벅임 시 Flex 티어·Priority 티어·다른 provider(OpenInference $0.03) 검토 가능
 
@@ -105,7 +95,7 @@
 - **게발이 브리핑 자동 발행:** `harness\scripts\publish-briefing.ps1` — 인계 읽 즉시 실행(멱등 스킵) · openclaw `npm run dev`→`generate-cardnews.ps1`→homepage 커밋→GH Pages 200 · 로그 `F:\backup\briefing-YYYY-MM-DD.log` · 옵션 `-Date`/`-Force`
 - **철학사 1권:** 1~10화 확정·업로드 완료(id 8·15·16·17·18·27·29·30·31·32) · 11화(아리스토텔레스·1-13) 집필 예정 · 업로드 스킬 `openclaw-local-mvp\.claude\skills\philosophy-essay-upload\SKILL.md`
 - **심리학사 1권:** 1~14화 확정·업로드 완료(id 12·13·14·19·20·21·22·23·33·34·36) · 집필지침 §6.2 분량표·목차 갱신
-- **심리학사 2권:** 15화(2-1 분트) **✅ 확정·발행(2026-09-01, id=37)** · 16화(2-2 구조주의) **✅ 확정·발행(2026-09-02, ep16·id=38)** · 17화(2-3 기능주의) **무진님 라인 검토 반영(2026-09-03: 맞춤법·문장부호·문어체·문장 구성)+도판 스펙 5키 보완 — 재검토 대기(확정 전)** · 18화(2-4 의식의 흐름) **§10 이상(李箱)·동아시아 수용 반영(각주 17, 22,125자) — 재검토 대기(확정 전)**
+- **심리학사 2권:** 15화(2-1 분트) **✅ 확정·발행(2026-09-01, id=37)** · 16화(2-2 구조주의) **✅ 확정·발행(2026-09-02, ep16·id=38)** · 17화(2-3 기능주의) **✅ 확정·발행(2026-09-04, ep17·id=39, 19,235자 — 사실 수정 4건·도판 등장순 재배치/재번호·단어 코너 §5 이동, placeholder 3종)** · 18화(2-4 의식의 흐름) **§10 이상(李箱)·동아시아 수용 반영(각주 17, 22,125자) — 재검토 대기(확정 전)**
 - **Claude Code 통로 (DeepSeek 공식 직판 — 최신 실측 2026-09-03):** 실행 `OneDrive\바탕 화면\AI\Claude-Code-DeepSeek.cmd` → `~\.claude\start-claude-deepseek.ps1` → **`api.deepseek.com/anthropic`**(deepseek-v4-flash, opus 슬롯 deepseek-v4-pro) · 키 `~\.claude\deepseek-api-key.local`(sk-...) · `/login` 금지 · VS Code 자동실행 버그해결: cmd title 제거+claude.exe 직접 실행 · **⚠️ 08-31 기록의 'DeepInfra 직결'(start-claude-deepinfra.ps1·api.deepinfra.com/anthropic, 잔액 $5)은 현재 미사용(구식)** — 런처·키는 롤백용 보존
 - **Git tip:** LLM Wiki `origin/master` · homepage `origin/master`(`project\homepage\progress.md` 동기) · harness `origin/main`(`docs\desktop-handoff\` 미러) · openclaw `origin/main` · CRLF `M`은 `git diff HEAD --stat` 확인
 - **(완료 참조 — 상세는 아카이브·저장소):** 4개 PDF 파이프라인(피그마·예일대지성사·AI Agent·듀얼브레인 → `G:\내 드라이브\Claude\`) · 철학사수업1 1~11부 교정 → `F:\wiki\raw\`(2c2f0775·de65a7e4) · HWP→TXT `harness\scripts\convert-hwp-to-txt.ps1`(pyhwp) · 카드뉴스·홈페이지 DESIGN.md 1~3단계(`homepage\admin\cardnews\DESIGN.md`→style.css :root→CLAUDE.md) · openclaw-local-mvp(축구/개인 카드) · confidence:low 0 · Google OAuth 토큰 만료(refreshAccessToken)
