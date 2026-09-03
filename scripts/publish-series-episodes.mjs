@@ -183,6 +183,28 @@ const SERIES_MAP = {
         excerpt: "철학 강의실에서 마음은 생각되고, 실험실에서 마음은 재어지기 시작했다. 1786년 칸트가 세운 벽 — 심리학은 수학을 쓰지 못하므로 자연과학이 될 수 없다 — 을 사이에 두고 두 세계는 갈라져 있었다. 헬름홀츠는 신경 신호에 시간이 걸린다는 것을 재고, 돈더스는 반응 시간을 빼고 더하고, 페히너는 감각을 수식으로 쓰고, 에빙하우스는 기억을 곡선으로 그렸다. 흩어지던 측정들이 1879년 라이프치히 콘빅트의 한 방에서, 분트라는 한 사람 안에서 한 지점으로 모인다. 심리학이 문턱을 넘는 순간을 좇는다.",
         card_image_url: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=530&fit=crop",
       },
+      // ── 2권 (volume2) — episode 15부터는 dir로 권 디렉터리 지정 ──
+      15: {
+        dir: "F:/wiki/manuscripts/psychology/volume2",
+        file: "2권_1화_01_분트-라이프치히-심리학의-실험실.md",
+        title: "제15화 분트 — 라이프치히, 심리학의 실험실",
+        excerpt: "1879년, 라이프치히 대학의 작은 방 하나에서 심리학이 실험실을 얻었다. 철학의 한 갈래로 여겨지던 마음의 학문을 '자연과학'으로 세우려 한 빌헬름 분트와, 그가 라이프치히에 세운 세계 최초의 심리학 실험실의 이야기.",
+        card_image_url: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=530&fit=crop",
+      },
+      16: {
+        dir: "F:/wiki/manuscripts/psychology/volume2",
+        file: "2권_2화_01_구조주의-티치너와-내성법.md",
+        title: "제16화 구조주의 — 티치너와 내성법",
+        excerpt: "분트의 제자 에드워드 티치너가 미국 코넬에 심은 심리학 — 마음을 감각·이미지·감정으로 분해하는 구조주의와, 그 유일한 도구였던 내성법의 이야기.",
+        card_image_url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=530&fit=crop",
+      },
+      17: {
+        dir: "F:/wiki/manuscripts/psychology/volume2",
+        file: "2권_3화_01_기능주의-윌리엄-제임스와-미국-심리학.md",
+        title: "제17화 기능주의 — 윌리엄 제임스와 미국 심리학",
+        excerpt: "마음을 쪼개려 한 구조주의에 맞서, 윌리엄 제임스는 마음이 강물처럼 흐른다고 말했다. 무엇으로 이루어졌는가보다 무엇을 위해 있는가 — 미국 땅에서 '마음의 쓰임'을 물은 기능주의와, 의식의 흐름·습관·감정의 순서를 뒤집은 사유를 좇는다.",
+        card_image_url: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=400&h=530&fit=crop",
+      },
     },
   },
 };
@@ -249,7 +271,9 @@ async function main() {
 
   for (const ep of episodeNumbers) {
     const info = episodes[ep];
-    const filePath = path.join(volumeDir, info.file);
+    // episode.dir 가 있으면 그 권(volume) 디렉터리 기준, 없으면 시리즈 기본 volumeDir 사용
+    const baseDir = info.dir ?? volumeDir;
+    const filePath = path.join(baseDir, info.file);
 
     let bodyMarkdown;
     try {
@@ -260,7 +284,7 @@ async function main() {
     }
 
     // 상대경로 이미지 → base64 data URL 인라인 (홈페이지 렌더링 보장, §8.5 규칙 6)
-    bodyMarkdown = await inlineImagesBase64(bodyMarkdown, volumeDir);
+    bodyMarkdown = await inlineImagesBase64(bodyMarkdown, baseDir);
 
     // title 중복 체크
     const checkRes = await fetch(
