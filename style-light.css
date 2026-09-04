@@ -320,6 +320,24 @@ body.light-mode,
     color: #666;
 }
 
+/* 라이트 모드 본문 표 (2026-09-05) */
+.light-mode .post-body table th,
+.light-mode .review-body table th {
+    color: #3a3530;
+    background: rgba(143, 125, 96, 0.1);
+    border-color: rgba(143, 125, 96, 0.4);
+}
+
+.light-mode .post-body table td,
+.light-mode .review-body table td {
+    border-color: rgba(143, 125, 96, 0.28);
+}
+
+.light-mode .post-body table tbody tr:nth-child(even),
+.light-mode .review-body table tbody tr:nth-child(even) {
+    background: rgba(143, 125, 96, 0.06);
+}
+
 /* -- 라이트 모드 공통 입력 필드 -- */
 .light-mode .editor-input,
 .light-mode .editor-select,

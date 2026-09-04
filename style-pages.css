@@ -2827,6 +2827,46 @@
     border-bottom-color: #dabb7e;
 }
 
+/* ── 본문 표 (마크다운 GFM 테이블) ──
+   .review-body(에세이·서평)·.post-body(블로그) 안의 md 표가
+   그리드 선·셀 간격 없이 이어진 문장처럼 보이던 문제 수정 (2026-09-05) */
+.post-body table,
+.review-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2.2rem 0;
+    font-size: 0.95rem;
+    line-height: 1.75;
+}
+
+.post-body th,
+.review-body th {
+    font-weight: 700;
+    color: #ccc;
+    text-align: left;
+    background: rgba(143, 125, 96, 0.12);
+    border: 1px solid rgba(143, 125, 96, 0.4);
+    padding: 0.7rem 0.9rem;
+    vertical-align: bottom;
+}
+
+.post-body td,
+.review-body td {
+    border: 1px solid rgba(143, 125, 96, 0.2);
+    padding: 0.7rem 0.9rem;
+    vertical-align: top;
+}
+
+.post-body tbody tr:nth-child(even),
+.review-body tbody tr:nth-child(even) {
+    background: rgba(143, 125, 96, 0.05);
+}
+
+.post-body table a,
+.review-body table a {
+    border-bottom: none;
+}
+
 /* 인용구 (책 본문에서 가져온 문장) */
 .review-body .book-quote {
     color: #888;
@@ -3126,6 +3166,17 @@
     .review-body {
         font-size: 0.7rem;
         line-height: 1.75;
+    }
+    /* 좁은 화면 본문 표 축소 (2026-09-05) */
+    .post-body table,
+    .review-body table {
+        font-size: 0.8rem;
+    }
+    .post-body th,
+    .post-body td,
+    .review-body th,
+    .review-body td {
+        padding: 0.5rem 0.55rem;
     }
 }
 
