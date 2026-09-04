@@ -330,6 +330,7 @@ body.light-mode,
 
 .light-mode .post-body table td,
 .light-mode .review-body table td {
+    color: #4a4540;
     border-color: rgba(143, 125, 96, 0.28);
 }
 

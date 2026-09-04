@@ -2842,8 +2842,8 @@
 .post-body th,
 .review-body th {
     font-weight: 700;
-    color: #ccc;
-    text-align: left;
+    color: #f4ecd8;
+    text-align: center;
     background: rgba(143, 125, 96, 0.12);
     border: 1px solid rgba(143, 125, 96, 0.4);
     padding: 0.7rem 0.9rem;
@@ -2852,7 +2852,9 @@
 
 .post-body td,
 .review-body td {
-    border: 1px solid rgba(143, 125, 96, 0.2);
+    color: #e8e1cf;
+    text-align: center;
+    border: 1px solid rgba(143, 125, 96, 0.22);
     padding: 0.7rem 0.9rem;
     vertical-align: top;
 }
