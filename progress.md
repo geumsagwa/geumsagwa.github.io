@@ -12,6 +12,16 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-06T23:26+09:00`** — **제30화(3권 3화 · 프로이트 ③ — 성격 구조와 방어기제) 초고 완성 — 본문 18,382자(E-basis)·각주 20·단어코너 2, DAV 1차 사실 전수조사로 교정 7건 반영('상속자' 미검증·'아빠-말'·'여동생-황새 시간순'·'저항'·'아나 순서/귀속'·'승화 각주 보강'), §5.7 게이트 3산출물 02에 기록, llm-wiki 커밋 23ef71c2 푸시 — 도판 확정·발행은 무진님 검토 대기**
+  - [자동수집 · Git] 마지막 세션(2026-09-06T19:17+09:00) 이후:
+    · homepage master: HEAD e13972b / origin e13972b :: e13972b 진행 기록: 인계 갱신 (update-handover auto) / cdab172 진행 기록: 인계 갱신 (update-handover auto) / a2d504e 진행 기록: 인계 갱신 (update-handover auto) / 7d91db1 publish SERIES_MAP ep23·ep24(심리학사 제23화 임상 심리학·제24화 응용 심리학) 추가 — 홈페이지 등록(Supabase id=45·46) / 231d2ba 진행 기록: 인계 갱신 (update-handover auto) / 2d123c5 publish SERIES_MAP ep22(심리학사 제22화 동물 심리학 — 비교와 실험의 시작) 추가 — 홈페이지 등록(Supabase id=44) / fd78c3a publish SERIE
+    · llm-wiki master: HEAD 23ef71c2 / origin 23ef71c2 ·작업트리 변경 119 :: 23ef71c2 3권 3화 제30화(성격 구조와 방어기제) 초고·검토내용 추가 — 본문 18,382자(E-basis)·각주 20·DAV 1차 교정 7건 반영, 02에 §5.7 게이트 기록 (2026-09-06) / fa3323b4 2권 9화 제23화 발행 기록 정리 — 02 상태 '확정'→'확정·발행'(ep23·Supabase id=45) 반영·발행 불릿 추가, 최종목차 2-9·2-10 발행 표기(id=45·22,085자 / id=46·24,864자, 2026-09-06 확정) / 08220e24 2권 10화 제24화(응용 심리학) 도판 실사 반영 — 그림1 뮌스터베르크 초상(1900 책 스캔 크롭 1731×2180)·그림3 길브레스 부부(개별 초상 좌우 합성 1869×1156) png placeholder
+    · harness  main: HEAD 2a71f9f / origin 2a71f9f ·작업트리 변경 3 :: 2a71f9f docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / afd1c7f docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e6e6410 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6d06c10 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f691e1a docs(desktop-handoff): 인계 갱신 동기 (인계 파일 상단에 자동 파이프라인 규칙 추가 — 위치 라우팅 개선) / 32c592f fix(scripts): optimize-handover BOM 규약 통일(no-BOM) +
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+  - 상세: ① 3권_3화_01(226줄)·02(133줄) 신규 작성 — §5.10 형식(연속 빈줄 0·끝 공백 0)·각주 [^1]~[^20] 정의 1:1·마커 각 1회·E-basis 18,382/18,318자(목표 17,500~18,500 충족) python 검증 통과. ② DAV 교정 7건 근거(캐시 en/ja/ko 위키 원문): §5 '아빠가 말을 타고 외출' 소스 부재 / §6 en_Little_Hans 'vanquished the most powerful resistance'·'storks use to bring new babies' / §8 '상속자' 문구 소스 부재 → '오이디푸스 콤플렉스가 풀려 가며 부모를 닮아 가는 마음이 만든 힘'(en_Id,_ego_and_superego 동일시·아버지 성격 유지), [^13] 앵커 유지 / §10 아나 순서·귀속 일반화(en_Defence_mechanism 일반 서술) / [^16] 승화 Sublimierung·하이네-디펜바흐 기원 보강(en_Sublimation_(psychology)). ③ 02 갱신 — 상태 줄 '01 초고 완료'·DAV 비판적 검토 절·§5.7 게이트 3산출물·각주 출처 대조표(20)·DAV 교정↔근거 대조표·진행 기록. ④ llm-wiki 미커밋 119건(선행 세션 기원)은 손대지 않고 ep30 2건만 커밋·푸시(23ef71c2).
+  - 다음 작업: ① 제30화 도판 — 그림A(구조론 개념도)·그림B(그리스 도기)·그림C(진료실/아나) 실사 확정·본문 placeholder 삽입 여부(무진님) ② 무진님 검토 → 확정·발행 시 homepage SERIES_MAP 등록·Supabase 업로드·최종목차 반영 ③ 교차 링크(확정·업로드 후에만).
+
 - 시각(ISO): **`2026-09-06T19:17+09:00`** — **23화(2-9) 발행 기록 정리 완료 — 무진님 '23화 확정→발행 완료'를 실서비스까지 교차 확인 후, 02 상태 '확정'→'확정·발행'(ep23·Supabase id=45)·발행 불릿 추가, 최종목차 2-9·2-10 발행 표기(id=45·22,085자 / id=46·24,864자, 2026-09-06 확정), llm-wiki fa3323b4 푸시**
   - [자동수집 · Git] 마지막 세션(2026-09-06T19:06+09:00) 이후:
     · homepage master: HEAD cdab172 / origin cdab172 :: cdab172 진행 기록: 인계 갱신 (update-handover auto) / a2d504e 진행 기록: 인계 갱신 (update-handover auto) / 7d91db1 publish SERIES_MAP ep23·ep24(심리학사 제23화 임상 심리학·제24화 응용 심리학) 추가 — 홈페이지 등록(Supabase id=45·46) / 231d2ba 진행 기록: 인계 갱신 (update-handover auto) / 2d123c5 publish SERIES_MAP ep22(심리학사 제22화 동물 심리학 — 비교와 실험의 시작) 추가 — 홈페이지 등록(Supabase id=44) / fd78c3a publish SERIES_MAP ep21(심리학사 제21화 발달 심리학의 탄생 — 홀과 볼드윈) 추가 —
@@ -75,18 +85,6 @@
 - 26화 개념도 그림1·그림2 (AI 의뢰) 제작 → placeholder 파일명 최종 조정(확정 시).
 - Standing: 21화 그림2·3·5 / 22화 그림5 / 19화 그림1·3 / 20화 그림2~4 placeholder → AI 개념도 제작(별도 AI) 후 파일 교체·재업로드.
 - llm-wiki 작업트리: 2권_9화(01·02·그림1)·2권_11화·2권_12화(01·02·그림3)·보류 추적 파일 2종 등 다수 미커밋(미확정 화 관례 유지) — 확정·발행 시 커밋.
-
-- 시각(ISO): **`2026-09-05T20:01+09:00`** — **09-05 세션: 20화(2-6 지능의 측정 — 비네와 IQ) 무진님 승인 → 확정·발행(ep20·id=42) — 본문 24,933자·도판 4(그림1 비네 초상 실사 + 그림2~4 자리표시)·각주 63, llm-wiki 6b129542·homepage 7663bac 푸시.**
-  - [20화 확정 ✅ → 발행 절차 완료] 본문 **24,933자**·12절·각주 63(마커↔정의 1:1)·도판 4
-    · **llm-wiki**: 02_검토내용 상태 ✅ 확정·발행 반영(2026-09-05·ep20·id=42·24,933자) + 목차 v1 2-6 "20p → ✅ 발행(id=42·24,933자, 2026-09-05 확정)" → 커밋 **6b129542**(7 files: 2권_6화_01~06 + 최종목차), push fe75e1eb..6b129542 — 타 작업트리(1권 13·14화 도판 정정 등)는 미커밋 유지
-    · **homepage**: publish-series-episodes.mjs SERIES_MAP ep20 추가 → 커밋 **7663bac**, push 80aa18b..7663bac (GH Pages 자동 배포)
-    · **Supabase**: essays INSERT **id=42**·심리학사 **ep20** — 도판 4 base64 인라인(그림1 비네 초상 실사; 그림2~4는 자리표시 816B — 실물(AI 개념 도식) 제작 후 파일 교체·재업로드) · series·episode_number=20 비-null 확인(시리즈 그리드 포함) · essay.html?id=42 HTTP 200
-  - [자동수집 · Git] 마지막 세션(2026-09-05T07:18+09:00) 이후:
-    · homepage master: HEAD 7663bac / origin 7663bac(푸시 완료) :: 7663bac 심리학사 ep20(제20화 지능의 측정 — 비네와 IQ의 탄생) SERIES_MAP 등록 · 홈페이지 발행 / (progress.md 미러 동기 커밋 예정)
-    · llm-wiki master: HEAD 6b129542 / origin 6b129542(푸시 완료) ·작업트리 변경(1권 13·14화 도판 정정 등) 미커밋 유지 :: 6b129542 2권 6화 제20화 지능의 측정 — 비네와 IQ의 탄생 확정·발행(ep20·Supabase id=42·본문 24,933자·검토내용·목차 발행 표기)
-    · harness main: HEAD 17e1a6c / origin 17e1a6c(푸시 완료) :: 17e1a6c docs(desktop-handoff) 인계 갱신 동기(19화 ep19·id=41) — **ep20 미러 동기는 Desktop\Harness 두 파일 갱신 → update-handover auto로 후행 동기·커밋 예정**
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a(변경 없음)
-  - [다음 작업] 20화 그림2~4·19화 그림1·3 자리표시 → AI 개념도 제작 시 파일 교체·재업로드 · 21화(2-7 홀·볼드윈) 검토 → 확정 → 발행 · 철학사 11화(아리스토텔레스) 집필
 
 ## 브랜치·원격
 - **작업 브랜치:** `master`
