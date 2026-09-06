@@ -12,6 +12,15 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-06T19:17+09:00`** — **23화(2-9) 발행 기록 정리 완료 — 무진님 '23화 확정→발행 완료'를 실서비스까지 교차 확인 후, 02 상태 '확정'→'확정·발행'(ep23·Supabase id=45)·발행 불릿 추가, 최종목차 2-9·2-10 발행 표기(id=45·22,085자 / id=46·24,864자, 2026-09-06 확정), llm-wiki fa3323b4 푸시**
+  - [자동수집 · Git] 마지막 세션(2026-09-06T19:06+09:00) 이후:
+    · homepage master: HEAD cdab172 / origin cdab172 :: cdab172 진행 기록: 인계 갱신 (update-handover auto) / a2d504e 진행 기록: 인계 갱신 (update-handover auto) / 7d91db1 publish SERIES_MAP ep23·ep24(심리학사 제23화 임상 심리학·제24화 응용 심리학) 추가 — 홈페이지 등록(Supabase id=45·46) / 231d2ba 진행 기록: 인계 갱신 (update-handover auto) / 2d123c5 publish SERIES_MAP ep22(심리학사 제22화 동물 심리학 — 비교와 실험의 시작) 추가 — 홈페이지 등록(Supabase id=44) / fd78c3a publish SERIES_MAP ep21(심리학사 제21화 발달 심리학의 탄생 — 홀과 볼드윈) 추가 —
+    · llm-wiki master: HEAD fa3323b4 / origin fa3323b4 ·작업트리 변경 105 :: fa3323b4 2권 9화 제23화 발행 기록 정리 — 02 상태 '확정'→'확정·발행'(ep23·Supabase id=45) 반영·발행 불릿 추가, 최종목차 2-9·2-10 발행 표기(id=45·22,085자 / id=46·24,864자, 2026-09-06 확정) / 08220e24 2권 10화 제24화(응용 심리학) 도판 실사 반영 — 그림1 뮌스터베르크 초상(1900 책 스캔 크롭 1731×2180)·그림3 길브레스 부부(개별 초상 좌우 합성 1869×1156) png placeholder 교체 + 복원포인트 3점, 홈페이지 재발행(ep24·Supabase id=46) / f917fd33 2권 9·10화 제23·24화 확정·발행 — 23화 원고·검토내용·그림1(위트머 초상)·그림2 placeholde
+    · harness  main: HEAD afd1c7f / origin afd1c7f ·작업트리 변경 3 :: afd1c7f docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e6e6410 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6d06c10 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f691e1a docs(desktop-handoff): 인계 갱신 동기 (인계 파일 상단에 자동 파이프라인 규칙 추가 — 위치 라우팅 개선) / 32c592f fix(scripts): optimize-handover BOM 규약 통일(no-BOM) + 5미러 자체 동기화 — 게이트 불일치 원인 제거 / cafa32d docs(desktop-handoff): 인계 갱
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+  - 상세: ① 교차 검증 — llm-wiki 2권_9화(01·02·그림1·그림2) f917fd33 커밋·푸시 · homepage ep23 SERIES_MAP 등록(7d91db1) · Supabase id=45=「제23화 임상 심리학의 시작 — 위트머와 심리 클리닉」(심리학사·episode_number=23)·essay.html?id=45 HTTP 200 · 18:18 핸드오버 기록 일치. ② 장부 정리(관례) — 2권_9화_02 상태 줄 'off-peak 대기'→'확정·발행(id=45)', 개요 '발행 절차(대기)'→'발행 확정(완료)' 불릿 교체, 진행 기록에 발행 완료 불릿 추가 · 최종목차 2-9·2-10 발행 표기(2-10은 24화 ep24·id=46 보유분). ③ llm-wiki fa3323b4(2 files) 커밋·푸시 완료.
+
 - 시각(ISO): **`2026-09-06T19:06+09:00`** — **24화(2-10 응용 심리학) 도판 실사 반영·홈페이지 재발행 완료(그림1 뮌스터베르크·그림3 길브레스 — 무진님 확정 2026-09-06)**: png placeholder → 실사 jpg 교체(뮌스터베르크 1900년 《Grundzüge der Psychologie》 책 스캔 크롭 1,731×2,180 / 길브레스 개별 초상 좌우 합성 1,869×1,156 — 확대 없음, 복원포인트 3점) → `publish-series-episodes.mjs psychology 24 --update` 재발행(ep24·Supabase id=46 갱신, essay.html?id=46 HTTP 200) — llm-wiki 커밋 08220e24 푸시 완료**
   - [자동수집 · Git] 마지막 세션(2026-09-06T18:18+09:00) 이후:
     · homepage master: HEAD a2d504e / origin a2d504e :: a2d504e 진행 기록: 인계 갱신 (update-handover auto) / 7d91db1 publish SERIES_MAP ep23·ep24(심리학사 제23화 임상 심리학·제24화 응용 심리학) 추가 — 홈페이지 등록(Supabase id=45·46) / 231d2ba 진행 기록: 인계 갱신 (update-handover auto) / 2d123c5 publish SERIES_MAP ep22(심리학사 제22화 동물 심리학 — 비교와 실험의 시작) 추가 — 홈페이지 등록(Supabase id=44) / fd78c3a publish SERIES_MAP ep21(심리학사 제21화 발달 심리학의 탄생 — 홀과 볼드윈) 추가 — 홈페이지 등록(Supabase id=43) / 526e071 진행 기록: 인계 갱
@@ -78,21 +87,6 @@
     · harness main: HEAD 17e1a6c / origin 17e1a6c(푸시 완료) :: 17e1a6c docs(desktop-handoff) 인계 갱신 동기(19화 ep19·id=41) — **ep20 미러 동기는 Desktop\Harness 두 파일 갱신 → update-handover auto로 후행 동기·커밋 예정**
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a(변경 없음)
   - [다음 작업] 20화 그림2~4·19화 그림1·3 자리표시 → AI 개념도 제작 시 파일 교체·재업로드 · 21화(2-7 홀·볼드윈) 검토 → 확정 → 발행 · 철학사 11화(아리스토텔레스) 집필
-
-- 시각(ISO): **`2026-09-05T07:18+09:00`** — **09-05 세션: 18화 '다섯 가지 성격 표' 렌더링 수정(표 CSS 신설·중앙 정렬·색상 밝게) + 19화(2-5 게슈탈트) 무진님 승인 → 확정·발행(ep19·id=41) — 본문 26,831자·도판 5(실사 3+자리표시 2)·각주 21, llm-wiki fe75e1eb·homepage 4f38d9d 푸시.**
-  - [18화 표 수정(지적 → 반영·배포)] 게시된 '다섯 가지 성격 표'가 구분선·열 간격 없이 이어진 문장처럼 보이는 문제 → 원인=**테이블 CSS 부재**(마크다운/렌더 버그 아님). `.post-body/.review-body table` CSS 신설(골드 테두리·헤더 배경·줄무늬) → 후속 지시 '중앙 정렬·색상 밝게' 반영(텍스트 center, 헤더 #f4ecd8·셀 #e8e1cf, 라이트 모드 오버라이드) · essay/review/post 캐시 `?v=20260905b` · homepage 커밋 78cd97d·3d0d0e5, GH Pages 배포 후 색상 코드로 실측 확인
-  - [18화 기타 안내] 에디터 'Diff unavailable — Couldn't read the git diff' = **일시적**(저장소 git 정상) → 다음 변경 시 자동 재시도 · 도판이 앞 화보다 작아 보임 = 자리표시 원본 해상도 400×300(기존 800×600 대비) 차이, `max-width:100%`라 업스케일 없음 — **정상**, AI 개념도 교체 때까지 그대로 유지(무진님 '1' 선택)
-  - [19화(2-5 게슈탈트) 실사 검토 → 추가 탐색 종료] 실사 대상(세 창시자·루빈 꽃병·술탄)은 이미 실물 적용 완료(그림2·4·5) · 남은 그림1(가상운동)·그림3(조직법칙)은 실물 대체 불가한 **개념 도식(자리표시)** → 추가 실사 사진 탐색 불필요 확인, 무진님 승인
-  - [19화 확정 ✅ → 발행 절차 완료] 본문 **26,831자**(ep17·18과 동일 H1 제외 스크립트, 유지줄 119)·13절·각주 21(마커↔정의 1:1)·도판 5
-    · **llm-wiki**: 02_검토내용 상태 ✅ 확정·발행 반영(2026-09-05·id=41·26,831자) + 목차 v1 2-5 "22p → ✅ 발행(id=41·26,831자, 2026-09-05 확정)" → 커밋 **fe75e1eb**(8 files: 2권_5화_01~07 + 최종목차), push 8bb8f813..fe75e1eb — 타 작업트리(4화 ep18 초상·6·7화·철학1권 도판 등 84건)는 미커밋 유지
-    · **homepage**: publish-series-episodes.mjs SERIES_MAP ep19 추가 → 커밋 **4f38d9d**, push 3d0d0e5..4f38d9d (GH Pages 자동 배포)
-    · **Supabase**: essays INSERT **id=41**·심리학사 **ep19** — body 3.9MB·도판 5 base64 인라인(dataURL 5)·각주 21(마커 42회)·시리즈 그리드 1~19화 확인 · essay.html?id=41 HTTP 200 · 배포 CSS v=20260905b 확인 · publish-briefing(2026-09-05) 실행 완료(F: 마운트 후)
-  - [자동수집 · Git] 마지막 세션(2026-09-04T22:19+09:00) 이후:
-    · homepage master: HEAD 4f38d9d / origin 4f38d9d(푸시 완료) :: 4f38d9d publish SERIES_MAP ep19 추가 / 3d0d0e5·78cd97d 18화 표 CSS·캐시 v=20260905b / (progress.md 미러 동기 커밋 예정)
-    · llm-wiki master: HEAD fe75e1eb / origin fe75e1eb(푸시 완료) ·작업트리 변경 84 :: fe75e1eb 2권 5화 제19화 게슈탈트 심리학 확정·발행(ep19·본문 26,831자·검토내용·목차 발행 표기)
-    · harness main: HEAD f377c28 / origin f377c28(아래 desktop-handoff 미러 동기 커밋 예정)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a(변경 없음)
-  - [다음 작업] 19화 도판 그림1·3 AI 개념도 제작 시 파일 교체·재업로드(자리표시 유지) · 20화(2-6 비네)·21화(2-7 홀·볼드윈) 무진님 검토 → 확정 → 발행 · 철학사 11화(아리스토텔레스) 집필
 
 ## 브랜치·원격
 - **작업 브랜치:** `master`
