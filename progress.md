@@ -12,6 +12,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-07T22:08+09:00`** — **방안 A 적용: session-closeout.py 신설·푸시(f592dfb)·두 CLAUDE.md 규칙 문서 반영 — 세션 마무리 원스톱(콘텐츠 커밋+인계) 통합 완료**
+  - [자동수집 · Git] 마지막 세션(2026-09-07T21:45+09:00) 이후:
+    · homepage master: HEAD b96dc2f / origin b96dc2f :: b96dc2f 진행 기록: 인계 갱신 (update-handover auto) / 512fbee publish: SERIES_MAP ep26(심리학사 제26화 심리학의 확산 — 유럽에서 미국으로) 추가 — Supabase essays id=48 등록·도판 inline(2026-09-07) / 804a02e publish ep25(제25화 여성 심리학자들 — 칼킨스와 워시번) SERIES_MAP 추가 — Supabase id=47 / 기존 ep15~24 파일명 개명 정리 + 진행 기록 / e7cf59b 자동: 카드뉴스 갱신 (2026-09-07)
+    · llm-wiki master: HEAD 8bb1bbca / origin 8bb1bbca ·작업트리 변경 71 :: 8bb1bbca ep26 §12 '외국어로만 쓰여진'→'쓰인' 이중 피동 교정 반영 — E-basis 19,396자 재실측(+63) · 02 기록·자수표·목차 갱신 (2026-09-07) / f4f1020d ep26(2권 12화 제26화 심리학의 확산) '실' 은유 제거 문장 12건 반영 — 전체 재검증 통과·이상 없음 → 확정·발행(ep26·Supabase id=48·본문 E-basis 19,397자) + 검토내용 갱신·도판 그림1·2 placeholder 생성·최종목차 2-12 발행 표기 (2026-09-07) / 0f1f9362 2권 11화 제25화(여성 심리학자들 — 칼킨스와 워시번) 확정·발행 기록 — 02 상태 '확정·발행'(ep25·Supabase id=47)·재검증/발행 불릿 추가, 최종목차 
+    · harness  main: HEAD f592dfb / origin f592dfb ·작업트리 변경 3 :: f592dfb feat(scripts): 세션 마무리 원스톱 session-closeout.py — 콘텐츠 커밋·푸시 + 인계 갱신(collect→apply --git) 통합, --dry-run 지원 (2026-09-07) / bc39a59 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - 상세(자동): 콘텐츠 커밋 없음 — 인계 갱신만 수행 (session-closeout)
+
 - 시각(ISO): **`2026-09-07T21:45+09:00`** — **제26화(2권 12화 · 심리학의 확산 — 유럽에서 미국으로) 전체 재검증 통과 → 확정·발행 — '실' 은유 문장 12건 반영 후 구조 게이트(각주 마커/정의 17개 1:1·도판 3·단어코너 2) · E-basis 19,396자 재실측(HEAD 19,333 대비 +63, 16p 충족) · 02 검토내용·최종목차 갱신 → homepage SERIES_MAP ep26 등록 · Supabase id=48 발행(essay HTTP 200) → §12 '쓰여진'→'쓰인' 이중 피동 교정 후 --update 재발행 — llm-wiki f4f1020d·8bb1bbca · homepage 512fbee 푸시**
   - [자동수집 · Git] 마지막 세션(2026-09-06T23:26+09:00) 이후:
     · homepage master: HEAD 512fbee / origin 512fbee :: 512fbee publish: SERIES_MAP ep26(심리학사 제26화 심리학의 확산 — 유럽에서 미국으로) 추가 — Supabase essays id=48 등록·도판 inline(2026-09-07) / 804a02e publish ep25(제25화 여성 심리학자들 — 칼킨스와 워시번) SERIES_MAP 추가 — Supabase id=47 / 기존 ep15~24 파일명 개명 정리 + 진행 기록 / e7cf59b 자동: 카드뉴스 갱신 (2026-09-07) / 9b58e6c 진행 기록: 인계 갱신 (update-handover auto) / 6bcc7bf 진행 기록: 인계 갱신 (update-handover auto) / e13972b 진행 기록: 인계 갱신 (update-handover auto) 
@@ -50,17 +58,6 @@
   - 상세: 02 '도판 후보' 그림1·그림3 확정·적용 내역 기재(파일·해상도·출처·라이선스·복원포인트) + 01 캡션·이미지 참조 png→jpg 교체. 실사 후보 3종 스테이징·검증(뮌스터베르크 1,740×2,685 / 프랭크 1,362×1,556 / 릴리언 833×1,156 — 전부 PD, 릴리언은 직접 URL로 재확보). 그림2·4·5 개념 도식 placeholder 유지.
   - 다음 작업: ① 24화 개념도 그림2(거리 카드)·그림4(세 물음)·그림5(장교 평정) + 23화 그림2(진단 흐름) 타 AI 의뢰 → 수급 후 `publish-series-episodes.mjs psychology 23 24 --update` 재발행 ② 23화는 이번 세션 도판 무변화(그림1 실사 확보 유지) ③ 제25화(2-11) 이후 집필·검토 재개.
   - 참고: llm-wiki 작업 트리 미커밋 105건(선행 세션 기원) 유지 — 본 세션은 2권_10화 9건만 커밋.
-
-- 시각(ISO): **`2026-09-06T18:18+09:00`** — **심리학 23·24화 확정·홈페이지 발행 완료(2-9 임상·2-10 응용)**: 24화 라인별 수정(§10 전쟁 문단→법정 블록 뒤 재배치·302행 퍼듀 강의 문장·§12 20→120년) 반영 후 전체 재검증 PASS → 이상 없음 확정(02 기록, E-basis 24,849자·각주 24) → 23화(ep23·Supabase id=45)·24화(ep24·id=46) 홈페이지 업로드 완료(이미지 base64 인라인, 도판 placeholder 6건 400×300 신설) — homepage 커밋 7d91db1 · llm-wiki 커밋 f917fd33(23·24화 원고·도판·HANDOVER) 푸시 완료**
-  - [자동수집 · Git] 마지막 세션(2026-09-06T12:31+09:00) 이후:
-    · homepage master: HEAD 7d91db1 / origin 7d91db1 :: 7d91db1 publish SERIES_MAP ep23·ep24(심리학사 제23화 임상 심리학·제24화 응용 심리학) 추가 — 홈페이지 등록(Supabase id=45·46) / 231d2ba 진행 기록: 인계 갱신 (update-handover auto) / 2d123c5 publish SERIES_MAP ep22(심리학사 제22화 동물 심리학 — 비교와 실험의 시작) 추가 — 홈페이지 등록(Supabase id=44) / fd78c3a publish SERIES_MAP ep21(심리학사 제21화 발달 심리학의 탄생 — 홀과 볼드윈) 추가 — 홈페이지 등록(Supabase id=43) / 526e071 진행 기록: 인계 갱신 (인계 파일 상단에 자동 파이프라인 규칙 추가 — 위치 라우팅 개선) / f97
-    · llm-wiki master: HEAD f917fd33 / origin f917fd33 ·작업트리 변경 105 :: f917fd33 2권 9·10화 제23·24화 확정·발행 — 23화 원고·검토내용·그림1(위트머 초상)·그림2 placeholder 최초 추가 / 24화 이번 세션 수정(§10 재배치·퍼듀 문장·§12 120년)·전체 재검증·확정 반영 + 도판 placeholder 5건, HANDOVER 갱신 (Supabase id=45·46) / 5541da1a 2권 8화 제22화 원고·도판 추가 — 동물 심리학 본문 19,403자·도판 6(실물 5 + 그림5 학습 곡선 placeholder) / 8bce792c 2권 8화 제22화 동물 심리학 — 비교와 실험의 시작 확정·발행(ep22·Supabase id=44·본문 19,403자·검토내용·목차 2-8 발행 표기) / 2c702f15 2권 7화 제21화 원고·도판 추가 
-    · harness  main: HEAD 6d06c10 / origin 6d06c10 ·작업트리 변경 3 :: 6d06c10 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f691e1a docs(desktop-handoff): 인계 갱신 동기 (인계 파일 상단에 자동 파이프라인 규칙 추가 — 위치 라우팅 개선) / 32c592f fix(scripts): optimize-handover BOM 규약 통일(no-BOM) + 5미러 자체 동기화 — 게이트 불일치 원인 제거 / cafa32d docs(desktop-handoff): 인계 갱신 동기 (5미러 정합 복구 — BOM 제거·ep20 미러 지연 해소)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-  - 상세: 24화(2권_10화) 본문 354줄 전체 재검증(구조·각주 24 1:1·도판 5·단어박스 1·연속빈줄 0) 및 §12 '열두 장 카드'↔§3 '12장' 수미상관 일치 확인. 23화·24화 검토내용 상태 줄 '확정 (2026-09-06 · 전체 재검증 통과 · 이상 없음)' 기입.
-  - 다음 작업: ① 24화(2-10)·23화(2-9) 도판 수급 후 `publish-series-episodes.mjs psychology 23 24 --update` 재발행(실사 그림1 뮌스터베르크·그림3 길브레스 = 무진님 확정 대기, 개념도 그림2·4·5·23화 그림2 = 타 AI 의뢰 예정) ② 제25화(2-11) 이후 진행 화 집필·검토 재개(작업 트리 2권_11·12·13화 상태 확인).
-  - 참고: llm-wiki 작업 트리에 선행 세션 기원 미커밋 변경(철학·1권·2권 1~5화 등 105건)이 남아 있음 — 이번 세션 산출물만 커밋했고 그 외는 손대지 않음.
 
 ## 이번 세션 요약
 
