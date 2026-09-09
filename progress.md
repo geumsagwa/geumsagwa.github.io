@@ -12,6 +12,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-09T22:28+09:00`** — **제39화(3-12) 코헛-자기 심리학: 01 본문 19,812자·14절·각주 46 게이트 통과, 실사 도판 2점(코헛 초상 §8·기념 명판 §2) 무진 채택·배치 완료**
+  - [자동수집 · Git] 마지막 세션(2026-09-09T18:35+09:00) 이후:
+    · homepage master: HEAD 2821226 / origin 2821226 :: 2821226 진행 기록: 인계 갱신 (update-handover auto) / 7e957b6 심리학사 28화 등록 — 프로이트 · 무의식의 발견 (volume3) / 2e20f79 진행 기록: 인계 갱신 (update-handover auto) / 3bfc0d0 자동: 카드뉴스 갱신 (2026-09-09) / 34cb6de 진행 기록: 인계 갱신 (update-handover auto) / b547ab9 진행 기록: 인계 갱신 (update-handover auto)
+    · llm-wiki master: HEAD 33e2f9b9 / origin 33e2f9b9 ·작업트리 변경 96 :: 33e2f9b9 3권 39화: 코헛 — 자기 심리학 01 완성(46 각주·게이트 통과) + 실사 도판 2점 채택·배치 / 177778c7 3권 37화: 실사 초상 주후보 3점 채택·배치 (아이젱크·포퍼·로프터스) / fb4b4f9d 통합집필지침 개정 반영 + §8.3 개념도 placeholder 규칙 신설 / 6879c47b 3권 28화: 프로이트 — 무의식의 발견 확정·발행(id=50) / ebc6b040 3권 37화: 정신분석의 비판 — 증거와 윤리 01 초고·02 검토·도판 의뢰서 (2026-09-09)
+    · harness  main: HEAD 105858a / origin 105858a ·작업트리 변경 3 :: 105858a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f1b7e09 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 4aa30d8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b3fb6db docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - 상세(자동): 콘텐츠 커밋 llm-wiki@33e2f9b9 (3권 39화: 코헛 — 자기 심리학 01 완성(46 각주·게이트 통과) + 실사 도판 2점 채택·배치)
+
 - 시각(ISO): **`2026-09-09T18:35+09:00`** — **심리학사 ep28(3-1 프로이트 · 무의식의 발견) 확정·발행(Supabase id=50) ＋ ep37 실사 초상 주후보 3점 채택·배치 ＋ 통합집필지침 §8.3 개념도 placeholder 규칙 신설**
   - [자동수집 · Git] 마지막 세션(2026-09-09T14:19+09:00) 이후:
     · homepage master: HEAD 7e957b6 / origin 7e957b6 :: 7e957b6 심리학사 28화 등록 — 프로이트 · 무의식의 발견 (volume3) / 2e20f79 진행 기록: 인계 갱신 (update-handover auto) / 3bfc0d0 자동: 카드뉴스 갱신 (2026-09-09) / 34cb6de 진행 기록: 인계 갱신 (update-handover auto) / b547ab9 진행 기록: 인계 갱신 (update-handover auto)
