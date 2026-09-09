@@ -12,6 +12,19 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-09T18:35+09:00`** — **심리학사 ep28(3-1 프로이트 · 무의식의 발견) 확정·발행(Supabase id=50) ＋ ep37 실사 초상 주후보 3점 채택·배치 ＋ 통합집필지침 §8.3 개념도 placeholder 규칙 신설**
+  - [자동수집 · Git] 마지막 세션(2026-09-09T14:19+09:00) 이후:
+    · homepage master: HEAD 7e957b6 / origin 7e957b6 :: 7e957b6 심리학사 28화 등록 — 프로이트 · 무의식의 발견 (volume3) / 2e20f79 진행 기록: 인계 갱신 (update-handover auto) / 3bfc0d0 자동: 카드뉴스 갱신 (2026-09-09) / 34cb6de 진행 기록: 인계 갱신 (update-handover auto) / b547ab9 진행 기록: 인계 갱신 (update-handover auto)
+    · llm-wiki master: HEAD 177778c7 / origin 177778c7 ·작업트리 변경 81 :: 177778c7 3권 37화: 실사 초상 주후보 3점 채택·배치 (아이젱크·포퍼·로프터스) / fb4b4f9d 통합집필지침 개정 반영 + §8.3 개념도 placeholder 규칙 신설 / 6879c47b 3권 28화: 프로이트 — 무의식의 발견 확정·발행(id=50) / ebc6b040 3권 37화: 정신분석의 비판 — 증거와 윤리 01 초고·02 검토·도판 의뢰서 (2026-09-09)
+    · harness  main: HEAD f1b7e09 / origin f1b7e09 ·작업트리 변경 3 :: f1b7e09 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 4aa30d8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b3fb6db docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약:
+    · **ep37 도판**: 무진님 주후보 3점 채택(아이젱크 §5 · 포퍼 §3 · 로프터스 §9) → Commons 라이선스 검증 · volume3 슬롯 배치(그림1→03 · 그림2→04 · 그림3→05) · 01 연결 · 02·도판의뢰서 갱신 · off-peak 대기 파일 실행 완료 기록. 커밋 177778c7.
+    · **ep28 확정·발행**: 무진 지시 3건 반영(히스테리·무의식 단어코너 평서문 교정 · §5 '이야기 심리학사' 정식 명칭) → 전체 재검증(_gate28.py) 이상 없음 → 02 확정 · E-basis 22,083 · 개념도 그림3·4 placeholder PNG 제작 · homepage SERIES_MAP ep28 등록 → 발행 **Supabase id=50**(essay.html?id=50 HTTP 200) · 목차 v1 3-1 발행 표기. 커밋 6879c47b.
+    · **지침 §8.3**: 개념도 미제작 시 자리표시(placeholder)로 진행 규칙 신설(무진 지시 — 별도 지시 없으면 이후 화도 동일) + 09-06/08 개정분(§5.7 화별 문서 구성·§5.10 공백 행·§10 각주 규범) 반영. 커밋 fb4b4f9d.
+    · **homepage**: SERIES_MAP ep28 등록 커밋 7e957b6. llm-wiki·homepage 모두 origin 푸시 완료.
+    · 남은 일: 28화 개념도 그림3·4 실물(타 AI 일괄 의뢰) 수령 시 placeholder 교체·`--update` 재발행 / 28화 확정 후 교차 링크(§9·다음 화 예고) / ep37 선택형 후보(포퍼2·로프터스4.0)는 보류 / llm-wiki 작업트리 잔여(철학 volume1·심리 volume1·3권 34~36화 등)는 타 작업분 — 이번 커밋에서 제외됨.
+
 - 시각(ISO): **`2026-09-09T14:19+09:00`** — **제37화(3-10 · 정신분석의 비판 — 증거와 윤리) 산출물 완료·커밋 — 01 본문 12절 · E-basis 17,644자(목표 17,500~18,500) · 각주 32(단일 문서 근거) · 근거 인용 58 전수 byte-exact 불일치 0 · 동어반복 0 · 교차 화(28~36) 반복 0(최장 공통 11) · 형식 게이트 PROBLEMS 0 → 02 검토내용 7섹션(§5.7 판정 '01 제출 가능 상태') · 도판의뢰서(실사 초상 후보 5점 = 주후보 3 · 선택형 2 — 그림1 아이젱크 §5 · 그림2 포퍼 §2·3 · 그림3 로프터스 §9, Commons API 존재·라이선스·해상도 실측, 채택 대기) → llm-wiki 로컬 커밋 `ebc6b040`(01·02·의뢰서, 미푸시) — 본 건 인계 파일 갱신으로 세션 마무리**
   - [자동수집 · Git] 마지막 세션(2026-09-09T04:33+09:00) 이후:
     · homepage master: HEAD 3bfc0d0 / origin 3bfc0d0 :: 3bfc0d0 자동: 카드뉴스 갱신 (2026-09-09) / 34cb6de 진행 기록: 인계 갱신 (update-handover auto) / b547ab9 진행 기록: 인계 갱신 (update-handover auto)
@@ -45,15 +58,6 @@
     · harness  main: HEAD f592dfb / origin f592dfb ·작업트리 변경 3 :: f592dfb feat(scripts): 세션 마무리 원스톱 session-closeout.py — 콘텐츠 커밋·푸시 + 인계 갱신(collect→apply --git) 통합, --dry-run 지원 (2026-09-07) / bc39a59 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
   - 상세(자동): 콘텐츠 커밋 없음 — 인계 갱신만 수행 (session-closeout)
-
-- 시각(ISO): **`2026-09-07T21:45+09:00`** — **제26화(2권 12화 · 심리학의 확산 — 유럽에서 미국으로) 전체 재검증 통과 → 확정·발행 — '실' 은유 문장 12건 반영 후 구조 게이트(각주 마커/정의 17개 1:1·도판 3·단어코너 2) · E-basis 19,396자 재실측(HEAD 19,333 대비 +63, 16p 충족) · 02 검토내용·최종목차 갱신 → homepage SERIES_MAP ep26 등록 · Supabase id=48 발행(essay HTTP 200) → §12 '쓰여진'→'쓰인' 이중 피동 교정 후 --update 재발행 — llm-wiki f4f1020d·8bb1bbca · homepage 512fbee 푸시**
-  - [자동수집 · Git] 마지막 세션(2026-09-06T23:26+09:00) 이후:
-    · homepage master: HEAD 512fbee / origin 512fbee :: 512fbee publish: SERIES_MAP ep26(심리학사 제26화 심리학의 확산 — 유럽에서 미국으로) 추가 — Supabase essays id=48 등록·도판 inline(2026-09-07) / 804a02e publish ep25(제25화 여성 심리학자들 — 칼킨스와 워시번) SERIES_MAP 추가 — Supabase id=47 / 기존 ep15~24 파일명 개명 정리 + 진행 기록 / e7cf59b 자동: 카드뉴스 갱신 (2026-09-07)
-    · llm-wiki master: HEAD 8bb1bbca / origin 8bb1bbca ·작업트리 변경 71 :: 8bb1bbca ep26 §12 '외국어로만 쓰여진'→'쓰인' 이중 피동 교정 반영 — E-basis 19,396자 재실측(+63) · 02 기록·자수표·목차 갱신 (2026-09-07) / f4f1020d ep26(2권 12화 제26화 심리학의 확산) '실' 은유 제거 문장 12건 반영 — 전체 재검증 통과·이상 없음 → 확정·발행(ep26·Supabase id=48·본문 E-basis 19,397자) + 검토내용 갱신·도판 그림1·2 placeholder 생성·최종목차 2-12 발행 표기 (2026-09-07) / 0f1f9362 2권 11화 제25화(여성 심리학자들 — 칼킨스와 워시번) 확정·발행 기록 — 02 상태 '확정·발행'(ep25·Supabase id=47)·재검증/발행 불릿 추가, 최종목차
-    · harness  main: HEAD 349950c / origin 349950c ·작업트리 변경 3 :: 349950c docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 8ff2632 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2a71f9f docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / afd1c7f docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e6e6410 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6d06c10 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f691e1a do
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - 상세: ①본문 '실(thread)' 확산 은유 전수 제거(§3·7·9·10·11·12·마무리 10곳 + 문안 지정 2건 = 12줄), git diff 전수 재열람 — 의도 수정 외 오염 없음. 구조 게이트 재실측: H1 1·H2 13·각주 마커/정의 17개 1:1(마커 1..17 순차, 정의 블록 01 L225~241)·도판 3+캡션·단어 코너 2·`* * *` 12+`---` 1·연속 빈줄/후행공백 0. E-basis 재실측 — _gate26 계측기가 수정 전 HEAD에서 기록값 19,333·절별 수치 전수 일치로 보정됨을 확인한 뒤 현행 19,396자(+63), 16p 목표(19,200~21,600) 충족. ②02 검토내용 전면 갱신(헤더 '확정·발행', 각주 배치 서술 정정 — 정의는 말미 블록 L225~241, 절별 자수 표·§5.7-1/2/3·도판 상태·진행기록 09-07 항목·표기메모) + 최종목차 2-12 발행 표기(id=48·19,396자). ③홈페이지 — SERIES_MAP ep26 등록(제목·excerpt·카드) 후 `publish-series-episodes.mjs psychology 26` → Supabase id=48(도판 3 base64 인라인) · 공개 확인(essay.html?id=48 HTTP 200). ④후속 교정(무진 지시) — §12 '외국어로만 쓰여진'→'쓰인' 이중 피동 교정, E-basis 19,396자 재실측(-1) → 02·목차 반영 → `--update` 재발행(id=48 body_markdown 교정 확인). ⑤커밋·푸시: llm-wiki f4f1020d(확정·발행)·8bb1bbca('쓰인' 교정) · homepage 512fbee(SERIES_MAP ep26).
-  - 다음 작업: ①ep26 개념도 그림1(미국 첫 실험실 지도)·그림2(확산 지도) — AI 의뢰 제작 후 placeholder 교체·`publish-series-episodes.mjs psychology 26 --update` 재발행(ep24 선례). ②ep26 무진 최종 검토. ③2권 27화(2-13) — 01/02 산출물 완료(E-basis 26,766자·22p, 각주 18) → 무진 검토→확정·발행 대기. ④3권 28(3-1)~33(3-6) — 28~32 01/02 산출물·DAV·§5.7 완료(도판·무진 검토 대기), 33 02 기획 완료(01 초고 진행 예정).
 
 ## 이번 세션 요약
 
