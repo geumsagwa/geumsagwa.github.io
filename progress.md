@@ -12,6 +12,18 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-12T21:36+09:00`** — **심리학 5권 51화(5-4 「비고츠키 — 사회적 마음」)·52화(5-5 「기억의 재구성 — 바틀렛」) 산출물 3종(01 본문·02 검토내용·도판의뢰서) 완성 — 51화 E-basis 15,771·각주 106·16p / 52화 E-basis 13,604·각주 97·14p, 양 화 게이트 22/22 PASS·DAV 인용 MISS 0 — 실사 2점씩 무진 승인 확정 · 개념도 2점씩 5키 스펙 명시 후 placeholder 유지 — 52화 커밋(a55cf86b·ecfadec1), 51화 이하 volume5 미커밋**
+  - [자동수집 · Git] 마지막 세션(2026-09-12T16:57+09:00) 이후:
+    · homepage master: HEAD 0ee6d2d / origin 0ee6d2d :: 0ee6d2d 심리학사 SERIES_MAP 등록 — ep29~33 엔트리 (33화 융 · 분석 심리학의 실천 발행 id=55) / 76cdb43 진행 기록: 인계 갱신 (update-handover auto) / 3736c4f 진행 기록: 인계 갱신 (update-handover auto) / 7327292 자동: 카드뉴스 갱신 (2026-09-12)
+    · llm-wiki master: HEAD ecfadec1 / origin a6e1fbf2 ·작업트리 변경 178 :: ecfadec1 심리학 5권 52화: 실사 2점 무진 승인 확정 반영 — 도판의뢰서·검토 02 상태 갱신 / a55cf86b 심리학 5권 52화(5-5) 「기억의 재구성 — 바틀렛」 본문 완성 + 검토 02 + 도판 4점 배치 / a6e1fbf2 3권 33화: 홈페이지 발행 완료(id=55) — 목차 v1 발행 표기(3-2~3-6) + 02 배포 상태 갱신 / 82dfc747 3권 33화: 융 — 분석 심리학의 실천 재검증·확정 — 도판 슬롯 표준화(그림1→03·그림4→06)·개념도 5키 도판의뢰서 분리
+    · harness  main: HEAD ff51664 / origin ff51664 ·작업트리 변경 3 :: ff51664 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f605cea docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - 52화(5-5 「기억의 재구성 — 바틀렛」, Frederic Bartlett 재구성 기억): 01 본문 61,735 B(UTF-8 no-BOM·LF) · E-basis 13,604(14p) · 머리말+12절 · 각주 97 · 단어코너 3(연쇄 재생·재구성·합리화) · 도판 4점. 게이트 `ws_tmp/ep52-research/_gate52.py` **22/22 PASS** · DAV `_dav52.py` **97/97 MISS 0**.
+  - 52화 도판: 그림1 바틀렛 초상 실사(PD · 616×800 · §2) · 그림2 카누 실사(Curtis 1914 · No known copyright restrictions · 1600×1187 · §4) **무진 승인 확정** — 그림3 전승 연쇄 · 그림4 기억의 재구성 개념도는 **placeholder(자리 표시 배지)** 유지. 도판의뢰서에 5키 스펙(위치·형태·요소·색상·캡션) 명시 → 다른 AI 외주 후 같은 파일명 교체(01 본문 수정 불필요). 실사 후보 7점 상세: `ws_tmp/ep52-research/figures/README_후보목록.md`.
+  - 51화(5-4 「비고츠키 — 사회적 마음」): 01 본문 E-basis 15,771(16p) · 각주 106 · 12절 · 도판 4점(그림1 비고츠키 초상·그림4 묘 = 실사 무진 승인 확정 / 그림2 매개 삼각형·그림3 근접발달영역 = 개념도 placeholder) — 게이트 22/22 PASS · DAV MISS 0. **미커밋**.
+  - 커밋: llm-wiki `a55cf86b`(52화 본문·검토·도판의뢰서 + 도판 4점) · `ecfadec1`(52화 실사 2점 승인 반영). volume5 48~51화는 untracked(미커밋).
+  - 다음: 51·52화 무진 원고 검토 → 확정·발행 / 개념도 4점(51화 그림2·그림3, 52화 그림3·그림4) 타 AI 외주 생성 후 placeholder 교체.
+
 - 시각(ISO): **`2026-09-12T16:57+09:00`** — 심리학 3권 33화(3-6 융 ②) 전체 재검증 통과 → **확정**(각주 1~24 정합·도판 슬롯 표준화·서식 무결) · 개념도 5키 도판의뢰서 분리 · 02 검토내용 갱신 · **홈페이지 업로드 off-peak 예약(미실행)**
   - [자동수집 · Git] 마지막 세션(2026-09-12T09:36+09:00) 이후:
     · homepage master: HEAD 3736c4f / origin 3736c4f ·작업트리 변경 1 :: 3736c4f 진행 기록: 인계 갱신 (update-handover auto) / 7327292 자동: 카드뉴스 갱신 (2026-09-12)
@@ -45,35 +57,6 @@
     · harness  main: HEAD fb52ded / origin fb52ded ·작업트리 변경 3 :: fb52ded docs(desktop-handoff): 인계 표기 교정 + 3권 순차 발행 기준 반영 — '(3권 7~10화)'→'(ep34~37)', ep28(3-1) 발행 기준 ep29부터 순차 진행 (2026-09-10) / cc438f5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 105858a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f1b7e09 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 4aa30d8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b3fb6db doc
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
   - 상세(자동): 콘텐츠 커밋 없음 — 인계 갱신만 수행 (session-closeout)
-
-- 시각(ISO): **`2026-09-09T22:28+09:00`** — **제39화(3-12) 코헛-자기 심리학: 01 본문 19,812자·14절·각주 46 게이트 통과, 실사 도판 2점(코헛 초상 §8·기념 명판 §2) 무진 채택·배치 완료**
-  - [자동수집 · Git] 마지막 세션(2026-09-09T18:35+09:00) 이후:
-    · homepage master: HEAD 2821226 / origin 2821226 :: 2821226 진행 기록: 인계 갱신 (update-handover auto) / 7e957b6 심리학사 28화 등록 — 프로이트 · 무의식의 발견 (volume3) / 2e20f79 진행 기록: 인계 갱신 (update-handover auto) / 3bfc0d0 자동: 카드뉴스 갱신 (2026-09-09) / 34cb6de 진행 기록: 인계 갱신 (update-handover auto) / b547ab9 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD 33e2f9b9 / origin 33e2f9b9 ·작업트리 변경 96 :: 33e2f9b9 3권 39화: 코헛 — 자기 심리학 01 완성(46 각주·게이트 통과) + 실사 도판 2점 채택·배치 / 177778c7 3권 37화: 실사 초상 주후보 3점 채택·배치 (아이젱크·포퍼·로프터스) / fb4b4f9d 통합집필지침 개정 반영 + §8.3 개념도 placeholder 규칙 신설 / 6879c47b 3권 28화: 프로이트 — 무의식의 발견 확정·발행(id=50) / ebc6b040 3권 37화: 정신분석의 비판 — 증거와 윤리 01 초고·02 검토·도판 의뢰서 (2026-09-09)
-    · harness  main: HEAD 105858a / origin 105858a ·작업트리 변경 3 :: 105858a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f1b7e09 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 4aa30d8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b3fb6db docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - 상세(자동): 콘텐츠 커밋 llm-wiki@33e2f9b9 (3권 39화: 코헛 — 자기 심리학 01 완성(46 각주·게이트 통과) + 실사 도판 2점 채택·배치)
-
-- 시각(ISO): **`2026-09-09T18:35+09:00`** — **심리학사 ep28(3-1 프로이트 · 무의식의 발견) 확정·발행(Supabase id=50) ＋ ep37 실사 초상 주후보 3점 채택·배치 ＋ 통합집필지침 §8.3 개념도 placeholder 규칙 신설**
-  - [자동수집 · Git] 마지막 세션(2026-09-09T14:19+09:00) 이후:
-    · homepage master: HEAD 7e957b6 / origin 7e957b6 :: 7e957b6 심리학사 28화 등록 — 프로이트 · 무의식의 발견 (volume3) / 2e20f79 진행 기록: 인계 갱신 (update-handover auto) / 3bfc0d0 자동: 카드뉴스 갱신 (2026-09-09) / 34cb6de 진행 기록: 인계 갱신 (update-handover auto) / b547ab9 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD 177778c7 / origin 177778c7 ·작업트리 변경 81 :: 177778c7 3권 37화: 실사 초상 주후보 3점 채택·배치 (아이젱크·포퍼·로프터스) / fb4b4f9d 통합집필지침 개정 반영 + §8.3 개념도 placeholder 규칙 신설 / 6879c47b 3권 28화: 프로이트 — 무의식의 발견 확정·발행(id=50) / ebc6b040 3권 37화: 정신분석의 비판 — 증거와 윤리 01 초고·02 검토·도판 의뢰서 (2026-09-09)
-    · harness  main: HEAD f1b7e09 / origin f1b7e09 ·작업트리 변경 3 :: f1b7e09 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 4aa30d8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b3fb6db docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약:
-    · **ep37 도판**: 무진님 주후보 3점 채택(아이젱크 §5 · 포퍼 §3 · 로프터스 §9) → Commons 라이선스 검증 · volume3 슬롯 배치(그림1→03 · 그림2→04 · 그림3→05) · 01 연결 · 02·도판의뢰서 갱신 · off-peak 대기 파일 실행 완료 기록. 커밋 177778c7.
-    · **ep28 확정·발행**: 무진 지시 3건 반영(히스테리·무의식 단어코너 평서문 교정 · §5 '이야기 심리학사' 정식 명칭) → 전체 재검증(_gate28.py) 이상 없음 → 02 확정 · E-basis 22,083 · 개념도 그림3·4 placeholder PNG 제작 · homepage SERIES_MAP ep28 등록 → 발행 **Supabase id=50**(essay.html?id=50 HTTP 200) · 목차 v1 3-1 발행 표기. 커밋 6879c47b.
-    · **지침 §8.3**: 개념도 미제작 시 자리표시(placeholder)로 진행 규칙 신설(무진 지시 — 별도 지시 없으면 이후 화도 동일) + 09-06/08 개정분(§5.7 화별 문서 구성·§5.10 공백 행·§10 각주 규범) 반영. 커밋 fb4b4f9d.
-    · **homepage**: SERIES_MAP ep28 등록 커밋 7e957b6. llm-wiki·homepage 모두 origin 푸시 완료.
-    · 남은 일: 28화 개념도 그림3·4 실물(타 AI 일괄 의뢰) 수령 시 placeholder 교체·`--update` 재발행 / 28화 확정 후 교차 링크(§9·다음 화 예고) / ep37 선택형 후보(포퍼2·로프터스4.0)는 보류 / llm-wiki 작업트리 잔여(철학 volume1·심리 volume1·3권 34~36화 등)는 타 작업분 — 이번 커밋에서 제외됨.
-
-- 시각(ISO): **`2026-09-09T14:19+09:00`** — **제37화(3-10 · 정신분석의 비판 — 증거와 윤리) 산출물 완료·커밋 — 01 본문 12절 · E-basis 17,644자(목표 17,500~18,500) · 각주 32(단일 문서 근거) · 근거 인용 58 전수 byte-exact 불일치 0 · 동어반복 0 · 교차 화(28~36) 반복 0(최장 공통 11) · 형식 게이트 PROBLEMS 0 → 02 검토내용 7섹션(§5.7 판정 '01 제출 가능 상태') · 도판의뢰서(실사 초상 후보 5점 = 주후보 3 · 선택형 2 — 그림1 아이젱크 §5 · 그림2 포퍼 §2·3 · 그림3 로프터스 §9, Commons API 존재·라이선스·해상도 실측, 채택 대기) → llm-wiki 로컬 커밋 `ebc6b040`(01·02·의뢰서, 미푸시) — 본 건 인계 파일 갱신으로 세션 마무리**
-  - [자동수집 · Git] 마지막 세션(2026-09-09T04:33+09:00) 이후:
-    · homepage master: HEAD 3bfc0d0 / origin 3bfc0d0 :: 3bfc0d0 자동: 카드뉴스 갱신 (2026-09-09) / 34cb6de 진행 기록: 인계 갱신 (update-handover auto) / b547ab9 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD ebc6b040 / origin 23b6165f ·작업트리 변경 83 :: ebc6b040 3권 37화: 정신분석의 비판 — 증거와 윤리 01 초고·02 검토·도판 의뢰서 (2026-09-09)
-    · harness  main: HEAD 4aa30d8 / origin 4aa30d8 ·작업트리 변경 3 :: 4aa30d8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b3fb6db docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - 다음 작업: ① ep37 도판 3점(그림1 아이젱크 · 그림2 포퍼 · 그림3 로프터스) 무진님 채택 → Commons 다운로드 · `3권_37화_03~05_그림N_….jpg` 슬롯 배치 · 01 연결(캡션 '(실사)'·판권 표기). ② 3권 34(3-7)·36(3-9) 산출물(01/02·도판)·미커밋, ep35(3-8) 본문 19,556자 초고 — DAV 재실행·부속(02·의뢰서·후보)·ep35 커밋 남음. ③ 3권 34~37 일괄 무진님 검토 → 확정·발행 시 homepage SERIES_MAP 등록·Supabase 업로드(ep34~37).
 
 ## 이번 세션 요약
 
