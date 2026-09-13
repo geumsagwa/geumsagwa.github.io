@@ -12,6 +12,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-14T08:50+09:00`** — **5권 55화 각주 개정 시범 적용(169→32) + 통합집필지침 §5.3·§5.6·§10.0·§10.2 개정 + 각주·검증 개정안(결재용) 작성**
+  - [자동수집 · Git] 마지막 세션(2026-09-14T08:37+09:00) 이후:
+    · homepage master: HEAD f65ea70 / origin f65ea70 :: f65ea70 진행 기록: 인계 갱신 (update-handover auto) / 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
+    · llm-wiki master: HEAD 2747d133 / origin 2747d133 ·작업트리 변경 195 :: 2747d133 5권 55화 각주 개정 시범(169→32)·지침 §5.3/5.6/10.0/10.2 개정·개정안(결재용) 추가 / 19b1e2bd 심리학 5권 54화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 472e699f 심리학 5권 55화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 46d14e75 심리학 5권 55화 도판 승인 반영 — 실사 2점 확정 · 개념도 2점 보류 확정(다른 AI 제작 예정) / 09b45468 심리학 5권 55화 그림1 교체 승인 반영 — UCSB 특별컬렉션 소장 로저스 초상(1960년대)으로 확정 / 7c08a7e0 심리학 5권 55화 도
+    · harness  main: HEAD b1dea43 / origin b1dea43 ·작업트리 변경 3 :: b1dea43 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 161a7b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cdaedf0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2849369 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1cf3dd6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - 상세(자동): 콘텐츠 커밋 llm-wiki@2747d133 (5권 55화 각주 개정 시범(169→32)·지침 §5.3/5.6/10.0/10.2 개정·개정안(결재용) 추가)
+
 - 시각(ISO): **`2026-09-14T08:37+09:00`** — **심리학 5권 54화(5-7) 구분선 앞 빈 줄 누락 정정 — 본문 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 위반) 수정 · 게이트 23항목.**
   - [자동수집 · Git] 마지막 세션(2026-09-14T08:34+09:00) 이후:
     · homepage master: HEAD 08810a5 / origin 08810a5 :: 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
