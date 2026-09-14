@@ -12,6 +12,17 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-14T19:18+09:00`** — **④ 02 검토내용 각주 번호 동기화 — 패밀리 A 3화 완료(2-15 41→37 · 2-20 63→14 · 3-32 58→33) → ④ 15/21. 도구 sync02c 보완 + 3-32 게이트·③ 대조표 수동 정합. 본문 산문 오염 1건 정정.**
+  - [자동수집 · Git] 마지막 세션(2026-09-14T14:49+09:00) 이후:
+    · homepage master: HEAD b12120e / origin b12120e :: b12120e 진행 기록: 인계 갱신 (update-handover auto) / 8717d1b 진행 기록: 인계 갱신 (update-handover auto) / 2835e75 진행 기록: 인계 갱신 (update-handover auto) / f65ea70 진행 기록: 인계 갱신 (update-handover auto) / 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
+    · llm-wiki master: HEAD a25e4b90 / origin a25e4b90 ·작업트리 변경 190 :: a25e4b90 각주 소급 정규화 — 2·3·4·5권 각주 35 초과 21화 기계 정규화(문장각주·서술구 제거, 본문 산문 불변) + HANDOVER 갱신 / 6da03952 5권 55화 분량 확정 — 보강 없이 21.0쪽(각주 마커 제외 기준) / fbeff3ba 5권 55화 각주 개정 시범(169→32) · 통합집필지침 §5.3·§5.6·§10.0·§10.2 개정 · 개정안(결재용) 추가 / 19b1e2bd 심리학 5권 54화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 472e699f 심리학 5권 55화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 46d14e75 심리
+    · harness  main: HEAD 05fcde3 / origin 05fcde3 ·작업트리 변경 3 :: 05fcde3 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 9b40a1a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 893ad19 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b1dea43 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 161a7b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cdaedf0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2849369 do
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - **도구 보완(`ws_tmp/각주정리/sync02c.py`)**: ① 무번호 제목(`## DAV 비판적 검토`·`## 진행 기록`) 기준 §6 상당 구간 보호(TAIL) — 패밀리 A의 `NO_S6` 경고 해소, 기존 번호형과 동일 동작 ② `- **총 N개** ([^1]~[^M])` 정규식 오타 수정 ③ `1..M`·`마커 a ↔ 정의 b` 구조 카운트 갱신 패스 추가(2-15/2-20 헤더-산문 불일치 해소).
+  - **적용 3화**: 2-15(41→37)·2-20(63→14) = 도구 자동(추적표 `| [^n] |` 트림·재번호, §6 보존). 3-32(58→33) = 도구 + 수동 정합 — ③ 대조표(평번호 58행→33행 재번호·삭제분 제거), 게이트②(`순차로 33개`)·검증/판정(33정의·60인용·문서 세그먼트 36·2-doc 정의 `[^8]·[^19]·[^21]`), 개요 `마커 1~33`. **§6(진행 기록·DAV)의 옛 번호는 불변.**
+  - **주의(도구 오탐)**: refnorm `—\s+의\s`→`— ` 규칙이 3-32 주제 질문 산문 `— 카를 구스타프 융 — 의 이야기다`를 오염 → 수동 복원. 원본 백업 `ws_tmp/각주정리/backup/`(3-32 02 원본 추가).
+  - **잔여(④ 6화)**: 2-21(N=0)·3-39(46→2)·0각주 4화(3-34·3-40·4-41·4-42) — ②③(낱말 판정·신규 보강) 후 일괄. **다음 창 = ① 5권 48~54 용어 판정(잔여 49·80·79·68·62·56·110) / ⑤ 발행분 재발행.**
+
 - 시각(ISO): **`2026-09-14T14:49+09:00`** — **④ 02 검토내용 각주 번호 동기화 5화 추가(3-35·3-36·4-43·4-44·4-46) → 12/21. 01 정규화가 각주를 '재번호'가 아니라 '삭제'함을 규명 — 02 §5 산문 동기화는 저삭제 화만 안전. 다음 창 = 방안 A(무진 확정, 패밀리 A 3화 2-15·2-20·3-32).**
   - [자동수집 · Git] 마지막 세션(2026-09-14T09:47+09:00) 이후:
     · homepage master: HEAD 8717d1b / origin 8717d1b :: 8717d1b 진행 기록: 인계 갱신 (update-handover auto) / 2835e75 진행 기록: 인계 갱신 (update-handover auto) / f65ea70 진행 기록: 인계 갱신 (update-handover auto) / 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
@@ -50,25 +61,6 @@
 - 원인: 각주 구분선(---) 바로 앞에 빈 줄이 없어 마크다운이 마지막 문단을 setext 제목으로 해석
 - 수정: 구분선을 빈 줄로 감싸 정정(55화·타 화와 동일 표기). 본문 글자·각주 140·순서 불변
 - 게이트에 구분선 검사 추가(22 → 23항목). DAV ok=140 bad=0 · 게이트 PASS(23/23) · E-basis 19,248 · sha256 62cc9f67…7297a (96,796 B)
-
-Co-Authored-By: Claude Code <noreply@anthropic.com>)
-
-- 시각(ISO): **`2026-09-14T08:34+09:00`** — **심리학 5권 55화(5-8) 「로저스 — 인간 중심의 상담」 구분선 앞 빈 줄 누락 정정 — 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 위반) 수정 · 게이트에 구분선 검사 추가.**
-  - [자동수집 · Git] 마지막 세션(2026-09-14T08:31+09:00) 이후:
-    · homepage master: HEAD 52f3768 / origin 52f3768 :: 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
-    · llm-wiki master: HEAD 472e699f / origin 472e699f ·작업트리 변경 196 :: 472e699f 심리학 5권 55화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 46d14e75 심리학 5권 55화 도판 승인 반영 — 실사 2점 확정 · 개념도 2점 보류 확정(다른 AI 제작 예정) / 09b45468 심리학 5권 55화 그림1 교체 승인 반영 — UCSB 특별컬렉션 소장 로저스 초상(1960년대)으로 확정 / 7c08a7e0 심리학 5권 55화 도판 — 초상 실사 후보를 대학·기관 아카이브까지 확장 조사(UCSB 특별컬렉션 2점 발견) + 박사 연도 정정 / 5ba29fd3 심리학 5권 55화(5-8) 「로저스 — 인간 중심의 상담」 본문 완성 + 검토 02 + 도판의뢰서 + 도판 4점 배치 / 8a18cd89 심리학 
-    · harness  main: HEAD cdaedf0 / origin cdaedf0 ·작업트리 변경 3 :: cdaedf0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2849369 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1cf3dd6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - 상세(자동): 콘텐츠 커밋 llm-wiki@472e699f (심리학 5권 55화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반)
-
-- 원인: 각주 구분선(---) 바로 앞에 빈 줄이 없어 마크다운이 마지막 문단을 setext 제목으로 해석
-- 수정: 구분선을 `
-
----
-
-`로 정정(다른 화·타 권과 동일 표기). 본문 글자·각주·순서는 불변
-- 게이트에 `구분선 --- 앞뒤 빈 줄` 검사 추가(22 → 23항목) — 54화도 같은 위반을 검출함(별도 확인 필요)
-- DAV ok=169 bad=0 · 게이트 PASS(23/23) · E-basis 21,089 · sha256 513665b1…c8c81 (111,098 B)
 
 Co-Authored-By: Claude Code <noreply@anthropic.com>)
 
