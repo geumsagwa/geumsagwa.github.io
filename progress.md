@@ -12,6 +12,9 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-14T22:05+09:00`** — **제56화(5-9 「성격 심리학의 확립 — 올포트」) 집필 완성** — E-basis 14,531(15.6쪽·목표 16p)·각주 34·게이트 **23/23 PASS**·DAV **34/34**·01 46,953B(`f77857fc…`, LF) — 도판: 그림1 = 하버드 대학 아카이브 1964년 실사 **무진 승인 확정**(1548×2209)·그림2 PD·개념도 2점 **보류(외주 제작 대기)** — **게재 허가** = 아카이브 'permission to publish' 필요(`archives_permissions@harvard.edu`) — **미발행**(검토·발행=무진).
+  - [자동수집 · Git] 마지막 세션(2026-09-14T19:18+09:00) 이후: homepage `c22d63b`(=origin) / llm-wiki `1a21a7b6`(origin `8eae4735`·작업트리 174) / harness `7af0bea`(=origin) / openclaw `11a8f0a`(=origin).
+  - [기재 영역] 이번 세션: ① **제56화 산출물 3종 완성**(01 본문·02 검토내용·도판의뢰서 — `manuscripts/psychology/volume5/5권_56화_*`, 게이트 `ws_tmp/ep56-research/_gate56.py` 23/23·DAV `_dav56.py` 34/34). ② **2차 도판 조사**(대학·연구소·학회·검색엔진·아카이브 직접 조사) — 1순위 `B5_alchetron`은 삽화+`©2000 Funfaces.com` 워터마크로 판명·배제. ③ **그림1 교체·승인** = 하버드 대학 아카이브 「Gordon W. Allport, photographic portrait, 1964」(`HUP Allport, Gordon W. (14)`·Ricci Bertocci 촬영) 1548×2209 → **무진 승인 확정**, 후보 원본 `figures/raw2/`(C1~C15)·대조 시트 보존. ④ **개념도(그림3·4) 보류** — 자리 표시(가안) 유지·외주 제작 대기 명시. ⑤ **게재 허가 조건** — 아카이브 출판 허가 필요(`archives_permissions@harvard.edu`)·PD 무료 정책은 PD에만 적용(1964 사진 대상 아님)·웹 공개본 무료·출판용 고화질 유료. ⑥ **미발행·미커밋**(검토·발행은 무진님 직접).
 - 시각(ISO): **`2026-09-14T19:18+09:00`** — **④ 02 검토내용 각주 번호 동기화 — 패밀리 A 3화 완료(2-15 41→37 · 2-20 63→14 · 3-32 58→33) → ④ 15/21. 도구 sync02c 보완 + 3-32 게이트·③ 대조표 수동 정합. 본문 산문 오염 1건 정정.**
   - [자동수집 · Git] 마지막 세션(2026-09-14T14:49+09:00) 이후:
     · homepage master: HEAD b12120e / origin b12120e :: b12120e 진행 기록: 인계 갱신 (update-handover auto) / 8717d1b 진행 기록: 인계 갱신 (update-handover auto) / 2835e75 진행 기록: 인계 갱신 (update-handover auto) / f65ea70 진행 기록: 인계 갱신 (update-handover auto) / 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
@@ -49,20 +52,6 @@
     · harness  main: HEAD b1dea43 / origin b1dea43 ·작업트리 변경 3 :: b1dea43 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 161a7b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cdaedf0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2849369 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1cf3dd6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
   - 상세(자동): 콘텐츠 커밋 llm-wiki@2747d133 (5권 55화 각주 개정 시범(169→32)·지침 §5.3/5.6/10.0/10.2 개정·개정안(결재용) 추가)
-
-- 시각(ISO): **`2026-09-14T08:37+09:00`** — **심리학 5권 54화(5-7) 구분선 앞 빈 줄 누락 정정 — 본문 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 위반) 수정 · 게이트 23항목.**
-  - [자동수집 · Git] 마지막 세션(2026-09-14T08:34+09:00) 이후:
-    · homepage master: HEAD 08810a5 / origin 08810a5 :: 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
-    · llm-wiki master: HEAD 19b1e2bd / origin 19b1e2bd ·작업트리 변경 196 :: 19b1e2bd 심리학 5권 54화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 472e699f 심리학 5권 55화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 46d14e75 심리학 5권 55화 도판 승인 반영 — 실사 2점 확정 · 개념도 2점 보류 확정(다른 AI 제작 예정) / 09b45468 심리학 5권 55화 그림1 교체 승인 반영 — UCSB 특별컬렉션 소장 로저스 초상(1960년대)으로 확정 / 7c08a7e0 심리학 5권 55화 도판 — 초상 실사 후보를 대학·기관 아카이브까지 확장 조사(UCSB 특별컬렉션 2점 발견) + 박사 연도 정정 / 5ba29fd3
-    · harness  main: HEAD 161a7b1 / origin 161a7b1 ·작업트리 변경 3 :: 161a7b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cdaedf0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2849369 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1cf3dd6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - 상세(자동): 콘텐츠 커밋 llm-wiki@19b1e2bd (심리학 5권 54화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반)
-
-- 원인: 각주 구분선(---) 바로 앞에 빈 줄이 없어 마크다운이 마지막 문단을 setext 제목으로 해석
-- 수정: 구분선을 빈 줄로 감싸 정정(55화·타 화와 동일 표기). 본문 글자·각주 140·순서 불변
-- 게이트에 구분선 검사 추가(22 → 23항목). DAV ok=140 bad=0 · 게이트 PASS(23/23) · E-basis 19,248 · sha256 62cc9f67…7297a (96,796 B)
-
-Co-Authored-By: Claude Code <noreply@anthropic.com>)
 
 ## 이번 세션 요약
 
