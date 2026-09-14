@@ -10,6 +10,8 @@
 
 **🔄 인계 갱신 자동 파이프라인 (위치 고정 — 찾아 헤매지 말 것):** 인계 갱신·아카이브·5개 미러 동기·게이트·커밋·푸시는 원스톱 스크립트 하나로 처리한다 → `python C:\Users\pass6\project\harness\scripts\update-handover.py collect` 후 초안 첫 줄(원고 요약)을 채우고 `apply --git` 실행. 30KB 초과 아카이브(optimize-handover.ps1, no-BOM)·5개 미러 동기·게이트·homepage/harness 커밋이 순서대로 자동 수행된다. **대상 5개 미러:** `Desktop\Harness\` 2개 + `project\harness\docs\desktop-handoff\` 2개 + `project\homepage\progress.md`. **BOM 규약:** 게이트(`progress-file-check.py`)는 'BOM 없음'을 기대 — 아카이브 후 BOM(ef bb bf)이 보이면 제거 후 `check` PASS 확인해야 커밋한다. 상세 매뉴얼: `project\harness\skills\safe-file-edit.md` · `Desktop\Harness\CLAUDE.md`
 
+**🚫 파이프라인 변경 금지 하드 룰 (2026-09-14):** 무진님이 이미 만들어 놓은 파이프라인(`update-handover.py collect → apply --git` — 삽입·아카이브·5미러 동기·게이트·**커밋·푸시**, `publish-briefing.ps1` 브리핑 자동 발행 등)은 **설계된 그대로 끝까지 실행한다**. **단계를 바꾸거나 건너뛰려면 반드시 무진님께 먼저 물어본다.** 에이전트가 자기 규칙 해석으로 파이프라인 단계(예: 커밋·푸시)를 생략하는 것을 금지 — 2026-09-14 이 위반으로 시정됨.
+
 ## 마지막 갱신
 
 - 시각(ISO): **`2026-09-14T22:05+09:00`** — **제56화(5-9 「성격 심리학의 확립 — 올포트」) 집필 완성** — E-basis 14,531(15.6쪽·목표 16p)·각주 34·게이트 **23/23 PASS**·DAV **34/34**·01 46,953B(`f77857fc…`, LF) — 도판: 그림1 = 하버드 대학 아카이브 1964년 실사 **무진 승인 확정**(1548×2209)·그림2 PD·개념도 2점 **보류(외주 제작 대기)** — **게재 허가** = 아카이브 'permission to publish' 필요(`archives_permissions@harvard.edu`) — **미발행**(검토·발행=무진).
