@@ -12,6 +12,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-14T09:47+09:00`** — **각주·검증 체계 개편(지침 §10.0·§10.2·§5.6·§5.3·§5.7) + 55화 169→32 시범 + 21화 각주 소급 정규화(본문 불변). 02 동기화·5권 낱말 판정은 다음 창.**
+  - [자동수집 · Git] 마지막 세션(2026-09-14T08:50+09:00) 이후:
+    · homepage master: HEAD 2835e75 / origin 2835e75 :: 2835e75 진행 기록: 인계 갱신 (update-handover auto) / f65ea70 진행 기록: 인계 갱신 (update-handover auto) / 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
+    · llm-wiki master: HEAD 845230d0 / origin 845230d0 ·작업트리 변경 177 :: 845230d0 각주 소급 정규화 — 2·3·4·5권 각주 35 초과 21화 기계 정규화(문장각주·서술구 제거, 본문 산문 불변) + HANDOVER 갱신 / 6da03952 5권 55화 분량 확정 — 보강 없이 21.0쪽(각주 마커 제외 기준) / fbeff3ba 5권 55화 각주 개정 시범(169→32) · 통합집필지침 §5.3·§5.6·§10.0·§10.2 개정 · 개정안(결재용) 추가 / 19b1e2bd 심리학 5권 54화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 472e699f 심리학 5권 55화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 46d14e75 심리
+    · harness  main: HEAD 893ad19 / origin 893ad19 ·작업트리 변경 3 :: 893ad19 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b1dea43 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 161a7b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cdaedf0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2849369 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1cf3dd6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - 상세(자동): 콘텐츠 커밋 llm-wiki@845230d0 (각주 소급 정규화 — 2·3·4·5권 각주 35 초과 21화 기계 정규화(문장각주·서술구 제거, 본문 산문 불변) + HANDOVER 갱신)
+
 - 시각(ISO): **`2026-09-14T08:50+09:00`** — **5권 55화 각주 개정 시범 적용(169→32) + 통합집필지침 §5.3·§5.6·§10.0·§10.2 개정 + 각주·검증 개정안(결재용) 작성**
   - [자동수집 · Git] 마지막 세션(2026-09-14T08:37+09:00) 이후:
     · homepage master: HEAD f65ea70 / origin f65ea70 :: f65ea70 진행 기록: 인계 갱신 (update-handover auto) / 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
