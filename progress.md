@@ -14,9 +14,22 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-15T15:00+09:00`** — **제57화(5-10 「사회 심리학의 부상 — 애슈와 밀그램」) 집필 완성** — 산출물 3종(01 본문·02 검토내용·도판의뢰서) · **E-basis 20,212**(목표 20,000~20,400·22p) · 각주 31 · 단어코너 3 · **게이트 23/23 PASS** · **DAV 인용 31/31** · **candidates.tsv 연도·수치 74건 + 인용 31건 전부 FOUND**(sha256 `4f72668e…`) · 도판 5점(그림1·3·4 실사 후보 선택 대기 = 자리표시자, 그림2·5 개념도 의뢰) · 커밋 `df7802aa`·`e1f55e76`
+  - [자동수집 · Git] 마지막 세션(2026-09-14T22:05+09:00) 이후:
+    · homepage master: HEAD 002e062 / origin 002e062 ·작업트리 변경 1 :: 002e062 자동: 카드뉴스 갱신 (2026-09-15) / 9d78244 진행 기록: 인계 갱신 (update-handover auto) / f4c94e3 진행 기록: 인계 갱신 (update-handover auto) / c22d63b 진행 기록: 인계 갱신 (update-handover auto) / 6392d68 진행 기록: 인계 갱신 (update-handover auto) / b12120e 진행 기록: 인계 갱신 (update-handover auto) / 8717d1b 진행 기록: 인계 갱신 (update-handover auto) / 2835e75 진행 기록: 인계 갱신 (update-handover auto) / f65ea70 진행 기록: 인계 갱신 (update-handover auto)
+    · llm-wiki master: HEAD e1f55e76 / origin 4ca73327 :: e1f55e76 5권 57화 검토내용·도판의뢰서·도판 자리표시자 추가 / df7802aa 5권 57화 본문 확장·검증 산출물 추가 (E-basis 20212, gate 23/23, DAV 31/31) / 4ca73327 HANDOVER: 주의사항 — 확립된 파이프라인 변경·생략 금지 하드 룰 추가 (2026-09-14) / 739c65ea HANDOVER: 제56화(5-9 올포트) 집필 완성 — 게이트 23/23·DAV 34/34·그림1 하버드 아카이브 1964 승인·개념도 보류·게재 허가 조건 확인 / 1a21a7b6 HANDOVER: 각주 소급 통일 완료 — 0각주 5화 보강·02 동기화 21/21·재발행 6화 / d0402001 02 검토내용 동기화 마무리 — 3-39(고삭제 46→2)·2-21(잔여 
+    · harness  main: HEAD 23f0cc7 / origin 23f0cc7 ·작업트리 변경 3 :: 23f0cc7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 099e7ca docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 7af0bea docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2135ae0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 05fcde3 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 9b40a1a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 893ad19 do
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+  - **5권 5-10(제57화)**: 사회 심리학의 부상 — 애슈와 밀그램. 트립렛 → 레빈 → 셰리프 → 애슈 → 밀그램 12절. 집필조건 9개 준수. 초고 8,703자 → 12절 전체 고쳐 써 20,212자(동어 반복 회피: 동물 실험·나라별 차이·변형 조건·밀그램의 다른 실험으로 보강).
+  - **검증 파이프라인**: `ws_tmp/ep57-research/_gate57.py`(23항목) · `_dav57.py`(31/31) · `_cand57.py` → `candidates.tsv`. 인용 문서 14종.
+  - **미해결·보류**: ① 밀그램 견본 충격 볼트 수 — 영어판/한국어판 상충 → 본문에 수치 미기재("약한 충격"), 검토내용 §5에 기록. ② 실사 사진 3점(그림1 애슈·그림3 밀그램·그림4 모집광고) 후보 전부 다운로드 완료 → **무진님 선택 대기**(접촉 시트 `ws_tmp\ep57-research\figures\contact_sheet_ep57.png`). ③ 그림2·5 개념도 = 외주 제작 대기.
+  - **다음 작업**: 5권 5-11(제58화) 이후 집필 — 다음 화는 지팀바도·스탠퍼드 감옥 실험(57화 12절에서 예고).
+
 - 시각(ISO): **`2026-09-14T22:05+09:00`** — **제56화(5-9 「성격 심리학의 확립 — 올포트」) 집필 완성** — E-basis 14,531(15.6쪽·목표 16p)·각주 34·게이트 **23/23 PASS**·DAV **34/34**·01 46,953B(`f77857fc…`, LF) — 도판: 그림1 = 하버드 대학 아카이브 1964년 실사 **무진 승인 확정**(1548×2209)·그림2 PD·개념도 2점 **보류(외주 제작 대기)** — **게재 허가** = 아카이브 'permission to publish' 필요(`archives_permissions@harvard.edu`) — **미발행**(검토·발행=무진).
   - [자동수집 · Git] 마지막 세션(2026-09-14T19:18+09:00) 이후: homepage `c22d63b`(=origin) / llm-wiki `1a21a7b6`(origin `8eae4735`·작업트리 174) / harness `7af0bea`(=origin) / openclaw `11a8f0a`(=origin).
   - [기재 영역] 이번 세션: ① **제56화 산출물 3종 완성**(01 본문·02 검토내용·도판의뢰서 — `manuscripts/psychology/volume5/5권_56화_*`, 게이트 `ws_tmp/ep56-research/_gate56.py` 23/23·DAV `_dav56.py` 34/34). ② **2차 도판 조사**(대학·연구소·학회·검색엔진·아카이브 직접 조사) — 1순위 `B5_alchetron`은 삽화+`©2000 Funfaces.com` 워터마크로 판명·배제. ③ **그림1 교체·승인** = 하버드 대학 아카이브 「Gordon W. Allport, photographic portrait, 1964」(`HUP Allport, Gordon W. (14)`·Ricci Bertocci 촬영) 1548×2209 → **무진 승인 확정**, 후보 원본 `figures/raw2/`(C1~C15)·대조 시트 보존. ④ **개념도(그림3·4) 보류** — 자리 표시(가안) 유지·외주 제작 대기 명시. ⑤ **게재 허가 조건** — 아카이브 출판 허가 필요(`archives_permissions@harvard.edu`)·PD 무료 정책은 PD에만 적용(1964 사진 대상 아님)·웹 공개본 무료·출판용 고화질 유료. ⑥ **미발행·미커밋**(검토·발행은 무진님 직접).
+
 - 시각(ISO): **`2026-09-14T19:18+09:00`** — **④ 02 검토내용 각주 번호 동기화 — 패밀리 A 3화 완료(2-15 41→37 · 2-20 63→14 · 3-32 58→33) → ④ 15/21. 도구 sync02c 보완 + 3-32 게이트·③ 대조표 수동 정합. 본문 산문 오염 1건 정정.**
   - [자동수집 · Git] 마지막 세션(2026-09-14T14:49+09:00) 이후:
     · homepage master: HEAD b12120e / origin b12120e :: b12120e 진행 기록: 인계 갱신 (update-handover auto) / 8717d1b 진행 기록: 인계 갱신 (update-handover auto) / 2835e75 진행 기록: 인계 갱신 (update-handover auto) / f65ea70 진행 기록: 인계 갱신 (update-handover auto) / 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
@@ -46,14 +59,6 @@
     · harness  main: HEAD 893ad19 / origin 893ad19 ·작업트리 변경 3 :: 893ad19 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b1dea43 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 161a7b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cdaedf0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2849369 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1cf3dd6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
   - 상세(자동): 콘텐츠 커밋 llm-wiki@845230d0 (각주 소급 정규화 — 2·3·4·5권 각주 35 초과 21화 기계 정규화(문장각주·서술구 제거, 본문 산문 불변) + HANDOVER 갱신)
-
-- 시각(ISO): **`2026-09-14T08:50+09:00`** — **5권 55화 각주 개정 시범 적용(169→32) + 통합집필지침 §5.3·§5.6·§10.0·§10.2 개정 + 각주·검증 개정안(결재용) 작성**
-  - [자동수집 · Git] 마지막 세션(2026-09-14T08:37+09:00) 이후:
-    · homepage master: HEAD f65ea70 / origin f65ea70 :: f65ea70 진행 기록: 인계 갱신 (update-handover auto) / 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
-    · llm-wiki master: HEAD 2747d133 / origin 2747d133 ·작업트리 변경 195 :: 2747d133 5권 55화 각주 개정 시범(169→32)·지침 §5.3/5.6/10.0/10.2 개정·개정안(결재용) 추가 / 19b1e2bd 심리학 5권 54화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 472e699f 심리학 5권 55화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 46d14e75 심리학 5권 55화 도판 승인 반영 — 실사 2점 확정 · 개념도 2점 보류 확정(다른 AI 제작 예정) / 09b45468 심리학 5권 55화 그림1 교체 승인 반영 — UCSB 특별컬렉션 소장 로저스 초상(1960년대)으로 확정 / 7c08a7e0 심리학 5권 55화 도
-    · harness  main: HEAD b1dea43 / origin b1dea43 ·작업트리 변경 3 :: b1dea43 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 161a7b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cdaedf0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2849369 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1cf3dd6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - 상세(자동): 콘텐츠 커밋 llm-wiki@2747d133 (5권 55화 각주 개정 시범(169→32)·지침 §5.3/5.6/10.0/10.2 개정·개정안(결재용) 추가)
 
 ## 이번 세션 요약
 
