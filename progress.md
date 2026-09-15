@@ -14,6 +14,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-15T21:53+09:00`** — **인계문서 정비 — 제59화 기준 반영 완료**: ① **원고 인계문서 `F:\wiki\HANDOVER.md` 59화 기준 갱신**(TL;DR 「현재 위치」·「다음 작업 = 5-13 심리 치료의 확장 14p」·「대기(무진님)」·「현재 상태」5권 줄·「다음 세션」1·2번·「갱신 노트」2026-09-15(3차) 신설) → **llm-wiki 커밋 `d6c0eba7`**(HANDOVER.md 단독 지정 커밋, 원고 3종은 비추적 유지 · **미푸시** origin 7bce4535). ② **배치본 재검증 재실행 — 전부 이상 없음**: 게이트 **23/23 PASS** · E-basis **14,604** · DAV **35/35**(인용 조각 62) · candidates 수치 57 + 인용 62 FOUND · 본문 sha256 `c7e39b56…`(draft01.md와 완전 일치). 검증 3종 도구 = `ws_tmp\ep59-research\_gate59.py`·`_dav59.py`·`_cand59.py`. ③ 세션 시작 시 읽을 인계문서 안내 정리 — 원고 재개는 `F:\wiki\HANDOVER.md` 맨 위 TL;DR(약 1KB), 진행 인계는 `Desktop\Harness\handover-progress.md`(5개 미러 동일, 27,761B — 30KB 근접). **다음 작업 = 5-13(제60화) 「심리 치료의 확장」(14p) 집필**(무진님 착수 지시 대기).
+  - [자동수집 · Git] 마지막 세션(2026-09-15T21:45+09:00) 이후:
+    · homepage master: HEAD 10ce477 / origin 10ce477 ·작업트리 변경 1 :: 10ce477 진행 기록: 인계 갱신 (update-handover auto) / be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
+    · llm-wiki master: HEAD d6c0eba7 / origin 7bce4535 ·작업트리 변경 176 :: d6c0eba7 HANDOVER: 제59화(5-12 사회 인지 — 귀인과 태도) 집필 완성 반영 / 7bce4535 HANDOVER: 제58화 실사 도판 4점 확정·배치 반영 / a5e7d5a3 제58화 실사 도판 4점 확정 배치 — 지팀바도·모집 광고·감옥 장면·마슬라흐 / caee80df HANDOVER: 제58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 반영 / 440c0c24 5권 58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 / a5179f01 HANDOVER: 맨 위에 다음 세션 TL;DR 추가 — 인수 시 첫 1KB만 읽어도 재개 가능 / 0a0165dd 5권 57화(5-10 사회 심리학의 부상 — 애슈와 밀그램) 집필 완성 + HANDOVER 갱신
+    · harness  main: HEAD 9f10a38 / origin 9f10a38 ·작업트리 변경 3 :: 9f10a38 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 5206e0a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f94ccc docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ecafe98 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-09-15T21:45+09:00`** — **제59화(5-12 사회 인지 — 귀인과 태도, 16p) 집필 완성**: 산출물 3종(01 본문·02 검토내용·도판의뢰서)을 `manuscripts/psychology/volume5/`에 배치(미커밋·미발행, 무진님 검토 대기). E-basis 14,604·각주 35·단어코너 3·게이트 23/23 PASS·DAV 35/35(인용 조각 62)·candidates 수치 57+인용 62 전부 FOUND. 본문 sha256 `c7e39b561a2518d849fe499fc4e63b71f922d4026fcd2e76cdf1d7c992034f14` · candidates.tsv sha256 `c38d63ac0509b757513084fbefc14acfea8838cc796ce9b5f4c19914754168ab`. 도판 5자리 확정 — 그림1·3·5는 도해(도판의뢰서), **그림2(하이더)·그림4(페스팅거)는 공용에 자유 라이선스 초상이 없어 실사 후보 16종을 내려받아 접촉 시트 `ws_tmp\ep59-research\figures\contact_sheet_ep59.png` 작성, 무진님 선택 대기**(대안: 니스벳·1983 학회 단체·여우와 신 포도). 자세한 내역은 `5권_59화_02_검토내용.md` ③·⑤·⑥.
   - [자동수집 · Git] 마지막 세션(2026-09-15T20:47+09:00) 이후:
     · homepage master: HEAD be9f0e9 / origin be9f0e9 ·작업트리 변경 1 :: be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
@@ -50,10 +58,6 @@
   - **검증 파이프라인**: `ws_tmp/ep57-research/_gate57.py`(23항목) · `_dav57.py`(31/31) · `_cand57.py` → `candidates.tsv`. 인용 문서 14종.
   - **미해결·보류**: ① 밀그램 견본 충격 볼트 수 — 영어판/한국어판 상충 → 본문에 수치 미기재("약한 충격"), 검토내용 §5에 기록. ② 실사 사진 3점(그림1 애슈·그림3 밀그램·그림4 모집광고) 후보 전부 다운로드 완료 → **무진님 선택 대기**(접촉 시트 `ws_tmp\ep57-research\figures\contact_sheet_ep57.png`). ③ 그림2·5 개념도 = 외주 제작 대기.
   - **다음 작업**: 5권 5-11(제58화) 이후 집필 — 다음 화는 지팀바도·스탠퍼드 감옥 실험(57화 12절에서 예고).
-
-- 시각(ISO): **`2026-09-14T22:05+09:00`** — **제56화(5-9 「성격 심리학의 확립 — 올포트」) 집필 완성** — E-basis 14,531(15.6쪽·목표 16p)·각주 34·게이트 **23/23 PASS**·DAV **34/34**·01 46,953B(`f77857fc…`, LF) — 도판: 그림1 = 하버드 대학 아카이브 1964년 실사 **무진 승인 확정**(1548×2209)·그림2 PD·개념도 2점 **보류(외주 제작 대기)** — **게재 허가** = 아카이브 'permission to publish' 필요(`archives_permissions@harvard.edu`) — **미발행**(검토·발행=무진).
-  - [자동수집 · Git] 마지막 세션(2026-09-14T19:18+09:00) 이후: homepage `c22d63b`(=origin) / llm-wiki `1a21a7b6`(origin `8eae4735`·작업트리 174) / harness `7af0bea`(=origin) / openclaw `11a8f0a`(=origin).
-  - [기재 영역] 이번 세션: ① **제56화 산출물 3종 완성**(01 본문·02 검토내용·도판의뢰서 — `manuscripts/psychology/volume5/5권_56화_*`, 게이트 `ws_tmp/ep56-research/_gate56.py` 23/23·DAV `_dav56.py` 34/34). ② **2차 도판 조사**(대학·연구소·학회·검색엔진·아카이브 직접 조사) — 1순위 `B5_alchetron`은 삽화+`©2000 Funfaces.com` 워터마크로 판명·배제. ③ **그림1 교체·승인** = 하버드 대학 아카이브 「Gordon W. Allport, photographic portrait, 1964」(`HUP Allport, Gordon W. (14)`·Ricci Bertocci 촬영) 1548×2209 → **무진 승인 확정**, 후보 원본 `figures/raw2/`(C1~C15)·대조 시트 보존. ④ **개념도(그림3·4) 보류** — 자리 표시(가안) 유지·외주 제작 대기 명시. ⑤ **게재 허가 조건** — 아카이브 출판 허가 필요(`archives_permissions@harvard.edu`)·PD 무료 정책은 PD에만 적용(1964 사진 대상 아님)·웹 공개본 무료·출판용 고화질 유료. ⑥ **미발행·미커밋**(검토·발행은 무진님 직접).
 
 ## 이번 세션 요약
 
