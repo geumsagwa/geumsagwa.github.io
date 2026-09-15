@@ -14,6 +14,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-15T21:59+09:00`** — **인계 파이프라인 스크립트 버그 2건 수정 + llm-wiki HANDOVER 푸시**: ① **원고 인계문서 `F:\wiki\HANDOVER.md` 59화 기준 갱신 커밋 `d6c0eba7`을 origin/master로 푸시**(HEAD=origin 일치). ② **인계 파이프라인 버그 2건 수정·커밋 harness `7674d2f`** — (a) cp949 콘솔에서 `—` print 시 `UnicodeEncodeError`로 스크립트가 죽어 **게이트 FAIL 직후 아카이브·커밋·초안 정리 누락**(게이트 출력이 비어 보인 원인) → `update-handover.py`·`progress-file-check.py` stdout/stderr를 UTF-8로 재설정 + 게이트 자식에 `PYTHONIOENCODING=utf-8` 전달, (b) 30KB 판정을 **LF→CRLF 변환 후 실제 기록 바이트**로 정정(변환 전 30,674B 보고 vs 실제 30,791B → 쓰기 후에야 게이트 FAIL). ③ 검증: `—` 출력 재현 테스트 통과 · 크기 예측 31,002B = 실제 31,002B 일치 · 게이트 FAIL 경로(51,689B 시험) 정상 출력 · 게이트 재실행 PASS(5개 미러 28,916B 바이트 동일). ④ 하네스 메모에 수정 내역 기록. **다음 작업 = 5-13(제60화) 「심리 치료의 확장」(14p) 집필**(무진님 착수 지시 대기).
+  - [자동수집 · Git] 마지막 세션(2026-09-15T21:53+09:00) 이후:
+    · homepage master: HEAD bc1a694 / origin bc1a694 ·작업트리 변경 1 :: bc1a694 진행 기록: 인계 갱신 (update-handover auto) / 10ce477 진행 기록: 인계 갱신 (update-handover auto) / be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
+    · llm-wiki master: HEAD d6c0eba7 / origin d6c0eba7 ·작업트리 변경 176 :: d6c0eba7 HANDOVER: 제59화(5-12 사회 인지 — 귀인과 태도) 집필 완성 반영 / 7bce4535 HANDOVER: 제58화 실사 도판 4점 확정·배치 반영 / a5e7d5a3 제58화 실사 도판 4점 확정 배치 — 지팀바도·모집 광고·감옥 장면·마슬라흐 / caee80df HANDOVER: 제58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 반영 / 440c0c24 5권 58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 / a5179f01 HANDOVER: 맨 위에 다음 세션 TL;DR 추가 — 인수 시 첫 1KB만 읽어도 재개 가능 / 0a0165dd 5권 57화(5-10 사회 심리학의 부상 — 애슈와 밀그램) 집필 완성 + HANDOVER 갱신
+    · harness  main: HEAD 7674d2f / origin 7674d2f ·작업트리 변경 3 :: 7674d2f fix(scripts): 인계 파이프라인 cp949 출력 예외 및 30KB 크기 계산 오차 수정 / c029897 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 9f10a38 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 5206e0a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f94ccc docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ecafe98 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-09-15T21:53+09:00`** — **인계문서 정비 — 제59화 기준 반영 완료**: ① **원고 인계문서 `F:\wiki\HANDOVER.md` 59화 기준 갱신**(TL;DR 「현재 위치」·「다음 작업 = 5-13 심리 치료의 확장 14p」·「대기(무진님)」·「현재 상태」5권 줄·「다음 세션」1·2번·「갱신 노트」2026-09-15(3차) 신설) → **llm-wiki 커밋 `d6c0eba7`**(HANDOVER.md 단독 지정 커밋, 원고 3종은 비추적 유지 · **미푸시** origin 7bce4535). ② **배치본 재검증 재실행 — 전부 이상 없음**: 게이트 **23/23 PASS** · E-basis **14,604** · DAV **35/35**(인용 조각 62) · candidates 수치 57 + 인용 62 FOUND · 본문 sha256 `c7e39b56…`(draft01.md와 완전 일치). 검증 3종 도구 = `ws_tmp\ep59-research\_gate59.py`·`_dav59.py`·`_cand59.py`. ③ 세션 시작 시 읽을 인계문서 안내 정리 — 원고 재개는 `F:\wiki\HANDOVER.md` 맨 위 TL;DR(약 1KB), 진행 인계는 `Desktop\Harness\handover-progress.md`(5개 미러 동일, 27,761B — 30KB 근접). **다음 작업 = 5-13(제60화) 「심리 치료의 확장」(14p) 집필**(무진님 착수 지시 대기).
   - [자동수집 · Git] 마지막 세션(2026-09-15T21:45+09:00) 이후:
     · homepage master: HEAD 10ce477 / origin 10ce477 ·작업트리 변경 1 :: 10ce477 진행 기록: 인계 갱신 (update-handover auto) / be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
@@ -46,18 +54,6 @@
     · harness  main: HEAD ecafe98 / origin ecafe98 ·작업트리 변경 3 :: ecafe98 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-09-15T15:00+09:00`** — **제57화(5-10 「사회 심리학의 부상 — 애슈와 밀그램」) 집필 완성** — 산출물 3종(01 본문·02 검토내용·도판의뢰서) · **E-basis 20,212**(목표 20,000~20,400·22p) · 각주 31 · 단어코너 3 · **게이트 23/23 PASS** · **DAV 인용 31/31** · **candidates.tsv 연도·수치 74건 + 인용 31건 전부 FOUND**(sha256 `4f72668e…`) · 도판 5점(그림1·3·4 실사 후보 선택 대기 = 자리표시자, 그림2·5 개념도 의뢰) · 커밋 `df7802aa`·`e1f55e76`
-  - [자동수집 · Git] 마지막 세션(2026-09-14T22:05+09:00) 이후:
-    · homepage master: HEAD 002e062 / origin 002e062 ·작업트리 변경 1 :: 002e062 자동: 카드뉴스 갱신 (2026-09-15) / 9d78244 진행 기록: 인계 갱신 (update-handover auto) / f4c94e3 진행 기록: 인계 갱신 (update-handover auto) / c22d63b 진행 기록: 인계 갱신 (update-handover auto) / 6392d68 진행 기록: 인계 갱신 (update-handover auto) / b12120e 진행 기록: 인계 갱신 (update-handover auto) / 8717d1b 진행 기록: 인계 갱신 (update-handover auto) / 2835e75 진행 기록: 인계 갱신 (update-handover auto) / f65ea70 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD e1f55e76 / origin 4ca73327 :: e1f55e76 5권 57화 검토내용·도판의뢰서·도판 자리표시자 추가 / df7802aa 5권 57화 본문 확장·검증 산출물 추가 (E-basis 20212, gate 23/23, DAV 31/31) / 4ca73327 HANDOVER: 주의사항 — 확립된 파이프라인 변경·생략 금지 하드 룰 추가 (2026-09-14) / 739c65ea HANDOVER: 제56화(5-9 올포트) 집필 완성 — 게이트 23/23·DAV 34/34·그림1 하버드 아카이브 1964 승인·개념도 보류·게재 허가 조건 확인 / 1a21a7b6 HANDOVER: 각주 소급 통일 완료 — 0각주 5화 보강·02 동기화 21/21·재발행 6화 / d0402001 02 검토내용 동기화 마무리 — 3-39(고삭제 46→2)·2-21(잔여 
-    · harness  main: HEAD 23f0cc7 / origin 23f0cc7 ·작업트리 변경 3 :: 23f0cc7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 099e7ca docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 7af0bea docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2135ae0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 05fcde3 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 9b40a1a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 893ad19 do
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-  - **5권 5-10(제57화)**: 사회 심리학의 부상 — 애슈와 밀그램. 트립렛 → 레빈 → 셰리프 → 애슈 → 밀그램 12절. 집필조건 9개 준수. 초고 8,703자 → 12절 전체 고쳐 써 20,212자(동어 반복 회피: 동물 실험·나라별 차이·변형 조건·밀그램의 다른 실험으로 보강).
-  - **검증 파이프라인**: `ws_tmp/ep57-research/_gate57.py`(23항목) · `_dav57.py`(31/31) · `_cand57.py` → `candidates.tsv`. 인용 문서 14종.
-  - **미해결·보류**: ① 밀그램 견본 충격 볼트 수 — 영어판/한국어판 상충 → 본문에 수치 미기재("약한 충격"), 검토내용 §5에 기록. ② 실사 사진 3점(그림1 애슈·그림3 밀그램·그림4 모집광고) 후보 전부 다운로드 완료 → **무진님 선택 대기**(접촉 시트 `ws_tmp\ep57-research\figures\contact_sheet_ep57.png`). ③ 그림2·5 개념도 = 외주 제작 대기.
-  - **다음 작업**: 5권 5-11(제58화) 이후 집필 — 다음 화는 지팀바도·스탠퍼드 감옥 실험(57화 12절에서 예고).
 
 ## 이번 세션 요약
 
@@ -102,6 +98,7 @@
 3. **3권 대기 원고 정리·발행(순서 경로 내)** — ep30~ep33·ep37·ep39 최종 확인만 · ep34·ep36 산출물 완료 · ep35 부속·DAV·커밋 선행 · ep38 1차분 검토 — 각 화 순서대로 확정·발행 (ep40(3-13)은 ep39 발행 후 집필).
 4. **철학사 11화(아리스토텔레스 — 학문의 제왕, 1-13) 집필**
 ## 하네스 메모
+- **인계 스크립트 버그 2건 수정 (09-15):** ① `update-handover.py`·`progress-file-check.py`가 cp949 콘솔에서 `—`를 print하다 `UnicodeEncodeError`로 죽어 **게이트 FAIL 직후 아카이브·커밋·초안 정리 단계가 통째로 누락**(게이트 출력이 비어 보인 원인도 이것) → stdout/stderr를 UTF-8로 재설정 + 게이트 자식에 `PYTHONIOENCODING=utf-8` 전달. ② 30KB 판정을 LF→CRLF 변환 **후** 실제 기록 바이트로 계산 — 변환 전 기준이라 30,674B로 보고됐으나 실제 30,791B라 **게이트가 쓰기 후에야 FAIL**. harness `7674d2f`.
 - **브리핑 축구 일정 (08-14):** 카테고리 `축구 스타`(손흥민·이강인) · `##7 축구 일정`(LAFC 18966·아틀레티코 1068·한국 451) — ESPN scoreboard `site.api.espn.com/apis/site/v2/sports/soccer/{usa.1|esp.1|fifa.world}/scoreboard?dates=YYYYMMDD-YYYYMMDD`(하이픈 없음·KST=UTC+9·EDT 버킷 URL[오늘-1,오늘+6]→KST 필터) · 카드 `cat-football`+`dot-football`(주황) · TheSportsDB/KFA 보조
 - **스킬화·개인화·llm-wiki (08-13):** ① `harness\skills\`(규율+카드: supabase-management-api·github-pages-cache) ② 브리핑 `##6 개인 컨텍스트` — openclaw `buildPersonalSection()`(F:\wiki\wiki\personal\) ③ 개인 위키 `F:\wiki\wiki\personal\` · 카드 `cat-personal`(금색 #c4a87a)
 - **회원 4단계 역할 (08-13):** member(0)<staff(1)<manager(2)<admin(3) · `setup_members.sql` 통째 실행(멱등, `to_old` 금지 — pg-meta 미지원) · test3/test4=staff · role변경=admin만 · 회원관리=manager 이상, Diary=admin만
