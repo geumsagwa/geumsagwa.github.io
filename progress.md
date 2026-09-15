@@ -14,6 +14,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-15T21:45+09:00`** — **제59화(5-12 사회 인지 — 귀인과 태도, 16p) 집필 완성**: 산출물 3종(01 본문·02 검토내용·도판의뢰서)을 `manuscripts/psychology/volume5/`에 배치(미커밋·미발행, 무진님 검토 대기). E-basis 14,604·각주 35·단어코너 3·게이트 23/23 PASS·DAV 35/35(인용 조각 62)·candidates 수치 57+인용 62 전부 FOUND. 본문 sha256 `c7e39b561a2518d849fe499fc4e63b71f922d4026fcd2e76cdf1d7c992034f14` · candidates.tsv sha256 `c38d63ac0509b757513084fbefc14acfea8838cc796ce9b5f4c19914754168ab`. 도판 5자리 확정 — 그림1·3·5는 도해(도판의뢰서), **그림2(하이더)·그림4(페스팅거)는 공용에 자유 라이선스 초상이 없어 실사 후보 16종을 내려받아 접촉 시트 `ws_tmp\ep59-research\figures\contact_sheet_ep59.png` 작성, 무진님 선택 대기**(대안: 니스벳·1983 학회 단체·여우와 신 포도). 자세한 내역은 `5권_59화_02_검토내용.md` ③·⑤·⑥.
+  - [자동수집 · Git] 마지막 세션(2026-09-15T20:47+09:00) 이후:
+    · homepage master: HEAD be9f0e9 / origin be9f0e9 ·작업트리 변경 1 :: be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
+    · llm-wiki master: HEAD 7bce4535 / origin 7bce4535 ·작업트리 변경 176 :: 7bce4535 HANDOVER: 제58화 실사 도판 4점 확정·배치 반영 / a5e7d5a3 제58화 실사 도판 4점 확정 배치 — 지팀바도·모집 광고·감옥 장면·마슬라흐 / caee80df HANDOVER: 제58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 반영 / 440c0c24 5권 58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 / a5179f01 HANDOVER: 맨 위에 다음 세션 TL;DR 추가 — 인수 시 첫 1KB만 읽어도 재개 가능 / 0a0165dd 5권 57화(5-10 사회 심리학의 부상 — 애슈와 밀그램) 집필 완성 + HANDOVER 갱신
+    · harness  main: HEAD 5206e0a / origin 5206e0a ·작업트리 변경 3 :: 5206e0a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f94ccc docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ecafe98 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-09-15T20:47+09:00`** — **제58화 실사 도판 4점 확정·배치(`a5e7d5a3`)** — 무진 선택(그림1 지팀바도·그림2 모집광고·그림4 감옥 장면·그림5 마슬라흐. 넷 다 위키미디어 공용 CC BY-SA 4.0, 저작자 표시 필요)을 `manuscripts/psychology/volume5/`의 본문 참조 이름으로 배치. 출처·라이선스·URL은 §8.5에 따라 캡션이 아니라 도판의뢰서 §3·검토내용 ③에 기록. §8.5 해상도(권장 1,600~2,000·최소 1,200·800 미만 사용 자제) 대비 그림1 1920·그림5 1648 충족, 그림4 750·그림2 286은 원본 자체가 그 크기라 미달로 기록(확대하지 않음). 재검증: 게이트 23/23 PASS·DAV ok=33 bad=0·candidates 수치 33+인용 36 FOUND. HANDOVER 갱신 `7bce4535`. 남은 것: 그림3(감옥 배치 개념도) 외주 제작.
   - [자동수집 · Git] 마지막 세션(2026-09-15T20:20+09:00) 이후:
     · homepage master: HEAD e517eb3 / origin e517eb3 ·작업트리 변경 1 :: e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
@@ -46,17 +54,6 @@
 - 시각(ISO): **`2026-09-14T22:05+09:00`** — **제56화(5-9 「성격 심리학의 확립 — 올포트」) 집필 완성** — E-basis 14,531(15.6쪽·목표 16p)·각주 34·게이트 **23/23 PASS**·DAV **34/34**·01 46,953B(`f77857fc…`, LF) — 도판: 그림1 = 하버드 대학 아카이브 1964년 실사 **무진 승인 확정**(1548×2209)·그림2 PD·개념도 2점 **보류(외주 제작 대기)** — **게재 허가** = 아카이브 'permission to publish' 필요(`archives_permissions@harvard.edu`) — **미발행**(검토·발행=무진).
   - [자동수집 · Git] 마지막 세션(2026-09-14T19:18+09:00) 이후: homepage `c22d63b`(=origin) / llm-wiki `1a21a7b6`(origin `8eae4735`·작업트리 174) / harness `7af0bea`(=origin) / openclaw `11a8f0a`(=origin).
   - [기재 영역] 이번 세션: ① **제56화 산출물 3종 완성**(01 본문·02 검토내용·도판의뢰서 — `manuscripts/psychology/volume5/5권_56화_*`, 게이트 `ws_tmp/ep56-research/_gate56.py` 23/23·DAV `_dav56.py` 34/34). ② **2차 도판 조사**(대학·연구소·학회·검색엔진·아카이브 직접 조사) — 1순위 `B5_alchetron`은 삽화+`©2000 Funfaces.com` 워터마크로 판명·배제. ③ **그림1 교체·승인** = 하버드 대학 아카이브 「Gordon W. Allport, photographic portrait, 1964」(`HUP Allport, Gordon W. (14)`·Ricci Bertocci 촬영) 1548×2209 → **무진 승인 확정**, 후보 원본 `figures/raw2/`(C1~C15)·대조 시트 보존. ④ **개념도(그림3·4) 보류** — 자리 표시(가안) 유지·외주 제작 대기 명시. ⑤ **게재 허가 조건** — 아카이브 출판 허가 필요(`archives_permissions@harvard.edu`)·PD 무료 정책은 PD에만 적용(1964 사진 대상 아님)·웹 공개본 무료·출판용 고화질 유료. ⑥ **미발행·미커밋**(검토·발행은 무진님 직접).
-
-- 시각(ISO): **`2026-09-14T19:18+09:00`** — **④ 02 검토내용 각주 번호 동기화 — 패밀리 A 3화 완료(2-15 41→37 · 2-20 63→14 · 3-32 58→33) → ④ 15/21. 도구 sync02c 보완 + 3-32 게이트·③ 대조표 수동 정합. 본문 산문 오염 1건 정정.**
-  - [자동수집 · Git] 마지막 세션(2026-09-14T14:49+09:00) 이후:
-    · homepage master: HEAD b12120e / origin b12120e :: b12120e 진행 기록: 인계 갱신 (update-handover auto) / 8717d1b 진행 기록: 인계 갱신 (update-handover auto) / 2835e75 진행 기록: 인계 갱신 (update-handover auto) / f65ea70 진행 기록: 인계 갱신 (update-handover auto) / 08810a5 진행 기록: 인계 갱신 (update-handover auto) / 52f3768 진행 기록: 인계 갱신 (update-handover auto) / 7069df2 진행 기록: 인계 갱신 (update-handover auto) / 845c7a4 진행 기록: 인계 갱신 (update-handover auto) / 1f0c538 자동: 카드뉴스 갱신 (2026-09-14)
-    · llm-wiki master: HEAD 0a065f4f / origin 0a065f4f ·작업트리 변경 175 :: 0a065f4f 각주 소급 정규화 ④ — 02 검토내용 각주 번호 동기화 15화 / a25e4b90 각주 소급 정규화 — 2·3·4·5권 각주 35 초과 21화 기계 정규화(문장각주·서술구 제거, 본문 산문 불변) + HANDOVER 갱신 / 6da03952 5권 55화 분량 확정 — 보강 없이 21.0쪽(각주 마커 제외 기준) / fbeff3ba 5권 55화 각주 개정 시범(169→32) · 통합집필지침 §5.3·§5.6·§10.0·§10.2 개정 · 개정안(결재용) 추가 / 19b1e2bd 심리학 5권 54화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 472e699f 심리학 5권 55화 구분선 표기 정정 — 본문 말미 마지막 문단이 큰 글씨로 렌더되던 문제(§5.10 구분선 앞뒤 빈 줄 위반) / 46d14e75 심리
-    · harness  main: HEAD 05fcde3 / origin 05fcde3 ·작업트리 변경 3 :: 05fcde3 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 9b40a1a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 893ad19 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b1dea43 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 161a7b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cdaedf0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 2849369 do
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - **도구 보완(`ws_tmp/각주정리/sync02c.py`)**: ① 무번호 제목(`## DAV 비판적 검토`·`## 진행 기록`) 기준 §6 상당 구간 보호(TAIL) — 패밀리 A의 `NO_S6` 경고 해소, 기존 번호형과 동일 동작 ② `- **총 N개** ([^1]~[^M])` 정규식 오타 수정 ③ `1..M`·`마커 a ↔ 정의 b` 구조 카운트 갱신 패스 추가(2-15/2-20 헤더-산문 불일치 해소).
-  - **적용 3화**: 2-15(41→37)·2-20(63→14) = 도구 자동(추적표 `| [^n] |` 트림·재번호, §6 보존). 3-32(58→33) = 도구 + 수동 정합 — ③ 대조표(평번호 58행→33행 재번호·삭제분 제거), 게이트②(`순차로 33개`)·검증/판정(33정의·60인용·문서 세그먼트 36·2-doc 정의 `[^8]·[^19]·[^21]`), 개요 `마커 1~33`. **§6(진행 기록·DAV)의 옛 번호는 불변.**
-  - **주의(도구 오탐)**: refnorm `—\s+의\s`→`— ` 규칙이 3-32 주제 질문 산문 `— 카를 구스타프 융 — 의 이야기다`를 오염 → 수동 복원. 원본 백업 `ws_tmp/각주정리/backup/`(3-32 02 원본 추가).
-  - **잔여(④ 6화)**: 2-21(N=0)·3-39(46→2)·0각주 4화(3-34·3-40·4-41·4-42) — ②③(낱말 판정·신규 보강) 후 일괄. **다음 창 = ① 5권 48~54 용어 판정(잔여 49·80·79·68·62·56·110) / ⑤ 발행분 재발행.**
 
 ## 이번 세션 요약
 
