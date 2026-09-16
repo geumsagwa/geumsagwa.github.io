@@ -14,6 +14,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-16T22:20+09:00`** — **제61화(5-14 「20세기 후반의 심리학 — 다양성과 통합」) 집필 완성 + 도판 6자리 무진님 승인.** 산출물 3종(01 본문·02 검토내용·도판의뢰서) 완성, **미커밋·미발행**(무진님 검토 대기). E-basis **14,519**(목표 14,400~15,100 · 16p) · 각주 **34**(§10.0 상한 재심사로 초안 38 → 34, 덜어낸 4건은 02 ⑤ 검증표로 이관) · 단어코너 3(학제·절충·다양성, 전부 다체) · 게이트 **23/23 PASS** · DAV **34/34**(인용 조각 57) · `candidates.tsv` 수치 43+인용 57 전부 FOUND(불일치 0, 미검증·보류 7 = 서술어 6 + 앞 권 검증 1). 본문 sha256 `8754d490…` · candidates sha256 `87635472…`. 도판: 실사 4점(그림3 스페리·그림4 벡·그림5 클라크 부부·그림6 APA 본부) 배치 완료 + 도해 2점(그림1 학파→분야·그림2 마음의 세 층) 규격 승인 — **여섯 자리 모두 무진님 승인(2026-09-16)**, 도해는 제작 후 같은 파일명으로 교체(01 본문 수정 불필요). 그림4는 밴두라(CC BY-SA 4.0) 후보가 3권 35화와 출처 줄이 겹쳐 게이트 교차 동어반복에 걸려 벡(PD)으로 확정. 다음 작업: **6권 6-1(제62화 「신경과학의 도약 — 마음의 지도」·18p)**.
+  - [자동수집 · Git] 마지막 세션(2026-09-16T20:05+09:00) 이후:
+    · homepage master: HEAD 69e415d / origin 69e415d ·작업트리 변경 2 :: 69e415d 진행 기록: 인계 갱신 (update-handover auto) / 0a2533d 진행 기록: 인계 갱신 (update-handover auto) / 5a11afd 진행 기록: 인계 갱신 (update-handover auto) / 0fec457 자동: 카드뉴스 갱신 (2026-09-16)
+    · llm-wiki master: HEAD 706f642c / origin 706f642c ·작업트리 변경 239 :: 706f642c 1권 4~10화 실사 도판(그림 1) 소급 배치 / eea262e2 1권 1~3화 실사 도판(그림 1) 소급 배치 / ebfd6e72 HANDOVER: 4차 갱신 — 1순위 4화 재발행 완료 + 1권 도해 캡션 소급 + 물음표 통일 + 검토내용 복구 공개 / 35bec95e 소제목 물음표 통일(무진 지시) — 지침 §1에 규칙 기록 + 발행분 반영 / c9d2cc58 1권 도해 캡션 본문화 + 도해 안 캡션 폐지 소급 반영 (심리학사 1~10·27화 재발행) / 583f5317 HANDOVER: 제59화·제60화 집필 완성 + 도해 팔레트 일괄 정정 반영
+    · harness  main: HEAD 270f0b4 / origin 270f0b4 ·작업트리 변경 3 :: 270f0b4 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6574f7a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 60a7e25 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-09-16T20:05+09:00`** — **llm-wiki 원고 창: 3차 ⚠️(4화 재발행) 이행 + 1권 도해 안 캡션 소급(무진 승인) + 2권 27화 그림4 크롭 + 소제목 물음표 통일(무진 지시) + 1권 10화 02 검토내용 소실 복구(공개).**
   - [자동수집 · Git] 마지막 세션(2026-09-16T09:51) 이후 — llm-wiki `583f5317`·`c9d2cc58`·`35bec95e`(origin `583f5317`) · homepage `5a11afd` · harness `60a7e25` · openclaw `11a8f0a`(커밋 없음)
   - [확정·상태] **재발행 15화**(심리학사 1~10·19·22·27·34·35화, `publish-series-episodes.mjs … --update` — §8.5.8 출처 줄·본문 캡션 DB 반영 확인: `fig-credit` 19화 2·22화 1·34화 2·35화 2건) · **1권 1~10화 도해 안 하단 캡션 크롭 제거 → 본문 `> **그림N.**` 캡션 이관**(원본 `…_복원포인트_20260916.png` 보관) · **2권 27화 그림4 크롭** · **소제목 물음표 통일**(지침 §1 규칙 신설 = 의문문 소제목엔 `?`를 부제 앞 주절 끝에, 서술문·명사절 `…는지`엔 미부착) 적용 = 심리학사 1권 1·13 / 2권 17~19·22·25·26 / 3권 34·35 / 5권 54·58화, 철학사 1·4·8·10화(+02 검토내용 미러 정정 · 부수 구두점 정정 3건 = 2권 27·18화). 커밋 `c9d2cc58`·`35bec95e`.
@@ -44,14 +52,6 @@
     · homepage master: HEAD 10ce477 / origin 10ce477 ·작업트리 변경 1 :: 10ce477 진행 기록: 인계 갱신 (update-handover auto) / be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
     · llm-wiki master: HEAD d6c0eba7 / origin 7bce4535 ·작업트리 변경 176 :: d6c0eba7 HANDOVER: 제59화(5-12 사회 인지 — 귀인과 태도) 집필 완성 반영 / 7bce4535 HANDOVER: 제58화 실사 도판 4점 확정·배치 반영 / a5e7d5a3 제58화 실사 도판 4점 확정 배치 — 지팀바도·모집 광고·감옥 장면·마슬라흐 / caee80df HANDOVER: 제58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 반영 / 440c0c24 5권 58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 / a5179f01 HANDOVER: 맨 위에 다음 세션 TL;DR 추가 — 인수 시 첫 1KB만 읽어도 재개 가능 / 0a0165dd 5권 57화(5-10 사회 심리학의 부상 — 애슈와 밀그램) 집필 완성 + HANDOVER 갱신
     · harness  main: HEAD 9f10a38 / origin 9f10a38 ·작업트리 변경 3 :: 9f10a38 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 5206e0a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f94ccc docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ecafe98 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-09-15T21:45+09:00`** — **제59화(5-12 사회 인지 — 귀인과 태도, 16p) 집필 완성**: 산출물 3종(01 본문·02 검토내용·도판의뢰서)을 `manuscripts/psychology/volume5/`에 배치(미커밋·미발행, 무진님 검토 대기). E-basis 14,604·각주 35·단어코너 3·게이트 23/23 PASS·DAV 35/35(인용 조각 62)·candidates 수치 57+인용 62 전부 FOUND. 본문 sha256 `c7e39b561a2518d849fe499fc4e63b71f922d4026fcd2e76cdf1d7c992034f14` · candidates.tsv sha256 `c38d63ac0509b757513084fbefc14acfea8838cc796ce9b5f4c19914754168ab`. 도판 5자리 확정 — 그림1·3·5는 도해(도판의뢰서), **그림2(하이더)·그림4(페스팅거)는 공용에 자유 라이선스 초상이 없어 실사 후보 16종을 내려받아 접촉 시트 `ws_tmp\ep59-research\figures\contact_sheet_ep59.png` 작성, 무진님 선택 대기**(대안: 니스벳·1983 학회 단체·여우와 신 포도). 자세한 내역은 `5권_59화_02_검토내용.md` ③·⑤·⑥.
-  - [자동수집 · Git] 마지막 세션(2026-09-15T20:47+09:00) 이후:
-    · homepage master: HEAD be9f0e9 / origin be9f0e9 ·작업트리 변경 1 :: be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
-    · llm-wiki master: HEAD 7bce4535 / origin 7bce4535 ·작업트리 변경 176 :: 7bce4535 HANDOVER: 제58화 실사 도판 4점 확정·배치 반영 / a5e7d5a3 제58화 실사 도판 4점 확정 배치 — 지팀바도·모집 광고·감옥 장면·마슬라흐 / caee80df HANDOVER: 제58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 반영 / 440c0c24 5권 58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 / a5179f01 HANDOVER: 맨 위에 다음 세션 TL;DR 추가 — 인수 시 첫 1KB만 읽어도 재개 가능 / 0a0165dd 5권 57화(5-10 사회 심리학의 부상 — 애슈와 밀그램) 집필 완성 + HANDOVER 갱신
-    · harness  main: HEAD 5206e0a / origin 5206e0a ·작업트리 변경 3 :: 5206e0a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f94ccc docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ecafe98 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
