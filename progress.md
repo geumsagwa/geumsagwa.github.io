@@ -15,11 +15,7 @@
 ## 마지막 갱신
 
 - 시각(ISO): **`2026-09-17T06:09+09:00`** — **llm-wiki 원고 창: 미커밋·미추적분 8커밋 커밋·푸시(109파일 · `fe9b4c56..7b74b8d1`) + "4·5권 원고·도판 미커밋 유지" 관행 폐지 확정(6차 ⑥ⓐ 해소).**
-  - [자동수집 · Git] 마지막 세션(2026-09-16T22:58+09:00) 이후:
-    · homepage master: HEAD b2221d8 / origin b2221d8 ·작업트리 변경 2 :: b2221d8 자동: 카드뉴스 갱신 (2026-09-17) / e195188 진행 기록: 인계 갱신 — llm-wiki 푸시 완료 반영 / 953297c 진행 기록: 인계 갱신 — 인계 갱신(6차) 항목 보강(게이트 FAIL 대응·수치 정정·미푸시 상태) / 18686a2 진행 기록: 인계 갱신 — CC 도판 소급 수치 정정(20점 → 21점) / d543e7b 진행 기록: 인계 갱신 (update-handover auto) / 782d89c 진행 기록: 인계 갱신 (update-handover auto) / 1cb8898 진행 기록: 인계 갱신 (update-handover auto) / 69e415d 진행 기록: 인계 갱신 (update-handover auto) / 0a2533d 진행 기록: 인계 갱신
-    · llm-wiki master: HEAD 7b74b8d1 / origin 7b74b8d1 ·작업트리 변경 105 :: 7b74b8d1 작업 노트·작성지침 체크포인트 추가 / 800f4fd7 심리학사 5권 61화(5-14) 산출물·도판 추가 — 5권 원고 마감 / c2045f63 심리학사 5권 56·59·60화 산출물·도판 추가 / 8904e297 심리학사 5권 48~58화 도판의뢰서 팔레트 정정 · 57화 도판 4점 확정 / e1321939 심리학사 4권 43~47화 미추적 원고·도판 추가 / 729fbeb9 심리학사 3권 29~38화 미추적 도판·도판의뢰서 추가 / b0102e91 심리학사 1·2·3권 02 검토내용·도판의뢰서 정비 / 46fb725e 세계사 4권 95~97화 검토내용·본문·전체목차 갱신 / fe9b4c56 HANDOVER: 6차 노트 — llm-wiki 커밋 7건 푸시 완료(706f642c..3f1488
-    · harness  main: HEAD 9d23167 / origin 9d23167 ·작업트리 변경 3 :: 9d23167 docs(desktop-handoff): 인계 갱신 — llm-wiki 푸시 완료 반영 / 097b3e1 docs(desktop-handoff): 인계 갱신 — 인계 갱신(6차) 항목 보강(게이트 FAIL 대응·수치 정정·미푸시 상태) / 81bfc9b docs(desktop-handoff): 인계 갱신 — CC 도판 소급 수치 정정(20점 → 21점) / dccdfe9 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 006eab4 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 52809cd docs(desktop-handoff): 인계 갱신 동기 (update-handover auto
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
+  - [자동수집 · Git] 마지막 세션(2026-09-16T22:58) 이후 — llm-wiki `fe9b4c56..7b74b8d1`(origin 동일 · 미추적 잔여 다수) · homepage `b2221d8` · harness `9d23167` · openclaw `11a8f0a`(커밋 없음)
   - [미커밋분 커밋·푸시 · 무진님 지시] llm-wiki 저장소의 **미커밋·미추적분을 논리 단위 8커밋(109파일)**으로 커밋·푸시 → `fe9b4c56..7b74b8d1`(origin/master 반영). 내역: 세계사 4권 95~97화 검토내용·본문·전체목차(`46fb725e`) · 심리학사 1·2·3권 02 검토내용·도판의뢰서 정비(캡션라벨 sweep·물음표 통일, `b0102e91`) · 3권 29~38화 도판 16점·도판의뢰서 4종(`729fbeb9`) · 4권 43~47화 도판 14점·47화 산출물 3종(`e1321939`) · 5권 48~58화 도판의뢰서 팔레트 정정+57화 도판 4점 확정(`8904e297`) · 5권 56·59·60화 산출물·도판(`c2045f63`) · 5권 61화 산출물·도판(`800f4fd7`) · 3권 off-peak 노트+작성지침 체크포인트(`7b74b8d1`).
   - [비추적 유지 준수] 하드 룰대로 `ws_tmp/`(3,469건)·`*_복원포인트_*`·`*-selection*`·`_intake_9`·`_tmp_agora`는 커밋 제외. 추가 제외 = 0바이트 junk 2건(`**그림`·`**그림N.**`) · 본문 미참조 중복(철학사 1권 9화 `.png` 2점·3권 38화 `_placeholder.png` 2점) · `3권_34화_그림1_보상의 두 길.zip` · `_add_corners.py`. 푸시분에 비추적-유지 대상 혼입 **0건** 검증(`git diff --name-only`).
   - [관행 폐지 · 무진님 결정] **"4·5권 원고·도판은 대체로 미커밋 유지" 관행을 폐지**한다 — "어차피 수정하면 커밋할 텐데 굳이 되돌릴 필요 있나"는 무진님 판단. 앞으로 화별 수정분은 그때그때 커밋(기존 화별 커밋 관행과 동일). 이로써 6차 노트 ⑥ⓐ(커밋 `64775ba6`에 종전 untracked 8파일이 함께 실린 점 — 미커밋 유지 관행과의 정합성)가 **해소**. 비추적 유지 규칙(`ws_tmp`·복원포인트·selection 원본)은 불변.
@@ -51,12 +47,7 @@
 - [확정·상태] 59화 산출물 3종 완성(01·02·도판의뢰서) — 게이트 23/23 PASS·DAV 35/35(인용 62)·candidates 수치 57+인용 62 전부 FOUND. 도판 5자리: 그림1(도형 실험)·그림2(세 가지 정보)·그림5(달러 실험) 도해 + 그림3(니스벳)·그림4(여우와 신 포도) 실사 배치. 60화 산출물 3종 완성 — 게이트 23/23 PASS·DAV 31/31·도판 5자리(실사 4 + 도해 1) 확정.
 - [도해 팔레트 정정] 무진님 지적("외주 제작 도판에 배경색을 안 넣었네?"·"색상도 이전 도판들과 달라") → 실측 결과 48~56화 도해 17점은 시리즈 공통 팔레트(미색 배경), **57화 이후 6점은 흰 바탕(#ffffff)·검정/회색으로 어긋남**(57화 그림5·58화 그림3·59화 그림1·2·5·60화 그림4). 도판의뢰서 4종 색상 키를 시리즈 팔레트로 정정 + '공통 사항(개념도)' 삽입, 검토내용 4종에 정정 기록, 재제작 프롬프트 `ws_tmp/palette-fix/도해_팔레트_재제작_프롬프트.md`·상태 `ws_tmp/palette-fix/작업상태.md`. 1~4권은 문제 없음.
 - [다음] 무진님이 위 프롬프트로 도해 6점 재외주 → 같은 파일명 교체 → 표기 복원 + 게이트 재실행. 이어 5-14(제61화) 집필.
-  - [자동수집 · Git] 마지막 세션(2026-09-15T21:59+09:00) 이후:
-    · homepage master: HEAD 0fec457 / origin 0fec457 ·작업트리 변경 1 :: 0fec457 자동: 카드뉴스 갱신 (2026-09-16) / 60414d2 진행 기록: 인계 갱신 (update-handover auto) / bc1a694 진행 기록: 인계 갱신 (update-handover auto) / 10ce477 진행 기록: 인계 갱신 (update-handover auto) / be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
-    · llm-wiki master: HEAD d6c0eba7 / origin d6c0eba7 ·작업트리 변경 201 :: d6c0eba7 HANDOVER: 제59화(5-12 사회 인지 — 귀인과 태도) 집필 완성 반영 / 7bce4535 HANDOVER: 제58화 실사 도판 4점 확정·배치 반영 / a5e7d5a3 제58화 실사 도판 4점 확정 배치 — 지팀바도·모집 광고·감옥 장면·마슬라흐 / caee80df HANDOVER: 제58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 반영 / 440c0c24 5권 58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 / a5179f01 HANDOVER: 맨 위에 다음 세션 TL;DR 추가 — 인수 시 첫 1KB만 읽어도 재개 가능 / 0a0165dd 5권 57화(5-10 사회 심리학의 부상 — 애슈와 밀그램) 집필 완성 + HANDOVER 갱신
-    · harness  main: HEAD 127bcc7 / origin 127bcc7 ·작업트리 변경 3 :: 127bcc7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 7674d2f fix(scripts): 인계 파이프라인 cp949 출력 예외 및 30KB 크기 계산 오차 수정 / c029897 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 9f10a38 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 5206e0a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f94ccc docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ecafe98 doc
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+  - [자동수집 · Git] 마지막 세션(2026-09-15T21:59) 이후 — llm-wiki `d6c0eba7` · homepage `0fec457` · harness `127bcc7` · openclaw `11a8f0a`(커밋 없음)
 
 ## 이번 세션 요약
 
