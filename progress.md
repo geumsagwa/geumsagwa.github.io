@@ -14,6 +14,17 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-16T09:51+09:00`** — 제59화(5-12 사회 인지 — 귀인과 태도) 집필 완성(E-basis **14,610**·각주 35·단어코너 3·도판 5자리 배치, 미커밋·미발행) · 제60화(5-13 심리 치료의 확장 — 가족과 동네로 나간 마음 돌봄) 집필 완성(E-basis **13,593**·도판 5자리 확정) · **도해 팔레트 일괄 정정**(57·58·59·60화 도해 6점 — 시리즈 공통 팔레트(미색 #f6f1e6+남색 #2456a6+주황 #e08a2e)로 도판의뢰서 색상 키 정정, 재제작 프롬프트 작성)
+- [확정·상태] 59화 산출물 3종 완성(01·02·도판의뢰서) — 게이트 23/23 PASS·DAV 35/35(인용 62)·candidates 수치 57+인용 62 전부 FOUND. 도판 5자리: 그림1(도형 실험)·그림2(세 가지 정보)·그림5(달러 실험) 도해 + 그림3(니스벳)·그림4(여우와 신 포도) 실사 배치. 60화 산출물 3종 완성 — 게이트 23/23 PASS·DAV 31/31·도판 5자리(실사 4 + 도해 1) 확정.
+- [도해 팔레트 정정] 무진님 지적("외주 제작 도판에 배경색을 안 넣었네?"·"색상도 이전 도판들과 달라") → 실측 결과 48~56화 도해 17점은 시리즈 공통 팔레트(미색 배경), **57화 이후 6점은 흰 바탕(#ffffff)·검정/회색으로 어긋남**(57화 그림5·58화 그림3·59화 그림1·2·5·60화 그림4). 도판의뢰서 4종 색상 키를 시리즈 팔레트로 정정 + '공통 사항(개념도)' 삽입, 검토내용 4종에 정정 기록, 재제작 프롬프트 `ws_tmp/palette-fix/도해_팔레트_재제작_프롬프트.md`·상태 `ws_tmp/palette-fix/작업상태.md`. 1~4권은 문제 없음.
+- [다음] 무진님이 위 프롬프트로 도해 6점 재외주 → 같은 파일명 교체 → 표기 복원 + 게이트 재실행. 이어 5-14(제61화) 집필.
+  - [자동수집 · Git] 마지막 세션(2026-09-15T21:59+09:00) 이후:
+    · homepage master: HEAD 0fec457 / origin 0fec457 ·작업트리 변경 1 :: 0fec457 자동: 카드뉴스 갱신 (2026-09-16) / 60414d2 진행 기록: 인계 갱신 (update-handover auto) / bc1a694 진행 기록: 인계 갱신 (update-handover auto) / 10ce477 진행 기록: 인계 갱신 (update-handover auto) / be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
+    · llm-wiki master: HEAD d6c0eba7 / origin d6c0eba7 ·작업트리 변경 201 :: d6c0eba7 HANDOVER: 제59화(5-12 사회 인지 — 귀인과 태도) 집필 완성 반영 / 7bce4535 HANDOVER: 제58화 실사 도판 4점 확정·배치 반영 / a5e7d5a3 제58화 실사 도판 4점 확정 배치 — 지팀바도·모집 광고·감옥 장면·마슬라흐 / caee80df HANDOVER: 제58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 반영 / 440c0c24 5권 58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 / a5179f01 HANDOVER: 맨 위에 다음 세션 TL;DR 추가 — 인수 시 첫 1KB만 읽어도 재개 가능 / 0a0165dd 5권 57화(5-10 사회 심리학의 부상 — 애슈와 밀그램) 집필 완성 + HANDOVER 갱신
+    · harness  main: HEAD 127bcc7 / origin 127bcc7 ·작업트리 변경 3 :: 127bcc7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 7674d2f fix(scripts): 인계 파이프라인 cp949 출력 예외 및 30KB 크기 계산 오차 수정 / c029897 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 9f10a38 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 5206e0a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f94ccc docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ecafe98 doc
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-09-15T21:59+09:00`** — **인계 파이프라인 스크립트 버그 2건 수정 + llm-wiki HANDOVER 푸시**: ① **원고 인계문서 `F:\wiki\HANDOVER.md` 59화 기준 갱신 커밋 `d6c0eba7`을 origin/master로 푸시**(HEAD=origin 일치). ② **인계 파이프라인 버그 2건 수정·커밋 harness `7674d2f`** — (a) cp949 콘솔에서 `—` print 시 `UnicodeEncodeError`로 스크립트가 죽어 **게이트 FAIL 직후 아카이브·커밋·초안 정리 누락**(게이트 출력이 비어 보인 원인) → `update-handover.py`·`progress-file-check.py` stdout/stderr를 UTF-8로 재설정 + 게이트 자식에 `PYTHONIOENCODING=utf-8` 전달, (b) 30KB 판정을 **LF→CRLF 변환 후 실제 기록 바이트**로 정정(변환 전 30,674B 보고 vs 실제 30,791B → 쓰기 후에야 게이트 FAIL). ③ 검증: `—` 출력 재현 테스트 통과 · 크기 예측 31,002B = 실제 31,002B 일치 · 게이트 FAIL 경로(51,689B 시험) 정상 출력 · 게이트 재실행 PASS(5개 미러 28,916B 바이트 동일). ④ 하네스 메모에 수정 내역 기록. **다음 작업 = 5-13(제60화) 「심리 치료의 확장」(14p) 집필**(무진님 착수 지시 대기).
   - [자동수집 · Git] 마지막 세션(2026-09-15T21:53+09:00) 이후:
     · homepage master: HEAD bc1a694 / origin bc1a694 ·작업트리 변경 1 :: bc1a694 진행 기록: 인계 갱신 (update-handover auto) / 10ce477 진행 기록: 인계 갱신 (update-handover auto) / be9f0e9 진행 기록: 인계 갱신 (update-handover auto) / e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
@@ -43,15 +54,6 @@
     · homepage master: HEAD e517eb3 / origin e517eb3 ·작업트리 변경 1 :: e517eb3 진행 기록: 인계 갱신 (update-handover auto) / 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
     · llm-wiki master: HEAD 7bce4535 / origin 7bce4535 ·작업트리 변경 173 :: 7bce4535 HANDOVER: 제58화 실사 도판 4점 확정·배치 반영 / a5e7d5a3 제58화 실사 도판 4점 확정 배치 — 지팀바도·모집 광고·감옥 장면·마슬라흐 / caee80df HANDOVER: 제58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 반영 / 440c0c24 5권 58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 / a5179f01 HANDOVER: 맨 위에 다음 세션 TL;DR 추가 — 인수 시 첫 1KB만 읽어도 재개 가능 / 0a0165dd 5권 57화(5-10 사회 심리학의 부상 — 애슈와 밀그램) 집필 완성 + HANDOVER 갱신
     · harness  main: HEAD 6f94ccc / origin 6f94ccc ·작업트리 변경 3 :: 6f94ccc docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ecafe98 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-09-15T20:20+09:00`** — **제58화(5-11 「스탠퍼드 감옥 실험 — 지팀바도」) 집필 완성** — 산출물 3종(01 본문·02 검토내용·도판의뢰서) · **E-basis 14,580**(목표 14,400~15,050·16p) · 각주 33 · 단어코너 3(몰개성화·소진·요구 특성) · **게이트 23/23 PASS** · **DAV 인용 33/33** · **candidates.tsv 연도·수치 33건 + 인용 36건 전부 FOUND**(sha256 `437f6db6…`) · 미주석 서술 31건 출처 대조(02 ⑤) · 도판 5점 = 그림1·2·4·5 **실사 후보 16종 다운로드**(`ws_tmp/ep58-research/figures/raw/`·접촉시트 `contact_sheet_ep58.png`) → **무진님 선택 대기**, 그림3 감옥 배치 개념도 의뢰 · 커밋 `440c0c24`
-  - 세부: 초고 11,118자 → 12절 보강으로 14,580자(중복 회피 원칙 유지) · 각주 마커 첫등장 순서 위반 1건(일곱 과정 ↔ 악의 평범성·루시퍼 효과) 재번호로 해결 · DAV 8건 탈락 = 파소이드 찌꺼기(괄호 내 공백·문장부호 앞 공백·`[ 1 ]`) 정규화 규칙 추가 + 인용 4건 원문 일치 교정(르 텍시에 인용은 출처를 Philip Zimbardo로 정정) · 근거 없는 서술 1문단 삭제(교도관 당직 후 사념). 검증 스크립트 `ws_tmp/ep58-research/_gate58.py`·`_dav58.py`·`_cand58.py`(git 비추적).
-  - [자동수집 · Git] 마지막 세션(2026-09-15T15:00+09:00) 이후:
-    · homepage master: HEAD 7e35759 / origin 7e35759 ·작업트리 변경 1 :: 7e35759 진행 기록: 인계 갱신 (update-handover auto) / 002e062 자동: 카드뉴스 갱신 (2026-09-15)
-    · llm-wiki master: HEAD 440c0c24 / origin a5179f01 ·작업트리 변경 173 :: 440c0c24 5권 58화(5-11 스탠퍼드 감옥 실험 — 지팀바도) 집필 완성 / a5179f01 HANDOVER: 맨 위에 다음 세션 TL;DR 추가 — 인수 시 첫 1KB만 읽어도 재개 가능 / 0a0165dd 5권 57화(5-10 사회 심리학의 부상 — 애슈와 밀그램) 집필 완성 + HANDOVER 갱신
-    · harness  main: HEAD ecafe98 / origin ecafe98 ·작업트리 변경 3 :: ecafe98 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a :: (커밋 없음)
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
