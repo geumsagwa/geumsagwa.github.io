@@ -2751,6 +2751,20 @@
     border-radius: 0 4px 4px 0;
 }
 
+/* 도판 출처 줄 (§8.5.8 · 2026-09-16) — 캡션 아래에 붙는 저작자·라이선스 표기 */
+.review-body .fig-credit {
+    display: inline-block;
+    margin-top: 0.4rem;
+    font-size: 0.76em;
+    font-style: normal;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+.review-body .fig-credit a {
+    color: inherit;
+    text-decoration: underline;
+}
+
 .review-body hr {
     border: none;
     height: 1px;
