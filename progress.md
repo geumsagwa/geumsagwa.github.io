@@ -23,9 +23,9 @@
   - **[이월 해소]** ② homepage ep36·ep37 미커밋 → 해소 · ③ `19 건` 조문화·전수 교정 판단 대기 → 완료. ① 각주 정의부 내부 빈 줄 13화는 그대로 이월.
   - **[다음 작업]** 6권 6-4(제65화) 집필. 3권 3-11(제38화)이 다음 확정·발행 대상.
   - [자동수집 · Git] 마지막 세션(2026-09-17T22:32+09:00) 이후:
-    · homepage master: HEAD 7af6c62 / origin 7af6c62 :: 7af6c62 SERIES_MAP에 제36화·제37화 등록 + 도판 출처 줄 스타일(.fig-credit) 추가 / 8b6daa2 진행 기록: 인계 갱신 (update-handover auto) / 7e15f45 진행 기록: 인계 갱신 보정 — 자동수집 Git·세션 서술 압축 + 낡은 섹션(이번 세션 요약·다음 작업·다음에 할 일) 현행화 · 28,890B PASS / 8ac3468 진행 기록: 인계 갱신 (update-handover auto) / d9fe2aa 진행 기록: 인계 갱신 (update-handover auto) / b890b4b 진행 기록: 인계 갱신 보정 — 63화 도해 2점(그림5·6) 제작본 배치 반영 / 4829a5c 진행 기록: 인계 갱신 (update-handover auto) /
-    · llm-wiki master: HEAD 1d585aeb / origin 1d585aeb ·작업트리 변경 126 :: 1d585aeb 지침 §5.8 5항 신설(숫자+의존명사 띄어쓰기)·전수 교정 반영 / 0de39187 HANDOVER: 11차 갱신 — 제37화(3-10) 전체 재검증·확정·발행(id=59) + 이월 기록 / 09a61d0b 37화 전체 재검증·확정 — 게이트 19/19 PASS · DAV 인용 61/61 byte-exact (무진님 지시) / 7c40771a 37화 §9 '외상 기억' 풀이 추가 (무진님 지시) / 2ac13e40 37화 §9 네덜란드 위원회 문장 풀어쓰기 (무진님 지시) / 08b97b89 37화 문장 다듬기 — 없던 기억을 새로 만드는 일도 가능하게 한다는 (무진님 지시) / f4cef591 37화 표기 교정 — '회복 기억 치료' 인용 부호 (무진님 지시) / 44bb8fcb 37화 
-    · harness  main: HEAD 568b13d / origin 568b13d ·작업트리 변경 3 :: 568b13d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6dc5646 docs(desktop-handoff): 인계 갱신 보정 — 자동수집 Git·세션 서술 압축 + 낡은 섹션 현행화 · 28,890B PASS / 9b2a8a7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6551f15 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 42d58af docs(desktop-handoff): 인계 갱신 보정 — 63화 도해 제작본 배치 반영 / ffbaaa1 docs(desktop-handoff): 인계 갱신 동기 (update-handove
+    · homepage master: HEAD 7af6c62 / origin 7af6c62 :: 7af6c62 SERIES_MAP에 제36화·제37화 등록 + 도판 출처 줄 스타일(.fig-credit) 추가 / 8b6daa2 진행 기록: 인계 갱신 (update-handover auto) / …외 5건
+    · llm-wiki master: HEAD 1d585aeb / origin 1d585aeb ·작업트리 변경 126 :: 1d585aeb 지침 §5.8 5항 신설(숫자+의존명사 띄어쓰기)·전수 교정 반영 / 0de39187 HANDOVER: 11차 갱신 — 제37화(3-10) 전체 재검증·확정·발행(id=59) + 이월 기록 / …외 6건
+    · harness  main: HEAD 568b13d / origin 568b13d ·작업트리 변경 3 :: 568b13d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6dc5646 docs(desktop-handoff): 인계 갱신 보정 — 자동수집 Git·세션 서술 압축 + 낡은 섹션 현행화 · 28,890B PASS / …외 4건
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
 
 - 시각(ISO): **`2026-09-17T22:32+09:00`** — **제37화(3-10 「정신분석의 비판 — 증거와 윤리」) 전체 재검증 → 확정 → 검토내용 갱신 → 홈페이지 발행(id=59) → 인계 갱신** — 무진님 지시. 게이트 **19/19 PASS** · DAV 인용 **61/61 byte-exact** · E-basis **17,653** · 각주 33. 재검증에서 잡힌 3건 교정(각주 정의부 빈 줄 31 제거 · 2018 조사 수치 2,326 통일 · 명 표기 띄어쓰기) 후 확정. llm-wiki 커밋 `09a61d0b`.
@@ -33,11 +33,10 @@
   - **[홈페이지]** Supabase `essays` id=**59** (series=심리학사, ep=37, card=Unsplash Lady Justice) — `scripts/publish-series-episodes.mjs`에 ep37 엔트리 추가(ep36과 함께 **미커밋**).
   - **[이월]** ① 각주 정의부 내부 빈 줄이 남은 화 13개(1권_8~13화 · 3권_29·30·31·33·38화 + 1권_11·12화 복원포인트 사본) ② homepage ep36·ep37 엔트리 미커밋 ③ `19 건` 띄어쓰기 지침 §5.8 조문화·전수 교정 여부(무진님 판단 대기).
   - [자동수집 · Git] 마지막 세션(2026-09-17T21:29+09:00) 이후:
-    · homepage master: HEAD 7e15f45 / origin 7e15f45 ·작업트리 변경 2 :: 7e15f45 진행 기록: 인계 갱신 보정 — 자동수집 Git·세션 서술 압축 + 낡은 섹션(이번 세션 요약·다음 작업·다음에 할 일) 현행화 · 28,890B PASS / 8ac3468 진행 기록: 인계 갱신 (update-handover auto) / d9fe2aa 진행 기록: 인계 갱신 (update-handover auto) / b890b4b 진행 기록: 인계 갱신 보정 — 63화 도해 2점(그림5·6) 제작본 배치 반영 / 4829a5c 진행 기록: 인계 갱신 (update-handover auto) / 62d6a0f 진행 기록: 인계 갱신 보정 — 자동수집 Git 블록 압축(게이트 FAIL 대응) · 27,985B PASS / 854fa8a 진행 기록: 인계 갱신 (update-handover a
-    · llm-wiki master: HEAD 09a61d0b / origin 7c40771a ·작업트리 변경 126 :: 09a61d0b 37화 전체 재검증·확정 — 게이트 19/19 PASS · DAV 인용 61/61 byte-exact (무진님 지시) / 7c40771a 37화 §9 '외상 기억' 풀이 추가 (무진님 지시) / 2ac13e40 37화 §9 네덜란드 위원회 문장 풀어쓰기 (무진님 지시) / 08b97b89 37화 문장 다듬기 — 없던 기억을 새로 만드는 일도 가능하게 한다는 (무진님 지시) / f4cef591 37화 표기 교정 — '회복 기억 치료' 인용 부호 (무진님 지시) / 44bb8fcb 37화 기억 관련 표현 통일 (무진님 지시) / 935d4df6 37화 문장 교정 — 기억을 다시 짓는 → 다시 만드는 (무진님 지시) / 3f16daed 37화 문장 교정 — 통계로 줄일 수 없는 → 통계로 풀 수 
-    · harness  main: HEAD 6dc5646 / origin 6dc5646 ·작업트리 변경 3 :: 6dc5646 docs(desktop-handoff): 인계 갱신 보정 — 자동수집 Git·세션 서술 압축 + 낡은 섹션 현행화 · 28,890B PASS / 9b2a8a7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6551f15 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 42d58af docs(desktop-handoff): 인계 갱신 보정 — 63화 도해 제작본 배치 반영 / ffbaaa1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ed0c498 docs(desktop-handoff): 인계 갱신 보정 — 자동수집 Git 블록 압
+    · homepage master: HEAD 7e15f45 / origin 7e15f45 ·작업트리 변경 2 :: 7e15f45 진행 기록: 인계 갱신 보정 — 자동수집 Git·세션 서술 압축 + 낡은 섹션(이번 세션 요약·다음 작업·다음에 할 일) 현행화 · 28,890B PASS / 8ac3468 진행 기록: 인계 갱신 (update-handover auto) / …외 5건
+    · llm-wiki master: HEAD 09a61d0b / origin 7c40771a ·작업트리 변경 126 :: 09a61d0b 37화 전체 재검증·확정 — 게이트 19/19 PASS · DAV 인용 61/61 byte-exact (무진님 지시) / 7c40771a 37화 §9 '외상 기억' 풀이 추가 (무진님 지시) / …외 6건
+    · harness  main: HEAD 6dc5646 / origin 6dc5646 ·작업트리 변경 3 :: 6dc5646 docs(desktop-handoff): 인계 갱신 보정 — 자동수집 Git·세션 서술 압축 + 낡은 섹션 현행화 · 28,890B PASS / 9b2a8a7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / …외 4건
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
 - 시각(ISO): **`2026-09-17T21:29+09:00`** — **6권 6-3(제64화 「인지 신경과학 — 기억·감정·결정」·20쪽) 집필 완성 — E-basis 18,440·각주 35·단어코너 4·도판 6자리·게이트 20/20 PASS·DAV ok=35 bad=0.**
   - [자동수집 · Git] 마지막 세션(2026-09-17T16:00+09:00) 이후:
@@ -70,17 +69,17 @@
 
 ## 이번 세션 요약
 
-- **제64화(6-3 · 20쪽) 집필 완성·검증 통과 + volume6(62·63·64화) 커밋·푸시**: E-basis **18,440**·각주 35·게이트 **20/20 PASS**·DAV **ok=35 bad=0** — 64화 산출물 3종은 **미발행**(검토·확정·발행은 무진님 몫). 상세는 위 「마지막 갱신」 2026-09-17 세션 블록.
+- **숫자+의존명사 띄어쓰기 조문화 + 전수 교정 + 발행본 19화 재발행 + 커밋 2건**: 지침 §5.8 5항 신설 · 01 본문 37화 125곳·103줄 · 도판의뢰서 14화 21곳 · 게이트 신규 FAIL 0 · llm-wiki `1d585aeb`(89파일) · homepage `7af6c62`. 상세는 위 「마지막 갱신」 2026-09-17T22:53 블록.
 
 ## 확정·상태 변경
 
 - 21화(2-7)~26화(2-12): **✅ 확정·발행**(ep21~26·id=43~48, 2026-09-06~07) · 27화(2-13): **✅ 확정·발행(2026-09-08 · ep27 · id=49)** — 그림2·그림3 실사 후보 무진님 확정 대기.
-- 심리학사 3권(ep28~): **ep28(3-1 · 프로이트 ① — 무의식의 발견) 확정·발행(2026-09-09 · id=50)이 최신 발행분** — ep29~40은 에피소드 순서대로 확정·발행 진행(무진 지시 2026-09-10).
-- 3권 34~37(3-7~3-10): **산출물 완료 — 무진님 검토·도판 확정 대기**(미확정·미발행). ep34·ep36(01/02·도판)·ep37(01/02/의뢰서) 완성 · **ep37만 커밋(2026-09-09 · llm-wiki `ebc6b040`)** · ep35(3-8)는 본문 19,556자 초고(부속·DAV 재실행·커밋 남음). 확정·발행 시 homepage SERIES_MAP·Supabase 업로드(ep34~37).
+- 심리학사 3권(ep28~): **ep28~ep37(3-1~3-10) 확정·발행 완료**(id=50~59 · **최신 = ep37(3-10) id=59, 2026-09-17**) — ep38~40(3-11~3-13)은 산출물 존재, 순차 확정·발행 대상.
+- 3권 34~37(3-7~3-10): **✅ 전부 확정·발행**(ep34 id=56 · ep35 id=57 · ep36 id=58 · ep37 id=59) — 2026-09-13~17.
 
 ## 다음 작업
 - **6권 6-4(제65화) 집필** → 6-14(제75화)까지. 파이프라인·검증은 62~64화와 동일(게이트 `gate_common.py` 20항목 · DAV · 후보 매핑 `candidates.tsv`). 조사 캐시·검증 도구 참조 = `ws_tmp/ep64-research/`.
-- **무진님 대기 — 검토·확정·발행**: 62·63·64화 산출물 3종(01·02·도판의뢰서). 발행분은 여전히 **제1~36화(ids 12~58)**. 62·63화 실사 1순위 배치의 승인·교체 판단도 대기(후보 21종 = `ws_tmp/ep63-research/figures/raw/`).
+- **무진님 대기 — 검토·확정·발행**: 62·63·64화 산출물 3종(01·02·도판의뢰서). 발행분은 **제1~37화(ids 12~59)** — 다만 **사이트 미반영 22화**(의문형 마침표·`심리학계에`)의 `--update` 재발행은 off-peak 무진님 트리거 대기(위 세션 블록 ④). 62·63화 실사 1순위 배치의 승인·교체 판단도 대기(후보 21종 = `ws_tmp/ep63-research/figures/raw/`).
 - **도해 재외주 잔여**: 57화 그림5 · 58화 그림3 · 59화 그림1·2·5 · 60화 그림4 · 61화 그림1·2(팔레트 정정분) → 같은 파일명 교체(프롬프트 `ws_tmp\palette-fix\도해_팔레트_재제작_프롬프트.md`). 59화 실사 교체 판단(그림3 니스벳·그림4 여우와 신 포도)도 대기.
 
 ## 브랜치·원격
