@@ -26,9 +26,9 @@
 
 - 시각(ISO): **`2026-09-18T19:41+09:00`** — **각주 재판정(B6-2) — 5권 53~57화 집행(각주 재편 총 28화). 53화 34→18·54화 34→26·55화 32→29·56화 34→28·57화 31→27 = 유지 128·제거 37·재부여 0 · 마커를 대상 낱말 바로 뒤로 전면 재배치·정의 구분자 한 칸 통일·게이트 18/18 PASS ×5·E-basis 불변·DAV 근거 인용 불일치 0·02 동기화 · llm-wiki 커밋 174fbce3(01·02 10파일)·9956f9aa(인계 14차) · 다섯 화 미발행 → 최초 발행 대기 · 다음 = B6-3(5권 58~61) 제안.**
   - [자동수집 · Git] 마지막 세션(2026-09-18T09:57+09:00) 이후:
-    · homepage master: HEAD 9d5610b / origin 9d5610b :: 9d5610b 진행 기록: 인계 갱신 보정 — 게이트 `해요체` 조문 교정·미결 해소 세션 현행화 + 30KB 준수(30,445B PASS) / 9cb6636 진행 기록: 인계 갱신 (update-handover auto) / 8b5108f 진행 기록: 인계 갱신 보정 — 이번 세션(B1~B6-1 각주 재편 23화) 현행화 + 자동수집 Git 블록 압축 · 30,622B PASS / 6743860 진행 기록: 인계 갱신 (update-handover auto) / 5f5003d 자동: 카드뉴스 갱신 (2026-09-18)
-    · llm-wiki master: HEAD 9956f9aa / origin 9956f9aa ·작업트리 변경 125 :: 9956f9aa HANDOVER: 14차 갱신 — 배치 B6-2(5권 53~57화) 집행(총 28화) / 174fbce3 5권 53·54·55·56·57화 각주 재판정(B6-2) 적용 / d24b1bf4 게이트 `해요체` 조문 교정(지침 §8.2 코너 한정·인용문 예외) + 미결 2건 해소 반영 / 220241dc HANDOVER: 13차 갱신 — 각주 재편 총괄 계획 승인 + 배치 B1~B6-1 집행(23화) · B5 02 `유지` 값 산술 정정 / 279ae742 3권 30·34·35·40화 02 재판정 절 `유지` 값 산술 정정 / 4e02b03d 5권 48·49·50·51·52화 각주 재판정(B6-1) 적용 / 38bd9a8a 3권 28·29·30·34·35·39·40화 각주 재판정(B5) 적용 / 
-    · harness  main: HEAD 3f5da76 / origin 3f5da76 ·작업트리 변경 3 :: 3f5da76 docs(desktop-handoff): 인계 갱신 보정 — 게이트 `해요체` 조문 교정·미결 해소 세션 현행화 + 30KB 준수(30,445B PASS) / dd5eec6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / c91259a docs(desktop-handoff): 인계 갱신 보정 — 이번 세션(B1~B6-1 각주 재편 23화) 현행화 + 자동수집 Git 블록 압축 · 30,622B PASS / e6cee81 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · homepage master: HEAD 9d5610b / origin 9d5610b :: 9d5610b 진행 기록: 인계 갱신 보정(해요체 교정) / …외 4건
+    · llm-wiki master: HEAD 9956f9aa / origin 9956f9aa :: 9956f9aa HANDOVER: 14차 갱신 / 174fbce3 5권 53~57화 각주 재판정(B6-2) / …외 4건
+    · harness  main: HEAD 3f5da76 / origin 3f5da76 :: 3f5da76 docs(desktop-handoff): 인계 갱신 보정(해요체 교정) / …외 3건
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
   - 상세(자동): 콘텐츠 커밋 없음 — 인계 갱신만 수행 (session-closeout)
 
