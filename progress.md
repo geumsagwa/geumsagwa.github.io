@@ -14,6 +14,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-18T20:58+09:00`** — 3권 38화 최종 교정 확정 + 홈페이지 최초 발행(id 60): 01 본문 16곳 교정(시각 겉질→시각 피질 4곳 포함)·02 용어 2곳 → 재검증 이상 없음(게이트 19/19 · DAV 26/26 · E-basis 15,434) → 확정(llm-wiki `0985d95a`) → `SERIES_MAP psychology 38` 등록(homepage `21f6dfc`) 후 발행(id 60, 사이트-원고 대조 완전 일치)
+  - [자동수집 · Git] 마지막 세션(2026-09-18T20:40+09:00) 이후:
+    · homepage master: HEAD 21f6dfc / origin 21f6dfc :: 21f6dfc feat(publish): SERIES_MAP에 심리학사 38화 등록 — 3권 최초 발행 / 3cfca33 진행 기록: 인계 갱신 (update-handover auto) / 14d35f0 진행 기록: 인계 갱신 보정 — 30KB 준수(29,457B PASS) / 534b5b3 진행 기록: 인계 갱신 (update-handover auto) / 2ac08a0 진행 기록: 인계 갱신 (update-handover auto) / 9d5610b 진행 기록: 인계 갱신 보정 — 게이트 `해요체` 조문 교정·미결 해소 세션 현행화 + 30KB 준수(30,445B PASS) / 9cb6636 진행 기록: 인계 갱신 (update-handover auto) / 8b5108f 진행 기록: 인계 갱신 보정 —
+    · llm-wiki master: HEAD 0985d95a / origin 0985d95a ·작업트리 변경 126 :: 0985d95a 3권 38화 최종 교정 확정 — 문장 교정 16곳 · 시각 겉질→시각 피질 / 43a76e64 HANDOVER: 발행 집행 반영 — 기발행 재발행(심리학사 21화·철학사 8화) 완료 / 633f7f0b HANDOVER: 15차 갱신 — 배치 B6-3(5권 58~61화) 집행(총 32화) / 04c35ac3 5권 58·59·60·61화 각주 재판정(B6-3) 적용 / 9956f9aa HANDOVER: 14차 갱신 — 배치 B6-2(5권 53~57화) 집행(총 28화) / 174fbce3 5권 53·54·55·56·57화 각주 재판정(B6-2) 적용 / d24b1bf4 게이트 `해요체` 조문 교정(지침 §8.2 코너 한정·인용문 예외) + 미결 2건 해소 반영 / 220241dc HANDOVER
+    · harness  main: HEAD 2b4ab25 / origin 2b4ab25 ·작업트리 변경 3 :: 2b4ab25 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 5c23f93 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 7657a8e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 3f5da76 docs(desktop-handoff): 인계 갱신 보정 — 게이트 `해요체` 조문 교정·미결 해소 세션 현행화 + 30KB 준수(30,445B PASS) / dd5eec6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / c91259a docs(desktop-handoff): 인계 갱신 보정 — 이
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-09-18T20:40+09:00`** — **발행 집행 — 기발행 재발행 완료(심리학사 21화 + 철학사 8화).** 무진님 결정("일단 발행쪽으로 하자")에 따라 기발행 재발행분을 **한 번에 묶어** 집행: 심리학사 2·3·4·5·6·7·8·14·22·23·24·28~37(각주 재편분 + 이월④) · 철학사 1·4~10(이월④). 발행 후 **사이트 본문을 원고와 대조**(각주 정의 수·물음표 수) → **심리학사 21/21 · 철학사 8/8 일치 · 불일치 0**. llm-wiki `43a76e64`(인계 반영). **다음 = 미발행 최초 발행 준비**(3권 38~40 · 5권 48~61 · 6권 62·64 — `SERIES_MAP` 미등록분 등록 + 무진님 확정 필요), 각주 재편은 그 뒤 B7(4권 41~47).
   - **[집행]** 홈페이지 디렉터리에서 `node scripts/publish-series-episodes.mjs psychology 2 3 4 5 6 7 8 14 22 23 24 28 29 30 31 32 33 34 35 36 37 --update` · `node scripts/publish-series-episodes.mjs philosophy 1 4 5 6 7 8 9 10 --update`. Supabase `essays` 테이블 갱신(본문·excerpt·카드). 각 화 "✅ 갱신" 확인.
   - **[검증]** 사이트 본문 ↔ 원고 대조 — 각주 정의 수(예: 37화 20·22화 14·28화 13) · 물음표 수(의문형 마침표 반영) 전 화 일치. 심리학사 3·31·32화는 대조 스크립트가 로컬 `.jpg`를 잘못 집어 표시된 오탐이었고 원고와 일치함을 확인.
