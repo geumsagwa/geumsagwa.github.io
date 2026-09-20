@@ -2,11 +2,16 @@
 // 세계사 EPUB 교차 링크 반영 업로드 (Supabase Storage epubs 버킷)
 //
 // 사용법:
-//   node scripts/upload-history-epub.cjs          # 1·2권 업로드
-//   node scripts/upload-history-epub.cjs 1 2      # 지정 권만 업로드
+//   node scripts/upload-history-epub.cjs          # 1~6권 업로드
+//   node scripts/upload-history-epub.cjs 3 4      # 지정 권만 업로드
 //
 // 주의: 교차 링크(reader.html)가 사용하는 Storage 경로에 정확히 덮어씁니다.
 //       Storage 경로를 바꾸면 기존 링크가 깨지므로 신중하게 취급.
+//
+// 2026-09-20 확장: 3~6권 추가. 아래 storage 값은 library.epub_path 실측값이다.
+//   교차 링크가 없는 권(3~6권)에도 같은 규칙이 적용된다 — 경로를 바꾸면
+//   library 가 가리키는 책이 사라지므로 반드시 library.epub_path 와 일치시킨다.
+//   map/upload-all-epubs.mjs 는 낡아서 봉인했다(저 스크립트의 경로는 5월판이다).
 const fs = require('fs');
 const path = require('path');
 const { getSupabaseAdminConfig } = require('../_env.js');
@@ -19,11 +24,15 @@ const EPUB_DIR = path.join(__dirname, '..', 'epub');
 const TARGETS = {
   1: { local: 'history1.epub', storage: 'history/1779351819136_history1.epub' },
   2: { local: 'history2.epub', storage: 'history/1779351860344_history2.epub' },
+  3: { local: 'history3.epub', storage: 'history/1779351897979_history3.epub' },
+  4: { local: 'history4.epub', storage: 'history/1779351946349_history4.epub' },
+  5: { local: 'history5.epub', storage: 'history/history5.epub' },
+  6: { local: 'history6.epub', storage: 'history/history6.epub' },
 };
 
 async function main() {
   const vols = process.argv.slice(2).map(Number).filter((n) => !Number.isNaN(n));
-  const selected = vols.length ? vols : [1, 2];
+  const selected = vols.length ? vols : [1, 2, 3, 4, 5, 6];
 
   console.log('📤 세계사 EPUB 업로드 시작:', selected.map((v) => `${v}권`).join(', '));
   for (const v of selected) {

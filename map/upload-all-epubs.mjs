@@ -1,3 +1,21 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// ⚠ 봉인됨 (2026-09-20) — 이 스크립트는 낡았다. 그대로 실행하면 교차 링크가 깨진다.
+//
+//   권   이 스크립트가 덮어쓸 경로(5월판)          라이브 정본(교차 링크 경로)
+//   1권  history/1779337728851_history1.epub   ≠  history/1779351819136_history1.epub
+//   2권  history/history2.epub                 ≠  history/1779351860344_history2.epub
+//
+//   library.epub_path 를 위 5월판 경로로 되돌리므로 링크가 깨지고 본문도 회귀한다.
+//   세계사 epub 업로드는 scripts/upload-history-epub.cjs 를 쓴다.
+//   정말 이 스크립트를 써야 하면 --force-unseal 을 붙인다.
+// ─────────────────────────────────────────────────────────────────────────────
+if (!process.argv.includes("--force-unseal")) {
+  console.error("[봉인됨] map/upload-all-epubs.mjs 는 낡아 교차 링크를 깨뜨립니다.");
+  console.error("  세계사 epub 업로드 → node scripts/upload-history-epub.cjs [권...]");
+  console.error("  강행하려면        → node map/upload-all-epubs.mjs --force-unseal");
+  process.exit(1);
+}
+
 import fs from "node:fs";
 import path from "node:path";
 import { getSupabaseAdminConfig } from "./_env.js";
