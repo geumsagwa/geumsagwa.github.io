@@ -38,22 +38,6 @@
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
-- 시각(ISO): **`2026-09-25T07:35+09:00`** — 이번 세션(46차 8차 후속): **69화 02 검토내용 화번호 오기 정정 — 이월 잔존 0건.** 교차 링크 §9 절의 §9.2 삽입 예시가 `이야기 심리학사 6권 66화 「임상 심리학의 현재 — 진단과 증거 기반 치료」`로 적혀 있었으나 **6-6 = 제67화**(6권 6-1 = 제62화 · 69화 = 6-8)이므로 **`6권 67화`로 정정** — 제목은 종전부터 일치했고 화번호만 최종목차 표기(6-6)를 66화로 옮겨 적은 오기였다. 같은 자리의 나머지 두 후보는 대조 결과 정확 — **제3권 3-10 「정신분석의 비판 — 증거와 윤리」= 제37화** · **제5권 5-11 「스탠퍼드 감옥 실험 — 지팀바도」= 제58화**. 검증 = 게이트 69화 **23/23 PASS**(E-basis 16,500 불변 · 01 본문 무변경) · 70화 **23/23 PASS**(19,992 불변). 커밋 llm-wiki **`740cb77a`**(69화 02 단독) → HANDOVER 46차 8차 후속 · TL;DR · 이월 표기 5곳에 「[2026-09-25 해소]」 표기 → 커밋 **`02a5c478`** push. **미발행 유지 · 이월 잔존 0건**(다음 미집필 = 6-11 제72화).
-  - [자동수집 · Git] 마지막 세션(2026-09-25T07:05+09:00) 이후:
-    · homepage master: HEAD 3653252 / origin 3653252 ·작업트리 변경 5 :: 3653252 진행 기록: 인계 갱신 (update-handover auto) / d9ec8a4 진행 기록: 인계 갱신 (update-handover auto) / 1834dbe 자동: 카드뉴스 갱신 (2026-09-25) / ad83d9f 진행 기록: 인계 갱신 (update-handover auto) / f7dc93c 진행 기록: 인계 갱신 (update-handover auto) / 9c086ce 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD 02a5c478 / origin 02a5c478 ·작업트리 변경 156 :: 02a5c478 HANDOVER — 46차 8차 후속: 69화 화번호 오기 정정(이월 잔존 0건) / 740cb77a 69화 02 검토내용 화번호 오기 정정 — 교차 링크 §9.2 예시 6권 66화 → 67화 / e1bad8dc HANDOVER — 46차 8차: 70화 그림4 2차본 복원·확정(도해 셋 마무리) + 라벨 오독 정정 / bdbb2890 70화 그림4 2차본 복원·확정 — 도해 셋 마무리 (라벨 오독 정정) / 8ddc40a3 HANDOVER — 46차 7차: 70화 도해 3차 검증(그림7 확정 · 그림5 복원 · 그림4 판단 대기) / 37139747 70화 도해 3차 제작본 검증 — 그림7 확정 · 그림5 복원 · 그림4 검증(판단 대기) / 9568062d HANDOVER — 46차 세션 
-    · harness  main: HEAD 03a400b / origin 03a400b ·작업트리 변경 3 :: 03a400b docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 33de30a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 152a3dd docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 40cbef4 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / d0a7c79 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-09-25T07:05+09:00`** — 이번 세션: **70화 그림4를 2차본(49ace0b1…, 1,077,061 B)으로 복원·확정 — 도해 셋(그림4·5·7) 마무리.** 3차본은 새 편차 3건(스펙에 없는 주황 부채꼴 · 무게 표시가 빈 남색 사각형 · 출력 칸 흰 바탕)으로 미채택. 무진님 지적으로 **기록 정정 1건** — 무게 주황 사각형 셋은 **모두 '무게' 라벨**이 있고(첫째·둘째는 사각형 위, 셋째는 아래), 글자 없이 떠 있는 요소는 중심점 오른쪽 주황 직사각형(122×64 px) 하나뿐 → 그 자리도 넘어감(결격 아님). 도판의뢰서(§1 표·§2 상태·§3 기록)와 02 검토내용(③⑥⑦·12항·세션 기록)에서 '라벨 없는 주황 사각형' 표현을 '중심점 오른쪽 글자 없는 주황 직사각형'으로 정정. 게이트 70화 **23/23 PASS**(E-basis 19,992 불변) · DAV ok=42 bad=0. 커밋 bdbb2890 푸시 완료. **미발행 유지.**
-  - [자동수집 · Git] 마지막 세션(2026-09-25T06:41+09:00) 이후:
-    · homepage master: HEAD d9ec8a4 / origin d9ec8a4 ·작업트리 변경 5 :: d9ec8a4 진행 기록: 인계 갱신 (update-handover auto) / 1834dbe 자동: 카드뉴스 갱신 (2026-09-25) / ad83d9f 진행 기록: 인계 갱신 (update-handover auto) / f7dc93c 진행 기록: 인계 갱신 (update-handover auto) / 9c086ce 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD bdbb2890 / origin bdbb2890 ·작업트리 변경 156 :: bdbb2890 70화 그림4 2차본 복원·확정 — 도해 셋 마무리 (라벨 오독 정정) / 8ddc40a3 HANDOVER — 46차 7차: 70화 도해 3차 검증(그림7 확정 · 그림5 복원 · 그림4 판단 대기) / 37139747 70화 도해 3차 제작본 검증 — 그림7 확정 · 그림5 복원 · 그림4 검증(판단 대기) / 9568062d HANDOVER — 46차 세션 마감(70화 도해 외주본 처리) + 마지막 갱신일 2026-09-25 / 202107c0 HANDOVER — 46차 6차: 70화 도해 3차 재요청(라벨 없는 상자 둘) · 그림5 확정 / e7ff16c1 70화 도해 — 라벨 없는 상자 둘만 3차 재요청 · 그림5 확정 (무진님 「다」) / a88003b2 HANDOVER — 46차 
-    · harness  main: HEAD 33de30a / origin 33de30a ·작업트리 변경 3 :: 33de30a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 152a3dd docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 40cbef4 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / d0a7c79 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
 ## 이번 세션 요약
 
 - **각주 재편 총괄 계획 수립·승인 + 배치 B1~B6-1 집행(23화)** — B1(3권 38화) → B2(3권 31·32·33·36) → B3(6권 62·64) → B4(2권 22·23·24) → B5(3권 28·29·30·34·35·39·40) → B6-1(5권 48~52). **배치별 일괄 결재** 전환 · 게이트 PASS(50·51화 선재 FAIL) · DAV 불일치 0 · E-basis 불변 · 02 동기화. 상세는 위 「마지막 갱신」 2026-09-18T09:41 블록.
