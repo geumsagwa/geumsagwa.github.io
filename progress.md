@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-27T13:58+09:00`** — **[DRAFT] 이 한 줄(원고 요약)을 채우고 apply**
+  - [자동수집 · Git] 마지막 세션(2026-09-26T23:52+09:00) 이후:
+    · homepage master: HEAD 3bb8aad / origin 3bb8aad ·작업트리 변경 5 :: 3bb8aad 자동: 카드뉴스 갱신 (2026-09-27) / e5fc658 진행 기록: 인계 갱신 (update-handover auto) / d48a4b9 진행 기록: 인계 갱신 (update-handover auto) / 481208f 진행 기록: 인계 갱신 (update-handover auto) / ec78c9a 진행 기록: 인계 갱신 (update-handover auto) / 3d4bf54 진행 기록: 인계 갱신 (update-handover auto) / 8bec1c6 진행 기록: 인계 갱신 (update-handover auto) / 609112c 진행 기록: 인계 갱신 (update-handover auto) / 84a95c6 진행 기록: 인계 갱신 (update-handover auto)
+    · llm-wiki master: HEAD 8ae0882f / origin 8ae0882f ·작업트리 변경 171 :: 8ae0882f CLAUDE.md 압축 (4377 → 2940자) — 하네스 규약 링크와 중복 제거 / cd0af93e 1권 11화 도해 4종 — 규격 스탬프 삽입 (픽셀 불변) / 6b2d5972 1권 11화 도해 4종 — 외주 중단, 자체 제작(7차) 완료 / ae70deb5 1권 11화 도해 — 5차 납품(2026-09-27 08:19~08:25) 검증: 요구 3건(크기·그림4 제목·그림5 제목) 모두 미반영 / 606a77f2 1권 11화 도해 4종 — 4차 납품본(2026-09-27 07:57~08:03) 슬롯 반영 (경기천년바탕·원어 병기 제거) / a496c4c4 1권 11화 도해 5차 교정 지시 확정 — 크기 font-size 확정(폭1200: 36.7/25.0/20.0) · 그림5 제목 「가
+    · harness  main: HEAD 2d713f5 / origin 2d713f5 ·작업트리 변경 3 :: 2d713f5 docs(budgets): wiki CLAUDE.md 압축분 반영 · 결정 기록에 사례 추가 / 05917cb feat(harness): 문서·검증 계층 4규칙 도입과 시스템 슬림화 / aba469e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 3d6b86f docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 08ca63c docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a1709b8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1ef1b5a docs(desktop-handoff
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-09-26T23:52+09:00`** — **세션 종료(무진님 「시간이 늦었으니 내일 이어서」).** 이번 세션 = ① 철학사 1권 11화 외주 도해 3차 납품 검증 ② 도해 글꼴 통일(경기천년바탕) 실행 준비 + 원어 병기 폐지(한글만) 확정 반영. **미발행 유지 — 발행은 무진님 지시 때에만.** 직전 23:49 항목에 상세가 있다.
   - **내일 첫 착수 지점(순서대로)**
     1. **철학사 11화 도해 4차 교정** — 프롬프트 `ws_tmp/도해통일/도해-철학사-11화-4차-교정-프롬프트.md`. 교정 3건: ⑴ 글자 크기(표시 제목 22 / 라벨 15 / 보조 12px 이내) ⑵ 그림4 제목 「4원인론 (Four Causes)」 → 「네 가지 원인」 ⑶ 원어 병기 삭제(한글만). ⑤ 글꼴·⑦ 그림3 괄호는 3차에서 완료 → 손대지 않음. 납품 시 §8.4 검증 9항.
