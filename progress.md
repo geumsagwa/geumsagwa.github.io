@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-09-30T14:52+09:00`** — **철학사 2권 15화 「회의주의 — 판단을 멈추다」(2-4 · 14쪽) 완성 · 무진님 집필조건 9개 준수 · 미발행**: ① **본문** `manuscripts/philosophy/volume2/2권_15화_01_회의주의-판단을-멈추다.md` — 11절(한 사람의 이틀 강연 → 판단을 멈춘다는 것 → 피론: 화가에서 인도까지 → 힘이 맞먹으면 멈춘다 → 피론의 하루 → 아카데미아가 회의주의가 되다 → 카르네아데스: 그럴듯한 것을 따라서 → 아이네시데무스와 열 가지 방식 → 아그리파의 다섯 갈래와 섹스투스 → 회의주의자는 어떻게 사는가 → 다시 발견된 책: 몽테뉴와 오늘). ② **검증** — 게이트 **23/23 PASS**(E-basis **16,811** · 14p 밴드 16,520~17,080) · **DAV 전 항목 58 OK 58 BAD 0**(피론 일화 1차 전거 = 디오게네스 라에르티오스 제9권 대역 확보·대조) · 각주 **31**(1~31 연속) · '단어로 의미 찾기' 3(회의주의·우 말론·에포케 · 해요체 0) · 논증박스 1(§10) · 교차 링크 **3**(세계사 1-13화 · 철학사 1-9화 id=31 · 1-10화 id=32). ③ **도판 8종** = 실사 5(피론 초상·키케로 흉상·카르네아데스 두상·섹스투스 초상·『수상록』1595년판 표지) + **도해 3**(판단을 멈추는 세 단계·회의주의의 두 갈래·아그리파의 다섯 가지 방식 · 1200×896 자체 제작) → `2권_15화_도판의뢰서.md` 신설 · 실사 후보 전량 다운로드(`ws_tmp/ph15-research/figures/raw/` · `README_후보목록.md`). ④ **산출물** = 본문·02 검토내용·도판의뢰서 3종 + 도판 8파일. ⑤ **미결** — 실사 5종 최종 선택(무진님 판단 대기) · 발행(홈페이지 업로드)은 지시 대기. ⑥ **git** — llm-wiki 커밋 **`53138133`** push 완료(11파일 · 경로 명시 · 복원포인트/selection·ws_tmp 비추적 유지).
+  - [자동수집 · Git] 마지막 세션(2026-09-30T13:22+09:00) 이후:
+    · homepage master: HEAD 10213cb / origin 10213cb ·작업트리 변경 5 :: 10213cb 진행 기록: 인계 갱신 동기 — 철학사 2권 도해 8종(update-handover 50차) / bf1884f 진행 기록: 인계 갱신 (update-handover auto) / 1b4944e 철학사 11화 '아리스토텔레스 — 학문의 제왕' 발행 등록 / 3a8390c 자동: 카드뉴스 갱신 (2026-09-30)
+    · llm-wiki master: HEAD 53138133 / origin 53138133 ·작업트리 변경 171 :: 53138133 철학사 2권 15화 「회의주의 — 판단을 멈추다」 초고·도판 / e56ac3c9 HANDOVER 갱신 — 2026-09-30(50차): 철학사 2권 12·13·14화 개념도 8종 자체 제작·편입(49차 ⚠️ 해소) / 107e690f 철학사 2권 12·13·14화 — 개념도(도해) 8종 자체 제작·편입 + 도판의뢰서 3종 / 76d4637a HANDOVER 갱신 — 2026-09-30(49차): 철학사 2권 13화(스토아)·14화(에피쿠로스) 완성 + ⚠️ 개념도 미사용 지적(미결) / 11dd29fd 1권 11화 아리스토텔레스 — 원고 정밀 교정·확정 + 검토내용 갱신
+    · harness  main: HEAD c7d08c9 / origin c7d08c9 :: c7d08c9 docs(desktop-handoff): 인계 갱신 동기 — 철학사 2권 도해 8종(update-handover 50차) / 56e8834 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-09-30T13:22+09:00`** — 철학사 2권 12·13·14화 — 실사만 있던 3화에 **개념도(도해) 8종 자체 제작·편입**(무진님 「개념도 미사용」 지적 반영) + 도판의뢰서 3종 신규 · 게이트 23/23 ×3 · verify-diagrams 8/8 PASS · llm-wiki 커밋 `107e690f` 푸시 완료
   - [자동수집 · Git] 마지막 세션(2026-09-30T09:57+09:00) 이후:
     · homepage master: HEAD bf1884f / origin bf1884f ·작업트리 변경 5 :: bf1884f 진행 기록: 인계 갱신 (update-handover auto) / 1b4944e 철학사 11화 '아리스토텔레스 — 학문의 제왕' 발행 등록 / 3a8390c 자동: 카드뉴스 갱신 (2026-09-30)
@@ -55,19 +63,6 @@
   - **미정** — llm-wiki 를 세 번째 관리 프로젝트로 편입할지(`configs/projects.json` 은 homepage·openclaw 2개 · `F:/wiki/tasks.json` 에 WIKI-010~012 가 `doing` 으로 남아 있음).
   - **주의(신규 발견)** — `F:/wiki/HANDOVER.md` 가 156,401자 / 상한 160,000 — 97.8% 로 몇 세션 안에 문서 분량 게이트 FAIL 이 예상된다. 이 파일은 인계 파이프라인의 자동 아카이브(optimize-handover) 대상이 아니라 wiki 쪽에서 수동으로 덜어내야 한다(다음 세션 검토).
   - **다음** — ① 삭제 재시도(위 권한 방식 중 하나) → 곧바로 `gate-harness`·`validate-all`·`gate-website`·`gate-openclaw` 재통과 → 커밋·푸시 ② llm-wiki 편입 결정 ③ (나) 트랙 — 심리학사 도해 2~6권 재제작 + 권별 납품마다 9항 검증 · 신규 도해 13종 · 2권 20~23화 재발행(발행은 무진님 지시 때에만).
-
-- 시각(ISO): **`2026-09-27T13:58+09:00`** — **하네스 개편 — 문서·검증 계층 규약 4종 전면 도입 + 시스템 슬림화.** 딥시크 하네스에서 이식 가능한 넷을 규약으로 받았고, 같은 법으로 하네스 자체의 중복·불용 자산을 걸어냈다. 게이트 전부 통과. **다음 = 파괴 작업(무진님 승인 대기) + 심리학사 도해 재제작 트랙.**
-  - [자동수집 · Git] 마지막 세션(2026-09-26T23:52+09:00) 이후:
-    · homepage master: HEAD 3bb8aad / origin 3bb8aad ·작업트리 변경 5 :: 3bb8aad 자동: 카드뉴스 갱신 (2026-09-27) / e5fc658 진행 기록: 인계 갱신 (update-handover auto) / d48a4b9 진행 기록: 인계 갱신 (update-handover auto) / 481208f 진행 기록: 인계 갱신 (update-handover auto) / ec78c9a 진행 기록: 인계 갱신 (update-handover auto) / 3d4bf54 진행 기록: 인계 갱신 (update-handover auto) / 8bec1c6 진행 기록: 인계 갱신 (update-handover auto) / 609112c 진행 기록: 인계 갱신 (update-handover auto) / 84a95c6 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD 8ae0882f / origin 8ae0882f ·작업트리 변경 171 :: 8ae0882f CLAUDE.md 압축 (4377 → 2940자) — 하네스 규약 링크와 중복 제거 / cd0af93e 1권 11화 도해 4종 — 규격 스탬프 삽입 (픽셀 불변) / 6b2d5972 1권 11화 도해 4종 — 외주 중단, 자체 제작(7차) 완료 / ae70deb5 1권 11화 도해 — 5차 납품(2026-09-27 08:19~08:25) 검증: 요구 3건(크기·그림4 제목·그림5 제목) 모두 미반영 / 606a77f2 1권 11화 도해 4종 — 4차 납품본(2026-09-27 07:57~08:03) 슬롯 반영 (경기천년바탕·원어 병기 제거) / a496c4c4 1권 11화 도해 5차 교정 지시 확정 — 크기 font-size 확정(폭1200: 36.7/25.0/20.0) · 그림5 제목 「가
-    · harness  main: HEAD 2d713f5 / origin 2d713f5 ·작업트리 변경 3 :: 2d713f5 docs(budgets): wiki CLAUDE.md 압축분 반영 · 결정 기록에 사례 추가 / 05917cb feat(harness): 문서·검증 계층 4규칙 도입과 시스템 슬림화 / aba469e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 3d6b86f docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 08ca63c docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a1709b8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1ef1b5a docs(desktop-handoff
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - **도입** — ① 결정 기록(`decisions/<lifecycle>/<class>/yyyy-mm-dd-topic.md`, 필수 `## 검토한 대안`, 수정 대신 대체, `archived/` 해시 동결) ② 규격의 게이트 승격(`configs/*.json` + `verify-*.py`) ③ 문서 층위·분량 상한(`configs/doc-budgets.manifest.json`, 초과 시 이관→압축→상향) ④ 표면별 최소 증거(`configs/evidence-map.json` + `scripts/select-evidence.py`)
-  - **검증** — `scripts/gate-harness.ps1` 신설 RESULT: PASS(자검 5종: 결정 기록/문서 분량/도해 규격 7사례/tasks 7사례+예제/증거 선택기 8사례) · `gate-website` · `gate-openclaw` exit 0 · `validate-all` 두 프로젝트 PASS. cp949 콘솔에서 죽던 인코딩 문제 제거(stdout 재설정 + PYTHONIOENCODING=utf-8), .ps1은 UTF-8 BOM 으로 저장해 pwsh 7·5.1 양쪽 지원
-  - **슬림화** — validate 3종(ps1+ps1+py) → `validate-tasks.py` 하나 · `projects.v2.json` → `projects.json`(하네스 샌드박스 3번째 항목 제거) · v2 자율 실행 폐지(결정 기록 `rejected/system/2026-09-27-v2-autonomy-execution.md`) · 규약을 `docs/HARNESS.md` 단일본으로(구 HARNESS_SYSTEM_REVISION의 2026-08-28 판정·평론가 DAV 조항 보존) · `.cursor/rules` 두 벌 → `harness.mdc` 한 벌 · 문서 압축 README 6,760→1,711 · SCRIPTS_REFERENCE 4,257→2,924 · Desktop CLAUDE.md 2,968→1,730
-  - **wiki** — 1권 11화 도해 4종에 규격 스탬프(픽셀 불변 · 5항 PASS, `cd0af93e`) · `F:\wiki\CLAUDE.md` 4,377→2,940자(`8ae0882f`)
-  - **커밋** — harness `05917cb`·`2d713f5` · llm-wiki `cd0af93e`·`8ae0882f` push · 복원포인트 `CLAUDE_복원포인트_20260927.md`(비추적)
-  - **다음** — ① 파괴 작업 1건 승인 대기: 불용 자산 삭제(v2 자율 실행 클러스터 12종 · validate trio · 구 문서 4종 · v2 설정·상태 · autonomy 로그·리포트 · 구 .cursor 룰 2종) ② (나) 트랙 — 심리학사 도해 재제작(2~6권) + 납품 마다 9항 검증 · 신규 도해 13종 · 2권 20~23화 재발행
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
