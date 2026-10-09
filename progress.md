@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-09T14:48+09:00`** — ****별건 — F: 설치 Voicebox·HyperFrames 두 도구·실행 모델·흔적 전량 제거(무진님 지시 · PC 사양 부적합) · 약 4.8GB 회수 · 잔존 0건 · llm-wiki HANDOVER·환경도구 절 갱신(커밋 834d4c41→bfb4a537 push) · 위키 원고 변경 0건(미발행 유지)****
+  - [자동수집 · Git] 마지막 세션(2026-10-08T06:47+09:00) 이후:
+    · homepage master: HEAD 3c4e9a6 / origin 3c4e9a6 ·작업트리 변경 5 :: 3c4e9a6 자동: 카드뉴스 갱신 (2026-10-09) / d0919fe 진행 기록: 인계 갱신 (update-handover auto)
+    · llm-wiki master: HEAD bfb4a537 / origin bfb4a537 ·작업트리 변경 171 :: bfb4a537 HANDOVER 갱신 보완 — 2026-10-09(59차): 영구 환경변수 잔존 3건(HKCU\Environment) 제거 반영 / 834d4c41 HANDOVER 갱신 — 2026-10-09(59차): Voicebox·HyperFrames 두 도구·실행 모델·흔적 전량 제거(PC 사양 부적합) 반영 / 7e331b2c 2권 20화 도판 6종 무진님 승인·확정(2026-10-08) 반영 — 02 검토내용·도판의뢰서·인계 문서 갱신 / 4114b624 HANDOVER 갱신 — 2026-10-08(58차): 철학사 2권 20화 「토마스 아퀴나스 — 신앙과 이성의 대종합」 초고·도판 6종 완성(게이트 23/23 · DAV 51/51) 반영 / ac5dd3db 2권 20화 「토마스 아퀴나스 — 신앙
+    · harness  main: HEAD 6851884 / origin 6851884 :: 6851884 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
+  - 상세: 제거 = ① Voicebox(2026-09-23 설치) — F:\Voicebox(실모델 포함 3,805MB)·설치본 F:\Voicebox_0.5.0_x64-setup.exe(516MB)·%APPDATA%/%LOCALAPPDATA%의 sh.voicebox.app·바로가기·레지스트리(Uninstall\Voicebox·HKCU\Software\voicebox)·환경변수 VOICEBOX_MODELS_DIR ② HyperFrames(2026-09-25 설치) — F:\HyperFrames(474MB·node_modules/projects/문서)·C: 정션 28곳(스킬 코어 10종 AI 도구 폴더 8곳 + ~\.hyperframes·~\.cache\hyperframes — 링크만 제거해 공용 스킬 원본 보존)·사용설명서·환경변수 HYPERFRAMES_EXTRACT_CACHE_DIR. 재점검에서 HKCU\Environment 잔존 3건(빈 VOICEBOX_MODELS_DIR·HYPERFRAMES_EXTRACT_CACHE_DIR + PUPPETEER_CACHE_DIR=F:\HyperFrames\.cache\puppeteer) 추가 제거 → 영구 환경변수 0건. 보존 = F:\npm-cache·FFmpeg(두 도구 이전부터의 일반 자산). 설정(.claude.json·settings.json·.npmrc)·PATH·정션 언급 0건. 다음 세션 영향 없음.
+
 - 시각(ISO): **`2026-10-08T06:47+09:00`** — **철학사 2권 19화 「초기 스콜라 철학 — 안셀무스와 아벨라르두스」 도판 6종 무진님 승인·확정 — 그림 1은 상단(활·머리) 우선 재크롭본으로 확정(원본 지면 크롭 창 y≈785~4069 → 250~3535 · 위로 535px 이동 · 폭·배율 동일 · 1200×1800 · q88) · 게이트 23/23 PASS(E-basis 21,440 · 밴드 21,240~21,960) · DAV 73 OK 0 BAD · 미발행(발행은 무진님 지시 대기)**
   - [자동수집 · Git] 마지막 세션(2026-10-07T22:41+09:00) 이후:
     · homepage master: HEAD 086a4c0 / origin 086a4c0 ·작업트리 변경 5 :: 086a4c0 진행 기록: 인계 갱신 (update-handover auto) / 8264bef 진행 기록: 인계 갱신 (update-handover auto) / 7410c71 진행 기록: 인계 갱신 (update-handover auto)
@@ -69,20 +77,6 @@
     · harness  main: HEAD c7d08c9 / origin c7d08c9 :: c7d08c9 docs(desktop-handoff): 인계 갱신 동기 — 철학사 2권 도해 8종(update-handover 50차) / 56e8834 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-09-30T13:22+09:00`** — 철학사 2권 12·13·14화 — 실사만 있던 3화에 **개념도(도해) 8종 자체 제작·편입**(무진님 「개념도 미사용」 지적 반영) + 도판의뢰서 3종 신규 · 게이트 23/23 ×3 · verify-diagrams 8/8 PASS · llm-wiki 커밋 `107e690f` 푸시 완료
-  - [자동수집 · Git] 마지막 세션(2026-09-30T09:57+09:00) 이후:
-    · homepage master: HEAD bf1884f / origin bf1884f ·작업트리 변경 5 :: bf1884f 진행 기록: 인계 갱신 (update-handover auto) / 1b4944e 철학사 11화 '아리스토텔레스 — 학문의 제왕' 발행 등록 / 3a8390c 자동: 카드뉴스 갱신 (2026-09-30)
-    · llm-wiki master: HEAD 107e690f / origin 107e690f ·작업트리 변경 171 :: 107e690f 철학사 2권 12·13·14화 — 개념도(도해) 8종 자체 제작·편입 + 도판의뢰서 3종 / 76d4637a HANDOVER 갱신 — 2026-09-30(49차): 철학사 2권 13화(스토아)·14화(에피쿠로스) 완성 + ⚠️ 개념도 미사용 지적(미결) / 11dd29fd 1권 11화 아리스토텔레스 — 원고 정밀 교정·확정 + 검토내용 갱신
-    · harness  main: HEAD 56e8834 / origin 56e8834 :: 56e8834 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-  - **무진님 지적 반영**: 『이야기 철학사』 2권 12·13·14화가 실사(사진)만 있고 개념도(도해)가 0종이던 문제를 해소. 무진님 지시 「독자가 중학생이라 줄글만으로는 흥미를 잃으니 도판을 적극적으로 사용하라 · 권수는 내가 판단」에 따라 편성.
-  - **편성(8종)**: 12화 그림5(알렉산드로스의 제국이 갈라지다)·그림6(행복을 묻는 네 갈래) / 13화 그림5(스토아의 세 갈래·과수원)·그림6(내 힘에 있는 것, 없는 것)·그림7(마음을 흔드는 네 가지 병) / 14화 그림5(원자와 빈 공간·작은 꺾임)·그림6(욕망의 세 갈래)·그림7(네 가지 약).
-  - **제작·규격**: Python/PIL 4배 슈퍼샘플링 → 1200×896 LANCZOS. 경기천년바탕 OTF · 불투명 · 한글만 · 도해 안 상단 제목만 · 미색 바탕(#f4f1e6) · palette 6색(§8.4/§8.5). 스크립트 `ws_tmp/ph2vol2-draw/_draw.py`(미추적).
-  - **검증**: 게이트 `gate_common.py` 23/23 ×3(12화 E-basis 21,518 / 13화 26,073 / 14화 23,736) · `verify-diagrams.py` 8/8 PASS · 캡션 형식(§8.3) 통과.
-  - **산출물**: `manuscripts/philosophy/volume2/` 29파일(01/02 + 실사 jpg 4 + 도해 png 2~3 + 도판의뢰서) — llm-wiki `107e690f` 커밋·푸시.
-  - **다음 작업**: 철학사 2권 15화 이후 집필(미착수) · 12~14화는 도판 보정 완료로 「확정」 상태. 발행은 무진님 명시 지시 시에만.
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
