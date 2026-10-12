@@ -6,6 +6,17 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-12T13:37+09:00`** — **llm-wiki `.gitignore`로 비추적 자산 정리 — VS Code '활성 변경 과다' 경고 해소(비추적 10,154 → 12) · 커밋 `a1feb420`·`7395f4f6` push · 잔여 12개(중복 placeholder 10·손상 파일명 2) 물리 삭제 대기. (원고 아님 · 리포 위생)**
+  - [자동수집 · Git] 마지막 세션(2026-10-12T10:00+09:00) 이후:
+    · homepage master: HEAD bda7b31 / origin bda7b31 ·작업트리 변경 5 :: bda7b31 진행 기록: 인계 갱신 (update-handover auto) / 6180a0c 진행 기록: 인계 갱신 (update-handover auto) / 8a48a52 자동: 카드뉴스 갱신 (2026-10-12) / 85371c3 진행 기록: 인계 갱신 (update-handover auto) / 5be0e96 자동: 카드뉴스 갱신 (2026-10-12)
+    · llm-wiki master: HEAD 7395f4f6 / origin 7395f4f6 ·작업트리 변경 12 :: 7395f4f6 gitignore: 잔여 비추적 자산 편입 — 임시폴더(_tmp_·_intake_)·도해 원본(_원본_)·작업 여분(미변환 PNG·zip·py) 정리 2단계 / a1feb420 gitignore: 비추적 유지 자산 3종 패턴 추가 — ws_tmp/ · *_복원포인트_* · manuscripts/**/*-selection* (VS Code 상태 10,000 한계 초과 해소) / b1e27ffc HANDOVER 갱신 — 2026-10-12(63차): 철학사 2권 24화 「에라스무스와 종교개혁」 완성(도판 7종·DAV 75/75·게이트 23/23) 반영 · 다음 = 24화 실사 확정·발행 또는 2권 25화 / 175ed1c9 철학사 2권 24화 「에라스무스와 종교개혁」 원고·도판·검토문서 추가 /
+    · harness  main: HEAD e0a5fce / origin e0a5fce :: e0a5fce docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / c072ced docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ec910a1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
+  - 상세: llm-wiki 워킹트리 비추적 파일이 10,154개(설계상 비추적 자산이 대부분)로 VS Code `git.statusLimit`(기본 10,000)을 넘겨 '활성 변경이 너무 많습니다 — Git 기능 하위 집합만 사용' 경고·기능 제한 발생. → `.gitignore`에 설계상 비추적 3종(`ws_tmp/`·`*_복원포인트_*`·`manuscripts/**/*-selection*`) + 잔여(임시폴더 `_tmp_`/`_intake_`·도해 원본 `*_원본_*`·작업 여분[png 2·zip 1·py 1]) 편입.
+    · 추적 파일 영향 0 검증(신규 패턴 매치 추적 파일 0 · `wiki/concepts/*-selection.md` 개념문서 보호 위해 selection 패턴을 manuscripts 하위로 한정). 비추적 10,154 → 12. 커밋 `a1feb420`·`7395f4f6` push.
+    · 잔여 12 = 중복 `*_placeholder.png` 10(3권 38화·6권 62·63·73화 — 실물 대응본이 별도 추적 중) + 손상 파일명 2(`volume1/**그림`·`volume3/**그림N.**`, U+F02A 글롭-as-파일명 오생성). 물리 삭제 대상이나 추적 placeholder 15개(1·2·5권)가 별도 존재해 일괄 ignore는 부적절 → 샌드박스가 삭제 거부(무진님 대상 지정 필요)로 보류.
+    · **다음 = 물리 삭제 지시 대기 또는 본업 복귀(철학사 2권 24화 실사 확정·발행 / 2권 25화).**
+
 - 시각(ISO): **`2026-10-12T10:00+09:00`** — **철학사 2권 24화 「에라스무스와 종교개혁」(2-13·14쪽) 완성 — 게이트 23/23 PASS(E-basis 16,610 · 14p 밴드 16,520~17,080) · DAV 75/75 · 도판 7종(실사 4 + 도해 3, 도해 verify PASS) · 25절·각주 28·단어코너 3·논증박스 1·교차 링크 2 · 실사 후보 50종 전량 다운로드·1순위 배치(무진님 선택 대기) · llm-wiki `175ed1c9`·`b1e27ffc` push · 미발행(무진님 검토·확정 대기).**
   - [자동수집 · Git] 마지막 세션(2026-10-12T08:26+09:00) 이후:
 
@@ -83,22 +94,6 @@
     · harness  main: HEAD 4fdbc8e / origin 4fdbc8e :: 4fdbc8e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 0c84943 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
   - 상세(자동): 콘텐츠 커밋 llm-wiki@05517455 (2권 19화 「초기 스콜라 철학 — 안셀무스와 아벨라르두스」 초고·도판 6종 (그림1 원본 상하 크롭 1200×1800))
-
-- 시각(ISO): **`2026-10-07T20:39+09:00`** — **철학사 2권 18화 도판 6종 확정 — 실사 4종(그림 3·4·2 여백 크롭·1,800px) + 도해 2종(자체 제작) 무진님 승인. 게이트 23/23 · DAV 45 OK 0 BAD · 미발행**
-  - [자동수집 · Git] 마지막 세션(2026-10-07T20:14+09:00) 이후:
-    · homepage master: HEAD 7410c71 / origin 7410c71 ·작업트리 변경 5 :: 7410c71 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD 03c95b9b / origin 81ac782d ·작업트리 변경 171 :: 03c95b9b 2권 18화 도판 6종 확정 반영 (무진님 승인) / 30f575d7 2권 18화 도판 2 우측 여백 크롭 후 1,800px 확대 / 374f5596 2권 18화 도판 2 우측 여백 크롭 (§8.5 좌우 여백 0) / 34ca1e32 2권 18화 도판 3·4 주변 여백 크롭 (§8.5 좌우 여백 0) / 093f6761 2권 18화 실사 도판 4종 배치 (PD · 긴 변 1800px · q88) / 0e27db96 2권 18화 「보에티우스 — 고대의 마지막, 중세의 첫빛」 완료 (2-7, 14p)
-    · harness  main: HEAD 0c84943 / origin 0c84943 :: 0c84943 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-10-07T20:14+09:00`** — **철학사 2권 18화 「보에티우스 — 고대의 마지막, 중세의 첫빛」 완성 (2-7, 14p · 게이트 23/23 PASS · DAV 45 OK 0 BAD · 도해 2종 자체 제작) · 미발행**
-  - [자동수집 · Git] 마지막 세션(2026-10-02T14:39+09:00) 이후:
-    · homepage master: HEAD 49ba521 / origin 49ba521 ·작업트리 변경 5 :: 49ba521 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD 81ac782d / origin 81ac782d ·작업트리 변경 176 :: 81ac782d HANDOVER 갱신 — 2026-10-02(54차): 철학사 2권 17화 「아우구스티누스 — 신을 향한 고백」 완성 · 미발행 / e4116080 2권 17화 「아우구스티누스 — 신을 향한 고백」 완료 (2-6, 22p)
-    · harness  main: HEAD 2bcb02c / origin 2bcb02c :: 2bcb02c docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
