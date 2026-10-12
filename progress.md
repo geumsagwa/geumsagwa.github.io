@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-12T20:12+09:00`** — **✅ 이번 세션(2026-10-12 · 66차) — 도해 글자 상한 상향(30/24/16)·전량 재스탬프 + 도판 모두 승인(철학사 24화 7종 + 65차 재제작 28종) · 발행 보류**: ① **판단** — 무진님 「1. 상한 올려 2. 삭제 3. 도판 모두 승인 4. 대기」. ② **도해 글자 상한 상향** — §8.4 상한을 제목 22→30 · 라벨 15→24 · 보조 12→16px(홈페이지 720px 표시 기준)로 올렸다. `harness/configs/diagram-spec.json` v1→v2, sha256 `bb4211549a85`→`726d8fcf9810`. 스펙변경으로 **전체 도해 46종을 재스탬프**(훅셀상 변경 없이 메타만 갱신 · `verify-diagrams.py` PASS). 통합집필지침 §8.4·검증② 갱신 · 결재용 개정안에 정정 주석. 결정 기록 supersede(2026-09-27 → archived 동결·manifest sha256 등재, 2026-10-12 신규). ③ **도판 모두 승인** — 철학사 2권 24화 도판 7종(실사 4 + 도해 3) 확정 · 65차 재제작 28종(철학사 8화 23 + 심리학사 5)을 02·도판의뇌서 15종에 승인·확정 기록(교체 없음). ④ **커밋** — wiki `8dd29516` · harness `5203354`. ⑤ **발행 보류**(무진님 「대기」) — 발행 지시 때에만. ⑥ **⚠️ 미완** — 보유 미추적 12종(변동없는 `*_placeholder.png` 10 + 손상된 이름 파일 2)의 삭제가 안전 분류기의 '구체 지목' 요구로 보류되었다(무진님 규체 파일 지명 대기). ⑦ (질문 2 종결) 폰트 상한은 상향으로 확정.
+  - [자동수집 · Git] 마지막 세션(2026-10-12T15:42+09:00) 이후:
+    · homepage master: HEAD 449a3b2 / origin 449a3b2 ·작업트리 변경 5 :: 449a3b2 진행 기록: 인계 갱신 (update-handover auto) / 93db7f3 진행 기록: 인계 갱신 (update-handover auto) / bda7b31 진행 기록: 인계 갱신 (update-handover auto) / 6180a0c 진행 기록: 인계 갱신 (update-handover auto) / 8a48a52 자동: 카드뉴스 갱신 (2026-10-12) / 85371c3 진행 기록: 인계 갱신 (update-handover auto) / 5be0e96 자동: 카드뉴스 갱신 (2026-10-12)
+    · llm-wiki master: HEAD 8dd29516 / origin 6a838c82 ·작업트리 변경 12 :: 8dd29516 도해 글자 상한 상향(30/24/16) + 전량 재스탬프 · 도판 승인 기록 / 6a838c82 개념도 새 기준 재제작 — 철학사 도해 23종 + 심리학사 도해 5종(in-house) · 02·인계 갱신 / 72f8029e HANDOVER 갱신 — 2026-10-12(64차): llm-wiki 저장소 위생(비추적 자산 .gitignore 편입 · VS Code 상태 한계 10,000 초과 해소 · 비추적 10,154 → 12, 원고 변경 0) / 7395f4f6 gitignore: 잔여 비추적 자산 편입 — 임시폴더(_tmp_·_intake_)·도해 원본(_원본_)·작업 여분(미변환 PNG·zip·py) 정리 2단계 / a1feb420 gitignore: 비추적 유지 자산 3종 패턴 추가 —
+    · harness  main: HEAD 5203354 / origin 3fb4576 ·작업트리 변경 1 :: 5203354 spec(diagram): 도해 글자 상한 상향 v1→v2 (30/24/16) + 결정 기록 supersede / 3fb4576 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 9d15746 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e0a5fce docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / c072ced docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ec910a1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-10-12T15:42+09:00`** — **개념도 새 기준 일괄 적용 — 철학사 8화 도해 23종 재제작(1권 11화 · 2권 12·17·18·21·22·23·24화) + 심리학사 도해 5종 in-house 재제작(2권 16화 그림2 · 6권 66화 그림4·5 · 73화 그림1 · 75화 그림1). fit() 상하 여백 균등(m=40)·그림 확대·상단 제목 40px. 전부 verify-diagrams.py --stamp PASS. 02 검토내용 12종·도판의뢰서 3종·HANDOVER 갱신.**
   - [자동수집 · Git] 마지막 세션(2026-10-12T13:37+09:00) 이후:
     · homepage master: HEAD 93db7f3 / origin 93db7f3 ·작업트리 변경 5 :: 93db7f3 진행 기록: 인계 갱신 (update-handover auto) / bda7b31 진행 기록: 인계 갱신 (update-handover auto) / 6180a0c 진행 기록: 인계 갱신 (update-handover auto) / 8a48a52 자동: 카드뉴스 갱신 (2026-10-12) / 85371c3 진행 기록: 인계 갱신 (update-handover auto) / 5be0e96 자동: 카드뉴스 갱신 (2026-10-12)
@@ -78,22 +86,6 @@
     · harness  main: HEAD 1500608 / origin 1500608 :: 1500608 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-10-09T14:48+09:00`** — ****별건 — F: 설치 Voicebox·HyperFrames 두 도구·실행 모델·흔적 전량 제거(무진님 지시 · PC 사양 부적합) · 약 4.8GB 회수 · 잔존 0건 · llm-wiki HANDOVER·환경도구 절 갱신(커밋 834d4c41→bfb4a537 push) · 위키 원고 변경 0건(미발행 유지)****
-  - [자동수집 · Git] 마지막 세션(2026-10-08T06:47+09:00) 이후:
-    · homepage master: HEAD 3c4e9a6 / origin 3c4e9a6 ·작업트리 변경 5 :: 3c4e9a6 자동: 카드뉴스 갱신 (2026-10-09) / d0919fe 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD bfb4a537 / origin bfb4a537 ·작업트리 변경 171 :: bfb4a537 HANDOVER 갱신 보완 — 2026-10-09(59차): 영구 환경변수 잔존 3건(HKCU\Environment) 제거 반영 / 834d4c41 HANDOVER 갱신 — 2026-10-09(59차): Voicebox·HyperFrames 두 도구·실행 모델·흔적 전량 제거(PC 사양 부적합) 반영 / 7e331b2c 2권 20화 도판 6종 무진님 승인·확정(2026-10-08) 반영 — 02 검토내용·도판의뢰서·인계 문서 갱신 / 4114b624 HANDOVER 갱신 — 2026-10-08(58차): 철학사 2권 20화 「토마스 아퀴나스 — 신앙과 이성의 대종합」 초고·도판 6종 완성(게이트 23/23 · DAV 51/51) 반영 / ac5dd3db 2권 20화 「토마스 아퀴나스 — 신앙
-    · harness  main: HEAD 6851884 / origin 6851884 :: 6851884 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - 상세: 제거 = ① Voicebox(2026-09-23 설치) — F:\Voicebox(실모델 포함 3,805MB)·설치본 F:\Voicebox_0.5.0_x64-setup.exe(516MB)·%APPDATA%/%LOCALAPPDATA%의 sh.voicebox.app·바로가기·레지스트리(Uninstall\Voicebox·HKCU\Software\voicebox)·환경변수 VOICEBOX_MODELS_DIR ② HyperFrames(2026-09-25 설치) — F:\HyperFrames(474MB·node_modules/projects/문서)·C: 정션 28곳(스킬 코어 10종 AI 도구 폴더 8곳 + ~\.hyperframes·~\.cache\hyperframes — 링크만 제거해 공용 스킬 원본 보존)·사용설명서·환경변수 HYPERFRAMES_EXTRACT_CACHE_DIR. 재점검에서 HKCU\Environment 잔존 3건(빈 VOICEBOX_MODELS_DIR·HYPERFRAMES_EXTRACT_CACHE_DIR + PUPPETEER_CACHE_DIR=F:\HyperFrames\.cache\puppeteer) 추가 제거 → 영구 환경변수 0건. 보존 = F:\npm-cache·FFmpeg(두 도구 이전부터의 일반 자산). 설정(.claude.json·settings.json·.npmrc)·PATH·정션 언급 0건. 다음 세션 영향 없음.
-
-- 시각(ISO): **`2026-10-08T06:47+09:00`** — **철학사 2권 19화 「초기 스콜라 철학 — 안셀무스와 아벨라르두스」 도판 6종 무진님 승인·확정 — 그림 1은 상단(활·머리) 우선 재크롭본으로 확정(원본 지면 크롭 창 y≈785~4069 → 250~3535 · 위로 535px 이동 · 폭·배율 동일 · 1200×1800 · q88) · 게이트 23/23 PASS(E-basis 21,440 · 밴드 21,240~21,960) · DAV 73 OK 0 BAD · 미발행(발행은 무진님 지시 대기)**
-  - [자동수집 · Git] 마지막 세션(2026-10-07T22:41+09:00) 이후:
-    · homepage master: HEAD 086a4c0 / origin 086a4c0 ·작업트리 변경 5 :: 086a4c0 진행 기록: 인계 갱신 (update-handover auto) / 8264bef 진행 기록: 인계 갱신 (update-handover auto) / 7410c71 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD 869d9292 / origin 869d9292 ·작업트리 변경 171 :: 869d9292 2권 19화 도판 6종 무진님 승인·확정 기록 (그림1 상단 우선 재크롭본 포함) / 8428e1a9 2권 19화 그림1 재크롭 — 상단(활·머리) 살리고 하단을 더 잘라 냄 (1200×1800) / 05517455 2권 19화 「초기 스콜라 철학 — 안셀무스와 아벨라르두스」 초고·도판 6종 (그림1 원본 상하 크롭 1200×1800) / 03c95b9b 2권 18화 도판 6종 확정 반영 (무진님 승인) / 30f575d7 2권 18화 도판 2 우측 여백 크롭 후 1,800px 확대 / 374f5596 2권 18화 도판 2 우측 여백 크롭 (§8.5 좌우 여백 0) / 34ca1e32 2권 18화 도판 3·4 주변 여백 크롭 (§8.5 좌우 여백 0) / 093f6761 2권 18화 실사 도
-    · harness  main: HEAD fa0034c / origin fa0034c :: fa0034c docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 4fdbc8e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 0c84943 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - 상세: 도판 6종 = 실사 3(그림 1 안셀무스 필사본 PD · 그림 4 · 그림 5) + 도해 3 자체 제작(그림 2·3·6). 그림 1 재크롭(무진님 지시 = 상단 살리고 하단 더 잘라 냄) → 커밋 8428e1a9 · 승인·확정 기록(02 검토내용·도판의뢰서 동기) → 커밋 869d9292. 다음 = 19화 발행 여부 무진님 지시 대기 또는 2권 다음 화.
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
