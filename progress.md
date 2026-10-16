@@ -6,6 +6,13 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-16T09:45+09:00`** — **별건: 브리핑 자동 발행 장애 진단·수정(런처 `claude --bare` 제거) · llm-wiki 원고 변경 0 · 미발행 유지**: 세션 = 인계(`F:\wiki\HANDOVER.md`) 열람 + 브리핑 자동 발행 점검. ① **증상** — 인계 열람 훅(`briefing-on-handover-read.ps1`)이 한 번도 발화 안 함(`F:\backup\briefing-hook.log`·`.lock` 부재) · 모델의 직접 `publish-briefing.ps1` 호출은 **auto mode 분류기**(공개 표면 생성)에 차단. ② **원인** — (A) `permissions.allow` 규칙은 대화형 권한창만 우회, 별개인 **auto mode 분류기**는 우회 못 함. (B) **근본 원인 = 런처 `claude --bare`** — `--bare`는 훅을 전부 건너뜀(`claude --help`·changelog “skips hooks”) → 훅 미발화. 방아쇠 = 10-15 11:05 Claude Code `2.1.296 → 2.1.300` 자동 업데이트. ③ **수정**(무진님 직접 편집) — `start-claude-deepseek.ps1` 55행 `--bare` 제거 · `settings.deepseek.json`의 빈 `"hooks": {}`를 실제 PostToolUse 훅으로 교체(플러그인 명시적 false). ④ **검증** — JSON 유효 · 런처 AST 문법 OK · 훅 더미입력 exit 0 · 플러그인 ID 정합(`claude-mem@thedotmack`). 백업 `*.bak-20261016_085007`. ⑤ **원고·도판 변경 0 · 미발행 유지** — 27화 도판(실사 3종) 확정·발행 대기. **다음 = 재시작 후 훅 자동 발행 확인 또는 27화 도판 확정·발행 / 3권 28화(데카르트 — 대륙의 이성).**
+  - [자동수집 · Git] 마지막 세션(2026-10-15T11:06+09:00) 이후:
+    · homepage master: HEAD 200a929 / origin 200a929 ·작업트리 변경 5 :: 200a929 진행 기록: 인계 갱신 (update-handover auto) / 07931e5 자동: 카드뉴스 갱신 (2026-10-15)
+    · llm-wiki master: HEAD deab68a3 / origin deab68a3 :: deab68a3 HANDOVER 갱신 — 2026-10-15(72차): 브리핑 자동 발행 이행 · llm-wiki 원고 변경 0 (미발행 유지)
+    · harness  main: HEAD d9bf3a6 / origin d9bf3a6 ·작업트리 변경 1 :: d9bf3a6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 87ce355 / origin 87ce355 ·작업트리 변경 5 :: (커밋 없음)
+
 - 시각(ISO): **`2026-10-15T11:06+09:00`** — **브리핑 자동 발행 하드 룰 이행(72차 · 2026-10-15) · llm-wiki 원고 변경 0 · 미발행 유지**: 세션 = 인계(`F:\wiki\HANDOVER.md`) 열람 + 브리핑 발행만. ① `publish-briefing.ps1` 실행 → openclaw 브리핑 생성(`briefing-2026-10-15.md`) → 카드뉴스 생성(`admin/cardnews/2026-10-15.html`) → homepage 커밋·푸시 **`07931e5`** → 배포 확인 **HTTP 200**(스크립트의 70초 대기 시점엔 GitHub Pages 빌드 지연으로 404였으나 재확인 200, 정상). ② 철학사 3권 27화(베이컨 — 방법의 시대) 완성분(게이트 23/23 · DAV 54/54 · 도판 6종 배치)에서 **변동 없음** — 27화 도판(실사 3종) **무진님 확정·발행 대기**. **다음 = 27화 도판 확정·발행 또는 철학사 3권 28화(데카르트 — 대륙의 이성).**
   - [자동수집 · Git] 마지막 세션(2026-10-14T09:17+09:00) 이후:
     · homepage master: HEAD 07931e5 / origin 07931e5 ·작업트리 변경 5 :: 07931e5 자동: 카드뉴스 갱신 (2026-10-15) / 5708681 진행 기록: 인계 갱신 (update-handover auto) / 9ebee9d 자동: 카드뉴스 갱신 (2026-10-14)
@@ -64,25 +71,6 @@
     · harness  main: HEAD 9d15746 / origin 9d15746 :: 9d15746 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e0a5fce docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / c072ced docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ec910a1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
   - 상세(자동): 콘텐츠 커밋 llm-wiki@6a838c82 (개념도 새 기준 재제작 — 철학사 도해 23종 + 심리학사 도해 5종(in-house) · 02·인계 갱신)
-
-- 시각(ISO): **`2026-10-12T13:37+09:00`** — **llm-wiki `.gitignore`로 비추적 자산 정리 — VS Code '활성 변경 과다' 경고 해소(비추적 10,154 → 12) · 커밋 `a1feb420`·`7395f4f6` push · 잔여 12개(중복 placeholder 10·손상 파일명 2) 물리 삭제 대기. (원고 아님 · 리포 위생)**
-  - [자동수집 · Git] 마지막 세션(2026-10-12T10:00+09:00) 이후:
-    · homepage master: HEAD bda7b31 / origin bda7b31 ·작업트리 변경 5 :: bda7b31 진행 기록: 인계 갱신 (update-handover auto) / 6180a0c 진행 기록: 인계 갱신 (update-handover auto) / 8a48a52 자동: 카드뉴스 갱신 (2026-10-12) / 85371c3 진행 기록: 인계 갱신 (update-handover auto) / 5be0e96 자동: 카드뉴스 갱신 (2026-10-12)
-    · llm-wiki master: HEAD 7395f4f6 / origin 7395f4f6 ·작업트리 변경 12 :: 7395f4f6 gitignore: 잔여 비추적 자산 편입 — 임시폴더(_tmp_·_intake_)·도해 원본(_원본_)·작업 여분(미변환 PNG·zip·py) 정리 2단계 / a1feb420 gitignore: 비추적 유지 자산 3종 패턴 추가 — ws_tmp/ · *_복원포인트_* · manuscripts/**/*-selection* (VS Code 상태 10,000 한계 초과 해소) / b1e27ffc HANDOVER 갱신 — 2026-10-12(63차): 철학사 2권 24화 「에라스무스와 종교개혁」 완성(도판 7종·DAV 75/75·게이트 23/23) 반영 · 다음 = 24화 실사 확정·발행 또는 2권 25화 / 175ed1c9 철학사 2권 24화 「에라스무스와 종교개혁」 원고·도판·검토문서 추가 /
-    · harness  main: HEAD e0a5fce / origin e0a5fce :: e0a5fce docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / c072ced docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ec910a1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - 상세: llm-wiki 워킹트리 비추적 파일이 10,154개(설계상 비추적 자산이 대부분)로 VS Code `git.statusLimit`(기본 10,000)을 넘겨 '활성 변경이 너무 많습니다 — Git 기능 하위 집합만 사용' 경고·기능 제한 발생. → `.gitignore`에 설계상 비추적 3종(`ws_tmp/`·`*_복원포인트_*`·`manuscripts/**/*-selection*`) + 잔여(임시폴더 `_tmp_`/`_intake_`·도해 원본 `*_원본_*`·작업 여분[png 2·zip 1·py 1]) 편입.
-    · 추적 파일 영향 0 검증(신규 패턴 매치 추적 파일 0 · `wiki/concepts/*-selection.md` 개념문서 보호 위해 selection 패턴을 manuscripts 하위로 한정). 비추적 10,154 → 12. 커밋 `a1feb420`·`7395f4f6` push.
-    · 잔여 12 = 중복 `*_placeholder.png` 10(3권 38화·6권 62·63·73화 — 실물 대응본이 별도 추적 중) + 손상 파일명 2(`volume1/**그림`·`volume3/**그림N.**`, U+F02A 글롭-as-파일명 오생성). 물리 삭제 대상이나 추적 placeholder 15개(1·2·5권)가 별도 존재해 일괄 ignore는 부적절 → 샌드박스가 삭제 거부(무진님 대상 지정 필요)로 보류.
-    · **다음 = 물리 삭제 지시 대기 또는 본업 복귀(철학사 2권 24화 실사 확정·발행 / 2권 25화).**
-
-- 시각(ISO): **`2026-10-12T10:00+09:00`** — **철학사 2권 24화 「에라스무스와 종교개혁」(2-13·14쪽) 완성 — 게이트 23/23 PASS(E-basis 16,610 · 14p 밴드 16,520~17,080) · DAV 75/75 · 도판 7종(실사 4 + 도해 3, 도해 verify PASS) · 25절·각주 28·단어코너 3·논증박스 1·교차 링크 2 · 실사 후보 50종 전량 다운로드·1순위 배치(무진님 선택 대기) · llm-wiki `175ed1c9`·`b1e27ffc` push · 미발행(무진님 검토·확정 대기).**
-  - [자동수집 · Git] 마지막 세션(2026-10-12T08:26+09:00) 이후:
-
-  - [기재 영역] (선택) 아래에 상세 bullet 추가 가능
-  - 상세: 철학사 2권 24화(2-13·14p) — 「알을 낳은 사람과 부화시킨 사람」 뼈대로 에라스무스·루터 서사 25절. 게이트 23/23 PASS(E-basis 16,610 · 14p 밴드 16,520~17,080 · 내부·교차 word-12 0 · 해요체 0 · 도판 7/캡션 7/출처 줄 4) · DAV `_dav24.py` 75 OK 0 BAD · 도해 3종 `verify-diagrams.py --stamp` PASS.
-    · 도판 7종 = 실사 4(홀바인 「에라스무스 초상」1523 내셔널 갤러리 · 『우신예찬』 프로벤 1522 판본 첫 장 · 크라나흐 공방 「루터 초상」1529 독일 역사 박물관 · 「95개조 반박문」1517 인쇄 전단 — 모두 PD) + 도해 3(면죄부가 돈이 되는 길 · 세 가지 오직 · 자유의지 논쟁 — 자체 제작 `ws_tmp/ph24-draw/_draw24.py`). 실사 후보 50종 전량 다운로드·1순위 배치(무진님 선택·확정 대기). ⚠️ 『우신예찬』 1511년 초판 표지는 공용에 마땅한 사진이 없어 1522년 프로벤 판본으로 대체.
-    · 산출물: 01 본문 · 02 검토내용 · 도판의뢰서 + 도판 7파일(llm-wiki `175ed1c9`·`b1e27ffc`). **다음 = 24화 실사 확정·발행 또는 2권 25화.**
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
