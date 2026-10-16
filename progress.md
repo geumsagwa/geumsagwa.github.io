@@ -6,7 +6,7 @@
 
 ## 마지막 갱신
 
-- 시각(ISO): **`2026-10-16T13:45+09:00`** — 브리핑 자동 발행 장애 **재진단·완전 수정**. 73차(`--bare` 제거)로 훅 발화 자체는 복구됐으나, 인계문서를 한 턴에 여러 개 읽으면 훅이 동시 N회 발화 → 비원자적 락(`Test-Path`→`New-Item`)을 2개 이상이 함께 통과 → `publish-briefing` 중복 실행 → 동시 `npm run dev` + 같은 로그 `Add-Content` 공유 위반 → 양쪽 즉사(브리핑 미생성). 훅·발행 양쪽에 `CreateNew` 원자 락 도입 + `Log()` 예외 흡수 + 락-로그 순서 조정. 동시 2회·훅 3회 발화 검증 통과, 당일 브리핑(2026-10-16) HTTP 200 발행 완료.
+- 시각(ISO): **`2026-10-16T13:45+09:00`** — 브리핑 자동 발행 장애 **재진단·완전 수정**. 73차(`--bare` 제거)로 훅 발화 자체는 복구됐으나, 인계문서를 한 턴에 여러 개 읽으면 훅이 동시 N회 발화 → 비원자적 락(`Test-Path`→`New-Item`)을 2개 이상이 함께 통과 → `publish-briefing` 중복 실행 → 동시 `npm run dev` + 같은 로그 `Add-Content` 공유 위반 → 양쪽 즉사(브리핑 미생성). 훅·발행 양쪽에 `CreateNew` 원자 락 도입 + `Log()` 예외 흡수 + 락-로그 순서 조정. 동시 2회·훅 3회 발화 검증 통과, 당일 브리핑(2026-10-16) HTTP 200 발행 완료. 이어서 **미정리 파일 7건 삭제**(워킹트리 clean) + **3권 27화 도판 6종 무진님 승인·확정**(llm-wiki `ac0748ef`, 게이트 RESULT: PASS 22/22).
   - [자동수집 · Git] 마지막 세션(2026-10-16T09:45+09:00) 이후:
     · homepage master: HEAD 8cce82d / origin 8cce82d ·작업트리 변경 5 :: 8cce82d 자동: 카드뉴스 갱신 (2026-10-16) / e948927 자동: 카드뉴스 갱신 (2026-10-16) / 957a5be 자동: 카드뉴스 갱신 (2026-10-16) / fad9c74 진행 기록: 인계 갱신 (update-handover auto)
     · llm-wiki master: HEAD f0ae7b13 / origin f0ae7b13 :: f0ae7b13 HANDOVER 갱신 — 2026-10-16(73차): 브리핑 자동 발행 장애 진단·수정(런처 --bare 제거) · llm-wiki 원고 변경 0 (미발행 유지)
@@ -18,8 +18,9 @@
   - **검증**: AST 구문검사 2파일 통과 / 동시 2회 실행 → "시작" 1줄·발행 1회·HTTP 200 완주 / 진 쪽 로그 49→49줄 미오염·exit 0 / 훅 3회 동시 발화(13:04 재현 조건) → 발화 로그 1건(`13:43:09`) 수렴, 잔류 발행 프로세스 0.
   - **당일 발행**: `admin/cardnews/2026-10-16.html` (homepage `957a5be`) → https://geumsagwa.github.io/admin/cardnews/2026-10-16.html HTTP 200.
   - **부작용(보고)**: 검증용 `-Force` 실행으로 homepage에 테스트 커밋 2건 발생 — `e948927`(카드뉴스 재생성분, html 1줄+index.json 838줄 churn) / `8cce82d`(빈 커밋). 배포 결과는 정상이며 무해.
-  - **미정리**: harness 미추적 `scripts/publish-briefing.ps1.bak-20261016_133834`, 기존 `configs/diagram-spec.json.복원포인트_20261012`, `.claude` 훅 백업 — 모두 무해, 삭제 여부는 무진님 판단. (`F:\backup` 진단파일 4개는 보호 경로라 삭제 불가.)
-  - **다음**: 27화 도판(실사 3종) 확정·발행 또는 3권 28화(데카르트 — 대륙의 이성).
+  - **미정리 파일 정리(무진님 지시 · 완료)**: 7건 전부 삭제 — `F:\backup` 진단용 4종(`_probe_pid.txt`·`_probe_long.ps1`·`_probe_long_pid.txt`·`_probe_long.txt`) · harness `scripts/publish-briefing.ps1.bak-20261016_133834` · `.claude\hooks\briefing-on-handover-read.ps1.bak-20261016_133834` · harness `configs/diagram-spec.json.복원포인트_20261012`(66차 v1→v2 상향 시 스냅샷). 삭제 후 harness 미추적 0(워킹트리 clean). (`F:\backup`의 `briefing-hook.lock`·`publish-briefing.lock`·로그는 기능 파일이라 유지.)
+  - **3권 27화 도판 6종 승인·확정**(무진님 「27화 도판 모두 승인」 · llm-wiki `ac0748ef`) — 실사 3종(그림 1 폴 판 소메르 베이컨 초상 · 그림 2 『대복원』1620 헤라클레스 기둥 배 그림 · 그림 6 『새로운 아틀란티스』1628 표지) **배치본(1순위) 그대로** + 도해 3종(그림 3 네 가지 우상 · 그림 4 두 갈래 길 · 그림 5 세 가지 표) **검증 통과본 그대로** · **교체 없음**. 02 검토내용 §5·§8(승인 불릿 + ✅ 확정 블록) + 도판의뢰서(도판 상태 줄 · §0 표 6행 · §4 실사 후보 절 · §6 요약) 반영. 게이트 재확인 **RESULT: PASS (22/22)** · E-basis 19,485 · 도판 6/캡션 6/출처 줄 0. **발행은 무진님 지시 때에만.**
+  - **다음**: (지시 시) 27화 발행 또는 3권 28화(데카르트 — 대륙의 이성).
 
 - 시각(ISO): **`2026-10-16T09:45+09:00`** — **별건: 브리핑 자동 발행 장애 진단·수정(런처 `claude --bare` 제거) · llm-wiki 원고 변경 0 · 미발행 유지**: 세션 = 인계(`F:\wiki\HANDOVER.md`) 열람 + 브리핑 자동 발행 점검. ① **증상** — 인계 열람 훅(`briefing-on-handover-read.ps1`)이 한 번도 발화 안 함(`F:\backup\briefing-hook.log`·`.lock` 부재) · 모델의 직접 `publish-briefing.ps1` 호출은 **auto mode 분류기**(공개 표면 생성)에 차단. ② **원인** — (A) `permissions.allow` 규칙은 대화형 권한창만 우회, 별개인 **auto mode 분류기**는 우회 못 함. (B) **근본 원인 = 런처 `claude --bare`** — `--bare`는 훅을 전부 건너뜀(`claude --help`·changelog “skips hooks”) → 훅 미발화. 방아쇠 = 10-15 11:05 Claude Code `2.1.296 → 2.1.300` 자동 업데이트. ③ **수정**(무진님 직접 편집) — `start-claude-deepseek.ps1` 55행 `--bare` 제거 · `settings.deepseek.json`의 빈 `"hooks": {}`를 실제 PostToolUse 훅으로 교체(플러그인 명시적 false). ④ **검증** — JSON 유효 · 런처 AST 문법 OK · 훅 더미입력 exit 0 · 플러그인 ID 정합(`claude-mem@thedotmack`). 백업 `*.bak-20261016_085007`. ⑤ **원고·도판 변경 0 · 미발행 유지** — 27화 도판(실사 3종) 확정·발행 대기. **다음 = 재시작 후 훅 자동 발행 확인 또는 27화 도판 확정·발행 / 3권 28화(데카르트 — 대륙의 이성).**
   - [자동수집 · Git] 마지막 세션(2026-10-15T11:06+09:00) 이후:
