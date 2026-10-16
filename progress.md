@@ -6,6 +6,21 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-16T13:45+09:00`** — 브리핑 자동 발행 장애 **재진단·완전 수정**. 73차(`--bare` 제거)로 훅 발화 자체는 복구됐으나, 인계문서를 한 턴에 여러 개 읽으면 훅이 동시 N회 발화 → 비원자적 락(`Test-Path`→`New-Item`)을 2개 이상이 함께 통과 → `publish-briefing` 중복 실행 → 동시 `npm run dev` + 같은 로그 `Add-Content` 공유 위반 → 양쪽 즉사(브리핑 미생성). 훅·발행 양쪽에 `CreateNew` 원자 락 도입 + `Log()` 예외 흡수 + 락-로그 순서 조정. 동시 2회·훅 3회 발화 검증 통과, 당일 브리핑(2026-10-16) HTTP 200 발행 완료.
+  - [자동수집 · Git] 마지막 세션(2026-10-16T09:45+09:00) 이후:
+    · homepage master: HEAD 8cce82d / origin 8cce82d ·작업트리 변경 5 :: 8cce82d 자동: 카드뉴스 갱신 (2026-10-16) / e948927 자동: 카드뉴스 갱신 (2026-10-16) / 957a5be 자동: 카드뉴스 갱신 (2026-10-16) / fad9c74 진행 기록: 인계 갱신 (update-handover auto)
+    · llm-wiki master: HEAD f0ae7b13 / origin f0ae7b13 :: f0ae7b13 HANDOVER 갱신 — 2026-10-16(73차): 브리핑 자동 발행 장애 진단·수정(런처 --bare 제거) · llm-wiki 원고 변경 0 (미발행 유지)
+    · harness  main: HEAD a27c1a2 / origin a27c1a2 ·작업트리 변경 2 :: a27c1a2 fix(briefing): 자동 발행 동시 실행 방지 — 원자적 실행 락 도입 / 4802de0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD 87ce355 / origin 87ce355 ·작업트리 변경 5 :: (커밋 없음)
+  - **원인(재진단)**: 73차가 지목한 `claude --bare`는 이미 제거돼 훅은 정상 발화했다. 실제 실패 원인은 **TOCTOU 락 경합** — 13:04에 인계문서 3개를 한 턴에 읽어 훅이 3회 동시 발화, `Test-Path` 검사를 2개가 함께 통과해 발행이 2중 기동됐다. 근거: 그 시각 `google-tokens.json` 무변경(에이전트 미기동), `app.log`에 10-16 항목 없음, 로그 "시작" 2줄.
+  - **수정 ①** `harness/scripts/publish-briefing.ps1` (commit `a27c1a2`) — `[System.IO.File]::Open(..., CreateNew, ..., None)` 원자 락(`$RunLock`), **로그 기록 이전** 획득(진 쪽은 파일 로그 미기록·`exit 0`), `Log()`가 `Add-Content` 예외 흡수(`$ErrorActionPreference=Stop`에서 공유 위반이 프로세스를 즉사시키던 문제 제거). 락은 해제하지 않고 15분 stale 규칙(발행은 일 1회·멱등).
+  - **수정 ②** `%USERPROFILE%\.claude\hooks\briefing-on-handover-read.ps1` — 동일한 `CreateNew` 원자 락. 단 이 경로는 **git 저장소가 아님**(`fatal: not a git repository`) → 로컬 백업(`.bak-20261016_133834`)으로만 보존.
+  - **검증**: AST 구문검사 2파일 통과 / 동시 2회 실행 → "시작" 1줄·발행 1회·HTTP 200 완주 / 진 쪽 로그 49→49줄 미오염·exit 0 / 훅 3회 동시 발화(13:04 재현 조건) → 발화 로그 1건(`13:43:09`) 수렴, 잔류 발행 프로세스 0.
+  - **당일 발행**: `admin/cardnews/2026-10-16.html` (homepage `957a5be`) → https://geumsagwa.github.io/admin/cardnews/2026-10-16.html HTTP 200.
+  - **부작용(보고)**: 검증용 `-Force` 실행으로 homepage에 테스트 커밋 2건 발생 — `e948927`(카드뉴스 재생성분, html 1줄+index.json 838줄 churn) / `8cce82d`(빈 커밋). 배포 결과는 정상이며 무해.
+  - **미정리**: harness 미추적 `scripts/publish-briefing.ps1.bak-20261016_133834`, 기존 `configs/diagram-spec.json.복원포인트_20261012`, `.claude` 훅 백업 — 모두 무해, 삭제 여부는 무진님 판단. (`F:\backup` 진단파일 4개는 보호 경로라 삭제 불가.)
+  - **다음**: 27화 도판(실사 3종) 확정·발행 또는 3권 28화(데카르트 — 대륙의 이성).
+
 - 시각(ISO): **`2026-10-16T09:45+09:00`** — **별건: 브리핑 자동 발행 장애 진단·수정(런처 `claude --bare` 제거) · llm-wiki 원고 변경 0 · 미발행 유지**: 세션 = 인계(`F:\wiki\HANDOVER.md`) 열람 + 브리핑 자동 발행 점검. ① **증상** — 인계 열람 훅(`briefing-on-handover-read.ps1`)이 한 번도 발화 안 함(`F:\backup\briefing-hook.log`·`.lock` 부재) · 모델의 직접 `publish-briefing.ps1` 호출은 **auto mode 분류기**(공개 표면 생성)에 차단. ② **원인** — (A) `permissions.allow` 규칙은 대화형 권한창만 우회, 별개인 **auto mode 분류기**는 우회 못 함. (B) **근본 원인 = 런처 `claude --bare`** — `--bare`는 훅을 전부 건너뜀(`claude --help`·changelog “skips hooks”) → 훅 미발화. 방아쇠 = 10-15 11:05 Claude Code `2.1.296 → 2.1.300` 자동 업데이트. ③ **수정**(무진님 직접 편집) — `start-claude-deepseek.ps1` 55행 `--bare` 제거 · `settings.deepseek.json`의 빈 `"hooks": {}`를 실제 PostToolUse 훅으로 교체(플러그인 명시적 false). ④ **검증** — JSON 유효 · 런처 AST 문법 OK · 훅 더미입력 exit 0 · 플러그인 ID 정합(`claude-mem@thedotmack`). 백업 `*.bak-20261016_085007`. ⑤ **원고·도판 변경 0 · 미발행 유지** — 27화 도판(실사 3종) 확정·발행 대기. **다음 = 재시작 후 훅 자동 발행 확인 또는 27화 도판 확정·발행 / 3권 28화(데카르트 — 대륙의 이성).**
   - [자동수집 · Git] 마지막 세션(2026-10-15T11:06+09:00) 이후:
     · homepage master: HEAD 200a929 / origin 200a929 ·작업트리 변경 5 :: 200a929 진행 기록: 인계 갱신 (update-handover auto) / 07931e5 자동: 카드뉴스 갱신 (2026-10-15)
@@ -63,14 +78,6 @@
     · harness  main: HEAD 5203354 / origin 3fb4576 ·작업트리 변경 1 :: 5203354 spec(diagram): 도해 글자 상한 상향 v1→v2 (30/24/16) + 결정 기록 supersede / 3fb4576 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 9d15746 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e0a5fce docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / c072ced docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ec910a1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-10-12T15:42+09:00`** — **개념도 새 기준 일괄 적용 — 철학사 8화 도해 23종 재제작(1권 11화 · 2권 12·17·18·21·22·23·24화) + 심리학사 도해 5종 in-house 재제작(2권 16화 그림2 · 6권 66화 그림4·5 · 73화 그림1 · 75화 그림1). fit() 상하 여백 균등(m=40)·그림 확대·상단 제목 40px. 전부 verify-diagrams.py --stamp PASS. 02 검토내용 12종·도판의뢰서 3종·HANDOVER 갱신.**
-  - [자동수집 · Git] 마지막 세션(2026-10-12T13:37+09:00) 이후:
-    · homepage master: HEAD 93db7f3 / origin 93db7f3 ·작업트리 변경 5 :: 93db7f3 진행 기록: 인계 갱신 (update-handover auto) / bda7b31 진행 기록: 인계 갱신 (update-handover auto) / 6180a0c 진행 기록: 인계 갱신 (update-handover auto) / 8a48a52 자동: 카드뉴스 갱신 (2026-10-12) / 85371c3 진행 기록: 인계 갱신 (update-handover auto) / 5be0e96 자동: 카드뉴스 갱신 (2026-10-12)
-    · llm-wiki master: HEAD 6a838c82 / origin 6a838c82 ·작업트리 변경 12 :: 6a838c82 개념도 새 기준 재제작 — 철학사 도해 23종 + 심리학사 도해 5종(in-house) · 02·인계 갱신 / 72f8029e HANDOVER 갱신 — 2026-10-12(64차): llm-wiki 저장소 위생(비추적 자산 .gitignore 편입 · VS Code 상태 한계 10,000 초과 해소 · 비추적 10,154 → 12, 원고 변경 0) / 7395f4f6 gitignore: 잔여 비추적 자산 편입 — 임시폴더(_tmp_·_intake_)·도해 원본(_원본_)·작업 여분(미변환 PNG·zip·py) 정리 2단계 / a1feb420 gitignore: 비추적 유지 자산 3종 패턴 추가 — ws_tmp/ · *_복원포인트_* · manuscripts/**/*-selection* (VS
-    · harness  main: HEAD 9d15746 / origin 9d15746 :: 9d15746 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e0a5fce docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / c072ced docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / ec910a1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 11a8f0a / origin 11a8f0a ·작업트리 변경 5 :: (커밋 없음)
-  - 상세(자동): 콘텐츠 커밋 llm-wiki@6a838c82 (개념도 새 기준 재제작 — 철학사 도해 23종 + 심리학사 도해 5종(in-house) · 02·인계 갱신)
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
