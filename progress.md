@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-20T10:06+09:00`** — 32화 도판 8종 전량 승인·확정(무진님 「도판 모두 승인」, 교체 없음). 02·도판의뢰서 상태 갱신, 게이트 23/23 재통과, 커밋 fc426b1b 푸시 완료. 다음은 발행 지시 대기(33화 착수 가능).
+  - [자동수집 · Git] 마지막 세션(2026-10-20T10:05+09:00) 이후:
+    · homepage master: HEAD 9a56125 / origin 9a56125 ·작업트리 변경 5 :: 9a56125 진행 기록: 인계 갱신 (update-handover auto) / b22e6b9 진행 기록: 인계 갱신 (update-handover auto) / ba9fb84 진행 기록: 인계 갱신 (update-handover auto) / 23332fa 30화 도판 승인 인계 반영 / f8c5500 30화 그림 6 상자 위치 보정 인계 반영 / 0075588 30화 그림 6 연결선 보정 인계 반영 / 59fea8b 진행 기록: 인계 갱신 (update-handover auto) / aa67cdc 자동: 카드뉴스 갱신 (2026-10-20)
+    · llm-wiki master: HEAD fc426b1b / origin fc426b1b :: fc426b1b 32화 도판 8종 전량 승인·확정 기록 / abbcf1a9 3권 32화 「스피노자 — 신, 즉 자연」 집필 / 468077ff 31화 도판 8종 전량 승인·확정 기록 / eb39edd1 31화 파스칼 — 원고·검토내용·도판의뢰서·도판 8종 / c39a0fc5 30화 도판 7종 전량 승인·확정 기록 / e3005b90 30화 그림 6 — 국가 상자를 상벌·재산과 수평으로 올림 / 6bc5272c 30화 그림 6 — 상단 연결선을 하단과 같은 직각 형태로 정리 / fc02f6a5 30화 그림 6 수정 — 주권·관리 라벨을 국가 상자와 연결 / 382a6cd1 3권 30화 홉스 원고·도판·검토내용 추가
+    · harness  main: HEAD 7957d4a / origin 7957d4a :: 7957d4a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 3ccff4b docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 0251db5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 26d7f85 docs(desktop-handoff): 30화 도판 7종 승인·확정 반영 / b6f92de docs(desktop-handoff): 30화 그림 6 상자 위치 보정 반영 / b202016 docs(desktop-handoff): 30화 그림 6 연결선 보정 반영 / 1ed41b1 docs(desktop-handoff): 인계 갱신 동기 (update
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: c828a81 fix(news): AI/IT 소스 정리 — zdnet·feedburner TechCrunch·hnrss 교체 / 0d80fd9 fix(news): bloter RSS 폐쇄 대응 — aitimes 목록 HTML 스크래핑으로 대체
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-10-20T10:05+09:00`** — 3권 32화 「스피노자 — 신, 즉 자연」 집필 완료(게이트 23/23·E-basis 26,058·DAV 89/89·커밋 abbcf1a9 푸시 완료). 도판 8종은 무진님 확인 대기, 발행은 지시 때만.
   - [자동수집 · Git] 마지막 세션(2026-10-20T09:23+09:00) 이후:
     · homepage master: HEAD b22e6b9 / origin b22e6b9 ·작업트리 변경 5 :: b22e6b9 진행 기록: 인계 갱신 (update-handover auto) / ba9fb84 진행 기록: 인계 갱신 (update-handover auto) / 23332fa 30화 도판 승인 인계 반영 / f8c5500 30화 그림 6 상자 위치 보정 인계 반영 / 0075588 30화 그림 6 연결선 보정 인계 반영 / 59fea8b 진행 기록: 인계 갱신 (update-handover auto) / aa67cdc 자동: 카드뉴스 갱신 (2026-10-20)
@@ -82,14 +90,6 @@
     · llm-wiki master: HEAD deab68a3 / origin deab68a3 :: deab68a3 HANDOVER 갱신 — 2026-10-15(72차): 브리핑 자동 발행 이행 · llm-wiki 원고 변경 0 (미발행 유지)
     · harness  main: HEAD d9bf3a6 / origin d9bf3a6 ·작업트리 변경 1 :: d9bf3a6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 87ce355 / origin 87ce355 ·작업트리 변경 5 :: (커밋 없음)
-
-- 시각(ISO): **`2026-10-15T11:06+09:00`** — **브리핑 자동 발행 하드 룰 이행(72차 · 2026-10-15) · llm-wiki 원고 변경 0 · 미발행 유지**: 세션 = 인계(`F:\wiki\HANDOVER.md`) 열람 + 브리핑 발행만. ① `publish-briefing.ps1` 실행 → openclaw 브리핑 생성(`briefing-2026-10-15.md`) → 카드뉴스 생성(`admin/cardnews/2026-10-15.html`) → homepage 커밋·푸시 **`07931e5`** → 배포 확인 **HTTP 200**(스크립트의 70초 대기 시점엔 GitHub Pages 빌드 지연으로 404였으나 재확인 200, 정상). ② 철학사 3권 27화(베이컨 — 방법의 시대) 완성분(게이트 23/23 · DAV 54/54 · 도판 6종 배치)에서 **변동 없음** — 27화 도판(실사 3종) **무진님 확정·발행 대기**. **다음 = 27화 도판 확정·발행 또는 철학사 3권 28화(데카르트 — 대륙의 이성).**
-  - [자동수집 · Git] 마지막 세션(2026-10-14T09:17+09:00) 이후:
-    · homepage master: HEAD 07931e5 / origin 07931e5 ·작업트리 변경 5 :: 07931e5 자동: 카드뉴스 갱신 (2026-10-15) / 5708681 진행 기록: 인계 갱신 (update-handover auto) / 9ebee9d 자동: 카드뉴스 갱신 (2026-10-14)
-    · llm-wiki master: HEAD 2135ac39 / origin 2135ac39 :: 2135ac39 HANDOVER — 차기 논의 안건 추가(무진님 문체로 소설 쓰기 · 다음 세션 논의) / f6f48468 HANDOVER 갱신 — 2026-10-14: 철학사 3권 26화(과학 혁명)·27화(베이컨 — 방법의 시대) 완성 + 26화 도판 확정 반영 / a38cad42 3권 27화「베이컨 — 방법의 시대」집필·도판·검증 완료 (16p · 게이트 23/23 · DAV 54/54 · 도해 3종 PASS) / e27c8007 3권 26화 도판 7종 확정 기록 (무진님 「도판 모두 확정」) / 1f309565 3권 26화 「과학 혁명 — 세계의 재발견」 집필·검증 완료 / c44f1630 philosophy v2 ep25 도판 7종 무진님 승인·확정 기록 (2026-10-14)
-    · harness  main: HEAD 63a3f71 / origin 63a3f71 ·작업트리 변경 1 :: 63a3f71 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 87ce355 / origin 87ce355 ·작업트리 변경 5 :: 87ce355 feat: Google Tasks 섹션(##8) — 미완료 할 일을 브리핑에 추가
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
