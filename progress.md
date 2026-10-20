@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-20T13:34+09:00`** — **별건: ArtCraft(어도비 대안 오픈소스) 14종 설치·설정 — 원고·도판·발행 변경 0**: 유튜브 소개 영상(Claude Opus 5.5로 Rust 재구현) 검증 후 GitHub `storytold` 정식 릴리스에서 Windows x64 포터블 14종(앱 13 + 런처)을 받아 SHA256 전량 검증 → `F:\tools\ArtCraft\apps\`에 전개. CLI 전종 실행 확인(0.7.0~0.13.1). `bin\` 래퍼 27개 + 사용자 PATH + 시작 메뉴 14개 바로가기 구성. Claude Code MCP는 앱별 `<앱>-cli mcp`이며 핵심 7종(Photo·Light·Film·Vector·Pdf·Effect·Design)을 사용자 범위로 등록, `claude mcp list` 7/7 Connected 확인. 나머지 6종(Fig·Word·Grid·Deck·Sound·CAD)은 미등록 — `artcraft-mcp add <앱>`으로 즉시 추가. PhotoCraft GUI 기동 스모크 테스트 통과(440MB). 총 3.01GB(다운로드 0.93GB 보존). 전 앱 알파·독점 포맷(.aep/.prproj/.ai) 미지원 주의. 사용법 `F:\tools\ArtCraft\README.md`. **원고 미변경 — 32화 발행·33화 착수 대기 유지.**
+  - [자동수집 · Git] 마지막 세션(2026-10-20T10:06+09:00) 이후:
+    · homepage master: HEAD 5bd32f0 / origin 5bd32f0 ·작업트리 변경 5 :: 5bd32f0 진행 기록: 인계 갱신 (update-handover auto) / 9a56125 진행 기록: 인계 갱신 (update-handover auto) / b22e6b9 진행 기록: 인계 갱신 (update-handover auto) / ba9fb84 진행 기록: 인계 갱신 (update-handover auto) / 23332fa 30화 도판 승인 인계 반영 / f8c5500 30화 그림 6 상자 위치 보정 인계 반영 / 0075588 30화 그림 6 연결선 보정 인계 반영 / 59fea8b 진행 기록: 인계 갱신 (update-handover auto) / aa67cdc 자동: 카드뉴스 갱신 (2026-10-20)
+    · llm-wiki master: HEAD fc426b1b / origin fc426b1b :: fc426b1b 32화 도판 8종 전량 승인·확정 기록 / abbcf1a9 3권 32화 「스피노자 — 신, 즉 자연」 집필 / 468077ff 31화 도판 8종 전량 승인·확정 기록 / eb39edd1 31화 파스칼 — 원고·검토내용·도판의뢰서·도판 8종 / c39a0fc5 30화 도판 7종 전량 승인·확정 기록 / e3005b90 30화 그림 6 — 국가 상자를 상벌·재산과 수평으로 올림 / 6bc5272c 30화 그림 6 — 상단 연결선을 하단과 같은 직각 형태로 정리 / fc02f6a5 30화 그림 6 수정 — 주권·관리 라벨을 국가 상자와 연결 / 382a6cd1 3권 30화 홉스 원고·도판·검토내용 추가
+    · harness  main: HEAD dc7e49c / origin dc7e49c :: dc7e49c docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 7957d4a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 3ccff4b docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 0251db5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 26d7f85 docs(desktop-handoff): 30화 도판 7종 승인·확정 반영 / b6f92de docs(desktop-handoff): 30화 그림 6 상자 위치 보정 반영 / b202016 docs(desktop-handoff): 30화
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: c828a81 fix(news): AI/IT 소스 정리 — zdnet·feedburner TechCrunch·hnrss 교체 / 0d80fd9 fix(news): bloter RSS 폐쇄 대응 — aitimes 목록 HTML 스크래핑으로 대체
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-10-20T10:06+09:00`** — 32화 도판 8종 전량 승인·확정(무진님 「도판 모두 승인」, 교체 없음). 02·도판의뢰서 상태 갱신, 게이트 23/23 재통과, 커밋 fc426b1b 푸시 완료. 다음은 발행 지시 대기(33화 착수 가능).
   - [자동수집 · Git] 마지막 세션(2026-10-20T10:05+09:00) 이후:
     · homepage master: HEAD 9a56125 / origin 9a56125 ·작업트리 변경 5 :: 9a56125 진행 기록: 인계 갱신 (update-handover auto) / b22e6b9 진행 기록: 인계 갱신 (update-handover auto) / ba9fb84 진행 기록: 인계 갱신 (update-handover auto) / 23332fa 30화 도판 승인 인계 반영 / f8c5500 30화 그림 6 상자 위치 보정 인계 반영 / 0075588 30화 그림 6 연결선 보정 인계 반영 / 59fea8b 진행 기록: 인계 갱신 (update-handover auto) / aa67cdc 자동: 카드뉴스 갱신 (2026-10-20)
@@ -67,29 +75,6 @@
     · harness  main: HEAD d6ee1b8 / origin d6ee1b8 :: d6ee1b8 docs(desktop-handoff): 인계 갱신 — 74차 추가분(미정리 7건 삭제 + 27화 도판 6종 승인·확정) / a75d7dd docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a27c1a2 fix(briefing): 자동 발행 동시 실행 방지 — 원자적 실행 락 도입 / 4802de0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD 87ce355 / origin 87ce355 ·작업트리 변경 5 :: (커밋 없음)
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-10-16T13:45+09:00`** — 브리핑 자동 발행 장애 **재진단·완전 수정**. 73차(`--bare` 제거)로 훅 발화 자체는 복구됐으나, 인계문서를 한 턴에 여러 개 읽으면 훅이 동시 N회 발화 → 비원자적 락(`Test-Path`→`New-Item`)을 2개 이상이 함께 통과 → `publish-briefing` 중복 실행 → 동시 `npm run dev` + 같은 로그 `Add-Content` 공유 위반 → 양쪽 즉사(브리핑 미생성). 훅·발행 양쪽에 `CreateNew` 원자 락 도입 + `Log()` 예외 흡수 + 락-로그 순서 조정. 동시 2회·훅 3회 발화 검증 통과, 당일 브리핑(2026-10-16) HTTP 200 발행 완료. 이어서 **미정리 파일 7건 삭제**(워킹트리 clean) + **3권 27화 도판 6종 무진님 승인·확정**(llm-wiki `ac0748ef`, 게이트 RESULT: PASS 22/22).
-  - [자동수집 · Git] 마지막 세션(2026-10-16T09:45+09:00) 이후:
-    · homepage master: HEAD 8cce82d / origin 8cce82d ·작업트리 변경 5 :: 8cce82d 자동: 카드뉴스 갱신 (2026-10-16) / e948927 자동: 카드뉴스 갱신 (2026-10-16) / 957a5be 자동: 카드뉴스 갱신 (2026-10-16) / fad9c74 진행 기록: 인계 갱신 (update-handover auto)
-    · llm-wiki master: HEAD f0ae7b13 / origin f0ae7b13 :: f0ae7b13 HANDOVER 갱신 — 2026-10-16(73차): 브리핑 자동 발행 장애 진단·수정(런처 --bare 제거) · llm-wiki 원고 변경 0 (미발행 유지)
-    · harness  main: HEAD a27c1a2 / origin a27c1a2 ·작업트리 변경 2 :: a27c1a2 fix(briefing): 자동 발행 동시 실행 방지 — 원자적 실행 락 도입 / 4802de0 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 87ce355 / origin 87ce355 ·작업트리 변경 5 :: (커밋 없음)
-  - **원인(재진단)**: 73차가 지목한 `claude --bare`는 이미 제거돼 훅은 정상 발화했다. 실제 실패 원인은 **TOCTOU 락 경합** — 13:04에 인계문서 3개를 한 턴에 읽어 훅이 3회 동시 발화, `Test-Path` 검사를 2개가 함께 통과해 발행이 2중 기동됐다. 근거: 그 시각 `google-tokens.json` 무변경(에이전트 미기동), `app.log`에 10-16 항목 없음, 로그 "시작" 2줄.
-  - **수정 ①** `harness/scripts/publish-briefing.ps1` (commit `a27c1a2`) — `[System.IO.File]::Open(..., CreateNew, ..., None)` 원자 락(`$RunLock`), **로그 기록 이전** 획득(진 쪽은 파일 로그 미기록·`exit 0`), `Log()`가 `Add-Content` 예외 흡수(`$ErrorActionPreference=Stop`에서 공유 위반이 프로세스를 즉사시키던 문제 제거). 락은 해제하지 않고 15분 stale 규칙(발행은 일 1회·멱등).
-  - **수정 ②** `%USERPROFILE%\.claude\hooks\briefing-on-handover-read.ps1` — 동일한 `CreateNew` 원자 락. 단 이 경로는 **git 저장소가 아님**(`fatal: not a git repository`) → 로컬 백업(`.bak-20261016_133834`)으로만 보존.
-  - **검증**: AST 구문검사 2파일 통과 / 동시 2회 실행 → "시작" 1줄·발행 1회·HTTP 200 완주 / 진 쪽 로그 49→49줄 미오염·exit 0 / 훅 3회 동시 발화(13:04 재현 조건) → 발화 로그 1건(`13:43:09`) 수렴, 잔류 발행 프로세스 0.
-  - **당일 발행**: `admin/cardnews/2026-10-16.html` (homepage `957a5be`) → https://geumsagwa.github.io/admin/cardnews/2026-10-16.html HTTP 200.
-  - **부작용(보고)**: 검증용 `-Force` 실행으로 homepage에 테스트 커밋 2건 발생 — `e948927`(카드뉴스 재생성분, html 1줄+index.json 838줄 churn) / `8cce82d`(빈 커밋). 배포 결과는 정상이며 무해.
-  - **미정리 파일 정리(무진님 지시 · 완료)**: 7건 전부 삭제 — `F:\backup` 진단용 4종(`_probe_pid.txt`·`_probe_long.ps1`·`_probe_long_pid.txt`·`_probe_long.txt`) · harness `scripts/publish-briefing.ps1.bak-20261016_133834` · `.claude\hooks\briefing-on-handover-read.ps1.bak-20261016_133834` · harness `configs/diagram-spec.json.복원포인트_20261012`(66차 v1→v2 상향 시 스냅샷). 삭제 후 harness 미추적 0(워킹트리 clean). (`F:\backup`의 `briefing-hook.lock`·`publish-briefing.lock`·로그는 기능 파일이라 유지.)
-  - **3권 27화 도판 6종 승인·확정**(무진님 「27화 도판 모두 승인」 · llm-wiki `ac0748ef`) — 실사 3종(그림 1 폴 판 소메르 베이컨 초상 · 그림 2 『대복원』1620 헤라클레스 기둥 배 그림 · 그림 6 『새로운 아틀란티스』1628 표지) **배치본(1순위) 그대로** + 도해 3종(그림 3 네 가지 우상 · 그림 4 두 갈래 길 · 그림 5 세 가지 표) **검증 통과본 그대로** · **교체 없음**. 02 검토내용 §5·§8(승인 불릿 + ✅ 확정 블록) + 도판의뢰서(도판 상태 줄 · §0 표 6행 · §4 실사 후보 절 · §6 요약) 반영. 게이트 재확인 **RESULT: PASS (22/22)** · E-basis 19,485 · 도판 6/캡션 6/출처 줄 0. **발행은 무진님 지시 때에만.**
-  - **다음**: (지시 시) 27화 발행 또는 3권 28화(데카르트 — 대륙의 이성).
-
-- 시각(ISO): **`2026-10-16T09:45+09:00`** — **별건: 브리핑 자동 발행 장애 진단·수정(런처 `claude --bare` 제거) · llm-wiki 원고 변경 0 · 미발행 유지**: 세션 = 인계(`F:\wiki\HANDOVER.md`) 열람 + 브리핑 자동 발행 점검. ① **증상** — 인계 열람 훅(`briefing-on-handover-read.ps1`)이 한 번도 발화 안 함(`F:\backup\briefing-hook.log`·`.lock` 부재) · 모델의 직접 `publish-briefing.ps1` 호출은 **auto mode 분류기**(공개 표면 생성)에 차단. ② **원인** — (A) `permissions.allow` 규칙은 대화형 권한창만 우회, 별개인 **auto mode 분류기**는 우회 못 함. (B) **근본 원인 = 런처 `claude --bare`** — `--bare`는 훅을 전부 건너뜀(`claude --help`·changelog “skips hooks”) → 훅 미발화. 방아쇠 = 10-15 11:05 Claude Code `2.1.296 → 2.1.300` 자동 업데이트. ③ **수정**(무진님 직접 편집) — `start-claude-deepseek.ps1` 55행 `--bare` 제거 · `settings.deepseek.json`의 빈 `"hooks": {}`를 실제 PostToolUse 훅으로 교체(플러그인 명시적 false). ④ **검증** — JSON 유효 · 런처 AST 문법 OK · 훅 더미입력 exit 0 · 플러그인 ID 정합(`claude-mem@thedotmack`). 백업 `*.bak-20261016_085007`. ⑤ **원고·도판 변경 0 · 미발행 유지** — 27화 도판(실사 3종) 확정·발행 대기. **다음 = 재시작 후 훅 자동 발행 확인 또는 27화 도판 확정·발행 / 3권 28화(데카르트 — 대륙의 이성).**
-  - [자동수집 · Git] 마지막 세션(2026-10-15T11:06+09:00) 이후:
-    · homepage master: HEAD 200a929 / origin 200a929 ·작업트리 변경 5 :: 200a929 진행 기록: 인계 갱신 (update-handover auto) / 07931e5 자동: 카드뉴스 갱신 (2026-10-15)
-    · llm-wiki master: HEAD deab68a3 / origin deab68a3 :: deab68a3 HANDOVER 갱신 — 2026-10-15(72차): 브리핑 자동 발행 이행 · llm-wiki 원고 변경 0 (미발행 유지)
-    · harness  main: HEAD d9bf3a6 / origin d9bf3a6 ·작업트리 변경 1 :: d9bf3a6 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 87ce355 / origin 87ce355 ·작업트리 변경 5 :: (커밋 없음)
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
