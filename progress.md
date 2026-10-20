@@ -6,6 +6,18 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-20T10:05+09:00`** — 3권 32화 「스피노자 — 신, 즉 자연」 집필 완료(게이트 23/23·E-basis 26,058·DAV 89/89·커밋 abbcf1a9 푸시 완료). 도판 8종은 무진님 확인 대기, 발행은 지시 때만.
+  - [자동수집 · Git] 마지막 세션(2026-10-20T09:23+09:00) 이후:
+    · homepage master: HEAD b22e6b9 / origin b22e6b9 ·작업트리 변경 5 :: b22e6b9 진행 기록: 인계 갱신 (update-handover auto) / ba9fb84 진행 기록: 인계 갱신 (update-handover auto) / 23332fa 30화 도판 승인 인계 반영 / f8c5500 30화 그림 6 상자 위치 보정 인계 반영 / 0075588 30화 그림 6 연결선 보정 인계 반영 / 59fea8b 진행 기록: 인계 갱신 (update-handover auto) / aa67cdc 자동: 카드뉴스 갱신 (2026-10-20)
+    · llm-wiki master: HEAD abbcf1a9 / origin abbcf1a9 :: abbcf1a9 3권 32화 「스피노자 — 신, 즉 자연」 집필 / 468077ff 31화 도판 8종 전량 승인·확정 기록 / eb39edd1 31화 파스칼 — 원고·검토내용·도판의뢰서·도판 8종 / c39a0fc5 30화 도판 7종 전량 승인·확정 기록 / e3005b90 30화 그림 6 — 국가 상자를 상벌·재산과 수평으로 올림 / 6bc5272c 30화 그림 6 — 상단 연결선을 하단과 같은 직각 형태로 정리 / fc02f6a5 30화 그림 6 수정 — 주권·관리 라벨을 국가 상자와 연결 / 382a6cd1 3권 30화 홉스 원고·도판·검토내용 추가
+    · harness  main: HEAD 3ccff4b / origin 3ccff4b :: 3ccff4b docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 0251db5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 26d7f85 docs(desktop-handoff): 30화 도판 7종 승인·확정 반영 / b6f92de docs(desktop-handoff): 30화 그림 6 상자 위치 보정 반영 / b202016 docs(desktop-handoff): 30화 그림 6 연결선 보정 반영 / 1ed41b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: c828a81 fix(news): AI/IT 소스 정리 — zdnet·feedburner TechCrunch·hnrss 교체 / 0d80fd9 fix(news): bloter RSS 폐쇄 대응 — aitimes 목록 HTML 스크래핑으로 대체
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+  - [상세] 32화 산출물 11개: 원고 01(12절), 검토내용 02, 도판의뢰서, 실사 4종(PD 3·CC BY-SA 4.0 1), 도해 4종 PNG. 경로 `F:\wiki\manuscripts\philosophy\volume3\`.
+  - [상세] 검증: `gate_common.py` RESULT PASS 23/23 (E-basis 26,058 / 밴드 25,960~26,840 / word-12 0 / 각주 30 / 도판 8·캡션 8·출처 1 / 교차 링크 3). `_dav32.py` 총 89 OK 89 BAD 0 (코퍼스 26파일 2,100,452자). `verify-diagrams.py --stamp` 도해 4종 PASS.
+  - [상세] 실사 후보 11종·접촉 시트는 `F:\wiki\ws_tmp\ph32-research\figures\all\`(README_후보목록.md). 무진님이 직접 보고 고를 수 있음.
+  - [다음] 무진님 도판 8종 확인 → 필요 시 교체·조판 → 발행 지시 시 발행. 33화(3-8) 착수 대기.
+
 - 시각(ISO): **`2026-10-20T09:23+09:00`** — **31화 도판 8종 전량 승인·확정(무진님 「도판 모두 승인」) — 실사 4·도해 4 교체 없음, llm-wiki 468077ff 푸시 완료**
   - [자동수집 · Git] 마지막 세션(2026-10-20T08:28+09:00) 이후:
     · homepage master: HEAD ba9fb84 / origin ba9fb84 ·작업트리 변경 5 :: ba9fb84 진행 기록: 인계 갱신 (update-handover auto) / 23332fa 30화 도판 승인 인계 반영 / f8c5500 30화 그림 6 상자 위치 보정 인계 반영 / 0075588 30화 그림 6 연결선 보정 인계 반영 / 59fea8b 진행 기록: 인계 갱신 (update-handover auto) / aa67cdc 자동: 카드뉴스 갱신 (2026-10-20)
@@ -76,17 +88,6 @@
     · homepage master: HEAD 07931e5 / origin 07931e5 ·작업트리 변경 5 :: 07931e5 자동: 카드뉴스 갱신 (2026-10-15) / 5708681 진행 기록: 인계 갱신 (update-handover auto) / 9ebee9d 자동: 카드뉴스 갱신 (2026-10-14)
     · llm-wiki master: HEAD 2135ac39 / origin 2135ac39 :: 2135ac39 HANDOVER — 차기 논의 안건 추가(무진님 문체로 소설 쓰기 · 다음 세션 논의) / f6f48468 HANDOVER 갱신 — 2026-10-14: 철학사 3권 26화(과학 혁명)·27화(베이컨 — 방법의 시대) 완성 + 26화 도판 확정 반영 / a38cad42 3권 27화「베이컨 — 방법의 시대」집필·도판·검증 완료 (16p · 게이트 23/23 · DAV 54/54 · 도해 3종 PASS) / e27c8007 3권 26화 도판 7종 확정 기록 (무진님 「도판 모두 확정」) / 1f309565 3권 26화 「과학 혁명 — 세계의 재발견」 집필·검증 완료 / c44f1630 philosophy v2 ep25 도판 7종 무진님 승인·확정 기록 (2026-10-14)
     · harness  main: HEAD 63a3f71 / origin 63a3f71 ·작업트리 변경 1 :: 63a3f71 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD 87ce355 / origin 87ce355 ·작업트리 변경 5 :: 87ce355 feat: Google Tasks 섹션(##8) — 미완료 할 일을 브리핑에 추가
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-10-14T09:17+09:00`** — **철학사 3권 26화 「과학 혁명 — 세계의 재발견」(3-1·18p)·27화 「베이컨 — 방법의 시대」(3-2·16p) 완성(집필→도판→검증→커밋) · 26화 도판 7종 확정 · 미발행**
-  - **26화(3-1)** `manuscripts/philosophy/volume3/3권_26화_01_과학-혁명-세계의-재발견.md` — 도입+13절 · E-basis 21,673(밴드 21,240~21,960) · 각주 40 · 단어코너 3(혁명·우상·만유인력) · 논증 1 · 교차 링크 2 · 게이트 **23/23** · DAV **121/121** · 도판 7종(실사 4+도해 3) **무진님 「도판 모두 확정」**. 커밋 `1f309565`+`e27c8007`.
-  - **27화(3-2)** `manuscripts/philosophy/volume3/3권_27화_01_베이컨-방법의-시대.md` — 도입+12절 · E-basis 19,485(밴드 18,880~19,520) · 각주 25 · 단어코너 3(방법·오르가논·귀납) · 논증 1(두 갈래 길) · 교차 링크 3 · 게이트 **23/23** · DAV **54/54** · 도판 6종(실사 3 PD+도해 3 자체 제작, verify PASS). 후보 전량 다운로드(ws_tmp/ph27-research/figures/). 커밋 `a38cad42`.
-  - **부수** `c44f1630`(2권 25화 도판 7종 승인·확정 기록) · F:\wiki\HANDOVER.md 갱신. **미발행 — 발행은 무진님 검토·최종 확정 후 지시 때에만.**
-  - [자동수집 · Git] 마지막 세션(2026-10-13T22:03+09:00) 이후:
-    · homepage master: HEAD 9ebee9d / origin 9ebee9d ·작업트리 변경 5 :: 9ebee9d 자동: 카드뉴스 갱신 (2026-10-14) / 43c2ab3 진행 기록: 인계 갱신 (update-handover auto) / 3450b53 진행 기록: 인계 갱신 (update-handover auto) / cdc5fe3 진행 기록: 인계 갱신 (update-handover auto) / 969a42c 자동: 카드뉴스 갱신 (2026-10-13)
-    · llm-wiki master: HEAD a38cad42 / origin b39d33b2 ·작업트리 변경 1 :: a38cad42 3권 27화「베이컨 — 방법의 시대」집필·도판·검증 완료 (16p · 게이트 23/23 · DAV 54/54 · 도해 3종 PASS) / e27c8007 3권 26화 도판 7종 확정 기록 (무진님 「도판 모두 확정」) / 1f309565 3권 26화 「과학 혁명 — 세계의 재발견」 집필·검증 완료 / c44f1630 philosophy v2 ep25 도판 7종 무진님 승인·확정 기록 (2026-10-14) / b1d2e419 지침 정리 — 회차별 검토내용·통합집필지침 경위/중복 축약(분량 상한 대응) / 632602ec CLAUDE.md 수치 갱신 — 개념/출처/원자료 실제 집계 반영 / e0de9940 CLAUDE.md 스테일 정정 — wiki/CLAUDE.md 작업 컨텍스트를 철학사 2권
-    · harness  main: HEAD 79d2329 / origin 79d2329 ·작업트리 변경 1 :: 79d2329 handover-RULES 경로 복원 — 무결성 게이트가 요구하는 정적 백슬래시 경로(F:\backup\briefing·F:\wiki\raw)를 이관 포인터에 유지 / 20e6d04 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 74a3f97 문서 정리 — HARNESS·SCRIPTS_REFERENCE·handover-RULES 압축(중복·경위 제거, SSOT 이관) / 0190fb8 tool-recommendations 분량 상한 자동 대응 — archive-tool-recommendations.py 신설, weekly-tool-scan.ps1 이 초과 시 자동 이관 호출 / d112768 docs(desktop-handoff): 인계 
     · openclaw main: HEAD 87ce355 / origin 87ce355 ·작업트리 변경 5 :: 87ce355 feat: Google Tasks 섹션(##8) — 미완료 할 일을 브리핑에 추가
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
