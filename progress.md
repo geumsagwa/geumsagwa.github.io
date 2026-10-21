@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-22T08:28+09:00`** — **34화에 심리학사 1-6 교차 링크 추가**: 감각과 반성 절에 「이야기 심리학사 1권 6화 「로크 — 백지 위에 쓰이는 경험」」(essay id=21) 링크를 삽입했다. E-basis **23,698**, 교차 링크 **4건**, 게이트 **23/23** 재통과, llm-wiki **`18ce1656`**·HANDOVER **`1b245168`** 푸시. **미발행 유지.**
+  - [자동수집 · Git] 마지막 세션(2026-10-22T08:23+09:00) 이후:
+    · homepage master: HEAD 622bb51 / origin 622bb51 ·작업트리 변경 5 :: 622bb51 진행 기록: 인계 갱신 (update-handover auto) / 76ef44c 진행 기록: 인계 갱신 (update-handover auto) / 9cdf433 진행 기록: 인계 갱신 (update-handover auto) / cef9172 진행 기록: 인계 갱신 (update-handover auto) / bd64133 자동: 카드뉴스 갱신 (2026-10-22)
+    · llm-wiki master: HEAD 1b245168 / origin 1b245168 :: 1b245168 HANDOVER 갱신 — 34화 교차 링크 4건 반영 / 18ce1656 34화 심리학사 1-6 교차 링크 추가 / 18bb769e HANDOVER 갱신 — 34화 도판 1·5 교체 반영 / 2a8e34ad 34화 도판 1·5 교체 — 심리학사 1-6 중복 회피 / dbf65fc8 HANDOVER 갱신 — 2026-10-22(79차): 3권 34화 로크 완성 반영 / d4f7cd8c 3권 34화 로크 — 경험에서 태어난 지식 원고·도판 7종 추가 / e91bb75e HANDOVER 갱신 — 33화 도판 7종 승인·확정 반영 / d034107b 33화 도판 7종 전량 승인·확정 기록 / a0dab913 HANDOVER 갱신 — 2026-10-22(78차): 3권 33화 라이프니츠 완성 반영 /
+    · harness  main: HEAD e4f65ee / origin e4f65ee :: e4f65ee docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a7c906d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / d520dc8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 93f93e3 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-10-22T08:23+09:00`** — **34화 도판 1·5 교체 — 심리학사 1권 6화와의 중복 회피**: 심리학사 1-6이 같은 넬러 초상과 「감각·반성」 도해를 이미 사용하고 있어, ① 초상을 그린힐 판본(1672~73, PD)으로, ② 그림 5를 「관념의 두 원천」에서 **「첫째 성질과 둘째 성질」** 도해로 교체했다. 02·도판의뢰서·후보목록 갱신, 게이트 **23/23**, DAV **89/89** 재통과, llm-wiki **`2a8e34ad`** 푸시. **미발행 유지.**
   - [자동수집 · Git] 마지막 세션(2026-10-22T07:57+09:00) 이후:
     · homepage master: HEAD 76ef44c / origin 76ef44c ·작업트리 변경 5 :: 76ef44c 진행 기록: 인계 갱신 (update-handover auto) / 9cdf433 진행 기록: 인계 갱신 (update-handover auto) / cef9172 진행 기록: 인계 갱신 (update-handover auto) / bd64133 자동: 카드뉴스 갱신 (2026-10-22)
@@ -62,18 +70,6 @@ esearch\designcraft-test\REPORT.md`. **원고 미변경 — 32화 발행·33화 
     · harness  main: HEAD 7957d4a / origin 7957d4a :: 7957d4a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 3ccff4b docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 0251db5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 26d7f85 docs(desktop-handoff): 30화 도판 7종 승인·확정 반영 / b6f92de docs(desktop-handoff): 30화 그림 6 상자 위치 보정 반영 / b202016 docs(desktop-handoff): 30화 그림 6 연결선 보정 반영 / 1ed41b1 docs(desktop-handoff): 인계 갱신 동기 (update
     · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: c828a81 fix(news): AI/IT 소스 정리 — zdnet·feedburner TechCrunch·hnrss 교체 / 0d80fd9 fix(news): bloter RSS 폐쇄 대응 — aitimes 목록 HTML 스크래핑으로 대체
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-10-20T10:05+09:00`** — 3권 32화 「스피노자 — 신, 즉 자연」 집필 완료(게이트 23/23·E-basis 26,058·DAV 89/89·커밋 abbcf1a9 푸시 완료). 도판 8종은 무진님 확인 대기, 발행은 지시 때만.
-  - [자동수집 · Git] 마지막 세션(2026-10-20T09:23+09:00) 이후:
-    · homepage master: HEAD b22e6b9 / origin b22e6b9 ·작업트리 변경 5 :: b22e6b9 진행 기록: 인계 갱신 (update-handover auto) / ba9fb84 진행 기록: 인계 갱신 (update-handover auto) / 23332fa 30화 도판 승인 인계 반영 / f8c5500 30화 그림 6 상자 위치 보정 인계 반영 / 0075588 30화 그림 6 연결선 보정 인계 반영 / 59fea8b 진행 기록: 인계 갱신 (update-handover auto) / aa67cdc 자동: 카드뉴스 갱신 (2026-10-20)
-    · llm-wiki master: HEAD abbcf1a9 / origin abbcf1a9 :: abbcf1a9 3권 32화 「스피노자 — 신, 즉 자연」 집필 / 468077ff 31화 도판 8종 전량 승인·확정 기록 / eb39edd1 31화 파스칼 — 원고·검토내용·도판의뢰서·도판 8종 / c39a0fc5 30화 도판 7종 전량 승인·확정 기록 / e3005b90 30화 그림 6 — 국가 상자를 상벌·재산과 수평으로 올림 / 6bc5272c 30화 그림 6 — 상단 연결선을 하단과 같은 직각 형태로 정리 / fc02f6a5 30화 그림 6 수정 — 주권·관리 라벨을 국가 상자와 연결 / 382a6cd1 3권 30화 홉스 원고·도판·검토내용 추가
-    · harness  main: HEAD 3ccff4b / origin 3ccff4b :: 3ccff4b docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 0251db5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 26d7f85 docs(desktop-handoff): 30화 도판 7종 승인·확정 반영 / b6f92de docs(desktop-handoff): 30화 그림 6 상자 위치 보정 반영 / b202016 docs(desktop-handoff): 30화 그림 6 연결선 보정 반영 / 1ed41b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: c828a81 fix(news): AI/IT 소스 정리 — zdnet·feedburner TechCrunch·hnrss 교체 / 0d80fd9 fix(news): bloter RSS 폐쇄 대응 — aitimes 목록 HTML 스크래핑으로 대체
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-  - [상세] 32화 산출물 11개: 원고 01(12절), 검토내용 02, 도판의뢰서, 실사 4종(PD 3·CC BY-SA 4.0 1), 도해 4종 PNG. 경로 `F:\wiki\manuscripts\philosophy\volume3\`.
-  - [상세] 검증: `gate_common.py` RESULT PASS 23/23 (E-basis 26,058 / 밴드 25,960~26,840 / word-12 0 / 각주 30 / 도판 8·캡션 8·출처 1 / 교차 링크 3). `_dav32.py` 총 89 OK 89 BAD 0 (코퍼스 26파일 2,100,452자). `verify-diagrams.py --stamp` 도해 4종 PASS.
-  - [상세] 실사 후보 11종·접촉 시트는 `F:\wiki\ws_tmp\ph32-research\figures\all\`(README_후보목록.md). 무진님이 직접 보고 고를 수 있음.
-  - [다음] 무진님 도판 8종 확인 → 필요 시 교체·조판 → 발행 지시 시 발행. 33화(3-8) 착수 대기.
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
