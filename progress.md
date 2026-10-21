@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-22T07:57+09:00`** — **✅ 이번 세션(2026-10-22 · 79차) — 철학사 3권 34화 「로크 — 경험에서 태어난 지식」(3-9 · 20p) 완성(집필 → 도판 7종 → 검증 → 커밋·푸시) · 미발행**: ① 12절 구성 — 1689년 책 세 권 · 두 갈래 길의 먼 기원 · 라이턴/웨스트민스터/옥스퍼드 · 옥스퍼드의 회의 · 샤프츠버리와 정치 · 하얀 종이 · 감각과 반성 · 첫째/둘째 성질 · 인격 동일성 · 말의 함정 · 두 논문 · 경험의 시대. ② **E-basis 23,613**(20p 밴드 23,600~24,400) · 각주 **35** · 단어코너 **3**(경험론·백지·관념) · 논증 박스 **2** · 교차 링크 **3**(세계사 2-46·2-55·2-56). ③ **무진님 지시(대륙/세계 흐름)** 반영 — 플라톤·아리스토텔레스→데카르트·베이컨 소급, 라이프니츠의 『신논고』·볼테르·콩디야크·버클리·흄·계몽주의·두 혁명으로 확장. ④ **검증** — 게이트 **23/23 PASS** · **DAV 89 OK / 0 BAD**(코퍼스 49파일 3,251,466자) · 도해 3종 PASS. ⑤ **도판 7종** = 실사 4(넬러 로크 초상 1697 · 그린힐 섀프츠버리 초상 · 『인간오성론』 1690 표지 · 『정부론 두 논문』 1690 표지 — 모두 PD) + 자체 도해 3(두 갈래 길·관념의 두 원천·인격의 연속). 실사 후보 전량 다운로드·접촉 시트·README 보존(`ws_tmp/ph34-research/figures/all/`). ⑥ **git** — llm-wiki **`d4f7cd8c`**(10파일 · 경로 명시) push 완료 · `ws_tmp` 비추적 유지. ⑦ **인계** — `update-handover.py collect → apply --git`. **미발행 — 발행은 무진님 검토·최종 확정 후 지시 때에만.** **다음 = 34화 도판 검토·확정 → (지시 시) 발행 또는 3권 35화(3-10 「버클리 — 존재는 지각된다」·14p).**
+  - [자동수집 · Git] 마지막 세션(2026-10-22T07:15+09:00) 이후:
+    · homepage master: HEAD 9cdf433 / origin 9cdf433 ·작업트리 변경 5 :: 9cdf433 진행 기록: 인계 갱신 (update-handover auto) / cef9172 진행 기록: 인계 갱신 (update-handover auto) / bd64133 자동: 카드뉴스 갱신 (2026-10-22)
+    · llm-wiki master: HEAD d4f7cd8c / origin d4f7cd8c :: d4f7cd8c 3권 34화 로크 — 경험에서 태어난 지식 원고·도판 7종 추가 / e91bb75e HANDOVER 갱신 — 33화 도판 7종 승인·확정 반영 / d034107b 33화 도판 7종 전량 승인·확정 기록 / a0dab913 HANDOVER 갱신 — 2026-10-22(78차): 3권 33화 라이프니츠 완성 반영 / 3d881b60 3권 33화 라이프니츠 — 최선의 세계 원고·도판 7종 추가
+    · harness  main: HEAD d520dc8 / origin d520dc8 :: d520dc8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 93f93e3 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-10-22T07:15+09:00`** — **✅ 33화 도판 7종 전량 승인·확정(무진님 「도판 모두 승인」)** — 실사 4종(프랑케 초상·자필 계산기 도면·배티 1825 대분수 동판화·베르니게로트 1710년 초상)은 배치본 그대로, 도해 3종(두 개의 원리·모나드의 구조·두 개의 시계)은 검증 통과본 그대로 **교체 없음**. 02 검토내용·도판의뢰서 상태 갱신, 게이트 **23/23 재통과**, llm-wiki **`d034107b`** 푸시 완료. **미발행 — 발행은 무진님 지시 때에만.** **다음 = 발행 지시 대기 또는 3권 34화(3-9 로크 — 경험에서 태어난 지식·20p).**
   - [자동수집 · Git] 마지막 세션(2026-10-22T07:10+09:00) 이후:
     · homepage master: HEAD cef9172 / origin cef9172 ·작업트리 변경 5 :: cef9172 진행 기록: 인계 갱신 (update-handover auto) / bd64133 자동: 카드뉴스 갱신 (2026-10-22)
@@ -64,14 +72,6 @@ esearch\designcraft-test\REPORT.md`. **원고 미변경 — 32화 발행·33화 
     · homepage master: HEAD ba9fb84 / origin ba9fb84 ·작업트리 변경 5 :: ba9fb84 진행 기록: 인계 갱신 (update-handover auto) / 23332fa 30화 도판 승인 인계 반영 / f8c5500 30화 그림 6 상자 위치 보정 인계 반영 / 0075588 30화 그림 6 연결선 보정 인계 반영 / 59fea8b 진행 기록: 인계 갱신 (update-handover auto) / aa67cdc 자동: 카드뉴스 갱신 (2026-10-20)
     · llm-wiki master: HEAD 468077ff / origin 468077ff :: 468077ff 31화 도판 8종 전량 승인·확정 기록 / eb39edd1 31화 파스칼 — 원고·검토내용·도판의뢰서·도판 8종 / c39a0fc5 30화 도판 7종 전량 승인·확정 기록 / e3005b90 30화 그림 6 — 국가 상자를 상벌·재산과 수평으로 올림 / 6bc5272c 30화 그림 6 — 상단 연결선을 하단과 같은 직각 형태로 정리 / fc02f6a5 30화 그림 6 수정 — 주권·관리 라벨을 국가 상자와 연결 / 382a6cd1 3권 30화 홉스 원고·도판·검토내용 추가
     · harness  main: HEAD 0251db5 / origin 0251db5 :: 0251db5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 26d7f85 docs(desktop-handoff): 30화 도판 7종 승인·확정 반영 / b6f92de docs(desktop-handoff): 30화 그림 6 상자 위치 보정 반영 / b202016 docs(desktop-handoff): 30화 그림 6 연결선 보정 반영 / 1ed41b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: c828a81 fix(news): AI/IT 소스 정리 — zdnet·feedburner TechCrunch·hnrss 교체 / 0d80fd9 fix(news): bloter RSS 폐쇄 대응 — aitimes 목록 HTML 스크래핑으로 대체
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-10-20T08:28+09:00`** — **31화 파스칼 「생각하는 갈대」 집필 완료 — 16p·E-basis 19,114·게이트 23/23·DAV 96/96·도판 8종(실사 4+도해 4), 도판은 무진님 확인 대기**
-  - [자동수집 · Git] 마지막 세션(2026-10-20T07:49+09:00) 이후:
-    · homepage master: HEAD 23332fa / origin 23332fa ·작업트리 변경 5 :: 23332fa 30화 도판 승인 인계 반영 / f8c5500 30화 그림 6 상자 위치 보정 인계 반영 / 0075588 30화 그림 6 연결선 보정 인계 반영 / 59fea8b 진행 기록: 인계 갱신 (update-handover auto) / aa67cdc 자동: 카드뉴스 갱신 (2026-10-20)
-    · llm-wiki master: HEAD eb39edd1 / origin eb39edd1 :: eb39edd1 31화 파스칼 — 원고·검토내용·도판의뢰서·도판 8종 / c39a0fc5 30화 도판 7종 전량 승인·확정 기록 / e3005b90 30화 그림 6 — 국가 상자를 상벌·재산과 수평으로 올림 / 6bc5272c 30화 그림 6 — 상단 연결선을 하단과 같은 직각 형태로 정리 / fc02f6a5 30화 그림 6 수정 — 주권·관리 라벨을 국가 상자와 연결 / 382a6cd1 3권 30화 홉스 원고·도판·검토내용 추가
-    · harness  main: HEAD 26d7f85 / origin 26d7f85 :: 26d7f85 docs(desktop-handoff): 30화 도판 7종 승인·확정 반영 / b6f92de docs(desktop-handoff): 30화 그림 6 상자 위치 보정 반영 / b202016 docs(desktop-handoff): 30화 그림 6 연결선 보정 반영 / 1ed41b1 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: c828a81 fix(news): AI/IT 소스 정리 — zdnet·feedburner TechCrunch·hnrss 교체 / 0d80fd9 fix(news): bloter RSS 폐쇄 대응 — aitimes 목록 HTML 스크래핑으로 대체
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
