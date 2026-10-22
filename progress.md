@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-22T14:50+09:00`** — **이번 세션(2026-10-22 · 82차) — 철학사 3권 37화 「흄 ② — 인간 본성의 탐구」(3-12 · 16p) 완성 · 미발행: ① 12절 — 오성 다음의 두 권 · 이성은 정념의 노예인가? · 자부심과 수치 · 사랑과 미움 · 공감이라는 거울 · 도덕은 이성으로 알 수 있는가? · 자연적 덕 · 정의는 어디서 왔는가? · 정의의 두 얼굴 · 도덕 원리에 관한 탐구 · 경제와 역사 · 인간 본성의 탐구. ② E-basis 18,931(16p 밴드 18,880~19,520) · 각주 25 · 단어코너 3(정념·공감·정의) · 논증 박스 2 · 교차 링크 3(심리학사 1-7 id=22 · 철학사 1-11 id=68 · 세계사 2-56). ③ 검증 — 게이트 22/22 PASS · DAV 32 OK / 0 BAD(31파일 3,778,369자) · 도해 3종 PASS. ④ 도판 7종 = 실사 4(인간본성론 초판 PD · 허치슨 초상 PD · 루소 초상 PD · 스미스 초상 PD) + 자체 도해 3(정념의 두 갈래·공감의 구조·정의의 기원). 후보 전량·접촉 시트·README는 ws_tmp/ph37-research/figures/all/. ⑤ git — llm-wiki dcccc976(10파일 · 경로 명시) push 완료 · ws_tmp 비추적 유지. ⑥ 36화는 이번 세션에 그림 6 재작성(2affb0f7·370cbb8a)과 도판 7종 전량 승인·확정(d5c0db9f) 완료. 미발행 — 발행은 무진님 검토·최종 확정 후 지시 때에만. 다음 = 37화 도판 검토·확정 → (지시 시) 발행 또는 3권 38화(3-13 「계몽주의 — 이성의 시대」·16p).**
+  - [자동수집 · Git] 마지막 세션(2026-10-22T14:32+09:00) 이후:
+    · homepage master: HEAD 829fb20 / origin 829fb20 ·작업트리 변경 5 :: 829fb20 진행 기록: 인계 갱신 (update-handover auto) / 62123fb 진행 기록: 인계 갱신 (update-handover auto) / b0b94e8 진행 기록: 인계 갱신 (update-handover auto) / fdc4989 진행 기록: 인계 갱신 (update-handover auto) / 902b8df 진행 기록: 인계 갱신 (update-handover auto) / 3b84e27 진행 기록: 인계 갱신 (update-handover auto) / 622bb51 진행 기록: 인계 갱신 (update-handover auto) / 76ef44c 진행 기록: 인계 갱신 (update-handover auto) / 9cdf433 진행 기록: 인계 갱신 (update-han
+    · llm-wiki master: HEAD dcccc976 / origin dcccc976 :: dcccc976 3권 37화 흄 ② — 인간 본성의 탐구 원고·도판 7종 추가 / d5c0db9f 36화 도판 7종 전량 승인·확정 기록 / 370cbb8a 36화 그림 6 — 타원을 없애고 두 상자를 잇는 순환 화살로 변경 / 2affb0f7 36화 그림 6 — 순환 화살을 열린 고리로 바로잡음 / 470a9328 HANDOVER 갱신 — 2026-10-22(81차): 3권 36화 흄 ① 완성 반영 / dfadcea5 3권 36화 흄 ① — 인과성을 의심하다 원고·도판 7종 추가 / 52710e5b HANDOVER 갱신 — 35화 도판 7종 승인·확정 반영 / f594c4cb 35화 도판 7종 전량 승인·확정 기록 / e1387496 HANDOVER 갱신 — 2026-10-22(80차): 3권 35화 버클
+    · harness  main: HEAD 0c29adc / origin 0c29adc :: 0c29adc docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / af99a06 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b1c48f5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a58b6e8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f7478a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 8a07a4e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e4f65ee do
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
+  - 상세(자동): 콘텐츠 커밋 없음 — 인계 갱신만 수행 (session-closeout)
+
 - 시각(ISO): **`2026-10-22T14:32+09:00`** — **36화 그림 6(귀납의 문제) 재구성 — 본문을 감싸던 타원을 없애고, 두 상자(과거의 관찰 ↔ 미래의 기대)를 잇는 되돌아오는 화살로 변경. 도판의뢰서 요소 설명 동기. verify-diagrams 3종 PASS · 게이트 22/22 PASS · llm-wiki 370cbb8a 푸시. 미발행 유지.**
   - [자동수집 · Git] 마지막 세션(2026-10-22T14:28+09:00) 이후:
     · homepage master: HEAD 62123fb / origin 62123fb ·작업트리 변경 5 :: 62123fb 진행 기록: 인계 갱신 (update-handover auto) / b0b94e8 진행 기록: 인계 갱신 (update-handover auto) / fdc4989 진행 기록: 인계 갱신 (update-handover auto) / 902b8df 진행 기록: 인계 갱신 (update-handover auto) / 3b84e27 진행 기록: 인계 갱신 (update-handover auto) / 622bb51 진행 기록: 인계 갱신 (update-handover auto) / 76ef44c 진행 기록: 인계 갱신 (update-handover auto) / 9cdf433 진행 기록: 인계 갱신 (update-handover auto) / cef9172 진행 기록: 인계 갱신 (update-han
@@ -67,14 +75,6 @@
     · homepage master: HEAD 9cdf433 / origin 9cdf433 ·작업트리 변경 5 :: 9cdf433 진행 기록: 인계 갱신 (update-handover auto) / cef9172 진행 기록: 인계 갱신 (update-handover auto) / bd64133 자동: 카드뉴스 갱신 (2026-10-22)
     · llm-wiki master: HEAD d4f7cd8c / origin d4f7cd8c :: d4f7cd8c 3권 34화 로크 — 경험에서 태어난 지식 원고·도판 7종 추가 / e91bb75e HANDOVER 갱신 — 33화 도판 7종 승인·확정 반영 / d034107b 33화 도판 7종 전량 승인·확정 기록 / a0dab913 HANDOVER 갱신 — 2026-10-22(78차): 3권 33화 라이프니츠 완성 반영 / 3d881b60 3권 33화 라이프니츠 — 최선의 세계 원고·도판 7종 추가
     · harness  main: HEAD d520dc8 / origin d520dc8 :: d520dc8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 93f93e3 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
-
-- 시각(ISO): **`2026-10-22T07:15+09:00`** — **✅ 33화 도판 7종 전량 승인·확정(무진님 「도판 모두 승인」)** — 실사 4종(프랑케 초상·자필 계산기 도면·배티 1825 대분수 동판화·베르니게로트 1710년 초상)은 배치본 그대로, 도해 3종(두 개의 원리·모나드의 구조·두 개의 시계)은 검증 통과본 그대로 **교체 없음**. 02 검토내용·도판의뢰서 상태 갱신, 게이트 **23/23 재통과**, llm-wiki **`d034107b`** 푸시 완료. **미발행 — 발행은 무진님 지시 때에만.** **다음 = 발행 지시 대기 또는 3권 34화(3-9 로크 — 경험에서 태어난 지식·20p).**
-  - [자동수집 · Git] 마지막 세션(2026-10-22T07:10+09:00) 이후:
-    · homepage master: HEAD cef9172 / origin cef9172 ·작업트리 변경 5 :: cef9172 진행 기록: 인계 갱신 (update-handover auto) / bd64133 자동: 카드뉴스 갱신 (2026-10-22)
-    · llm-wiki master: HEAD d034107b / origin d034107b :: d034107b 33화 도판 7종 전량 승인·확정 기록 / a0dab913 HANDOVER 갱신 — 2026-10-22(78차): 3권 33화 라이프니츠 완성 반영 / 3d881b60 3권 33화 라이프니츠 — 최선의 세계 원고·도판 7종 추가
-    · harness  main: HEAD 93f93e3 / origin 93f93e3 :: 93f93e3 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
   - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
