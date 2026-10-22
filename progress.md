@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-22T14:32+09:00`** — **36화 그림 6(귀납의 문제) 재구성 — 본문을 감싸던 타원을 없애고, 두 상자(과거의 관찰 ↔ 미래의 기대)를 잇는 되돌아오는 화살로 변경. 도판의뢰서 요소 설명 동기. verify-diagrams 3종 PASS · 게이트 22/22 PASS · llm-wiki 370cbb8a 푸시. 미발행 유지.**
+  - [자동수집 · Git] 마지막 세션(2026-10-22T14:28+09:00) 이후:
+    · homepage master: HEAD 62123fb / origin 62123fb ·작업트리 변경 5 :: 62123fb 진행 기록: 인계 갱신 (update-handover auto) / b0b94e8 진행 기록: 인계 갱신 (update-handover auto) / fdc4989 진행 기록: 인계 갱신 (update-handover auto) / 902b8df 진행 기록: 인계 갱신 (update-handover auto) / 3b84e27 진행 기록: 인계 갱신 (update-handover auto) / 622bb51 진행 기록: 인계 갱신 (update-handover auto) / 76ef44c 진행 기록: 인계 갱신 (update-handover auto) / 9cdf433 진행 기록: 인계 갱신 (update-handover auto) / cef9172 진행 기록: 인계 갱신 (update-han
+    · llm-wiki master: HEAD 370cbb8a / origin 370cbb8a :: 370cbb8a 36화 그림 6 — 타원을 없애고 두 상자를 잇는 순환 화살로 변경 / 2affb0f7 36화 그림 6 — 순환 화살을 열린 고리로 바로잡음 / 470a9328 HANDOVER 갱신 — 2026-10-22(81차): 3권 36화 흄 ① 완성 반영 / dfadcea5 3권 36화 흄 ① — 인과성을 의심하다 원고·도판 7종 추가 / 52710e5b HANDOVER 갱신 — 35화 도판 7종 승인·확정 반영 / f594c4cb 35화 도판 7종 전량 승인·확정 기록 / e1387496 HANDOVER 갱신 — 2026-10-22(80차): 3권 35화 버클리 완성 반영 / e9cb8769 3권 35화 버클리 — 존재는 지각된다 원고·도판 7종 추가 / 1b245168 HANDOVER 갱신 — 3
+    · harness  main: HEAD af99a06 / origin af99a06 :: af99a06 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b1c48f5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a58b6e8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f7478a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 8a07a4e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e4f65ee docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a7c906d do
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
+  - 상세(자동): 콘텐츠 커밋 없음 — 인계 갱신만 수행 (session-closeout)
+
 - 시각(ISO): **`2026-10-22T14:28+09:00`** — **36화 그림 6(귀납의 문제) 도해 수정 — 순환 화살이 0~359° 닫힌 타원이라 화살촉이 타원 안쪽에 붙던 문제를, 호를 35~325°로 끊고 촉을 끝점 접선 방향으로 돌려 바로잡았다. verify-diagrams 3종 PASS · 게이트 22/22 PASS · llm-wiki 2affb0f7 푸시. 미발행 유지.**
   - [자동수집 · Git] 마지막 세션(2026-10-22T09:32+09:00) 이후:
     · homepage master: HEAD b0b94e8 / origin b0b94e8 ·작업트리 변경 5 :: b0b94e8 진행 기록: 인계 갱신 (update-handover auto) / fdc4989 진행 기록: 인계 갱신 (update-handover auto) / 902b8df 진행 기록: 인계 갱신 (update-handover auto) / 3b84e27 진행 기록: 인계 갱신 (update-handover auto) / 622bb51 진행 기록: 인계 갱신 (update-handover auto) / 76ef44c 진행 기록: 인계 갱신 (update-handover auto) / 9cdf433 진행 기록: 인계 갱신 (update-handover auto) / cef9172 진행 기록: 인계 갱신 (update-handover auto) / bd64133 자동: 카드뉴스 갱신 (2026-10-22)
