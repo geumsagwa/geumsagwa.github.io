@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-24T19:31+09:00`** — **✅ 도해 내용 안전 영역 5% 확정·13화 재발행**: 조사 근거(ConceptDraw 10% 권장·5~10% 허용, K-Dense 5~10%)에 따라 **최소 5%(1200×896 기준 좌우 60·상하 45px)·확대 금지**로 확정하고 지침 §8.4에 명문화. 13화·44화 도해 6종 재제작(제목 38·라벨 28·보조 21, 무축소) · 13화 `--update` 재발행(**id=70**, `essay.html?id=70` HTTP 200). llm-wiki **`e87e47f`** push. 다음 = 44화 도판 선택·발행 또는 4-6 헤겔 ②.
+  - [자동수집 · Git] 마지막 세션(2026-10-24T18:52+09:00) 이후:
+    · homepage master: HEAD eea477b / origin eea477b ·작업트리 변경 5 :: eea477b 진행 기록: 인계 갱신 (update-handover auto) / 581b258 진행 기록: 인계 갱신 (update-handover auto) / a178a54 진행 기록: 인계 갱신 (update-handover auto) / 406efb7 철학사 13화 발행 등록 (SERIES_MAP) / 7dda959 진행 기록: 인계 갱신 (update-handover auto) / a2337ea 자동: 카드뉴스 갱신 (2026-10-24)
+    · llm-wiki master: HEAD e87e47f5 / origin e87e47f5 :: e87e47f5 도해 내용 안전 영역 5% 확정 — 13화·44화 6종 재제작, 13화 재발행(id=70) / 7fc61e58 13화 그림 4 — 패널 축소·여백 확대(답답함 해소), 재발행(id=70) / a3ff8b7d HANDOVER 갱신 — 2026-10-24(86차): 도해 6종 재조정·13화 재발행 / c2137b2e 13화·44화 도해 6종 — 27화 기준(38/28/21)으로 재조정·13화 재발행(id=70) / 069f212c HANDOVER 갱신 — 2026-10-24(85차): 44화 헤겔 ① 완성 반영 / 48daa2ea 4권 44화 헤겔 ① — 정신의 변증법 원고·도판 7종·검증 완료 (미발행) / 55a33a53 HANDOVER 갱신 — 2026-10-24(84차): 13화 확정·발
+    · harness  main: HEAD 64d449b / origin 64d449b :: 64d449b docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / eadfbd7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f53729f docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / da7be00 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-10-24T18:52+09:00`** — **✅ 도해 6종 27화 기준 재조정·13화 재발행**: 13화 3종 제목 **38**·라벨 **28**·보조 **21**(3권 27화 기준), T=B=49 / 45·46 / 105·106·L=R=40, `verify-diagrams --stamp` **PASS**, `publish-series-episodes.mjs philosophy 13 --update` → **id=70 갱신·HTTP 200**. 44화 3종 같은 기준, T=B=113·114 / 40·40 / 153·153, verify **PASS**, 해시 갱신. 02·도판의뢰서 갱신. llm-wiki **`c2137b2`** push. 다음 = 44화 도판 선택·발행 또는 4-6 헤겔 ②.
   - [자동수집 · Git] 마지막 세션(2026-10-24T18:43+09:00) 이후:
     · homepage master: HEAD 581b258 / origin 581b258 ·작업트리 변경 5 :: 581b258 진행 기록: 인계 갱신 (update-handover auto) / a178a54 진행 기록: 인계 갱신 (update-handover auto) / 406efb7 철학사 13화 발행 등록 (SERIES_MAP) / 7dda959 진행 기록: 인계 갱신 (update-handover auto) / a2337ea 자동: 카드뉴스 갱신 (2026-10-24)
@@ -61,14 +69,6 @@
     · harness  main: HEAD b1c48f5 / origin b1c48f5 :: b1c48f5 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a58b6e8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f7478a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 8a07a4e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e4f65ee docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a7c906d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / d520dc8 do
     · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
   - 상세(자동): 콘텐츠 커밋 없음 — 인계 갱신만 수행 (session-closeout)
-
-- 시각(ISO): **`2026-10-22T09:32+09:00`** — **✅ 이번 세션(2026-10-22 · 81차) — 철학사 3권 36화 「흄 ① — 인과성을 의심하다」(3-11 · 18p) 완성(집필 → 도판 7종 → 검증 → 커밋·푸시) · 미발행**: ① 12절 — 스코틀랜드의 소년 · 책이 죽어서 나오다 · 인상과 관념 · 흄의 갈래 · 당구공과 인과 · 습관이라는 이름 · 귀납의 문제 · 기적과 종교 · 자아와 도덕 · 역사와 정치 · 마지막 나날 · 흄 이후. ② **E-basis 21,547**(18p 밴드 21,240~21,960) · 각주 **25** · 단어코너 **3**(인과·습관·회의주의) · 논증 박스 **2** · 교차 링크 **3**(세계사 2-46 · 철학사 1-11 id=68 · 심리학사 1-7 id=22). ③ **검증** — 게이트 **23/23 PASS** · **DAV 43 OK / 0 BAD**(24파일 3,315,993자) · 도해 3종 PASS. ④ **도판 7종** = 실사 4(램지 흄 초상 PD · 로언마켓 CC BY-SA 4.0 · 흄 동상 CC BY-SA 4.0 · 흄의 묘 CC BY-SA 2.0) + 자체 도해 3(인상과 관념·인과의 세 요소·귀납의 문제). 후보 전량·접촉 시트·README는 `ws_tmp/ph36-research/figures/all/`. ⑤ **git** — llm-wiki **`dfadcea5`**(10파일 · 경로 명시) push 완료 · `ws_tmp` 비추적 유지. ⑥ **인계** — `update-handover.py collect → apply --git`. **미발행 — 발행은 무진님 검토·최종 확정 후 지시 때에만.** **다음 = 36화 도판 검토·확정 → (지시 시) 발행 또는 3권 37화(3-12 「흄 ② — 인간 본성의 탐구」·16p).**
-  - [자동수집 · Git] 마지막 세션(2026-10-22T09:16+09:00) 이후:
-    · homepage master: HEAD fdc4989 / origin fdc4989 ·작업트리 변경 5 :: fdc4989 진행 기록: 인계 갱신 (update-handover auto) / 902b8df 진행 기록: 인계 갱신 (update-handover auto) / 3b84e27 진행 기록: 인계 갱신 (update-handover auto) / 622bb51 진행 기록: 인계 갱신 (update-handover auto) / 76ef44c 진행 기록: 인계 갱신 (update-handover auto) / 9cdf433 진행 기록: 인계 갱신 (update-handover auto) / cef9172 진행 기록: 인계 갱신 (update-handover auto) / bd64133 자동: 카드뉴스 갱신 (2026-10-22)
-    · llm-wiki master: HEAD dfadcea5 / origin dfadcea5 :: dfadcea5 3권 36화 흄 ① — 인과성을 의심하다 원고·도판 7종 추가 / 52710e5b HANDOVER 갱신 — 35화 도판 7종 승인·확정 반영 / f594c4cb 35화 도판 7종 전량 승인·확정 기록 / e1387496 HANDOVER 갱신 — 2026-10-22(80차): 3권 35화 버클리 완성 반영 / e9cb8769 3권 35화 버클리 — 존재는 지각된다 원고·도판 7종 추가 / 1b245168 HANDOVER 갱신 — 34화 교차 링크 4건 반영 / 18ce1656 34화 심리학사 1-6 교차 링크 추가 / 18bb769e HANDOVER 갱신 — 34화 도판 1·5 교체 반영 / 2a8e34ad 34화 도판 1·5 교체 — 심리학사 1-6 중복 회피 / dbf65fc8 HANDOV
-    · harness  main: HEAD a58b6e8 / origin a58b6e8 :: a58b6e8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 6f7478a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 8a07a4e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / e4f65ee docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / a7c906d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / d520dc8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 93f93e3 do
-    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
