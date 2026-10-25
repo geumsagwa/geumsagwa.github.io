@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-25T11:25+09:00`** — **✅ (2026-10-25 · 90차 보정) — 4권 40~47화 도해 23종 보조 글자색 대비 개선(무진님 지시)**: 가장 작은 보조 글자가 바탕색과 같은 계열이라 잘 보이지 않는다는 지적에 따라, 보조 글자색을 회색(154,150,140 · 대비 **2.61:1**)에서 짙은 갈색(90,80,70 · 대비 **6.95:1**)으로 바꿨다. 화살표 회색은 유지하고 글자에만 적용했다. 40~47화 도해 23종 재제작 · `verify-diagrams --stamp` **23종 PASS** · 게이트 40~47화 **23/23 PASS**. 도판의뢰서·검토내용의 배경 비율·sha256 갱신. llm-wiki **`a7a436e`** push.
+  - [자동수집 · Git] 마지막 세션(2026-10-25T10:48+09:00) 이후:
+    · homepage master: HEAD a6264f5 / origin a6264f5 ·작업트리 변경 5 :: a6264f5 진행 기록: 인계 갱신 (update-handover auto) / 51e163d 진행 기록: 인계 갱신 (update-handover auto) / e3f4eed 진행 기록: 인계 갱신 (update-handover auto) / 8463e48 진행 기록: 인계 갱신 (update-handover auto) / 1ade195 진행 기록: 인계 갱신 (update-handover auto) / 122dd7d 진행 기록: 인계 갱신 (update-handover auto) / 2410a94 자동: 카드뉴스 갱신 (2026-10-25)
+    · llm-wiki master: HEAD a7a436e3 / origin a7a436e3 :: a7a436e3 @ 4권 40~47화 도해 23종 — 보조 글자색 대비 개선 / 836ebf57 @ HANDOVER 갱신 — 2026-10-25(90차): 4권 47화 키르케고르 완성·검증 반영 / 8e0ce1b8 @ 4권 47화 키르케고르 — 실존의 진리 원고·도판 7종·검증 완료 (미발행) / 89eddd31 @ HANDOVER 갱신 — 89차 승인: 46화 도판 7종 확정 / b63f81f6 @ 46화 도판 7종 전량 승인·확정 기록 (교체 없음, 미발행) / b5169a94 @ HANDOVER 갱신 — 2026-10-25(89차): 4권 46화 쇼펜하우어 완성·검증 반영 / 2697dca8 @ 4권 46화 쇼펜하우어 — 의지의 형이상학 원고·도판 7종·검증 완료 (미발행) / 6bf9bd2d @ HA
+    · harness  main: HEAD b04d49a / origin b04d49a :: b04d49a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cc8b8f7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 460d07e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cb19fa8 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 399009d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / de5b02d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
+  - **상세**: 대상 = 40화 3 · 41화 3 · 42화 3 · 43화 3 · 44화 3 · 45화 3 · 46화 2(그림3은 보조 글자 없음) · 47화 3 = 23종. 스크립트 `_draw4x.py`에 `SUB=(90,80,70)`를 추가하고 `T(..., GRAY)` 호출만 `SUB`로 교체해 화살표 색은 건드리지 않았다. 앞으로 도해 제작 시 보조 글자 기본색으로 쓴다.
+
 - 시각(ISO): **`2026-10-25T10:48+09:00`** — **✅ (2026-10-25 · 90차) — 4권 47화 키르케고르 「실존의 진리」 완성·검증(미발행)**: 12절 — 코펜하겐의 소년 · 레기네와의 약혼 · 아이러니와 헤겔 비판 · 『이것이냐 저것이냐』 · 『공포와 전율』 · 불안과 절망 · 실존의 세 단계 · 주체적 진리 · 신앙의 도약 · 군중은 진리가 아니다 · 교회와의 싸움 · 키르케고르 이후. **E-basis 21,669**(18p 밴드 21,240~21,960) · 각주 **24** · 단어코너 **3**(아이러니·불안·실존) · 논증박스 **2**. **도판 7종** = 실사 4(키르케고르 초상 PD · 코펜하겐 1840 PD · 코르사르 풍자화 PD · 키르케고르의 묘 PD) + 도해 3(신앙의 도약·실존의 세 단계·주체적 진리). 실사 후보 **8점 전량 다운로드**(`ws_tmp/ph47-research/figures/all/`). **검증** — 게이트 **23/23 PASS** · DAV **43 OK / 0 BAD**(캐시 49종) · `verify-diagrams --stamp` **PASS**. **교차 링크 3건** — 철학사 1-9(id=31) · 세계사 2-56 · 세계사 2-42. llm-wiki **`8e0ce1b`** push. **미발행 — 실사 1순위 배치·무진님 선택 대기.** **다음 = 도판 검토·발행 또는 4-9 마르크스.**
   - [자동수집 · Git] 마지막 세션(2026-10-25T10:31+09:00) 이후:
     · homepage master: HEAD 51e163d / origin 51e163d ·작업트리 변경 5 :: 51e163d 진행 기록: 인계 갱신 (update-handover auto) / e3f4eed 진행 기록: 인계 갱신 (update-handover auto) / 8463e48 진행 기록: 인계 갱신 (update-handover auto) / 1ade195 진행 기록: 인계 갱신 (update-handover auto) / 122dd7d 진행 기록: 인계 갱신 (update-handover auto) / 2410a94 자동: 카드뉴스 갱신 (2026-10-25)
@@ -75,14 +83,6 @@
   - **검증**: `verify-diagrams.py --stamp` 대상 도해 전건 PASS · 원고 게이트(49화 등 수정분) 22/22 PASS.
   - **발행(홈페이지 재발행 완료)**: 심리학사 1·2·3·9·14·24·25·30·31·32·34·35·38·39화, 철학사 8·9화. (49·57·58·59·62·63화는 미등록 상태라 발행 대상 아님.)
   - [자동수집 · Git] 마지막 세션(2026-10-24T19:31+09:00) 이후 llm-wiki 커밋 8건(위 자동수집 목록 참조). homepage·harness·openclaw 작업트리 변경은 자동 인계 커밋분.
-
-- 시각(ISO): **`2026-10-24T19:31+09:00`** — **✅ 도해 내용 안전 영역 5% 확정·13화 재발행**: 조사 근거(ConceptDraw 10% 권장·5~10% 허용, K-Dense 5~10%)에 따라 **최소 5%(1200×896 기준 좌우 60·상하 45px)·확대 금지**로 확정하고 지침 §8.4에 명문화. 13화·44화 도해 6종 재제작(제목 38·라벨 28·보조 21, 무축소) · 13화 `--update` 재발행(**id=70**, `essay.html?id=70` HTTP 200). llm-wiki **`e87e47f`** push. 다음 = 44화 도판 선택·발행 또는 4-6 헤겔 ②.
-  - [자동수집 · Git] 마지막 세션(2026-10-24T18:52+09:00) 이후:
-    · homepage master: HEAD eea477b / origin eea477b ·작업트리 변경 5 :: eea477b 진행 기록: 인계 갱신 (update-handover auto) / 581b258 진행 기록: 인계 갱신 (update-handover auto) / a178a54 진행 기록: 인계 갱신 (update-handover auto) / 406efb7 철학사 13화 발행 등록 (SERIES_MAP) / 7dda959 진행 기록: 인계 갱신 (update-handover auto) / a2337ea 자동: 카드뉴스 갱신 (2026-10-24)
-    · llm-wiki master: HEAD e87e47f5 / origin e87e47f5 :: e87e47f5 도해 내용 안전 영역 5% 확정 — 13화·44화 6종 재제작, 13화 재발행(id=70) / 7fc61e58 13화 그림 4 — 패널 축소·여백 확대(답답함 해소), 재발행(id=70) / a3ff8b7d HANDOVER 갱신 — 2026-10-24(86차): 도해 6종 재조정·13화 재발행 / c2137b2e 13화·44화 도해 6종 — 27화 기준(38/28/21)으로 재조정·13화 재발행(id=70) / 069f212c HANDOVER 갱신 — 2026-10-24(85차): 44화 헤겔 ① 완성 반영 / 48daa2ea 4권 44화 헤겔 ① — 정신의 변증법 원고·도판 7종·검증 완료 (미발행) / 55a33a53 HANDOVER 갱신 — 2026-10-24(84차): 13화 확정·발
-    · harness  main: HEAD 64d449b / origin 64d449b :: 64d449b docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / eadfbd7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / f53729f docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / da7be00 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
-  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
