@@ -6,6 +6,14 @@
 
 ## 마지막 갱신
 
+- 시각(ISO): **`2026-10-25T16:36+09:00`** — **✅ (2026-10-25 · 92차) — ① 4권 50화 「실증주의와 진화론의 도전」 완성·검증(미발행)**: 12절 · **E-basis 16,551**(14p 밴드 16,520~17,080) · 각주 **20** · 단어코너 **3**(실증·자연선택·사회진화론) · 논증박스 **2** · **도판 7종** = 실사 4(콩트 다게레오타이프 PD · 다윈 캐머런 사진 PD · 굴드 핀치 판화 PD · 『종의 기원』 초판 표지 PD) + 도해 3(세 단계의 법칙·자연선택·진화론의 질문). 실사 후보 **23점 전량 다운로드**(`ws_tmp/ph50-research/figures/all/` · 접촉 시트 4장 · README). **검증** — 게이트 **23/23 PASS** · DAV **60 OK / 0 BAD**(캐시 56종) · `verify-diagrams --stamp` **3종 PASS**. llm-wiki **`4b19b41e`** push. **미발행 — 1순위 배치·무진님 선택 대기.** **② 4권 49화 「공리주의와 자유의 경계」 완성·검증(미발행)**: 12절 · **E-basis 21,265**(18p 밴드 21,240~21,960) · 각주 **20** · 단어코너 **3**(공리·판옵티콘·해악) · 논증박스 **2** · 도판 7종(PD 3 + CC0 1 + 도해 3) · 후보 23점 · 게이트 23/23 · DAV 76/76 · llm-wiki **`92ef0ec8`**. **③ 도해 팔레트 전면 통일(무진님 지시)**: 4권 40~48화 **27종** · 3권 26~39화 **43종** 면 채움 재제작, 1권 1·2·3·5화 **8종** 색 치환, 고아 PNG **3건** 정리 — **유채색 0인 화 0/48** · 권별 평균 1권 2.58% · 2권 8.35% · 3권 13.05% · 4권 17.65% · 커밋 `5fccac73`·`aba57f69`·`c85b982f`·`fc214f93`·`895f5ece`. **다음 = 49·50화 도판 검토·발행 또는 4-12 니체 ①.**
+  - [자동수집 · Git] 마지막 세션(2026-10-25T12:32+09:00) 이후:
+    · homepage master: HEAD a337999 / origin a337999 ·작업트리 변경 5 :: a337999 진행 기록: 인계 갱신 (update-handover auto) / 6f22da0 진행 기록: 인계 갱신 (update-handover auto) / 330e2f9 진행 기록: 인계 갱신 (update-handover auto) / a6264f5 진행 기록: 인계 갱신 (update-handover auto) / 51e163d 진행 기록: 인계 갱신 (update-handover auto) / e3f4eed 진행 기록: 인계 갱신 (update-handover auto) / 8463e48 진행 기록: 인계 갱신 (update-handover auto) / 1ade195 진행 기록: 인계 갱신 (update-handover auto) / 122dd7d 진행 기록: 인계 갱신 (update-han
+    · llm-wiki master: HEAD 4b19b41e / origin 4b19b41e :: 4b19b41e 4권 50화 실증주의와 진화론의 도전 — 원고·도판 7종·검증 완료 (미발행) / 92ef0ec8 4권 49화 공리주의와 자유의 경계 — 원고·도판 7종·검증 완료 (미발행) / 895f5ece 미참조 도판 PNG 3건 정리 / fc214f93 1권 1·2·3·5화 옛 도해 8종 — 표준 팔레트로 색 통일 (무진님 지시) / c85b982f 3권 26~32화 도해 23종 — 팔레트 면 채움으로 재제작 (무진님 지시) / 356ba6ab 3권 34화 도판 상태 — 승인·확정으로 정정 (무진님 확인) / aba57f69 3권 33~39화 도해 20종 — 팔레트 면 채움으로 재제작 (무진님 지시) / 5fccac73 4권 40~48화 도해 27종 — 팔레트 면 채움으로 재제작 (무진님 지시) / 
+    · harness  main: HEAD 9f988ff / origin 9f988ff :: 9f988ff docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 1d113bf docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / da7ca55 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / b04d49a docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cc8b8f7 docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / 460d07e docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / cb19fa8 do
+    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
+  - [기재 영역] 이번 세션 요약/확정·상태/다음 작업 변경분을 위 원고 요약에. (선택) 이 아래에 상세 bullet 추가 가능
+
 - 시각(ISO): **`2026-10-25T12:32+09:00`** — **✅ (2026-10-25 · 91차) — 4권 48화 마르크스 「철학은 세계를 바꿔야 한다」 완성·검증(미발행)**: 12절 — 트리어의 소년 · 베를린의 헤겔주의자 · 파리, 소외를 발견하다 · 역사는 계급 투쟁이다 · 1848년, 선언과 혁명 · 런던의 가난과 자본 · 상품 신비와 이데올로기 · 자본의 분석 · 인터내셔널과 파리 코뮌 · 마르크스주의의 분화 · 비판과 반론 · 오늘의 마르크스. **E-basis 26,464**(22p 밴드 25,960~26,840) · 각주 **23** · 단어코너 **3**(소외·유물론·잉여가치) · 논증박스 **2**. **도판 7종** = 실사 4(마르크스 초상 PD · 트리어 생가 CC BY-SA 4.0 · 『공산당 선언』 초판 PD · 『자본』 초판 PD) + 도해 3(역사적 유물론·상품과 잉여가치·소외된 노동). 실사 후보 **10점 전량 다운로드**(`ws_tmp/ph48-research/figures/all/`). **검증** — 게이트 **23/23 PASS** · DAV **47 OK / 0 BAD**(캐시 65종) · `verify-diagrams --stamp` **PASS**. **교차 링크 3건** — 세계사 2-56 · 철학사 1-11(id=68) · 세계사 2-47. llm-wiki **`f8c1938`** push. **미발행 — 실사 1순위 배치·무진님 선택 대기.** **다음 = 도판 검토·발행 또는 4-10 공리주의.**
   - [자동수집 · Git] 마지막 세션(2026-10-25T11:29+09:00) 이후:
     · homepage master: HEAD 6f22da0 / origin 6f22da0 ·작업트리 변경 5 :: 6f22da0 진행 기록: 인계 갱신 (update-handover auto) / 330e2f9 진행 기록: 인계 갱신 (update-handover auto) / a6264f5 진행 기록: 인계 갱신 (update-handover auto) / 51e163d 진행 기록: 인계 갱신 (update-handover auto) / e3f4eed 진행 기록: 인계 갱신 (update-handover auto) / 8463e48 진행 기록: 인계 갱신 (update-handover auto) / 1ade195 진행 기록: 인계 갱신 (update-handover auto) / 122dd7d 진행 기록: 인계 갱신 (update-handover auto) / 2410a94 자동: 카드뉴스 갱신 (2026-10-25)
@@ -61,14 +69,6 @@
     · harness  main: HEAD 399009d / origin 399009d :: 399009d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto) / de5b02d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
     · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
   - **상세**: 44화 도판 7종 = 헤겔 초상(PD) · 튀빙겐 슈티프트(CC0) · 밤베르크 집(CC BY-SA 4.0) · 정신의 계단 · 주인과 노예 · 지양의 세 뜻 · 헤겔의 묘(CC0). 45화 도판 7종 = 헤겔 흉상(CC0) · 역사의 세 층 · 나폴레옹 베를린 입성(PD) · 이성의 간지 · 자유의식의 세 계단 · 슈트라우스 강의 필기(CC BY 3.0) · 베를린 장벽 1989(CC BY-SA 2.0). 두 화 모두 교체 없이 1순위 배치본 그대로 확정. **발행은 하지 않았다.**
-
-- 시각(ISO): **`2026-10-25T08:06+09:00`** — **✅ (2026-10-25 · 88차 보정) — 4권 40~45화 도해 17종 화살표–상자 간격 재제작(무진님 지시)**: 화살표가 상자·라벨에 직접 닿지 않도록 40~45화 도해 17종을 재제작했다. 양 끝을 상자에서 **16px**(짧은 구간 8~12px) 띄우고 촉을 축소(L10~16 · W8~12). `verify-diagrams.py --stamp` **17종 PASS** · 게이트 44·45화 **23/23 PASS**. 도판의뢰서·검토내용의 수치·sha256 갱신. llm-wiki **`66b95e0`** push.
-  - [자동수집 · Git] 마지막 세션(2026-10-25T07:53+09:00) 이후:
-    · homepage master: HEAD 122dd7d / origin 122dd7d ·작업트리 변경 5 :: 122dd7d 진행 기록: 인계 갱신 (update-handover auto) / 2410a94 자동: 카드뉴스 갱신 (2026-10-25)
-    · llm-wiki master: HEAD 66b95e05 / origin 66b95e05 :: 66b95e05 @ 4권 40~45화 도해 17종 — 화살표 양 끝 16px 간격·촉 축소 재제작 / 2992df6a @ 45화 검토내용·도판의뢰서 — 실사 후보 집계 정정(관련 25점·제외 11점) / 1327640b @ HANDOVER 갱신 — 2026-10-25(88차): 4권 45화 헤겔 ② 완성·검증 반영 / 7ae86976 @ 4권 45화 헤겔 ② — 역사의 종말? 원고·도판 7종·검증 완료 (미발행)
-    · harness  main: HEAD de5b02d / origin de5b02d :: de5b02d docs(desktop-handoff): 인계 갱신 동기 (update-handover auto)
-    · openclaw main: HEAD c828a81 / origin c828a81 ·작업트리 변경 5 :: (커밋 없음)
-  - **상세**: 대상 = 40화 3종 · 41화 3종 · 42화 2종 · 43화 3종 · 44화 3종 · 45화 3종(42화 그림2는 화살표 없음). 44화 3종은 `_draw44.py`의 `arrow()`에 `gap=16`·촉 축소를 넣어 재제작했고, 40~43화는 `line`/`head` 좌표를 직접 조정했다. 45화는 `_draw45.py`에 같은 규칙을 적용했다. 앞으로 도해 제작 시 이 규칙을 기본값으로 쓴다.
 
 ## 확정·상태 변경
 - **심리학사 발행 완료 = 제1~37화(ids 12~59)** — 2권 21~27화(ep21~27 · id=43~49 · 09-06~08) · 3권 28~37화(ep28~37 · id=50~59 · ~09-17). 최신 = ep37(3-10) id=59.
