@@ -507,6 +507,14 @@
 </div>
 
 <script>
+    // 성능 계측 (P0 기준선·회귀 검증용, 동작에는 영향 없음)
+    const READER_T0 = performance.now();
+    const READER_TIMINGS = window.READER_TIMINGS = {};
+    function markTiming(name) {
+        READER_TIMINGS[name] = Math.round(performance.now() - READER_T0);
+        console.log('[reader-timing]', name, READER_TIMINGS[name] + 'ms');
+    }
+
     // URL에서 epub Storage 경로 가져오기
     const params = new URLSearchParams(window.location.search);
     const epubPath = params.get('path') || '';
@@ -544,6 +552,7 @@
             }
 
             console.log('다운로드 성공, 크기:', data.size);
+            markTiming('download');
             document.getElementById('book-title').textContent = '로딩 중...';
 
             // ArrayBuffer로 변환하여 epub.js에 직접 전달
@@ -725,7 +734,9 @@
     try {
         // ArrayBuffer에서 epub 열기 (완료 대기)
         await book.open(bookData);
+        markTiming('open');
         await rendition.display();
+        markTiming('firstPage');
         console.log('epub 렌더링 완료');
     } catch (err) {
         console.error('epub 렌더링 오류:', err);
@@ -925,6 +936,7 @@
     // locations는 비동기로 천천히 생성 (로딩을 차단하지 않음)
     book.ready.then(() => {
         book.locations.generate(2000).then(() => {
+            markTiming('locations');
             console.log('위치 데이터 생성 완료');
         });
     });
