@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: https: https://fonts.gstatic.com; frame-src 'self' blob: data: https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' blob: https://cdn.jsdelivr.net https://fonts.googleapis.com; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: blob: https:; font-src 'self' data: blob: https: https://fonts.gstatic.com; frame-src 'self' blob: data: https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.supabase.co">
     <title>Reader - 생각을 잇다</title>
     <style>html,body{background:#000 !important;}</style>
         <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light-mode')</script>
@@ -435,6 +435,262 @@
                 margin: 0;
             }
         }
+
+        /* ── 읽기 테마 (P1) ── */
+        .reader-viewer.theme-light {
+            background: linear-gradient(135deg, #fffdf8 0%, #faf6ee 50%, #fffdf8 100%);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+        .reader-viewer.theme-dark {
+            background: linear-gradient(135deg, #17140f 0%, #1c1812 50%, #17140f 100%);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+        .reader-viewer.theme-dark ~ .reader-nav .reader-nav-arrow { color: #7a6f5f; }
+        .reader-viewer.theme-light .book-spine-overlay,
+        .reader-viewer.theme-dark .book-spine-overlay { opacity: 0.5; }
+
+        /* ── 헤더 도구 ── */
+        .reader-header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+        .reader-tools {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .reader-tool-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            color: #999;
+            font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+            font-size: 0.78rem;
+            line-height: 1;
+            padding: 0.42rem 0.6rem;
+            min-width: 2.2rem;
+            min-height: 2.2rem;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .reader-tool-btn:hover,
+        .reader-tool-btn[aria-expanded="true"],
+        .reader-tool-btn[aria-pressed="true"] {
+            color: #dabb7e;
+            border-color: #dabb7e;
+        }
+        .reader-tool-btn:focus-visible {
+            outline: 2px solid #dabb7e;
+            outline-offset: 2px;
+        }
+
+        /* ── 도구 패널 ── */
+        .panel-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            z-index: 899;
+        }
+        .panel-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .reader-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: min(400px, 100vw);
+            height: 100vh;
+            background: #0d0c09;
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            transform: translateX(100%);
+            transition: transform 0.25s ease;
+            z-index: 900;
+            display: flex;
+            flex-direction: column;
+            font-family: 'GyeonggiBatang', 'Malgun Gothic', sans-serif;
+        }
+        .reader-panel.open {
+            transform: translateX(0);
+        }
+        .panel-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 0.9rem 0.7rem 1.1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .panel-tabs {
+            display: flex;
+            gap: 0.3rem;
+        }
+        .panel-tab {
+            background: none;
+            border: none;
+            color: #888;
+            font-family: inherit;
+            font-size: 0.85rem;
+            padding: 0.45rem 0.7rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .panel-tab.active {
+            color: #dabb7e;
+            background: rgba(218, 187, 126, 0.1);
+        }
+        .panel-tab:focus-visible,
+        .panel-close:focus-visible,
+        .step-btn:focus-visible,
+        .theme-btn:focus-visible,
+        .sel-btn:focus-visible {
+            outline: 2px solid #dabb7e;
+            outline-offset: 2px;
+        }
+        .panel-close {
+            background: none;
+            border: none;
+            color: #777;
+            font-size: 1.4rem;
+            line-height: 1;
+            padding: 0.2rem 0.4rem;
+            cursor: pointer;
+        }
+        .panel-close:hover { color: #dabb7e; }
+        .panel-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem 1.1rem 2rem;
+        }
+        .panel-section { display: none; }
+        .panel-section.active { display: block; }
+        .setting-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .setting-label { color: #bbb; font-size: 0.85rem; }
+        .setting-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .setting-value {
+            min-width: 3.1rem;
+            text-align: center;
+            color: #dabb7e;
+            font-size: 0.85rem;
+        }
+        .step-btn, .theme-btn, .sel-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 4px;
+            color: #bbb;
+            font-family: inherit;
+            font-size: 0.8rem;
+            padding: 0.38rem 0.6rem;
+            min-height: 2rem;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .step-btn:hover, .theme-btn:hover, .sel-btn:hover {
+            color: #dabb7e;
+            border-color: #dabb7e;
+        }
+        .theme-btn.active {
+            color: #dabb7e;
+            border-color: #dabb7e;
+            background: rgba(218, 187, 126, 0.1);
+        }
+        .setting-note {
+            color: #666;
+            font-size: 0.72rem;
+            margin-top: 1.2rem;
+            line-height: 1.6;
+        }
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .search-box input {
+            flex: 1;
+            background: #15130f;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 4px;
+            color: #e6ddcc;
+            font-family: inherit;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.65rem;
+        }
+        .search-box input:focus {
+            outline: 2px solid #dabb7e;
+            outline-offset: 1px;
+        }
+        .panel-status {
+            min-height: 1.2rem;
+            margin: 0.8rem 0 0.4rem;
+            color: #777;
+            font-size: 0.75rem;
+        }
+        .result-list { display: flex; flex-direction: column; gap: 0.35rem; }
+        .result-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #c9c1b2;
+            font-family: inherit;
+            font-size: 0.8rem;
+            line-height: 1.55;
+            padding: 0.55rem 0.2rem;
+            cursor: pointer;
+        }
+        .result-item:hover { color: #fff; background: rgba(255, 255, 255, 0.04); }
+        .result-item mark { background: rgba(218, 187, 126, 0.3); color: #f5ead4; }
+        .result-note { display: block; color: #8d8578; font-size: 0.72rem; margin-top: 0.2rem; }
+        .result-empty { color: #666; font-size: 0.78rem; padding: 0.5rem 0; }
+
+        /* ── 선택 문장 도구 ── */
+        .selection-bar {
+            position: fixed;
+            left: 50%;
+            bottom: 5.2rem;
+            transform: translateX(-50%) translateY(8px);
+            display: none;
+            gap: 0.4rem;
+            padding: 0.45rem;
+            background: rgba(20, 18, 14, 0.96);
+            border: 1px solid rgba(218, 187, 126, 0.35);
+            border-radius: 6px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            z-index: 950;
+        }
+        .selection-bar.open {
+            display: flex;
+            animation: selbar-in 0.15s ease-out;
+        }
+        @keyframes selbar-in {
+            from { opacity: 0; transform: translateX(-50%) translateY(14px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .reader-header-right { gap: 0.5rem; }
+            .reader-tools { gap: 0.3rem; }
+            .reader-tool-btn { padding: 0.38rem 0.5rem; }
+        }
+        @media (max-width: 480px) {
+            .reader-panel { width: 100vw; }
+            .selection-bar { bottom: 4.6rem; }
+        }
     </style>
 </head>
 <body>
@@ -481,7 +737,13 @@
                 <button class="toc-toggle-btn" id="toc-toggle-btn">≡ 목차</button>
                 <span class="reader-book-title" id="book-title">불러오는 중...</span>
             </div>
-            <a href="library.html" class="reader-back">← Library</a>
+            <div class="reader-header-right">
+                <div class="reader-tools">
+                    <button class="reader-tool-btn" id="btn-panel" aria-label="읽기 도구 열기" aria-expanded="false" aria-controls="reader-panel">Aa</button>
+                    <button class="reader-tool-btn" id="btn-tts" aria-label="읽어주기" aria-pressed="false">▶</button>
+                </div>
+                <a href="library.html" class="reader-back">← Library</a>
+            </div>
         </div>
 
         <div class="reader-viewer">
@@ -506,6 +768,75 @@
 
 </div>
 
+<!-- 읽기 도구 패널 (P1) -->
+<div class="panel-backdrop" id="panel-backdrop"></div>
+<aside class="reader-panel" id="reader-panel" aria-hidden="true" aria-label="읽기 도구">
+    <div class="panel-head">
+        <div class="panel-tabs" role="tablist">
+            <button class="panel-tab active" role="tab" aria-selected="true" data-tab="settings">설정</button>
+            <button class="panel-tab" role="tab" aria-selected="false" data-tab="search">검색</button>
+            <button class="panel-tab" role="tab" aria-selected="false" data-tab="notes">메모</button>
+        </div>
+        <button class="panel-close" id="panel-close" aria-label="도구 닫기">×</button>
+    </div>
+    <div class="panel-body">
+        <section class="panel-section active" data-panel="settings" role="tabpanel">
+            <div class="setting-row">
+                <span class="setting-label">글자 크기</span>
+                <div class="setting-control">
+                    <button class="step-btn" data-step="font" data-dir="-1" aria-label="글자 작게">A−</button>
+                    <span class="setting-value" id="font-value">100%</span>
+                    <button class="step-btn" data-step="font" data-dir="1" aria-label="글자 크게">A+</button>
+                </div>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">줄 간격</span>
+                <div class="setting-control">
+                    <button class="step-btn" data-step="line" data-dir="-1" aria-label="줄 간격 좁게">−</button>
+                    <span class="setting-value" id="line-value">1.85</span>
+                    <button class="step-btn" data-step="line" data-dir="1" aria-label="줄 간격 넓게">+</button>
+                </div>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">여백</span>
+                <div class="setting-control">
+                    <button class="step-btn" data-step="margin" data-dir="-1" aria-label="여백 좁게">−</button>
+                    <span class="setting-value" id="margin-value">36</span>
+                    <button class="step-btn" data-step="margin" data-dir="1" aria-label="여백 넓게">+</button>
+                </div>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">테마</span>
+                <div class="setting-control">
+                    <button class="theme-btn active" data-theme="paper">종이</button>
+                    <button class="theme-btn" data-theme="light">라이트</button>
+                    <button class="theme-btn" data-theme="dark">다크</button>
+                </div>
+            </div>
+            <p class="setting-note">설정과 읽던 위치는 이 기기에 저장됩니다.</p>
+        </section>
+        <section class="panel-section" data-panel="search" role="tabpanel">
+            <div class="search-box">
+                <input id="search-input" type="search" placeholder="본문에서 찾기" aria-label="본문 검색">
+                <button class="step-btn" id="search-btn">검색</button>
+            </div>
+            <div class="panel-status" id="search-status" aria-live="polite"></div>
+            <div class="result-list" id="search-results"></div>
+        </section>
+        <section class="panel-section" data-panel="notes" role="tabpanel">
+            <div class="panel-status" id="notes-status" aria-live="polite"></div>
+            <div class="result-list" id="notes-list"></div>
+        </section>
+    </div>
+</aside>
+
+<!-- 선택 문장 도구 (P2) -->
+<div class="selection-bar" id="selection-bar" role="toolbar" aria-label="선택한 문장">
+    <button class="sel-btn" id="sel-highlight">형광펜</button>
+    <button class="sel-btn" id="sel-note">메모</button>
+    <button class="sel-btn" id="sel-cancel">취소</button>
+</div>
+
 <script>
     // 성능 계측 (P0 기준선·회귀 검증용, 동작에는 영향 없음)
     const READER_T0 = performance.now();
@@ -521,6 +852,531 @@
     const bookName = decodeURIComponent(params.get('title') || '');
     // 특정 화(챕터)로 바로 이동 (예: target=제47화)
     const epubTarget = params.get('target') || '';
+
+    // ── 읽기 설정·이어읽기·주석 (P1~P2) ──
+    const SETTINGS_KEY = 'readerSettings:v1';
+    const DEFAULT_SETTINGS = { fontSize: 15, lineHeight: 1.85, margin: 36, theme: 'paper' };
+    const READER_THEMES = {
+        paper: { text: '#333', heading: '#1a1a1a', link: '#5a6f8a' },
+        light: { text: '#1f1f1f', heading: '#000', link: '#2b5c8a' },
+        dark: { text: '#cfc8bb', heading: '#f0e9dc', link: '#9ab4d6' }
+    };
+    const FONT_MIN = 12, FONT_MAX = 26;
+    const LINE_OPTIONS = [1.5, 1.65, 1.85, 2.05, 2.25];
+    const MARGIN_OPTIONS = [16, 24, 36, 48, 64];
+
+    let readerSettings = loadReaderSettings();
+    let readerBook = null;
+    let readerRendition = null;
+    let selectionState = null;
+    let readerNotes = loadNotes();
+    let positionTimer = null;
+    let searchToken = 0;
+
+    function storageKey(kind) { return kind + ':' + (epubPath || 'default'); }
+
+    // ── EPUB 캐시 (P3): 같은 책은 다시 내려받지 않는다 ──
+    const EPUB_CACHE = 'epub-cache-v1';
+    async function downloadEpub(path) {
+        if ('caches' in window) {
+            try {
+                const cache = await caches.open(EPUB_CACHE);
+                const hit = await cache.match(path);
+                if (hit) return { data: await hit.blob(), cached: true };
+            } catch (e) {}
+        }
+        const res = await _supabase.storage.from('epubs').download(path);
+        if (res.error || !res.data) return { error: res.error || new Error('다운로드 실패'), data: null };
+        if ('caches' in window) {
+            try {
+                const cache = await caches.open(EPUB_CACHE);
+                await cache.put(path, new Response(res.data, {
+                    headers: { 'Content-Type': 'application/epub+zip' }
+                }));
+            } catch (e) {}
+        }
+        return { data: res.data, cached: false };
+    }
+
+    function loadReaderSettings() {
+        try {
+            return Object.assign({}, DEFAULT_SETTINGS, JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}'));
+        } catch (e) {
+            return Object.assign({}, DEFAULT_SETTINGS);
+        }
+    }
+
+    function saveReaderSettings() {
+        try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(readerSettings)); } catch (e) {}
+    }
+
+    function themeRules() {
+        const t = READER_THEMES[readerSettings.theme] || READER_THEMES.paper;
+        const size = readerSettings.fontSize;
+        const line = readerSettings.lineHeight;
+        const margin = readerSettings.margin;
+        return {
+            'body': {
+                'color': t.text + ' !important',
+                'background': 'transparent !important',
+                'line-height': line + ' !important',
+                'padding': '26px ' + margin + 'px 20px ' + margin + 'px !important',
+                'font-family': "'GyeonggiBatang', 'Malgun Gothic', serif !important",
+                'font-size': size + 'px !important',
+                'letter-spacing': '0.01em !important',
+                'word-spacing': '0.02em !important',
+                'box-sizing': 'border-box !important',
+                'max-width': '100% !important',
+                'word-wrap': 'break-word !important',
+                'overflow-wrap': 'break-word !important'
+            },
+            'p, div, span, li': { 'color': t.text + ' !important' },
+            'p': {
+                'text-indent': '1em !important',
+                'margin-bottom': '0.3em !important'
+            },
+            'h1, h2, h3, h4, h5, h6': {
+                'color': t.heading + ' !important',
+                'font-weight': '400 !important'
+            },
+            'h1': { 'font-size': '1.23em !important' },
+            'h2': { 'font-size': '1.1em !important' },
+            'h3': { 'font-size': '1.05em !important' },
+            'a': { 'color': t.link + ' !important' },
+            'img': { 'max-width': '100% !important', 'height': 'auto !important' }
+        };
+    }
+
+    function applyReadingTheme() {
+        if (!readerRendition) return;
+        readerRendition.themes.default(themeRules());
+        const viewer = document.querySelector('.reader-viewer');
+        if (viewer) {
+            viewer.classList.remove('theme-paper', 'theme-light', 'theme-dark');
+            viewer.classList.add('theme-' + readerSettings.theme);
+        }
+        updateSettingsUI();
+    }
+
+    function updateSettingsUI() {
+        const f = document.getElementById('font-value');
+        const l = document.getElementById('line-value');
+        const m = document.getElementById('margin-value');
+        if (f) f.textContent = Math.round(readerSettings.fontSize / DEFAULT_SETTINGS.fontSize * 100) + '%';
+        if (l) l.textContent = String(readerSettings.lineHeight);
+        if (m) m.textContent = String(readerSettings.margin);
+        document.querySelectorAll('.theme-btn').forEach(function (b) {
+            b.classList.toggle('active', b.dataset.theme === readerSettings.theme);
+        });
+    }
+
+    function stepSetting(step, dir) {
+        if (step === 'font') {
+            readerSettings.fontSize = Math.max(FONT_MIN, Math.min(FONT_MAX, readerSettings.fontSize + dir));
+        } else if (step === 'line') {
+            let i = LINE_OPTIONS.indexOf(readerSettings.lineHeight);
+            if (i < 0) i = 2;
+            readerSettings.lineHeight = LINE_OPTIONS[Math.max(0, Math.min(LINE_OPTIONS.length - 1, i + dir))];
+        } else if (step === 'margin') {
+            let i = MARGIN_OPTIONS.indexOf(readerSettings.margin);
+            if (i < 0) i = 2;
+            readerSettings.margin = MARGIN_OPTIONS[Math.max(0, Math.min(MARGIN_OPTIONS.length - 1, i + dir))];
+        }
+        saveReaderSettings();
+        applyReadingTheme();
+    }
+
+    function loadLocalPosition() {
+        try { return JSON.parse(localStorage.getItem(storageKey('reader:pos')) || 'null'); }
+        catch (e) { return null; }
+    }
+
+    function saveLocalPosition(cfi, percent) {
+        try {
+            const prev = loadLocalPosition();
+            const value = (percent === null || percent === undefined)
+                ? (prev && typeof prev.percent === 'number' ? prev.percent : 0)
+                : percent;
+            localStorage.setItem(storageKey('reader:pos'), JSON.stringify({ cfi: cfi, percent: value, updatedAt: Date.now() }));
+        } catch (e) {}
+    }
+
+    function supabaseReady() {
+        return typeof _supabase !== 'undefined' && !!_supabase;
+    }
+
+    async function fetchRemotePosition() {
+        if (!supabaseReady()) return null;
+        try {
+            const res = await _supabase.auth.getSession();
+            const session = res && res.data ? res.data.session : null;
+            if (!session || !session.user) return null;
+            const q = await _supabase.from('reader_progress')
+                .select('cfi,percent,updated_at')
+                .eq('user_id', session.user.id)
+                .eq('book_path', epubPath)
+                .maybeSingle();
+            return q && q.data ? q.data : null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async function syncRemotePosition(cfi, percent) {
+        if (!supabaseReady()) return;
+        try {
+            const res = await _supabase.auth.getSession();
+            const session = res && res.data ? res.data.session : null;
+            if (!session || !session.user) return;
+            await _supabase.from('reader_progress').upsert({
+                user_id: session.user.id,
+                book_path: epubPath,
+                cfi: cfi,
+                percent: percent,
+                updated_at: new Date().toISOString()
+            }, { onConflict: 'user_id,book_path' });
+        } catch (e) {
+            // 테이블이 없으면 로컬 저장만 사용한다.
+        }
+    }
+
+    function schedulePositionSave(cfi, percent) {
+        saveLocalPosition(cfi, percent);
+        if (!supabaseReady()) return;
+        clearTimeout(positionTimer);
+        positionTimer = setTimeout(function () { syncRemotePosition(cfi, percent); }, 1500);
+    }
+
+    function loadNotes() {
+        try { return JSON.parse(localStorage.getItem(storageKey('reader:notes')) || '[]'); }
+        catch (e) { return []; }
+    }
+
+    function persistNotes() {
+        try { localStorage.setItem(storageKey('reader:notes'), JSON.stringify(readerNotes)); } catch (e) {}
+    }
+
+    function drawAnnotation(note) {
+        if (!readerRendition || !note || !note.cfiRange) return;
+        try {
+            readerRendition.annotations.highlight(note.cfiRange, { id: note.id }, function () {}, 'reader-hl', {
+                fill: note.color || '#f2c94c',
+                'fill-opacity': '0.35'
+            });
+        } catch (e) {
+            console.warn('주석 표시 실패:', e);
+        }
+    }
+
+    function restoreAnnotations() {
+        readerNotes.forEach(drawAnnotation);
+        renderNotesList();
+    }
+
+    function renderNotesList() {
+        const list = document.getElementById('notes-list');
+        const status = document.getElementById('notes-status');
+        if (!list) return;
+        list.innerHTML = '';
+        if (!readerNotes.length) {
+            if (status) status.textContent = '저장된 메모가 없습니다. 본문을 선택해 형광펜이나 메모를 남겨 보세요.';
+            return;
+        }
+        if (status) status.textContent = readerNotes.length + '개';
+        readerNotes.slice().sort(function (a, b) { return b.createdAt - a.createdAt; }).forEach(function (n) {
+            const btn = document.createElement('button');
+            btn.className = 'result-item';
+            btn.type = 'button';
+            btn.textContent = n.text || '(문장 없음)';
+            if (n.note) {
+                const noteEl = document.createElement('span');
+                noteEl.className = 'result-note';
+                noteEl.textContent = n.note;
+                btn.appendChild(noteEl);
+            }
+            btn.addEventListener('click', function () {
+                if (readerRendition) readerRendition.display(n.cfiRange);
+                closePanel();
+            });
+            list.appendChild(btn);
+        });
+    }
+
+    function addNote(noteText) {
+        if (!selectionState) return;
+        const entry = {
+            id: 'n' + Date.now(),
+            cfiRange: selectionState.cfiRange,
+            text: selectionState.text.slice(0, 300),
+            note: noteText || '',
+            color: '#f2c94c',
+            createdAt: Date.now()
+        };
+        readerNotes.push(entry);
+        persistNotes();
+        drawAnnotation(entry);
+        syncRemoteNote(entry);
+        renderNotesList();
+        hideSelectionBar();
+        selectionState = null;
+    }
+
+    function showSelectionBar(cfiRange, text) {
+        selectionState = { cfiRange: cfiRange, text: text };
+        const bar = document.getElementById('selection-bar');
+        if (bar) bar.classList.add('open');
+    }
+
+    function hideSelectionBar() {
+        const bar = document.getElementById('selection-bar');
+        if (bar) bar.classList.remove('open');
+    }
+
+    // ── 읽어주기 (TTS, P3) ──
+    let ttsSpeaking = false;
+    function ttsText() {
+        try {
+            const contents = readerRendition.getContents();
+            const list = Array.isArray(contents) ? contents : [contents];
+            return list.map(function (c) {
+                return c.document && c.document.body ? c.document.body.innerText : '';
+            }).join('\n').trim();
+        } catch (e) {
+            return '';
+        }
+    }
+    function stopTts() {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        ttsSpeaking = false;
+        const btn = document.getElementById('btn-tts');
+        if (btn) {
+            btn.setAttribute('aria-pressed', 'false');
+            btn.setAttribute('aria-label', '읽어주기');
+            btn.textContent = '▶';
+        }
+    }
+    function toggleTts() {
+        const btn = document.getElementById('btn-tts');
+        if (!('speechSynthesis' in window)) {
+            if (btn) btn.title = '이 브라우저는 읽어주기를 지원하지 않습니다.';
+            return;
+        }
+        if (ttsSpeaking) { stopTts(); return; }
+        const text = ttsText();
+        if (!text) return;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ko-KR';
+        utterance.rate = 1;
+        utterance.onend = stopTts;
+        utterance.onerror = stopTts;
+        ttsSpeaking = true;
+        if (btn) {
+            btn.setAttribute('aria-pressed', 'true');
+            btn.setAttribute('aria-label', '읽어주기 중지');
+            btn.textContent = '■';
+        }
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function syncRemoteNote(entry) {
+        if (!supabaseReady()) return;
+        (async function () {
+            try {
+                const res = await _supabase.auth.getSession();
+                const session = res && res.data ? res.data.session : null;
+                if (!session || !session.user) return;
+                await _supabase.from('reader_annotations').upsert({
+                    id: entry.id,
+                    user_id: session.user.id,
+                    book_path: epubPath,
+                    cfi_range: entry.cfiRange,
+                    text_excerpt: entry.text,
+                    note: entry.note,
+                    color: entry.color
+                });
+            } catch (e) {}
+        })();
+    }
+
+    async function loadRemoteNotes() {
+        if (!supabaseReady()) return;
+        try {
+            const res = await _supabase.auth.getSession();
+            const session = res && res.data ? res.data.session : null;
+            if (!session || !session.user) return;
+            const q = await _supabase.from('reader_annotations')
+                .select('id,cfi_range,text_excerpt,note,color,created_at')
+                .eq('user_id', session.user.id)
+                .eq('book_path', epubPath);
+            if (!q || !Array.isArray(q.data) || !q.data.length) return;
+            const known = {};
+            readerNotes.forEach(function (n) { known[n.id] = true; });
+            let added = 0;
+            q.data.forEach(function (row) {
+                if (known[row.id]) return;
+                const entry = {
+                    id: row.id,
+                    cfiRange: row.cfi_range,
+                    text: row.text_excerpt || '',
+                    note: row.note || '',
+                    color: row.color || '#f2c94c',
+                    createdAt: Date.parse(row.created_at) || Date.now()
+                };
+                readerNotes.push(entry);
+                drawAnnotation(entry);
+                added++;
+            });
+            if (added) {
+                persistNotes();
+                renderNotesList();
+            }
+        } catch (e) {}
+    }
+
+    function escapeHtml(text) {
+        return String(text).replace(/[&<>"']/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+    }
+
+    async function runSearch(query) {
+        if (!readerBook || !query.trim()) return;
+        const token = ++searchToken;
+        const status = document.getElementById('search-status');
+        const list = document.getElementById('search-results');
+        if (!status || !list) return;
+        list.innerHTML = '';
+        status.textContent = '검색 중...';
+
+        const results = [];
+        const items = readerBook.spine.spineItems;
+        for (let i = 0; i < items.length; i++) {
+            if (token !== searchToken) return;
+            const item = items[i];
+            try {
+                await item.load(readerBook.load.bind(readerBook));
+                const found = item.find(query) || [];
+                found.forEach(function (f) {
+                    results.push({ cfi: f.cfi, excerpt: f.excerpt });
+                });
+            } catch (e) {
+            } finally {
+                try { item.unload(); } catch (e) {}
+            }
+            if (results.length >= 100) break;
+        }
+        if (token !== searchToken) return;
+        results.splice(100);
+
+        status.textContent = results.length ? results.length + '건' : '결과가 없습니다.';
+        if (!results.length) {
+            const empty = document.createElement('div');
+            empty.className = 'result-empty';
+            empty.textContent = '다른 낱말로 찾아보세요.';
+            list.appendChild(empty);
+            return;
+        }
+        results.forEach(function (r) {
+            const btn = document.createElement('button');
+            btn.className = 'result-item';
+            btn.type = 'button';
+            const safe = escapeHtml(r.excerpt || '');
+            const re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+            btn.innerHTML = safe.replace(re, '<mark>$1</mark>');
+            btn.addEventListener('click', function () {
+                if (readerRendition) readerRendition.display(r.cfi);
+                closePanel();
+                setTimeout(hideSelectionBar, 100);
+            });
+            list.appendChild(btn);
+        });
+    }
+
+    function selectPanelTab(name) {
+        document.querySelectorAll('.panel-tab').forEach(function (t) {
+            const on = t.dataset.tab === name;
+            t.classList.toggle('active', on);
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        document.querySelectorAll('.panel-section').forEach(function (s) {
+            s.classList.toggle('active', s.dataset.panel === name);
+        });
+        if (name === 'notes') renderNotesList();
+    }
+
+    function openPanel(tab) {
+        const panel = document.getElementById('reader-panel');
+        const backdrop = document.getElementById('panel-backdrop');
+        const btn = document.getElementById('btn-panel');
+        if (!panel) return;
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden', 'false');
+        if (backdrop) backdrop.classList.add('open');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+        if (tab) selectPanelTab(tab);
+        if (tab === 'search') {
+            setTimeout(function () { document.getElementById('search-input').focus(); }, 60);
+        }
+    }
+
+    function closePanel() {
+        const panel = document.getElementById('reader-panel');
+        const backdrop = document.getElementById('panel-backdrop');
+        const btn = document.getElementById('btn-panel');
+        if (!panel) return;
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+        if (backdrop) backdrop.classList.remove('open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+
+    // 패널·설정 UI 배선
+    (function wireReaderUi() {
+        const btn = document.getElementById('btn-panel');
+        if (btn) btn.addEventListener('click', function () { openPanel(); });
+        const close = document.getElementById('panel-close');
+        if (close) close.addEventListener('click', closePanel);
+        const backdrop = document.getElementById('panel-backdrop');
+        if (backdrop) backdrop.addEventListener('click', closePanel);
+
+        document.querySelectorAll('.panel-tab').forEach(function (t) {
+            t.addEventListener('click', function () { selectPanelTab(t.dataset.tab); });
+        });
+        document.querySelectorAll('.step-btn[data-step]').forEach(function (b) {
+            b.addEventListener('click', function () { stepSetting(b.dataset.step, Number(b.dataset.dir)); });
+        });
+        document.querySelectorAll('.theme-btn').forEach(function (b) {
+            b.addEventListener('click', function () {
+                readerSettings.theme = b.dataset.theme;
+                saveReaderSettings();
+                applyReadingTheme();
+            });
+        });
+
+        const searchInput = document.getElementById('search-input');
+        const searchBtn = document.getElementById('search-btn');
+        if (searchBtn) searchBtn.addEventListener('click', function () { runSearch(searchInput ? searchInput.value : ''); });
+        if (searchInput) searchInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') runSearch(searchInput.value);
+        });
+
+        const selHighlight = document.getElementById('sel-highlight');
+        if (selHighlight) selHighlight.addEventListener('click', function () { addNote(''); });
+        const selNote = document.getElementById('sel-note');
+        if (selNote) selNote.addEventListener('click', function () {
+            const text = window.prompt('메모를 입력하세요.');
+            if (text === null) return;
+            addNote(text.trim());
+        });
+        const selCancel = document.getElementById('sel-cancel');
+        if (selCancel) selCancel.addEventListener('click', function () { hideSelectionBar(); selectionState = null; });
+
+        const ttsBtn = document.getElementById('btn-tts');
+        if (ttsBtn) ttsBtn.addEventListener('click', toggleTts);
+
+        updateSettingsUI();
+    })();
 
     // Supabase Storage에서 epub 파일 직접 다운로드 후 로드
     async function initReader() {
@@ -541,9 +1397,10 @@
 
             console.log('다운로드 시도:', epubPath);
 
-            const { data, error } = await _supabase.storage
-                .from('epubs')
-                .download(epubPath, { cacheControl: 'no-cache' });
+            const downloaded = await downloadEpub(epubPath);
+            const data = downloaded.data;
+            const error = downloaded.error;
+            if (downloaded.cached) console.log('캐시에서 EPUB 로드');
 
             if (error || !data) {
                 document.getElementById('book-title').textContent = '다운로드 실패';
@@ -578,49 +1435,9 @@
         flow: 'paginated'
     });
 
-    rendition.themes.default({
-        'body': {
-            'color': '#333 !important',
-            'background': 'transparent !important',
-            'line-height': '1.85 !important',
-            'padding': '26px 36px 20px 36px !important',
-            'font-family': "'GyeonggiBatang', 'Malgun Gothic', serif !important",
-            'font-size': '15px !important',
-            'letter-spacing': '0.01em !important',
-            'word-spacing': '0.02em !important',
-            'box-sizing': 'border-box !important',
-            'max-width': '100% !important',
-            'word-wrap': 'break-word !important',
-            'overflow-wrap': 'break-word !important'
-        },
-        'p, div, span, li': {
-            'color': '#333 !important'
-        },
-        'p': {
-            'text-indent': '1em !important',
-            'margin-bottom': '0.3em !important'
-        },
-        'h1, h2, h3, h4, h5, h6': {
-            'color': '#1a1a1a !important',
-            'font-weight': '400 !important'
-        },
-        'h1': {
-            'font-size': '1.23em !important'
-        },
-        'h2': {
-            'font-size': '1.1em !important'
-        },
-        'h3': {
-            'font-size': '1.05em !important'
-        },
-        'a': {
-            'color': '#5a6f8a !important'
-        },
-        'img': {
-            'max-width': '100% !important',
-            'height': 'auto !important'
-        }
-    });
+    readerBook = book;
+    readerRendition = rendition;
+    applyReadingTheme();
 
     // EPUB 렌더링 시 빈 줄(br, 빈 요소) 제거
     rendition.hooks.content.register(function(contents) {
@@ -735,7 +1552,21 @@
         // ArrayBuffer에서 epub 열기 (완료 대기)
         await book.open(bookData);
         markTiming('open');
-        await rendition.display();
+
+        // 이어읽기: 로컬 저장 우선, 없으면 서버(베스트에포트, 1.2초 제한)
+        let saved = loadLocalPosition();
+        if (!saved) {
+            const remote = await Promise.race([
+                fetchRemotePosition(),
+                new Promise(function (resolve) { setTimeout(function () { resolve(null); }, 1200); })
+            ]);
+            if (remote && remote.cfi) saved = remote;
+        }
+        try {
+            await rendition.display(saved && saved.cfi ? saved.cfi : undefined);
+        } catch (e) {
+            await rendition.display();
+        }
         markTiming('firstPage');
         console.log('epub 렌더링 완료');
     } catch (err) {
@@ -743,6 +1574,9 @@
         document.getElementById('book-title').textContent = '로딩 실패 - 파일을 확인해주세요';
         return;
     }
+
+    restoreAnnotations();
+    loadRemoteNotes();
 
     // 책 제목 + 목차 로드
     book.ready.then(() => {
@@ -806,17 +1640,52 @@
 
     // 페이지 이동
     document.getElementById('prev').addEventListener('click', () => {
+        stopTts();
         rendition.prev();
     });
 
     document.getElementById('next').addEventListener('click', () => {
+        stopTts();
         rendition.next();
     });
 
-    // 키보드 이동
+    // 터치 스와이프 (P4) — iframe 내부 이벤트를 epub.js가 전달한다
+    let touchStartX = null, touchStartY = null;
+    rendition.on('touchstart', (e) => {
+        if (!e.touches || e.touches.length !== 1) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    });
+    rendition.on('touchend', (e) => {
+        if (touchStartX === null || !e.changedTouches || !e.changedTouches.length) return;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - touchStartX;
+        const dy = t.clientY - touchStartY;
+        touchStartX = null;
+        if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+        stopTts();
+        if (dx < 0) rendition.next(); else rendition.prev();
+    });
+
+    // 키보드 이동 (입력 중에는 페이지 넘김 금지)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') rendition.prev();
-        if (e.key === 'ArrowRight') rendition.next();
+        const tag = (e.target && e.target.tagName || '').toLowerCase();
+        const typing = tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable);
+        if (e.key === 'Escape') {
+            const panel = document.getElementById('reader-panel');
+            if (panel && panel.classList.contains('open')) { closePanel(); return; }
+            hideSelectionBar();
+            selectionState = null;
+            return;
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f') {
+            e.preventDefault();
+            openPanel('search');
+            return;
+        }
+        if (typing) return;
+        if (e.key === 'ArrowLeft') { stopTts(); rendition.prev(); }
+        if (e.key === 'ArrowRight') { stopTts(); rendition.next(); }
     });
 
     // 목차 오버레이 토글
@@ -907,6 +1776,21 @@
             });
     });
 
+    // 본문 선택 → 형광펜/메모 도구
+    rendition.on('selected', (cfiRange, contents) => {
+        let text = '';
+        try { text = contents.window.getSelection().toString().trim(); } catch (e) {}
+        if (text) showSelectionBar(cfiRange, text);
+    });
+
+    // 이어읽기 저장 (로컬 즉시, 서버는 1.5초 디바운스)
+    rendition.on('relocated', (location) => {
+        const percent = book.locations.length()
+            ? Math.round(book.locations.percentageFromCfi(location.start.cfi) * 100)
+            : null;
+        schedulePositionSave(location.start.cfi, percent);
+    });
+
     // 페이지 이동 시 목차 활성 항목 업데이트
     rendition.on('relocated', (location) => {
         const currentHref = location.start.href;
@@ -933,10 +1817,25 @@
         }
     });
 
-    // locations는 비동기로 천천히 생성 (로딩을 차단하지 않음)
+    // locations: 저장본 우선, 없으면 생성 후 저장 (P3)
     book.ready.then(() => {
+        const locKey = storageKey('reader:locs');
+        let cached = null;
+        try { cached = localStorage.getItem(locKey); } catch (e) {}
+        if (cached) {
+            try {
+                book.locations.load(cached);
+                markTiming('locations');
+                console.log('위치 데이터 캐시 사용');
+                return;
+            } catch (e) {}
+        }
         book.locations.generate(2000).then(() => {
             markTiming('locations');
+            try {
+                const json = book.locations.save();
+                if (json && json.length < 2000000) localStorage.setItem(locKey, json);
+            } catch (e) {}
             console.log('위치 데이터 생성 완료');
         });
     });

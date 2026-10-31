@@ -3,13 +3,15 @@
     font-family: 'GyeonggiBatang';
     font-weight: 700;
     font-style: normal;
-    src: url('Fonts/경기천년체_220929/TTF/경기천년바탕_Bold.ttf') format('truetype');
+    src: url('Fonts/경기서체웹폰트/경기서체웹폰트/woff/Batang_Bold.woff') format('woff'),
+         url('Fonts/경기천년체_220929/TTF/경기천년바탕_Bold.ttf') format('truetype');
 }
 @font-face {
     font-family: 'GyeonggiBatang';
     font-weight: 400;
     font-style: normal;
-    src: url('Fonts/경기천년체_220929/TTF/경기천년바탕_Regular.ttf') format('truetype');
+    src: url('Fonts/경기서체웹폰트/경기서체웹폰트/woff/Batang_Regular.woff') format('woff'),
+         url('Fonts/경기천년체_220929/TTF/경기천년바탕_Regular.ttf') format('truetype');
 }
 
 /* ============================================================
