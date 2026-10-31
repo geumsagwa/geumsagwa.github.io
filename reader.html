@@ -17,12 +17,32 @@
         /* 리더 전용 스타일 */
         body, html {
             overflow: hidden;
+            height: 100vh;
+            height: 100dvh;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .menu-bar {
+            flex: 0 0 auto;
+        }
+
+        /* 전체화면: 브라우저 주소창·하단 바까지 숨긴다 */
+        html.reader-fullscreen .menu-bar {
+            display: none;
+        }
+        html.reader-fullscreen .reader-container {
+            flex: 1 1 auto;
+            height: auto;
         }
 
         /* ── 전체 레이아웃 ── */
         .reader-container {
             width: 100%;
-            height: 84vh;
+            flex: 1 1 auto;
+            height: auto;
+            min-height: 0;
             display: flex;
             flex-direction: row;
         }
@@ -741,6 +761,7 @@
                 <div class="reader-tools">
                     <button class="reader-tool-btn" id="btn-panel" aria-label="읽기 도구 열기" aria-expanded="false" aria-controls="reader-panel">Aa</button>
                     <button class="reader-tool-btn" id="btn-tts" aria-label="읽어주기" aria-pressed="false">▶</button>
+                    <button class="reader-tool-btn" id="btn-fullscreen" aria-label="전체화면" aria-pressed="false">⛶</button>
                 </div>
                 <a href="library.html" class="reader-back">← Library</a>
             </div>
@@ -1179,6 +1200,24 @@
         window.speechSynthesis.speak(utterance);
     }
 
+    // ── 전체화면 (P4): 모바일 브라우저 주소창·하단 바 숨김 ──
+    function toggleFullscreen() {
+        const root = document.documentElement;
+        if (!document.fullscreenElement) {
+            if (root.requestFullscreen) root.requestFullscreen().catch(function () {});
+        } else if (document.exitFullscreen) {
+            document.exitFullscreen().catch(function () {});
+        }
+    }
+
+    document.addEventListener('fullscreenchange', function () {
+        const on = !!document.fullscreenElement;
+        document.documentElement.classList.toggle('reader-fullscreen', on);
+        const btn = document.getElementById('btn-fullscreen');
+        if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        setTimeout(function () { if (readerRendition) readerRendition.resize(); }, 150);
+    });
+
     function syncRemoteNote(entry) {
         if (!supabaseReady()) return;
         (async function () {
@@ -1374,6 +1413,15 @@
 
         const ttsBtn = document.getElementById('btn-tts');
         if (ttsBtn) ttsBtn.addEventListener('click', toggleTts);
+
+        const fsBtn = document.getElementById('btn-fullscreen');
+        if (fsBtn) {
+            if (!document.documentElement.requestFullscreen) {
+                fsBtn.style.display = 'none';
+            } else {
+                fsBtn.addEventListener('click', toggleFullscreen);
+            }
+        }
 
         updateSettingsUI();
     })();
