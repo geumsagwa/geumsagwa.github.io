@@ -57,11 +57,15 @@ function sectionHeader(label, emoji) {
     </div>`;
 }
 
-async function loadSeries() {
-    const grid = document.getElementById('series-grid');
-    if (!grid) return;
+const SERIES_ORDER = ['철학사', '심리학사', '수학사'];
+const SERIES_LABEL = { '철학사': '이야기 철학사', '심리학사': '이야기 심리학사', '수학사': '이야기 수학사' };
+const seriesLabel = (key) => SERIES_LABEL[key] || (key.startsWith('이야기') ? key : `이야기 ${key}`);
 
-    grid.innerHTML = '<p class="grid-message">불러오는 중...</p>';
+async function loadSeries() {
+    const board = document.getElementById('series-grid');
+    if (!board) return;
+
+    board.innerHTML = '<p class="grid-message">불러오는 중...</p>';
 
     const { data, error } = await _supabase
         .from('essays')
@@ -69,54 +73,71 @@ async function loadSeries() {
         .not('series', 'is', null);
 
     if (error) {
-        grid.innerHTML = `<p class="grid-message">시리즈를 불러올 수 없습니다.</p>`;
-        return;
-    }
-
-    if (!data || data.length === 0) {
-        grid.innerHTML = `<p class="grid-message">등록된 시리즈가 없습니다.</p>`;
+        board.innerHTML = `<p class="grid-message">시리즈를 불러올 수 없습니다.</p>`;
         return;
     }
 
     // 시리즈별 그룹핑
     const seriesMap = {};
-    for (const row of data) {
+    for (const row of data || []) {
         if (!seriesMap[row.series]) seriesMap[row.series] = [];
         seriesMap[row.series].push(row);
     }
 
-    // 각 시리즈 내부: episode_number 오름차순
+    // 각 시리즈 내부: 최신 회차가 위로
     for (const key of Object.keys(seriesMap)) {
         seriesMap[key].sort((a, b) => {
-            if (a.episode_number !== null && b.episode_number !== null) return a.episode_number - b.episode_number;
+            if (a.episode_number !== null && b.episode_number !== null) return b.episode_number - a.episode_number;
             if (a.episode_number !== null) return -1;
             if (b.episode_number !== null) return 1;
             return new Date(b.created_at) - new Date(a.created_at);
         });
     }
 
-    // 시리즈 정렬: 회차가 있는 시리즈 우선, 이름순
-    const seriesKeys = Object.keys(seriesMap).sort((a, b) => {
-        const aHasEp = seriesMap[a].some(r => r.episode_number !== null);
-        const bHasEp = seriesMap[b].some(r => r.episode_number !== null);
-        if (aHasEp && !bHasEp) return -1;
-        if (!aHasEp && bHasEp) return 1;
+    // 고정 순서: 철학사 → 심리학사 → 수학사 → 그 외 이름순
+    const keys = Object.keys(seriesMap).sort((a, b) => {
+        const ia = SERIES_ORDER.indexOf(a);
+        const ib = SERIES_ORDER.indexOf(b);
+        if (ia !== -1 || ib !== -1) {
+            if (ia === -1) return 1;
+            if (ib === -1) return -1;
+            return ia - ib;
+        }
         return a.localeCompare(b, 'ko');
     });
-
-    const defaultImage = 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=530&fit=crop&crop=center';
-
-    grid.className = 'photo-grid';
-
-    const items = [];
-    for (const key of seriesKeys) {
-        items.push(sectionHeader(key, '📚'));
-        for (const row of seriesMap[key]) {
-            items.push(renderEssayCard(row, defaultImage));
-        }
+    // 아직 발행 전인 시리즈도 열로 보여 준다
+    for (const key of SERIES_ORDER) {
+        if (!seriesMap[key]) keys.push(key);
     }
 
-    grid.innerHTML = items.join('');
+    board.className = 'series-board';
+    board.innerHTML = keys.map((key) => renderSeriesColumn(key, seriesMap[key] || [])).join('');
+}
+
+function renderSeriesColumn(key, rows) {
+    const list = rows.map(renderSeriesRow).join('');
+    return `<section class="series-col">
+        <header class="series-col-head">
+            <h3>${seriesLabel(key)}</h3>
+            <span class="series-count">${rows.length}화</span>
+        </header>
+        <div class="series-list">${list || '<p class="series-empty">아직 발행된 화가 없습니다.</p>'}</div>
+    </section>`;
+}
+
+function renderSeriesRow(row) {
+    const d = new Date(row.created_at);
+    const date = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+    const episode = row.episode_number ? `제${row.episode_number}화` : '에세이';
+    const bgImage = row.card_image_url || 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=530&fit=crop&crop=center';
+
+    return `<a class="series-row" href="essay.html?id=${row.id}">
+        <span class="series-thumb" style="background-image:url('${bgImage}')"></span>
+        <span class="series-info">
+            <span class="series-title">${row.title || ''}</span>
+            <span class="series-meta">${episode} · ${date}</span>
+        </span>
+    </a>`;
 }
 
 async function loadEssays() {

@@ -671,3 +671,18 @@ body.light-mode,
 .light-mode .book-open-overlay {
     background: rgba(245, 240, 232, 0.85);
 }
+
+/* -- 시리즈 게시판 -- */
+.light-mode .series-col {
+    border-color: #d8cfbf;
+    background: rgba(255, 255, 255, 0.55);
+}
+.light-mode .series-col-head { border-bottom-color: #c4a87a; }
+.light-mode .series-col-head h3 { color: #8f7d60; }
+.light-mode .series-count { color: #777; }
+.light-mode .series-row { border-bottom-color: #e6ded0; }
+.light-mode .series-row:hover { background: rgba(143, 125, 96, 0.08); }
+.light-mode .series-title { color: #333; }
+.light-mode .series-row:hover .series-title { color: #000; }
+.light-mode .series-meta { color: #777; }
+.light-mode .series-empty { color: #777; }
