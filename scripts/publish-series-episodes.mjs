@@ -134,6 +134,13 @@ const SERIES_MAP = {
         excerpt: "이집트에서 태어나 알렉산드리아에서 배우고 로마에서 가르친 플로티노스. 그는 눈에 보이는 세계 너머에 더 높은 세계가 있고, 그 꼭대기에 모든 것의 근원인 '하나'가 있다고 보았다. 하나에서 정신과 영혼과 세계가 넘쳐 나오고, 영혼은 다시 고향을 그리워하며 하나로 돌아간다. 아름다움에서 시작해 마음의 아름다움을 거쳐 하나에 이르는 오름길 — 서양 중세 사상의 밑그림이 된 사다리를 함께 올라간다.",
         card_image_url: "https://geumsagwa.github.io/Images/cards/philosophy-16-plotinus.jpg",
       },
+      17: {
+        dir: "F:/wiki/manuscripts/philosophy/volume2",
+        file: "2권_17화_01_아우구스티누스-신을-향한-고백.md",
+        title: "제17화 아우구스티누스 — 신을 향한 고백",
+        excerpt: "430년, 반달족이 히포를 포위한 가운데 한 늙은 주교가 시편을 읽고 있었다. 아우구스티누스는 방황과 회심, 어머니와 아들의 죽음을 지나며 '마음은 왜 쉬지 못하는가'를 평생 물었다. 『고백록』에서 자기 마음을 낱낱이 드러내고, 『신국론』에서 두 도시를 그린 사람 — 서양 내면의 세계를 처음 연 철학자의 생애를 따라간다.",
+        card_image_url: "https://geumsagwa.github.io/Images/cards/philosophy-17-augustine.jpg",
+      },
     },
   },
   psychology: {
