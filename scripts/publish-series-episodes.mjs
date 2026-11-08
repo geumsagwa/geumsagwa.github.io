@@ -127,6 +127,13 @@ const SERIES_MAP = {
         excerpt: "로마 원로들을 놀라게 한 카르네아데스의 이틀 강연에서 시작해, 판단을 멈추고 살아간 사람들의 이야기. 피론은 화가에서 철학자가 되어 인도까지 갔고, 아르케실라오스는 아카데미아를 회의주의의 본거지로 바꾸었으며, 섹스투스 엠페이리코스는 그 물음을 책으로 남겼다. 확실하지 않은 것을 확실하다고 하지 않으려는 태도 — 회의주의는 세상을 비웃는 냉소가 아니라, 세상을 대하는 가장 조심스러운 방법이었다.",
         card_image_url: "https://geumsagwa.github.io/Images/cards/philosophy-15-carneades.jpg",
       },
+      16: {
+        dir: "F:/wiki/manuscripts/philosophy/volume2",
+        file: "2권_16화_01_신플라톤주의-영혼의-비상.md",
+        title: "제16화 신플라톤주의 — 영혼의 비상",
+        excerpt: "이집트에서 태어나 알렉산드리아에서 배우고 로마에서 가르친 플로티노스. 그는 눈에 보이는 세계 너머에 더 높은 세계가 있고, 그 꼭대기에 모든 것의 근원인 '하나'가 있다고 보았다. 하나에서 정신과 영혼과 세계가 넘쳐 나오고, 영혼은 다시 고향을 그리워하며 하나로 돌아간다. 아름다움에서 시작해 마음의 아름다움을 거쳐 하나에 이르는 오름길 — 서양 중세 사상의 밑그림이 된 사다리를 함께 올라간다.",
+        card_image_url: "https://geumsagwa.github.io/Images/cards/philosophy-16-plotinus.jpg",
+      },
     },
   },
   psychology: {
