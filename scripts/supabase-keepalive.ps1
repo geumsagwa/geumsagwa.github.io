@@ -7,8 +7,14 @@
 # =====================================================================
 $ErrorActionPreference = "Stop"
 
-$url = "https://qswzutgxtiuigrocqcmc.supabase.co/rest/v1/library?select=count&limit=1"
-$anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzd3p1dGd4dGl1aWdyb2NxY21jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3NzkxMjksImV4cCI6MjA3OTM1NTEyOX0.FezD3WM7YMhh45t6pYrUoi2yNWK8e1MQXPzzk6EjK8M"
+# 사이트가 쓰는 설정에서 URL·키를 읽는다(키 교체 시 keepalive가 낡아 401로 죽는 문제 방지)
+$ConfigFile = Join-Path (Split-Path $PSScriptRoot -Parent) "supabase-config.js"
+$cfgText = Get-Content -LiteralPath $ConfigFile -Raw
+$baseUrl = [regex]::Match($cfgText, 'https://[a-z0-9]+\.supabase\.co').Value
+$keyMatches = [regex]::Matches($cfgText, "SUPABASE_ANON_KEY[^\r\n]*'([^'\r\n]{20,})'")
+$anonKey = if ($keyMatches.Count -gt 0) { $keyMatches[$keyMatches.Count - 1].Groups[1].Value } else { "" }
+if (-not $baseUrl -or -not $anonKey) { Write-Warning "[supabase-keepalive] 설정 파싱 실패: $ConfigFile"; exit 2 }
+$url = "$baseUrl/rest/v1/library?select=count&limit=1"
 $LogFile = Join-Path $PSScriptRoot "supabase-keepalive.log"
 $ts = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
@@ -41,8 +47,8 @@ try {
         Write-KeepaliveLog "FAIL — 네트워크 오류: $($_.Exception.Message)"
         exit 2
     }
-    # 401/403/404 등 인증·권한 차단: DB는 살아있으나 2xx가 아니므로 활동 인식 불확실
-    Write-Host "[supabase-keepalive] DB 활성 확인 (HTTP $sc) — 단 2xx 아님"
-    Write-KeepaliveLog "DB 활성 (HTTP $sc) — 2xx 아님, 활동 인식 불확실"
-    exit 2
+    # 401/403 등 인증 차단: 활동으로 인정되지 않으므로 성공으로 보지 않는다(2026-08~11 401 방치 사고)
+    Write-Warning "[supabase-keepalive] FAIL — HTTP $sc (인증 실패: 키 불일치 가능)"
+    Write-KeepaliveLog "FAIL — HTTP $sc (인증 실패, 활동 미인정)"
+    exit 1
 }
